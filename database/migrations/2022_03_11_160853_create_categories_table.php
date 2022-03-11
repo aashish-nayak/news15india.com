@@ -15,6 +15,18 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('cat_name',100);
+            $table->string('slug',100)->unique();
+            $table->integer('cat_order',true);
+            $table->string('location');
+            $table->string('cat_img')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_desc')->nullable();
+            $table->boolean('status')->default(0);
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete("cascade");
+            $table->softDeletes();
             $table->timestamps();
         });
     }
