@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,5 +12,15 @@ Route::get('/admin',function(){
 });
 Route::prefix('admin/')->name('admin.')->middleware('web')->group(function(){
     Route::view('dashboard', 'backpanel.dashboard')->name('dashboard');
-    Route::resource('category',CategoryController::class);
+    Route::get('category', [CategoryController::class,'index'])->name('category.index');
+    Route::post('category/store', [CategoryController::class,'store'])->name('category.store');
+    Route::get('category/{category}/edit',[CategoryController::class,'edit'])->name('category.edit');
+    Route::get('category/{category}/delete',[CategoryController::class,'destroy'])->name('category.delete');
+    Route::get('/getCategories', [CategoryController::class, 'show'])->name('getCategories');
+
+    Route::post('/media/upload',[MediaController::class,'create'])->name('media.create');
+    Route::post('/media/update',[MediaController::class,'update'])->name('media.update');
+    Route::get('/media',[MediaController::class,'index'])->name('media');
+    Route::get('/media/fetch-data',[MediaController::class,'fetch'])->name('media.fetch');
+    Route::get('/media/delete/{id}',[MediaController::class,'destroy'])->name('media.delete');
 });

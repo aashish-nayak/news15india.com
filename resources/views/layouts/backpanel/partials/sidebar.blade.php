@@ -22,6 +22,12 @@
                 <div class="menu-title">Category</div>
             </a>
         </li>
+        <li class="">
+            <a href="{{Route('admin.media')}}">
+                <div class="parent-icon"><i class='bx bx-grid-alt'></i></div>
+                <div class="menu-title">Media</div>
+            </a>
+        </li>
         {{-- active class - class="mm-active" --}}
         {{-- <li >
             <a href="javascript:void(0);" class="has-arrow">

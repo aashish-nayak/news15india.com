@@ -1,0 +1,51 @@
+.tab-height {
+    height: 300px;
+}
+
+.uploader {
+    background: #fff;
+    border: 3px dashed #e8e8e8;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 40px 0 26px;
+    position: relative;
+    text-align: center;
+}
+
+.file {
+    height: 130px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: 0.2s all ease-in-out;
+}
+
+.copied {
+    font-family: "Montserrat", sans-serif;
+    width: 75px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #000;
+    padding: 15px 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 3px 15px #b8c6db;
+    -moz-box-shadow: 0 3px 15px #b8c6db;
+    -webkit-box-shadow: 0 3px 15px #b8c6db;
+}
+
+.file-selected,
+.file:hover {
+    border: 3px solid #1c68be;
+    border-radius: 5px;
+}
+
+.up-file {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
