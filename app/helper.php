@@ -10,5 +10,4 @@ function formatBytes($size, $precision = 2)
         return $size;
     }
 }
-
 ?>
