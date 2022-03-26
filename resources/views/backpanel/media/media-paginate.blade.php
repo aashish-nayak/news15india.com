@@ -7,7 +7,7 @@
     </div>
 @endforeach
 @else
-<div class="col-lg-3 col-md-3 col-4 mt-4">
+<div class="col-lg-12 col-md-12 col-12 mt-4 d-flex justify-content-center align-items-center">
     <p>No Images</p>
 </div>
 @endif

@@ -23,4 +23,8 @@ Route::prefix('admin/')->name('admin.')->middleware('web')->group(function(){
     Route::get('/media',[MediaController::class,'index'])->name('media');
     Route::get('/media/fetch-data',[MediaController::class,'fetch'])->name('media.fetch');
     Route::get('/media/delete/{id}',[MediaController::class,'destroy'])->name('media.delete');
+
+    Route::view('news/create-news', 'backpanel.news.add-news')->name('news.create');
+    Route::view('news/view-news', 'backpanel.news.view-news')->name('news.view-all-news');
+    Route::view('news/trash-news', 'backpanel.news.trash-news')->name('news.trash-news');
 });

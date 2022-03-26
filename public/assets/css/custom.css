@@ -1,7 +1,9 @@
 .tab-height {
     height: 300px;
 }
-
+.tox .tox-notification{
+    display: none !important;
+}
 .uploader {
     background: #fff;
     border: 3px dashed #e8e8e8;
@@ -11,6 +13,7 @@
     padding: 40px 0 26px;
     position: relative;
     text-align: center;
+    margin:0px 5px;
 }
 
 .file {
@@ -48,4 +51,59 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+
+#seo_wrap .seo-preview * {
+    word-break: break-all;
+}
+
+.page-title-seo {
+    color: #1a0dab;
+    display: block;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 2px;
+    min-height: 21px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#seo_wrap .seo-preview .page-url-seo p {
+    word-wrap: break-word;
+    color: #006621;
+    display: block;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 2px;
+}
+
+.preview-image-wrapper {
+    background: #fafbfc;
+    border: 1px solid rgba(195, 207, 216, .3);
+    display: inline-block;
+    height: 150px;
+    max-height: 150px;
+    max-width: 150px;
+    min-height: 150px;
+    min-width: 150px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.btn_remove_image {
+    background: #ddd;
+    border-radius: 50% !important;
+    color: #000;
+    display: inline-block;
+    font-size: 18px;
+    height: 30px;
+    position: absolute;
+    right: 5px;
+    text-align: center;
+    top: 5px;
+    width: 30px;
 }

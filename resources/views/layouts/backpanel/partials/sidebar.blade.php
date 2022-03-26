@@ -22,9 +22,21 @@
                 <div class="menu-title">Category</div>
             </a>
         </li>
+        <li >
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-detail"></i>
+                </div>
+                <div class="menu-title">News</div>
+            </a>
+            <ul >
+                <li> <a href="{{Route('admin.news.create')}}"><i class="bx bx-right-arrow-alt"></i>Add News</a></li>
+                <li> <a href="{{Route('admin.news.view-all-news')}}"><i class="bx bx-right-arrow-alt"></i>View News</a></li>
+                <li> <a href="{{Route('admin.news.trash-news')}}"><i class="bx bx-right-arrow-alt"></i>Trash News</a></li>
+            </ul>
+        </li>
         <li class="">
             <a href="{{Route('admin.media')}}">
-                <div class="parent-icon"><i class='bx bx-grid-alt'></i></div>
+                <div class="parent-icon"><i class='bx bx-images'></i></div>
                 <div class="menu-title">Media</div>
             </a>
         </li>

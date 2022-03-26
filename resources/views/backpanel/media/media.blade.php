@@ -42,7 +42,7 @@
                             </form>
                             <div class="col-12">
                                 <label class="uploader tab-height row" for="uploader">
-                                    <div class="col-12 align-self-center"><i class="fa fa-upload" style="font-size: 75px"></i><br>Upload Files</div>
+                                    <div class="col-12 align-self-center"><i class="fadeIn animated bx bx-upload" style="font-size: 75px"></i><br>Upload Files</div>
                                 </label>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                         @include('backpanel.media.media-paginate')
                                     </div>
                                 </div>
-                                <div class="col-md-4 border-left py-3">
+                                <div class="col-md-4 border-start py-3">
                                     <div class="row px-0">
                                         <div class="col-5">
                                             <div style="height:100px">
@@ -87,11 +87,9 @@
                                             <div class="form-group m-0 mb-2">
                                                 <label class="col-form-label" for="input-path">Path</label>
                                                 <div class="input-group mb-2">
-                                                    <input type="text" class="form-control form-control-sm" id="input-path"
-                                                        name="path" value="" readonly>
-                                                    <a href="javascript:void(0)" class="input-group-prepend"
-                                                        style="cursor: pointer" onclick="copy()" title="Copy to Clipboard">
-                                                        <div class="input-group-text"><i class="fa fa-clipboard"></i></div>
+                                                    <input type="text" class="form-control form-control-sm" id="input-path"  name="path" value="" readonly>
+                                                    <a href="javascript:void(0)" class="input-group-prepend" style="cursor: pointer" onclick="copy()" title="Copy to Clipboard">
+                                                        <div class="input-group-text"><i class="fadeIn animated bx bx-clipboard"></i></div>
                                                     </a>
                                                 </div>
                                             </div>
