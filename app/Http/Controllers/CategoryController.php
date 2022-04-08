@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         $categories = Category::get();
         foreach ($categories as $key => $value) {
-            $categories[$key]->bread = $value->cat_name." / ".$this->getBreadcrumb($value->parent_id);
+            $categories[$key]->bread = $this->getBreadcrumb($value->parent_id).$value->cat_name;
         }
         return view('backpanel.category.index', compact('categories'));
     }

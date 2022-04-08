@@ -77,7 +77,7 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
                                     <label for="validationCustom01" class="form-label"><b>Description</b></label>
-                                    <textarea name="short_desc" placeholder="Short description" class="form-control" id="" rows="4"></textarea>
+                                    <textarea name="short_desc" placeholder="Short description" class="form-control" id="desc" rows="4"></textarea>
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="ws-nm">
                                         <span style="color: #70757a;">Mar 24, 2022 - </span>
-                                        <span class="page-description-seo">asdasdasdasdasd</span>
+                                        <span class="page-description-seo" id="seo-section-desc"></span>
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +256,7 @@ $(document).ready(function () {
         let baseurl = "{{url('/')}}/";
         $("#seo-section-link").html(baseurl + $("#slug").html());
         $(".seo-preview").removeClass("d-none");
-        $("#seo-section-title").html(slug);
+        $("#seo-section-title").html($(this).val());
     });
     $("#link-edit").on("click",function () {
         $("#link-edit").addClass("d-none");
@@ -268,7 +268,7 @@ $(document).ready(function () {
         });
         $("#link-save").on("click",function(){
             $("#link-edit").removeClass("d-none");
-            $("#slug").html($("#edit-link").val());
+            $("#slug").html(stringslug($("#edit-link").val()));
             $("#slug-input").val($("#edit-link").val());
             let baseurl = "{{url('/')}}/";
             $("#seo-section-link").html(baseurl + $("#slug").html());
@@ -280,6 +280,9 @@ $(document).ready(function () {
     if($(".titletoslug").val() != ''){
         $(".seo-preview").removeClass("d-none");
     }
+    $("#desc").on("keyup",function () {  
+        $("#seo-section-desc").html($(this).val());
+    });
     $('.multiple-select').select2({
         theme: 'bootstrap4',
         width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
