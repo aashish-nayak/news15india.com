@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class CategoryController extends Controller
 {
@@ -18,7 +19,17 @@ class CategoryController extends Controller
         foreach ($categories as $key => $value) {
             $categories[$key]->bread = $this->getBreadcrumb($value->parent_id).$value->cat_name;
         }
-        return view('backpanel.category.index', compact('categories'));
+        $Categorys = Category::where('parent_id', 0)->get();
+        $tree = '<ul class="tree">';
+        foreach ($Categorys as $Category) {
+            $has = (count($Category->children))? 'has': '';
+            $tree .= '<li class="'.$has.'"><input type="checkbox" name="domain[]" value="' . $Category->id . '"><label>' . $Category->cat_name . ' <span class="total">('.count($Category->children).')</span></label>';
+            if (count($Category->children)) {
+                $tree .= $this->childView($Category);
+            }
+        }
+        $tree .= '<ul>';
+        return view('backpanel.category.index', compact('categories','tree'));
     }
     public function getBreadcrumb($parent_id,$breadcrumb = '')
     {
@@ -28,14 +39,23 @@ class CategoryController extends Controller
         }
         return $breadcrumb;
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function childView($Category)
     {
-        //
+        $html = '<ul>';
+        foreach ($Category->children as $arr) {
+            if (count($arr->children)) {
+                $html .= '<li class="has"><input type="checkbox" name="subdomain[]" value="' . $arr->id . '"><label>' . $arr->cat_name . '<span class="total">('.count($arr->children).')</span></label>';
+                $html .= $this->childView($arr);
+            } else {
+                $html .= '<li class=""><input type="checkbox" name="subdomain[]" value="' . $arr->id . '">
+                <label>' . $arr->cat_name . '</label>';
+                $html .= "</li>";
+            }
+        }
+
+        $html .= "</ul>";
+        return $html;
     }
 
     /**
@@ -48,8 +68,8 @@ class CategoryController extends Controller
     {
         // dd($request->all());
         $request['location'] = implode(",", $request->location);
-        if ($request['parent_id'] == 'null') {
-            $request['parent_id'] = NULL;
+        if ($request['parent_id'] == '0') {
+            $request['parent_id'] = 0;
         }
         if ($request->has('id') && $request->id != '') {
             $category = Category::find($request->id);
@@ -62,12 +82,6 @@ class CategoryController extends Controller
         return redirect()->route('admin.category.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function show(Request $request)
     {
         $draw = $request->get('draw');
@@ -90,7 +104,7 @@ class CategoryController extends Controller
 
         // Fetch records
         $records = Category::orderBy($columnName, $columnSortOrder)
-            ->where('categories.cat_name', 'like', '%' . $searchValue . '%')
+            ->where('categories.cat_name', 'like', '%' . $searchValue . '%')->orWhere('categories.slug', 'like', '%' . $searchValue . '%')
             ->select('categories.*')
             ->skip($start)
             ->take($rowperpage)
@@ -104,7 +118,7 @@ class CategoryController extends Controller
             $slug = $record->slug;
             $cat_order = $record->cat_order;
             $status = $record->status;
-            $created = $record->created_at;
+            $created = Carbon::parse($record->created_at)->diffForHumans();
 
             $data_arr[] = array(
                 "id" => $id,

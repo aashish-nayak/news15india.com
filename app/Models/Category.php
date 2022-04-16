@@ -42,4 +42,7 @@ class Category extends Model
         return $this->children()->with('nested_child');
     }
 
+    public function news(){
+        return $this->belongsToMany(News::class, 'category_news');
+    }
 }

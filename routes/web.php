@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,6 +14,7 @@ Route::get('/admin',function(){
 });
 Route::prefix('admin/')->name('admin.')->middleware('web')->group(function(){
     Route::view('dashboard', 'backpanel.dashboard')->name('dashboard');
+
     Route::get('category', [CategoryController::class,'index'])->name('category.index');
     Route::post('category/store', [CategoryController::class,'store'])->name('category.store');
     Route::get('category/{category}/edit',[CategoryController::class,'edit'])->name('category.edit');
@@ -24,7 +27,21 @@ Route::prefix('admin/')->name('admin.')->middleware('web')->group(function(){
     Route::get('/media/fetch-data',[MediaController::class,'fetch'])->name('media.fetch');
     Route::get('/media/delete/{id}',[MediaController::class,'destroy'])->name('media.delete');
 
-    Route::view('news/create-news', 'backpanel.news.add-news')->name('news.create');
-    Route::view('news/view-news', 'backpanel.news.view-news')->name('news.view-all-news');
-    Route::view('news/trash-news', 'backpanel.news.trash-news')->name('news.trash-news');
+    Route::get('news/create-news', [NewsController::class,'index'])->name('news.create');
+    Route::post('news/store-news', [NewsController::class,'store'])->name('news.store');
+    Route::get('news/ajax',[NewsController::class,'view_news'])->name('news.ajax-list');
+    Route::get('news/view-news', [NewsController::class,'show'])->name('news.view-all-news');
+    Route::get('news/edit/{id}',[NewsController::class,'edit'])->name('news.edit');
+    Route::get('news/trash/{id}',[NewsController::class,'trash'])->name('news.delete');
+    Route::get('news/status/{id}', [NewsController::class, 'status'])->name('news.status');
+    Route::get('news/trash-news', [NewsController::class,'trashview'])->name('news.trash-news');
+    Route::get('news/ajax-trash-news', [NewsController::class,'ajaxtrash'])->name('news.ajax-trash-news');
+    Route::get('news/destroy/{id}',[NewsController::class,'destroy'])->name('news.destroy');
+    Route::get('news/restore/{id}',[NewsController::class,'restore'])->name('news.restore');
+
+    Route::get('tag/view',[TagController::class,'index'])->name('tag.index');
+    Route::post('tag/store', [TagController::class,'store'])->name('tag.store');
+    Route::get('tag/{tag}/edit',[TagController::class,'edit'])->name('tag.edit');
+    Route::get('tag/{tag}/delete',[TagController::class,'destroy'])->name('tag.delete');
+    Route::get('/gettags', [TagController::class, 'show'])->name('getTags');
 });

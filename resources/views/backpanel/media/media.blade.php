@@ -1,7 +1,6 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Media')
 @push('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css" integrity="sha512-IXuoq1aFd2wXs4NqGskwX2Vb+I8UJ+tGJEu/Dc0zwLNKeQ7CW3Sr6v0yU3z5OQWe3eScVIkER4J9L7byrgR/fA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 @endpush
 @section('sections')
@@ -35,8 +34,7 @@
                                     </div>
                                 @endforeach
                             @endif
-                            <form action="{{ Route('admin.media.create') }}" method="post" id="upload-form"
-                                enctype="multipart/form-data">
+                            <form action="{{ Route('admin.media.create') }}" method="post" id="upload-form" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" class="" hidden name="file[]" multiple accept="image/*" id="uploader">
                             </form>
@@ -94,7 +92,16 @@
                                                 </div>
                                             </div>
                                             <div class="form-group m-0 mb-2">
-                                                <input type="submit" class="btn btn-primary btn-sm" value="Save Changes">
+                                                <label class="col-form-label" for="input-path">Image ID</label>
+                                                <div class="input-group mb-2">
+                                                    <input type="text" class="form-control form-control-sm" id="input-imgid" value="" readonly>
+                                                    <a href="javascript:void(0)" class="input-group-prepend" style="cursor: pointer" onclick="copyID()" title="Copy to Clipboard">
+                                                        <div class="input-group-text"><i class="fadeIn animated bx bx-clipboard"></i></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-0 mb-2">
+                                                <input type="submit" id="submitchange" disabled class="btn btn-primary btn-sm" value="Save Changes">
                                             </div>
                                         </form>
                                     </div>
@@ -111,7 +118,17 @@
     </div>
 @endsection
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js" integrity="sha512-JnjG+Wt53GspUQXQhc+c4j8SBERsgJAoHeehagKHlxQN+MtCCmFDghX9/AcbkkNRZptyZU4zC8utK59M5L45Iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@if (Session::has('success'))
+<script>
+    $(document).ready(function () {
+        Swal.fire(
+            'Successful!',
+            "{{ Session::get('success') }}",
+            'success'
+        )
+    });
+</script>
+@endisset
     <script>
         function copy() {
             var copyText = document.getElementById("input-path");
@@ -121,11 +138,36 @@
             $('#copied-success').fadeIn(800);
             $('#copied-success').fadeOut(800);
         }
+        function copyID() {
+            var copyText = document.getElementById("input-imgid");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            $('#copied-success').fadeIn(800);
+            $('#copied-success').fadeOut(800);
+        }
         $(document).ready(function() {
+            $("#delete").on("click",function (e) {
+                var url = $(this).attr("href");
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You Want to delete this Image!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                })
+            });
             $("#uploader").change(function() {
                 $("#upload-form").submit();
+                $("#uploader").prop("disabled",true);
             });
-
             function fetch_data(page) {
                 $.ajax({
                     url: "{{ route('admin.media.fetch') }}" + "?page=" + page,
@@ -140,6 +182,7 @@
                 fetch_data(page);
             });
             $(document).on('click', ".file", function() {
+                $("#submitchange").prop("disabled",false);
                 $(document).find(".file").removeClass('file-selected');
                 $(this).addClass("file-selected");
                 $("#image").attr("src", $(this).data('path'));
@@ -157,10 +200,12 @@
                 $("#input-name").val($(this).data('name'));
                 $("#input-alt").val($(this).data('alt'));
                 $("#input-path").val($(this).data('path'));
+                $("#input-imgid").val($(this).data('id'));
             });
 
             $("#update-form").on("submit", function(e) {
                 e.preventDefault();
+                $("#submitchange").prop("disabled",true);
                 let form = $(this);
                 $.ajax({
                     url: form.attr('action'),
@@ -169,10 +214,19 @@
                     dataType: "json",
                     success: function(data) {
                         if (data.status == "success") {
+                            $("#submitchange").prop("disabled",false);
                             fetch_data(1);
-                            alertify.success(data.message);
+                            Swal.fire(
+                                'Successful!',
+                                data.message,
+                                'success'
+                            );
                         } else {
-                            alertify.error(data.message);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.message,
+                            })
                         }
                     }
                 });

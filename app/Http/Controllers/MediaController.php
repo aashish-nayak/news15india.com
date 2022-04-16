@@ -32,7 +32,8 @@ class MediaController extends Controller
             $media->dimension = $width . 'x' . $height;
             $media->save();
         }
-        return redirect()->back()->with('success', 'Media uploaded successfully');
+        $request->session()->flash('success', 'Media Files Uploaded successfully!');
+        return redirect()->back();
     }
 
     public function index()
