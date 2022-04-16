@@ -6,13 +6,27 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+require __DIR__.'/auth.php';
+
 Route::get('/admin',function(){
     return redirect()->route('admin.dashboard');
 });
-Route::prefix('admin/')->name('admin.')->middleware('web')->group(function(){
+Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function(){
     Route::view('dashboard', 'backpanel.dashboard')->name('dashboard');
 
     Route::get('category', [CategoryController::class,'index'])->name('category.index');

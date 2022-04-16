@@ -46,23 +46,14 @@
                 <div class="menu-title">Media</div>
             </a>
         </li>
-        {{-- active class - class="mm-active" --}}
-        {{-- <li >
-            <a href="javascript:void(0);" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
-                </div>
-                <div class="menu-title">Application</div>
-            </a>
-            active class - class="mm-show"
-            <ul >
-                <li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Email</a></li>
-                <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Chat Box</a> </li>
-                <li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>File Manager</a> </li>
-                <li> <a href="app-contact-list.html"><i class="bx bx-right-arrow-alt"></i>Contatcs</a> </li>
-                <li> <a href="app-to-do.html"><i class="bx bx-right-arrow-alt"></i>Todo List</a> </li>
-                <li> <a href="app-invoice.html"><i class="bx bx-right-arrow-alt"></i>Invoice</a> </li>
-                <li> <a href="app-fullcalender.html"><i class="bx bx-right-arrow-alt"></i>Calendar</a> </li>
-            </ul>
-        </li> --}}
+        <li class="">
+            <form action="{{ route('logout') }}" method="post" id="logout-form">
+                @csrf
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();$('#logout-form').submit();">
+                    <div class="parent-icon"><i class='bx bx-power-off'></i></div>
+                    <div class="menu-title">Logout</div>
+                </a>
+            </form>
+        </li>
     </ul>
 </div>
