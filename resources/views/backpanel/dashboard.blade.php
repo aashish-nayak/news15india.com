@@ -1082,6 +1082,4 @@
 @push('plugin-scripts')
     
 <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
 @endpush
