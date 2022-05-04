@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -16,6 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
+        $media = Media::latest()->paginate(12);
         foreach ($categories as $key => $value) {
             $categories[$key]->bread = $this->getBreadcrumb($value->parent_id).$value->cat_name;
         }
@@ -29,7 +31,7 @@ class CategoryController extends Controller
             }
         }
         $tree .= '<ul>';
-        return view('backpanel.category.index', compact('categories','tree'));
+        return view('backpanel.category.index', compact('categories','tree','media'));
     }
     public function getBreadcrumb($parent_id,$breadcrumb = '')
     {
@@ -147,7 +149,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
-    {
+    {   
+        $category->editImg = $category->img;
         return response()->json($category);
     }
 

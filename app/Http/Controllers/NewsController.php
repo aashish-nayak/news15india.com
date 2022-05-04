@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
-use App\Models\Category;
-use App\Models\Tag;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\Tag;
+use App\Models\News;
+use App\Models\Media;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class NewsController extends Controller
-{
+{   
+    public function fetch_media(Request $request)
+    {
+        if ($request->ajax()) {
+            $media = Media::latest()->paginate(12);
+            return view('backpanel.news.media-box', compact('media'))->render();
+        }
+    }
+    
     public function index()
-    {   
+    {   $media = Media::latest()->paginate(12);
         $tags = Tag::where('status',1)->get();
         $categories = Category::with('children')->where('parent_id', 0)->where('status',1)->get();
-        return view('backpanel.news.add-news',compact('categories','tags'));
+        return view('backpanel.news.add-news',compact('categories','tags','media'));
     }
 
     public function view_news(Request $request)
@@ -81,7 +90,8 @@ class NewsController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        // dd($request->all());
         if (isset($request->id)) {
             $news = News::find($request->id);
             $message = 'News Updated Successfully!';
@@ -140,11 +150,12 @@ class NewsController extends Controller
     }
 
     public function edit($id)
-    {
+    {   
+        $media = Media::latest()->paginate(12);
         $tags = Tag::where('status',1)->get();
         $categories = Category::with('children')->where('parent_id', 0)->where('status',1)->get();
         $page = News::find($id);
-        return view('backpanel.news.add-news',compact('categories','tags','page'));
+        return view('backpanel.news.add-news',compact('categories','tags','page','media'));
     }
 
     public function trashview()

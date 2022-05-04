@@ -15,7 +15,11 @@
 </style>
 @endpush
 @section('sections')
-    <div class="col-12 mt-4">
+    <div class="col-12 mt-4 text-end">
+        <a href="{{route('admin.news.create')}}" class="btn btn-primary mr-3 btn-sm">Add News</a>
+        <a href="{{route('admin.news.trash-news')}}" class="btn btn-danger mr-3 btn-sm">View Trash</a>
+    </div>
+    <div class="col-12 mt-2">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title m-0">News</h4>
@@ -61,12 +65,15 @@
             processing: true,
             serverSide: true,
             responsive:true,
-            ajax: "{{ route('admin.news.ajax-list') }}",
-            columnDefs : [
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 1, targets: 2 },
                 { responsivePriority: 2, targets: 1 },
+                { responsivePriority: 3, targets: 4 },
+                { responsivePriority: 4, targets: 6 },
                 { width: "10%", targets: 1}
             ],
+            ajax: "{{ route('admin.news.ajax-list') }}",
             columns: [{
                     data: 'id'
                 },

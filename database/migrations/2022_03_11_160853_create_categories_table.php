@@ -19,7 +19,8 @@ class CreateCategoriesTable extends Migration
             $table->string('slug',100)->unique();
             $table->integer('cat_order');
             $table->string('location');
-            $table->string('cat_img')->nullable();
+            $table->unsignedBigInteger('cat_img')->nullable();
+            $table->foreign('cat_img')->references('id')->on('media')->onDelete('cascade');
             $table->text('meta_title')->nullable();
             $table->longText('meta_keywords')->nullable();
             $table->longText('meta_desc')->nullable();

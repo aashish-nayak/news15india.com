@@ -17,7 +17,8 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('tag_img')->nullable();
+            $table->unsignedBigInteger('tag_img')->nullable();
+            $table->foreign('tag_img')->references('id')->on('media')->onDelete('cascade');
             $table->boolean('status')->default(1);
             $table->string('meta_title')->nullable();
             $table->string('meta_keyword')->nullable();

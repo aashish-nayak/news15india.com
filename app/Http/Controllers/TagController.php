@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ class TagController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backpanel.tag.index');
+    {   
+        $media = Media::latest()->paginate(12);
+        return view('backpanel.tag.index',compact('media'));
     }
 
     /**
@@ -117,6 +119,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
+        $tag->editImg = $tag->img;
         return response()->json($tag);
     }
 

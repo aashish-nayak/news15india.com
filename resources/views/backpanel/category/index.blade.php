@@ -205,14 +205,13 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="dangerprofile" role="tabpanel">
-                            <input type="file" class="" hidden="" name="cat_img" id="cat-img">
-                            <label for="cat-img" class="img-box">
-                                <div class="col-12">Pick a Image</div>
-                                <div class="col-12"><span>OR</span></div>
-                                <div class="col-12">
-                                    <button type="button" class="btn btn-secondary px-5"><i class="bx bx-link mr-1"></i>Get from URL</button>
-                                </div>
-                            </label>
+                            <div class="preview-image-wrapper " style="width:100%;max-width:none;max-height:none;height:auto">
+                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X
+                                </a>
+                            </div><br>
+                            <input type="hidden" required name="cat_img" id="banner_data" value="">
+                            <a href="javascript:void(0)" id="banner-img">Choose Image</a>
                         </div>
                         <div class="tab-pane fade" id="dangercontact" role="tabpanel">
                             <div class="form-group">
@@ -242,7 +241,7 @@
         <hr>
         <div class="card radius-10 w-100">
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="">
                     <table id="categories" class="table table-striped table-bordered align-middle border table-hover">
                         <thead>
                             <tr>
@@ -280,8 +279,8 @@
                                         <div class="controls">
                                             <button>Collepsed</button>
                                             <button>Expanded</button>
-                                            <button>Checked All</button>
-                                            <button>Unchek All</button>
+                                            {{-- <button>Checked All</button>
+                                            <button>Unchek All</button> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -302,6 +301,7 @@
         </div>
     </div>
 </div>
+@include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
 <script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
@@ -316,6 +316,7 @@
     });
 </script>
 @endisset
+@include('backpanel.includes.media-model-script')
 <script>
     function loadselect() {  
         $('.single-select').select2({
@@ -343,6 +344,7 @@
         $('#categories').DataTable({
             processing: true,
             serverSide: true,
+            scrollX:true,
             ajax: "{{ route('admin.getCategories') }}",
             columns: [{
                     data: 'id'
@@ -421,6 +423,7 @@
                 url: url,
                 type: "GET",
                 success: function(data) {
+                    console.log(data);
                     $('.single-select').select2('destroy');
                     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput('destroy');
                     $("#idarea").html("<input type='hidden' name='id' value='" + data.id + "'>");
@@ -437,6 +440,14 @@
                     $(".loc").prop('checked', false);
                     $(".loc[value='" + locarr[0] + "']").prop('checked', true);
                     $(".loc[value='" + locarr[1] + "']").prop('checked', true);
+                    let preview = '';
+                    if(data.editImg != null){
+                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;
+                    }else{
+                        preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
+                    }
+                    $("#banner-preview").attr('src',preview);
+                    $("#banner_data").val(data.cat_img);
                     $("#metatitle").html(data.meta_title);
                     $("#metakey").val(data.meta_keywords);
                     $("#metadesc").html(data.meta_desc);

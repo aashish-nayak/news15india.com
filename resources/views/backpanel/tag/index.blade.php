@@ -56,6 +56,12 @@
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#dangerprofile" role="tab"
+                            aria-selected="false">
+                            <div class="tab-title">Image</div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="tab" href="#dangercontact" role="tab"
                             aria-selected="false">
                             <div class="tab-title">SEO</div>
@@ -78,11 +84,6 @@
                                 <label for="slug" class="col-form-label"><b>Slug</b></label>
                                 <input class="form-control form-control-sm" required name="slug" type="text" value="" id="slug">
                             </div>
-                            <div class="form-group">
-                                <label for="catname" class="col-form-label"><b>Tag Image</b></label>
-                                <input class="form-control form-control-sm" required name="tag_img" type="text" value=""
-                                    id="tagimg">
-                            </div>
                             <div class="row">
                                 <div class="col-md-8 status">
                                     <label for="" class="col-form-label d-block"><b>Status</b></label>
@@ -98,6 +99,15 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="tab-pane fade" id="dangerprofile" role="tabpanel">
+                            <div class="preview-image-wrapper " style="width:100%;max-width:none;max-height:none;height:auto">
+                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X
+                                </a>
+                            </div><br>
+                            <input type="hidden" required name="tag_img" id="banner_data" value="">
+                            <a href="javascript:void(0)" id="banner-img">Choose Image</a>
                         </div>
                         <div class="tab-pane fade" id="dangercontact" role="tabpanel">
                             <div class="form-group">
@@ -148,6 +158,7 @@
         </div>
     </div>
 </div>
+@include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
 <script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
@@ -162,6 +173,7 @@
     });
 </script>
 @endisset
+@include('backpanel.includes.media-model-script')
 <script>
     $(document).ready(function() {
         $(document).ready(function () {
@@ -169,6 +181,7 @@
         $('#tags').DataTable({
             processing: true,
             serverSide: true,
+            scrollX:true,
             ajax: "{{ route('admin.getTags') }}",
             columns: [{
                     data: 'id'
@@ -247,7 +260,13 @@
                     $("#idarea").html("<input type='hidden' name='id' value='" + data.id + "'>");      
                     $("#catname").val(data.name);
                     $("#slug").val(data.slug);
-                    $("#tagimg").val(data.tag_img);
+                    if(data.editImg != null){
+                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;
+                    }else{
+                        preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
+                    }
+                    $("#banner-preview").attr('src',preview);
+                    $("#banner_data").val(data.cat_img);
                     $(".status-input").prop('checked', false);
                     $(".status-input[value='" + data.status + "']").prop('checked', true);
                     $("#metatitle").html(data.meta_title);

@@ -173,8 +173,12 @@
         <p></p>
     </div>
 </div> --}}
+
 <div class="col-12">
-    <h6 class="mb-0 text-uppercase">{{$title}}</h6>
+    <div class="col-12 d-flex justify-content-between">
+        <h6 class="mb-0 text-uppercase d-inline-block">{{$title}}</h6>
+        <a href="{{route('admin.news.view-all-news')}}" class="btn btn-primary btn-sm">View News</a>
+    </div>
     <hr>
     <form class="needs-validation" action="{{route('admin.news.store')}}" method="POST" role="form">
         <div class="row">
@@ -341,13 +345,13 @@
                         <h6 class="header-title m-0" style="font-weight: 600">Primary Image <span class="text-danger">*</span></h6>
                     </div>
                     <div class="card-body">
-                        <div class="preview-image-wrapper">
-                            <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" class="preview_image" width="150">
-                            <a class="btn_remove_image" title="Remove image">
-                                <i class="fa lni lni-close"></i>
+                        <div class="preview-image-wrapper ">
+                            <img src="@if(isset($page) && isset($page->img->img)){{asset('storage/media/'.$page->img->img)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                            <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X
                             </a>
-                        </div>
-                        <input class="form-control" name="image" placeholder="Image Link" value="@if(isset($page)){{$page->image}}@else{{old('image')}}@endif" type="number">
+                        </div><br>
+                        <input type="hidden" required name="image" id="banner_data" value="@isset($page){{$page->image}}@endisset">
+                        <a href="javascript:void(0)" id="banner-img">Choose Image</a>
                         @error('image')
                             <br><span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -375,6 +379,7 @@
         </div>
     </form>
 </div>
+@include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
 @if (Session::has('success'))
@@ -392,6 +397,7 @@
 <script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}" referrerpolicy="origin"> </script>
 <script src="{{ asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+@include('backpanel.includes.media-model-script')
 <script>
 function stringslug(str) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim

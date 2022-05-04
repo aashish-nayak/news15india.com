@@ -15,6 +15,9 @@
 </style>
 @endpush
 @section('sections')
+    <div class="col-12 mt-4 text-end">
+        <a href="{{route('admin.news.view-all-news')}}" class="btn btn-primary mr-3 btn-sm">View News</a>
+    </div>
     <div class="col-12 mt-4">
         <div class="card">
             <div class="card-header">
@@ -59,7 +62,8 @@
         $('#news').DataTable({
             processing: true,
             serverSide: true,
-            responsive:true,
+            // responsive:true,
+            scrollX:true,
             ajax: "{{ route('admin.news.ajax-trash-news') }}",
             columnDefs : [
                 { responsivePriority: 1, targets: 2 },

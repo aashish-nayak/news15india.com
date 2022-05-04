@@ -22,7 +22,9 @@
     border: 3px solid transparent;
     transition: 0.2s all ease-in-out;
 }
-
+#media-box .file {
+    height: 100px;
+}
 .copied {
     font-family: "Montserrat", sans-serif;
     width: 75px;
