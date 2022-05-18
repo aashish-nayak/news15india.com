@@ -73,4 +73,18 @@ class MediaController extends Controller
         $media->delete();
         return redirect()->back()->with('success', 'Media deleted successfully');
     }
+    public function bulkDelete(Request $request)
+    {   try{
+            $media = Media::find($request->ids);
+            foreach ($media as $key => $value) {
+                if (Storage::exists('public/media/' . $value->img)) {
+                    Storage::delete('public/media/' . $value->img);
+                }
+                $value->delete();
+            }
+            return response()->json(["status"=>"success", "message" => "Files Deleted Successfully!!!"]);
+        } catch (\Throwable $th) {
+            return response()->json(["status"=>"error", "message" => $th->getMessage()]);
+        }
+    }
 }

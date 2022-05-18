@@ -5,7 +5,11 @@
 @endpush
 @section('sections')
     <div class="row">
-        <div class="col-12 mt-5">
+        <div class="col-12 mt-4 text-end">
+            {{-- <a href="javacript:void(0)" class="btn btn-primary mr-3 btn-sm">Add News</a> --}}
+            <button class="btn btn-success mr-3 btn-sm" id="bulk-select">Select Multiple</button>
+        </div>
+        <div class="col-12 mt-3">
             <div class="card ">
                 <div class="card-body">
                     <ul class="nav nav-tabs nav-danger" id="myTab" role="tablist">
@@ -173,18 +177,87 @@
                     url: "{{ route('admin.media.fetch') }}" + "?page=" + page,
                     success: function(data) {
                         $('#imgs-row').html(data);
+                        $("#imgs-row").find(".file").each(function () {
+                            if(bulkId.includes($(this).data('id')) == true){
+                                $(this).addClass("file-selected");
+                            }
+                        });
                     }
                 });
             }
+            var bulk = false;
+            var bulkId = [];
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
                 var page = $(this).attr('href').split('page=')[1];
                 fetch_data(page);
             });
+            $(document).on('click','#bulk-select',function () {
+                if(bulk === true){
+                    $(document).find(".file").removeClass("file-selected");
+                    $(document).find("#bulk-delete").remove();
+                    $(this).text('Select Multiple');
+                    $(this).removeClass('btn-secondary');
+                    $(this).addClass('btn-success');
+                    bulk = false;
+                    bulkId = [];
+                }else{
+                    $(this).before('<button class="btn btn-danger btn-sm me-3" id="bulk-delete">Bulk Delete</button>');
+                    $(this).removeClass('btn-success');
+                    $(document).find(".file").removeClass("file-selected");
+                    $(this).addClass('btn-secondary');
+                    $(this).text('Cancel');
+                    bulk = true;
+                }
+            });
+            $(document).on('click','#bulk-delete',function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You Want to Bulk Delete Images!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var url = "{{ route('admin.media.bulk.delete') }}";
+                        var data = {
+                            "_token": "{{ csrf_token() }}",
+                            ids: bulkId
+                        };
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: data,
+                            beforeSend: function() {
+                                $("#bulk-delete").prop('disabled',true);
+                            },
+                            success: function(data) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                ).then(function() {
+                                    location.reload();
+                                });
+                            }
+                        });
+                    }
+                })
+            });
             $(document).on('click', ".file", function() {
                 $("#submitchange").prop("disabled",false);
-                $(document).find(".file").removeClass('file-selected');
-                $(this).addClass("file-selected");
+                if(bulk === true){
+                    $(this).toggleClass("file-selected");
+                    var selected = $(document).find(".file-selected");
+                    $(this).hasClass("file-selected") ? bulkId.push($(this).data('id')) : bulkId.splice(bulkId.indexOf($(this).data('id')),1);
+                }else{
+                    $(document).find(".file").removeClass("file-selected");
+                    $(this).toggleClass("file-selected");
+                }
+                console.log(bulkId);
                 $("#image").attr("src", $(this).data('path'));
                 let name = $(this).data('name');
                 if (name.length > 50) name = name.substring(0, 50);

@@ -40,6 +40,7 @@ Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function(){
     Route::get('/media',[MediaController::class,'index'])->name('media');
     Route::get('/media/fetch-data',[MediaController::class,'fetch'])->name('media.fetch');
     Route::get('/media/delete/{id}',[MediaController::class,'destroy'])->name('media.delete');
+    Route::post('media/bulk/delete', [MediaController::class, 'bulkDelete'])->name('media.bulk.delete');
 
     Route::get('/pages/media/fetch-data',[NewsController::class,'fetch_media'])->name('pages.media');
     Route::get('news/create-news', [NewsController::class,'index'])->name('news.create');

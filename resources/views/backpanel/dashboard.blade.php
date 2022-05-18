@@ -1080,6 +1080,9 @@
 @endsection
 
 @push('plugin-scripts')
-    
 <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
+@endpush
+
+@push('scripts')
+<script src="{{ asset('assets/js/index.js')}}"></script>
 @endpush

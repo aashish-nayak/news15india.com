@@ -10,5 +10,4 @@
 <!--app JS-->
 @stack('plugin-scripts')
 <script src="{{ asset('assets/js/app.js')}}"></script>
-<script src="{{ asset('assets/js/index.js')}}"></script>
 @stack('scripts')
