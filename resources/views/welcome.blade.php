@@ -19,8 +19,8 @@
                 font-family: 'Nunito', sans-serif;
             }
             .main{
-                width: 75%;
-                max-height: auto;
+                width: 100%;
+                max-height: 100vh;
             }
             @media only screen and (max-width: 600px){
                 .main{
