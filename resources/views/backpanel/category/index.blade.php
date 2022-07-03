@@ -345,7 +345,7 @@
             processing: true,
             serverSide: true,
             scrollX:true,
-            ajax: "{{ route('admin.getCategories') }}",
+            ajax: "{{ route('admin.category.getCategories') }}",
             columns: [{
                     data: 'id'
                 },

@@ -20,7 +20,7 @@ class CreateNewsTable extends Migration
             $table->text('short_description');
             $table->text('content')->nullable();
             $table->unsignedBigInteger('image')->nullable();
-            $table->foreign('image')->references('id')->on('media')->onDelete('cascade');
+            $table->foreign('image')->references('id')->on('media')->nullOnDelete();
             $table->integer('page_order')->default(0);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->boolean('is_published')->default(0);

@@ -257,7 +257,7 @@
                     $(document).find(".file").removeClass("file-selected");
                     $(this).toggleClass("file-selected");
                 }
-                console.log(bulkId);
+                $("#bulk-delete").text(bulkId.length + ' Bulk Delete');
                 $("#image").attr("src", $(this).data('path'));
                 let name = $(this).data('name');
                 if (name.length > 50) name = name.substring(0, 50);

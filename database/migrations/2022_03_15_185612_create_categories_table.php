@@ -20,13 +20,13 @@ class CreateCategoriesTable extends Migration
             $table->integer('cat_order');
             $table->string('location');
             $table->unsignedBigInteger('cat_img')->nullable();
-            $table->foreign('cat_img')->references('id')->on('media')->onDelete('cascade');
+            $table->foreign('cat_img')->references('id')->on('media')->nullOnDelete();
             $table->text('meta_title')->nullable();
             $table->longText('meta_keywords')->nullable();
             $table->longText('meta_desc')->nullable();
             $table->boolean('status')->default(0);
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('categories')->onDelete("cascade");
+            $table->foreign('parent_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

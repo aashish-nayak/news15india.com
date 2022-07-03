@@ -20,21 +20,26 @@ use App\Http\Controllers\NewsController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
+require __DIR__.'/admin_auth.php';
 require __DIR__.'/auth.php';
 
 Route::get('/admin',function(){
     return redirect()->route('admin.dashboard');
 });
-Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function(){
-    Route::view('dashboard', 'backpanel.dashboard')->name('dashboard');
+Route::prefix('/admin')->name('admin.')->middleware(['admin'])->group(function(){
+    Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
 
-    Route::get('category', [CategoryController::class,'index'])->name('category.index');
-    Route::post('category/store', [CategoryController::class,'store'])->name('category.store');
-    Route::get('category/{category}/edit',[CategoryController::class,'edit'])->name('category.edit');
-    Route::get('category/{category}/delete',[CategoryController::class,'destroy'])->name('category.delete');
-    Route::get('/getCategories', [CategoryController::class, 'show'])->name('getCategories');
-
+    Route::prefix('/category')->name('category.')->group(function(){
+        Route::get('/', [CategoryController::class,'index'])->name('index');
+        Route::post('/store', [CategoryController::class,'store'])->name('store');
+        Route::get('/{category}/edit',[CategoryController::class,'edit'])->name('edit');
+        Route::get('/{category}/delete',[CategoryController::class,'destroy'])->name('delete');
+        Route::get('/getCategories', [CategoryController::class, 'show'])->name('getCategories');
+    });
     Route::post('/media/upload',[MediaController::class,'create'])->name('media.create');
     Route::post('/media/update',[MediaController::class,'update'])->name('media.update');
     Route::get('/media',[MediaController::class,'index'])->name('media');
