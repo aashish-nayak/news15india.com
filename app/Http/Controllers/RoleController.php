@@ -12,13 +12,13 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::latest()->get();
-        return view('admin.rolespermissions.roles', compact('roles'));
+        return view('backpanel.users.roles', compact('roles'));
     }
 
     public function create()
     {
         $permissions = Permission::get();
-        return view('admin.rolespermissions.add-role', compact('permissions'));
+        return view('backpanel.users.add-role', compact('permissions'));
     }
 
     public function store(Request $request)
@@ -39,7 +39,7 @@ class RoleController extends Controller
     {
         $data = Role::find($id);
         $permissions = Permission::get();
-        return view('admin.rolespermissions.add-role',compact('data','permissions'));
+        return view('backpanel.users.add-role',compact('data','permissions'));
     }
 
     public function destroy($id)

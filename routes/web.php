@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +20,9 @@ use App\Http\Controllers\NewsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::view('/', 'welcome');
+
+Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/admin_auth.php';
 require __DIR__.'/auth.php';
@@ -65,4 +65,26 @@ Route::prefix('/admin')->name('admin.')->middleware(['admin'])->group(function()
     Route::get('tag/{tag}/edit',[TagController::class,'edit'])->name('tag.edit');
     Route::get('tag/{tag}/delete',[TagController::class,'destroy'])->name('tag.delete');
     Route::get('/gettags', [TagController::class, 'show'])->name('getTags');
+    
+    Route::prefix('/users')->name('user.')->group(function(){
+        Route::get('/index', [AdminController::class, 'index'])->name('index');
+        Route::get('/create',[AdminController::class,'create'])->name('add');
+        Route::post('/store', [AdminController::class,'store'])->name('store');
+        Route::get('/edit/{id}',[AdminController::class,'edit'])->name('edit');
+        Route::get('/delete{id}',[AdminController::class,'destroy'])->name('delete');
+    });
+    Route::prefix('/role')->name('role.')->middleware(['role:admin'])->group(function(){
+        Route::get('/show',[RoleController::class,'index'])->name('show');
+        Route::get('/create',[RoleController::class,'create'])->name('add');
+        Route::post('/store',[RoleController::class,'store'])->name('store');
+        Route::get('/edit/{id}',[RoleController::class,'edit'])->name('edit');
+        Route::get('/delete{id}',[RoleController::class,'destroy'])->name('delete');
+    });
+    Route::prefix('/permission')->name('permission.')->middleware(['role:admin'])->group(function(){
+        Route::get('/show',[PermissionController::class,'index'])->name('show');
+        Route::get('/create',[PermissionController::class,'create'])->name('add');
+        Route::post('/store',[PermissionController::class,'store'])->name('store');
+        Route::get('/edit/{id}',[PermissionController::class,'edit'])->name('edit');
+        Route::get('/delete{id}',[PermissionController::class,'destroy'])->name('delete');
+    });
 });

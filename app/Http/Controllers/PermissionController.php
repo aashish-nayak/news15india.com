@@ -10,12 +10,12 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::latest()->get();
-        return view('admin.rolespermissions.permissions', compact('permissions'));
+        return view('backpanel.users.permissions', compact('permissions'));
     }
 
     public function create()
     {
-        return view('admin.rolespermissions.add-permission');
+        return view('backpanel.users.add-permission');
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $data = Permission::find($id);
-        return view('admin.rolespermissions.add-permission',compact('data'));
+        return view('backpanel.users.add-permission',compact('data'));
     }
 
     public function destroy($id)

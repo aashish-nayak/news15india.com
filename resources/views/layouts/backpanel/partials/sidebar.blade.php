@@ -22,7 +22,7 @@
                 <div class="menu-title">Category</div>
             </a>
         </li>
-        <li >
+        <li>
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-detail"></i>
                 </div>
@@ -45,6 +45,17 @@
                 <div class="parent-icon"><i class='bx bx-images'></i></div>
                 <div class="menu-title">Media</div>
             </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-user"></i>
+                </div>
+                <div class="menu-title">User</div>
+            </a>
+            <ul >
+                <li> <a href="{{Route('admin.user.add')}}"><i class="bx bx-right-arrow-alt"></i>Add User</a></li>
+                <li> <a href="{{Route('admin.user.index')}}"><i class="bx bx-right-arrow-alt"></i>All Users</a></li>
+            </ul>
         </li>
         <li class="">
             <form action="{{ route('logout') }}" method="post" id="logout-form">
