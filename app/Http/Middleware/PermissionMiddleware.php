@@ -18,7 +18,7 @@ class PermissionMiddleware
     public function handle(Request $request, Closure $next, $permission = null)
     {
         if($permission != null && !Auth::guard('admin')->user()->can($permission)){
-            abort(404);
+            abort(401);
         }
         return $next($request);
     }

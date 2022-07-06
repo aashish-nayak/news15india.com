@@ -423,14 +423,14 @@
                 url: url,
                 type: "GET",
                 success: function(data) {
-                    console.log(data);
                     $('.single-select').select2('destroy');
                     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput('destroy');
                     $("#idarea").html("<input type='hidden' name='id' value='" + data.id + "'>");
                     $("#parent").children().prop('selected', false);
                     $("#parent").children().prop('disabled', false);
                     $("#parent").children('option[value="' + data.id + '"]').prop('disabled', true);
-                    $("#parent").children('option[value="' + data.parent_id + '"]').prop('selected', true);     
+                    let parent = (data.parent_id == null) ? '0' : data.parent_id;
+                    $("#parent").children('option[value="' + parent + '"]').prop('selected', true);     
                     $("#catname").val(data.cat_name);
                     $("#slug").val(data.slug);
                     $("#catorder").val(data.cat_order);

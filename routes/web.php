@@ -33,7 +33,7 @@ Route::get('/admin',function(){
 Route::prefix('/admin')->name('admin.')->middleware(['admin'])->group(function(){
     Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
 
-    Route::prefix('/category')->name('category.')->group(function(){
+    Route::prefix('/category')->name('category.')->middleware(['role:admin'])->group(function(){
         Route::get('/', [CategoryController::class,'index'])->name('index');
         Route::post('/store', [CategoryController::class,'store'])->name('store');
         Route::get('/{category}/edit',[CategoryController::class,'edit'])->name('edit');

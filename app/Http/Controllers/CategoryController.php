@@ -21,7 +21,7 @@ class CategoryController extends Controller
         foreach ($categories as $key => $value) {
             $categories[$key]->bread = $this->getBreadcrumb($value->parent_id).$value->cat_name;
         }
-        $Categorys = Category::where('parent_id', 0)->get();
+        $Categorys = Category::where('parent_id', NULL)->get();
         $tree = '<ul class="tree">';
         foreach ($Categorys as $Category) {
             $has = (count($Category->children))? 'has': '';
@@ -71,7 +71,7 @@ class CategoryController extends Controller
         // dd($request->all());
         $request['location'] = implode(",", $request->location);
         if ($request['parent_id'] == '0') {
-            $request['parent_id'] = 0;
+            $request['parent_id'] = NULL;
         }
         if ($request->has('id') && $request->id != '') {
             $category = Category::find($request->id);
