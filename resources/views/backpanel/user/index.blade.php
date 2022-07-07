@@ -33,14 +33,18 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
-                                    @foreach ($user->roles as $role)
-                                        {{$role->name}} |
-                                    @endforeach
+                                    @forelse ($user->roles as $role)
+                                        <span class="badge rounded-pill bg-secondary">{{$role->name}}</span>
+                                        @empty
+                                        -
+                                    @endforelse
                                 </td>
                                 <td>
-                                    @foreach ($user->permissions as $permission)
-                                        {{$permission->name}} |
-                                    @endforeach
+                                    @forelse ($user->permissions as $permission)
+                                        <span class="badge rounded-pill bg-primary">{{$permission->name}}</span>
+                                        @empty
+                                        -
+                                    @endforelse
                                 </td>
                                 <td>
                                     <div class="d-flex order-actions">

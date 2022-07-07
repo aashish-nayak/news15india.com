@@ -35,7 +35,7 @@
                             <div class="col-md-12 mb-3">
                                 <label for="name" class="form-label"><b>Name</b><span class="text-danger">*</span></label>
                                 <input type="text" name="name" placeholder="Name" required class="form-control titletoslug" id="name" value="@if(isset($user)){{$user->name}}@else{{old('name')}}@endif">
-                                @error('title')
+                                @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -90,7 +90,7 @@
                                         <div class="col">
                                             <div class="form-check mb-2">
                                                 <input class="form-check-input permission" name="permissions[]" type="checkbox" @foreach ($permission->roles->pluck('id')->toArray() as $item)
-                                                    data-role-{{$item}}="{{$item}}" @endforeach @if(isset($user) && in_array($permission->id, $user->permissions->pluck('id')->toArray())) checked @endif value="{{$permission->id}}" id="permission-{{$permission->id}}">
+                                                    data-role-{{$item}}="{{$item}}" @endforeach @if((isset($user) && in_array($permission->id, $user->permissions->pluck('id')->toArray())) || (isset($user) && $user->hasPermissionThroughRole($permission))) checked @endif value="{{$permission->id}}" id="permission-{{$permission->id}}">
                                                 <label class="form-check-label cursor-pointer" for="permission-{{$permission->id}}">{{$permission->name}}</label>
                                             </div>
                                         </div>
@@ -146,7 +146,7 @@
         $('.role').change(function() {
             rolePermission(this);
         });
-        rolePermission($('.role'));
+        // rolePermission($('.role'));
     });
 </script>
 @endpush

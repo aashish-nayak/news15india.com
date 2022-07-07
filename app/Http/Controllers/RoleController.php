@@ -12,24 +12,26 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::latest()->get();
-        return view('backpanel.users.roles', compact('roles'));
+        return view('backpanel.role-permission.roles', compact('roles'));
     }
 
     public function create()
     {
         $permissions = Permission::get();
-        return view('backpanel.users.add-role', compact('permissions'));
+        return view('backpanel.role-permission.add-role', compact('permissions'));
     }
 
     public function store(Request $request)
     {
         if($request->has('id')){
             $role = Role::find($request->id);
+            $request->session()->flash('success', 'Role Updated successfully!');
         }else{
             $role = new Role();
+            $request->session()->flash('success', 'Role Saved successfully!');
         }
         $role->name = $request->name;
-        $role->slug = $request->slug;
+        $role->slug = $request->name;
         $role->save();
         $role->permissions()->sync($request->permissions);
         return redirect()->route('admin.role.show');
@@ -37,15 +39,16 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        $data = Role::find($id);
+        $role = Role::find($id);
         $permissions = Permission::get();
-        return view('backpanel.users.add-role',compact('data','permissions'));
+        return view('backpanel.role-permission.add-role',compact('role','permissions'));
     }
 
     public function destroy($id)
     {
         $data = Role::find($id);
         $data->delete();
+        session()->flash('success', 'Role Deleted successfully!');
         return redirect()->back();
     }
 }

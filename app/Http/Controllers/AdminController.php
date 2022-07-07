@@ -41,19 +41,21 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-        
         if($request->has('id')){
             $admin = Admin::find($request->id);
+            $checkEmail = '';
             $request->session()->flash('success', 'User Updated successfully!');
         }else{
             $admin = new Admin();
+            $checkEmail = 'unique:admins';
             $request->session()->flash('success', 'User Added successfully!');
         }
+        
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255',$checkEmail],
+        ]);
+        
         if($request->has('password')){
             $admin->password = Hash::make($request->password);
         }
@@ -61,7 +63,15 @@ class AdminController extends Controller
         $admin->email = $request->email;
         $admin->save();
         $admin->roles()->sync($request->roles);
-        $admin->permissions()->sync($request->permissions);
+        $newPermission = collect();
+        foreach ($admin->roles as $key => $role) {
+            foreach ($request->permissions as $sub => $item) {
+                if(!in_array($item, $role->permissions->pluck('id')->toArray())){
+                    $newPermission->push($request['permissions'][$sub]);
+                }
+            }
+        }
+        $admin->permissions()->sync($newPermission);
         if($request->has('add')){
             return redirect()->route('admin.user.add');
         }else if($request->has('edit')){

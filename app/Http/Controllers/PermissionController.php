@@ -10,20 +10,26 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::latest()->get();
-        return view('backpanel.users.permissions', compact('permissions'));
+        return view('backpanel.role-permission.permissions', compact('permissions'));
     }
 
     public function create()
     {
-        return view('backpanel.users.add-permission');
+        return view('backpanel.role-permission.permissions');
     }
 
     public function store(Request $request)
     {
+        $save = [
+            'name' => $request->name,
+            'slug' => $request->name
+        ];
         if($request->has('id')){
-            Permission::find($request->id)->update($request->all());
+            Permission::find($request->id)->update($save);
+            $request->session()->flash('success', 'Permission Updated successfully!');
         }else{
-            Permission::create($request->all());
+            Permission::create($save);
+            $request->session()->flash('success', 'Permission Saved successfully!');
         }
         return redirect()->route('admin.permission.show');
     }
@@ -31,13 +37,15 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $data = Permission::find($id);
-        return view('backpanel.users.add-permission',compact('data'));
+        $permissions = Permission::latest()->get();
+        return view('backpanel.role-permission.permissions',compact('data','permissions'));
     }
 
     public function destroy($id)
     {
         $data = Permission::find($id);
         $data->delete();
+        session()->flash('success', 'Permission Deleted successfully!');
         return redirect()->back();
     }
 }

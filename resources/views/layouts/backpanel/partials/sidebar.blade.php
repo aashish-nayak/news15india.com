@@ -55,6 +55,7 @@
             <ul >
                 <li> <a href="{{Route('admin.user.add')}}"><i class="bx bx-right-arrow-alt"></i>Add User</a></li>
                 <li> <a href="{{Route('admin.user.index')}}"><i class="bx bx-right-arrow-alt"></i>All Users</a></li>
+                <li> <a href="{{Route('admin.role.show')}}"><i class="bx bx-right-arrow-alt"></i>Roles & Permission</a></li>
             </ul>
         </li>
         <li class="">
