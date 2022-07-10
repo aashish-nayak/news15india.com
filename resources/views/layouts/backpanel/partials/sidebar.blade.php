@@ -48,9 +48,9 @@
         </li>
         <li>
             <a href="javascript:void(0);" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-user"></i>
+                <div class="parent-icon"><i class="bx bx-lock"></i>
                 </div>
-                <div class="menu-title">User</div>
+                <div class="menu-title">Authentication</div>
             </a>
             <ul >
                 <li> <a href="{{Route('admin.user.add')}}"><i class="bx bx-right-arrow-alt"></i>Add User</a></li>
@@ -59,9 +59,15 @@
             </ul>
         </li>
         <li class="">
-            <form action="{{ route('logout') }}" method="post" id="logout-form">
+            <a href="{{Route('admin.viewer.index')}}">
+                <div class="parent-icon"><i class='bx bx-user'></i></div>
+                <div class="menu-title">Users</div>
+            </a>
+        </li>
+        <li class="">
+            <form action="{{ route('admin.logout') }}" method="post" id="logout-form">
                 @csrf
-                <a href="{{ route('logout') }}" onclick="event.preventDefault();$('#logout-form').submit();">
+                <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();$('#logout-form').submit();">
                     <div class="parent-icon"><i class='bx bx-power-off'></i></div>
                     <div class="menu-title">Logout</div>
                 </a>

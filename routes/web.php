@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -30,7 +31,7 @@ require __DIR__.'/auth.php';
 Route::get('/admin',function(){
     return redirect()->route('admin.dashboard');
 });
-Route::prefix('/admin')->name('admin.')->middleware(['admin'])->group(function(){
+Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(function(){
     Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
 
     Route::prefix('/category')->name('category.')->middleware(['role:admin'])->group(function(){
@@ -73,6 +74,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['admin'])->group(function()
         Route::get('/edit/{id}',[AdminController::class,'edit'])->name('edit');
         Route::get('/delete{id}',[AdminController::class,'destroy'])->name('delete');
     });
+
+    Route::get('/website-viewers', [DashboardController::class, 'websiteViewers'])->name('viewer.index');
+
     Route::prefix('/role')->name('role.')->middleware(['role:admin'])->group(function(){
         Route::get('/show',[RoleController::class,'index'])->name('show');
         Route::get('/create',[RoleController::class,'create'])->name('add');
