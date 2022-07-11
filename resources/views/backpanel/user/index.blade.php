@@ -6,7 +6,7 @@
 @section('sections')
     <div class="col-12 mt-4 text-end">
         <a href="{{route('admin.user.add')}}" class="btn btn-primary mr-3 btn-sm">Add Member</a>
-        <a href="{{route('admin.user.block')}}" class="btn btn-danger mr-3 btn-sm">View Block Users</a>
+        <a href="{{route('admin.user.block')}}" class="btn btn-danger mr-3 btn-sm">View Block Members</a>
     </div>
     <div class="col-12 mt-2">
         <div class="card">
