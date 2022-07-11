@@ -1,17 +1,16 @@
 @extends('layouts.backpanel.master')
-@section('title', 'Members')
+@section('title', 'Blocked Members')
 @push('plugin-css')
 <link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 @endpush
 @section('sections')
     <div class="col-12 mt-4 text-end">
-        <a href="{{route('admin.user.add')}}" class="btn btn-primary mr-3 btn-sm">Add Member</a>
-        <a href="{{route('admin.user.block')}}" class="btn btn-danger mr-3 btn-sm">View Block Users</a>
+        <a href="{{route('admin.user.index')}}" class="btn btn-primary mr-3 btn-sm">All Members</a>
     </div>
     <div class="col-12 mt-2">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title m-0">Members</h4>
+                <h4 class="card-title m-0">Blocked Members</h4>
             </div>
             <div class="card-body">
                 <div class="">
@@ -48,8 +47,8 @@
                                 </td>
                                 <td>
                                     <div class="d-flex order-actions">
-                                        <a href="{{route('admin.user.edit',$user->id)}}" class="edit-category border" title="Edit"><i class="bx bxs-edit"></i></a>
-                                        <a href="{{route('admin.user.delete',$user->id)}}" class="text-danger ms-3 border delete" title="Block"><i class="bx bx-block"></i></a>
+                                        <a href="{{route('admin.user.restore',$user->id)}}" class="text-dark ms-3 border" title="Restore"><i class="bx bx-reset"></i></a>
+                                        <a href="{{route('admin.user.forceDelete',$user->id)}}" class="text-danger ms-3 border" title="Delete"><i class="bx bx-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>

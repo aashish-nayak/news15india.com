@@ -1,11 +1,11 @@
 @extends('layouts.backpanel.master')
 @isset($user)
 @php
-    $title = 'Edit User';
+    $title = 'Edit Member';
 @endphp
 @else
 @php
-    $title = 'Add User';
+    $title = 'Add Member';
 @endphp
 @endisset
 @section('title', $title)
@@ -21,7 +21,7 @@
 <div class="col-12 mb-5">
     <div class="col-12 d-flex justify-content-between">
         <h6 class="mb-0 text-uppercase d-inline-block">{{$title}}</h6>
-        <a href="{{route('admin.user.index')}}" class="btn btn-primary btn-sm">All Users</a>
+        <a href="{{route('admin.user.index')}}" class="btn btn-primary btn-sm">All Members</a>
     </div>
     <hr>
     <form class="needs-validation" action="{{route('admin.user.store')}}" method="POST" role="form">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
-                                <label for="" class="form-label"><b>User Role Permissions</b><span class="text-danger">*</span></label><br>
+                                <label for="" class="form-label"><b>Member Role Permissions</b><span class="text-danger">*</span></label><br>
                                 <div class="col-12 px-4">
                                     <label for="" class="form-label"><b>Roles : </b></label>
                                     <div class="row row-cols-md-3">
