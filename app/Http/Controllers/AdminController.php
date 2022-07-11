@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -44,11 +45,11 @@ class AdminController extends Controller
         if($request->has('id')){
             $admin = Admin::find($request->id);
             $checkEmail = '';
-            $request->session()->flash('success', 'User Updated successfully!');
+            $request->session()->flash('success', 'Member Updated successfully!');
         }else{
             $admin = new Admin();
             $checkEmail = 'unique:admins';
-            $request->session()->flash('success', 'User Added successfully!');
+            $request->session()->flash('success', 'Member Added successfully!');
         }
         
         $request->validate([
@@ -87,9 +88,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $users = Admin::onlyTrashed()->get();
+        return view('backpanel.user.blocked',compact('users'));
     }
 
     /**
@@ -127,7 +129,21 @@ class AdminController extends Controller
     public function destroy($id)
     {
         Admin::find($id)->delete();
-        session()->flash('success', 'User Deleted successfully!');
+        session()->flash('success', 'Member Block successfully!');
+        return redirect()->back();
+    }
+
+    public function restore($id)
+    {
+        Admin::withTrashed()->find($id)->restore();
+        session()->flash('success', 'Member Unblock successfully!');
+        return redirect()->back();
+    }
+
+    public function forceDelete($id)
+    {
+        Admin::onlyTrashed()->find($id)->forceDelete();
+        session()->flash('success', 'Member Deleted successfully!');
         return redirect()->back();
     }
 }

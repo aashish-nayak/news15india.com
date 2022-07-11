@@ -3,10 +3,24 @@
 @push('plugin-css')
 @endpush
 @section('sections')
+@php
+    if(!isset($users_blocked)){
+        $isBlockedUsersUrl = route('admin.viewer.block');
+        $urlTitle = 'Blocked';
+        $CardTitle = 'All';
+    }else{
+        $CardTitle = 'Blocked';
+        $urlTitle = 'All';
+        $isBlockedUsersUrl = route('admin.viewer.index');
+    }
+@endphp
+    <div class="col-12 mt-4 text-end">
+        <a href="{{$isBlockedUsersUrl}}" class="btn btn-danger mr-3 btn-sm">{{$urlTitle}} Users</a>
+    </div>
     <div class="col-12 mt-2">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title m-0">Website Users</h4>
+                <h4 class="card-title m-0">{{$CardTitle}} Users</h4>
             </div>
             <div class="card-body">
                 <div class="">
@@ -16,6 +30,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +39,25 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td>
+                                    <div class="d-flex order-actions">
+                                        @php
+                                            if(!isset($users_blocked)){
+                                                $isRetoreUrl = route('admin.viewer.delete',$user->id);
+                                                $linkIcon = '<i class="bx bx-block"></i>';
+                                                $title = 'Block';
+                                                $class = 'delete';
+                                            }else{
+                                                $isRetoreUrl = route('admin.viewer.restore',$user->id);
+                                                $linkIcon = '<i class="bx bx-reset"></i>';
+                                                $title = 'Restore';
+                                                $class = '';
+                                            }
+                                        @endphp
+                                        {{-- <a href="{{route('admin.viewer.edit',$user->id)}}" class="edit-category border" title="Edit"><i class="bx bxs-edit"></i></a> --}}
+                                        <a href="{{$isRetoreUrl}}" class="text-danger ms-3 border {{$class}}" title="{{$title}}">{!!$linkIcon!!}</a>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -53,12 +87,12 @@
             e.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You Want to Trash this User!",
+                text: "You Want to Block this User!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Yes, Block it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = url;

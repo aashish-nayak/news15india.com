@@ -12,4 +12,26 @@ class DashboardController extends Controller
         $users = User::get();
         return view('backpanel.viewer.index',compact('users'));
     }
+    public function viewerBlock($id)
+    {
+        User::find($id)->delete();
+        return redirect()->back();
+    }
+    public function viewerEdit($id)
+    {
+        User::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function blockViewers()
+    {
+        $users = User::onlyTrashed()->get();
+        $users_blocked = true;
+        return view('backpanel.viewer.index',compact('users','users_blocked'));
+    }
+
+    public function viewerRestore($id){
+        User::withTrashed()->find($id)->restore();
+        return redirect()->back();
+    }
 }

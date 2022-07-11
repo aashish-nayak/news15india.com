@@ -69,13 +69,20 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     
     Route::prefix('/users')->name('user.')->group(function(){
         Route::get('/index', [AdminController::class, 'index'])->name('index');
+        Route::get('/block', [AdminController::class, 'show'])->name('block');
         Route::get('/create',[AdminController::class,'create'])->name('add');
         Route::post('/store', [AdminController::class,'store'])->name('store');
         Route::get('/edit/{id}',[AdminController::class,'edit'])->name('edit');
-        Route::get('/delete{id}',[AdminController::class,'destroy'])->name('delete');
+        Route::get('/block/{id}',[AdminController::class,'destroy'])->name('delete');
+        Route::get('/restore/{id}',[AdminController::class,'restore'])->name('restore');
+        Route::get('/force-delete/{id}',[AdminController::class,'forceDelete'])->name('forceDelete');
     });
 
-    Route::get('/website-viewers', [DashboardController::class, 'websiteViewers'])->name('viewer.index');
+    Route::get('/viewers', [DashboardController::class, 'websiteViewers'])->name('viewer.index');
+    Route::get('/viewers/blocked', [DashboardController::class, 'blockViewers'])->name('viewer.block');
+    Route::get('/viewers/edit/{id}', [DashboardController::class, 'viewerEdit'])->name('viewer.edit');
+    Route::get('/viewers/block/{id}', [DashboardController::class, 'viewerBlock'])->name('viewer.delete');
+    Route::get('/viewers/restore/{id}', [DashboardController::class, 'viewerRestore'])->name('viewer.restore');
 
     Route::prefix('/role')->name('role.')->middleware(['role:admin'])->group(function(){
         Route::get('/show',[RoleController::class,'index'])->name('show');
