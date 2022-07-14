@@ -176,7 +176,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="card card-shadow mt-md-0 mb-2" style="border-left:2px solid var(--primary);">
+                        <div class="card card-shadow mt-md-4 mb-2" style="border-left:2px solid var(--primary);">
                             <a href="">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-3 p-0">
@@ -190,23 +190,19 @@
                                 </div>
                             </a>
                         </div>
-                        <div style="border-left:2px solid var(--primary);"
-                            class="single-blog-post mt-md-0 mb-2  style-2 d-flex align-items-center card-shadow">
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.
-                                        Dolor numquam voluptates tempora!</h6>
-                                </a>
-                            </div>
-                        </div>
-                        <div style="border-left:2px solid var(--primary);"
-                            class="single-blog-post mt-md-0 mb-2 style-2 d-flex align-items-center card-shadow">
-                            <div class="post-data">
-                                <a href="#" class="post-title">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.
-                                        Dolor numquam voluptates tempora!</h6>
-                                </a>
-                            </div>
+                        <div class="card card-shadow mt-md-4 mb-2" style="border-left:2px solid var(--primary);">
+                            <a href="">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                        <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-9 p-2">
+                                        <h6 class="card-text">Some quick example text to build on the card title and make
+                                            up.</h6>
+                                        <p class="post-date m-0 ml-2" style="font-size: 1.1rem;">7:00 AM | April 14</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
