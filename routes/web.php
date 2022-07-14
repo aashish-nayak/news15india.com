@@ -22,6 +22,7 @@ use App\Http\Controllers\RoleController;
 */
 
 Route::view('/', 'welcome');
+Route::view('/frontend-on-development/news15india', 'home');
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 
