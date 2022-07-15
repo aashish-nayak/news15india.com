@@ -22,7 +22,13 @@ use App\Http\Controllers\RoleController;
 */
 
 Route::view('/', 'welcome');
-Route::view('/frontend-on-development/news15india', 'home');
+
+Route::prefix('/frontend-on-development/news15india')->group(function(){
+    Route::view('/', 'home');
+    Route::view('/2', 'category');
+    Route::view('/3', 'author');
+    Route::view('/4', 'single');
+});
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 
