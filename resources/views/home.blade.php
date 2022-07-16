@@ -99,12 +99,11 @@
     <!--Section 1 -->
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
-            <div class="col-md-8 col-12 px-0 pr-md-1">
+            <div class="col-md-9 col-12 px-0 pr-md-1">
                 <div class="container-fluid px-1 mb-1 d-flex align-items-center justify-content-between nav-height"
                     style="color: var(--text-color-light-hover);">
                     <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight: bold;">Rajasthan</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                    <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                         <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
@@ -113,7 +112,7 @@
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                    <select name="" class="language mx-1" style="border: 2px solid var(--primary);" id="">
+                    <select name="" class="mx-1 block-drop" id="">
                         <option value="">All</option>
                         <option value="">Delhi</option>
                         <option value="">Rajasthan</option>
@@ -188,7 +187,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="card card-shadow mt-md-4 mb-2" style="border-left:2px solid var(--primary);">
+                        <div class="card card-shadow mt-md-2 mb-2" style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-3 p-0">
@@ -200,7 +199,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="card card-shadow mt-md-4 mb-2" style="border-left:2px solid var(--primary);">
+                        <div class="card card-shadow mt-md-2 mb-2" style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-3 p-0">
@@ -273,12 +272,72 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 mt-1 px-1">
+                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-1 px-md-1">
+                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-9">
+                                        <h6 class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-1 px-md-1">
+                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-9">
+                                        <h6 class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-1 px-md-1">
+                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-9">
+                                        <h6 class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-1 px-md-1">
+                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-9">
+                                        <h6 class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2 px-1">
                         <a href="javascript:void(0)"><img src="{{asset('front-assets/img/8x1ad.png')}}" width="100%" alt="" srcset=""></a>
                     </div>
                 </div>
             </div>
-            <aside class="col-md-4 col-12 my-3 my-md-0 px-0">
+            <aside class="col-md-3 col-12 my-3 my-md-0 px-0">
                 <div
                     class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
                     <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
@@ -291,39 +350,65 @@
                     <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
                     <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
                 </div>
+                <div class="card mb-2">
+                    <div class="card-header">
+                        <div class="text-center">
+                            <h4 class="m-0 text-primary-clr"><strong>POLL</strong></h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left">
+                            <h6 class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati, nobis quas nihil ?</h6>
+                        </div>
+                        <form action="" style="font-size: 15px;" class="py-3">
+                            <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                                <input type="radio" id="customRadio1" name="customRadio">
+                                <label class="w-75 m-0" for="customRadio1">YES</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                                <input type="radio" id="customRadio2" name="customRadio">
+                                <label class="w-75 m-0" for="customRadio2">NO</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                                <input type="radio" id="customRadio3" name="customRadio">
+                                <label class="w-75 m-0" for="customRadio3">I Never Know</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                                <input type="radio" id="customRadio4" name="customRadio">
+                                <label class="w-75 m-0" for="customRadio4">I Dont Know</label>
+                            </div>
+                            <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="container-fluid px-1">
                     <a href="javascript:void(0)" class="text-decoration-none ">
                         <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                        <h5 class="mt-2 ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id quos vel est
-                            possimus quisquam repellendus.</h5>
+                        <h6 class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h6>
                     </a>
-                    <p class="text-muted ">
+                    <p class="text-muted">
                         Some representati. Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Laborum, nemo.Some representati. Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Laborum, nemo.
                     </p>
                 </div>
                 <div class="style-2 border-top d-flex align-items-center px-1">
                     <div class="post-data mt-1">
-                        <a href="#" class="post-title">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui. Dolor
-                                numquam voluptates tempora!</h5>
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
                         </a>
                     </div>
                 </div>
                 <div class="style-2 border-top d-flex align-items-center px-1">
                     <div class="post-data mt-1">
-                        <a href="#" class="post-title">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui. Dolor
-                                numquam voluptates tempora!</h5>
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
                         </a>
                     </div>
                 </div>
                 <div class="style-2 border-top d-flex align-items-center px-1">
                     <div class="post-data mt-1">
-                        <a href="#" class="post-title">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui. Dolor
-                                numquam voluptates tempora!</h5>
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
                         </a>
                     </div>
                 </div>
@@ -348,7 +433,7 @@
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                    <select name="" class="language mx-1" style="border: 2px solid var(--primary);"
+                    <select name="" class="mx-1 block-drop"
                         id="">
                         <option value="">All</option>
                         <option value="">Delhi</option>
@@ -411,8 +496,8 @@
                         </div>
                     </div>
                     <div class="col-md-8 px-1">
-                        <div class="row row-cols-1 row-cols-md-2">
-                            <div class="col mt-md-1 mb-2">
+                        <div class="row row-cols-1 row-cols-md-2 m-0">
+                            <div class="col mt-md-1 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -426,7 +511,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-1 mb-2">
+                            <div class="col mt-md-1 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -440,7 +525,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -454,7 +539,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -468,7 +553,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -482,7 +567,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -496,7 +581,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -510,7 +595,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -524,7 +609,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -538,7 +623,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mt-md-0 mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -689,7 +774,7 @@
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                    <select name="" class="language mx-1" style="border: 2px solid var(--primary);"
+                    <select name="" class="mx-1 block-drop"
                         id="">
                         <option value="">All</option>
                         <option value="">Delhi</option>
@@ -825,9 +910,15 @@
                     <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
                 </div>
                 <div class="col-md-12 px-0">
-                    <div class="single-item">
+                    <div class="d-flex bg-dark align-items-center justify-content-center mt-1 py-2">
+                        <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
+                    </div>
+                    <div class="col-12 p-0 mb-1" style="background-color:var(--primary)">
+                        <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class=" w-100 p-0" alt="" srcset="">
+                    </div>
+                    <div class="single-item mb-1">
                         <div class="holder">
-                            <div class="box mt-1">
+                            <div class="box">
                                 <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
                                     <div class="content-overlay"></div>
                                 </a>
@@ -843,7 +934,7 @@
                             </div>
                         </div>
                         <div class="holder">
-                            <div class="box mt-1">
+                            <div class="box">
                                 <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
                                     <div class="content-overlay"></div>
                                 </a>
@@ -859,7 +950,7 @@
                             </div>
                         </div>
                         <div class="holder">
-                            <div class="box mt-1">
+                            <div class="box">
                                 <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
                                     <div class="content-overlay"></div>
                                 </a>
@@ -876,30 +967,7 @@
                         </div>
                     </div>
                     <div class="box mt-1">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 180px;" class="w-100"
-                                alt="">
-                        </a>
-                    </div>
-                    <div class="col-12 p-0 mt-1" style="background-color:var(--primary)">
-                        <div class="text-center">
-                            <h2 class="text-white mb-0 mt-1">SUBSCRIBE</h2>
-                        </div>
-                        <div class="col p-2">
-                            <div class="bg-dark text-white py-4 px-1">
-                                <div class="text-center ">
-                                    <h5 class="text-white">Lorem ipsum dolor sit amet consectetu.?</h5>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <form action="" style="font-size: medium;">
-                                        <div class="my-4 px-0">
-                                            <input type="email" style="outline: none;" class="py-2 px-3 position-relative w-100 " placeholder="E-mail ID">
-                                        </div>
-                                    </form>
-                                    <button class="btn position-absolute text-white py-2"
-                                        style="right:8px;font-size: medium; background-color:var(--primary);">SUBSCRIBE</button>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
                     </div>
                 </div>
             </aside>
@@ -909,63 +977,6 @@
     <!-- Sectioon - 4 -->
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
-            <aside class="col-md-3 side-position mx-auto col-12 my-md-0 px-1">
-                <div class="col-md-12 px-0">
-                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" alt="" srcset=""></a>
-                </div>
-                <div
-                    class="container-fluid my-1 px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
-                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
-                </div>
-                <div class="col-md-12 px-0">
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title  ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title  ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title  ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit.</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </aside>
             <div class="col-md-9 col-12 px-0">
                 <div class="container-fluid mt-1 px-1 d-flex align-items-center justify-content-between nav-height"
                     style="color: var(--text-color-light-hover);">
@@ -980,7 +991,7 @@
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                    <select name="" class="language mx-1" style="border: 2px solid var(--primary);"
+                    <select name="" class="mx-1 block-drop"
                         id="">
                         <option value="">All</option>
                         <option value="">Delhi</option>
@@ -1298,6 +1309,63 @@
                     </div>
                 </div>
             </div>
+            <aside class="col-md-3 side-position mx-auto col-12 my-md-0 px-1">
+                <div class="container-fluid my-1 px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
+                    <div class="w-100 mx-3"
+                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ </span>
+                    </div>
+                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                </div>
+                <div class="col-md-12 px-0">
+                    <div class="style-2 border-top d-flex align-items-center px-1">
+                        <div class="post-data mt-1">
+                            <a href="#" class="post-title ">
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
+                                    corrupti consectetur quos.</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="style-2 border-top d-flex align-items-center px-1">
+                        <div class="post-data mt-1">
+                            <a href="#" class="post-title ">
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
+                                    corrupti consectetur quos.</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="style-2 border-top d-flex align-items-center px-1">
+                        <div class="post-data mt-1">
+                            <a href="#" class="post-title  ">
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
+                                    corrupti consectetur quos.</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="style-2 border-top d-flex align-items-center px-1">
+                        <div class="post-data mt-1">
+                            <a href="#" class="post-title  ">
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
+                                    corrupti consectetur quos.</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="style-2 border-top d-flex align-items-center px-1">
+                        <div class="post-data mt-1">
+                            <a href="#" class="post-title  ">
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
+                                    corrupti consectetur quos.</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 px-0">
+                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" alt="" srcset=""></a>
+                </div>
+            </aside>
         </div>
     </section>
     <!-- Sectioon - 4 End -->
@@ -1318,7 +1386,7 @@
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                    <select name="" class="language mx-1" style="border: 2px solid var(--primary);"
+                    <select name="" class="mx-1 block-drop"
                         id="">
                         <option value="">All</option>
                         <option value="">Delhi</option>
@@ -1527,8 +1595,7 @@
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-3 my-md-0 px-1">
-                <div
-                    class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
                     <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
                     <div class="w-100 mx-3"
                         style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
@@ -1639,7 +1706,7 @@
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
                     <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                    <select name="" class="language mx-1" style="border: 2px solid var(--primary);"
+                    <select name="" class="mx-1 block-drop"
                         id="">
                         <option value="">All</option>
                         <option value="">Delhi</option>
@@ -1993,7 +2060,7 @@
                 <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Udaipur</a></li>
                 <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Ajmer</a></li>
                 <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                <select name="" class="language mx-1" style="border: 2px solid var(--primary);"
+                <select name="" class="mx-1 block-drop"
                     id="">
                     <option value="">All</option>
                     <option value="">Delhi</option>
@@ -2237,7 +2304,7 @@
                 <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Udaipur</a></li>
                 <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Ajmer</a></li>
                 <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                <select name="" class="language mx-1" style="border: 2px solid var(--primary);"
+                <select name="" class="mx-1 block-drop"
                     id="">
                     <option value="">All</option>
                     <option value="">Delhi</option>
@@ -2448,7 +2515,7 @@
                 </div>
             </aside>
             <div class="col-12 px-3">
-                <div class="row row-cols-1 row-cols-md-3">
+                <div class="row row-cols-1 row-cols-md-3 m-0 m-md-auto">
                     <div class="col px-1 mb-2">
                         <div class="style-2 mx-3" style="border-bottom:2px dotted gray;">
                             <div class="post-data mt-1  ">

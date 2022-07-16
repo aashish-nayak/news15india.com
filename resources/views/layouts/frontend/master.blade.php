@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap v4.6 CSS -->
-    {{-- <link rel="stylesheet" href="{{ asset('front-assets/css/bootstrap.min.css') }}"> --}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="{{ asset('front-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <!-- Slick Slider Css  -->
     <link rel="stylesheet" href="{{ asset('front-assets/css/slick.css') }}">
@@ -22,6 +20,7 @@
 </head>
 
 <body onload="startTime()">
+    <input type="hidden" value="{{asset('front-assets/img/')}}" id="weather-icon-assets">
     <!--Top Header Strip  -->
     <div class="small-top d-md-block d-none">
         <div class="container-fluid mx-auto">
@@ -34,19 +33,18 @@
                         <a target="_blank" href="javascript:void(0)" class="fab fa-instagram"></a>
                     </div>
                 </div>
-                <div class="col-md-4 d-none d-md-block date-time text-center align-items-center">
+                <div class="col-md-5 d-none d-md-flex justify-content-center date-time text-center align-items-center">
+                    <p class="m-0 date-time mt-2 mr-5">
+                        <span id="day" class=" font-weight-bold"></span> : <span class=" font-weight-bold" id="datetime"></span>
+                    </p>
                     <p class="m-0 date-time mt-2">
-                        <span id="day" class=" font-weight-bold"></span> : <span class=" font-weight-bold"
-                            id="datetime"></span>
+                        <span class="weather-icon"></span> | <span class="temperature-value"></span> | <span class="location"></span>
                     </p>
                 </div>
-                <div class="col-md-5 d-none d-md-block login-singup pr-1 text-right">
-                    <a href="javascript:void(0)" class="google-play p-2 mr-2"><i class="fas fa-download"></i> Download
-                        App</a>
-                    <a href="javascript:void(0)" class="google-play p-2 mr-2"><i class="fas fa-bell mr-2"></i>
-                        SUBSCRIBE</a>
-                    <a href="javascript:void(0)" class="google-play px-2 py-1" type="button" data-toggle="modal"
-                        data-target="#exampleModal"><i class="fas fa-user mr-2"></i> Login / Signup</a>
+                <div class="col-md-4 d-none d-md-block login-singup pr-1 text-right">
+                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-download"></i> Download App</a>
+                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-bell mr-2"></i> SUBSCRIBE</a>
+                    <a href="javascript:void(0)" class="google-play " type="button" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user mr-2"></i> Login / Signup</a>
                 </div>
             </div>
         </div>
@@ -56,24 +54,26 @@
     <header class="sticky-top start-header mx-auto mega-menu-navbar">
         <div class="container-fluid mx-auto">
             <div class="row align-items-center">
-                <div class="col-md-2-custom col-12 px-md-1 pt-0 d-flex justify-content-between justify-content-md-start mobile-toggle align-items-center">
-                    <a href="{{ url('/') }}">
-                        <div class="navbar-brand p-0">
-                            <img src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid"
-                                style="margin-top:-11px;" alt="logo">
-                        </div>
-                    </a>
-                    <a href="javascript:void(0)" class="d-md-none p-1 text-center" style="font-size: 12px;"><i
-                            class="fas fa-cloud-download-alt mt-3" style="font-size:20px;"></i> <br> Download</a>
-                    <a href="javascript:void(0)" class="d-md-none p-1 text-center" style="font-size: 12px;"><img
-                            src="{{ asset('./img/english.png') }}" class="mt-2" alt="" srcset=""
-                            style="width: 23px;height:auto;"><br> English</a>
+                <div class="col-md-2-custom col-12 px-md-1 pt-0 d-flex justify-content-between justify-content-md-start mobile-toggle mobile-height-black align-items-center">
+                    <div class="col-md-12 col-6 px-0">
+                        <a href="{{ url('/') }}">
+                            <div class="navbar-brand p-0">
+                                <img src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid"
+                                    style="margin-top:-11px;" alt="logo">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="d-md-none d-block col-6 justify-self-end text-right px-0">
+                        <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center" ><i class="fas fa-bell mt-3"></i></a>
+                        <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center"><i class="fas fa-user mt-3"></i></a>
+                        <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center"><i class="fas fa-tv mt-3"></i></a>
+                    </div>
                 </div>
                 <div class="col-md-8 d-md-block d-none">
                     <!-- Main Navbar Start -->
                     <nav class="nav sticky-top d-none d-lg-block d-md-block">
                         <ul class="ul-reset ml-2 ">
-                            <li><a href="{{url('/')}}" class="nav-link ml-4 active">Home</a></li>
+                            <li><a href="{{url('/')}}" class="nav-link active">Home</a></li>
 
                             <li class="nav-item-sub p-relative">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"
@@ -327,7 +327,7 @@
     </div>
     <!-- Swiper Nav fro Mobile End -->
     <!-- Mobile Breaking News Marquee  -->
-    <div class="container-fluid d-md-none mb-1 d-block mobile-news-alert">
+    <div class="container-fluid d-md-none my-1 d-block mobile-news-alert">
         <div class="row">
             <div class="col-4 px-1 text-center bg-primary-clr">
                 <h6 class="breaking-news-mobile font-weight-bold mt-2">BREAKING NEWS</h6>
@@ -349,6 +349,27 @@
         </div>
     </div>
     <!-- Mobile Breaking News Marquee End  -->
+    <!-- Desktop Breaking News Marquee  -->
+    <div class="container-fluid mx-auto px-0">
+        <div class="alert alert-dismissible m-0 py-1 text-center fade show border rounded-pill d-md-block d-none bg-primary-clr" role="alert">
+            <div class="news-alert row justify-content-start align-items-center">
+                <div class="col-2">
+                    <strong class="text-white" style="font-size: 20px;">BREAKING NEWS |</strong>
+                </div>
+                <div class="col-9 text-left">
+                    <a href="javascript:void(0)" class="text-decoration-none text-left">
+                        <h2 class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, laborum quo nemo repellendus </h2>
+                    </a>
+                </div>
+                <div class="col-1 position-relative">
+                    <button type="button" class="close p-0 position-static" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Desktop Breaking News Marquee End  -->
     @yield('sections')
     <footer class="nb-footer mt-1">
         <div class="container-fluid">
@@ -452,7 +473,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-12 px-1">
+                        <div class="col-12 px-1 mt-5 mt-md-0">
                             <img src="{{ asset('front-assets/img/flag-color.png') }}" class="img-fluid footer-img"
                                 alt="">
                         </div>
@@ -477,7 +498,7 @@
                                 <form action="" method="post" class="subscribe_form">
                                     <input type="email" name="subscribe_email"
                                         class="w-100 mb-2 subscribe_email_footer" placeholder="name@example.com">
-                                    <button type="submit" name="subcribe" class="btn btn-block text-white font-weight-bold" style="font-size:16px;background-color: var(--primary)">SUBSCRIBE</button>
+                                    <button type="submit" name="subcribe" class="btn btn-block text-white font-weight-bold subscribe-button">SUBSCRIBE</button>
                                 </form>
                                 <!-- Subscription Code ends here -->
                             </div>
@@ -739,15 +760,10 @@
             </div>
         </div>
     </div>
-    {{-- <script src="{{ asset('front-assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('front-assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('front-assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('front-assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('front-assets/js/weather.js')}}"></script>
-    <script src="{{ asset('front-assets/js/login.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('front-assets/js/index-script.js') }}"></script> --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('front-assets/js/time.js') }}"></script>
     <script src="{{ asset('front-assets/js/slick.js') }}"></script>
     @stack('js')

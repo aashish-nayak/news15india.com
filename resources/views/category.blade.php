@@ -4,6 +4,29 @@
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
         <div class="col-md-9 col-12 px-0 pr-md-1">
+            <div class="container-fluid px-1 py-5 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
+                <div class="row justify-content-between align-items-center m-0">
+                    <div class="col-12 col-md-6">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0" style="background-color:transparent;font-size:17px">
+                                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a class="text-white" href="#">Library</a></li>
+                                <li class="breadcrumb-item text-white active" aria-current="page">Data</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <ul class="d-flex list-unstyled float-right m-0">
+                            <li><a href="javascript:void(0)" class="text-white" style="font-size:22px"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="javascript:void(0)" class="mx-5 text-white" style="font-size:22px"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a href="javascript:void(0)" class="text-white" style="font-size:22px"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-10">
+                        <h1 class="text-white"><i class="fas fa-user" style="font-size: 18px"></i> Category Name</h1>
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid px-1">
                 <img class="img-fluid w-100" src="{{asset('front-assets/img/8x1ad.png')}}" alt="">
             </div>
@@ -13,40 +36,40 @@
                         <div class="single-item">
                             <div class="holder h-100">
                                 <div class="box mt-1 slider-height h-100">
-                                    <a href=""><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100 h-100" alt="">
+                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100 h-100" alt="">
                                         <div class="content-overlay"></div>
                                     </a>
-                                    <div class="img-title p-3" style="background-color: #16161687 !important;"><a href="">
+                                    <div class="img-title p-3" style="background-color: #16161687 !important;"><a href="javascript:void(0)">
                                             <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                             </h6>
                                         </a>
-                                        <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="holder h-100">
                                 <div class="box mt-1 slider-height h-100">
-                                    <a href=""><img src="{{asset('front-assets/img/square-ad.png')}}" class="w-100 h-100" alt="">
+                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class="w-100 h-100" alt="">
                                         <div class="content-overlay"></div>
                                     </a>
-                                    <div class="img-title p-3" style="background-color: #16161687 !important;"><a href="">
+                                    <div class="img-title p-3" style="background-color: #16161687 !important;"><a href="javascript:void(0)">
                                             <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                             </h6>
                                         </a>
-                                        <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="holder h-100">
                                 <div class="box mt-1 slider-height h-100">
-                                    <a href=""><img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100 h-100" alt="">
+                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100 h-100" alt="">
                                         <div class="content-overlay"></div>
                                     </a>
-                                    <div class="img-title p-3" style="background-color: #16161687 !important;"><a href="">
+                                    <div class="img-title p-3" style="background-color: #16161687 !important;"><a href="javascript:void(0)">
                                             <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                             </h6>
                                         </a>
-                                        <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -135,13 +158,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -163,13 +186,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -191,13 +214,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -219,13 +242,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -247,13 +270,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -275,13 +298,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -303,13 +326,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -331,13 +354,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -359,13 +382,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -387,13 +410,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -415,13 +438,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -443,13 +466,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -471,13 +494,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -499,13 +522,13 @@
                     <div class="col mt-2 px-1">
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
-                                <a href="" class="text-muted text-decoration-none">
+                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                     <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body py-0 px-2">
-                                    <a href="" class="text-muted text-decoration-none">
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
                                         <h6 class="card-text p-2">Lorem, ipsum dolor sit amet consectetur adipisicing.</h6>
                                     </a>
                                 </div>
@@ -527,30 +550,30 @@
                 </div>
             </div>
             <div class="container-fluid px-0 mx-auto">
-                <nav data-pagination class="mt-3">
-                    <a href="">PREV</a>
+                <nav data-pagination class="mt-2">
+                    <a href="javascript:void(0)">PREV</a>
                     <ul>
-                        <li class="current"><a href=#1>1</a>
-                        <li><a href=#2>2</a></li>
-                        <li><a href=#3>3</a></li>
-                        <li><a href=#4>4</a></li>
-                        <li><a href=#5>5</a></li>
-                        <li><a href=#6>6</a></li>
-                        <li><a href=#7>7</a></li>
-                        <li><a href=#8>8</a></li>
+                        <li class="current"><a href="javascript:void(0)">1</a>
+                        <li><a href="javascript:void(0)">2</a></li>
+                        <li><a href="javascript:void(0)">3</a></li>
+                        <li><a href="javascript:void(0)">4</a></li>
+                        <li><a href="javascript:void(0)">5</a></li>
+                        <li><a href="javascript:void(0)">6</a></li>
+                        <li><a href="javascript:void(0)">7</a></li>
+                        <li><a href="javascript:void(0)">8</a></li>
                         <div class="d-none d-md-inline-block">
-                            <li><a href=#9>9</a></li>
-                            <li><a href=#10>10</a></li>
-                            <li><a href=#10>11</a></li>
-                            <li><a href=#10>12</a></li>
+                            <li><a href="javascript:void(0)">9</a></li>
+                            <li><a href="javascript:void(0)">10</a></li>
+                            <li><a href="javascript:void(0)">11</a></li>
+                            <li><a href="javascript:void(0)">12</a></li>
                         </div>
                     </ul>
-                    <a href="">NEXT</a>
+                    <a href="javascript:void(0)">NEXT</a>
                 </nav>
             </div>
             <!-- Ad Banner  -->
             <section class="container-fluid mx-auto mt-2 px-0 text-center">
-                <a href=""><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
+                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
             </section>
             <!-- Ad Banner  -->
             <div class="d-flex mt-1 align-items-center px-3 justify-content-between bg-dark nav-height">
@@ -558,86 +581,86 @@
                 <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                     <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                 </div>
-                <a href="" class="nav-link text-white " style="font-size: medium;">MORE</a>
+                <a href="javascript:void(0)" class="nav-link text-white " style="font-size: medium;">MORE</a>
             </div>
             <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
                 <div class="row row-cols-md-4 row-cols-1">
-                    <div class="col px-2 px-md-1 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-2 px-md-1 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-4">
-                        <a href="" class="text-decoration-none card-horizontal p-0">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
                                 <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
@@ -646,53 +669,53 @@
             </section>
         </div>
         <aside class="col-md-3 col-12 px-1 my-md-0">
-            <div class="col-12 mt-1 px-0">
-                <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100" alt="">
-            </div>
-            <div class="col-12 mt-1 px-0">
+            <div class="col-12 px-0">
                 <img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
             </div>
-            <div class="col-12 mt-1 px-1" style="background-color:#FE9517;">
-                <div class="text-center">
-                    <h2 class="text-dark m-0">YOUR VOTE</h2>
-                </div>
-                <div class="col p-2">
-                    <div class="bg-white p-4">
-                        <div class="text-center">
-                            <h5>Lorem ipsum dolor sit amet consectetur. ?</h5>
-                        </div>
-                        <form action="" style="font-size: medium;">
-                            <div class="custom-control custom-radio py-3" style="border-top: 2px dotted black; border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio1" name="customRadio">
-                                <label for="customRadio1">YES</label>
-                            </div>
-                            <div class="custom-control custom-radio py-3" style="border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio2" name="customRadio">
-                                <label for="customRadio2">NO</label>
-                            </div>
-                            <div class="custom-control custom-radio py-3" style="border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio3" name="customRadio">
-                                <label for="customRadio3">I Never Know</label>
-                            </div>
-                            <div class="custom-control custom-radio py-3" style="border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio4" name="customRadio">
-                                <label for="customRadio4">I Dont Know</label>
-                            </div>
-                        </form>
-                        <div class="d-flex justify-content-between py-3">
-                            <button class="btn btn-dark" style="font-size: medium;">VOTE</button>
-                            <button class="btn btn-dark" style="font-size: medium;">VIEW RESULT</button>
-                        </div>
+            <div class="d-flex bg-dark align-items-center justify-content-center mt-1 py-2">
+                <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
+            </div>
+            <div class="col-12 px-0">
+                <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100" alt="">
+            </div>
+            <div class="card mt-1">
+                <div class="card-header">
+                    <div class="text-center">
+                        <h4 class="m-0 text-primary-clr"><strong>POLL</strong></h4>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="text-left">
+                        <h6 class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati, nobis quas nihil ?</h6>
+                    </div>
+                    <form action="" style="font-size: 15px;" class="py-3">
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio1" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio1">YES</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio2" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio2">NO</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio3" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio3">I Never Know</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio4" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio4">I Dont Know</label>
+                        </div>
+                        <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
+                    </form>
                 </div>
             </div>
             <div class="col-12 p-0 mt-1 side-position mx-auto">
                 <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
-                    <h4 style="color:#FE9517; font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                    <i class="fa fa-sort-up mr-1" style="color:#FE9517;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color:#FE9517; font-weight:600;">News</h4>
+                    <div class="w-50 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</span>
                     </div>
-                    <a href="" class="nav-link p-0" style="color:#FE9517;font-size:medium;">Read More</a>
+                    <a href="javascript:void(0)" class="nav-link p-0" style="color:#FE9517;font-size:15px;">और भी</a>
                 </div>
                 <div class="side-bar" style="height: 300px;background-color:#333;">
                     <div class=" my-1" style="background-color:#333;">
@@ -839,74 +862,53 @@
                 </div>
             </div>
             <div class="col-12 mt-1 side-position mx-auto px-0">
-                <div class="col-12 p-0 my-1 " style="background-color:#FE9517;">
-                    <div class="text-center">
-                        <h2 class="text-dark m-0">SUBSCRIBE</h2>
+                <div class="container-fluid px-1 d-flex align-items-center justify-content-between py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Gadget</h4>
+                    <div class="w-50 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</span>
                     </div>
-                    <div class="col p-2">
-                        <div class="bg-dark text-white py-4 px-1">
-                            <div class="text-center ">
-                                <h5 class="text-white">Lorem ipsum dolor sit amet consectetu.?</h5>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center py-3">
-                                <form action="" style="font-size: medium;">
-                                    <div class="my-4 px-0">
-                                        <input type="email" style="outline: none;" class="py-2 px-3 position-relative w-100 " placeholder="E-mail ID">
-                                    </div>
-                                </form>
-                                <button class="btn position-absolute text-white py-2" style="right:8px;font-size: medium; background-color:#FE9517;">SUBSCRIBE</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 mt-1 side-position mx-auto px-0">
-                <div class="container-fluid bg-dark d-flex align-items-center justify-content-between py-2 nav-height" style="color: var(--text-color-light-hover);">
-                    <h4 class="mr-2" style="color:#f2f2f2; font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="" style="font-size: medium;" class="nav-link text-white">MORE</a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px">औरभी</a>
                 </div>
                 <div class="single-item">
                     <div class="holder">
                         <div class="box mt-1" style="height:250px;">
-                            <a href=""><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="">
+                            <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
 
                         </div>
                     </div>
                     <div class="holder">
                         <div class="box mt-1" style="height:250px;">
-                            <a href=""><img src="{{asset('front-assets/img/square-ad.png')}}" class="w-100" alt="">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="">
+                            <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
 
                         </div>
                     </div>
                     <div class="holder">
                         <div class="box mt-1" style="height:250px;">
-                            <a href=""><img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="">
+                            <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
 
                         </div>
@@ -914,13 +916,16 @@
                 </div>
             </div>
             <div class="col-12 mt-1 side-position mx-auto px-0">
-                <div class="container-fluid d-flex align-items-center justify-content-between py-2 nav-height" style="color: var(--text-color-light-hover);">
-                    <h4 class="mr-2" style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Video</h4>
+                    <div class="w-100 mx-3"
+                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <a href="" class="fa fa-chevron-left nav-link text-clr-primary"></a>
-                    <a href="" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
                 </div>
                 <div class="single-item">
                     <div class="holder">
@@ -928,11 +933,11 @@
                             <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="">
+                            <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
 
                         </div>
@@ -942,11 +947,11 @@
                             <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="">
+                            <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
 
                         </div>
@@ -956,11 +961,68 @@
                             <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="">
+                            <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-1 side-position mx-auto px-0">
+                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Media</h4>
+                    <div class="w-100 mx-3"
+                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                    </div>
+                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                </div>
+                <div class="single-item">
+                    <div class="holder">
+                        <div class="box mt-1" style="height:200px;">
+                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="content-overlay"></div>
+                            </a>
+                            <div class="img-title"><a href="javascript:void(0)">
+                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                    </h6>
+                                </a>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="holder">
+                        <div class="box mt-1" style="height:200px;">
+                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="content-overlay"></div>
+                            </a>
+                            <div class="img-title"><a href="javascript:void(0)">
+                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                    </h6>
+                                </a>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="holder">
+                        <div class="box mt-1" style="height:200px;">
+                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="content-overlay"></div>
+                            </a>
+                            <div class="img-title"><a href="javascript:void(0)">
+                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                    </h6>
+                                </a>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
 
                         </div>
