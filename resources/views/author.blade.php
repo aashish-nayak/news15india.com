@@ -66,7 +66,6 @@
                                 </a>
                                 <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
@@ -80,7 +79,6 @@
                                 </a>
                                 <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
@@ -94,7 +92,6 @@
                                 </a>
                                 <p class="post-date m-1"><a href=""></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -289,7 +286,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">2</span>
                                         <div class="post-meta col-10 p-0">
@@ -303,7 +299,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">3</span>
                                         <div class="post-meta col-10 p-0">
@@ -317,7 +312,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">4</span>
                                         <div class="post-meta col-10 p-0">
@@ -331,7 +325,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">5</span>
                                         <div class="post-meta col-10 p-0">
@@ -345,7 +338,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">6</span>
                                         <div class="post-meta col-10 p-0">
@@ -359,7 +351,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">7</span>
                                         <div class="post-meta col-10 p-0">
@@ -373,7 +364,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">8</span>
                                         <div class="post-meta col-10 p-0">
@@ -387,7 +377,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">9</span>
                                         <div class="post-meta col-10 p-0">
@@ -401,7 +390,6 @@
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
                                 <a href="#" class="post-title">
-
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">10</span>
                                         <div class="post-meta col-10 p-0">
