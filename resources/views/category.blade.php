@@ -921,8 +921,7 @@
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
-                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
                 </div>
                 <div class="single-item">
                     <div class="holder">
@@ -978,8 +977,7 @@
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
-                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
                 </div>
                 <div class="single-item">
                     <div class="holder">
