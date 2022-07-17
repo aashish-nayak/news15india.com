@@ -4,16 +4,21 @@
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
         <div class="col-md-9 col-12 px-0 pr-md-1">
-            <div class="container-fluid px-1 py-5 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
+            <div class="container-fluid px-1 py-4 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
                 <div class="row justify-content-between align-items-center m-0">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-10">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0" style="background-color:transparent;font-size:17px">
-                                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a class="text-white" href="#">Library</a></li>
-                                <li class="breadcrumb-item text-white active" aria-current="page">Data</li>
+                                <li class="breadcrumb-item"><a class="text-white" href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item"><a class="text-white" href="javascript:void(0)">Parent</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><span>Category Name</span></li>
                             </ol>
                         </nav>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h1 class="text-white px-2">
+                            <i class="fas fa-user" style="font-size: 18px"></i> Category Name
+                        </h1>
                     </div>
                     <div class="col-12 col-md-6">
                         <ul class="d-flex list-unstyled float-right m-0">
@@ -21,9 +26,6 @@
                             <li><a href="javascript:void(0)" class="mx-5 text-white" style="font-size:22px"><i class="fab fa-whatsapp"></i></a></li>
                             <li><a href="javascript:void(0)" class="text-white" style="font-size:22px"><i class="fab fa-twitter"></i></a></li>
                         </ul>
-                    </div>
-                    <div class="col-10">
-                        <h1 class="text-white"><i class="fas fa-user" style="font-size: 18px"></i> Category Name</h1>
                     </div>
                 </div>
             </div>
@@ -43,7 +45,7 @@
                                             <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                             </h6>
                                         </a>
-                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +58,7 @@
                                             <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                             </h6>
                                         </a>
-                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +71,7 @@
                                             <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                             </h6>
                                         </a>
-                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                        <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -173,12 +175,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -201,12 +203,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -229,12 +231,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -257,12 +259,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -285,12 +287,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -313,12 +315,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -341,12 +343,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -369,12 +371,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -397,12 +399,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -425,12 +427,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -453,12 +455,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -481,12 +483,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -509,12 +511,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -537,12 +539,12 @@
                                     <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>4 Days Ago</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
-                                    <a target="_blank" href="#" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-instagram"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-google-plus"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="color:#FE9517;" class="mr-2 fab fa-linkedin-in"></a>
                                 </div>
                             </div>
                         </div>
@@ -550,7 +552,7 @@
                 </div>
             </div>
             <div class="container-fluid px-0 mx-auto">
-                <nav data-pagination class="mt-2">
+                <nav data-pagination class="mt-3">
                     <a href="javascript:void(0)">PREV</a>
                     <ul>
                         <li class="current"><a href="javascript:void(0)">1</a>
@@ -576,12 +578,12 @@
                 <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
             </section>
             <!-- Ad Banner  -->
-            <div class="d-flex mt-1 align-items-center px-3 justify-content-between bg-dark nav-height">
-                <h4 class="text-white mr-2">Rajasthan</h4>
+            <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
+                <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 class="text-white mr-2">Rajasthan</h4>
                 <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                     <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                 </div>
-                <a href="javascript:void(0)" class="nav-link text-white " style="font-size: medium;">MORE</a>
+                <a href="javascript:void(0)" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
             </div>
             <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
                 <div class="row row-cols-md-4 row-cols-1">
@@ -715,13 +717,13 @@
                     <div class="w-50 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                         <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</span>
                     </div>
-                    <a href="javascript:void(0)" class="nav-link p-0" style="color:#FE9517;font-size:15px;">और भी</a>
+                    <a href="javascript:void(0)" class="nav-link p-0" style="color:#FE9517;font-size:15px;font-weight:600;">और भी</a>
                 </div>
-                <div class="side-bar" style="height: 300px;background-color:#333;">
+                <div class="side-bar" style="height: 350px;background-color:#333;">
                     <div class=" my-1" style="background-color:#333;">
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">1</span>
                                         <div class="post-meta col-10 p-0">
@@ -734,7 +736,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
 
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">2</span>
@@ -748,7 +750,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
 
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">3</span>
@@ -762,7 +764,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
 
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">4</span>
@@ -776,7 +778,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
 
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">5</span>
@@ -790,7 +792,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
 
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">6</span>
@@ -804,7 +806,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
 
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">7</span>
@@ -818,8 +820,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
-
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">8</span>
                                         <div class="post-meta col-10 p-0">
@@ -832,8 +833,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
-
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">9</span>
                                         <div class="post-meta col-10 p-0">
@@ -846,8 +846,7 @@
                         </div>
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
-
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="row m-0">
                                         <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">10</span>
                                         <div class="post-meta col-10 p-0">
@@ -868,7 +867,7 @@
                         <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</span>
                     </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px">औरभी</a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
                 </div>
                 <div class="single-item">
                     <div class="holder">
@@ -876,13 +875,13 @@
                             <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="javascript:void(0)">
+                            <div class="img-title">
+                                <a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
@@ -894,9 +893,8 @@
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
@@ -908,9 +906,8 @@
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -930,44 +927,44 @@
                 <div class="single-item">
                     <div class="holder">
                         <div class="box mt-1" style="height:200px;">
-                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="content-overlay"></div>
+                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                            <a href="javascript:void(0)">
+                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                             </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <div class="img-title">
+                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                </h6>
+                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
                         <div class="box mt-1" style="height:200px;">
-                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="content-overlay"></div>
+                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                            <a href="javascript:void(0)">
+                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                             </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <div class="img-title">
+                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                </h6>
+                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
                         <div class="box mt-1" style="height:200px;">
-                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="content-overlay"></div>
+                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                            <a href="javascript:void(0)">
+                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                             </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <div class="img-title">
+                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                </h6>
+                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -994,9 +991,8 @@
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
@@ -1008,9 +1004,8 @@
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
@@ -1022,9 +1017,8 @@
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap v4.6 CSS -->
@@ -24,8 +23,8 @@
     <!--Top Header Strip  -->
     <div class="small-top d-md-block d-none">
         <div class="container-fluid mx-auto">
-            <div class="row">
-                <div class="col-md-3 d-none d-md-block d-md-flex justify-content-start">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-2 d-none d-md-block d-md-flex justify-content-start">
                     <div class="social-icon">
                         <a target="_blank" href="javascript:void(0)" class="fab fa-facebook-f"></a>
                         <a target="_blank" href="javascript:void(0)" class="fab fa-twitter"></a>
@@ -34,17 +33,18 @@
                     </div>
                 </div>
                 <div class="col-md-5 d-none d-md-flex justify-content-center date-time text-center align-items-center">
-                    <p class="m-0 date-time mt-2 mr-5">
-                        <span id="day" class=" font-weight-bold"></span> : <span class=" font-weight-bold" id="datetime"></span>
+                    <p class="m-0 date-time mr-5">
+                        <span id="day" class="font-weight-bold"></span> : <span class="font-weight-bold" id="datetime"></span>
                     </p>
-                    <p class="m-0 date-time mt-2">
-                        <span class="weather-icon"></span> | <span class="temperature-value"></span> | <span class="location"></span>
+                    <p class="m-0 date-time">
+                        <span class="weather-icon"></span> | <span class="temperature-value font-weight-bold"></span> | <span class="location font-weight-bold"></span>
                     </p>
                 </div>
-                <div class="col-md-4 d-none d-md-block login-singup pr-1 text-right">
+                <div class="col-md-5 d-none d-md-block login-singup pr-1 text-right">
+                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-newspaper"></i> E-Paper</a>
                     <a href="javascript:void(0)" class="google-play "><i class="fas fa-download"></i> Download App</a>
-                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-bell mr-2"></i> SUBSCRIBE</a>
-                    <a href="javascript:void(0)" class="google-play " type="button" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user mr-2"></i> Login / Signup</a>
+                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-bell mr-2"></i> Notification</a>
+                    <a href="javascript:void(0)" class="google-play " data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user mr-2"></i> Login / Signup</a>
                 </div>
             </div>
         </div>
@@ -88,46 +88,46 @@
                             </li>
                             <!-- Desktop Mega Menu  -->
                             <li class="droppable">
-                                <a href="#" class="nav-link">Mega Menu One<span class="fas fa-angle-down"></span></a>
+                                <a href="javascript:void(0)" class="nav-link">Mega Menu One<span class="fas fa-angle-down"></span></a>
                                 <div class="mega-menu mx-auto">
                                     <div class="cf d-flex justify-content-between p-3">
                                         <ul class="ul-reset">
                                             <h3>Heading 1</h3>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
                                         </ul>
                                         <ul class="ul-reset">
                                             <h3>Heading 1</h3>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
                                         </ul>
                                         <ul class="ul-reset">
                                             <h3>Heading 1</h3>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
                                         </ul>
                                         <ul class="ul-reset">
                                             <h3>Heading 1</h3>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
-                                            <li><a class="dropdown-item text-decoration-none" href='#'>Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                            <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </li><!-- .droppable -->
                             <li class="droppable">
-                                <a href="#" class="nav-link">Mega Menu Two <span class="fas fa-angle-down"></span></a>
+                                <a href="javascript:void(0)" class="nav-link">Mega Menu Two <span class="fas fa-angle-down"></span></a>
                                 <div class="mega-menu">
                                     <div class="cf d-flex justify-content-between py-3">
                                         <div class="row mx-auto">
@@ -140,7 +140,7 @@
                                                                 <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
                                                             <div class="col-8">
-                                                                <a class="text-left my-0" href="#">
+                                                                <a class="text-left my-0" href="javascript:void(0)">
                                                                     An Erupting Volcano And A Meteor Has Created A
                                                                     Fantastic View
                                                                 </a>
@@ -151,7 +151,7 @@
                                                                 <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
                                                             <div class="col-8">
-                                                                <a class="text-left my-0" href="#">Bottle Labels With
+                                                                <a class="text-left my-0" href="javascript:void(0)">Bottle Labels With
                                                                     Short Stories To Be Read Is The New Marketing
                                                                     Era</a>
                                                             </div>
@@ -161,7 +161,7 @@
                                                                 <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
                                                             <div class="col-8">
-                                                                <a class="text-left my-0" href="#">10+ Stunning Animal
+                                                                <a class="text-left my-0" href="javascript:void(0)">10+ Stunning Animal
                                                                     Portraits That Has Been Filmed By Polyushko</a>
                                                             </div>
                                                         </div>
@@ -173,7 +173,7 @@
                                                                 <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
                                                             <div class="col-8">
-                                                                <a class="text-left my-0" href="#">An Erupting Volcano
+                                                                <a class="text-left my-0" href="javascript:void(0)">An Erupting Volcano
                                                                     And A Meteor Has Created A Fantastic View</a>
                                                             </div>
                                                         </div>
@@ -182,7 +182,7 @@
                                                                 <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
                                                             <div class="col-8">
-                                                                <a class="text-left my-0" href="#">Bottle Labels With
+                                                                <a class="text-left my-0" href="javascript:void(0)">Bottle Labels With
                                                                     Short Stories To Be Read Is The New Marketing
                                                                     Era</a>
                                                             </div>
@@ -192,7 +192,7 @@
                                                                 <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
                                                             <div class="col-8">
-                                                                <a class="text-left my-0" href="#">10+ Stunning Animal
+                                                                <a class="text-left my-0" href="javascript:void(0)">10+ Stunning Animal
                                                                     Portraits That Has Been Filmed By Polyushko</a>
                                                             </div>
                                                         </div>
@@ -278,8 +278,8 @@
                     <!-- Main Navbar End  -->
                 </div>
                 <!-- Search Button  -->
-                <div class="col px-1 d-none d-md-flex justify-content-end">
-                    <div id="block-search-form" class="block block-search block-odd">
+                <div class="col px-1">
+                    <div id="block-search-form" class="block block-search block-odd d-none d-md-flex justify-content-end">
                         <div class="content">
                             <form action="/drupal/globalnews/" method="post" id="search-block-form"
                                 accept-charset="UTF-8">
@@ -350,11 +350,11 @@
     </div>
     <!-- Mobile Breaking News Marquee End  -->
     <!-- Desktop Breaking News Marquee  -->
-    <div class="container-fluid mx-auto px-0">
-        <div class="alert alert-dismissible m-0 py-1 text-center fade show border rounded-pill d-md-block d-none bg-primary-clr" role="alert">
-            <div class="news-alert row justify-content-start align-items-center">
+    <div class="container-fluid mx-auto my-2 px-0">
+        <div class="alert alert-dismissible m-0 py-1 px-1 text-center fade show border rounded-pill d-md-block d-none bg-primary-clr" role="alert">
+            <div class="news-alert row justify-content-start align-items-center m-md-0">
                 <div class="col-2">
-                    <strong class="text-white" style="font-size: 20px;">BREAKING NEWS |</strong>
+                    <strong style="color:black;font-size: 20px;">BREAKING NEWS |</strong>
                 </div>
                 <div class="col-9 text-left">
                     <a href="javascript:void(0)" class="text-decoration-none text-left">
