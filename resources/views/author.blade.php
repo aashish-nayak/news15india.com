@@ -472,7 +472,7 @@
                         <div class="row row-cols-2 row-cols-md-2 p-0">
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -483,7 +483,7 @@
                             </div>
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -494,7 +494,7 @@
                             </div>
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -505,7 +505,7 @@
                             </div>
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -526,7 +526,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -540,7 +540,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -554,7 +554,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -568,7 +568,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -582,7 +582,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -596,7 +596,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -610,7 +610,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -624,7 +624,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -638,7 +638,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -652,7 +652,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -673,7 +673,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -701,7 +701,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -729,7 +729,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -757,7 +757,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -785,7 +785,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -813,7 +813,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -841,7 +841,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -869,7 +869,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -897,7 +897,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -925,7 +925,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -953,7 +953,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -981,7 +981,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -1009,7 +1009,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -1037,7 +1037,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -1065,7 +1065,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -1093,7 +1093,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -1121,7 +1121,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
@@ -1149,7 +1149,7 @@
                         <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1" style="border:1px solid #b2bec3;">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="http://127.0.0.1:8000/front-assets/img/camera.jpg" class="img-fluid" alt="...">
+                                    <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">

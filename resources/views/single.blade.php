@@ -286,7 +286,7 @@
                         <div class="row row-cols-2 row-cols-md-2 p-0">
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -297,7 +297,7 @@
                             </div>
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -308,7 +308,7 @@
                             </div>
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -319,7 +319,7 @@
                             </div>
                             <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -488,7 +488,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
@@ -498,7 +498,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
@@ -508,7 +508,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
@@ -518,7 +518,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
@@ -528,7 +528,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
@@ -538,7 +538,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
@@ -548,7 +548,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
@@ -558,7 +558,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
                             </div>
                             <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
