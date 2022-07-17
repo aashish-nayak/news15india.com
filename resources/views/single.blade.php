@@ -621,7 +621,7 @@
                 </div>
                 <div class="container-fluid px-1">
                     <a href="javascript:void(0)" class="text-decoration-none ">
-                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                         <h6 class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h6>
                     </a>
                     <p class="text-muted">
