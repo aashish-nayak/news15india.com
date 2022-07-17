@@ -1,5 +1,5 @@
 @extends('layouts.frontend.master')
-@section('title','Category')
+@section('title','Auhtor')
 @section('sections')
 <main class="container-fluid mx-auto">
     <div class="row">

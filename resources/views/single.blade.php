@@ -1,5 +1,5 @@
 @extends('layouts.frontend.master')
-@section('title','Category')
+@section('title','News Details')
 @section('sections')
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
@@ -340,7 +340,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -354,7 +354,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -368,7 +368,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -382,7 +382,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -396,7 +396,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -410,7 +410,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -424,7 +424,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -438,7 +438,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -452,7 +452,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -466,7 +466,7 @@
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
