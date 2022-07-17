@@ -2379,3 +2379,21 @@ footer.nb-footer .copyright p {
     border-bottom: 1px solid #9b0000;
     box-shadow: 1px 1px 2px 1px #850000 inset;
 }
+
+.btn-primary-3d{
+    padding: 5px 10px;
+    color: var(--bg-color) !important;
+    width: 100%;
+    text-decoration: none;
+    font-size: 1.8rem;
+    border-radius: 5px;
+    background: var(--primary);
+    box-shadow: 1px 1px 1px rgb(0 0 0 / 10%) inset;
+    border-top: 1px solid #650f0f;
+    border-bottom: 1px solid #b13b3b;
+    transition: all 0.3s ease-in-out;
+}
+.btn-primary-3d:focus{
+    box-shadow: none;
+    outline: none;
+}

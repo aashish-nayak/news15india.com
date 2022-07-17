@@ -37,7 +37,7 @@
                         <span id="day" class="font-weight-bold"></span> : <span class="font-weight-bold" id="datetime"></span>
                     </p>
                     <p class="m-0 date-time">
-                        <span class="weather-icon"></span> | <span class="temperature-value font-weight-bold"></span> | <span class="location font-weight-bold"></span>
+                        <span class="weather-icon" style="border-radius: 15px; padding: 3px; background: slategray;"></span> | <span class="temperature-value font-weight-bold"></span> | <span class="location font-weight-bold"></span>
                     </p>
                 </div>
                 <div class="col-md-5 d-none d-md-block login-singup pr-1 text-right">
@@ -139,7 +139,7 @@
                                                             <div class="col-4 pr-0" style="vertical-align:baseline !important;">
                                                                 <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-8 pl-md-0">
                                                                 <a class="text-left my-0" href="javascript:void(0)">
                                                                     An Erupting Volcano And A Meteor Has Created A
                                                                     Fantastic View
@@ -150,7 +150,7 @@
                                                             <div class="col-4 pr-0" style="vertical-align:baseline !important;">
                                                                 <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-8 pl-md-0">
                                                                 <a class="text-left my-0" href="javascript:void(0)">Bottle Labels With
                                                                     Short Stories To Be Read Is The New Marketing
                                                                     Era</a>
@@ -160,7 +160,7 @@
                                                             <div class="col-4 pr-0" style="vertical-align:baseline !important;">
                                                                 <img src="{{asset('front-assets/img/camera.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-8 pl-md-0">
                                                                 <a class="text-left my-0" href="javascript:void(0)">10+ Stunning Animal
                                                                     Portraits That Has Been Filmed By Polyushko</a>
                                                             </div>
@@ -172,7 +172,7 @@
                                                             <div class="col-4 pr-0" style="vertical-align:baseline !important;">
                                                                 <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-8 pl-md-0">
                                                                 <a class="text-left my-0" href="javascript:void(0)">An Erupting Volcano
                                                                     And A Meteor Has Created A Fantastic View</a>
                                                             </div>
@@ -181,7 +181,7 @@
                                                             <div class="col-4 pr-0" style="vertical-align:baseline !important;">
                                                                 <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-8 pl-md-0">
                                                                 <a class="text-left my-0" href="javascript:void(0)">Bottle Labels With
                                                                     Short Stories To Be Read Is The New Marketing
                                                                     Era</a>
@@ -191,7 +191,7 @@
                                                             <div class="col-4 pr-0" style="vertical-align:baseline !important;">
                                                                 <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid h-100" style="object-fit: cover">
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-8 pl-md-0">
                                                                 <a class="text-left my-0" href="javascript:void(0)">10+ Stunning Animal
                                                                     Portraits That Has Been Filmed By Polyushko</a>
                                                             </div>

@@ -15,8 +15,12 @@
                 <a href="javascript:void(0)" class="b-active"><span>Election</span></a>
             </div>
             <div class="col-12 p-1">
-                <h1 class="text-dark px-2" style="border-left: 4px solid var(--primary);">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus eius dignissimos aut! Soluta.</h1>
-                <p class="px-3 m-0" style="line-height: 1.5;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus, eius commodi aperiam recusandae consectetur reprehenderit perferendis incidunt quas, aliquam, illo animi dolorem sit architecto? Numquam?</p>
+                <h1 class="text-dark px-2" style="border-left: 4px solid var(--primary);">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum repudiandae exercitationem officiis impedit aperiam? Necessitatibus voluptates numquam aperiam.
+                </h1>
+                <p class="px-3 m-0" style="line-height: 1.3;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, dolores nulla adipisci laborum iusto voluptatum ea voluptatem itaque architecto rerum praesentium eum dolorem enim sequi suscipit aliquam consectetur magni similique?
+                </p>
             </div>
             <div class="container-fluid mx-auto py-2" style="border-bottom: 2px dotted gray;">
                 <div class="row justify-content-center align-items-center">
@@ -268,29 +272,21 @@
             </section>
             <!-- Ad Banner  -->
             <div class="main-bg-clr container-fluid px-1 mt-2">
-                <div class="mb-1 d-flex align-items-center justify-content-between nav-height" style="color: var(--text-color-light-hover);">
-                    <h4 style="color: var(--primary); font-weight: bold;">Rajasthan</h4>
+                <div class="container-fluid mb-1 px-1 d-flex align-items-center justify-content-between nav-height" style="color: var(--text-color-light-hover);">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight: bold;">Rajasthan</h4>
                     <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Jaipur</a></li>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
-                    <select name="" class="language mx-1" style="border: 2px solid var(--primary);" id="">
-                        <option value="">All</option>
-                        <option value="">Delhi</option>
-                        <option value="">Rajasthan</option>
-                    </select>
-                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-dark"></a>
-                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-dark"></a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
                 </div>
-                <div class="row m-0">
-                    <div class="col-md-4 col-12">
-                        <div class="row row-cols-2">
-                            <div class="col mb-2 px-1">
+                <div class="row mx-auto">
+                    <div class="col-md-4 col-12 py-1">
+                        <div class="row row-cols-2 row-cols-md-2 p-0">
+                            <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -299,9 +295,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 px-1">
+                            <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -310,9 +306,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 px-1">
+                            <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -321,9 +317,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 px-1">
+                            <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
+                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
                                     <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                         <a href="javascript:void(0)" class="text-decoration-none">
                                             <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
@@ -335,114 +331,142 @@
                         </div>
                     </div>
                     <div class="col-md-8 px-1">
-                        <div class="row row-cols-md-2">
-                            <div class="col mb-2">
+                        <div class="row row-cols-1 row-cols-md-2 m-0">
+                            <div class="col mt-md-1 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mb-2">
+                            <div class="col mt-md-1 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col mb-2">
+                            <div class="col mt-md-0 px-2 mb-2">
                                 <div class="card card-shadow" style="border-right:2px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 py-3">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                                 <h6 class="card-text">Some quick example text to build on the card title..</h6>
                                             </div>
                                             <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col mt-md-0 px-2 mb-2">
+                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
+                                    <a href="javascript:void(0)">
+                                        <div class="card-horizontal">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
+                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
+                                            </div>
+                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col mt-md-0 px-2 mb-2">
+                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
+                                    <a href="javascript:void(0)">
+                                        <div class="card-horizontal">
+                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
+                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
+                                            </div>
+                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
+                                                <img class="" src="http://127.0.0.1:8000/front-assets/img/camera.jpg" alt="Card image cap">
                                             </div>
                                         </div>
                                     </a>
@@ -452,192 +476,203 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
-                <h4 class="text-white mr-2">Rajasthan</h4>
+            <div class="d-flex mt-1 align-items-center px-3 justify-content-between bg-dark nav-height">
+                <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 class="text-white mr-2">Rajasthan</h4>
                 <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                     <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                 </div>
-                <a href="javascript:void(0)" class="nav-link text-white " style="font-size: medium;">MORE</a>
+                <a href="javascript:void(0)" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
             </div>
-            <section class="container-fluid mx-auto py-2" style="background-color:#FE9517;">
+            <section class="container-fluid mx-auto py-3" style="background-color:#FE9517;">
                 <div class="row row-cols-md-4 row-cols-1">
-                    <div class="col px-2 px-md-1 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-2 px-md-1 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-md-1 px-2 my-1">
+                    <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="http://127.0.0.1:8000/front-assets/img/breaking-news.png" class="img-fluid" alt="">
                             </div>
-                            <h6 class="col-7 p-0 pl-1 single-para">
+                            <h6 class="col-7 single-para">
                                 Lorem ipsum dolor sit amet consectetur.
                             </h6>
                         </a>
                     </div>
                 </div>
             </section>
-
         </div>
         <aside class="col-md-3 col-12 mt-1 my-md-0 px-1">
-            <div class="col-12 px-0">
+            <div class="col-12 p-0">
                 <img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
             </div>
-            <div class="col-12 mt-1 p-0" style="background-color:#FE9517;">
-                <div class="text-center">
-                    <h2 class="text-dark m-0">YOUR VOTE</h2>
-                </div>
-                <div class="col p-2">
-                    <div class="bg-white p-3">
-                        <div class="text-center">
-                            <h5>Lorem ipsum dolor sit amet consectetur. ?</h5>
-                        </div>
-                        <form action="" style="font-size: medium;">
-                            <div class="custom-control custom-radio py-3" style="border-top: 2px dotted black; border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio1" name="customRadio">
-                                <label for="customRadio1">YES</label>
-                            </div>
-                            <div class="custom-control custom-radio py-3" style="border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio2" name="customRadio">
-                                <label for="customRadio2">NO</label>
-                            </div>
-                            <div class="custom-control custom-radio py-3" style="border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio3" name="customRadio">
-                                <label for="customRadio3">I Never Know</label>
-                            </div>
-                            <div class="custom-control custom-radio py-3" style="border-bottom:1px solid black;">
-                                <input type="radio" id="customRadio4" name="customRadio">
-                                <label for="customRadio4">I Dont Know</label>
-                            </div>
-                        </form>
-                        <div class="d-flex justify-content-between py-3">
-                            <button class="btn btn-dark" style="font-size: medium;">VOTE</button>
-                            <button class="btn btn-dark" style="font-size: medium;">VIEW RESULT</button>
-                        </div>
+            <div class="d-flex bg-dark align-items-center justify-content-center mt-1 py-2">
+                <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
+            </div>
+            <div class="col-12 px-0">
+                <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100" alt="">
+            </div>
+            <div class="card mt-1">
+                <div class="card-header">
+                    <div class="text-center">
+                        <h4 class="m-0 text-primary-clr"><strong>POLL</strong></h4>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="text-left">
+                        <h6 class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati, nobis quas nihil ?</h6>
+                    </div>
+                    <form action="" style="font-size: 15px;" class="py-3">
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio1" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio1">YES</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio2" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio2">NO</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio3" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio3">I Never Know</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
+                            <input type="radio" id="customRadio4" name="customRadio">
+                            <label class="w-75 m-0" for="customRadio4">I Dont Know</label>
+                        </div>
+                        <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
+                    </form>
                 </div>
             </div>
             <div class="col-12 mt-1 p-0">
-                <div class="container-fluid px-1 my-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
+                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
                     <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
-                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
                 </div>
-                <div class="container-fluid px-0">
+                <div class="container-fluid px-1">
                     <a href="javascript:void(0)" class="text-decoration-none ">
-                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                        <h5 class="mt-2 ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id quos vel est
-                            possimus quisquam repellendus.</h5>
+                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                        <h6 class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h6>
                     </a>
+                    <p class="text-muted">
+                        Some representati. Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Laborum, nemo.
+                    </p>
                 </div>
-                <div class="style-2 border-top d-flex align-items-center px-1 mt-4">
+                <div class="style-2 border-top d-flex align-items-center px-1">
                     <div class="post-data mt-1">
-                        <a href="#" class="post-title">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui. Dolor
-                                numquam voluptates tempora!</h5>
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
                         </a>
                     </div>
                 </div>
                 <div class="style-2 border-top d-flex align-items-center px-1">
                     <div class="post-data mt-1">
-                        <a href="#" class="post-title">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui. Dolor
-                                numquam voluptates tempora!</h5>
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
                         </a>
                     </div>
                 </div>
                 <div class="style-2 border-top d-flex align-items-center px-1">
                     <div class="post-data mt-1">
-                        <a href="#" class="post-title">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui. Dolor
-                                numquam voluptates tempora!</h5>
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="style-2 border-top d-flex align-items-center px-1">
+                    <div class="post-data mt-1">
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col-12 mt-1 side-position mx-auto p-1">
-                <div class="my-1 px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
+            <div class="col-12 mt-1 side-position mx-auto px-0">
+                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Gadget</h4>
                     <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
-                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
                 </div>
                 <div class="side-bar">
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -649,7 +684,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -661,7 +696,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -673,7 +708,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -685,7 +720,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -697,7 +732,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -709,7 +744,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -721,7 +756,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">7:00 AM | April 14</p>
                                     </div>
@@ -734,99 +769,108 @@
                 <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
                 </div>
             </div>
-            <div class="col-12 mt-1 side-position mx-auto px-1">
-                <div class="container-fluid px-1 d-flex align-items-center justify-content-between py-2 nav-height" style="color: var(--text-color-light-hover);">
-                    <h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+            <div class="col-12 mt-1 side-position mx-auto px-0">
+                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Video</h4>
+                    <div class="w-100 mx-3"
+                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <a href="javascript:void(0)" class="fa fa-chevron-left nav-link text-clr-primary"></a>
-                    <a href="javascript:void(0)" class="fa fa-chevron-right nav-link text-clr-primary"></a>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
                 </div>
-                <div class="col-md-12 px-0">
-                    <div class="box mt-1">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
-                            <div class="content-overlay"></div>
-                        </a>
-                        <div class="img-title"><a href="javascript:void(0)">
+                <div class="single-item">
+                    <div class="holder">
+                        <div class="box mt-1" style="height:200px;">
+                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                            <a href="javascript:void(0)">
+                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
+                            </a>
+                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <div class="img-title">
                                 <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                 </h6>
-                            </a>
-                            <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
+                            </div>
                         </div>
-
                     </div>
-                    <div class="col-12 p-0 my-1 " style="background-color:#FE9517;">
-                        <div class="text-center">
-                            <h2 class="text-dark m-0">SUBSCRIBE</h2>
+                    <div class="holder">
+                        <div class="box mt-1" style="height:200px;">
+                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                            <a href="javascript:void(0)">
+                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
+                            </a>
+                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <div class="img-title">
+                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                </h6>
+                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
+                            </div>
                         </div>
-                        <div class="col p-2">
-                            <div class="bg-dark text-white py-4 px-1">
-                                <div class="text-center ">
-                                    <h5 class="text-white">Lorem ipsum dolor sit amet consectetu.?</h5>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center py-3">
-                                    <form action="" style="font-size: medium;">
-                                        <div class="my-4 px-0">
-                                            <input type="email" style="outline: none;" class="py-2 px-3 position-relative w-100 " placeholder="E-mail ID">
-                                        </div>
-                                    </form>
-                                    <button class="btn position-absolute text-white py-2" style="right:8px;font-size: medium; background-color:#FE9517;">SUBSCRIBE</button>
-                                </div>
+                    </div>
+                    <div class="holder">
+                        <div class="box mt-1" style="height:200px;">
+                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                            <a href="javascript:void(0)">
+                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
+                            </a>
+                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <div class="img-title">
+                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                </h6>
+                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 mt-1 side-position mx-auto px-1">
-                <div class="container-fluid bg-dark d-flex align-items-center justify-content-between py-2 nav-height" style="color: var(--text-color-light-hover);">
-                    <h4 style="color:#f2f2f2; font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+            <div class="col-12 mt-1 side-position mx-auto px-0">
+                <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
+                    <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color:#f3f3f3; font-weight:600;">Rajasthan</h4>
+                    <div class="w-50 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</span>
                     </div>
-                    <a href="javascript:void(0)" style="font-size: medium;" class="nav-link text-white">MORE</a>
+                    <a href="javascript:void(0)" class="nav-link p-0" style="color:#f3f3f3;font-size:15px;font-weight:600;">औरभी</a>
                 </div>
                 <div class="single-item">
                     <div class="holder">
-                        <div class="box mt-1">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
+                        <div class="box mt-1" style="height:250px;">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
                             <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
-                        <div class="box mt-1">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
+                        <div class="box mt-1" style="height:250px;">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
                             <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                     <div class="holder">
-                        <div class="box mt-1">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
+                        <div class="box mt-1" style="height:250px;">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
                             <div class="img-title"><a href="javascript:void(0)">
                                     <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
                             </div>
-
                         </div>
                     </div>
                 </div>
