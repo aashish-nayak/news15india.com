@@ -34,17 +34,17 @@
                 </div>
                 <div class="col-md-5 d-none d-md-flex justify-content-center date-time text-center align-items-center">
                     <p class="m-0 date-time mr-5">
-                        <span id="day" class="font-weight-bold"></span> : <span class="font-weight-bold" id="datetime"></span>
+                        <span id="day" class=""></span> : <span class="" id="datetime"></span>
                     </p>
                     <p class="m-0 date-time">
-                        <span class="weather-icon" style="border-radius: 15px; padding: 3px; background: slategray;"></span> | <span class="temperature-value font-weight-bold"></span> | <span class="location font-weight-bold"></span>
+                        <span class="weather-icon" style="border-radius:4px; padding: 3px; background: slategray;"></span> | <span class="temperature-value"></span> | <span class="location"></span>
                     </p>
                 </div>
                 <div class="col-md-5 d-none d-md-block login-singup pr-1 text-right">
-                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-newspaper"></i> E-Paper</a>
-                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-download"></i> Download App</a>
-                    <a href="javascript:void(0)" class="google-play "><i class="fas fa-bell mr-2"></i> Notification</a>
-                    <a href="javascript:void(0)" class="google-play " data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user mr-2"></i> Login / Signup</a>
+                    <a href="javascript:void(0)" class="google-play"><i class="fas fa-newspaper"></i> E-Paper</a>
+                    <a href="javascript:void(0)" class="google-play"><i class="fas fa-download"></i> Download App</a>
+                    <a href="javascript:void(0)" class="google-play"><i class="fas fa-bell"></i> Notification</a>
+                    <a href="javascript:void(0)" class="google-play" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user"></i> Login / Signup</a>
                 </div>
             </div>
         </div>
@@ -74,7 +74,6 @@
                     <nav class="nav sticky-top d-none d-lg-block d-md-block">
                         <ul class="ul-reset ml-2 ">
                             <li><a href="{{url('/')}}" class="nav-link active">Home</a></li>
-
                             <li class="nav-item-sub p-relative">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"
                                     role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span
@@ -352,16 +351,16 @@
     <!-- Desktop Breaking News Marquee  -->
     <div class="container-fluid mx-auto my-2 px-0">
         <div class="alert alert-dismissible m-0 py-1 px-1 text-center fade show border rounded-pill d-md-block d-none bg-primary-clr" role="alert">
-            <div class="news-alert row justify-content-start align-items-center m-md-0">
-                <div class="col-2">
+            <div class="news-alert d-flex justify-content-start align-items-center m-md-0">
+                <div class="ml-4">
                     <strong style="color:black;font-size: 20px;">BREAKING NEWS |</strong>
                 </div>
-                <div class="col-9 text-left">
+                <div class="ml-3 text-left">
                     <a href="javascript:void(0)" class="text-decoration-none text-left">
-                        <h2 class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, laborum quo nemo repellendus </h2>
+                        <h2 class="text-white font-weight-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, laborum quo nemo repellendus </h2>
                     </a>
                 </div>
-                <div class="col-1 position-relative">
+                <div class="position-relative ml-auto mr-4">
                     <button type="button" class="close p-0 position-static" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

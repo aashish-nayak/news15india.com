@@ -301,7 +301,37 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 mt-2 px-1">
+                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
+                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-9">
+                                        <h6 class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
+                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-9">
+                                        <h6 class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 px-1">
                         <a href="javascript:void(0)"><img src="{{asset('front-assets/img/8x1ad.png')}}" width="100%" alt="" srcset=""></a>
                     </div>
                 </div>
@@ -344,65 +374,8 @@
                         </form>
                     </div>
                 </div>
-                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                </div>
-                <div class="single-item">
-                    <div class="holder">
-                        <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
-                                <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream
-                                        alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#"
-                                        class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
-                                <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream
-                                        alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#"
-                                        class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
-                                <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream
-                                        alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="#"
-                                        class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="col-md-12 px-0">
+                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" alt="" srcset=""></a>
                 </div>
             </aside>
         </div>
@@ -436,7 +409,7 @@
                 <div class="row mx-auto">
                     <div class="col-md-4 col-12 py-1">
                         <div class="row row-cols-2 row-cols-md-2 p-0">
-                            <div class="col mb-3 px-2">
+                            <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
                                     <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}"
                                             class="card-img-top" alt="..."></a>
@@ -448,7 +421,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-3 px-2">
+                            <div class="col mb-2 px-2">
                                 <div class="card card-shadow">
                                     <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}"
                                             class="card-img-top" alt="..."></a>
@@ -633,7 +606,7 @@
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-md-0 px-1">
-                <div class="my-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                <div class="my-1 d-flex align-items-center justify-content-between bg-white nav-height">
                     <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
                     <div class="w-100 mx-3"
                         style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
@@ -908,7 +881,7 @@
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 mt-1 my-md-0 px-1">
                 <div class="col-md-12 px-0">
-                    <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                    <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white nav-height">
                         <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
                         <div class="w-100 mx-3"
                             style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
@@ -949,8 +922,23 @@
                             </a>
                         </div>
                     </div>
-                    <div class="box mt-1">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                    <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
+                    <div class="single-item">
+                        <div class="holder">
+                            <div class="box">
+                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="holder">
+                            <div class="box">
+                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="holder">
+                            <div class="box">
+                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </aside>
@@ -1143,155 +1131,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-fluid px-1 d-flex align-items-center justify-content-between"
-                        style="color: var(--text-color-light-hover);">
-                        <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                        <div class="w-100 mx-3"
-                            style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                            <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                        </div>
-                        <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 px-1 col-12">
-                            <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 px-1 col-12">
-                            <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 px-1 col-12">
-                            <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                style="border-left:2px solid var(--primary);">
-                                <a href="javascript:void(0)">
-                                    <div class="card-horizontal">
-                                        <div class="card-body col-8 col-md-8 p-0 px-2">
-                                            <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit.</h6>
-                                        </div>
-                                        <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                            <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 my-md-0 px-1">
-                <div class="container-fluid my-1 px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
+                <div class="container-fluid my-1 px-1 d-flex align-items-center justify-content-between bg-white nav-height">
                     <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
                     <div class="w-100 mx-3"
                         style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
@@ -1341,11 +1184,233 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12 px-0">
-                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" alt="" srcset=""></a>
+                    <div class="style-2 border-top d-flex align-items-center px-1">
+                        <div class="post-data mt-1">
+                            <a href="#" class="post-title  ">
+                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
+                                    corrupti consectetur quos.</h5>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </aside>
+            <div class="col-12 px-1 mt-2">
+                <div class="container-fluid mt-1 px-1 d-flex align-items-center justify-content-between nav-height"
+                    style="color: var(--text-color-light-hover);">
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight: bold;">Rajasthan</h4>
+                    <div class="w-100 mx-3"
+                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                    </div>
+                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Jaipur</a></li>
+                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
+                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
+                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
+                    <select name="" class="mx-1 block-drop"
+                        id="">
+                        <option value="">All</option>
+                        <option value="">Delhi</option>
+                        <option value="">Rajasthan</option>
+                    </select>
+                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
+                </div>
+                <div class="row row-cols-1 row-cols-md-4">
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        <div class="card border-bottom-0 border-right-0 border-top-0"
+                            style="border-left:2px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="card-body col-8 col-md-8 p-0 px-2">
+                                        <h6 class="card-text p-1">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit.</h6>
+                                    </div>
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="img-fluid" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Sectioon - 4 End -->
@@ -1376,13 +1441,12 @@
                 </div>
                 <div class="row mx-auto">
                     <div class="col-md-6 col-12 p-0">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid w-100" alt=""
-                                srcset=""></a>
+                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid w-100" alt="" ></a>
                     </div>
                     <div class="col-md-6 col-12 p-0">
                         <div class="col-md-12 px-0">
                             <div class="style-2 border-top d-flex align-items-center px-2">
-                                <div class="post-data mt-1">
+                                <div class="post-data mt-2">
                                     <a href="#" class="post-title ">
                                         <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui
                                             delectus sit
@@ -1391,7 +1455,7 @@
                                 </div>
                             </div>
                             <div class="style-2 border-top d-flex align-items-center px-2">
-                                <div class="post-data mt-1">
+                                <div class="post-data mt-2">
                                     <a href="#" class="post-title ">
                                         <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui
                                             delectus sit
@@ -1400,7 +1464,7 @@
                                 </div>
                             </div>
                             <div class="style-2 border-top d-flex align-items-center px-2">
-                                <div class="post-data mt-1">
+                                <div class="post-data mt-2">
                                     <a href="#" class="post-title  ">
                                         <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui
                                             delectus sit</h5>
@@ -1408,7 +1472,7 @@
                                 </div>
                             </div>
                             <div class="style-2 border-top d-flex align-items-center px-2">
-                                <div class="post-data mt-1">
+                                <div class="post-data mt-2">
                                     <a href="#" class="post-title ">
                                         <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui
                                             delectus sit</h5>
@@ -1416,7 +1480,7 @@
                                 </div>
                             </div>
                             <div class="style-2 border-top d-flex align-items-center px-2">
-                                <div class="post-data mt-1">
+                                <div class="post-data mt-2">
                                     <a href="#" class="post-title ">
                                         <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui
                                             delectus sit</h5>
@@ -1424,7 +1488,7 @@
                                 </div>
                             </div>
                             <div class="style-2 border-top d-flex align-items-center px-2">
-                                <div class="post-data mt-1">
+                                <div class="post-data mt-2">
                                     <a href="#" class="post-title ">
                                         <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui
                                             delectus sit</h5>
@@ -1435,38 +1499,10 @@
                     </div>
                 </div>
                 <div class="row mx-auto">
-                    <section class="col-12 mx-auto">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-12 px-1 ">
-                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                                    style="border-left:3px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                            </div>
-                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
-                                                    adipisicing elit.</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                    style="border-left:3px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                            </div>
-                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
-                                                    adipisicing elit.</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
+                    <section class="col-12 mx-auto mt-1">
+                        <div class="row row-cols-1 row-cols-md-3">
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
                                     style="border-left:3px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -1481,36 +1517,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-12 px-1 ">
-                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                                    style="border-left:3px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                            </div>
-                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
-                                                    adipisicing elit.</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                                    style="border-left:3px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                            </div>
-                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
-                                                    adipisicing elit.</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
                                     style="border-left:3px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -1525,8 +1533,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-12 px-1 ">
-                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
                                     style="border-left:3px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -1540,7 +1548,9 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
+                            </div>
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
                                     style="border-left:3px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -1554,7 +1564,73 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
+                            </div>
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
+                                    style="border-left:3px solid var(--primary);">
+                                    <a href="javascript:void(0)">
+                                        <div class="card-horizontal">
+                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
+                                                    adipisicing elit.</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
+                                    style="border-left:3px solid var(--primary);">
+                                    <a href="javascript:void(0)">
+                                        <div class="card-horizontal">
+                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
+                                                    adipisicing elit.</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
+                                    style="border-left:3px solid var(--primary);">
+                                    <a href="javascript:void(0)">
+                                        <div class="card-horizontal">
+                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
+                                                    adipisicing elit.</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
+                                    style="border-left:3px solid var(--primary);">
+                                    <a href="javascript:void(0)">
+                                        <div class="card-horizontal">
+                                            <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                                <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                                <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur
+                                                    adipisicing elit.</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
                                     style="border-left:3px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
@@ -1821,46 +1897,70 @@
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 my-md-1 px-1">
                 <div class="p-0">
-                    <div class="p-0 mb-2 mb-md-3">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class=" w-100 p-0" style="height:250px;" alt=""></a>
+                    <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white nav-height">
+                        <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Video</h4>
+                        <div class="w-100 mx-3"
+                            style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                            <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                        </div>
+                        <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
                     </div>
-                    <div class="p-0 mb-2 mb-md-0">
+                    <div class="single-item mb-1">
+                        <div class="holder">
+                            <div class="box" style="height:220px;">
+                                <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                                <a href="javascript:void(0)">
+                                    <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
+                                </a>
+                                <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="" style="height: 100%;object-fit-cover;">
+                                <div class="img-title">
+                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                    </h6>
+                                    <p class="m-1">7:00 AM | April 14</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="holder">
+                            <div class="box" style="height:220px;">
+                                <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                                <a href="javascript:void(0)">
+                                    <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
+                                </a>
+                                <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="" style="height: 100%;object-fit-cover;">
+                                <div class="img-title">
+                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                    </h6>
+                                    <p class="m-1">7:00 AM | April 14</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="holder">
+                            <div class="box" style="height:220px;">
+                                <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
+                                <a href="javascript:void(0)">
+                                    <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
+                                </a>
+                                <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="" style="height: 100%;object-fit-cover;">
+                                <div class="img-title">
+                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                    </h6>
+                                    <p class="m-1">7:00 AM | April 14</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
+                    <div class="p-0">
                         <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class=" w-100 p-0" style="height:250px;" alt=""></a>
                     </div>
                 </div>
             </aside>
             <section class="container-fluid mx-auto">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-12 px-1">
+                <div class="row row-cols-md-4">
+                    <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                            style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                            style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
@@ -1875,36 +1975,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-12 px-1">
+                    <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                            style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                            style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
@@ -1919,36 +1991,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-12 px-1">
+                    <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
-                            style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
-                            style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
@@ -1963,7 +2007,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-12 px-1">
+                    <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1978,7 +2022,9 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
@@ -1992,7 +2038,105 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="card border-bottom-0 border-right-0 border-top-0 my-2 my-md-1"
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
+                            style="border-left:3px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
+                            style="border-left:3px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
+                            style="border-left:3px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
+                            style="border-left:3px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
+                            style="border-left:3px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
+                            style="border-left:3px solid var(--primary);">
+                            <a href="javascript:void(0)">
+                                <div class="card-horizontal">
+                                    <div class="img-square-wrapper col-4 col-md-4 p-0">
+                                        <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col px-1">
+                        <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
@@ -2204,54 +2348,6 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid mx-auto">
-                <div class="row row-cols-1 row-cols-md-4 p-0">
-                    <div class="col mb-2 px-0 ">
-                        <div class="card-body p-4 border-right">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h4 class="mb-2  text-dark">Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit.
-                                </h4>
-                            </a>
-                            <p class="my-0  text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
-                        </div>
-                    </div>
-                    <div class="col mb-2 px-0 ">
-                        <div class="card-body p-4 border-right">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h4 class="mb-2  text-dark">Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit.
-                                </h4>
-                            </a>
-                            <p class="my-0  text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
-                        </div>
-                    </div>
-                    <div class="col mb-2 px-0 ">
-                        <div class="card-body p-4 border-right">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h4 class="mb-2  text-dark">Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit.
-                                </h4>
-                            </a>
-                            <p class="my-0  text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
-                        </div>
-                    </div>
-                    <div class="col mb-2 px-0 ">
-                        <div class="card-body p-4 border-right">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h4 class="mb-2  text-dark">Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit.
-                                </h4>
-                            </a>
-                            <p class="my-0  text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!-- Section - 7 End  -->
@@ -2339,8 +2435,62 @@
                         </div>
                         <div class="mx-3" style=" border-bottom: 2px dotted #333;"></div>
                     </div>
-                </div>
-                <div class="row row-cols-1 row-cols-md-4 p-0">
+                    <div class="col my-2 px-md-1">
+                        <div class="card-body p-2"
+                            style="border-left:2px solid var(--primary);border-right:2px solid var(--primary);">
+                            <a href="javascript:void(0)" class="text-decoration-none">
+                                <h4 class="my-0 text-dark">Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit.
+                                </h4>
+                            </a>
+                            <p class="my-2 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
+                            <div class="news-status py-1">7:00 AM | April 14</div>
+                        </div>
+                        <div class="mx-3" style=" border-bottom: 2px dotted #333;"></div>
+                    </div>
+                    <div class="col my-2 px-md-1">
+                        <div class="card-body p-2"
+                            style="border-left:2px solid var(--primary);border-right:2px solid var(--primary);">
+                            <a href="javascript:void(0)" class="text-decoration-none">
+                                <h4 class="my-0 text-dark">Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit.
+                                </h4>
+                            </a>
+                            <p class="my-2 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
+                            <div class="news-status py-1">7:00 AM | April 14</div>
+                        </div>
+                        <div class="mx-3" style=" border-bottom: 2px dotted #333;"></div>
+                    </div>
+                    <div class="col my-2 px-md-1">
+                        <div class="card-body p-2"
+                            style="border-left:2px solid var(--primary);border-right:2px solid var(--primary);">
+                            <a href="javascript:void(0)" class="text-decoration-none">
+                                <h4 class="my-0 text-dark">Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit.
+                                </h4>
+                            </a>
+                            <p class="my-2 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
+                            <div class="news-status py-1">7:00 AM | April 14</div>
+                        </div>
+                        <div class="mx-3" style=" border-bottom: 2px dotted #333;"></div>
+                    </div>
+                    <div class="col my-2 px-md-1">
+                        <div class="card-body p-2"
+                            style="border-left:2px solid var(--primary);border-right:2px solid var(--primary);">
+                            <a href="javascript:void(0)" class="text-decoration-none">
+                                <h4 class="my-0 text-dark">Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit.
+                                </h4>
+                            </a>
+                            <p class="my-2 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Rem non rerum, quas repellat unde deleniti suscipit modi porro amet veniam.</p>
+                            <div class="news-status py-1">7:00 AM | April 14</div>
+                        </div>
+                        <div class="mx-3" style=" border-bottom: 2px dotted #333;"></div>
+                    </div>
                     <div class="col my-2 px-md-1">
                         <div class="card-body p-2"
                             style="border-left:2px solid var(--primary);border-right:2px solid var(--primary);">

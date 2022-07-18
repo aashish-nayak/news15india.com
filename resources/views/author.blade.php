@@ -9,14 +9,14 @@
         </section>
         <!-- Ad Banner  -->
         <aside class="col-md-3 col-12 my-1 px-1 my-md-0 order-2 order-md-1">
-            <div class="col-12 p-0 mt-1">
-                <img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
-            </div>
             <div class="d-flex bg-dark align-items-center justify-content-center mt-1 py-2">
                 <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
             </div>
             <div class="col-12 px-0">
                 <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100" alt="">
+            </div>
+            <div class="col-12 p-0 mt-1">
+                <img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
             </div>
             <div class="card mt-1">
                 <div class="card-header">
@@ -211,7 +211,7 @@
                 <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
                 </div>
             </div>
-            <div class="col-12 mt-1 side-position mx-auto px-0">
+            <div class="col-12 mt-2 side-position mx-auto px-0">
                 <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
                     <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Video</h4>
                     <div class="w-100 mx-3"
@@ -275,7 +275,7 @@
                     </div>
                     <a href="javascript:void(0)" class="nav-link p-0" style="color:#FE9517;font-size:15px;font-weight:600;">और भी</a>
                 </div>
-                <div class="side-bar" style="height: 300px;background-color:#333;">
+                <div class="side-bar" style="height:335px;background-color:#333;">
                     <div class=" my-1" style="background-color:#333;">
                         <div class="py-1 border-bottom border-secondary">
                             <div class="post-data ">
@@ -420,32 +420,34 @@
         <div class="col-md-9 col-12 px-1 pr-md-1 order-1 order-md-2">
             <div class="container-fluid mx-auto px-0 mt-1">
                 <div class="d-flex flex-wrap justify-content-center">
-                    <div class="col-md-3 col-12 bg-primary w-100 p-2 text-center">
-                        <img src="{{asset('front-assets/img/user.png')}}" class="text-center img-fluid mt-md-3" style="height:175px;border:5px solid white;border-radius:50%;" alt="">
+                    <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center">
+                        <img src="{{asset('front-assets/img/user.png')}}" class="text-center img-fluid mt-md-3" style="border:5px solid white;border-radius:50%;" alt="">
                     </div>
                     <div class="col-md-9 col-12" style="background-color: #d8d8d8;">
                         <div class="col-12 px-1 text-center flag-author-border">
                             <span class="flag-color-news flag-color"><b>NEWS</b></span><span class="flag-color-15 flag-color"><b>15</b></span><span class="flag-color-india flag-color"><b>INDIA</b> </span>
                         </div>
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
-                            <div class="col-md-7 col-12 px-4 my-3 author-des">
+                            <div class="col-md-6 col-12 px-4 my-3 author-des">
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:0px;"><i class="mr-md-3 mr-2 fas fa-user"></i> Abdul Malik</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:8px;"><i class="mr-md-3 mr-2 fas fa-user"></i> Abdul Malik</p>
                                 </a>
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:0px;"><i class=" mr-2 mr-md-3 fas fa-envelope"></i>info@news15indi.com</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:8px;"><i class=" mr-2 mr-md-3 fas fa-envelope"></i>info@news15indi.com</p>
                                 </a>
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:0px;"><i class=" mr-2 mr-md-3 far fa-user-crown"></i>Editor in chief</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:8px;"><i class=" mr-2 mr-md-3 far fa-user-crown"></i>Editor in chief</p>
                                 </a>
                             </div>
-                            <div class="col-md-5 col-12">
-                                <div class="d-flex flex-wrap justify-content-around align-items-center text-center">
-                                    <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="mb-4 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="mb-4 fab fa-twitter"></a>
-                                    <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="mb-4 fab fa-whatsapp"></a>
-                                    <div class="col-md-12 d-none d-md-block"></div>
-                                    <a href="javascript:void(0)" style="font-size:large;" class="btn-primary-3d ">Follow</a>
+                            <div class="col-md-6 col-12">
+                                <div class="d-flex flex-wrap justify-content-around align-items-center text-center flag-author-border">
+                                    <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-facebook-f"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-twitter"></a>
+                                    <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-whatsapp"></a>
+                                </div>
+                                <div class="col-md-12 pt-2 text-center">
+                                    <p class="mb-2" style="font-size:1.2rem;">Lorem ipsum dolor sit amet.</p>
+                                    <a href="javascript:void(0)" style="font-size:1.4rem;" class="d-block btn-primary-3d font-weight-bold">Follow</a>
                                 </div>
                             </div>
                         </div>

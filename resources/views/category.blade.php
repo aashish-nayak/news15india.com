@@ -4,21 +4,19 @@
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
         <div class="col-md-9 col-12 px-0 pr-md-1">
-            <div class="container-fluid px-1 py-4 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
+            <div class="container-fluid px-1 py-5 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
                 <div class="row justify-content-between align-items-center m-0">
                     <div class="col-12 col-md-10">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb m-0" style="background-color:transparent;font-size:17px">
-                                <li class="breadcrumb-item"><a class="text-white" href="javascript:void(0)">Home</a></li>
+                            <ol class="breadcrumb m-0 py-0" style="background-color:transparent;font-size:17px">
+                                <li class="breadcrumb-item"><a class="text-white" href="javascript:void(0)">Hindi News</a></li>
                                 <li class="breadcrumb-item"><a class="text-white" href="javascript:void(0)">Parent</a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><span>Category Name</span></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-12 col-md-6">
-                        <h1 class="text-white px-2">
-                            <i class="fas fa-user" style="font-size: 18px"></i> Category Name
-                        </h1>
+                        <h1 class="text-white px-2">Category Name</h1>
                     </div>
                     <div class="col-12 col-md-6">
                         <ul class="d-flex list-unstyled float-right m-0">
@@ -29,8 +27,8 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid px-1">
-                <img class="img-fluid w-100" src="{{asset('front-assets/img/8x1ad.png')}}" alt="">
+            <div class="container-fluid px-0 mx-1">
+                <img class="img-fluid w-100" style="height: 130px;object-fit: cover; margin: 3px 0px;" src="{{asset('front-assets/img/8x1ad.png')}}" alt="">
             </div>
             <div class="container-fluid mx-auto">
                 <div class="row">
@@ -79,74 +77,74 @@
                     </div>
                     <div class="col-md-6 col-12 px-1 pl-md-1 my-md-0 my-1">
                         <div class="row row-cols-md-3 row-cols-2 mx-auto justify-content-between">
-                            <div class="col mb-2 p-1" style="border:2px solid var(--primary);">
+                            <div class="col mb-3 p-1" style="border:2px solid var(--primary);">
                                 <div class="card border-0">
                                     <a href="javascript:void(0)" class="text-decoration-none">
                                         <img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="...">
                                     </a>
                                     <div class="card-body p-2">
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                            <h6 class="text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h6>
+                                            <h6 class="text-left">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor.</h6>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 p-1" style="border:2px solid var(--primary);">
+                            <div class="col mb-3 p-1" style="border:2px solid var(--primary);">
                                 <div class="card border-0">
                                     <a href="javascript:void(0)" class="text-decoration-none">
                                         <img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="...">
                                     </a>
                                     <div class="card-body p-2">
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                            <h6 class="text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h6>
+                                            <h6 class="text-left">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor.</h6>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 p-1" style="border:2px solid var(--primary);">
+                            <div class="col mb-3 p-1" style="border:2px solid var(--primary);">
                                 <div class="card border-0">
                                     <a href="javascript:void(0)" class="text-decoration-none">
                                         <img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="...">
                                     </a>
                                     <div class="card-body p-2">
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                            <h6 class="text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h6>
+                                            <h6 class="text-left">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor.</h6>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 p-1" style="border:2px solid var(--primary);">
+                            <div class="col mb-3 p-1" style="border:2px solid var(--primary);">
                                 <div class="card border-0">
                                     <a href="javascript:void(0)" class="text-decoration-none">
                                         <img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="...">
                                     </a>
                                     <div class="card-body p-2">
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                            <h6 class="text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h6>
+                                            <h6 class="text-left">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor.</h6>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 p-1" style="border:2px solid var(--primary);">
+                            <div class="col mb-3 p-1" style="border:2px solid var(--primary);">
                                 <div class="card border-0">
                                     <a href="javascript:void(0)" class="text-decoration-none">
                                         <img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="...">
                                     </a>
                                     <div class="card-body p-2">
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                            <h6 class="text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h6>
+                                            <h6 class="text-left">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor.</h6>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-2 p-1" style="border:2px solid var(--primary);">
+                            <div class="col mb-3 p-1" style="border:2px solid var(--primary);">
                                 <div class="card border-0">
                                     <a href="javascript:void(0)" class="text-decoration-none">
                                         <img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="...">
                                     </a>
                                     <div class="card-body p-2">
                                         <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                            <h6 class="text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h6>
+                                            <h6 class="text-left">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor.</h6>
                                         </a>
                                     </div>
                                 </div>
@@ -574,107 +572,16 @@
                 </nav>
             </div>
             <!-- Ad Banner  -->
-            <section class="container-fluid mx-auto mt-2 px-0 text-center">
+            <section class="container-fluid mx-auto mt-3 px-0 text-center">
                 <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
             </section>
             <!-- Ad Banner  -->
-            <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
-                <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 class="text-white mr-2">Rajasthan</h4>
-                <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                    <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                </div>
-                <a href="javascript:void(0)" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
-            </div>
-            <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
-                <div class="row row-cols-md-4 row-cols-1">
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-1 my-3">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                </div>
-            </section>
         </div>
         <aside class="col-md-3 col-12 px-1 my-md-0">
             <div class="col-12 px-0">
                 <img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
             </div>
-            <div class="d-flex bg-dark align-items-center justify-content-center mt-1 py-2">
+            <div class="d-flex bg-dark align-items-center justify-content-center py-2 mt-1">
                 <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
             </div>
             <div class="col-12 px-0">
@@ -968,60 +875,120 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 mt-1 side-position mx-auto px-0">
-                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Media</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
-                </div>
-                <div class="single-item">
-                    <div class="holder">
-                        <div class="box mt-1" style="height:200px;">
-                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box mt-1" style="height:200px;">
-                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box mt-1" style="height:200px;">
-                            <iframe class="w-100" src="https://www.youtube.com/embed/Ld4fUV_PjPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </aside>
+        <div class="col-12 px-1">
+            <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
+                <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 class="text-white mr-2">Rajasthan</h4>
+                <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                    <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
+                </div>
+                <a href="javascript:void(0)" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
+            </div>
+            <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
+                <div class="row row-cols-md-5 row-cols-1">
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-1 my-3">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 </main>
 @endsection

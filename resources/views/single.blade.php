@@ -15,10 +15,10 @@
                 <a href="javascript:void(0)" class="b-active"><span>Election</span></a>
             </div>
             <div class="col-12 p-1">
-                <h1 class="text-dark px-2" style="border-left: 4px solid var(--primary);">
+                <h1 class="text-dark px-2 font-weight-bold" style="border-left: 4px solid var(--primary);">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum repudiandae exercitationem officiis impedit aperiam? Necessitatibus voluptates numquam aperiam.
                 </h1>
-                <p class="px-3 m-0" style="line-height: 1.3;">
+                <p class="px-3 m-0 font-weight-bold" style="line-height: 1.3;font-size:1.7rem">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, dolores nulla adipisci laborum iusto voluptatum ea voluptatem itaque architecto rerum praesentium eum dolorem enim sequi suscipit aliquam consectetur magni similique?
                 </p>
             </div>
@@ -82,13 +82,38 @@
                                 </a>
                             </div>
                         </div>
+                        <a href="javascript:void(0)">
+                            <div class="col-12 px-0 mt-2" style="background: url({{asset('front-assets/img/whatsapp-full.jpg')}});height:94px;background-size:cover;width:100%;">
+                                <div class="d-flex align-items-center">
+                                    <div class="col-2"></div>
+                                    <div class="col-10 mt-3">
+                                        <p class="text-light">अपने वॉट्स्ऐप मेसेंजर पर ताज़ा खबरे पाने के लिए सब्सक्राईब करे</p>
+                                        <h4 class="text-light">Subscribe To Get The Latest News On Your WhatsApp Messenger</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-md-4 col-12 px-0">
                         <div class="bg-primary-clr mt-md-0 mt-1 container-fluid d-flex align-items-center justify-content-between py-2">
                             <h3 class="m-0 mx-auto text-white">स्टोरी हाईलाइट </h3>
                         </div>
                         <div style="background-color:#333;">
-                            <div class="border-bottom border-secondary mt-1">
+                            <div class="border-bottom border-secondary">
+                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
+                                    <a href="#" class="post-title">
+                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="border-bottom border-secondary">
+                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
+                                    <a href="#" class="post-title">
+                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="border-bottom border-secondary">
                                 <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
                                     <a href="#" class="post-title">
                                         <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
@@ -139,25 +164,13 @@
                 <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
             </section>
             <!-- Ad Banner  -->
-            <div class="container-fluid mt-1 px-0">
-                <p class=" text-dark single-para text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quis optio illo eius molestiae praesentium consequatur voluptas neque nulla laudantium facilis repellendus veniam dolores, aliquid unde voluptates deserunt quo. Cumque?</p>
-                <p class=" text-dark single-para text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolore assumenda, atque nisi sit temporibus, optio ipsum officia perferendis quisquam iure ea ex consequatur tempore ratione explicabo alias. Non, dolorum cumque nemo, facilis ratione facere aut vero illo unde consequatur eius velit qui. Quas repudiandae odio reprehenderit aut, aliquam nam.</p>
-            </div>
-            <div class="container-fluid mt-1 px-0">
-                <p class=" text-dark single-para text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem, amet? Magnam animi veniam ad non nesciunt atque excepturi eveniet quasi illo. Inventore odio ratione recusandae quidem aliquid sunt nihil. Reiciendis, fugiat at nostrum repellendus numquam blanditiis neque ipsam sit! Eos.</p>
-                <h3 class="px-2 d-md-block d-xl-none  mt-3" style="border-left: 5px solid var(--primary);font-size:20px;color:var(--primary);">This Is Heading</h3>
-                <ul style="font-size:16px; font-weight:bold; padding:5px;margin:0;">
-                    <a href="javascript:void(0)" class="text-dark">
-                        <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    </a>
-                    <a href="javascript:void(0)" class="text-dark">
-                        <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    </a>
-                    <a href="javascript:void(0)" class="text-dark">
-                        <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    </a>
-                </ul>
-                <h4 class="px-2 text-dark single-para mt-2 " style="border-left: 5px solid var(--primary);">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam facere fugiat tempore incidunt, nulla unde amet deleniti ea? Magnam, ad.</h4>
+            <div class="container-fluid mt-3 px-1">
+                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quis optio illo eius molestiae praesentium consequatur voluptas neque nulla laudantium facilis repellendus veniam dolores, aliquid unde voluptates deserunt quo. Cumque?</p>
+                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quis optio illo eius molestiae praesentium consequatur voluptas neque nulla laudantium facilis repellendus veniam dolores, aliquid unde voluptates deserunt quo. Cumque?</p>
+                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quis optio illo eius molestiae praesentium consequatur voluptas neque nulla laudantium facilis repellendus veniam dolores, aliquid unde voluptates deserunt quo. Cumque?</p>
+                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolore assumenda, atque nisi sit temporibus, optio ipsum officia perferendis quisquam iure ea ex consequatur tempore ratione explicabo alias. Non, dolorum cumque nemo, facilis ratione facere aut vero illo unde consequatur eius velit qui. Quas repudiandae odio reprehenderit aut, aliquam nam.</p>
+                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolore assumenda, atque nisi sit temporibus, optio ipsum officia perferendis quisquam iure ea ex consequatur tempore ratione explicabo alias. Non, dolorum cumque nemo, facilis ratione facere aut vero illo unde consequatur eius velit qui. Quas repudiandae odio reprehenderit aut, aliquam nam.</p>
+                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolore assumenda, atque nisi sit temporibus, optio ipsum officia perferendis quisquam iure ea ex consequatur tempore ratione explicabo alias. Non, dolorum cumque nemo, facilis ratione facere aut vero illo unde consequatur eius velit qui. Quas repudiandae odio reprehenderit aut, aliquam nam.</p>
             </div>
             <!-- Ad Banner  -->
             <section class="container-fluid mx-auto mt-1 px-0 text-center">
@@ -254,15 +267,6 @@
                         <div class="col-md-2 col-6">
                             <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="">
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid p-1 mt-1" style="background-color: var(--secondary);">
-                <div class="d-flex justify-content-around align-items-center flex-wrap p-2">
-                    <h3 class="col-md-7 col-12 text-white font-weight-normal">Get Newsletter on your Device</h3>
-                    <div class="col-md-5 col-12 text-center" style="font-size: 20px;">
-                        <input type="text" name="" id="" class="m-0 w-100" placeholder="E-mail ID">
-                        <button class="btn btn-block btn-danger subscribe-btn">SUBSCRIBE</button>
                     </div>
                 </div>
             </div>
@@ -476,7 +480,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex mt-1 align-items-center px-3 justify-content-between bg-dark nav-height">
+            <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
                 <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 class="text-white mr-2">Rajasthan</h4>
                 <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                     <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
@@ -565,14 +569,91 @@
                             </h6>
                         </a>
                     </div>
+                    <div class="col px-2 px-md-2 my-1">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-2 my-1">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-2 my-1">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-2 my-1">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-2 my-2">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-2 my-2">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-2 my-2">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col px-2 px-md-2 my-2">
+                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
+                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                            </div>
+                            <h6 class="col-7 single-para">
+                                Lorem ipsum dolor sit amet consectetur.
+                            </h6>
+                        </a>
+                    </div>
                 </div>
             </section>
         </div>
         <aside class="col-md-3 col-12 mt-1 my-md-0 px-1">
-            <div class="col-12 p-0">
-                <img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
-            </div>
-            <div class="d-flex bg-dark align-items-center justify-content-center mt-1 py-2">
+            <div class="d-flex bg-dark align-items-center justify-content-center py-2">
                 <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
             </div>
             <div class="col-12 px-0">
@@ -607,6 +688,26 @@
                         </div>
                         <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
                     </form>
+                </div>
+            </div>
+            <div class="col-12 p-0 mt-1 ">
+                <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
+                <div class="single-item">
+                    <div class="holder">
+                        <div class="box">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/pepsi-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="holder">
+                        <div class="box">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="holder">
+                        <div class="box">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-12 mt-1 p-0">
@@ -849,7 +950,7 @@
                     </div>
                     <div class="holder">
                         <div class="box mt-1" style="height:250px;">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class="w-100" alt="">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
                             <div class="img-title"><a href="javascript:void(0)">
@@ -862,7 +963,7 @@
                     </div>
                     <div class="holder">
                         <div class="box mt-1" style="height:250px;">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
                                 <div class="content-overlay"></div>
                             </a>
                             <div class="img-title"><a href="javascript:void(0)">
@@ -873,6 +974,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-12 p-0 mt-1 ">
+                <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
+                <div class="p-0">
+                    <a href="javascript:void(0)"><img src="http://127.0.0.1:8000/front-assets/img/square-ad.png" class=" w-100 p-0" style="height:250px;" alt=""></a>
                 </div>
             </div>
         </aside>
