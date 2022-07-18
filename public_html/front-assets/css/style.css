@@ -498,7 +498,7 @@ a:focus {
 
 nav > ul > li {
     display: inline-block;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     letter-spacing: 1px;
     font-weight: 600;
     padding: 0 0px;
@@ -570,7 +570,6 @@ nav > ul > li > a.active {
 
 .mega-menu ul {
     float: left;
-    width: 20%;
 }
 
 .mega-menu ul:last-child {
@@ -663,7 +662,7 @@ nav > ul > li > a.active {
     color: var(--text-color-dark);
     border-radius: 2px;
     transition: all 200ms linear;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 600;
 }
 
@@ -963,6 +962,7 @@ div.scrollmenu {
 .img-title p {
     font-size: 1.4rem;
     line-height: 1.5rem;
+    font-weight: 600;
 }
 
 /* ================Post Data style 2 ========== */

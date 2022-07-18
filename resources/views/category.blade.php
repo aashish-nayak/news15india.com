@@ -4,9 +4,9 @@
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
         <div class="col-md-9 col-12 px-0 pr-md-1">
-            <div class="container-fluid px-1 py-5 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
+            <div class="container-fluid px-1 py-4 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
                 <div class="row justify-content-between align-items-center m-0">
-                    <div class="col-12 col-md-10">
+                    <div class="col-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 py-0" style="background-color:transparent;font-size:17px">
                                 <li class="breadcrumb-item"><a class="text-white" href="javascript:void(0)">Hindi News</a></li>
@@ -15,11 +15,9 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12">
                         <h1 class="text-white px-2">Category Name</h1>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <ul class="d-flex list-unstyled float-right m-0">
+                        <ul class="d-flex list-unstyled m-0 ml-2">
                             <li><a href="javascript:void(0)" class="text-white" style="font-size:22px"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="javascript:void(0)" class="mx-5 text-white" style="font-size:22px"><i class="fab fa-whatsapp"></i></a></li>
                             <li><a href="javascript:void(0)" class="text-white" style="font-size:22px"><i class="fab fa-twitter"></i></a></li>

@@ -250,32 +250,19 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-12 px-0 mx-auto">
-                            <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100 img-fluid" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col p-1">
-                    <div style="border:1px solid var(--primary);" class="p-md-4 p-2 d-flex justify-content-between flex-wrap align-items-center">
-                        <div class="col-md-8 col-12">
-                            <h5 class="text-danger">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, asperiores.</h5>
-                        </div>
-                        <div class="col-md-2 col-6">
-                            <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-2 col-6">
-                            <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="">
+                            <div class="row align-items-center">
+                                <a class="col-12 col-md-6 mt-4" href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="">
+                                </a>
+                                <a class="col-12 col-md-6 mt-4" href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Ad Banner  -->
-            <section class="container-fluid mx-auto mt-1 px-0 text-center">
-                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
-            </section>
-            <!-- Ad Banner  -->
-            <div class="main-bg-clr container-fluid px-1 mt-2">
+            <div class="main-bg-clr container-fluid px-1 mt-3">
                 <div class="container-fluid mb-1 px-1 d-flex align-items-center justify-content-between nav-height" style="color: var(--text-color-light-hover);">
                     <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight: bold;">Rajasthan</h4>
                     <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
@@ -487,7 +474,7 @@
                 </div>
                 <a href="javascript:void(0)" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
             </div>
-            <section class="container-fluid mx-auto py-3" style="background-color:#FE9517;">
+            <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
                 <div class="row row-cols-md-4 row-cols-1">
                     <div class="col px-2 px-md-2 my-1">
                         <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
@@ -609,46 +596,6 @@
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-2 px-md-2 my-2">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-2">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-2">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-2">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
                 </div>
             </section>
         </div>
@@ -729,6 +676,13 @@
                         Some representati. Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Laborum, nemo.
                     </p>
+                </div>
+                <div class="style-2 border-top d-flex align-items-center px-1">
+                    <div class="post-data mt-1">
+                        <a href="javascript:void(0)" class="post-title">
+                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
+                        </a>
+                    </div>
                 </div>
                 <div class="style-2 border-top d-flex align-items-center px-1">
                     <div class="post-data mt-1">
@@ -974,12 +928,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-12 p-0 mt-1 ">
-                <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
-                <div class="p-0">
-                    <a href="javascript:void(0)"><img src="http://127.0.0.1:8000/front-assets/img/square-ad.png" class=" w-100 p-0" style="height:250px;" alt=""></a>
                 </div>
             </div>
         </aside>

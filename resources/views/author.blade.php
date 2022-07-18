@@ -430,13 +430,16 @@
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <div class="col-md-6 col-12 px-4 my-3 author-des">
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:8px;"><i class="mr-md-3 mr-2 fas fa-user"></i> Abdul Malik</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class="mr-md-3 mr-2 fas fa-user"></i> Abdul Malik</p>
                                 </a>
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:8px;"><i class=" mr-2 mr-md-3 fas fa-envelope"></i>info@news15indi.com</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class=" mr-2 mr-md-3 fas fa-envelope"></i>info@news15indi.com</p>
                                 </a>
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:8px;"><i class=" mr-2 mr-md-3 far fa-user-crown"></i>Editor in chief</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class=" mr-2 mr-md-3 far fa-user-crown"></i>Editor in chief</p>
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class=" mr-2 mr-md-3 far fa-map-marker"></i>Location</p>
                                 </a>
                             </div>
                             <div class="col-md-6 col-12">
@@ -445,9 +448,9 @@
                                     <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-twitter"></a>
                                     <a target="_blank" href="javascript:void(0)" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-whatsapp"></a>
                                 </div>
-                                <div class="col-md-12 pt-2 text-center">
-                                    <p class="mb-2" style="font-size:1.2rem;">Lorem ipsum dolor sit amet.</p>
-                                    <a href="javascript:void(0)" style="font-size:1.4rem;" class="d-block btn-primary-3d font-weight-bold">Follow</a>
+                                <div class="col-md-12 mt-3 text-center">
+                                    <p class="mb-0 font-weight-bold" style="font-size:1.3rem;">Lorem ipsum dolor sit amet.</p>
+                                    <a href="javascript:void(0)" style="font-size:1.4rem;" class="d-block btn btn-primary font-weight-bold mt-1">Follow</a>
                                 </div>
                             </div>
                         </div>

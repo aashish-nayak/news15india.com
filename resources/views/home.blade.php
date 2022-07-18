@@ -1145,48 +1145,48 @@
                 </div>
                 <div class="col-md-12 px-0">
                     <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title ">
+                        <div class="post-data mt-3">
+                            <a href="javascript:void(0)" class="post-title ">
                                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
                                     corrupti consectetur quos.</h5>
                             </a>
                         </div>
                     </div>
                     <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title ">
+                        <div class="post-data mt-3">
+                            <a href="javascript:void(0)" class="post-title ">
                                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
                                     corrupti consectetur quos.</h5>
                             </a>
                         </div>
                     </div>
                     <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title  ">
+                        <div class="post-data mt-3">
+                            <a href="javascript:void(0)" class="post-title  ">
                                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
                                     corrupti consectetur quos.</h5>
                             </a>
                         </div>
                     </div>
                     <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title  ">
+                        <div class="post-data mt-3">
+                            <a href="javascript:void(0)" class="post-title  ">
                                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
                                     corrupti consectetur quos.</h5>
                             </a>
                         </div>
                     </div>
                     <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title  ">
+                        <div class="post-data mt-3">
+                            <a href="javascript:void(0)" class="post-title  ">
                                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
                                     corrupti consectetur quos.</h5>
                             </a>
                         </div>
                     </div>
                     <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="#" class="post-title  ">
+                        <div class="post-data mt-3">
+                            <a href="javascript:void(0)" class="post-title  ">
                                 <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
                                     corrupti consectetur quos.</h5>
                             </a>

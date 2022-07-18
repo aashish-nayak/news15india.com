@@ -87,7 +87,7 @@
                             </li>
                             <!-- Desktop Mega Menu  -->
                             <li class="droppable">
-                                <a href="javascript:void(0)" class="nav-link">Mega Menu One<span class="fas fa-angle-down"></span></a>
+                                <a href="javascript:void(0)" class="nav-link">Mega Menu One <span class="fas fa-angle-down"></span></a>
                                 <div class="mega-menu mx-auto">
                                     <div class="cf d-flex justify-content-between p-3">
                                         <ul class="ul-reset">
@@ -349,7 +349,7 @@
     </div>
     <!-- Mobile Breaking News Marquee End  -->
     <!-- Desktop Breaking News Marquee  -->
-    <div class="container-fluid mx-auto my-2 px-0">
+    <div class="container mx-auto my-2 px-0">
         <div class="alert alert-dismissible m-0 py-1 px-1 text-center fade show border rounded-pill d-md-block d-none bg-primary-clr" role="alert">
             <div class="news-alert d-flex justify-content-start align-items-center m-md-0">
                 <div class="ml-4">
