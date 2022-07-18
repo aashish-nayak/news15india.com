@@ -86,9 +86,9 @@
                             <div class="col-12 px-0 mt-2" style="background: url({{asset('front-assets/img/whatsapp-full.jpg')}});height:94px;background-size:cover;width:100%;">
                                 <div class="d-flex align-items-center">
                                     <div class="col-2"></div>
-                                    <div class="col-10 mt-3">
-                                        <p class="text-light">अपने वॉट्स्ऐप मेसेंजर पर ताज़ा खबरे पाने के लिए सब्सक्राईब करे</p>
-                                        <h4 class="text-light">Subscribe To Get The Latest News On Your WhatsApp Messenger</h4>
+                                    <div class="col-10 mt-5">
+                                        <h4 class="text-light">अपने वॉट्स्ऐप मेसेंजर पर ताज़ा खबरे पाने के लिए सब्सक्राईब करे</>
+                                        <h5 class="text-light">Subscribe To Get The Latest News On Your WhatsApp Messenger</h5>
                                     </div>
                                 </div>
                             </div>
