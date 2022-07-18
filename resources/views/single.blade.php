@@ -250,11 +250,12 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-12 px-0 mx-auto">
+                            <p class="mb-2 font-weight-bold text-center" style="color: black;font-size:1.7rem">Download App</p>
                             <div class="row align-items-center">
-                                <a class="col-12 col-md-6 mt-4" href="javascript:void(0)">
+                                <a class="col-12 col-md-6" href="javascript:void(0)">
                                     <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="">
                                 </a>
-                                <a class="col-12 col-md-6 mt-4" href="javascript:void(0)">
+                                <a class="col-12 col-md-6" href="javascript:void(0)">
                                     <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="">
                                 </a>
                             </div>

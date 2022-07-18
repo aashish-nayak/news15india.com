@@ -450,7 +450,7 @@
                                 </div>
                                 <div class="col-md-12 mt-3 text-center">
                                     <p class="mb-0 font-weight-bold" style="font-size:1.3rem;">Lorem ipsum dolor sit amet.</p>
-                                    <a href="javascript:void(0)" style="font-size:1.4rem;" class="d-block btn btn-primary font-weight-bold mt-1">Follow</a>
+                                    <a href="javascript:void(0)" style="font-size:1.4rem;" class="btn btn-primary font-weight-bold mt-1">Follow</a>
                                 </div>
                             </div>
                         </div>
