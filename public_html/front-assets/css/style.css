@@ -548,9 +548,9 @@ nav > ul > li > a.active {
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    width: 100%;
     left: 0;
     top: 120%;
+    right : 0;
     background-color: #fff;
     z-index: 200;
     box-shadow: 0 1px 4px rgb(0 0 0 / 15%);
@@ -576,7 +576,7 @@ nav > ul > li > a.active {
     margin-right: 0;
 }
 
-.mega-menu a {
+.mega-menu li a {
     color: var(--text-color-dark);
     transition: all 200ms linear;
     display: block;
@@ -662,7 +662,7 @@ nav > ul > li > a.active {
     color: var(--text-color-dark);
     border-radius: 2px;
     transition: all 200ms linear;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 600;
 }
 
@@ -2398,3 +2398,78 @@ footer.nb-footer .copyright p {
     box-shadow: none;
     outline: none;
 }
+
+button.nav-link{
+    outline: none;
+    border: none;
+}
+
+.dropdown-menu a,.mega-menu a{
+    text-transform: capitalize;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: var(--primary);
+}
+
+.mega-menu-tabs::-webkit-scrollbar {
+    width: 5px;
+    margin: 0px 1px;
+    background: #3a3a3a44;
+}
+.mega-menu-tabs::-webkit-scrollbar-thumb {
+    background: var(--primary);
+}
+
+button.back-to-top{
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff;
+      height: 0px;
+    width: 0px;
+    overflow: hidden;
+      border-radius: 50px;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+    color: transparent;
+      clear: both;
+    visibility: hidden;
+    position: fixed;
+    cursor: pointer;
+    display: block;
+    border: none;
+    right: 50px;
+      bottom: 75px;
+    font-size: 0px;
+    outline: 0 !important;
+    z-index: 99;
+    transition: all .3s ease-in-out;
+  }
+  button.back-to-top:hover,
+  button.back-to-top:active,
+  button.back-to-top:focus{
+    outline: 0 !important;
+  }
+  button.back-to-top::before {
+    vertical-align: middle;
+    margin: -5px 0 auto;
+  }
+  button.back-to-top.show {
+    display: block;
+    background: var(--primary);
+    color: #fff;
+    font-size: 25px;
+    right: 25px;
+      bottom: 50px;
+    height: 50px;
+    width: 50px;
+    visibility: visible;
+      box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  }
+  button.back-to-top.show:active {
+    box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
+  }
