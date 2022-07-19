@@ -570,7 +570,7 @@
                 </nav>
             </div>
             <!-- Ad Banner  -->
-            <section class="container-fluid mx-auto mt-3 px-0 text-center">
+            <section class="container-fluid mx-auto mt-3 mb-2 mb-md-0 px-0 text-center">
                 <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
             </section>
             <!-- Ad Banner  -->
