@@ -1957,7 +1957,7 @@
                 </div>
             </aside>
             <section class="container-fluid mx-auto mt-2 mt-md-0 px-1">
-                <div class="row row-cols-1 row-cols-md-4">
+                <div class="row row-cols-1 row-cols-md-4 mx-0">
                     <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
@@ -1967,8 +1967,7 @@
                                         <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
                                     </div>
                                     <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h6>
                                     </div>
                                 </div>
                             </a>

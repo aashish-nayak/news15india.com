@@ -56,8 +56,9 @@
             <div class="row align-items-center">
                 <div class="col-md-2-custom col-12 px-md-1 pt-0 d-flex justify-content-between justify-content-md-start mobile-toggle mobile-height-black align-items-center">
                     <div class="col-md-12 col-6 px-0">
-                        <a href="{{ url('/') }}">
-                            <div class="navbar-brand p-0">
+                        <span class="text-light mt-1" onclick="openNav()">&#9776;</span>
+                        <a href="{{ url('/') }}" class="m-0">
+                            <div class="navbar-brand p-0 m-0">
                                 <img src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid"
                                     style="margin-top:-11px;" alt="logo">
                             </div>
@@ -1365,6 +1366,20 @@
                     <!-- <p class="m-0 footer-text">Part Of Mahira News Network Private Limited</p> -->
                     <h6 class="m-0">Part Of Mahira News Network Private Limited</h6>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div id="mySidenav" class="sidenav mx-auto">
+        <div class="container">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Close &times;</a>
+            <a class="navbar-brand" href=""><img src="img/logo.png" class="img-fluid" alt="" style="height: 40px;"></a>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1">
+                    
+                </div>
+                <div class="col-11"></div>
             </div>
         </div>
     </div>
