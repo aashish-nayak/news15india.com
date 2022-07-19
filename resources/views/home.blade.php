@@ -1216,8 +1216,8 @@
                     </select>
                     <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
                 </div>
-                <div class="row row-cols-1 row-cols-md-4">
-                    <div class="col mb-2">
+                <div class="row row-cols-1 row-cols-md-4 mx-0">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1233,7 +1233,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1249,7 +1249,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1265,7 +1265,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1281,7 +1281,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1297,7 +1297,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1313,7 +1313,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1329,7 +1329,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1345,7 +1345,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1361,7 +1361,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1377,7 +1377,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1393,7 +1393,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">

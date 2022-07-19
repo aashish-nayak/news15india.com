@@ -4,7 +4,7 @@
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
         <div class="col-md-9 col-12 px-0 pr-md-1">
-            <div class="container-fluid px-1 py-4 mx-1" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
+            <div class="container-fluid px-1 py-4" style="background:linear-gradient(to right, var(--primary) 0%,#f2c75d 100%)">
                 <div class="row justify-content-between align-items-center m-0">
                     <div class="col-12">
                         <nav aria-label="breadcrumb">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid px-0 mx-1">
+            <div class="container-fluid px-0">
                 <img class="img-fluid w-100" style="height: 130px;object-fit: cover; margin: 3px 0px;" src="{{asset('front-assets/img/8x1ad.png')}}" alt="">
             </div>
             <div class="container-fluid mx-auto">

@@ -250,13 +250,13 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-12 px-0 mx-auto">
-                            <p class="mb-2 font-weight-bold text-center" style="color: black;font-size:1.7rem">Download App</p>
-                            <div class="row align-items-center">
-                                <a class="col-12 col-md-6" href="javascript:void(0)">
-                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="">
+                            <p class="my-3 my-md-1 font-weight-bold text-center" style="color: black;font-size:2rem">Download App</p>
+                            <div class="row align-items-center m-0">
+                                <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="" style="max-height:80px">
                                 </a>
-                                <a class="col-12 col-md-6" href="javascript:void(0)">
-                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="">
+                                <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="" style="max-height:80px">
                                 </a>
                             </div>
                         </div>
