@@ -24,10 +24,10 @@
             </div>
             <div class="container-fluid mx-auto py-2" style="border-bottom: 2px dotted gray;">
                 <div class="row justify-content-center align-items-center">
-                    <div class="col-md-1 col-2 pr-2 px-1">
+                    <div class="col-md-1 col-3">
                         <img src="{{asset('front-assets/img/user.png')}}" style="height:70px;width:auto;" class="rounded-circle bg-primary" alt="">
                     </div>
-                    <div class="col-md-4 col-10 pl-3 px-1">
+                    <div class="col-md-4 col-9 pl-3 px-1">
                         <div class="col-12" style="font-size: 16px; font-weight:500;">
                             <span>By</span> <a href="javascript:void(0)"><span><strong>Abdul Malik</strong></span></a>
                         </div>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-6 font-size-sm">
-                        <p class="m-0"><span>View <i class="fa fa-eye px-2"></i></span><span>890 / 2k / 2.5k</span> </p>
+                        <p class="m-0"><i class="fa fa-eye px-2"></i> <span>2.5k</span> <span>Views</span></p>
                     </div>
                     <div class="col-md-4 col-6 font-size-sm">
                         <div class="row">
@@ -84,9 +84,9 @@
                         </div>
                         <a href="javascript:void(0)">
                             <div class="col-12 px-0 mt-2" style="background: url({{asset('front-assets/img/whatsapp-full.jpg')}});height:94px;background-size:cover;width:100%;">
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <div class="col-2"></div>
-                                    <div class="col-10 mt-5">
+                                    <div class="col-md-10 col-9 mt-md-5 mt-2">
                                         <h4 class="text-light">अपने वॉट्स्ऐप मेसेंजर पर ताज़ा खबरे पाने के लिए सब्सक्राईब करे</>
                                         <h5 class="text-light">Subscribe To Get The Latest News On Your WhatsApp Messenger</h5>
                                     </div>
@@ -250,13 +250,13 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-12 px-0 mx-auto">
-                            <p class="mb-2 font-weight-bold text-center" style="color: black;font-size:1.7rem">Download App</p>
-                            <div class="row align-items-center">
-                                <a class="col-12 col-md-6" href="javascript:void(0)">
-                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="">
+                            <p class="my-3 my-md-1 font-weight-bold text-center" style="color: black;font-size:2rem">Download App</p>
+                            <div class="row align-items-center m-0">
+                                <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="" style="max-height:80px">
                                 </a>
-                                <a class="col-12 col-md-6" href="javascript:void(0)">
-                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="">
+                                <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="" style="max-height:80px">
                                 </a>
                             </div>
                         </div>

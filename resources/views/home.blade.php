@@ -1216,8 +1216,8 @@
                     </select>
                     <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
                 </div>
-                <div class="row row-cols-1 row-cols-md-4">
-                    <div class="col mb-2">
+                <div class="row row-cols-1 row-cols-md-4 mx-0">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1233,7 +1233,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1249,7 +1249,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1265,7 +1265,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1281,7 +1281,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1297,7 +1297,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1313,7 +1313,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1329,7 +1329,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1345,7 +1345,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1361,7 +1361,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1377,7 +1377,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1393,7 +1393,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0"
                             style="border-left:2px solid var(--primary);">
                             <a href="javascript:void(0)">
@@ -1502,8 +1502,7 @@
                     <section class="col-12 mx-auto mt-1">
                         <div class="row row-cols-1 row-cols-md-3">
                             <div class="col px-1">
-                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3"
-                                    style="border-left:3px solid var(--primary);">
+                                <div class="card border-bottom-0 border-right-0 border-top-0 mb-3" style="border-left:3px solid var(--primary);">
                                     <a href="javascript:void(0)">
                                         <div class="card-horizontal">
                                             <div class="img-square-wrapper col-4 col-md-4 p-0">
@@ -1664,7 +1663,7 @@
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 p-0 pl-1">
+                            <h6 class="col-8 d-flex align-items-center px-1">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit
                             </h6>
                             <div class="col-4 p-0 mb-1">
@@ -1675,7 +1674,7 @@
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 p-0 pl-1">
+                            <h6 class="col-8 d-flex align-items-center px-1">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit
                             </h6>
                             <div class="col-4 p-0 mb-1">
@@ -1686,7 +1685,7 @@
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 p-0 pl-1">
+                            <h6 class="col-8 d-flex align-items-center px-1">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit
                             </h6>
                             <div class="col-4 p-0 mb-1">
@@ -1697,7 +1696,7 @@
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 p-0 pl-1">
+                            <h6 class="col-8 d-flex align-items-center px-1">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit
                             </h6>
                             <div class="col-4 p-0 mb-1">
@@ -1708,7 +1707,7 @@
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 p-0 pl-1">
+                            <h6 class="col-8 d-flex align-items-center px-1">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit
                             </h6>
                             <div class="col-4 p-0 mb-1">
@@ -1719,7 +1718,7 @@
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 p-0 pl-1">
+                            <h6 class="col-8 d-flex align-items-center px-1">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit
                             </h6>
                             <div class="col-4 p-0 mb-1">
@@ -1730,7 +1729,7 @@
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 p-0 pl-1">
+                            <h6 class="col-8 d-flex align-items-center px-1">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit
                             </h6>
                             <div class="col-4 p-0 mb-1">
@@ -1957,8 +1956,8 @@
                     </div>
                 </div>
             </aside>
-            <section class="container-fluid mx-auto">
-                <div class="row row-cols-md-4">
+            <section class="container-fluid mx-auto mt-2 mt-md-0 px-1">
+                <div class="row row-cols-1 row-cols-md-4 mx-0">
                     <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
@@ -1968,8 +1967,7 @@
                                         <img class="" src="{{asset('front-assets/img/breaking-news.png')}}" alt="Card image cap">
                                     </div>
                                     <div class="card-body col-8 col-md-8 p-0 pl-1">
-                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </h6>
+                                        <h6 class="card-text p-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h6>
                                     </div>
                                 </div>
                             </a>
