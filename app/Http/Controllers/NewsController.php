@@ -23,7 +23,7 @@ class NewsController extends Controller
     public function index()
     {   $media = Media::latest()->paginate(12);
         $tags = Tag::where('status',1)->get();
-        $categories = Category::with('children')->where('parent_id', 0)->where('status',1)->get();
+        $categories = Category::with('children')->where('parent_id', NULL)->where('status',1)->get();
         return view('backpanel.news.add-news',compact('categories','tags','media'));
     }
 
@@ -153,7 +153,7 @@ class NewsController extends Controller
     {   
         $media = Media::latest()->paginate(12);
         $tags = Tag::where('status',1)->get();
-        $categories = Category::with('children')->where('parent_id', 0)->where('status',1)->get();
+        $categories = Category::with('children')->where('parent_id', NULL)->where('status',1)->get();
         $page = News::find($id);
         return view('backpanel.news.add-news',compact('categories','tags','page','media'));
     }
