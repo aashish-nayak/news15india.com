@@ -300,8 +300,8 @@
                     </div>
                     <div class="card-body">
                         <select class="form-select" required name="is_published" aria-label="Default select example">
-                            <option @if (isset($page) && $page->status == 1) selected @endif value="1">Published</option>
-                            <option @if (isset($page) && $page->status == 0) selected @endif  @if (!isset($page)) selected @endif value="0">Draft</option>
+                            <option @if (isset($page) && $page->status == 1) selected @endif @if (!isset($page)) selected @endif value="1">Published</option>
+                            <option @if (isset($page) && $page->status == 0) selected @endif value="0">Draft</option>
                         </select>
                         @error('is_published')
                             <span class="text-danger">{{ $message }}</span>
@@ -359,12 +359,12 @@
                 </div>
                 <div class="card mt-3 col-12">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Tags <span class="text-danger">*</span></h6>
+                        <h6 class="header-title m-0" style="font-weight: 600">Tags <span class="text-danger"></span></h6>
                     </div>
                     <div class="card-body">
                         <div class="mb-3 col-12">
                             <label class="form-label">Select Tags</label>
-                            <select class="multiple-select" required name="tags[]" data-placeholder="Choose anything" multiple="multiple">
+                            <select class="multiple-select" name="tags[]" data-placeholder="Choose anything" multiple="multiple">
                                 @foreach ($tags as $tag)
                                     <option @if(isset($page) && in_array($tag->id, $page->tags->pluck('id')->toArray())) selected @endif value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach

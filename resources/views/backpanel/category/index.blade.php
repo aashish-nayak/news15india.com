@@ -194,14 +194,6 @@
                                     <input class="form-control form-control-sm" required type="number" value="" name="cat_order"
                                         id="catorder">
                                 </div>
-                                <div class="form-group">
-                                    <input type="checkbox" class="loc" name="location[]" value="navbar" id="checkbox1">
-                                    <label for="checkbox1">Navbar</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" class="loc" name="location[]" value="sidebar" id="checkbox2">
-                                    <label for="checkbox2">Sidebar</label>
-                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="dangerprofile" role="tabpanel">
@@ -242,7 +234,7 @@
         <div class="card radius-10 w-100">
             <div class="card-body">
                 <div class="">
-                    <table id="categories" class="table table-striped table-bordered align-middle border table-hover">
+                    <table id="categories" class="w-100 table table-striped table-bordered align-middle border table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -332,15 +324,6 @@
     $(document).ready(function() {
         loadselect();
         loadtag();
-        $('#submit').click(function() {
-            checked = $("input[type=checkbox]:checked").length;
-
-            if(!checked) {
-                alert("You must check at least one checkbox.");
-                return false;
-            }
-
-        });
         $('#categories').DataTable({
             processing: true,
             serverSide: true,
@@ -436,10 +419,6 @@
                     $("#catorder").val(data.cat_order);
                     $(".status-input").prop('checked', false);
                     $(".status-input[value='" + data.status + "']").prop('checked', true);
-                    let locarr = data.location.split(',');
-                    $(".loc").prop('checked', false);
-                    $(".loc[value='" + locarr[0] + "']").prop('checked', true);
-                    $(".loc[value='" + locarr[1] + "']").prop('checked', true);
                     let preview = '';
                     if(data.editImg != null){
                         preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;

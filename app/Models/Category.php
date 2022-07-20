@@ -13,7 +13,6 @@ class Category extends Model
         'cat_name',
         'slug',
         'cat_order',
-        'location',
         'cat_img',
         'meta_title',
         'meta_keywords',

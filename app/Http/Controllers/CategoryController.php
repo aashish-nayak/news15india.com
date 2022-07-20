@@ -69,7 +69,6 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $request['location'] = implode(",", $request->location);
         if ($request['parent_id'] == '0') {
             $request['parent_id'] = NULL;
         }
