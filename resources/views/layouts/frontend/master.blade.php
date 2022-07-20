@@ -183,7 +183,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -197,7 +197,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -205,7 +205,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -213,7 +213,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -221,7 +221,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -237,7 +237,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -251,7 +251,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -259,7 +259,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -267,7 +267,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -275,7 +275,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -291,7 +291,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -305,7 +305,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -313,7 +313,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -321,7 +321,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -329,7 +329,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -345,7 +345,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -359,7 +359,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -367,7 +367,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -375,7 +375,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -383,7 +383,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -399,7 +399,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -413,7 +413,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -421,7 +421,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -429,7 +429,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -437,7 +437,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -453,7 +453,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -467,7 +467,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -475,7 +475,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -483,7 +483,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -491,7 +491,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -507,7 +507,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -521,7 +521,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -529,7 +529,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -537,7 +537,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -545,7 +545,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -561,7 +561,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -575,7 +575,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -583,7 +583,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -591,7 +591,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -599,7 +599,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -615,7 +615,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -629,7 +629,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -637,7 +637,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -645,7 +645,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -653,7 +653,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -669,7 +669,7 @@
                                                             <div class="row justify-content-center align-items-center">
                                                                 <div class="col-md-7">
                                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                                             Natus doloremque dolorum laborum voluptate.
@@ -683,7 +683,7 @@
                                                                     <div class="row row-cols-2 p-0">
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -691,7 +691,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -699,7 +699,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -707,7 +707,7 @@
                                                                         </div>
                                                                         <div class="col mb-2 px-2">
                                                                             <div class="card card-shadow">
-                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                                 </div>
@@ -732,7 +732,7 @@
                                             <div class="row justify-content-center">
                                                 <div class="col-5">
                                                     <a href="javascript:void(0)" class="text-decoration-none">
-                                                        <img src="http://127.0.0.1:8000/front-assets/img/landscape.jpg" class="img-fluid" alt="">
+                                                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
                                                         <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                             Natus doloremque dolorum laborum voluptate.
@@ -746,7 +746,7 @@
                                                     <div class="row row-cols-4 mx-0">
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -754,7 +754,7 @@
                                                         </div>
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -762,7 +762,7 @@
                                                         </div>
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -770,7 +770,7 @@
                                                         </div>
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -778,7 +778,7 @@
                                                         </div>
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -786,7 +786,7 @@
                                                         </div>
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -794,7 +794,7 @@
                                                         </div>
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -802,7 +802,7 @@
                                                         </div>
                                                         <div class="col mb-2 px-2">
                                                             <div class="card card-shadow">
-                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="http://127.0.0.1:8000/front-assets/img/square.jpg" class="card-img-top" alt="..."></a>
+                                                                <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
                                                                 <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
                                                                     <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
                                                                 </div>
@@ -910,7 +910,6 @@
                 </div>
                 <!-- Search Button End  -->
             </div>
-            <!-- Container End  -->
         </div>
     </header>
     <!-- Desktop Nav Bar End -->
@@ -1155,7 +1154,7 @@
             </div>
         </section>
     </footer>
-    <!-- Modal -->
+    <!-- Login Register Modal -->
     <div class="modal fade" style="font-size: 1.6rem;" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1369,6 +1368,7 @@
             </div>
         </div>
     </div>
+    <!-- Sidebar Nav  -->
     <div id="mySidenav" class="sidenav mx-auto">
         <div class="container">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Close &times;</a>
