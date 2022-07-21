@@ -29,7 +29,14 @@
                     </div>
                     <div class="col-md-4 col-9 pl-3 px-1">
                         <div class="col-12" style="font-size: 16px; font-weight:500;">
-                            <span>By</span> <a href="javascript:void(0)"><span><strong>Abdul Malik</strong></span></a>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span>By</span> <a href="javascript:void(0)"><span><strong>Abdul Malik</strong></span></a>
+                                </div>
+                                <div class="pr-3">
+                                    <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <p class="m-0"><span>Location,</span><span>Saturday 10 Apr 2021, 2:51PM</span></p>

@@ -1,10 +1,14 @@
 <header>
     <div class="topbar d-flex align-items-center">
         <nav class="navbar navbar-expand">
-            <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
-            </div>
+            <div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
             <div class="top-menu ms-auto">
                 <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" title="Go To Website" href="{{route('home')}}" target="_blank" role="button"> 
+                            <i class='bx bx-link-external me-1'></i> <span style="font-size:12px">View Website</span>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown dropdown-large">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
@@ -142,8 +146,8 @@
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('assets/images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">
-                        <p class="user-name mb-0">Pauline Seitz</p>
-                        <p class="designattion mb-0">Web Designer</p>
+                        <p class="user-name mb-0">NEWS15INDIA</p>
+                        <p class="designattion mb-0">Admin</p>
                     </div>
                 </a>
             </div>
