@@ -106,6 +106,7 @@ class NewsController extends Controller
             'slug' => 'required'.$valide_slug,
             'image' => 'required|integer',
             'is_published' => 'required',
+            'format' => 'required',
             'categories' => 'required|array',
             'short_desc' => 'max:5000',
             'page_order' => 'integer',
@@ -123,6 +124,9 @@ class NewsController extends Controller
         $news->is_verified = 0;
         $news->page_order = 0;
         $news->image = $request->image;
+        $news->format = $request->format;
+        $news->youtube_url = $request->youtube_url;
+        $news->is_featured = (isset($request->is_featured)) ? 1 : 0;
         $news->meta_title = $request->meta_title;
         $news->meta_keywords = $request->meta_keywords;
         $news->meta_description = $request->meta_description;
