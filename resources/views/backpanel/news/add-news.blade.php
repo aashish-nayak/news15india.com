@@ -207,10 +207,18 @@
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="validationCustom01" class="form-label"><b>Short Description</b> <span class="text-danger">*</span></label>
-                                <textarea name="short_desc" required placeholder="Short description" class="form-control" id="desc" rows="4">@if(isset($page)){{$page->short_description}}@else{{old('short_desc')}}@endif</textarea>
+                                <textarea name="short_desc" required placeholder="Short description" class="form-control" id="desc" rows="2">@if(isset($page)){{$page->short_description}}@else{{old('short_desc')}}@endif</textarea>
                                 @error('short_desc')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" style="width:2.3em;height:1.2em" type="checkbox" name="is_featured" id="flexSwitchCheckDefault" value="true" @if (isset($page) && $page->is_featured == 1) checked @endif>
+                                    <label class="form-check-label fw-bold" for="flexSwitchCheckDefault">Is featured?</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -224,6 +232,20 @@
                                 @enderror
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card mt-4 col-12">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="header-title m-0" style="font-weight: 600">Addition Information</h6>
+                    </div>
+                    <div class="card-body pt-3 pb-4">
+                        <div class="mb-3">
+                            <label class="form-label">Youtube Video URL</label>
+                            <input type="url" class="form-control" value="@isset($page){{$page->youtube_url}}@else{{old('youtube_url')}}@endisset" name="youtube_url" placeholder="Ex: https://www.youtube.com/watch?v=FN7ALfpGxiI">
+                        </div>
+                        @error('youtube_url')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div id="seo_wrap" class="card mt-4 col-12">
@@ -310,6 +332,24 @@
                 </div>
                 <div class="card mt-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="header-title m-0" style="font-weight: 600">Format <span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="default" name="format" @if (isset($page) && $page->format == 'default') checked @endif @if (!isset($page)) checked @endif id="flexRadioDefault1" >
+                            <label class="form-check-label" for="flexRadioDefault1">Default</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="video" name="format" @if (isset($page) && $page->format == 'video') checked @endif id="flexRadioDefault2" >
+                            <label class="form-check-label" for="flexRadioDefault2">Video</label>
+                        </div>
+                        @error('format')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="header-title m-0" style="font-weight: 600">Categories <span class="text-danger">*</span></h6>
                     </div>
                     <div class="card-body category-input">
@@ -347,10 +387,9 @@
                     <div class="card-body">
                         <div class="preview-image-wrapper ">
                             <img src="@if(isset($page) && isset($page->img->img)){{asset('storage/media/'.$page->img->img)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
-                            <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X
-                            </a>
+                            <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X</a>
                         </div><br>
-                        <input type="hidden" required name="image" id="banner_data" value="@isset($page){{$page->image}}@endisset">
+                        <input type="hidden" required name="image" id="banner_data" value="@isset($page){{$page->image}}@else{{old('banner_data')}}@endisset">
                         <a href="javascript:void(0)" id="banner-img">Choose Image</a>
                         @error('image')
                             <br><span class="text-danger">{{ $message }}</span>
@@ -436,14 +475,15 @@ $(document).ready(function () {
         $("#link-edit").addClass("d-none");
         let val = $("#slug").html();
         $("#slug").html('<input type="text" id="edit-link" value="'+val+'"><button type="button" id="link-save" class="btn btn-success btn-sm px-1 py-0 ms-2"><i class="fadeIn animated bx bx-check"></i></button><button type="button" id="link-cancel" class="btn btn-secondary ms-2 btn-sm px-1 py-0"><i class="fadeIn animated bx bx-x"></i></button>');
-        $("#link-cancel").on("click",function(){
+        $(document).on("click","#link-cancel",function(){
             $("#link-edit").removeClass("d-none");
             $("#slug").html(val);
         });
-        $("#link-save").on("click",function(){
+        $(document).on("click","#link-save",function(){
             $("#link-edit").removeClass("d-none");
-            $("#slug").html(stringslug($("#edit-link").val()));
-            $("#slug-input").val($("#edit-link").val());
+            let editedLink = stringslug($(document).find("#edit-link").val());
+            $("#slug").html(editedLink);
+            $("#slug-input").val(editedLink);
             let baseurl = "{{url('/')}}/";
             $("#seo-section-link").html(baseurl + $("#slug").html());
         });
