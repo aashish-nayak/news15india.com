@@ -310,7 +310,7 @@
                     <div class="card-body">
                         <select class="form-select" required name="user_id" aria-label="Default select example">
                             @foreach ($users as $user)
-                            <option @if (isset($page) && $page->user_id == $user->id) selected @endif @if (!isset($page)) selected @endif value="{{$user->id}}">{{$user->name}}</option>
+                            <option @if (isset($page) && $page->user_id == $user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
                         </select>
                         @error('user_id')
