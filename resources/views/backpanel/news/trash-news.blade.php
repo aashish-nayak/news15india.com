@@ -62,7 +62,8 @@
         $('#news').DataTable({
             processing: true,
             serverSide: true,
-            // responsive:true,
+            responsive:true,
+            stateSave : true,
             scrollX:true,
             ajax: "{{ route('admin.news.ajax-trash-news') }}",
             columnDefs : [

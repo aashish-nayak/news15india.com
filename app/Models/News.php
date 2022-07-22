@@ -10,8 +10,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class News extends Model
 {
     use HasFactory, SoftDeletes;
-
-    public function category()
+    protected $fillable = [
+        'title',
+        'slug',
+        'short_description',
+        'user_id',
+        'content',
+        'is_published',
+        'status',
+        'is_verified',
+        'page_order',
+        'image',
+        'format',
+        'youtube_url',
+        'is_featured',
+        'meta_title',
+        'meta_keywords',
+        'meta_description'
+    ];
+    public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_news');
     }
@@ -22,7 +39,9 @@ class News extends Model
     public function img(){
         return $this->belongsTo(Media::class, 'image');
     }
-
+    public function creator(){
+        return $this->belongsTo(Admin::class, 'user_id');
+    }
     public function tags(){
         return $this->belongsToMany(Tag::class,'news_tag');
     }

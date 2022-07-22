@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Media;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-class UserSeeder extends Seeder
+class MediaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        User::truncate();
+        Media::truncate();
         Schema::enableForeignKeyConstraints();
-        User::factory(100)->create();
+        Media::factory(50)->create();
     }
 }

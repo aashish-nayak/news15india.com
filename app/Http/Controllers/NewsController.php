@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\News;
@@ -9,6 +10,7 @@ use App\Models\Media;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {   
@@ -21,10 +23,18 @@ class NewsController extends Controller
     }
     
     public function index()
-    {   $media = Media::latest()->paginate(12);
+    {   
+        if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
+            $users = Admin::whereHas('roles', function (Builder $query) {
+                $query->where('slug', '!=', 'super-admin');
+            })->get();
+        }else{
+            $users = Admin::get();
+        }
+        $media = Media::latest()->paginate(12);
         $tags = Tag::where('status',1)->get();
         $categories = Category::with('children')->where('parent_id', NULL)->where('status',1)->get();
-        return view('backpanel.news.add-news',compact('categories','tags','media'));
+        return view('backpanel.news.add-news',compact('categories','tags','media','users'));
     }
 
     public function view_news(Request $request)
@@ -48,7 +58,7 @@ class NewsController extends Controller
         $totalRecordswithFilter = News::select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
 
         // Fetch records
-        $records = News::with('category','img')->orderBy($columnName, $columnSortOrder)
+        $records = News::with('categories','img','creator')->orderBy($columnName, $columnSortOrder)
             ->where('news.title', 'like', '%' . $searchValue . '%')->orWhere('news.slug','like','%' . $searchValue . '%')
             ->select('news.*')
             ->skip($start)
@@ -62,11 +72,11 @@ class NewsController extends Controller
             $id = $record->id;
             $cat_name = $record->title;
             $slug = $record->slug;
-            $categories = implode(",", $record->category->pluck('slug')->toArray());
+            $categories = implode(",", $record->categories->pluck('slug')->toArray());
             $banner = ($record->image != NULL) ? $record->img->img : 'No Image';
             $status = $record->status;
             $created = $record->created_at;
-
+            $createdby = $record->creator->name;
             $data_arr[] = array(
                 "sno" => $sno,
                 "id" => $id,
@@ -75,7 +85,7 @@ class NewsController extends Controller
                 "categories" => $categories,
                 "banner" => $banner,
                 "status" => $status,
-                "created" => $created,
+                "created" => $createdby,
             );
         }
 
@@ -131,7 +141,7 @@ class NewsController extends Controller
         $news->meta_keywords = $request->meta_keywords;
         $news->meta_description = $request->meta_description;
         $news->save();
-        $news->category()->sync($request->categories);
+        $news->categories()->sync($request->categories);
         $news->tags()->sync($request->tags);
         if ($request->has('edit_btn')) {
             return redirect()->route('admin.news.edit', $news->id)->with('success', $message);
@@ -154,12 +164,18 @@ class NewsController extends Controller
     }
 
     public function edit($id)
-    {   
+    {   if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
+            $users = Admin::whereHas('roles', function (Builder $query) {
+                $query->where('slug', '!=', 'super-admin');
+            })->get();
+        }else{
+            $users = Admin::get();
+        }
         $media = Media::latest()->paginate(12);
         $tags = Tag::where('status',1)->get();
         $categories = Category::with('children')->where('parent_id', NULL)->where('status',1)->get();
         $page = News::find($id);
-        return view('backpanel.news.add-news',compact('categories','tags','page','media'));
+        return view('backpanel.news.add-news',compact('categories','tags','page','media','users'));
     }
 
     public function trashview()
@@ -188,7 +204,7 @@ class NewsController extends Controller
         $totalRecordswithFilter = News::onlyTrashed()->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
 
         // Fetch records
-        $records = News::with('category','img')->onlyTrashed()->orderBy($columnName, $columnSortOrder)
+        $records = News::with('categories','img','creator')->onlyTrashed()->orderBy($columnName, $columnSortOrder)
             ->where('news.title', 'like', '%' . $searchValue . '%')
             ->select('news.*')
             ->skip($start)
@@ -202,11 +218,11 @@ class NewsController extends Controller
             $id = $record->id;
             $cat_name = $record->title;
             $slug = $record->slug;
-            $categories = implode(",", $record->category->pluck('slug')->toArray());
+            $categories = implode(",", $record->categories->pluck('slug')->toArray());
             $banner = ($record->image != NULL) ? $record->img->img : 'No Image';
             $status = $record->status;
             $created = Carbon::createFromTimeStamp(strtotime($record->deleted_at) )->diffForHumans();
-
+            $createdby = $record->creator->name;
             $data_arr[] = array(
                 "sno" => $sno,
                 "id" => $id,
@@ -215,7 +231,7 @@ class NewsController extends Controller
                 "categories" => $categories,
                 "banner" => $banner,
                 "status" => $status,
-                "created" => $created,
+                "created" => $createdby,
             );
         }
 

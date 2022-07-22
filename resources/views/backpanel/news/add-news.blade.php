@@ -309,7 +309,9 @@
                     </div>
                     <div class="card-body">
                         <select class="form-select" required name="user_id" aria-label="Default select example">
-                            <option @if (isset($page) && $page->user_id == 1) selected @endif @if (!isset($page)) selected @endif value="1">Admin </option>
+                            @foreach ($users as $user)
+                            <option @if (isset($page) && $page->user_id == $user->id) selected @endif @if (!isset($page)) selected @endif value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
                         </select>
                         @error('user_id')
                             <span class="text-danger">{{ $message }}</span>
@@ -357,7 +359,7 @@
                             @foreach ($categories as $item)
                             <li>
                                 <div class="form-check">
-                                    <input type="checkbox" name="categories[]" @if(isset($page) && in_array($item->id, $page->category->pluck('id')->toArray())) checked @endif value="{{$item->id}}" class="form-check-input parent-cat" id="customCheck{{$item->id}}">
+                                    <input type="checkbox" name="categories[]" @if(isset($page) && in_array($item->id, $page->categories->pluck('id')->toArray())) checked @endif value="{{$item->id}}" class="form-check-input parent-cat" id="customCheck{{$item->id}}">
                                     <label class="form-check-label" for="customCheck{{$item->id}}">{{$item->cat_name}}</label>
                                 </div>
                                 @if (count($item->children)>0)
@@ -365,7 +367,7 @@
                                     @foreach($item->children as $sub_cat)
                                         <li class="ml-4">
                                             <div class="form-check">
-                                                <input type="checkbox" name="categories[]" @if(isset($page) && in_array($sub_cat->id, $page->category->pluck('id')->toArray())) checked @endif value="{{$sub_cat->id}}" class="form-check-input sub-cat" id="customCheck{{$sub_cat->id}}">
+                                                <input type="checkbox" name="categories[]" @if(isset($page) && in_array($sub_cat->id, $page->categories->pluck('id')->toArray())) checked @endif value="{{$sub_cat->id}}" class="form-check-input sub-cat" id="customCheck{{$sub_cat->id}}">
                                                 <label class="form-check-label" for="customCheck{{$sub_cat->id}}">{{$sub_cat->cat_name}}</label>
                                             </div>
                                         </li>

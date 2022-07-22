@@ -7,14 +7,15 @@
             success: function(data) {
                 $('#media-row').html(data);
                 $("#media-row").find(".file").each(function () {
-                    if(files.includes($(this).data('id')) == true){
+                    if(bannerid.includes($(this).data('id')) == true){
                         $(this).addClass("file-selected");
                     }
                 });
+                console.log(bannerid);
             }
         });
     }
-    $(document).on('click', '.pagination a', function(e) {
+    $(document).on('click', '#media-box .pagination a', function(e) {
         e.preventDefault();
         var page = $(this).attr('href').split('page=')[1];
         fetch_data(page);
@@ -48,13 +49,13 @@
         });
     });
     $(document).on('click','#insert-banner',function () {
-        let selected = $(document).find(".file-selected");
+        let selected = $(document).find("#media-box .file-selected");
         let id = $(selected).data('id');
         let img = $(selected).data('path');
         bannerid = [];
         bannerlink = [];
-        bannerid.push(id)
-        bannerlink.push(img)
+        bannerid.push(id);
+        bannerlink.push(img);
         $("#banner_data").val(bannerid[0]);
         $("#banner-img-id").data('id',bannerid[0]);
         $("#banner-preview").attr('src',bannerlink[0]);

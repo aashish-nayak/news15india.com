@@ -32,9 +32,9 @@
                                 <th>ID</th>
                                 <th data-orderable="false">Image</th>
                                 <th>Title</th>
-                                <th data-orderable="false">Categories</th>
+                                <th data-orderable="false" >Categories</th>
                                 <th>Status</th>
-                                <th data-orderable="false">Created</th>
+                                <th data-orderable="false">Created by</th>
                                 <th data-orderable="false">Action</th>
                             </tr>
                         </thead>
@@ -64,7 +64,9 @@
         $('#news').DataTable({
             processing: true,
             serverSide: true,
-            responsive:true,
+            responsive: true,
+            stateSave : true,
+            scrollX : true,
             columnDefs: [
                 { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 1, targets: 2 },

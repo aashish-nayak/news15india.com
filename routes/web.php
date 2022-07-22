@@ -41,7 +41,7 @@ Route::get('/admin',function(){
 Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(function(){
     Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
 
-    Route::prefix('/category')->name('category.')->middleware(['role:admin'])->group(function(){
+    Route::prefix('/category')->name('category.')->group(function(){
         Route::get('/', [CategoryController::class,'index'])->name('index');
         Route::post('/store', [CategoryController::class,'store'])->name('store');
         Route::get('/{category}/edit',[CategoryController::class,'edit'])->name('edit');
@@ -108,7 +108,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/delete/{id}',[RoleController::class,'destroy'])->name('delete');
     });
 
-    Route::prefix('/permission')->name('permission.')->group(function(){
+    Route::prefix('/permission')->name('permission.')->middleware('role:super-admin')->group(function(){
         Route::get('/show',[PermissionController::class,'index'])->name('show');
         Route::get('/create',[PermissionController::class,'create'])->name('add');
         Route::post('/store',[PermissionController::class,'store'])->name('store');
