@@ -6,7 +6,9 @@
 @section('sections')
     <div class="col-12 mt-4 text-end">
         <a href="{{route('admin.role.add')}}" class="btn btn-primary mr-3 btn-sm">Add Role</a>
+        @role('super-admin')
         <a href="{{route('admin.permission.show')}}" class="btn btn-secondary mr-3 btn-sm">Permissions</a>
+        @endrole
     </div>
     <div class="col-12 mt-2">
         <div class="card">

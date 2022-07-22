@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" />
     @stack('plugin-css')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.4/sweetalert2.all.js" integrity="sha512-aYkxNMS1BrFK2pwC53ea1bO8key+6qLChadZfRk8FtHt36OBqoKX8cnkcYWLs1BR5sqgjU5SMIMYNa85lZWzAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- loader-->
-    <link rel="stylesheet" href="{{asset('assets/css/pace.min.css')}}" />
-    <script src="{{asset('assets/js/pace.min.js')}}"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" />

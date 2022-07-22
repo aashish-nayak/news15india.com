@@ -41,7 +41,7 @@
             </a>
         </li>
         <li class="">
-            <a href="{{Route('admin.media')}}">
+            <a href="{{Route('admin.media.index')}}">
                 <div class="parent-icon"><i class='bx bx-images'></i></div>
                 <div class="menu-title">Media</div>
             </a>

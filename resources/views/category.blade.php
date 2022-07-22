@@ -585,37 +585,7 @@
             <div class="col-12 px-0">
                 <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100" alt="">
             </div>
-            <div class="card mt-1">
-                <div class="card-header">
-                    <div class="text-center">
-                        <h4 class="m-0 text-primary-clr"><strong>POLL</strong></h4>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="text-left">
-                        <h6 class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi obcaecati, nobis quas nihil ?</h6>
-                    </div>
-                    <form action="" style="font-size: 15px;" class="py-3">
-                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
-                            <input type="radio" id="customRadio1" name="customRadio">
-                            <label class="w-75 m-0" for="customRadio1">YES</label>
-                        </div>
-                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
-                            <input type="radio" id="customRadio2" name="customRadio">
-                            <label class="w-75 m-0" for="customRadio2">NO</label>
-                        </div>
-                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
-                            <input type="radio" id="customRadio3" name="customRadio">
-                            <label class="w-75 m-0" for="customRadio3">I Never Know</label>
-                        </div>
-                        <div class="custom-control custom-radio mb-2 px-3 py-2 rounded w-100" style="border: 1px solid #99000040">
-                            <input type="radio" id="customRadio4" name="customRadio">
-                            <label class="w-75 m-0" for="customRadio4">I Dont Know</label>
-                        </div>
-                        <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
-                    </form>
-                </div>
-            </div>
+            @includeIf('components.poll')
             <div class="col-12 p-0 mt-1 side-position mx-auto">
                 <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
                     <i class="fa fa-sort-up mr-1" style="color:#FE9517;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color:#FE9517; font-weight:600;">News</h4>

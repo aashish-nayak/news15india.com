@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'img',
+        'alt',
+        'size',
+        'type',
+        'dimension'
+    ];
 }

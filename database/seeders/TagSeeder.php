@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-class UserSeeder extends Seeder
+class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        User::truncate();
+        Tag::truncate();
         Schema::enableForeignKeyConstraints();
-        User::factory(100)->create();
+        Tag::factory(80)->create();
     }
 }
