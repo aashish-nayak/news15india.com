@@ -182,7 +182,7 @@
             processing: true,
             serverSide: true,
             scrollX:true,
-            ajax: "{{ route('admin.getTags') }}",
+            ajax: "{{ route('admin.tag.getTags') }}",
             columns: [{
                     data: 'id'
                 },

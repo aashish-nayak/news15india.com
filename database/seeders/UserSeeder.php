@@ -17,12 +17,14 @@ class UserSeeder extends Seeder
     public function run()
     {
         Admin::insert([
+            ['name'=>'Super Admin','email'=>'super@gmail.com','password'=>bcrypt('SuperPassword')],
             ['name'=>'Admin','email'=>'admin@gmail.com','password'=>bcrypt('password')],
             ['name'=>'Editor','email'=>'editor@gmail.com','password'=>bcrypt('password')],
             ['name'=>'Author','email'=>'author@gmail.com','password'=>bcrypt('password')],
         ]);
 
         Role::insert([
+            ['name'=>'Super Admin','slug'=>'super-admin'],
             ['name'=>'Admin','slug'=>'admin'],
             ['name'=>'Editor','slug'=>'editor'],
             ['name'=>'Author','slug'=>'author'],
@@ -39,9 +41,12 @@ class UserSeeder extends Seeder
         $role->permissions()->attach([1,2,3,4]);
 
         $role = Role::find(2);
-        $role->permissions()->attach([1,2,4]);
+        $role->permissions()->attach([1,2,3,4]);
 
         $role = Role::find(3);
+        $role->permissions()->attach([1,2,4]);
+
+        $role = Role::find(4);
         $role->permissions()->attach([1,2]);
 
         $admin = Admin::find(1);
@@ -52,5 +57,8 @@ class UserSeeder extends Seeder
 
         $admin = Admin::find(3);
         $admin->roles()->attach([3]);
+
+        $admin = Admin::find(4);
+        $admin->roles()->attach([4]);
     }
 }

@@ -6,19 +6,22 @@ use App\Models\Admin;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $users = Admin::get();
+        if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
+            $users = Admin::whereHas('roles', function (Builder $query) {
+                $query->where('slug', '!=', 'super-admin');
+            })->get();
+        }else{
+            $users = Admin::get();
+        }
         return view('backpanel.user.index',compact('users'));
     }
 
@@ -29,7 +32,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
+        $roles = Role::where('slug','!=','super-admin')->get();
         $permissions = Permission::get();
         return view('backpanel.user.add-user',compact('roles','permissions'));
     }
@@ -102,8 +105,14 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
+        $count = Admin::whereHas('roles', function (Builder $query) {
+            $query->where('slug','super-admin');
+        })->where('id',$id)->count();
+        if($count > 0){
+            return redirect()->back();
+        }
         $user = Admin::find($id);
-        $roles = Role::get();
+        $roles = Role::where('slug','!=','super-admin')->get();
         $permissions = Permission::get();
         return view('backpanel.user.add-user',compact('user','roles','permissions'));
     }
@@ -128,6 +137,12 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
+        $count = Admin::whereHas('roles', function (Builder $query) {
+            $query->where('slug','super-admin');
+        })->where('id',$id)->count();
+        if($count > 0){
+            return redirect()->back();
+        }
         Admin::find($id)->delete();
         session()->flash('success', 'Member Block successfully!');
         return redirect()->back();
@@ -142,7 +157,13 @@ class AdminController extends Controller
 
     public function forceDelete($id)
     {
-        Admin::onlyTrashed()->find($id)->forceDelete();
+        $count = Admin::whereHas('roles', function (Builder $query) {
+            $query->where('slug','super-admin');
+        })->where('id',$id)->count();
+        if($count > 0){
+            return redirect()->back();
+        }
+        Admin::withTrashed()->find($id)->forceDelete();
         session()->flash('success', 'Member Deleted successfully!');
         return redirect()->back();
     }

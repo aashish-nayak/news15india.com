@@ -48,7 +48,7 @@
                                 <td>
                                     <div class="d-flex order-actions">
                                         <a href="{{route('admin.user.restore',$user->id)}}" class="text-dark ms-3 border" title="Restore"><i class="bx bx-reset"></i></a>
-                                        <a href="{{route('admin.user.forceDelete',$user->id)}}" class="text-danger ms-3 border" title="Delete"><i class="bx bx-trash"></i></a>
+                                        <a href="{{route('admin.user.forceDelete',$user->id)}}" class="text-danger ms-3 border delete" title="Delete"><i class="bx bx-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -80,7 +80,7 @@
             e.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You Want to Block this Member!",
+                text: "You Want to Delete this Member!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

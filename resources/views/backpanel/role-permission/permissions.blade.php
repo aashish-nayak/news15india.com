@@ -66,7 +66,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="{{route('admin.permission.show')}}" class="btn btn-secondary" @if(!isset($data)) data-bs-dismiss="modal" @endif>Close</a>
+                        <button type="button" id="closeModal" data-closeloc="{{route('admin.permission.show')}}" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -89,6 +89,10 @@
 <script>
     $(document).ready(function () {
         $("#AddPermission").modal('show');
+        var myModalEl = document.getElementById('AddPermission')
+        myModalEl.addEventListener('hidden.bs.modal', function (event) {
+            location.href = $("#closeModal").data('closeloc');
+        });
     });
 </script>
 @endisset
