@@ -26,7 +26,9 @@ class TagFactory extends Factory
             'meta_title' => $this->faker->title(),
             'meta_keyword'=> str_replace(" ",",",$this->faker->text),
             'meta_description' => $this->faker->text,
-            'status' => 1
+            'status' => 1,
+            'created_at' => now()->toDateTimeString(),
+            'updated_at' => now()->toDateTimeString()
         ];
     }
 }

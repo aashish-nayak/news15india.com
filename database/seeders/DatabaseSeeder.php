@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\MediaFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,11 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            // AdminSeeder::class,
-            // UserSeeder::class,
-            // MediaSeeder::class,
-            // TagSeeder::class,
-            // CategorySeeder::class,
+            AdminSeeder::class,
+            UserSeeder::class,
+            MediaSeeder::class,
+            TagSeeder::class,
+            CategorySeeder::class,
             NewsSeeder::class
         ]);
     }

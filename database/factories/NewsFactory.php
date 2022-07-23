@@ -22,9 +22,9 @@ class NewsFactory extends Factory
         return [
             'title'=> $title,
             'slug'=> Str::slug($title),
-            'short_description'=> $this->faker->text(50),
+            'short_description'=> $this->faker->text(100),
             'user_id'=> Admin::inRandomOrder()->limit(1)->first()->id,
-            'content'=> $this->faker->text(),
+            'content'=> implode(". ",$this->faker->paragraphs(20)),
             'is_published'=> 1,
             'status'=>  1,
             'is_verified'=> 1,
@@ -35,7 +35,9 @@ class NewsFactory extends Factory
             'is_featured'=> 0,
             'meta_title'=> $title,
             'meta_keywords'=> Str::slug($title),
-            'meta_description'=> $this->faker->text(50),
+            'meta_description'=> $this->faker->text(100),
+            'created_at' => now()->toDateTimeString(),
+            'updated_at' => now()->toDateTimeString()
         ];
     }
 }

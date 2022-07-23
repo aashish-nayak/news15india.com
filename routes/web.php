@@ -9,7 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
-
+use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +21,9 @@ use App\Http\Controllers\RoleController;
 |
 */
 
-Route::view('/', 'welcome');
+Route::any('/test',[TestController::class,'test'])->name('test');
 
+Route::view('/', 'welcome');
 Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::view('/', 'home')->name('home');
     Route::view('/2', 'category')->name('category');
