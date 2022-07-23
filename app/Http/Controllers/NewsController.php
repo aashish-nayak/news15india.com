@@ -146,7 +146,7 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->slug = $request->slug;
         $news->short_description = $request->short_desc;
-        $news->admin_id = (auth('admin')->user()->hasRole('super-admin') == true) ? $request->user_id : auth('admin')->user()->id;
+        $news->admin_id = (auth('admin')->user()->hasRole('super-admin') == true || auth('admin')->user()->hasRole('admin') == true) ? $request->user_id : auth('admin')->user()->id;
         $news->content = $request->content;
         $news->is_published = $request->is_published;
         $news->status =  1;
