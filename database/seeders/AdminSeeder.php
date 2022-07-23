@@ -19,42 +19,206 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $admins = [
-            ['name'=>'Super Admin','email'=>'super@gmail.com','password'=>bcrypt('SuperPassword')],
-            ['name'=>'Admin','email'=>'admin@gmail.com','password'=>bcrypt('password')],
-            ['name'=>'Reporter','email'=>'reporter@gmail.com','password'=>bcrypt('password')],
-            ['name'=>'Editor','email'=>'editor@gmail.com','password'=>bcrypt('password')],
+            [
+                'name'=>'Super Admin',
+                'email'=>'super@gmail.com',
+                'password'=>bcrypt('SuperPassword'),
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name'=>'Admin',
+                'email'=>'admin@gmail.com',
+                'password'=>bcrypt('password'),
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name'=>'Reporter',
+                'email'=>'reporter@gmail.com',
+                'password'=>bcrypt('password'),
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name'=>'Editor',
+                'email'=>'editor@gmail.com',
+                'password'=>bcrypt('password'),
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
         ];
         $roles = [
-            ['name'=>'Super Admin','slug'=>'super-admin'],
-            ['name'=>'Admin','slug'=>'admin'],
-            ['name'=>'Reporter','slug'=>'reporter'],
-            ['name'=>'Editor','slug'=>'editor'],
+            [
+                'name'=>'Super Admin',
+                'slug'=>'super-admin',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name'=>'Admin',
+                'slug'=>'admin',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name'=>'Reporter',
+                'slug'=>'reporter',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name'=>'Editor',
+                'slug'=>'editor',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
         ];
         $permissions = [
-            ['name' => 'Create Category','slug' => 'create-category'],
-            ['name' => 'Read Category','slug' => 'read-category'],
-            ['name' => 'Update Category','slug' => 'update-category'],
-            ['name' => 'Delete Category','slug' => 'delete-category'],
-            ['name' => 'Create News','slug' => 'create-news'],
-            ['name' => 'Read News','slug' => 'read-news'],
-            ['name' => 'Update News','slug' => 'update-news'],
-            ['name' => 'Delete News','slug' => 'delete-news'],
-            ['name' => 'Create Tags','slug' => 'create-tags'],
-            ['name' => 'Read Tags','slug' => 'read-tags'],
-            ['name' => 'Update Tags','slug' => 'update-tags'],
-            ['name' => 'Delete Tags','slug' => 'delete-tags'],
-            ['name' => 'Create Media','slug' => 'create-media'],
-            ['name' => 'Read Media','slug' => 'read-media'],
-            ['name' => 'Update Media','slug' => 'update-media'],
-            ['name' => 'Delete Media','slug' => 'delete-media'],
-            ['name' => 'Create Role','slug' => 'create-role'],
-            ['name' => 'Read Role','slug' => 'read-role'],
-            ['name' => 'Update Role','slug' => 'update-role'],
-            ['name' => 'Delete Role','slug' => 'delete-role'],
-            ['name' => 'Create Permission','slug' => 'create-permission'],
-            ['name' => 'Read Permission','slug' => 'read-permission'],
-            ['name' => 'Update Permission','slug' => 'update-permission'],
-            ['name' => 'Delete Permission','slug' => 'delete-permission']
+            [
+                'name' => 'Create Category',
+                'slug' => 'create-category',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read Category',
+                'slug' => 'read-category',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update Category',
+                'slug' => 'update-category',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete Category',
+                'slug' => 'delete-category',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Create News',
+                'slug' => 'create-news',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read News',
+                'slug' => 'read-news',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update News',
+                'slug' => 'update-news',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete News',
+                'slug' => 'delete-news',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Create Tags',
+                'slug' => 'create-tags',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read Tags',
+                'slug' => 'read-tags',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update Tags',
+                'slug' => 'update-tags',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete Tags',
+                'slug' => 'delete-tags',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Create Media',
+                'slug' => 'create-media',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read Media',
+                'slug' => 'read-media',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update Media',
+                'slug' => 'update-media',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete Media',
+                'slug' => 'delete-media',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Create Role',
+                'slug' => 'create-role',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read Role',
+                'slug' => 'read-role',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update Role',
+                'slug' => 'update-role',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete Role',
+                'slug' => 'delete-role',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Create Permission',
+                'slug' => 'create-permission',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read Permission',
+                'slug' => 'read-permission',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update Permission',
+                'slug' => 'update-permission',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete Permission',
+                'slug' => 'delete-permission',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ]
         ];
         Schema::disableForeignKeyConstraints();
         DB::table('admin_roles')->truncate();

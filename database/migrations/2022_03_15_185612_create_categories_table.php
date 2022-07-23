@@ -26,8 +26,8 @@ class CreateCategoriesTable extends Migration
             $table->boolean('status')->default(0);
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->cascadeOnDelete();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

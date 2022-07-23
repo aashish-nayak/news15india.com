@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Media;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 class MediaFactory extends Factory
 {
     /**
@@ -16,15 +17,16 @@ class MediaFactory extends Factory
 
     public function definition()
     {
-        $imgs = [
-            'bear.jpg','books.jpg','choclate.jpg','forest.jpg','mountain.jpg','road.jpg','train.jpg','videogame.jpg','house.jpg','laptop.jpg','sky.jpg','laptop-2.jpg','traffic.jpg','hangs.jpg','flower.jpg','us.jpg','elevator.jpg',
-        ];
+        // \App\Traits\LoremImageTrait::imageSave();
+        $filedata = $this->model::imageSave(Str::random(10));
         return [
-            'img' => $imgs[random_int(0,(count($imgs) - 1))],
+            'img' => $filedata['filename'],
             'alt' => $this->faker->userName,
-            'size' => $this->faker->randomNumber(5),
-            'type' => 'image/jpeg',
-            'dimension' => '640x480'
+            'size' => $filedata['size'],
+            'type' => $filedata['type'],
+            'dimension' => $filedata['dimension'],
+            'created_at' => now()->toDateTimeString(),
+            'updated_at' => now()->toDateTimeString()
         ];
     }
 }
