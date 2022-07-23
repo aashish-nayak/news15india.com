@@ -11,6 +11,7 @@ class Media extends Model
     use HasFactory,LoremImageTrait;
     
     protected $fillable = [
+        'admin_id',
         'img',
         'alt',
         'size',

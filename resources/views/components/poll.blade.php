@@ -26,7 +26,7 @@
                 <label class="w-75 m-0" for="customRadio4">I Dont Know</label>
             </div>
             <div class="col-12 px-1">
-                <div class="row row-cols-1 row-cols-md-2 mx-0 justify-content-between align-items-center">
+                <div class="row row-cols-2 mx-0 justify-content-between align-items-center">
                     <div class="col px-1">
                         <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
                     </div>

@@ -23,7 +23,7 @@ class NewsFactory extends Factory
             'title'=> $title,
             'slug'=> Str::slug($title),
             'short_description'=> $this->faker->text(100),
-            'user_id'=> Admin::inRandomOrder()->limit(1)->first()->id,
+            'admin_id'=> Admin::inRandomOrder()->limit(1)->first()->id,
             'content'=> implode(". ",$this->faker->paragraphs(20)),
             'is_published'=> 1,
             'status'=>  1,

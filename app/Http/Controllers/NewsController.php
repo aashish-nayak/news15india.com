@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
-{   
+{
     public function fetch_media(Request $request)
     {
         if ($request->ajax()) {
@@ -21,20 +21,20 @@ class NewsController extends Controller
             return view('backpanel.news.media-box', compact('media'))->render();
         }
     }
-    
+
     public function index()
-    {   
-        if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
+    {
+        if (auth('admin')->user()->hasRole('super-admin') == true) {
+            $users = Admin::get();
+        } else {
             $users = Admin::whereHas('roles', function (Builder $query) {
                 $query->where('slug', '!=', 'super-admin');
             })->get();
-        }else{
-            $users = Admin::get();
         }
         $media = Media::latest()->paginate(12);
-        $tags = Tag::where('status',1)->get();
-        $categories = Category::with('children')->where('parent_id', NULL)->where('status',1)->get();
-        return view('backpanel.news.add-news',compact('categories','tags','media','users'));
+        $tags = Tag::where('status', 1)->get();
+        $categories = Category::with('children')->where('parent_id', NULL)->where('status', 1)->get();
+        return view('backpanel.news.add-news', compact('categories', 'tags', 'media', 'users'));
     }
 
     public function view_news(Request $request)
@@ -54,19 +54,38 @@ class NewsController extends Controller
         $searchValue = $search_arr['value']; // Search value
 
         // Total records
-        $totalRecords = News::select('count(*) as allcount')->count();
-        $totalRecordswithFilter = News::select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
-
+        if (auth('admin')->user()->hasRole('super-admin') == true) {
+            $totalRecords = News::select('count(*) as allcount')->count();
+            $totalRecordswithFilter = News::select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
+        } elseif (auth('admin')->user()->hasRole('admin') == true) {
+            $super = Admin::whereHas('roles',function(Builder $query){
+                $query->where('slug','super-admin');
+            })->first();
+            $totalRecords = News::where('admin_id','!=',$super->id)->select('count(*) as allcount')->count();
+            $totalRecordswithFilter = News::where('admin_id','!=',$super->id)->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
+        } else {
+            $totalRecords = News::where('admin_id', auth('admin')->user()->id)->select('count(*) as allcount')->count();
+            $totalRecordswithFilter = News::where('admin_id', auth('admin')->user()->id)->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
+        }
         // Fetch records
-        $records = News::with('categories','img','creator')->orderBy($columnName, $columnSortOrder)
-            ->where('news.title', 'like', '%' . $searchValue . '%')->orWhere('news.slug','like','%' . $searchValue . '%')
-            ->select('news.*')
-            ->skip($start)
-            ->take($rowperpage)
-            ->get();
+        $records = News::with('categories', 'img', 'creator')->orderBy($columnName, $columnSortOrder);
+        if (auth('admin')->user()->hasRole('admin') == true) {
+            $super = Admin::whereHas('roles',function(Builder $query){
+                $query->where('slug','super-admin');
+            })->first();
+            $records = $records->where('admin_id','!=',$super->id);
+        } elseif (auth('admin')->user()->hasRole('super-admin') == false && auth('admin')->user()->hasRole('admin') == false) {
+            $records = $records->where('admin_id', auth('admin')->user()->id);
+        }
+        $records = $records->where(function ($query) use ($searchValue) {
+            $query->where('news.title', 'like', '%' . $searchValue . '%')->orWhere('news.slug', 'like', '%' . $searchValue . '%');
+        })
+        ->select('news.*')
+        ->skip($start)
+        ->take($rowperpage)
+        ->get();
 
         $data_arr = array();
-
         foreach ($records as $key => $record) {
             $sno = $key + 1;
             $id = $record->id;
@@ -100,7 +119,7 @@ class NewsController extends Controller
     }
 
     public function store(Request $request)
-    {   
+    {
         // dd($request->all());
         if (isset($request->id)) {
             $news = News::find($request->id);
@@ -112,25 +131,25 @@ class NewsController extends Controller
             $valide_slug = '|unique:news';
         }
         $this->validate($request, [
-            'title' => 'required|max:150',
-            'slug' => 'required'.$valide_slug,
+            'title' => 'required|max:350',
+            'slug' => 'required' . $valide_slug,
             'image' => 'required|integer',
             'is_published' => 'required',
             'format' => 'required',
             'categories' => 'required|array',
-            'short_desc' => 'max:5000',
+            'short_desc' => 'max:500',
             'page_order' => 'integer',
-            'meta_title' => 'max:200',
-            'meta_description' => 'max:2000',
-            'meta_keywords' => 'max:2000',
+            'meta_title' => 'max:350',
+            'meta_description' => 'max:3000',
+            'meta_keywords' => 'max:4000',
         ]);
         $news->title = $request->title;
         $news->slug = $request->slug;
         $news->short_description = $request->short_desc;
-        $news->user_id = $request->user_id;
+        $news->admin_id = (auth('admin')->user()->hasRole('super-admin') == true) ? $request->user_id : auth('admin')->user()->id;
         $news->content = $request->content;
-        $news->is_published = 0;
-        $news->status =  $request->is_published;
+        $news->is_published = $request->is_published;
+        $news->status =  1;
         $news->is_verified = 0;
         $news->page_order = 0;
         $news->image = $request->image;
@@ -164,18 +183,19 @@ class NewsController extends Controller
     }
 
     public function edit($id)
-    {   if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
+    {
+        if (auth('admin')->user()->hasRole('super-admin') == true) {
+            $users = Admin::get();
+        } else {
             $users = Admin::whereHas('roles', function (Builder $query) {
                 $query->where('slug', '!=', 'super-admin');
             })->get();
-        }else{
-            $users = Admin::get();
         }
         $media = Media::latest()->paginate(12);
-        $tags = Tag::where('status',1)->get();
-        $categories = Category::with('children')->where('parent_id', NULL)->where('status',1)->get();
+        $tags = Tag::where('status', 1)->get();
+        $categories = Category::with('children')->where('parent_id', NULL)->where('status', 1)->get();
         $page = News::find($id);
-        return view('backpanel.news.add-news',compact('categories','tags','page','media','users'));
+        return view('backpanel.news.add-news', compact('categories', 'tags', 'page', 'media', 'users'));
     }
 
     public function trashview()
@@ -199,17 +219,38 @@ class NewsController extends Controller
         $columnSortOrder = $order_arr[0]['dir']; // asc or desc
         $searchValue = $search_arr['value']; // Search value
 
-        // Total records
-        $totalRecords = News::onlyTrashed()->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = News::onlyTrashed()->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
+        // Total Trashed records
+        if (auth('admin')->user()->hasRole('super-admin') == true) {
+            $totalRecords = News::onlyTrashed()->select('count(*) as allcount')->count();
+            $totalRecordswithFilter = News::onlyTrashed()->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
+        } elseif (auth('admin')->user()->hasRole('admin') == true) {
+            $super = Admin::whereHas('roles',function(Builder $query){
+                $query->where('slug','super-admin');
+            })->first();
+            $totalRecords = News::onlyTrashed()->where('admin_id','!=',$super->id)->select('count(*) as allcount')->count();
+            $totalRecordswithFilter = News::onlyTrashed()->where('admin_id','!=',$super->id)->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
+        } else {
+            $totalRecords = News::onlyTrashed()->where('admin_id', auth('admin')->user()->id)->select('count(*) as allcount')->count();
+            $totalRecordswithFilter = News::onlyTrashed()->where('admin_id', auth('admin')->user()->id)->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
+        }
 
         // Fetch records
-        $records = News::with('categories','img','creator')->onlyTrashed()->orderBy($columnName, $columnSortOrder)
-            ->where('news.title', 'like', '%' . $searchValue . '%')
-            ->select('news.*')
-            ->skip($start)
-            ->take($rowperpage)
-            ->get();
+        $records = News::with('categories', 'img', 'creator')->onlyTrashed()->orderBy($columnName, $columnSortOrder);
+        if (auth('admin')->user()->hasRole('admin') == true) {
+            $super = Admin::whereHas('roles',function(Builder $query){
+                $query->where('slug','super-admin');
+            })->first();
+            $records = $records->where('admin_id','!=',$super->id);
+        } elseif (auth('admin')->user()->hasRole('super-admin') == false && auth('admin')->user()->hasRole('admin') == false) {
+            $records = $records->where('admin_id', auth('admin')->user()->id);
+        }
+        $records = $records->where(function ($query) use ($searchValue) {
+            $query->where('news.title', 'like', '%' . $searchValue . '%')->orWhere('news.slug', 'like', '%' . $searchValue . '%');
+        })
+        ->select('news.*')
+        ->skip($start)
+        ->take($rowperpage)
+        ->get();
 
         $data_arr = array();
 
@@ -221,7 +262,7 @@ class NewsController extends Controller
             $categories = implode(",", $record->categories->pluck('slug')->toArray());
             $banner = ($record->image != NULL) ? $record->img->img : 'No Image';
             $status = $record->status;
-            $created = Carbon::createFromTimeStamp(strtotime($record->deleted_at) )->diffForHumans();
+            $created = Carbon::createFromTimeStamp(strtotime($record->deleted_at))->diffForHumans();
             $createdby = $record->creator->name;
             $data_arr[] = array(
                 "sno" => $sno,
@@ -263,5 +304,4 @@ class NewsController extends Controller
         $page->forceDelete();
         return redirect()->route('admin.news.trash-news')->with('success', 'News Deleted Permanently!');
     }
-    
 }

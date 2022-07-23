@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
@@ -25,6 +26,7 @@ class MediaController extends Controller
             $file = Str::limit($filename, 100, '') . '_' . time() . '.' . $extension;
             $value->storeAs('public/media', $file);
             $media = new Media;
+            $media->admin_id = Auth::guard('admin')->user()->id;
             $media->img = $file;
             $media->alt = $filename;
             $media->type = $type;

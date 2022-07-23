@@ -14,7 +14,7 @@ class News extends Model
         'title',
         'slug',
         'short_description',
-        'user_id',
+        'admin_id',
         'content',
         'is_published',
         'status',
@@ -30,7 +30,7 @@ class News extends Model
     ];
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_news');
+        return $this->belongsToMany(Category::class, 'news_categories');
     }
 
     public function getCreatedAtAttribute(){
@@ -40,7 +40,7 @@ class News extends Model
         return $this->belongsTo(Media::class, 'image');
     }
     public function creator(){
-        return $this->belongsTo(Admin::class, 'user_id');
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
     public function tags(){
         return $this->belongsToMany(Tag::class,'news_tag');

@@ -1358,7 +1358,6 @@ class CategorySeeder extends Seeder
                 'deleted_at' => NULL
             ],
         ];
-        // Category::insert($categories);
         $chunks = array_chunk($categories,20);
         foreach ($chunks as $key => $category) {
             Category::insert($category);

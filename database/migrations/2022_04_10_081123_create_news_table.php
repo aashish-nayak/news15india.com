@@ -22,15 +22,18 @@ class CreateNewsTable extends Migration
             $table->unsignedBigInteger('image')->nullable();
             $table->foreign('image')->references('id')->on('media')->nullOnDelete();
             $table->integer('page_order')->default(0);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
             $table->boolean('is_published')->default(0);
             $table->boolean('is_verified')->default(0);
+            $table->enum('format',['default','video'])->default('default');
+            $table->boolean('is_featured')->default(false);
+            $table->string('youtube_url')->nullable();
             $table->boolean('status')->default(1);
             $table->text('meta_title')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
