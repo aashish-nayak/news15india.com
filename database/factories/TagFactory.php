@@ -22,7 +22,7 @@ class TagFactory extends Factory
         return [
             'name' => $tagname,
             'slug' => Str::slug($tagname),
-            'tag_img' => Media::inRandomOrder()->limit(1)->first()->id,
+            'tag_img' => (Media::inRandomOrder()->count() > 0) ? Media::inRandomOrder()->limit(1)->first()->id : NULL,
             'meta_title' => $this->faker->title(),
             'meta_keyword'=> str_replace(" ",",",$this->faker->text),
             'meta_description' => $this->faker->text,

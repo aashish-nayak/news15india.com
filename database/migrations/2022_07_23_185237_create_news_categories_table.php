@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryNewsTable extends Migration
+class CreateNewsCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,6 +28,6 @@ class CreateCategoryNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_news');
+        Schema::dropIfExists('news_categories');
     }
 }
