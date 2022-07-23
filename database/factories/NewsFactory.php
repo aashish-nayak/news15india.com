@@ -29,7 +29,7 @@ class NewsFactory extends Factory
             'status'=>  1,
             'is_verified'=> 1,
             'page_order'=> $this->faker->randomNumber(5),
-            'image'=> Media::inRandomOrder()->limit(1)->first()->id,
+            'image'=> (Media::inRandomOrder()->count() > 0) ? Media::inRandomOrder()->limit(1)->first()->id : NULL,
             'format'=> 'default',
             'youtube_url'=> NULL,
             'is_featured'=> 0,
