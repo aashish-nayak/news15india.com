@@ -13,7 +13,7 @@ class CreateCategoryNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_news', function (Blueprint $table) {
+        Schema::create('news_categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('news_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');

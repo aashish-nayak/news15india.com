@@ -18,6 +18,6 @@ class MediaSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Media::truncate();
         Schema::enableForeignKeyConstraints();
-        Media::factory(50)->create();
+        Media::factory(30)->create();
     }
 }

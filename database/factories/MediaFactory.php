@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use App\Models\Media;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Response;
@@ -20,6 +21,7 @@ class MediaFactory extends Factory
         // \App\Traits\LoremImageTrait::imageSave();
         $filedata = $this->model::imageSave(Str::random(10));
         return [
+            'admin_id' => Admin::inRandomOrder()->limit(1)->first()->id,
             'img' => $filedata['filename'],
             'alt' => $this->faker->userName,
             'size' => $filedata['size'],
