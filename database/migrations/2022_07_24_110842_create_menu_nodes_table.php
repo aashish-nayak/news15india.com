@@ -18,9 +18,9 @@ class CreateMenuNodesTable extends Migration
             $table->foreignId('menu_id')->constrained()->onDelete('cascade');
             $table->integer('parent_id')->default(0);
             $table->unsignedBigInteger('reference_id')->nullable();
-            $table->unsignedBigInteger('reference_type')->nullable();
+            $table->string('reference_type')->nullable();
             $table->string('title');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('icon')->nullable();
             $table->string('css_class')->nullable();
             $table->enum('target',['_self','_blank'])->default('_self');

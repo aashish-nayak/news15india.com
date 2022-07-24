@@ -59,7 +59,7 @@
             </ul>
         </li>
         <li class="">
-            <a href="{{Route('admin.menu.index')}}">
+            <a href="{{Route('admin.menu.index',1)}}">
                 <div class="parent-icon"><i class='bx bx-menu-alt-right'></i></div>
                 <div class="menu-title">Menus</div>
             </a>

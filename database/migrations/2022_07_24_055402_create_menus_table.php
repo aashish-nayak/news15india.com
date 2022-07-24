@@ -15,6 +15,8 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('menu_location_id')->nullable();
+            $table->foreign('menu_location_id')->references('id')->on('menu_locations')->nullOnDelete();
             $table->string('name');
             $table->string('slug');
             $table->boolean('status')->default(true);
