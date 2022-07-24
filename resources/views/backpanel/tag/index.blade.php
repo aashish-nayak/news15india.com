@@ -176,8 +176,6 @@
 @include('backpanel.includes.media-model-script')
 <script>
     $(document).ready(function() {
-        $(document).ready(function () {
-        });
         $('#tags').DataTable({
             processing: true,
             serverSide: true,

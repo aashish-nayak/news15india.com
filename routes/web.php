@@ -6,6 +6,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -115,5 +116,12 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/store',[PermissionController::class,'store'])->name('store');
         Route::get('/edit/{id}',[PermissionController::class,'edit'])->name('edit');
         Route::get('/delete/{id}',[PermissionController::class,'destroy'])->name('delete');
+    });
+
+    Route::prefix('/menu')->name('menu.')->group(function(){
+        Route::get('/view',[MenuController::class,'index'])->name('index');
+        Route::post('/store', [MenuController::class,'store'])->name('store');
+        Route::get('/edit/{tag}',[MenuController::class,'edit'])->name('edit');
+        Route::get('/delete/{tag}',[MenuController::class,'destroy'])->name('delete');
     });
 });
