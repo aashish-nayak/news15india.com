@@ -18,7 +18,7 @@ class TagFactory extends Factory
     
     public function definition()
     {
-        $tagname = Str::random(7);
+        $tagname = $this->faker->domainWord;
         return [
             'name' => $tagname,
             'slug' => Str::slug($tagname),
