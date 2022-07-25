@@ -35,6 +35,7 @@
                 </div>
             </div>
         </div>
+        <textarea name="menu_nodes" id="nestable-output" class="form-control d-none"></textarea>
         <div class="col-md-3">
             {{-- <div class="card accordion">
                 <div class="accordion-item">
@@ -121,63 +122,65 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="card widget meta-boxes">
-                <div class="card-header">
-                    <h6>Menu Structure</h6>
-                </div>
-                <div class="dd nestable-menu card-body" id="nestable" data-depth="0">
-                    <ol class="dd-list">
-                        <li class="dd-item">
-                            <div class="dd-handle dd3-handle"></div>
-                            <div class="dd3-content">
-                                <span class="float-start menu-name">Category</span>
-                                <span class="float-end modal-name me-4">Category</span>
-                                <a class="show-item-details" type="button"><i class="bx bx-chevron-down"></i></a>
-                            </div>
-                            <div class="item-details">
-                                <div class="form-body">
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Title</b></label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Title">
+            <form action="" method="post">
+                <div class="card widget meta-boxes">
+                    <div class="card-header">
+                        <h6>Menu Structure</h6>
+                    </div>
+                    <div class="dd nestable-menu card-body" id="nestable" data-depth="0">
+                        {{-- <ol class="dd-list">
+                            <li class="dd-item">
+                                <div class="dd-handle dd3-handle"></div>
+                                <div class="dd3-content">
+                                    <span class="float-start menu-name">Category</span>
+                                    <span class="float-end modal-name me-4">Category</span>
+                                    <a class="show-item-details" type="button"><i class="bx bx-chevron-down"></i></a>
+                                </div>
+                                <div class="item-details">
+                                    <div class="form-body">
+                                        <div class="row mb-3">
+                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Title</b></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputEnterYourName" placeholder="Title">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Icon</b></label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="Icon">
+                                        <div class="row mb-3">
+                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Icon</b></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputEnterYourName" placeholder="Icon">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>css</b></label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputEnterYourName" placeholder="CSS Class">
+                                        <div class="row mb-3">
+                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>css</b></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputEnterYourName" placeholder="CSS Class">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Target</b></label>
-                                        <div class="col-sm-9">
-                                            <select name="" id="" class="form-control form-control-sm">
-                                                <option value="_self">Open Link Directly</option>
-                                                <option value="_self">Open Link in New Tab</option>
-                                            </select>
+                                        <div class="row mb-3">
+                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Target</b></label>
+                                            <div class="col-sm-9">
+                                                <select name="" id="" class="form-control form-control-sm">
+                                                    <option value="_self">Open Link Directly</option>
+                                                    <option value="_self">Open Link in New Tab</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-12 text-end">
-                                            <button type="button" class="btn btn-sm btn-danger me-1">Remove</button>
-                                            <button type="button" class="btn btn-sm btn-primary">Cancel</button>
+                                        <div class="row mb-3">
+                                            <div class="col-12 text-end">
+                                                <button type="button" class="btn btn-sm btn-danger me-1">Remove</button>
+                                                <button type="button" class="btn btn-sm btn-primary">Cancel</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ol>
+                            </li>
+                        </ol> --}}
+                    </div>
+                    <div class="card-footer text-end">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
                 </div>
-                <div class="card-footer text-end">
-                    <button class="btn btn-primary">Save</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <form action="{{route('admin.menu.location-store')}}" method="POST">
@@ -266,56 +269,8 @@
                 url: url,
                 type: "GET",
                 success: function(data) {
-                    console.log(data);
-                    let html = '';
-                    $.each(data, function (index, value) { 
-                        html += `<li class="dd-item">
-                            <div class="dd-handle dd3-handle"></div>
-                            <div class="dd3-content">
-                                <span class="float-start menu-name">${value.title}</span>
-                                <span class="float-end modal-name me-4">${value.reference_type}</span>
-                                <a class="show-item-details" type="button"><i class="bx bx-chevron-down"></i></a>
-                            </div>
-                            <div class="item-details">
-                                <div class="form-body">
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Title</b></label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="${value.title}" placeholder="Title">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Icon</b></label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="${(value.icon != null) ? value.icon : ''}" placeholder="Icon">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>css</b></label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="${(value.css_class != null) ? value.css_class : ''}" placeholder="CSS Class">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Target</b></label>
-                                        <div class="col-sm-9">
-                                            <select name="" id="" class="form-control form-control-sm">
-                                                <option ${(value.target == '_self') ? 'selected': ''} value="_self">Open Link Directly</option>
-                                                <option ${(value.target == '_blank') ? 'selected': ''} value="_blank">Open Link in New Tab</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-12 text-end">
-                                            <button type="button" class="btn btn-sm btn-danger me-1">Remove</button>
-                                            <button type="button" class="btn btn-sm btn-primary">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>`;
-                    });
-                    $("#nestable > .dd-list").html(html);
+                    // console.log(data);
+                    $("#nestable").html(data);
                 }
             });
         }
@@ -348,6 +303,31 @@
                     }
                 });
             });
+            $(document).on('click', '.remove-menu', function() {
+            var row = $(this);
+            var id = $(this).data('id');
+            var url = "{{ route('admin.menu.delete',':id') }}";
+            url = url.replace(':id', id);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Want to remove Menu!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        success: function(data) {
+                            loadStructure();
+                        }
+                    });
+                }
+            });
+        });
         });
     </script>
 @endpush

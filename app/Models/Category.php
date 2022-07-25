@@ -29,10 +29,6 @@ class Category extends Model
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
-    public function img(){
-        return $this->belongsTo(Media::class, 'cat_img');
-    }
-
     public function children(){
         return $this->hasMany(Category::class, 'parent_id');
     }
@@ -43,6 +39,10 @@ class Category extends Model
 
     public function nested_child(){
         return $this->children()->with('nested_child');
+    }
+    
+    public function img(){
+        return $this->belongsTo(Media::class, 'cat_img');
     }
 
     public function news(){

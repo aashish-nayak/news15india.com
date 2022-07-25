@@ -14,4 +14,9 @@ class Menu extends Model
         $this->attributes['name'] = ucwords($value);
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function parentMenuNodes()
+    {
+        return $this->hasMany(MenuNodes::class,'menu_id')->where('parent_id',0);
+    }
 }
