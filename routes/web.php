@@ -6,6 +6,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
@@ -26,7 +27,7 @@ Route::any('/test',[TestController::class,'test'])->name('test');
 
 Route::view('/', 'welcome');
 Route::prefix('/frontend-on-development/news15india')->group(function(){
-    Route::view('/', 'home')->name('home');
+    Route::get('/', [FrontController::class,'home'])->name('home');
     Route::view('/2', 'category')->name('category');
     Route::view('/3', 'author')->name('author');
     Route::view('/4', 'single')->name('single');

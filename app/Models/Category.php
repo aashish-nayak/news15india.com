@@ -46,6 +46,6 @@ class Category extends Model
     }
 
     public function news(){
-        return $this->belongsToMany(News::class, 'news_categories');
+        return $this->belongsToMany(News::class, 'news_categories')->where('is_published',1)->where('is_verified',1)->where('status',1);
     }
 }

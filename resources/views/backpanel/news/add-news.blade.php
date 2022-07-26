@@ -343,10 +343,10 @@ function stringslug(str) {
     return str;
 };
 $(document).ready(function () {
-    $(document).on("click",".parent-cat",function() {
-        var child = $(this).parent().next().children().find('.sub-cat');
-        $(child).prop("checked", $(this).prop("checked"));
-    });
+    // $(document).on("click",".parent-cat",function() {
+    //     var child = $(this).parent().next().children().find('.sub-cat');
+    //     $(child).prop("checked", $(this).prop("checked"));
+    // });
     $(document).on("keyup", ".titletoslug", function() {
         let slug = stringslug($(this).val());
         $("#slug").html(slug);
