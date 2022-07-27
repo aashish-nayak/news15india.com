@@ -36,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
             $mobileMenu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
             return $view->with(compact('mobileMenu'));
         });
+        View::composer('layouts.frontend.partials.footer',function($view){
+            $loc_id = MenuLocation::where('location','footer-menu')->first()->id;
+            $footerMenu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
+            return $view->with(compact('footerMenu'));
+        });
     }
 
     /**

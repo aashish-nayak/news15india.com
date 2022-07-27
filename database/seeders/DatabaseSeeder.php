@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
-            // UserSeeder::class,
-            // MediaSeeder::class,
-            // TagSeeder::class,
+            UserSeeder::class,
+            MediaSeeder::class,
+            TagSeeder::class,
             CategorySeeder::class,
-            // NewsSeeder::class
-            // MenuSeeder::class
+            NewsSeeder::class,
+            MenuSeeder::class
         ]);
     }
 }

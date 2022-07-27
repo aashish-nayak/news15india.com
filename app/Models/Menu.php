@@ -17,6 +17,6 @@ class Menu extends Model
 
     public function parentMenuNodes()
     {
-        return $this->hasMany(MenuNodes::class,'menu_id')->where('parent_id',0);
+        return $this->hasMany(MenuNodes::class,'menu_id')->where('parent_id',0)->orderBy('position');
     }
 }

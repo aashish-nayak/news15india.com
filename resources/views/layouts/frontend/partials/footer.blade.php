@@ -1,112 +1,32 @@
 <footer class="nb-footer mt-1">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 col-sm-6">
-                <div class="footer-info-single">
-                    <h4 class="title">Latest News</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Crime News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Covid-19 News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Political News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                National News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Knowledged News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Religion News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Sport News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Career News</a></li>
-                        <li><a href="javascript:void(0)" title=""><i class="fa fa-angle-double-right"></i>
-                                Social Media News</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-7">
+            <div class="col-md-9">
                 <div class="row" style="margin: 0px;">
-                    <div class="col-md-3 px-1 col-sm-6">
+                    @foreach ($footerMenu->parentMenuNodes as $footer)
+                    @if ($footer->has_child)
+                    <div class="col-md-2 px-md-1 col-sm-6">
                         <div class="footer-info-single">
-                            <h4 class="title">Life Style</h4>
+                            <h4 class="title">{{$footer->title}}</h4>
                             <ul class="list-unstyled">
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Standard of Living</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Right Diet</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Relationship</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Tourism</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Money Talk</a></li>
+                                @foreach ($footer->child as $subFooter)
+                                <li>
+                                    <a href="javascript:void(0)" title="">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        {{$subFooter->title}}
+                                    </a>
+                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3 px-1 col-sm-6">
-                        <div class="footer-info-single">
-                            <h4 class="title">Education</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Sarkari Exam</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Current Affairs</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> General Knowledged</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Result</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Exam</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Success Story</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 px-1 col-sm-6">
-                        <div class="footer-info-single">
-                            <h4 class="title">Gadgets</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Automobiles</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Talk to Easy</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Tablet/Computer</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Mobile</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 px-1 col-sm-6">
-                        <div class="footer-info-single">
-                            <h4 class="title">Female</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Housekeeping</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Child Care</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Current Affairs</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Woman Power</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Pregnancy</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Fashion</a></li>
-                                <li><a href="javascript:void(0)" title=""><i
-                                            class="fa fa-angle-double-right"></i> Beauty Tips</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 px-1 mt-5 mt-md-0">
-                        <img src="{{ asset('front-assets/img/flag-color.png') }}" class="img-fluid footer-img"
-                            alt="">
+                    @endif
+                    @endforeach
+                    <div class="col-12 px-1 mt-5 mt-md-0 text-center">
+                        <img src="{{ asset('front-assets/img/flag-color.png') }}" class="img-fluid footer-img" alt="">
                     </div>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-6">
                 <div class="p-2 mt-3" style="background-color:var(--primary)">
                     <div class="col-12 p-2 text-center" style="background-color: var(--secondary);">

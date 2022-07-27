@@ -9,6 +9,20 @@ class MenuNodes extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'menu_id',
+        'parent_id',
+        'reference_id',
+        'reference_type',
+        'title',
+        'url',
+        'icon',
+        'css',
+        'target',
+        'position',
+        'has_child'
+    ];
+
     public function parent(){
         return $this->belongsTo(MenuNodes::class, 'parent_id');
     }

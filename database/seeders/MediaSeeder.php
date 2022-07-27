@@ -21,6 +21,6 @@ class MediaSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
         Storage::deleteDirectory('public/media');
         Storage::deleteDirectory('public/temp');
-        Media::factory(10)->create();
+        Media::factory(50)->create();
     }
 }

@@ -22,7 +22,7 @@ class CreateMenuNodesTable extends Migration
             $table->string('title');
             $table->string('url')->nullable();
             $table->string('icon')->nullable();
-            $table->string('css_class')->nullable();
+            $table->string('css')->nullable();
             $table->enum('target',['_self','_blank'])->default('_self');
             $table->integer('position')->default(0);
             $table->integer('has_child')->default(0);

@@ -102,235 +102,84 @@
             <div class="col-md-9 col-12 px-0 pr-md-1">
                 <div class="container-fluid px-1 mb-1 d-flex align-items-center justify-content-between nav-height"
                     style="color: var(--text-color-light-hover);">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight: bold;">Rajasthan</h4>
+                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight: bold;">{{$section1->cat_name}}</h4>
                     <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                         <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                             \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                     </div>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Jaipur</a></li>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">kota</a></li>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Tonk</a></li>
-                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">Bikarner</a></li>
+                    @foreach ($section1->children as $key => $subCat)
+                    @if($key <= 3)
+                    <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">{{$subCat->cat_name}}</a></li>
+                    @endif
+                    @endforeach
                     <select name="" class="mx-1 block-drop" id="">
                         <option value="">All</option>
-                        <option value="">Delhi</option>
-                        <option value="">Rajasthan</option>
+                        @foreach ($section1->children as $key => $subCat)
+                        @if($key >= 3)
+                        <option value="">{{$subCat->cat_name}}</option>
+                        @endif
+                        @endforeach
                     </select>
                     <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
                 </div>
                 <div class="row mx-auto">
                     <div class="col-md-6 col-12">
                         <div class="row">
+                            @foreach ($section1->news as $key => $news1)
+                            @if($key <= 3)
                             <div class="col-6 p-1">
                                 <div class="box card-shadow" style="height:130px;">
                                     <a href="javascript:void(0)">
-                                        <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
+                                        <img src="{{asset('storage/media/'.$news1->img->img)}}" class="img-fluid" alt="" loading="lazy">
                                         <div class="content-overlay" style="border-bottom:2px solid var(--primary);">
                                         </div>
                                         <div class="img-title">
-                                            <p class="text-light">Man City into FA Cup semifinals, keeps quadruple dream
-                                                alive</p>
+                                            <p class="text-light">{{\Str::limit($news1->title,60)}}</p>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-6 p-1">
-                                <div class="box card-shadow" style="height:130px;">
-                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
-                                        <div class="content-overlay" style="border-bottom:2px solid var(--primary);">
-                                        </div>
-                                        <div class="img-title">
-                                            <p class="text-light">Man City into FA Cup semifinals, keeps quadruple dream
-                                                alive</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6 p-1 mt-md-1">
-                                <div class="box card-shadow" style="height:130px;">
-                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
-                                        <div class="content-overlay" style="border-bottom:2px solid var(--primary);">
-                                        </div>
-                                        <div class="img-title">
-                                            <p class="text-light">Man City into FA Cup semifinals, keeps quadruple dream
-                                                alive</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6 p-1 mt-md-1">
-                                <div class="box card-shadow" style="height:130px;">
-                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="">
-                                        <div class="content-overlay" style="border-bottom:2px solid var(--primary);">
-                                        </div>
-                                        <div class="img-title">
-                                            <p class="text-light">Man City into FA Cup semifinals, keeps quadruple dream
-                                                alive</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-6 col-12 px-1">
-                        <div class="card card-shadow mt-md-1 my-2" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
+                        @foreach ($section1->news as $key => $news1)
+                            @if($key > 3 && $key < 7)
+                            <div class="card card-shadow mt-md-1 my-2" style="border-left:2px solid var(--primary);">
+                                <a href="javascript:void(0)">
+                                    <div class="card-horizontal">
+                                        <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                            <img class="" src="{{asset('storage/media/'.$news1->img->img)}}" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body col-8 col-md-9">
+                                            <h6 class="card-text">{{\Str::limit($news1->title,65)}}</h6>
+                                        </div>
                                     </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make up.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card card-shadow mt-md-2 mb-2" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make up.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card card-shadow mt-md-2 mb-2" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make up.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                            @endif
+                        @endforeach
                     </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
+                    @foreach ($section1->news as $key => $news1)
+                        @if($key >= 7)
+                        <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
+                            <div class="card card-shadow" style="border-left:2px solid var(--primary);">
+                                <a href="javascript:void(0)">
+                                    <div class="card-horizontal">
+                                        <div class="img-square-wrapper col-4 col-md-3 p-0">
+                                            <img class="" src="{{asset('storage/media/'.$news1->img->img)}}" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body col-8 col-md-9">
+                                            <h6 class="card-text">{{\Str::limit($news1->title,65)}}</h6>
+                                        </div>
                                     </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
-                        <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
-                                <div class="card-horizontal">
-                                    <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img class="" src="{{asset('front-assets/img/square.jpg')}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                     <div class="col-12 px-1">
                         <a href="javascript:void(0)"><img src="{{asset('front-assets/img/8x1ad.png')}}" width="100%" alt="" srcset=""></a>
                     </div>

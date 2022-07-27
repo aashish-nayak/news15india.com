@@ -14,8 +14,13 @@ class FrontController extends Controller
      */
     public function home()
     {
-        $section1 = Category::with('children.news','news')->find(1);
-        dd($section1->toArray());
+        $section1 = Category::with(['children'=>function($query){
+            $query->limit(10);
+        },'news'=>function($query){
+            $query->latest()->limit(15);
+        }])->find(1);
+        // dd($section1->toArray());
+        return view('home',compact('section1'));
     }
 
     /**
