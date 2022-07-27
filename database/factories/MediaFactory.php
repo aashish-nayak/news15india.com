@@ -22,7 +22,7 @@ class MediaFactory extends Factory
         $filedata = $this->model::imageSave(now()->format('Y_m_d_H_i_s')."_".$this->faker->domainWord);
         return [
             'admin_id' => Admin::inRandomOrder()->limit(1)->first()->id,
-            'img' => $filedata['filename'],
+            'filename' => $filedata['filename'],
             'alt' => $this->faker->domainWord,
             'size' => $filedata['size'],
             'type' => $filedata['type'],

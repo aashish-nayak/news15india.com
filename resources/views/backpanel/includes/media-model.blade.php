@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body row h-100" id="media-row">
-                @include('backpanel.news.media-box')
+                @include('backpanel.includes.media-box')
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

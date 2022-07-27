@@ -1,8 +1,8 @@
 @if(!empty($media) && $media->count())
 @foreach ($media as $item)
     <div class="col-lg-2 col-md-2 col-3 mt-4">
-        <div class="file" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->img)}}" data-alt="{{$item->alt}}" data-name="{{$item->img}}">
-            <img class="img-fluid up-file" src="{{asset('storage/media/'.$item->img)}}" />
+        <div class="file" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->filename)}}" data-alt="{{$item->alt}}" data-name="{{$item->filename}}">
+            <img class="img-fluid up-file" src="{{asset('storage/media/'.$item->filename)}}" />
         </div>
     </div>
 @endforeach

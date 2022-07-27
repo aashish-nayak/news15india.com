@@ -259,7 +259,7 @@
                     $("#catname").val(data.name);
                     $("#slug").val(data.slug);
                     if(data.editImg != null){
-                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;
+                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.filename;
                     }else{
                         preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
                     }

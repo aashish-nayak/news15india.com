@@ -12,7 +12,7 @@ class Media extends Model
     
     protected $fillable = [
         'admin_id',
-        'img',
+        'filename',
         'alt',
         'size',
         'type',

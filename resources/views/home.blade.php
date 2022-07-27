@@ -131,7 +131,7 @@
                             <div class="col-6 p-1">
                                 <div class="box card-shadow" style="height:130px;">
                                     <a href="javascript:void(0)">
-                                        <img src="{{asset('storage/media/'.$news1->img->img)}}" class="img-fluid" alt="" loading="lazy">
+                                        <img src="{{asset('storage/media/'.$news1->img->filename)}}" class="img-fluid" alt="" loading="lazy">
                                         <div class="content-overlay" style="border-bottom:2px solid var(--primary);">
                                         </div>
                                         <div class="img-title">
@@ -151,7 +151,7 @@
                                 <a href="javascript:void(0)">
                                     <div class="card-horizontal">
                                         <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                            <img class="" src="{{asset('storage/media/'.$news1->img->img)}}" alt="Card image cap">
+                                            <img class="" src="{{asset('storage/media/'.$news1->img->filename)}}" alt="Card image cap">
                                         </div>
                                         <div class="card-body col-8 col-md-9">
                                             <h6 class="card-text">{{\Str::limit($news1->title,65)}}</h6>
@@ -169,7 +169,7 @@
                                 <a href="javascript:void(0)">
                                     <div class="card-horizontal">
                                         <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                            <img class="" src="{{asset('storage/media/'.$news1->img->img)}}" alt="Card image cap">
+                                            <img class="" src="{{asset('storage/media/'.$news1->img->filename)}}" alt="Card image cap">
                                         </div>
                                         <div class="card-body col-8 col-md-9">
                                             <h6 class="card-text">{{\Str::limit($news1->title,65)}}</h6>

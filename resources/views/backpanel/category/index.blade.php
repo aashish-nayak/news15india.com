@@ -421,7 +421,7 @@
                     $(".status-input[value='" + data.status + "']").prop('checked', true);
                     let preview = '';
                     if(data.editImg != null){
-                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;
+                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.filename;
                     }else{
                         preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
                     }

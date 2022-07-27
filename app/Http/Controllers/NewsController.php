@@ -92,7 +92,7 @@ class NewsController extends Controller
             $cat_name = $record->title;
             $slug = $record->slug;
             $categories = implode(",", $record->categories->pluck('slug')->toArray());
-            $banner = ($record->image != NULL) ? $record->img->img : 'No Image';
+            $banner = ($record->image != NULL) ? $record->img->filename : 'No Image';
             $status = $record->status;
             $created = $record->created_at;
             $createdby = $record->creator->name;
@@ -260,7 +260,7 @@ class NewsController extends Controller
             $cat_name = $record->title;
             $slug = $record->slug;
             $categories = implode(",", $record->categories->pluck('slug')->toArray());
-            $banner = ($record->image != NULL) ? $record->img->img : 'No Image';
+            $banner = ($record->image != NULL) ? $record->img->filename : 'No Image';
             $status = $record->status;
             $created = Carbon::createFromTimeStamp(strtotime($record->deleted_at))->diffForHumans();
             $createdby = $record->creator->name;

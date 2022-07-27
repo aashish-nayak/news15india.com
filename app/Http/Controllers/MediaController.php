@@ -27,7 +27,7 @@ class MediaController extends Controller
             $value->storeAs('public/media', $file);
             $media = new Media;
             $media->admin_id = Auth::guard('admin')->user()->id;
-            $media->img = $file;
+            $media->filename = $file;
             $media->alt = $filename;
             $media->type = $type;
             $media->size = $size;
@@ -54,11 +54,11 @@ class MediaController extends Controller
     {   
         try {
             $media = Media::find($request->id);
-            $file = explode(".", $request->filename)[0] . "." . pathinfo($media->img, PATHINFO_EXTENSION);
-            if (Storage::exists('public/media/' . $media->img) && $media->img != $file) {
-                Storage::move("public/media/" . $media->img, "public/media/" . $file);
+            $file = explode(".", $request->filename)[0] . "." . pathinfo($media->filename, PATHINFO_EXTENSION);
+            if (Storage::exists('public/media/' . $media->filename) && $media->filename != $file) {
+                Storage::move("public/media/" . $media->filename, "public/media/" . $file);
             }
-            $media->img = $file;
+            $media->filename = $file;
             $media->alt = $request->alt_name;
             $media->save();
             return response()->json(["status"=>"success", $media, "message" => "File updated successfully"]);
@@ -69,8 +69,8 @@ class MediaController extends Controller
     public function destroy($id)
     {
         $media = Media::find($id);
-        if (Storage::exists('public/media/' . $media->img)) {
-            Storage::delete('public/media/' . $media->img);
+        if (Storage::exists('public/media/' . $media->filename)) {
+            Storage::delete('public/media/' . $media->filename);
         }
         $media->delete();
         return redirect()->back()->with('success', 'Media deleted successfully');
@@ -79,8 +79,8 @@ class MediaController extends Controller
     {   try{
             $media = Media::find($request->ids);
             foreach ($media as $key => $value) {
-                if (Storage::exists('public/media/' . $value->img)) {
-                    Storage::delete('public/media/' . $value->img);
+                if (Storage::exists('public/media/' . $value->filename)) {
+                    Storage::delete('public/media/' . $value->filename);
                 }
                 $value->delete();
             }

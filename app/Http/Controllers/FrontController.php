@@ -7,17 +7,12 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function home()
     {
         $section1 = Category::with(['children'=>function($query){
             $query->limit(10);
         },'news'=>function($query){
-            $query->latest()->limit(15);
+            $query->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->limit(15);
         }])->find(1);
         // dd($section1->toArray());
         return view('home',compact('section1'));
