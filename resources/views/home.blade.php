@@ -116,7 +116,7 @@
                     <select name="" class="mx-1 block-drop" id="">
                         <option value="">All</option>
                         @foreach ($section1->children as $key => $subCat)
-                        @if($key >= 3)
+                        @if($key >= 4)
                         <option value="">{{$subCat->cat_name}}</option>
                         @endif
                         @endforeach
