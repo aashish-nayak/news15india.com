@@ -608,12 +608,7 @@
             </section>
         </div>
         <aside class="col-md-3 col-12 mt-1 my-md-0 px-1">
-            <div class="d-flex bg-dark align-items-center justify-content-center py-2">
-                <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
-            </div>
-            <div class="col-12 px-0">
-                <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100" alt="">
-            </div>
+            @includeIf('components.whatsapp-ad')
             @includeIf('components.poll')
             <div class="col-12 p-0 mt-1 ">
                 <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>

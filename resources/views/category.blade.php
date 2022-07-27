@@ -579,12 +579,7 @@
             <div class="col-12 px-0">
                 <img src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
             </div>
-            <div class="d-flex bg-dark align-items-center justify-content-center py-2 mt-1">
-                <h4 style="color:#f2f2f2; font-weight:600;">Join Our whatsapp Group</h4>
-            </div>
-            <div class="col-12 px-0">
-                <img src="{{asset('front-assets/img/whatsapp.jpg')}}" class="w-100" alt="">
-            </div>
+            @includeIf('components.whatsapp-ad')
             @includeIf('components.poll')
             <div class="col-12 p-0 mt-1 side-position mx-auto">
                 <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
