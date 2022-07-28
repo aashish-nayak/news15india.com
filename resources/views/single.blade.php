@@ -4,34 +4,37 @@
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
         <div class="col-md-9 col-12 px-1 pr-md-1">
-            <!-- Ad Banner  -->
+            {{-- ........... Ad Banner ........  --}}
             <section class="container-fluid mx-auto px-0 mb-1 text-center">
-                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
+                <a href="javascript:void(0)">
+                    <img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" loading="lazy">
+                </a>
             </section>
-            <!-- Ad Banner  -->
+            {{-- ........... Ad Banner ........  --}}
             <div style="font-size: 14px; font-weight:600;"class="col-12 p-1">
-                <a href="javascript:void(0)" class=""><span>Hindi News</span></a><span>/</span>
-                <a href="javascript:void(0)" class=""><span>Jaipur</span></a><span>/</span>
-                <a href="javascript:void(0)" class="b-active"><span>Election</span></a>
+                @foreach ($news->categories as $key => $category)
+                <a href="javascript:void(0)"><span>{{$category->cat_name}}</span></a><span>/</span>
+                @endforeach
+                <a href="javascript:void(0)" class="b-active"><span>{{\Str::limit($news->title,40)}}</span></a>
             </div>
             <div class="col-12 p-1">
                 <h1 class="text-dark px-2 font-weight-bold" style="border-left: 4px solid var(--primary);">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum repudiandae exercitationem officiis impedit aperiam? Necessitatibus voluptates numquam aperiam.
+                    {{$news->title}}
                 </h1>
                 <p class="px-3 m-0 font-weight-bold" style="line-height: 1.3;font-size:1.7rem">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, dolores nulla adipisci laborum iusto voluptatum ea voluptatem itaque architecto rerum praesentium eum dolorem enim sequi suscipit aliquam consectetur magni similique?
+                    {{$news->short_description}}
                 </p>
             </div>
             <div class="container-fluid mx-auto py-2" style="border-bottom: 2px dotted gray;">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
-                        <img src="{{asset('front-assets/img/user.png')}}" style="height:70px;width:auto;" class="rounded-circle bg-primary" alt="">
+                        <img src="{{asset('front-assets/img/user.png')}}" style="height:70px;width:auto;" class="rounded-circle bg-primary" alt="" loading="lazy">
                     </div>
                     <div class="col-md-4 col-9 pl-3 px-1">
                         <div class="col-12" style="font-size: 16px; font-weight:500;">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span>By</span> <a href="javascript:void(0)"><span><strong>Abdul Malik</strong></span></a>
+                                    <span>By</span> <a href="javascript:void(0)"><span><strong>{{$news->creator->name}}</strong></span></a>
                                 </div>
                                 <div class="pr-3">
                                     <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a>
@@ -39,7 +42,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <p class="m-0"><span>Location,</span><span>Saturday 10 Apr 2021, 2:51PM</span></p>
+                            <p class="m-0"><span>Location,</span> <span>{{\Carbon\Carbon::parse($news->created_at)->format('D d M Y, H:i A')}}</span></p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 font-size-sm">
@@ -62,7 +65,8 @@
                 <div class="row">
                     <div class="col-md-8 col-12 px-0 pr-md-1">
                         <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <a href="javascript:void(0)">
+                                <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid w-100" alt="" loading="lazy">
                                 <div class="content-overlay"></div>
                                 <div class="img-title py-3" style="background-color: #333333a6 !important;border-left: 5px solid var(--primary);">
                                     <h4 class="text-white font-weight-normal heading-single">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, impedit!</h4>
@@ -162,29 +166,34 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="border-bottom border-secondary">
+                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
+                                    <a href="#" class="post-title">
+                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Ad Banner  -->
+            {{-- ............ Ad Banner ...........  --}}
             <section class="container-fluid mt-1 px-0 text-center">
-                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
+                <a href="javascript:void(0)">
+                    <img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" loading="lazy">
+                </a>
             </section>
-            <!-- Ad Banner  -->
+            {{-- ............ Ad Banner ...........  --}}
             <div class="container-fluid mt-3 px-1">
-                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quis optio illo eius molestiae praesentium consequatur voluptas neque nulla laudantium facilis repellendus veniam dolores, aliquid unde voluptates deserunt quo. Cumque?</p>
-                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quis optio illo eius molestiae praesentium consequatur voluptas neque nulla laudantium facilis repellendus veniam dolores, aliquid unde voluptates deserunt quo. Cumque?</p>
-                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quis optio illo eius molestiae praesentium consequatur voluptas neque nulla laudantium facilis repellendus veniam dolores, aliquid unde voluptates deserunt quo. Cumque?</p>
-                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolore assumenda, atque nisi sit temporibus, optio ipsum officia perferendis quisquam iure ea ex consequatur tempore ratione explicabo alias. Non, dolorum cumque nemo, facilis ratione facere aut vero illo unde consequatur eius velit qui. Quas repudiandae odio reprehenderit aut, aliquam nam.</p>
-                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolore assumenda, atque nisi sit temporibus, optio ipsum officia perferendis quisquam iure ea ex consequatur tempore ratione explicabo alias. Non, dolorum cumque nemo, facilis ratione facere aut vero illo unde consequatur eius velit qui. Quas repudiandae odio reprehenderit aut, aliquam nam.</p>
-                <p class=" text-dark single-para mb-3 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolore assumenda, atque nisi sit temporibus, optio ipsum officia perferendis quisquam iure ea ex consequatur tempore ratione explicabo alias. Non, dolorum cumque nemo, facilis ratione facere aut vero illo unde consequatur eius velit qui. Quas repudiandae odio reprehenderit aut, aliquam nam.</p>
+                <p class=" text-dark single-para mb-3 text-justify">{!!$news->content!!}</p>
             </div>
-            <!-- Ad Banner  -->
             <section class="container-fluid mx-auto mt-1 px-0 text-center">
-                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
+                <a href="javascript:void(0)">
+                    <img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" loading="lazy">
+                </a>
             </section>
-            <!-- Ad Banner  -->
-            <div class="container-fluid mt-1 px-0">
+            {{-- ........... Tags ........  --}}
+            <div class="container-fluid my-2 px-0">
                 <div class="col-12">
                     <div class="row flex-wrap align-items-center">
                         <div class="col-md-2 text-center">
@@ -192,23 +201,9 @@
                         </div>
                         <div class="col-md-10">
                             <ul class="d-flex flex-wrap list-unstyled">
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">Primary</span></a></li>
+                                @foreach ($news->tags as $tag)
+                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">{{$tag->name}}</span></a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -260,350 +255,89 @@
                             <p class="my-3 my-md-1 font-weight-bold text-center" style="color: black;font-size:2rem">Download App</p>
                             <div class="row align-items-center m-0">
                                 <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
-                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="" style="max-height:80px">
+                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
                                 </a>
                                 <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
-                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="" style="max-height:80px">
+                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {{-- ........... Tags ........  --}}
             <div class="main-bg-clr container-fluid px-1 mt-3">
-                <div class="container-fluid mb-1 px-1 d-flex align-items-center justify-content-between nav-height" style="color: var(--text-color-light-hover);">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight: bold;">Rajasthan</h4>
-                    <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                </div>
+                @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-25'])
                 <div class="row mx-auto">
+                    @foreach ($moreCategoryNews->news as $key => $otherNews)
+                        @if($key <= 3)
+                        @push('design_1')
+                        <div class="col mb-2 px-2">
+                            <div class="card card-shadow">
+                                <a href="{{route('single-news',$otherNews->slug)}}" class="text-muted text-decoration-none">
+                                    <img src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" class="card-img-top" alt="..." loading="lazy">
+                                </a>
+                                <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
+                                    <a href="{{route('single-news',$otherNews->slug)}}" class="text-decoration-none">
+                                        <h6 class="my-0 text-left">{{\Str::limit($otherNews->title,40)}}</h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        @endpush
+                        @else
+                        @push('design_2')
+                        <div class="col mt-md-1 px-2 mb-2">
+                            <div class="card card-shadow" style="border-right:2px solid var(--primary);">
+                                <a href="{{route('single-news',$otherNews->slug)}}">
+                                    <div class="card-horizontal">
+                                        <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
+                                            <h6 class="card-text">{{\Str::limit($otherNews->title,40)}}</h6>
+                                        </div>
+                                        <div class="img-square-wrapper col-5 col-md-4 p-0">
+                                            <img class="img-fluid" src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" alt="Card image cap" loading="lazy">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        @endpush
+                        @endif
+                    @endforeach
                     <div class="col-md-4 col-12 py-1">
                         <div class="row row-cols-2 row-cols-md-2 p-0">
-                            <div class="col mb-2 px-2">
-                                <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                    <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
-                                        <a href="javascript:void(0)" class="text-decoration-none">
-                                            <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
-                                            </h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-2 px-2">
-                                <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                    <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
-                                        <a href="javascript:void(0)" class="text-decoration-none">
-                                            <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
-                                            </h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-2 px-2">
-                                <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                    <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
-                                        <a href="javascript:void(0)" class="text-decoration-none">
-                                            <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
-                                            </h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-2 px-2">
-                                <div class="card card-shadow">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                    <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
-                                        <a href="javascript:void(0)" class="text-decoration-none">
-                                            <h6 class="my-0 text-left">Lorem ipsum dolor sit amet consectetur
-                                            </h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            @stack('design_1')
                         </div>
                     </div>
                     <div class="col-md-8 px-1">
                         <div class="row row-cols-1 row-cols-md-2 m-0">
-                            <div class="col mt-md-1 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-1 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col mt-md-0 px-2 mb-2">
-                                <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                                    <a href="javascript:void(0)">
-                                        <div class="card-horizontal">
-                                            <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
-                                                <h6 class="card-text">Some quick example text to build on the card title..</h6>
-                                            </div>
-                                            <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                                <img class="" src="{{asset('front-assets/img/camera.jpg')}}" alt="Card image cap">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            @stack('design_2')
                         </div>
                     </div>
                 </div>
             </div>
             <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
-                <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 class="text-white mr-2">Rajasthan</h4>
-                <div class="w-100 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
+                <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i>
+                <h4 class="text-white mr-2">Related News</h4>
+                <div class="w-75 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                     <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                 </div>
                 <a href="javascript:void(0)" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
             </div>
             <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
                 <div class="row row-cols-md-4 row-cols-1">
+                    @foreach ($related as $news)
                     <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
+                        <a href="{{route('single-news',$news->slug)}}" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
+                                <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
                             </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
+                            <h6 class="col-7 single-para" title="{{$news->title}}">
+                                {{\Str::limit($news->title,30)}}
                             </h6>
                         </a>
                     </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
-                    <div class="col px-2 px-md-2 my-1">
-                        <a href="javascript:void(0)" class="text-decoration-none card-horizontal p-0">
-                            <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="">
-                            </div>
-                            <h6 class="col-7 single-para">
-                                Lorem ipsum dolor sit amet consectetur.
-                            </h6>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </section>
         </div>
@@ -615,292 +349,121 @@
                 <div class="single-item">
                     <div class="holder">
                         <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/pepsi-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                            <a href="javascript:void(0)">
+                                <img src="{{asset('front-assets/img/pepsi-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
+                            </a>
                         </div>
                     </div>
                     <div class="holder">
                         <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                            <a href="javascript:void(0)">
+                                <img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
+                            </a>
                         </div>
                     </div>
                     <div class="holder">
                         <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a>
+                            <a href="javascript:void(0)">
+                                <img src="{{asset('front-assets/img/square.jpg')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 mt-1 p-0">
-                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                </div>
-                <div class="container-fluid px-1">
-                    <a href="javascript:void(0)" class="text-decoration-none ">
-                        <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                        <h6 class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h6>
+                @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
+                @foreach ($sidebar_1->news as $key => $sidebar_news)
+                    @if($key == 0)
+                    @push('sidebar1_design1')
+                    <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-decoration-none ">
+                        <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
+                        <h6 class="mt-2">{{\Str::limit($sidebar_news->title,60)}}</h6>
                     </a>
                     <p class="text-muted">
-                        Some representati. Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Laborum, nemo.
+                        {{\Str::limit($sidebar_news->short_description,60)}}
                     </p>
-                </div>
-                <div class="style-2 border-top d-flex align-items-center px-1">
-                    <div class="post-data mt-1">
-                        <a href="javascript:void(0)" class="post-title">
-                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
-                        </a>
+                    @endpush
+                    @else
+                    @push('sidebar1_design2')
+                    <div class="style-2 border-top d-flex align-items-center px-1">
+                        <div class="post-data mt-1">
+                            <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
+                                <h6>{{\Str::limit($sidebar_news->title,60)}}</h6>
+                            </a>
+                        </div>
                     </div>
+                    @endpush
+                    @endif
+                @endforeach
+                <div class="container-fluid px-1">
+                    @stack('sidebar1_design1')
                 </div>
-                <div class="style-2 border-top d-flex align-items-center px-1">
-                    <div class="post-data mt-1">
-                        <a href="javascript:void(0)" class="post-title">
-                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
-                        </a>
-                    </div>
-                </div>
-                <div class="style-2 border-top d-flex align-items-center px-1">
-                    <div class="post-data mt-1">
-                        <a href="javascript:void(0)" class="post-title">
-                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
-                        </a>
-                    </div>
-                </div>
-                <div class="style-2 border-top d-flex align-items-center px-1">
-                    <div class="post-data mt-1">
-                        <a href="javascript:void(0)" class="post-title">
-                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
-                        </a>
-                    </div>
-                </div>
-                <div class="style-2 border-top d-flex align-items-center px-1">
-                    <div class="post-data mt-1">
-                        <a href="javascript:void(0)" class="post-title">
-                            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
-                        </a>
-                    </div>
-                </div>
+                @stack('sidebar1_design2')
             </div>
             <div class="col-12 mt-1 side-position mx-auto px-0">
-                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Gadget</h4>
-                    <div class="w-100 mx-3" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
-                </div>
+                @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
                 <div class="side-bar">
+                    @foreach ($sidebar_2->news as $sidebar_news)
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1 border-bottom border-secondary">
                             <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
+                                <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
                                     <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
+                                        <p class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
                                     </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                                    <h6>{{\Str::limit($sidebar_news->title,60)}}</h6>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
                 </div>
             </div>
             <div class="col-12 mt-1 side-position mx-auto px-0">
-                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Video</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 15px;font-weight:600;">औरभी</a>
-                </div>
+                @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
                 <div class="single-item">
+                    @foreach ($sidebar_3->news as $sidebar_news)
                     <div class="holder">
                         <div class="box mt-1" style="height:200px;">
                             <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$sidebar_news->slug)}}">
                                 <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                             </a>
-                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
+                            <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
                             <div class="img-title">
-                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                                <h6 class="text-light m-0">
+                                    <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-white">{{\Str::limit($sidebar_news->title,60)}}</a>
                                 </h6>
-                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="m-0 p-1">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="holder">
-                        <div class="box mt-1" style="height:200px;">
-                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                            <a href="javascript:void(0)">
-                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
-                            </a>
-                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                            <div class="img-title">
-                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                </h6>
-                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box mt-1" style="height:200px;">
-                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                            <a href="javascript:void(0)">
-                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
-                            </a>
-                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                            <div class="img-title">
-                                <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                </h6>
-                                <p class=" m-1"><a href=""></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-12 mt-1 side-position mx-auto px-0">
-                <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color:#f3f3f3; font-weight:600;">Rajasthan</h4>
-                    <div class="w-50 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link p-0" style="color:#f3f3f3;font-size:15px;font-weight:600;">औरभी</a>
-                </div>
+                @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar'=>true,'width'=>'w-25'])
                 <div class="single-item">
+                    @foreach ($sidebar_4->news as $sidebar_news)
                     <div class="holder">
                         <div class="box mt-1" style="height:250px;">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
+                            <a href="{{route('single-news',$sidebar_news->slug)}}">
+                                <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="" loading="lazy">
                                 <div class="content-overlay"></div>
                             </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
+                            <div class="img-title">
+                                <a href="{{route('single-news',$sidebar_news->slug)}}">
+                                    <h6 class="text-light m-0">
+                                        {{\Str::limit($sidebar_news->title,60)}}
                                     </h6>
                                 </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
+                                <p class="post-date m-m p-1">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="holder">
-                        <div class="box mt-1" style="height:250px;">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
-                                <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box mt-1" style="height:250px;">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square.jpg')}}" class="w-100" alt="">
-                                <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title"><a href="javascript:void(0)">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                </a>
-                                <p class="post-date m-1"><a href="javascript:void(0)"></a><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a></p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </aside>

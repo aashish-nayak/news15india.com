@@ -106,7 +106,7 @@
                     @push('section1_design_1')
                     <div class="col-6 p-1">
                         <div class="box card-shadow" style="height:130px;">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$news1->slug)}}">
                                 <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
                                 <div class="content-overlay" style="border-bottom:2px solid var(--primary);"></div>
                                 <div class="img-title">
@@ -120,7 +120,7 @@
                     @if ($key > 3 && $key < 7)
                     @push('section1_design_2')
                     <div class="card card-shadow mt-md-1 my-2" style="border-left:2px solid var(--primary);">
-                        <a href="javascript:void(0)">
+                        <a href="{{route('single-news',$news1->slug)}}">
                             <div class="card-horizontal">
                                 <div class="img-square-wrapper col-4 col-md-3 p-0">
                                     <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
@@ -140,7 +140,7 @@
                     @push('section1_design_3')
                     <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
                         <div class="card card-shadow" style="border-left:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$news1->slug)}}">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-3 p-0">
                                         <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
@@ -177,7 +177,9 @@
                 @includeIf('components.whatsapp-ad')
                 @includeIf('components.poll')
                 <div class="col-md-12 px-0 mt-1">
-                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" loading="lazy" alt="" srcset=""></a>
+                    <a href="javascript:void(0)">
+                        <img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" loading="lazy" alt="" srcset="">
+                    </a>
                 </div>
             </aside>
         </div>
@@ -193,11 +195,11 @@
                     @push('section2_design_1')
                     <div class="col mb-2 px-2">
                         <div class="card card-shadow">
-                            <a href="javascript:void(0)" class="text-muted text-decoration-none">
+                            <a href="{{route('single-news',$news2->slug)}}" class="text-muted text-decoration-none">
                                 <img src="{{asset('storage/media/'.$news2->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
                             </a>
                             <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
-                                <a href="javascript:void(0)" class="text-decoration-none">
+                                <a href="{{route('single-news',$news2->slug)}}" class="text-decoration-none">
                                     <h6 class="my-0 text-left">{{\Str::limit($news2->title,60)}}</h6>
                                 </a>
                             </div>
@@ -208,7 +210,7 @@
                     @push('section2_design_2')
                     <div class="col mt-md-1 px-2 mb-2">
                         <div class="card card-shadow" style="border-right:2px solid var(--primary);">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$news2->slug)}}">
                                 <div class="card-horizontal">
                                     <div class="card-body col-7 col-md-8 p-2 p-md-0 px-md-2 ">
                                         <h6 class="card-text">{{\Str::limit($news2->title,65)}}</h6>
@@ -243,7 +245,7 @@
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1">
                             <div class="post-data ">
-                                <a href="javascript:void(0)" class="post-title">
+                                <a href="{{route('single-news',$sideNews->slug)}}" class="post-title">
                                     <div class="post-meta">
                                         <p class="post-date m-0 ">{{$sideNews->created_at}}</p>
                                     </div>
@@ -268,9 +270,9 @@
                     @if($key == 0)
                     @push('section3_design_1')
                     <div class="container-fluid p-0">
-                        <a href="javascript:void(0)" class="text-decoration-none">
+                        <a href="{{route('single-news',$news3->slug)}}" class="text-decoration-none">
                             <img src="{{asset('storage/media/'.$news3->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
-                            <h5 class="mt-2 ">{{\Str::limit($news3->title,100)}}</h5>
+                            <h5 class="mt-2">{{\Str::limit($news3->title,100)}}</h5>
                         </a>
                         <p class="text-muted">{{\Str::limit($news3->short_description,90)}}</p>
                     </div>
@@ -280,7 +282,7 @@
                     @push('section3_design_2')
                     <div class="style-2 border-top d-flex align-items-center px-1 py-2">
                         <div class="post-data mt-1">
-                            <a href="javascript:void(0)" class="post-title">
+                            <a href="{{route('single-news',$news3->slug)}}" class="post-title">
                                 <h5>{{\Str::limit($news3->title,100)}}</h5>
                             </a>
                         </div>
@@ -290,7 +292,7 @@
                     @if ($key >= 6)
                     @push('section3_design_3')
                     <div class="card mb-1" style="border-right:2px solid var(--primary);">
-                        <a href="javascript:void(0)">
+                        <a href="{{route('single-news',$news3->slug)}}">
                             <div class="card-horizontal">
                                 <div class="card-body col-8 col-md-8 p-0 px-2">
                                     <h6 class="card-text p-md-3 p-1">{{\Str::limit($news3->title,100)}}</h6>
@@ -320,7 +322,7 @@
                     @foreach ($sidebar_2->news as $key => $sideNews)
                         @if ($key == 0)
                         <div class="col-12 px-1">
-                            <a href="javascript:void(0)" class="text-decoration-none ">
+                            <a href="{{route('single-news',$sideNews->slug)}}" class="text-decoration-none ">
                                 <img src="{{asset('storage/media/'.$sideNews->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
                                 <h6 class="mt-2">{{\Str::limit($sideNews->title,60)}}</h6>
                             </a>
@@ -331,7 +333,7 @@
                         @else
                         <div class="style-2 border-top d-flex align-items-center px-1">
                             <div class="post-data mt-1">
-                                <a href="javascript:void(0)" class="post-title">
+                                <a href="{{route('single-news',$sideNews->slug)}}" class="post-title">
                                     <h6>{{\Str::limit($sideNews->title,60)}}</h6>
                                 </a>
                             </div>
@@ -371,11 +373,11 @@
                         @foreach ($section4->news as $key => $news4)
                         <div class="col mb-2 px-1">
                             <div class="card" style="border-bottom: 2px solid var(--primary);">
-                                <a href="javascript:void(0)" class="text-muted text-decoration-none">
+                                <a href="{{route('single-news',$news4->slug)}}" class="text-muted text-decoration-none">
                                     <img src="{{asset('storage/media/'.$news4->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
                                 </a>
                                 <div class="card-body py-3 px-2" style="background-color: #E3E9FF;">
-                                    <a href="javascript:void(0)" class="text-muted text-decoration-none">
+                                    <a href="{{route('single-news',$news4->slug)}}" class="text-muted text-decoration-none">
                                         <h6 class="my-0 text-left">{{\Str::limit($news4->title,70)}}</h6>
                                     </a>
                                 </div>
@@ -391,7 +393,7 @@
                     @foreach ($sidebar_3->news as $sideNews)
                     <div class="style-2 border-top d-flex align-items-center px-1">
                         <div class="post-data mt-3">
-                            <a href="javascript:void(0)" class="post-title ">
+                            <a href="{{route('single-news',$sideNews->slug)}}" class="post-title ">
                                 <h5>{{\Str::limit($sideNews->title,65)}}</h5>
                             </a>
                         </div>
@@ -411,7 +413,7 @@
                     @foreach ($section5->news as $news5)
                     <div class="col mb-2 px-1">
                         <div class="card" style="border-right:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$news5->slug)}}">
                                 <div class="card-horizontal">
                                     <div class="card-body col-8 col-md-8 p-0 px-2">
                                         <h6 class="card-text p-1">{{\Str::limit($news5->title,60)}}</h6>
@@ -437,7 +439,7 @@
                 @foreach ($section6->news as $key => $news6)
                     @if($key == 0)
                     @push('section6_design_1')
-                    <a href="javascript:void(0)">
+                    <a href="{{route('single-news',$news6->slug)}}">
                         <img src="{{asset('storage/media/'.$news6->newsImage->filename)}}" class="img-fluid w-100" loading="lazy" alt="" >
                     </a>
                     @endpush
@@ -446,7 +448,7 @@
                     @push('section6_design_2')
                     <div class="style-2 border-top d-flex align-items-center px-2">
                         <div class="post-data mt-2">
-                            <a href="javascript:void(0)" class="post-title ">
+                            <a href="{{route('single-news',$news6->slug)}}" class="post-title ">
                                 <h5>{{\Str::limit($news6->title,115)}}</h5>
                             </a>
                         </div>
@@ -457,7 +459,7 @@
                     @push('section6_design_3')
                     <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-3" style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$news6->slug)}}">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
                                         <img src="{{asset('storage/media/'.$news6->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
@@ -487,11 +489,11 @@
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-3 my-md-0 px-1">
-                @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar' => true,'width'=>"w-50"])
+                @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar' => true])
                 <div class="container-fluid px-0 px-md-4">
                     @foreach ($sidebar_4->news as $sideNews)
                     <div class="col p-md-1">
-                        <a href="javascript:void(0)" class="text-decoration-none row p-0"
+                        <a href="{{route('single-news',$sideNews->slug)}}" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
                             <h6 class="col-8 d-flex align-items-center px-1">
                                 {{\Str::limit($sideNews->title,65)}}
@@ -517,11 +519,11 @@
                     @push('section7_design_1')
                     <div class="col mb-2 px-1">
                         <div class="card" style="border-bottom: 2px solid var(--primary);">
-                            <a href="javascript:void(0)" class="">
+                            <a href="{{route('single-news',$news7->slug)}}" class="">
                                 <img src="{{asset('storage/media/'.$news7->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
                             </a>
                             <div class="card-body p-2">
-                                <a href="javascript:void(0)" class="text-dark text-decoration-none">
+                                <a href="{{route('single-news',$news7->slug)}}" class="text-dark text-decoration-none">
                                     <h5 class="mb-1 text-left text-dark">{{\Str::limit($news7->title,50)}}</h5>
                                 </a>
                                 <p class="my-0 text-left text-muted">{{\Str::limit($news7->short_description,55)}}</p>
@@ -534,7 +536,7 @@
                     <div class="col px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2 my-md-1"
                             style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$news7->slug)}}">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
                                         <img src="{{asset('storage/media/'.$news7->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
@@ -557,19 +559,19 @@
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 my-md-1 px-1">
                 <div class="p-0">
-                    @includeIf('components.news-header', ['section' => $sidebar_5,'sidebar' => true,'width'=>"w-25"])
+                    @includeIf('components.news-header', ['section' => $sidebar_5,'sidebar' => true,'width'=>"w-50"])
                     <div class="single-item mb-1">
                         @foreach ($sidebar_5->news as $sideNews)
                         <div class="holder">
                             <div class="box" style="height:220px;">
                                 <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                                <a href="javascript:void(0)">
+                                <a href="{{route('single-news',$sideNews->slug)}}">
                                     <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                                 </a>
                                 <img src="{{asset('storage/media/'.$sideNews->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="height: 100%;object-fit-cover;">
                                 <div class="img-title">
-                                    <h6 class="text-light m-0">{{\Str::limit($sideNews->title,65)}}</h6>
-                                    <p class="m-1">{{$sideNews->created_at}}</p>
+                                    <h6 class="text-light m-0"><a class="text-white" href="{{route('single-news',$sideNews->slug)}}">{{\Str::limit($sideNews->title,65)}}</a></h6>
+                                    <p class="p-1 m-0 text-light">{{$sideNews->created_at}}</p>
                                 </div>
                             </div>
                         </div>
@@ -598,7 +600,7 @@
                     @foreach ($section8->news as $news8)
                     <div class="col-lg-4 col-md-6 col-12 px-1">
                         <div class="card border-bottom-0 border-right-0 border-top-0 mb-2" style="border-left:3px solid var(--primary);">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('single-news',$news8->slug)}}">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
                                         <img src="{{asset('storage/media/'.$news8->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
@@ -627,7 +629,7 @@
                 <div class="col my-2 px-md-1">
                     <div class="card-body p-2"
                         style="border-left:2px solid var(--primary);border-right:2px solid var(--primary);">
-                        <a href="javascript:void(0)" class="text-decoration-none">
+                        <a href="{{route('single-news',$news9->slug)}}" class="text-decoration-none">
                             <h4 class="my-0 text-dark">{{\Str::limit($news9->title,80)}}</h4>
                         </a>
                         <p class="my-2 text-muted">{{\Str::limit($news9->short_description,80)}}</p>
@@ -648,7 +650,7 @@
                 @foreach ($section10->news as $key => $news10)
                 @if($key == 0)
                 <div class="col px-1">
-                    <a href="javascript:void(0)" class="text-decoration-none">
+                    <a href="{{route('single-news',$news10->slug)}}" class="text-decoration-none">
                         <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
@@ -665,7 +667,7 @@
                 <div class="col px-1 mb-2">
                     <div class="style-2 mx-1" style="border-bottom:2px dotted gray;">
                         <div class="post-data mt-1  ">
-                            <a href="javascript:void(0)" class="post-title">
+                            <a href="{{route('single-news',$news10->slug)}}" class="post-title">
                                 <h5>{{\Str::limit($news10->title,120)}}</h5>
                             </a>
                         </div>
@@ -679,7 +681,7 @@
                 @foreach ($section10_part2->news as $key => $news10)
                 @if($key == 0)
                 <div class="col px-1">
-                    <a href="javascript:void(0)" class="text-decoration-none">
+                    <a href="{{route('single-news',$news10->slug)}}" class="text-decoration-none">
                         <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
@@ -695,8 +697,8 @@
                 @else
                 <div class="col px-1 mb-2">
                     <div class="style-2 mx-1" style="border-bottom:2px dotted gray;">
-                        <div class="post-data mt-1  ">
-                            <a href="javascript:void(0)" class="post-title">
+                        <div class="post-data mt-1">
+                            <a href="{{route('single-news',$news10->slug)}}" class="post-title">
                                 <h5>{{\Str::limit($news10->title,120)}}</h5>
                             </a>
                         </div>
@@ -710,7 +712,7 @@
                 @foreach ($section10_part3->news as $key => $news10)
                 @if($key == 0)
                 <div class="col px-1">
-                    <a href="javascript:void(0)" class="text-decoration-none">
+                    <a href="{{route('single-news',$news10->slug)}}" class="text-decoration-none">
                         <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
@@ -727,7 +729,7 @@
                 <div class="col px-1 mb-2">
                     <div class="style-2 mx-1" style="border-bottom:2px dotted gray;">
                         <div class="post-data mt-1  ">
-                            <a href="javascript:void(0)" class="post-title">
+                            <a href="{{route('single-news',$news10->slug)}}" class="post-title">
                                 <h5>{{\Str::limit($news10->title,120)}}</h5>
                             </a>
                         </div>
