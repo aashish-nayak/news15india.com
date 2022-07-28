@@ -21,10 +21,10 @@ class NewsFactory extends Factory
         $title = $this->faker->sentences(3, true);
         return [
             'title'=> $title,
-            'slug'=> Str::slug($title),
-            'short_description'=> $this->faker->text(100),
+            'slug'=> $this->faker->slug(5,true),
+            'short_description'=> $this->faker->text(300),
             'admin_id'=> Admin::inRandomOrder()->limit(1)->first()->id,
-            'content'=> implode(". ",$this->faker->paragraphs(20)),
+            'content'=> implode(".\n",$this->faker->paragraphs(20)),
             'is_published'=> 1,
             'status'=>  1,
             'is_verified'=> 1,
