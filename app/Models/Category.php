@@ -41,7 +41,7 @@ class Category extends Model
         return $this->children()->with('nested_child');
     }
     
-    public function img(){
+    public function catImage(){
         return $this->belongsTo(Media::class, 'cat_img');
     }
 

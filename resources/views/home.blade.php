@@ -14,22 +14,22 @@
                     <div class="single-item position-relative">
                         <div class="box holder">
                             <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="" loading="lazy">
+                                <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" loading="lazy" alt="">
                                 <div class="content-overlay"></div>
                                 <div class="img-title" style="width: 75%;">
                                     <h5 class="text-light">Man City into FA Cup semifinals, keeps quadruple dream alive</h5>
-                                    <p class="post-date m-0 py-1"><a href="#" class="text-white">7:00 AM | April 14</a>
+                                    <p class="post-date m-0 py-1"><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a>
                                     </p>
                                 </div>
                             </a>
                         </div>
                         <div class="box holder">
                             <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" alt="" loading="lazy">
+                                <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" loading="lazy" alt="">
                                 <div class="content-overlay"></div>
                                 <div class="img-title" style="width: 75%;">
                                     <h5 class="text-light">Man City into FA Cup semifinals, keeps quadruple dream alive</h5>
-                                    <p class="post-date m-0 py-1"><a href="#" class="text-white">7:00 AM | April 14</a>
+                                    <p class="post-date m-0 py-1"><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a>
                                     </p>
                                 </div>
                             </a>
@@ -79,17 +79,17 @@
             <div class="col-md-4 mt-1 p-0 my-md-0">
                 <div class="mx-1 mb-2">
                     <a href="javascript:void(0)">
-                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:95px;width:100%;object-fit:cover;" class="img-fluid" width="100%" alt="" loading="lazy">
+                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:95px;width:100%;object-fit:cover;" class="img-fluid" width="100%" loading="lazy" alt="">
                     </a>
                 </div>
                 <div class="mx-1 mb-2">
                     <a href="javascript:void(0)">
-                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:95px;width:100%;object-fit:cover;" class="img-fluid" width="100%" alt="" loading="lazy">
+                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:95px;width:100%;object-fit:cover;" class="img-fluid" width="100%" loading="lazy" alt="">
                     </a>
                 </div>
                 <div class="mx-1 mb-1 mb-md-0">
                     <a href="javascript:void(0)">
-                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:97px;width:100%;object-fit:cover;" class="img-fluid" width="100%" alt="" loading="lazy">
+                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:97px;width:100%;object-fit:cover;" class="img-fluid" width="100%" loading="lazy" alt="">
                     </a>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                     <div class="col-6 p-1">
                         <div class="box card-shadow" style="height:130px;">
                             <a href="javascript:void(0)">
-                                <img src="{{asset('storage/media/'.$news1->img->filename)}}" class="img-fluid" alt="" loading="lazy">
+                                <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
                                 <div class="content-overlay" style="border-bottom:2px solid var(--primary);"></div>
                                 <div class="img-title">
                                     <p class="text-light">{{\Str::limit($news1->title,60)}}</p>
@@ -123,7 +123,7 @@
                         <a href="javascript:void(0)">
                             <div class="card-horizontal">
                                 <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                    <img src="{{asset('storage/media/'.$news1->img->filename)}}" alt="Card image cap" loading="lazy" class="">
+                                    <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                 </div>
                                 <div class="card-body col-8 col-md-9">
                                     <h6 class="card-text m-0">{{\Str::limit($news1->title,65)}}</h6>
@@ -143,7 +143,7 @@
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-3 p-0">
-                                        <img src="{{asset('storage/media/'.$news1->img->filename)}}" alt="Card image cap" loading="lazy" class="">
+                                        <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                     </div>
                                     <div class="card-body col-8 col-md-9">
                                         <h6 class="card-text m-0">{{\Str::limit($news1->title,65)}}</h6>
@@ -169,7 +169,7 @@
                     </div>
                     @stack('section1_design_3')
                     <div class="col-12 px-1">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/8x1ad.png')}}" width="100%" alt="" srcset=""></a loading="lazy">
+                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/8x1ad.png')}}" width="100%" loading="lazy" alt="" srcset=""></a>
                     </div>
                 </div>
             </div>
@@ -177,7 +177,7 @@
                 @includeIf('components.whatsapp-ad')
                 @includeIf('components.poll')
                 <div class="col-md-12 px-0 mt-1">
-                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" alt="" srcset=""></a loading="lazy">
+                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" loading="lazy" alt="" srcset=""></a>
                 </div>
             </aside>
         </div>
@@ -194,11 +194,11 @@
                     <div class="col mb-2 px-2">
                         <div class="card card-shadow">
                             <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                <img src="{{asset('storage/media/'.$news2->img->filename)}}" class="card-img-top" alt="..." loading="lazy">
+                                <img src="{{asset('storage/media/'.$news2->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
                             </a>
                             <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                 <a href="javascript:void(0)" class="text-decoration-none">
-                                    <h6 class="my-0 text-left">{{\Str::limit($news2->title,65)}}</h6>
+                                    <h6 class="my-0 text-left">{{\Str::limit($news2->title,60)}}</h6>
                                 </a>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                                         <h6 class="card-text">{{\Str::limit($news2->title,65)}}</h6>
                                     </div>
                                     <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                        <img src="{{asset('storage/media/'.$news2->img->filename)}}" alt="Card image cap" loading="lazy" class="">
+                                        <img src="{{asset('storage/media/'.$news2->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                     </div>
                                 </div>
                             </a>
@@ -236,117 +236,25 @@
                     </div>
                 </div>
             </div>
-            <aside class="col-md-3 side-position mx-auto col-11 my-md-0 px-1">
-                <div class="my-1 d-flex align-items-center justify-content-between bg-white nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                </div>
+            <aside class="col-md-3 side-position mx-auto col-11 my-md-0 px-1 mt-md-2">
+                @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar' => true,'width'=>"w-25"])
                 <div class="side-bar">
+                    @foreach ($sidebar_1->news as $sideNews)
                     <div class="card card-shadow my-1">
                         <div class="card-body px-3 py-1">
                             <div class="post-data ">
-                                <a href="#" class="post-title">
+                                <a href="javascript:void(0)" class="post-title">
                                     <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
+                                        <p class="post-date m-0 ">{{$sideNews->created_at}}</p>
                                     </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                                    <h6>{{\Str::limit($sideNews->title,65)}}</h6>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1">
-                            <div class="post-data ">
-                                <a href="#" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1">
-                            <div class="post-data ">
-                                <a href="#" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1">
-                            <div class="post-data ">
-                                <a href="#" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1">
-                            <div class="post-data ">
-                                <a href="#" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1">
-                            <div class="post-data ">
-                                <a href="#" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1">
-                            <div class="post-data ">
-                                <a href="#" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1">
-                            <div class="post-data ">
-                                <a href="#" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">7:00 AM | April 14</p>
-                                    </div>
-                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="side-footer d-none d-md-flex justify-content-between align-items-center">
-                </div>
+                <div class="side-footer d-none d-md-flex justify-content-between align-items-center"></div>
             </aside>
         </div>
     </section>
@@ -361,7 +269,7 @@
                     @push('section3_design_1')
                     <div class="container-fluid p-0">
                         <a href="javascript:void(0)" class="text-decoration-none">
-                            <img src="{{asset('storage/media/'.$news3->img->filename)}}" class="img-fluid" alt="" loading="lazy">
+                            <img src="{{asset('storage/media/'.$news3->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
                             <h5 class="mt-2 ">{{\Str::limit($news3->title,100)}}</h5>
                         </a>
                         <p class="text-muted">{{\Str::limit($news3->short_description,90)}}</p>
@@ -388,7 +296,7 @@
                                     <h6 class="card-text p-md-3 p-1">{{\Str::limit($news3->title,100)}}</h6>
                                 </div>
                                 <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                    <img src="{{asset('storage/media/'.$news3->img->filename)}}" alt="Card image cap" loading="lazy" class="">
+                                    <img src="{{asset('storage/media/'.$news3->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                 </div>
                             </div>
                         </a>
@@ -408,62 +316,43 @@
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 mt-1 my-md-0 px-1">
                 <div class="col-md-12 px-0">
-                    <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white nav-height">
-                        <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                        <div class="w-100 mx-3"
-                            style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                            <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                        </div>
-                        <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                    </div>
-                    <div class="container-fluid px-1">
-                        <a href="javascript:void(0)" class="text-decoration-none ">
-                            <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="" loading="lazy">
-                            <h6 class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h6>
-                        </a>
-                        <p class="text-muted">
-                            Some representati. Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Laborum, nemo.
-                        </p>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="javascript:void(0)" class="post-title">
-                                <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
+                    @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar' => true,'width'=>"w-25"])
+                    @foreach ($sidebar_2->news as $key => $sideNews)
+                        @if ($key == 0)
+                        <div class="col-12 px-1">
+                            <a href="javascript:void(0)" class="text-decoration-none ">
+                                <img src="{{asset('storage/media/'.$sideNews->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
+                                <h6 class="mt-2">{{\Str::limit($sideNews->title,60)}}</h6>
                             </a>
+                            <p class="text-muted">
+                                {{\Str::limit($sideNews->short_description,65)}}
+                            </p>
                         </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="javascript:void(0)" class="post-title">
-                                <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
-                            </a>
+                        @else
+                        <div class="style-2 border-top d-flex align-items-center px-1">
+                            <div class="post-data mt-1">
+                                <a href="javascript:void(0)" class="post-title">
+                                    <h6>{{\Str::limit($sideNews->title,60)}}</h6>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="javascript:void(0)" class="post-title">
-                                <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, facilis qui.</h6>
-                            </a>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                     <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
                     <div class="single-item">
                         <div class="holder">
                             <div class="box">
-                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a loading="lazy">
+                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
                             </div>
                         </div>
                         <div class="holder">
                             <div class="box">
-                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a loading="lazy">
+                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
                             </div>
                         </div>
                         <div class="holder">
                             <div class="box">
-                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt=""></a loading="lazy">
+                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -483,7 +372,7 @@
                         <div class="col mb-2 px-1">
                             <div class="card" style="border-bottom: 2px solid var(--primary);">
                                 <a href="javascript:void(0)" class="text-muted text-decoration-none">
-                                    <img src="{{asset('storage/media/'.$news4->img->filename)}}" class="card-img-top" alt="..." loading="lazy">
+                                    <img src="{{asset('storage/media/'.$news4->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
                                 </a>
                                 <div class="card-body py-3 px-2" style="background-color: #E3E9FF;">
                                     <a href="javascript:void(0)" class="text-muted text-decoration-none">
@@ -497,64 +386,17 @@
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 my-md-0 px-1">
-                <div class="container-fluid my-1 px-1 d-flex align-items-center justify-content-between bg-white nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                </div>
+                @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar' => true,'width'=>"w-25"])
                 <div class="col-md-12 px-0">
+                    @foreach ($sidebar_3->news as $sideNews)
                     <div class="style-2 border-top d-flex align-items-center px-1">
                         <div class="post-data mt-3">
                             <a href="javascript:void(0)" class="post-title ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
+                                <h5>{{\Str::limit($sideNews->title,65)}}</h5>
                             </a>
                         </div>
                     </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-3">
-                            <a href="javascript:void(0)" class="post-title ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-3">
-                            <a href="javascript:void(0)" class="post-title  ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-3">
-                            <a href="javascript:void(0)" class="post-title  ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-3">
-                            <a href="javascript:void(0)" class="post-title  ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-3">
-                            <a href="javascript:void(0)" class="post-title  ">
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui delectus sit
-                                    corrupti consectetur quos.</h5>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </aside>
         </div>
@@ -575,7 +417,7 @@
                                         <h6 class="card-text p-1">{{\Str::limit($news5->title,60)}}</h6>
                                     </div>
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img class="img-fluid" src="{{asset('storage/media/'.$news5->img->filename)}}" alt="Card image cap">
+                                        <img class="img-fluid" src="{{asset('storage/media/'.$news5->newsImage->filename)}}" loading="lazy" alt="Card image cap">
                                     </div>
                                 </div>
                             </a>
@@ -596,7 +438,7 @@
                     @if($key == 0)
                     @push('section6_design_1')
                     <a href="javascript:void(0)">
-                        <img src="{{asset('storage/media/'.$news6->img->filename)}}" class="img-fluid w-100" alt=""  loading="lazy">
+                        <img src="{{asset('storage/media/'.$news6->newsImage->filename)}}" class="img-fluid w-100" loading="lazy" alt="" >
                     </a>
                     @endpush
                     @endif
@@ -618,7 +460,7 @@
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img src="{{asset('storage/media/'.$news6->img->filename)}}" alt="Card image cap" loading="lazy" class="">
+                                        <img src="{{asset('storage/media/'.$news6->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                     </div>
                                     <div class="card-body col-8 col-md-8 p-0 pl-1">
                                         <h6 class="card-text p-0">{{\Str::limit($news6->title,80)}}</h6>
@@ -645,94 +487,21 @@
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-3 my-md-0 px-1">
-                <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white py-2 nav-height">
-                    <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Rajasthan</h4>
-                    <div class="w-100 mx-3"
-                        style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                        <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                    </div>
-                    <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                </div>
+                @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar' => true,'width'=>"w-50"])
                 <div class="container-fluid px-0 px-md-4">
+                    @foreach ($sidebar_4->news as $sideNews)
                     <div class="col p-md-1">
                         <a href="javascript:void(0)" class="text-decoration-none row p-0"
                             style="border-bottom: 2px dotted var(--secondary);">
                             <h6 class="col-8 d-flex align-items-center px-1">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
+                                {{\Str::limit($sideNews->title,65)}}
                             </h6>
                             <div class="col-4 p-0 mb-1">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="" loading="lazy">
+                                <img src="{{asset('storage/media/'.$sideNews->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
                             </div>
                         </a>
                     </div>
-                    <div class="col p-md-1">
-                        <a href="javascript:void(0)" class="text-decoration-none row p-0"
-                            style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 d-flex align-items-center px-1">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </h6>
-                            <div class="col-4 p-0 mb-1">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="" loading="lazy">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col p-md-1">
-                        <a href="javascript:void(0)" class="text-decoration-none row p-0"
-                            style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 d-flex align-items-center px-1">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </h6>
-                            <div class="col-4 p-0 mb-1">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="" loading="lazy">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col p-md-1">
-                        <a href="javascript:void(0)" class="text-decoration-none row p-0"
-                            style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 d-flex align-items-center px-1">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </h6>
-                            <div class="col-4 p-0 mb-1">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="" loading="lazy">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col p-md-1">
-                        <a href="javascript:void(0)" class="text-decoration-none row p-0"
-                            style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 d-flex align-items-center px-1">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </h6>
-                            <div class="col-4 p-0 mb-1">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="" loading="lazy">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col p-md-1">
-                        <a href="javascript:void(0)" class="text-decoration-none row p-0"
-                            style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 d-flex align-items-center px-1">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </h6>
-                            <div class="col-4 p-0 mb-1">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="" loading="lazy">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col p-md-1">
-                        <a href="javascript:void(0)" class="text-decoration-none row p-0"
-                            style="border-bottom: 2px dotted var(--secondary);">
-                            <h6 class="col-8 d-flex align-items-center px-1">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            </h6>
-                            <div class="col-4 p-0 mb-1">
-                                <img src="{{asset('front-assets/img/breaking-news.png')}}" class="img-fluid" alt="" loading="lazy">
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </aside>
         </div>
@@ -749,7 +518,7 @@
                     <div class="col mb-2 px-1">
                         <div class="card" style="border-bottom: 2px solid var(--primary);">
                             <a href="javascript:void(0)" class="">
-                                <img src="{{asset('storage/media/'.$news7->img->filename)}}" class="card-img-top" alt="..." loading="lazy">
+                                <img src="{{asset('storage/media/'.$news7->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
                             </a>
                             <div class="card-body p-2">
                                 <a href="javascript:void(0)" class="text-dark text-decoration-none">
@@ -768,7 +537,7 @@
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img src="{{asset('storage/media/'.$news7->img->filename)}}" alt="Card image cap" loading="lazy" class="">
+                                        <img src="{{asset('storage/media/'.$news7->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                     </div>
                                     <div class="card-body col-8 col-md-8 p-0 pl-1">
                                         <h6 class="card-text p-0">{{\Str::limit($news7->title,80)}}</h6>
@@ -788,63 +557,27 @@
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 my-md-1 px-1">
                 <div class="p-0">
-                    <div class="container-fluid px-1 d-flex align-items-center justify-content-between bg-white nav-height">
-                        <i class="fa fa-sort-up mr-1" style="color:var(--primary);font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color: var(--primary); font-weight:600;">Video</h4>
-                        <div class="w-100 mx-3"
-                            style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                            <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-                                \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
-                        </div>
-                        <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
-                    </div>
+                    @includeIf('components.news-header', ['section' => $sidebar_5,'sidebar' => true,'width'=>"w-25"])
                     <div class="single-item mb-1">
+                        @foreach ($sidebar_5->news as $sideNews)
                         <div class="holder">
                             <div class="box" style="height:220px;">
                                 <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
                                 <a href="javascript:void(0)">
                                     <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                                 </a>
-                                <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="" style="height: 100%;object-fit-cover;" loading="lazy">
+                                <img src="{{asset('storage/media/'.$sideNews->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="height: 100%;object-fit-cover;">
                                 <div class="img-title">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                    <p class="m-1">7:00 AM | April 14</p>
+                                    <h6 class="text-light m-0">{{\Str::limit($sideNews->title,65)}}</h6>
+                                    <p class="m-1">{{$sideNews->created_at}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="holder">
-                            <div class="box" style="height:220px;">
-                                <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                                <a href="javascript:void(0)">
-                                    <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
-                                </a>
-                                <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="" style="height: 100%;object-fit-cover;" loading="lazy">
-                                <div class="img-title">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                    <p class="m-1">7:00 AM | April 14</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="holder">
-                            <div class="box" style="height:220px;">
-                                <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                                <a href="javascript:void(0)">
-                                    <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
-                                </a>
-                                <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="" style="height: 100%;object-fit-cover;" loading="lazy">
-                                <div class="img-title">
-                                    <h6 class="text-light m-0">Man City into FA Cup semifinals, keeps quadruple dream alive
-                                    </h6>
-                                    <p class="m-1">7:00 AM | April 14</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
                     <div class="p-0">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class=" w-100 p-0" style="height:250px;" alt=""></a loading="lazy">
+                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class=" w-100 p-0" style="height:250px;" loading="lazy" alt=""></a>
                     </div>
                 </div>
             </aside>
@@ -868,7 +601,7 @@
                             <a href="javascript:void(0)">
                                 <div class="card-horizontal">
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
-                                        <img src="{{asset('storage/media/'.$news8->img->filename)}}" alt="Card image cap" loading="lazy" class="">
+                                        <img src="{{asset('storage/media/'.$news8->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                     </div>
                                     <div class="card-body col-8 col-md-8">
                                         <h6 class="card-text p-0">
@@ -916,7 +649,7 @@
                 @if($key == 0)
                 <div class="col px-1">
                     <a href="javascript:void(0)" class="text-decoration-none">
-                        <img src="{{asset('storage/media/'.$news10->img->filename)}}" class="img-fluid" alt="" style="border-bottom: 4px solid var(--primary);" loading="lazy">
+                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
                         </h5>
@@ -947,7 +680,7 @@
                 @if($key == 0)
                 <div class="col px-1">
                     <a href="javascript:void(0)" class="text-decoration-none">
-                        <img src="{{asset('storage/media/'.$news10->img->filename)}}" class="img-fluid" alt="" style="border-bottom: 4px solid var(--primary);" loading="lazy">
+                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
                         </h5>
@@ -978,7 +711,7 @@
                 @if($key == 0)
                 <div class="col px-1">
                     <a href="javascript:void(0)" class="text-decoration-none">
-                        <img src="{{asset('storage/media/'.$news10->img->filename)}}" class="img-fluid" alt="" style="border-bottom: 4px solid var(--primary);" loading="lazy">
+                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
                         </h5>
@@ -1005,5 +738,5 @@
             </aside>
         </div>
     </section>
-    <!-- Section - 9 End  -->
+    <!-- Section - 10 End  -->
 @endsection

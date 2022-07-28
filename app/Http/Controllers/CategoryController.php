@@ -150,7 +150,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {   
-        $category->editImg = $category->img;
+        $category->editImg = $category->catImage;
         return response()->json($category);
     }
 

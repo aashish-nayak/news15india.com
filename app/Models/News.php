@@ -36,7 +36,7 @@ class News extends Model
     public function getCreatedAtAttribute(){
         return Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']) )->diffForHumans();
     }
-    public function img(){
+    public function newsImage(){
         return $this->belongsTo(Media::class, 'image');
     }
     public function creator(){

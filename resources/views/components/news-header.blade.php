@@ -12,13 +12,13 @@
                 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
                 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
         </div>
+        @if (!isset($sidebar))
         @php
             $htmlSubcat = '';
         @endphp
         @foreach ($section->children as $key => $subCat)
             @if ($key <= 3)
-                <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">{{ $subCat->cat_name }}</a>
-                </li>
+                <li class="d-none d-md-block"><a class="section-link" href="javascript:void(0)">{{ $subCat->cat_name }}</a></li>
             @endif
             @if ($key >= 4)
                 @php
@@ -31,6 +31,7 @@
                 <option value="">All</option>
                 {!! $htmlSubcat !!}
             </select>
+        @endif
         @endif
         <a href="javascript:void(0)" class="nav-link text-dark" style="font-size: 16px;font-weight:600;">औरभी</a>
     </div>
