@@ -252,6 +252,7 @@
     <script src="{{ asset('front-assets/js/weather.js')}}"></script>
     <script src="{{ asset('front-assets/js/time.js') }}"></script>
     <script src="{{ asset('front-assets/js/slick.js') }}"></script>
+    <script src="{{ asset('js/share.js') }}"></script>
     @stack('js')
     <script>
         $().ready(function() {

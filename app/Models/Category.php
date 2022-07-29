@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Illuminate\Support\Str;
 class Category extends Model
 {
     use HasFactory;
@@ -24,7 +24,9 @@ class Category extends Model
     public function getCreatedAtAttribute(){
         return Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']) )->diffForHumans();
     }
-
+    public function setSlugAttribute($value){
+        $this->attributes['slug'] = Str::slug($value);
+    }
     public function parent(){
         return $this->belongsTo(Category::class, 'parent_id');
     }

@@ -32,17 +32,17 @@
                                 @foreach ($node->child as $sub)
                                     @if ($sub->has_child)
                                     <li class="dropdown-sub dropright">
-                                        <a href="{{route('category-news',$sub->fetchUrl->slug)}}">{{$sub->title}}</a>
+                                        <a href="{{route('category-news',$sub->fetchUrl->slug)}}" class="dropdown-item dropdown-toggle">{{$sub->title}}</a>
                                         <ul class="dropdown-sub-menu" role="menu">
                                             @foreach ($sub->child as $sub2)
                                             @if ($sub2->has_child)
                                             <li class="dropdown-sub-2 dropright">
-                                                <a href="{{route('category-news',$sub2->fetchUrl->slug)}}">{{$sub2->title}}</a>
+                                                <a href="{{route('category-news',$sub2->fetchUrl->slug)}}" class="dropdown-item dropdown-toggle">{{$sub2->title}}</a>
                                                 <ul class="dropdown-sub-menu-2" role="menu">
                                                     @foreach ($sub2->child as $sub3)
                                                         @if($sub3->has_child)
                                                         <li class="dropdown-sub-3 dropright">
-                                                            <a href="{{route('category-news',$sub3->fetchUrl->slug)}}">{{$sub3->title}}</a>
+                                                            <a href="{{route('category-news',$sub3->fetchUrl->slug)}}" class="dropdown-item dropdown-toggle">{{$sub3->title}}</a>
                                                             <ul class="dropdown-sub-menu-3" role="menu">
                                                                 @foreach ($sub3->child as $sub4)
                                                                     @if($sub4->has_child == 0)

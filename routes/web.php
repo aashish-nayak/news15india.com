@@ -30,7 +30,7 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/', [FrontController::class,'home'])->name('home');
     Route::get('/news/{category}',[FrontController::class,'categoryNews'])->name('category-news');
     Route::view('/3', 'author')->name('author');
-    Route::get('/news/{url}',[FrontController::class,'singleNews'])->name('single-news');
+    Route::get('/category/news/{url}',[FrontController::class,'singleNews'])->name('single-news');
 });
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');

@@ -12,8 +12,9 @@
             </section>
             {{-- ........... Ad Banner ........  --}}
             <div style="font-size: 14px; font-weight:600;"class="col-12 p-1">
+                <a href="{{route('home')}}"><span>Hindi News</span></a><span>/</span>
                 @foreach ($news->categories as $key => $category)
-                <a href="javascript:void(0)"><span>{{$category->cat_name}}</span></a><span>/</span>
+                <a href="{{route('category-news',$category->slug)}}"><span>{{$category->cat_name}}</span></a><span>/</span>
                 @endforeach
                 <a href="javascript:void(0)" class="b-active"><span>{{\Str::limit($news->title,40)}}</span></a>
             </div>
@@ -69,26 +70,26 @@
                                 <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid w-100" alt="" loading="lazy">
                                 <div class="content-overlay"></div>
                                 <div class="img-title py-3" style="background-color: #333333a6 !important;border-left: 5px solid var(--primary);">
-                                    <h4 class="text-white font-weight-normal heading-single">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, impedit!</h4>
+                                    <h4 class="text-white font-weight-normal heading-single">{{$news->title}}</h4>
                                 </div>
                             </a>
                         </div>
                         <div class="col-12 bg-dark-pure pl-1">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="single-para text-dark font-weight-bold bg-warning p-3 m-0">Share Now</h3>
-                                <a href="javascript:void(0)" class="text-center bg-dark-pure text-white" style="font-size: 23px;">
+                                <a href="{{$shareCurrent['whatsapp']}}" target="_blank" class="text-center bg-dark-pure text-white" style="font-size: 23px;">
                                     <i class="fab fa-whatsapp social-media-size"></i>
                                 </a>
-                                <a href="javascript:void(0)" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
+                                <a href="{{$shareCurrent['facebook']}}" target="_blank" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
                                     <i class="fab fa-facebook-f social-media-size"></i>
                                 </a>
-                                <a href="javascript:void(0)" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
+                                <a href="{{$shareCurrent['twitter']}}" target="_blank" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
                                     <i class="fab fa-twitter social-media-size"></i>
                                 </a>
-                                <a href="javascript:void(0)" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
+                                <a href="{{$shareCurrent['linkedin']}}" target="_blank" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
                                     <i class="fab fa-linkedin-in social-media-size"></i>
                                 </a>
-                                <a href="javascript:void(0)" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
+                                <a href="{{$shareCurrent['whatsapp']}}" target="_blank" class=" text-center bg-dark-pure text-white" style="font-size: 23px;">
                                     <i class="fas fa-envelope social-media-size"></i>
                                 </a>
                             </div>

@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Redis;
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($menu_id = null)
     {
         $MenuLocations = MenuLocation::all();
@@ -26,25 +21,13 @@ class MenuController extends Controller
         return view('backpanel.menu.index',compact('categories','tags','MenuLocations','menus','menu_id'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         return redirect()->route('admin.menu.index',$request->menu_select);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // dd($request->all());
         Menu::create($request->all());
         $request->session()->flash('success', 'Menu Saved!');
         return redirect()->back();

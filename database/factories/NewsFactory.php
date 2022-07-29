@@ -18,7 +18,7 @@ class NewsFactory extends Factory
 
     public function definition()
     {
-        $title = $this->faker->sentences(3, true);
+        $title = $this->faker->sentences(1, true);
         return [
             'title'=> $title,
             'slug'=> $this->faker->slug(5,true),
