@@ -37,33 +37,6 @@
         </div>
         <textarea name="menu_nodes" id="nestable-output" class="form-control d-none"></textarea>
         <div class="col-md-3">
-            {{-- <div class="card accordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pagesSidebar" aria-expanded="false">
-                            Pages
-                        </button>
-                    </h2>
-                    <div id="pagesSidebar" class="accordion-collapse collapse">
-                        <div class="card-body">
-                            <div class="border p-2 category-input">
-                                <ul class="m-0">
-                                    <li class="mb-2">
-                                        <div class="form-check m-0">
-                                            <input type="checkbox" name="test" value="21"
-                                                class="form-check-input parent-cat" id="page1">
-                                            <label class="form-check-label" for="page1">Page 1</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-footer text-end">
-                            <button class="btn-add-to-menu btn btn-primary btn-sm"><span class="mt-1 bx bx-plus"></span> Add to Menu</button>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
             <div class="card accordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -79,7 +52,7 @@
                                     <li class="mb-2">
                                         <div class="form-check m-0">
                                             <input type="checkbox" value="{{$cat->id}}" class="form-check-input parent-cat" id="category{{$cat->id}}">
-                                            <label class="form-check-label" data-title="{{$cat->cat_name}}" data-reference-id="{{$cat->id}}" data-reference-type="Category" data-menu-id="{{$menu_id}}" for="category{{$cat->id}}">{{$cat->cat_name}}</label>
+                                            <label class="form-check-label" data-title="{{$cat->cat_name}}" data-reference-id="{{$cat->id}}" data-reference-type="App\Models\Category" data-menu-id="{{$menu_id}}" for="category{{$cat->id}}">{{$cat->cat_name}}</label>
                                         </div>
                                     </li>
                                     @endforeach
@@ -107,7 +80,7 @@
                                     <li class="mb-2">
                                         <div class="form-check m-0">
                                             <input type="checkbox" value="{{$tag->id}}" class="form-check-input parent-cat" id="tag{{$tag->id}}">
-                                            <label class="form-check-label" data-title="{{$tag->name}}" data-reference-id="{{$tag->id}}" data-reference-type="Tag" data-menu-id="{{$menu_id}}" for="tag{{$tag->id}}">{{$tag->name}}</label>
+                                            <label class="form-check-label" data-title="{{$tag->name}}" data-reference-id="{{$tag->id}}" data-reference-type="App\Models\Tag" data-menu-id="{{$menu_id}}" for="tag{{$tag->id}}">{{$tag->name}}</label>
                                         </div>
                                     </li>
                                     @endforeach

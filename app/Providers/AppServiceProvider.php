@@ -23,22 +23,22 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('layouts.frontend.partials.desktop-nav',function($view){
             $loc_id = MenuLocation::where('location','main-menu')->first()->id;
-            $menu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
+            $menu = Menu::with('parentMenuNodes.fetchUrl')->where('menu_location_id',$loc_id)->first();
             return $view->with(compact('menu'));
         });
         View::composer('layouts.frontend.partials.sidebar-nav',function($view){
             $loc_id = MenuLocation::where('location','sidebar-menu')->first()->id;
-            $sideMenu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
+            $sideMenu = Menu::with('parentMenuNodes.fetchUrl')->where('menu_location_id',$loc_id)->first();
             return $view->with(compact('sideMenu'));
         });
         View::composer('layouts.frontend.partials.mobile-nav',function($view){
             $loc_id = MenuLocation::where('location','mobile-menu')->first()->id;
-            $mobileMenu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
+            $mobileMenu = Menu::with('parentMenuNodes.fetchUrl')->where('menu_location_id',$loc_id)->first();
             return $view->with(compact('mobileMenu'));
         });
         View::composer('layouts.frontend.partials.footer',function($view){
             $loc_id = MenuLocation::where('location','footer-menu')->first()->id;
-            $footerMenu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
+            $footerMenu = Menu::with('parentMenuNodes.fetchUrl')->where('menu_location_id',$loc_id)->first();
             return $view->with(compact('footerMenu'));
         });
     }

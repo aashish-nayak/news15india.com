@@ -7,8 +7,7 @@
                     <span class="text-light mt-1" onclick="openNav()">&#9776;</span>
                     <a href="{{ route('home') }}" class="m-0">
                         <div class="navbar-brand p-0 m-0">
-                            <img src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid"
-                                style="margin-top:-11px;" alt="logo">
+                            <img src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid" style="margin-top:-11px;" alt="logo">
                         </div>
                     </a>
                 </div>
@@ -22,57 +21,56 @@
                 <!-- Main Navbar Start -->
                 <nav class="nav sticky-top d-none d-lg-block d-md-block position-static">
                     <ul class="ul-reset ml-2 ">
+                        <li><a href="{{route('home')}}" class="nav-link">होम</a></li>
                         @foreach ($menu->parentMenuNodes as $node)
                         @if ($node->has_child)
                         <li class="nav-item-sub p-relative">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a href="{{route('category-news',$node->fetchUrl->slug)}}" class="nav-link dropdown-toggle">
                                 {{$node->title}} <span class="fas fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 @foreach ($node->child as $sub)
                                     @if ($sub->has_child)
                                     <li class="dropdown-sub dropright">
-                                        <a data-toggle="dropdown" class="dropdown-item dropdown-toggle" href="javascript:void(0)">{{$sub->title}}</a>
+                                        <a href="{{route('category-news',$sub->fetchUrl->slug)}}">{{$sub->title}}</a>
                                         <ul class="dropdown-sub-menu" role="menu">
                                             @foreach ($sub->child as $sub2)
                                             @if ($sub2->has_child)
                                             <li class="dropdown-sub-2 dropright">
-                                                <a data-toggle="dropdown" class="dropdown-item dropdown-toggle"
-                                                    href="javascript:void(0)">{{$sub2->title}}</a>
+                                                <a href="{{route('category-news',$sub2->fetchUrl->slug)}}">{{$sub2->title}}</a>
                                                 <ul class="dropdown-sub-menu-2" role="menu">
                                                     @foreach ($sub2->child as $sub3)
                                                         @if($sub3->has_child)
                                                         <li class="dropdown-sub-3 dropright">
-                                                            <a data-toggle="dropdown" class="dropdown-item dropdown-toggle" href="javascript:void(0)">{{$sub3->title}}</a>
+                                                            <a href="{{route('category-news',$sub3->fetchUrl->slug)}}">{{$sub3->title}}</a>
                                                             <ul class="dropdown-sub-menu-3" role="menu">
                                                                 @foreach ($sub3->child as $sub4)
-                                                                    @if($sub4->has_child)
-                                                                    @else
-                                                                    <li><a href="javascript:void(0)" class="dropdown-item">{{$sub4->title}}</a></li>
+                                                                    @if($sub4->has_child == 0)
+                                                                    <li><a href="{{route('category-news',$sub4->fetchUrl->slug)}}" class="dropdown-item">{{$sub4->title}}</a></li>
                                                                     @endif
                                                                 @endforeach
                                                             </ul>
                                                         </li>
                                                         @else
-                                                        <li><a href="javascript:void(0)" class="dropdown-item">{{$sub3->title}}</a></li>
+                                                        <li><a href="{{route('category-news',$sub3->fetchUrl->slug)}}" class="dropdown-item">{{$sub3->title}}</a></li>
                                                         @endif
                                                     @endforeach
                                                 </ul>
                                             </li>
                                             @else
-                                            <li><a href="javascript:void(0)" class="dropdown-item">{{$sub2->title}}</a></li>
+                                            <li><a href="{{route('category-news',$sub2->fetchUrl->slug)}}" class="dropdown-item">{{$sub2->title}}</a></li>
                                             @endif
                                             @endforeach
                                         </ul>
                                     </li>
                                     @else
-                                    <li><a href="javascript:void(0)" class="dropdown-item">{{$sub->title}}</a></li>
+                                    <li><a href="{{route('category-news',$sub->fetchUrl->slug)}}" class="dropdown-item">{{$sub->title}}</a></li>
                                     @endif
                                 @endforeach
                             </ul>
                         </li>
                         @else 
-                        <li><a href="{{route('home')}}" class="nav-link">{{$node->title}}</a></li>
+                        <li><a href="{{route('category-news',$node->fetchUrl->slug)}}" class="nav-link">{{$node->title}}</a></li>
                         @endif
                         @endforeach
                         {{-- <li class="droppable">

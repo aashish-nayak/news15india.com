@@ -150,13 +150,18 @@ class FrontController extends Controller
             'sidebar_4'
         ));
     }
-
-    public function store(Request $request)
+    
+    public function categoryNews($category)
     {
-        //
-    }
 
-    public function show($id)
+        $categoryNews = News::whereHas('categories',function (Builder $query) use($category) {
+            $query->where('slug',$category);
+        })->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->get();
+        dd($categoryNews->toArray());
+        return view('category');
+    }
+    
+    public function store(Request $request)
     {
         //
     }

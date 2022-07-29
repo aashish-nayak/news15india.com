@@ -110,7 +110,7 @@ class MenuController extends Controller
             $selcted = ($value->target == '_self') ? 'selected' : '';
             $selcted2 = ($value->target == '_blank') ? 'selected' : '';
             if ($value->has_child == 1) {
-                $html .= $this->structure($value,$selcted,$selcted2);;
+                $html .= $this->structure($value,$selcted,$selcted2);
                 $html .= $this->nestedMenu($value).'</li>';
             } else {
                 $html .= $this->structure($value,$selcted,$selcted2).'</li>';

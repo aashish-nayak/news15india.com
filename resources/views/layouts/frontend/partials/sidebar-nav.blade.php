@@ -47,16 +47,16 @@
             </div>
             <div class="user_menus">
                 <ul class="list-group">
-                    {{-- <li>
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
+                    <li>
+                        <a href="{{route('home')}}" class="list-group-item d-flex align-items-center">
                             <span class="badge badge-primary badge-pill"><i class="far fa-home-alt"></i></span>
-                            Home
+                            होम
                         </a>
-                    </li> --}}
+                    </li>
                     @foreach ($sideMenu->parentMenuNodes as $menu)
                     @if ($menu->has_child)
                     <li class="position-relative">
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
+                        <a href="{{route('category-news',$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
                             <span class="badge badge-primary badge-pill"><i class="fab fa-font-awesome-flag"></i></span>
                             {{$menu->title}}
                         </a>
@@ -69,7 +69,7 @@
                                 <ul>
                                     @foreach ($menu->child as $subMenu)
                                     <li>
-                                        <a href="javascript:void(0)">{{$subMenu->title}}</a>
+                                        <a href="{{route('category-news',$subMenu->fetchUrl->slug)}}">{{$subMenu->title}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -78,232 +78,13 @@
                     </li>
                     @else
                     <li>
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
+                        <a href="{{route('category-news',$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
                             <span class="badge badge-primary badge-pill"><i class="far fa-tv-retro"></i></span>
                             {{$menu->title}}
                         </a>
                     </li>
                     @endif
                     @endforeach
-                    {{-- <li class="position-relative">
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="fab fa-font-awesome-flag"></i></span>
-                            India
-                        </a>
-                        <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapseExample" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa fa-plus"></i></span>
-                        </a>
-                        <div class="collapse mb-2" id="collapseExample">
-                            <div class="collapse_container">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Ahmedabad</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Bengaluru</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Chennai</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Hyderabad</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Kolkata</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Mumbai</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Pune</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="position-relative">
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-theater-masks"></i></span>
-                            Entertainment
-                        </a>
-                        <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapseExample2" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa fa-plus"></i></span>
-                        </a>
-                        <div class="collapse mb-2" id="collapseExample2">
-                            <div class="collapse_container">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Hollywood</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Bollywood</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Tollywood</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Music</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Television</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Movie Review</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Religion</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="position-relative">
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-baseball"></i></span>
-                            Sports
-                        </a>
-                        <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapseExample3" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa fa-plus"></i></span>
-                        </a>
-                        <div class="collapse mb-2" id="collapseExample3">
-                            <div class="collapse_container">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Cricket</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Football</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Tennis</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Badminton</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Other Sports</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="position-relative">
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="fal fa-plane-departure"></i></span>
-                            LifeStyle
-                        </a>
-                        <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapseExample4" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa fa-plus"></i></span>
-                        </a>
-                        <div class="collapse mb-2" id="collapseExample4">
-                            <div class="collapse_container">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Relationship</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Travel</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Food & Recipes</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Fashion</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Culture</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Spirituality</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="position-relative">
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-industry"></i></span>
-                            Business
-                        </a>
-                        <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapseExample5" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa fa-plus"></i></span>
-                        </a>
-                        <div class="collapse mb-2" id="collapseExample5">
-                            <div class="collapse_container">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Economy</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Markets</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Companies</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Real Estate</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">International Business</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Personal Finance</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Automobile</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="position-relative">
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-microchip"></i></span>
-                            Technology
-                        </a>
-                        <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapseExample6" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa fa-plus"></i></span>
-                        </a>
-                        <div class="collapse mb-2" id="collapseExample6">
-                            <div class="collapse_container">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Gadget</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Gaming</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Internet & Social Media</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Apps</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Mobile</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-crutch"></i></span>
-                            Mobility
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-newspaper"></i></span>
-                            Viral News
-                        </a>
-                    </li> --}}
                 </ul>
             </div>
         </div>

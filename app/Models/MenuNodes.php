@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class MenuNodes extends Model
 {
@@ -24,7 +25,7 @@ class MenuNodes extends Model
     ];
 
     public function parent(){
-        return $this->belongsTo(MenuNodes::class, 'parent_id');
+        return $this->belongsTo(MenuNodes::class, 'parent_id')->orderBy('position');
     }
 
     public function child(){
@@ -37,5 +38,11 @@ class MenuNodes extends Model
 
     public function nested_child(){
         return $this->children()->with('nested_child');
+    }
+
+    public function fetchUrl()
+    {
+        // MorphTo function used to get relation with same table column and their relation id column
+        return $this->morphTo(__FUNCTION__, 'reference_type', 'reference_id');
     }
 }

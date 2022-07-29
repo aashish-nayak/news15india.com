@@ -28,7 +28,7 @@ Route::any('/test',[TestController::class,'test'])->name('test');
 Route::view('/', 'welcome');
 Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/', [FrontController::class,'home'])->name('home');
-    Route::view('/2', 'category')->name('category');
+    Route::get('/news/{category}',[FrontController::class,'categoryNews'])->name('category-news');
     Route::view('/3', 'author')->name('author');
     Route::get('/news/{url}',[FrontController::class,'singleNews'])->name('single-news');
 });
