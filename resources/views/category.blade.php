@@ -1,5 +1,7 @@
 @extends('layouts.frontend.master')
-@section('title','Category')
+@section('meta-tags')
+@includeIf('components.seo', ['obj' => $currentCategory,'page'=>'category-page'])
+@endsection
 @section('sections')
 <main class="container-fluid mx-auto mt-1">
     <div class="row">

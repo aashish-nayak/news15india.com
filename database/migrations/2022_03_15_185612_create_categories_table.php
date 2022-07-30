@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->foreign('cat_img')->references('id')->on('media')->nullOnDelete();
             $table->text('meta_title')->nullable();
             $table->longText('meta_keywords')->nullable();
-            $table->longText('meta_desc')->nullable();
+            $table->longText('meta_description')->nullable();
             $table->boolean('status')->default(0);
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->cascadeOnDelete();

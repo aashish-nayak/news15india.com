@@ -16,7 +16,7 @@ class Category extends Model
         'cat_img',
         'meta_title',
         'meta_keywords',
-        'meta_desc',
+        'meta_description',
         'status',
         'parent_id'
     ];

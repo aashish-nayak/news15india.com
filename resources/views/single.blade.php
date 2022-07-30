@@ -1,5 +1,7 @@
 @extends('layouts.frontend.master')
-@section('title','News Details')
+@section('meta-tags')
+@includeIf('components.seo', ['obj' => $news,'page'=>'single-page'])
+@endsection
 @section('sections')
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
@@ -203,7 +205,7 @@
                         <div class="col-md-10">
                             <ul class="d-flex flex-wrap list-unstyled">
                                 @foreach ($news->tags as $tag)
-                                <li><a href="javascript:void(0)"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">{{$tag->name}}</span></a></li>
+                                <li><a href="{{route('tag-news',$tag->slug)}}"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">{{$tag->name}}</span></a></li>
                                 @endforeach
                             </ul>
                         </div>

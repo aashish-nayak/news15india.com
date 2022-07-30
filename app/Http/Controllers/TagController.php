@@ -119,7 +119,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        $tag->editImg = $tag->img;
+        $tag->editImg = $tag->tagImage;
         return response()->json($tag);
     }
 

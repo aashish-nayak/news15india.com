@@ -216,7 +216,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="metadesc" class="col-form-label"><b>Meta Description</b></label>
-                                <textarea class="form-control form-control-sm" name="meta_desc" id="metadesc" rows="5"></textarea>
+                                <textarea class="form-control form-control-sm" name="meta_description" id="metadesc" rows="5"></textarea>
                             </div>
                         </div>
                     </div>
@@ -429,7 +429,7 @@
                     $("#banner_data").val(data.cat_img);
                     $("#metatitle").html(data.meta_title);
                     $("#metakey").val(data.meta_keywords);
-                    $("#metadesc").html(data.meta_desc);
+                    $("#metadesc").html(data.meta_description);
                     $("#submit").html('Update');
                     $("#cancel-btn").html('<a href="" class="btn btn-sm btn-secondary px-3" id="cancel">Cancel</a>');
                     loadselect();

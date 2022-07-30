@@ -4,17 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap v4.6 CSS -->
+    <!-- Meta Data  -->
+    @yield('meta-tags')
     <link rel="stylesheet" href="{{ asset('front-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <!-- Slick Slider Css  -->
     <link rel="stylesheet" href="{{ asset('front-assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('front-assets/css/slick-theme.css') }}">
-    <!-- Main CSS  -->
     <link rel="stylesheet" href="{{ asset('front-assets/css/style.css') }}">
-    <!-- Site Title  -->
-    <title>@yield('title') - {{ config('app.name') }}</title>
-    @stack('meta-tags')
     @stack('css')
 </head>
 
@@ -25,9 +21,9 @@
     @includeIf('layouts.frontend.partials.desktop-breaking', ['some' => 'data'])
     @includeIf('layouts.frontend.partials.mobile-nav', ['some' => 'data'])
     @includeIf('layouts.frontend.partials.mobile-breaking', ['some' => 'data'])
+
     @yield('sections')
 
-    
     @includeIf('layouts.frontend.partials.footer', ['some' => 'data'])
     <!-- Login Register Modal -->
     <div class="modal fade" style="font-size: 1.6rem;" id="exampleModal" tabindex="-1"

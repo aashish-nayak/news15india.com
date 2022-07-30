@@ -1,5 +1,4 @@
 @extends('layouts.frontend.master')
-@section('title','Home')
 @section('sections')
     <!-- Hero Section   -->
     <section class="container-fluid mt-md-1 mx-auto">

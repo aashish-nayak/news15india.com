@@ -13,7 +13,7 @@ class Tag extends Model
         'slug',
         'tag_img',
         'meta_title',
-        'meta_keyword',
+        'meta_keywords',
         'meta_description',
         'status'
     ];
@@ -22,7 +22,7 @@ class Tag extends Model
         return $this->belongsToMany(News::class,'news_tag');
     }
 
-    public function img(){
+    public function tagImage(){
         return $this->belongsTo(Media::class, 'tag_img');
     }
 }
