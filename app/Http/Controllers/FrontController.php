@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Jorenvh\Share\ShareFacade as Share;
@@ -141,7 +142,7 @@ class FrontController extends Controller
         ->where('status',1)
         ->where('is_published',1)
         ->where('is_verified',1)
-        ->first();
+        ->firstOrFail();
         
         $moreCategoryNews = Category::with(['news'=>function($query)use($newsUrl){
             $query->where('slug','!=',$newsUrl)->latest()->limit(14)->with('newsImage');
@@ -196,16 +197,16 @@ class FrontController extends Controller
         ));
     }
 
-    public function categoryNews($category)
+    public function categoryNews($slug)
     {
-        $currentCategory = Category::where('slug',$category)->first();
+        $currentCategory = Category::where('slug',$slug)->firstOrFail();
         $parents = collect();
         if($currentCategory->parent_id != NULL){
             $parents = $this->treePerent($currentCategory->parent_id);
         }
 
-        $categoryNews = News::whereHas('categories',function (Builder $query) use($category) {
-            $query->where('slug',$category);
+        $categoryNews = News::whereHas('categories',function (Builder $query) use($slug) {
+            $query->where('slug',$slug);
         })->with('newsImage','creator')->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate(25);
 
         $catIds = [18,19,20,5];
@@ -244,23 +245,57 @@ class FrontController extends Controller
         ));
     }
     
-    public function store(Request $request)
+    public function tagNews($slug = '')
+    {
+        $currentTag = Tag::query();
+        if($slug != ''){
+            $currentTag = $currentTag->where('slug', $slug)->firstOrFail();
+        }else{
+            $currentTag = $currentTag->inRandomOrder()->firstOrFail();
+        }
+        $tagNews = $currentTag->news()->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate(25);
+        
+        $catIds = [18,19,20,5];
+        $sidebar_1 = Category::with(['news'=>function($query){
+            $query->latest()->limit(10);
+        }])->find($catIds[0]);
+
+        $sidebar_2 = Category::with(['news'=>function($query){
+            $query->latest()->limit(5)->with('newsImage');
+        }])->find($catIds[1]);
+
+        $sidebar_3 = Category::with(['news'=>function($query){
+            $query->latest()->limit(5);
+        }])->find($catIds[2]);
+
+        $bottom_section = Category::with(['news'=>function($query){
+            $query->latest()->limit(10)->with('newsImage');
+        }])->find($catIds[3]);
+        $shareCurrent = Share::currentPage()
+        ->facebook()
+        ->twitter()
+        ->whatsapp()
+        ->linkedin()
+        ->getRawLinks();
+        return view('tag',compact(
+            'tagNews',
+            'currentTag',
+            'sidebar_1',
+            'sidebar_2',
+            'sidebar_3',
+            'bottom_section',
+            'shareCurrent'
+        ));
+    }
+    
+    public function pages($slug)
     {
         //
     }
 
-    public function edit($id)
+    public function author($id)
     {
-        //
+        
     }
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
 }

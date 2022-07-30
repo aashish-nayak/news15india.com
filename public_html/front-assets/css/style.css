@@ -511,6 +511,7 @@ nav.nav > ul > li > .nav-link {
     position: relative;
     padding: 3px 8px;
     font-size: 1.4rem;
+    border-radius: 15px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     font-weight: 600;
@@ -522,7 +523,6 @@ nav.nav > ul > li > a.active {
     color: var(--primary);
     background: #eeeeee;
     box-shadow: 0 1px 1px rgb(0 0 0 / 20%) inset;
-    border-radius: 15px;
     border-top: 1px solid #adadad;
     border-bottom: 1px solid #fff;
 }
@@ -1316,6 +1316,48 @@ footer.nb-footer .copyright p {
 
 .border-all {
     border: 1px solid var(--primary) !important;
+}
+
+
+footer nav > ul > li {
+    display: inline-block;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding: 0 0px;
+    text-transform: uppercase;
+}
+
+footer nav > ul > li.p-relative {
+    position: relative;
+}
+
+footer nav > ul > li:first-child {
+    padding-left: 0;
+}
+
+footer nav > ul > li:last-child {
+    padding-right: 0;
+}
+
+footer nav > ul > li > .nav-link {
+    color: var(--text-color-light);
+    display: block;
+    position: relative;
+    padding: 3px 8px;
+    border-radius: 15px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    transition: all 200ms linear;
+}
+
+footer nav > ul > li:hover > a,
+footer nav > ul > li > a.active {
+    color: var(--primary);
+    background: #eeeeee;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 20%) inset;
+    border-top: 1px solid #adadad;
+    border-bottom: 1px solid #fff;
 }
 
 /* #Media Queries For All style

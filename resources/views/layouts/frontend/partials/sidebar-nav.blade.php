@@ -56,7 +56,7 @@
                     @foreach ($sideMenu->parentMenuNodes as $menu)
                     @if ($menu->has_child)
                     <li class="position-relative">
-                        <a href="{{route('category-news',$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
+                        <a href="{{route($menu->url,$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
                             <span class="badge badge-primary badge-pill"><i class="fab fa-font-awesome-flag"></i></span>
                             {{$menu->title}}
                         </a>
@@ -69,7 +69,7 @@
                                 <ul>
                                     @foreach ($menu->child as $subMenu)
                                     <li>
-                                        <a href="{{route('category-news',$subMenu->fetchUrl->slug)}}">{{$subMenu->title}}</a>
+                                        <a href="{{route($subMenu->url,$subMenu->fetchUrl->slug)}}">{{$subMenu->title}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -78,7 +78,7 @@
                     </li>
                     @else
                     <li>
-                        <a href="{{route('category-news',$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
+                        <a href="{{route($menu->url,$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
                             <span class="badge badge-primary badge-pill"><i class="far fa-tv-retro"></i></span>
                             {{$menu->title}}
                         </a>

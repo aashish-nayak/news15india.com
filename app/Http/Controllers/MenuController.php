@@ -129,6 +129,20 @@ class MenuController extends Controller
                     $menuNode->reference_id = $request->menus[$key]['reference_id'];
                     $menuNode->reference_type = $request->menus[$key]['reference_type'];    
                     $menuNode->title = $request->menus[$key]['title'];
+                    switch ($request->menus[$key]['reference_type']) {
+                        case 'App\Models\Category':
+                            $menuNode->url = 'category-news';
+                            break;
+                        case 'App\Models\Tag':
+                            $menuNode->url = 'tag-news';
+                            break;
+                        case 'App\Models\Page':
+                            $menuNode->url = 'page';
+                            break;
+                        default:
+                            $menuNode->url = NULL;
+                            break;
+                    }
                     $menuNode->position = MenuNodes::where('menu_id',$request->menus[$key]['menu_id'])->count() + 1;
                     $menuNode->save();
                 }

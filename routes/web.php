@@ -28,9 +28,11 @@ Route::any('/test',[TestController::class,'test'])->name('test');
 Route::view('/', 'welcome');
 Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/', [FrontController::class,'home'])->name('home');
-    Route::get('/news/{category}',[FrontController::class,'categoryNews'])->name('category-news');
-    Route::view('/3', 'author')->name('author');
-    Route::get('/category/news/{url}',[FrontController::class,'singleNews'])->name('single-news');
+    Route::get('/news/category/{slug}',[FrontController::class,'categoryNews'])->name('category-news');
+    Route::get('/news/tag/{slug?}',[FrontController::class,'tagNews'])->name('tag-news');
+    Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
+    Route::view('/author/{user}', [FrontController::class,'author'])->name('author');
+    Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
 });
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
