@@ -41,7 +41,7 @@ class AdminDetailSeeder extends Seeder
             'address' => Str::random(50),
             'country_id' => $countryId,
             'state_id' => $stateId,
-            'city_id' => City::where('state_id',$stateId)->inRandomOrder()->limit(1)->first()->id,
+            'city_id' => City::where('state_id',$stateId)->inRandomOrder()->first()->id,
             'zip' => Str::random(6),
             'created_at' => now()->toDateTimeString(),
             'updated_at' => now()->toDateTimeString()
@@ -57,7 +57,7 @@ class AdminDetailSeeder extends Seeder
             'address' => Str::random(50),
             'country_id' => $countryId,
             'state_id' => $stateId2,
-            'city_id' => City::where('state_id',$stateId2)->inRandomOrder()->limit(1)->first()->id,
+            'city_id' => City::where('state_id',$stateId2)->inRandomOrder()->first()->id,
             'zip' => Str::random(6),
             'created_at' => now()->toDateTimeString(),
             'updated_at' => now()->toDateTimeString()
@@ -73,7 +73,7 @@ class AdminDetailSeeder extends Seeder
             'address' => Str::random(50),
             'country_id' => $countryId,
             'state_id' => $stateId3,
-            'city_id' => City::where('state_id',$stateId3)->inRandomOrder()->limit(1)->first()->id,
+            'city_id' => City::where('state_id',$stateId3)->inRandomOrder()->first()->id,
             'zip' => Str::random(6),
             'created_at' => now()->toDateTimeString(),
             'updated_at' => now()->toDateTimeString()
@@ -89,7 +89,7 @@ class AdminDetailSeeder extends Seeder
             'address' => Str::random(50),
             'country_id' => $countryId,
             'state_id' => $stateId4,
-            'city_id' => City::where('state_id',$stateId4)->inRandomOrder()->limit(1)->first()->id,
+            'city_id' => City::where('state_id',$stateId4)->inRandomOrder()->first()->id,
             'zip' => Str::random(6),
             'created_at' => now()->toDateTimeString(),
             'updated_at' => now()->toDateTimeString()
