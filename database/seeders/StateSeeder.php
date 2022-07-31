@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\State;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class StateSeeder extends Seeder
 {
@@ -14,6 +15,9 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
+		Schema::disableForeignKeyConstraints();
+        State::truncate();
+        Schema::enableForeignKeyConstraints();
         $states = array(
 			array('name' => "Andaman and Nicobar Islands", 'country_id' => 101),
 			array('name' => "Andhra Pradesh", 'country_id' => 101),

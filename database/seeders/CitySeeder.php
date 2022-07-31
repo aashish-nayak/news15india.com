@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\City;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\Schema;
 class CitySeeder extends Seeder
 {
     /**
@@ -14,6 +14,9 @@ class CitySeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+        City::truncate();
+        Schema::enableForeignKeyConstraints();
         $cities = array(
             array('name' => "Bombuflat",'state_id' => 1),
             array('name' => "Garacharma",'state_id' => 1),
