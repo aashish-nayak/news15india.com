@@ -23,7 +23,7 @@ class NewsSeeder extends Seeder
         DB::table('news_tag')->truncate();
         News::truncate();
         Schema::enableForeignKeyConstraints();
-        News::factory(5000)->create()->each(function($query){
+        News::factory(50)->create()->each(function($query){
             $cat = Category::where('parent_id',NULL)->inRandomOrder()->first();
             $cat2 = $cat->children()->inRandomOrder()->first();
             $ids = [$cat->id];
