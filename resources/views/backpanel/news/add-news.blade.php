@@ -59,121 +59,10 @@
             max-height: 300px;
             overflow-y: scroll;
         }
-
-        .card-container {
-            position: fixed;
-            width: 320px;
-            height: 240px;
-            margin: 0 auto;
-            top: 0%;
-            right: 0%;
-            z-index: 999;
-        }
-        .card-container .card {
-        
-        box-sizing: border-box;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        padding: 18px;
-        background: White;
-        box-shadow: 0 8px 0 #BCBBB9;
-        transition: box-shadow 0.185s linear;
-        }
-        .card-container .card h1 {
-        width: 180px;
-        height: 24px;
-        margin: 0;
-        background: #BCBBB9;
-        }
-        .card-container .card p {
-        width: 120px;
-        height: 16px;
-        background: #D0CFCE;
-        }
-        .card-container .handle {
-        z-index: 1;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 44px;
-        height: 44px;
-        }
-        .card-container .handle .dots {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 8px;
-        height: 8px;
-        margin: 0 12px 12px 0;
-        border-radius: 8px;
-        background: #BCBBB9;
-        transition: background-color 0.185s linear;
-        }
-        .card-container .handle .dots:before {
-        position: absolute;
-        content: "";
-        bottom: 8px;
-        width: 8px;
-        height: 8px;
-        margin: 0 8px 8px 0;
-        border-radius: 8px;
-        background: #BCBBB9;
-        transition: background-color 0.185s linear;
-        }
-        .card-container .handle .dots:after {
-        position: absolute;
-        content: "";
-        right: 8px;
-        width: 8px;
-        height: 8px;
-        margin: 0 8px 8px 0;
-        border-radius: 8px;
-        background: #BCBBB9;
-        transition: background-color 0.185s linear;
-        }
-        .card-container .handle:hover {
-        cursor: all-scroll;
-        }
-        .card-container .handle:hover .dots {
-        background: #A8A7A5;
-        }
-        .card-container .handle:hover .dots:before {
-        background: #A8A7A5;
-        }
-        .card-container .handle:hover .dots:after {
-        background: #A8A7A5;
-        }
-        .card-container > .handle:hover + .card {
-        box-shadow: 0 8px 8px #A8A7A5;
-        }
-        .ui-draggable-dragging .handle .dots {
-        background: #959492 !important;
-        }
-        .ui-draggable-dragging .handle .dots:before {
-        background: #959492 !important;
-        }
-        .ui-draggable-dragging .handle .dots:after {
-        background: #959492 !important;
-        }
-        .ui-draggable-dragging .card {
-        box-shadow: 0 12px 8px #959492 !important;
-        }
     </style>
 @endpush
 
 @section('sections')
-{{-- Draggable Media Section  --}}
-{{-- <div class="card-container">
-    <div class="handle">
-        <div class="dots"></div>
-    </div>
-    <div class="card">
-        <h1></h1>
-        <p></p>
-    </div>
-</div> --}}
-
 <div class="col-12">
     <div class="col-12 d-flex justify-content-between">
         <h6 class="mb-0 text-uppercase d-inline-block">{{$title}}</h6>
@@ -454,9 +343,12 @@ function stringslug(str) {
     return str;
 };
 $(document).ready(function () {
-    $(document).on("click",".parent-cat",function() {
-        var child = $(this).parent().next().children().find('.sub-cat');
-        $(child).prop("checked", $(this).prop("checked"));
+    $(document).on("click","input[name='categories[]']",function() {
+        if($(this).is(':checked')){
+            $(this).parent().parent().parent().prev().children().first().prop('checked', true);
+        }else{
+            $(this).parent().parent().parent().prev().children().first().prop('checked', false);
+        }
     });
     $(document).on("keyup", ".titletoslug", function() {
         let slug = stringslug($(this).val());

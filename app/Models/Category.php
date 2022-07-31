@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Illuminate\Support\Str;
 class Category extends Model
 {
     use HasFactory;
@@ -16,7 +16,7 @@ class Category extends Model
         'cat_img',
         'meta_title',
         'meta_keywords',
-        'meta_desc',
+        'meta_description',
         'status',
         'parent_id'
     ];
@@ -24,13 +24,11 @@ class Category extends Model
     public function getCreatedAtAttribute(){
         return Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']) )->diffForHumans();
     }
-
+    public function setSlugAttribute($value){
+        $this->attributes['slug'] = Str::slug($value);
+    }
     public function parent(){
         return $this->belongsTo(Category::class, 'parent_id');
-    }
-
-    public function img(){
-        return $this->belongsTo(Media::class, 'cat_img');
     }
 
     public function children(){
@@ -44,8 +42,12 @@ class Category extends Model
     public function nested_child(){
         return $this->children()->with('nested_child');
     }
+    
+    public function catImage(){
+        return $this->belongsTo(Media::class, 'cat_img');
+    }
 
     public function news(){
-        return $this->belongsToMany(News::class, 'news_categories');
+        return $this->belongsToMany(News::class, 'news_categories')->where('is_published',1)->where('is_verified',1)->where('status',1);
     }
 }

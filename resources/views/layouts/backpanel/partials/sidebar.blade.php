@@ -59,6 +59,12 @@
             </ul>
         </li>
         <li class="">
+            <a href="{{Route('admin.menu.index',1)}}">
+                <div class="parent-icon"><i class='bx bx-menu-alt-right'></i></div>
+                <div class="menu-title">Menus</div>
+            </a>
+        </li>
+        <li class="">
             <a href="{{Route('admin.viewer.index')}}">
                 <div class="parent-icon"><i class='bx bx-user'></i></div>
                 <div class="menu-title">Users</div>

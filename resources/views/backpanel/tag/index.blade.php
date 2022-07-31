@@ -116,7 +116,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label"><b>Meta Keywords</b></label>
-                                <textarea class="form-control form-control-sm" placeholder="comma separated (,)" data-role="tagsinput" name="meta_keyword" id="metakey" rows="3"></textarea>
+                                <textarea class="form-control form-control-sm" placeholder="comma separated (,)" data-role="tagsinput" name="meta_keywords" id="metakey" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="metadesc" class="col-form-label"><b>Meta Description</b></label>
@@ -176,8 +176,6 @@
 @include('backpanel.includes.media-model-script')
 <script>
     $(document).ready(function() {
-        $(document).ready(function () {
-        });
         $('#tags').DataTable({
             processing: true,
             serverSide: true,
@@ -261,7 +259,7 @@
                     $("#catname").val(data.name);
                     $("#slug").val(data.slug);
                     if(data.editImg != null){
-                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;
+                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.filename;
                     }else{
                         preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
                     }
@@ -270,7 +268,7 @@
                     $(".status-input").prop('checked', false);
                     $(".status-input[value='" + data.status + "']").prop('checked', true);
                     $("#metatitle").html(data.meta_title);
-                    $("#metakey").html(data.meta_keyword);
+                    $("#metakey").html(data.meta_keywords);
                     $("#metadesc").html(data.meta_description);
                     $("#submit").html('Update');
                     $("#cancel-btn").html('<a href="" class="btn btn-sm btn-secondary px-3" id="cancel">Cancel</a>');

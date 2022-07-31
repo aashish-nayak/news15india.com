@@ -6,6 +6,8 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -25,10 +27,12 @@ Route::any('/test',[TestController::class,'test'])->name('test');
 
 Route::view('/', 'welcome');
 Route::prefix('/frontend-on-development/news15india')->group(function(){
-    Route::view('/', 'home')->name('home');
-    Route::view('/2', 'category')->name('category');
-    Route::view('/3', 'author')->name('author');
-    Route::view('/4', 'single')->name('single');
+    Route::get('/', [FrontController::class,'home'])->name('home');
+    Route::get('/news/category/{slug}',[FrontController::class,'categoryNews'])->name('category-news');
+    Route::get('/news/tag/{slug?}',[FrontController::class,'tagNews'])->name('tag-news');
+    Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
+    Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
+    Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
 });
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
@@ -115,5 +119,16 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/store',[PermissionController::class,'store'])->name('store');
         Route::get('/edit/{id}',[PermissionController::class,'edit'])->name('edit');
         Route::get('/delete/{id}',[PermissionController::class,'destroy'])->name('delete');
+    });
+
+    Route::prefix('/menu')->name('menu.')->group(function(){
+
+        Route::get('/view/{menu_id?}',[MenuController::class,'index'])->name('index');
+        Route::post('/store', [MenuController::class,'store'])->name('store');
+        Route::post('/view/selected',[MenuController::class,'create'])->name('select');
+        Route::post('/location-store', [MenuController::class,'location_store'])->name('location-store');
+        Route::get('/delete/{menu_nodes}',[MenuController::class,'destroy'])->name('delete');
+        Route::get('/structure-fetch/{menu_id}',[MenuController::class,'structureFetch'])->name('structure-fetch');
+        Route::post('/add-to-menu', [MenuController::class,'addToMenu'])->name('add-to-menu');
     });
 });

@@ -68,7 +68,7 @@ class NewsController extends Controller
             $totalRecordswithFilter = News::where('admin_id', auth('admin')->user()->id)->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
         }
         // Fetch records
-        $records = News::with('categories', 'img', 'creator')->orderBy($columnName, $columnSortOrder);
+        $records = News::with('categories', 'newsImage', 'creator')->orderBy($columnName, $columnSortOrder);
         if (auth('admin')->user()->hasRole('admin') == true) {
             $super = Admin::whereHas('roles',function(Builder $query){
                 $query->where('slug','super-admin');
@@ -92,7 +92,7 @@ class NewsController extends Controller
             $cat_name = $record->title;
             $slug = $record->slug;
             $categories = implode(",", $record->categories->pluck('slug')->toArray());
-            $banner = ($record->image != NULL) ? $record->img->img : 'No Image';
+            $banner = ($record->image != NULL) ? $record->newsImage->filename : 'No Image';
             $status = $record->status;
             $created = $record->created_at;
             $createdby = $record->creator->name;
@@ -235,7 +235,7 @@ class NewsController extends Controller
         }
 
         // Fetch records
-        $records = News::with('categories', 'img', 'creator')->onlyTrashed()->orderBy($columnName, $columnSortOrder);
+        $records = News::with('categories', 'newsImage', 'creator')->onlyTrashed()->orderBy($columnName, $columnSortOrder);
         if (auth('admin')->user()->hasRole('admin') == true) {
             $super = Admin::whereHas('roles',function(Builder $query){
                 $query->where('slug','super-admin');
@@ -260,7 +260,7 @@ class NewsController extends Controller
             $cat_name = $record->title;
             $slug = $record->slug;
             $categories = implode(",", $record->categories->pluck('slug')->toArray());
-            $banner = ($record->image != NULL) ? $record->img->img : 'No Image';
+            $banner = ($record->image != NULL) ? $record->newsImage->filename : 'No Image';
             $status = $record->status;
             $created = Carbon::createFromTimeStamp(strtotime($record->deleted_at))->diffForHumans();
             $createdby = $record->creator->name;

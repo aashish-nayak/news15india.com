@@ -29,8 +29,9 @@ class CategoryController extends Controller
             if (count($Category->children)) {
                 $tree .= $this->childView($Category);
             }
+            $tree .= '</li>';
         }
-        $tree .= '<ul>';
+        $tree .= '</ul>';
         return view('backpanel.category.index', compact('categories','tree','media'));
     }
     public function getBreadcrumb($parent_id,$breadcrumb = '')
@@ -149,7 +150,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {   
-        $category->editImg = $category->img;
+        $category->editImg = $category->catImage;
         return response()->json($category);
     }
 

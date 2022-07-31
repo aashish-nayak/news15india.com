@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Media;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class MediaSeeder extends Seeder
 {
@@ -18,6 +19,8 @@ class MediaSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Media::truncate();
         Schema::enableForeignKeyConstraints();
-        Media::factory(30)->create();
+        Storage::deleteDirectory('public/media');
+        Storage::deleteDirectory('public/temp');
+        Media::factory(50)->create();
     }
 }

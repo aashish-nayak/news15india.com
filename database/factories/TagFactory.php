@@ -18,12 +18,12 @@ class TagFactory extends Factory
     
     public function definition()
     {
-        $tagname = Str::random(7);
+        $tagname = $this->faker->domainWord;
         return [
             'name' => $tagname,
             'slug' => Str::slug($tagname),
             'tag_img' => (Media::inRandomOrder()->count() > 0) ? Media::inRandomOrder()->limit(1)->first()->id : NULL,
-            'meta_title' => $this->faker->title(),
+            'meta_title' => $tagname,
             'meta_keyword'=> str_replace(" ",",",$this->faker->text),
             'meta_description' => $this->faker->text,
             'status' => 1,
