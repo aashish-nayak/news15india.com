@@ -32,7 +32,11 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
                         <div style="height: 70px;width:80px;">
+                            @isset($news->creator->details->avatar->filename)
                             <img src="{{asset('storage/media/'.$news->creator->details->avatar->filename)}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
+                            @else
+                            <img src="{{asset('front-assets/img/user.png')}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
+                            @endisset
                         </div>
                     </div>
                     <div class="col-md-4 col-9 pl-3 px-1">

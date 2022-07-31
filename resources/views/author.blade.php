@@ -115,7 +115,11 @@
             <div class="container-fluid mx-auto px-0 mt-1">
                 <div class="d-flex flex-wrap justify-content-center">
                     <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center d-flex align-items-center justify-content-center">
+                        @isset($author->details->avatar->filename)
                         <img loading="lazy" src="{{asset('storage/media/'.$author->details->avatar->filename)}}" class="text-center img-fluid w-100" style="height:90%;border:5px solid white;border-radius:50%;object-fit:cover;" alt="">
+                        @else
+                        <img src="{{asset('front-assets/img/user.png')}}" class="text-center img-fluid w-100" style="height:90%;border:5px solid white;border-radius:50%;object-fit:cover;" alt="" loading="lazy">
+                        @endisset
                     </div>
                     <div class="col-md-9 col-12" style="background-color: #d8d8d8;">
                         <div class="col-12 px-1 text-center flag-author-border">
