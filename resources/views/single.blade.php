@@ -16,22 +16,24 @@
             <div style="font-size: 14px; font-weight:600;"class="col-12 p-1">
                 <a href="{{route('home')}}"><span>Hindi News</span></a><span>/</span>
                 @foreach ($news->categories as $key => $category)
-                <a href="{{route('category-news',$category->slug)}}"><span>{{$category->cat_name}}</span></a><span>/</span>
+                <a href="{{route('category-news',$category->slug)}}"><span>{{$category->cat_name}}</span></a>
+                @if($key < $news->categories->count() - 1)
+                <span>/</span>
+                @endif
                 @endforeach
-                <a href="javascript:void(0)" class="b-active"><span>{{\Str::limit($news->title,40)}}</span></a>
             </div>
             <div class="col-12 p-1">
                 <h1 class="text-dark px-2 font-weight-bold" style="border-left: 4px solid var(--primary);">
                     {{$news->title}}
                 </h1>
-                <p class="px-3 m-0 font-weight-bold" style="line-height: 1.3;font-size:1.7rem">
+                <p class="px-3 mt-4 font-weight-bold" style="line-height: 1.3;font-size:1.7rem">
                     {{$news->short_description}}
                 </p>
             </div>
             <div class="container-fluid mx-auto py-2" style="border-bottom: 2px dotted gray;">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
-                        <div style="height: 70px;width:80px;">
+                        <div style="height: 80px;width:80px;">
                             @isset($news->creator->details->avatar->filename)
                             <img src="{{asset('storage/media/'.$news->creator->details->avatar->filename)}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
                             @else
@@ -200,7 +202,9 @@
             </section>
             {{-- ............ Ad Banner ...........  --}}
             <div class="container-fluid mt-3 px-1">
-                <p class=" text-dark single-para mb-3 text-justify">{!!$news->content!!}</p>
+                <p class=" text-dark single-para mb-3 text-justify">@php
+                    echo html_entity_decode($news->content);
+                @endphp</p>
             </div>
             <section class="container-fluid mx-auto mt-1 px-0 text-center">
                 <a href="javascript:void(0)">
@@ -211,58 +215,17 @@
             <div class="container-fluid my-2 px-0">
                 <div class="col-12">
                     <div class="row flex-wrap align-items-center">
-                        <div class="col-md-2 text-center">
-                            <h4 class="text-white rounded-pill bg-danger py-3"><i class="fas fa-tags "></i> TAGS</h4>
-                        </div>
-                        <div class="col-md-10">
-                            <ul class="d-flex flex-wrap list-unstyled">
-                                @foreach ($news->tags as $tag)
-                                <li><a href="{{route('tag-news',$tag->slug)}}"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">{{$tag->name}}</span></a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mt-1">
-                    <div class="row align-items-center">
-                        <div class="col-md-8 col-12">
-                            <h4>Get Help To Improve Our News</h4>
-                            <div class="row">
-                                <div class="col-md-6 p-0 col-12">
-                                    <p class="d-inline px-3">If you give full info about News</p>
-                                    <div class="switch-field d-inline">
-                                        <input type="radio" id="radio-one" name="switch-one" value="yes" checked="">
-                                        <label for="radio-one">Yes</label>
-                                        <input type="radio" id="radio-two" name="switch-one" value="no">
-                                        <label for="radio-two">No</label>
-                                    </div>
+                        <div class="col-md-8">
+                            <div class="row align-items-center">
+                                <div class="col-md-2 text-center">
+                                    <h4 class="badge badge-pill badge-danger" style="font-size: 1.8rem"><i class="fas fa-tags "></i> TAGS</h4>
                                 </div>
-                                <div class="col-md-6 p-0 col-12">
-                                    <p class="d-inline px-3">If you give full info about News</p>
-                                    <div class="switch-field d-inline">
-                                        <input type="radio" id="radio-three" name="switch-two" value="yes" checked="">
-                                        <label for="radio-three">Yes</label>
-                                        <input type="radio" id="radio-four" name="switch-two" value="no">
-                                        <label for="radio-four">No</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 p-0 col-12">
-                                    <p class="d-inline px-3">If you give full info about News</p>
-                                    <div class="switch-field d-inline">
-                                        <input type="radio" id="radio-five" name="switch-three" value="yes" checked="">
-                                        <label for="radio-five">Yes</label>
-                                        <input type="radio" id="radio-six" name="switch-three" value="no">
-                                        <label for="radio-six">No</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 p-0 col-12">
-                                    <p class="d-inline px-3">If you give full info about News</p>
-                                    <div class="switch-field d-inline">
-                                        <input type="radio" id="radio-seven" name="switch-four" value="yes" checked="">
-                                        <label for="radio-seven">Yes</label>
-                                        <input type="radio" id="radio-eight" name="switch-four" value="no">
-                                        <label for="radio-eight">No</label>
-                                    </div>
+                                <div class="col-md-10">
+                                    <ul class="d-flex flex-wrap list-unstyled">
+                                        @foreach ($news->tags as $tag)
+                                        <li><a href="{{route('tag-news',$tag->slug)}}"><span class="badge badge-pill badge-secondary m-2" style="font-size: 14px">{{$tag->name}}</span></a></li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -279,10 +242,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="col mt-1">
+                    <div class="row align-items-center">
+                        
+                    </div>
+                </div>
             </div>
             {{-- ........... Tags ........  --}}
             <div class="main-bg-clr container-fluid px-1 mt-3">
-                @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-75'])
+                @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-50'])
                 <div class="row mx-auto">
                     @foreach ($moreCategoryNews->news as $key => $otherNews)
                         @if($key <= 3)

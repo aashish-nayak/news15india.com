@@ -47,17 +47,10 @@
             </div>
             <div class="user_menus">
                 <ul class="list-group">
-                    <li>
-                        <a href="{{route('home')}}" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-home-alt"></i></span>
-                            होम
-                        </a>
-                    </li>
                     @foreach ($sideMenu->parentMenuNodes as $menu)
                     @if ($menu->has_child)
                     <li class="position-relative">
                         <a href="{{route($menu->url,$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="fab fa-font-awesome-flag"></i></span>
                             {{$menu->title}}
                         </a>
                         <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapse{{$menu->id}}" role="button"
@@ -79,7 +72,6 @@
                     @else
                     <li>
                         <a href="{{route($menu->url,$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
-                            <span class="badge badge-primary badge-pill"><i class="far fa-tv-retro"></i></span>
                             {{$menu->title}}
                         </a>
                     </li>

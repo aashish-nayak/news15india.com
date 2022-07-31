@@ -113,7 +113,7 @@
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="validationCustom01" class="form-label"><b>Content</b></label>
-                                <textarea name="content" class="text-editor">@if(isset($page))@php
+                                <textarea name="content" id="contentEditor" class="text-editor">@if(isset($page))@php
                                     echo $page->content;
                                 @endphp @else{{ html_entity_decode(old('content')) }}@endif</textarea>
                                 @error('content')
@@ -277,7 +277,7 @@
                     </div>
                     <div class="card-body">
                         <div class="preview-image-wrapper ">
-                            <img src="@if(isset($page) && isset($page->img->img)){{asset('storage/media/'.$page->img->img)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                            <img src="@if(isset($page) && isset($page->newsImage->filename)){{asset('storage/media/'.$page->newsImage->filename)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
                             <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X</a>
                         </div><br>
                         <input type="hidden" required name="image" id="banner_data" value="@isset($page){{$page->image}}@else{{old('banner_data')}}@endisset">
@@ -406,10 +406,11 @@ $(document).ready(function () {
         $(".seo-edit-section").toggleClass('d-none');
     });
 });
+
 tinymce.init({
-    selector: ".text-editor",
+    selector: "#contentEditor",
     encoding: 'xml',
-    height: 400,
+    height: 600,
     plugins: [
         "advlist autolink link image lists charmap print preview hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -423,7 +424,7 @@ tinymce.init({
         },
     },
     menubar: "favs file edit view insert format tools table help",
-    content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; color: #7c8ea7; }",
+    content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:16px; color: #333; }",
 });
 
 $(".card-container").draggable({

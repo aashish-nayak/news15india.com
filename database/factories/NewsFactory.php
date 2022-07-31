@@ -18,7 +18,7 @@ class NewsFactory extends Factory
 
     public function definition()
     {
-        $title = $this->faker->sentences(1, true);
+        $title = $this->faker->sentences(3, true);
         return [
             'title'=> $title,
             'slug'=> $this->faker->slug(5,true),
@@ -34,7 +34,7 @@ class NewsFactory extends Factory
             'youtube_url'=> NULL,
             'is_featured'=> 0,
             'meta_title'=> $title,
-            'meta_keywords'=> Str::slug($title),
+            'meta_keywords'=> $title,
             'meta_description'=> $this->faker->text(100),
             'created_at' => now()->toDateTimeString(),
             'updated_at' => now()->toDateTimeString()

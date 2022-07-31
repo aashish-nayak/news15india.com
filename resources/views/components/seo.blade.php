@@ -59,6 +59,7 @@
     $type = $type;
     $size = $size;
 @endphp
+    <meta name="robots" content="noindex, nofollow">
     <title>{{$title}} - {{ config('app.name') }}</title>
     <meta name='description' itemprop='description' content="{{$meta_description}}" />
     <meta name='keywords' content='{{$keywords}}' />

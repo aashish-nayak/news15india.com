@@ -21,7 +21,7 @@
                 <!-- Main Navbar Start -->
                 <nav class="nav sticky-top d-none d-lg-block d-md-block position-static">
                     <ul class="ul-reset ml-2 ">
-                        <li><a href="{{route('home')}}" class="nav-link">होम</a></li>
+                        <li><a href="{{route('home')}}" class="nav-link"><i class="fa fa-home"></i></a></li>
                         @foreach ($menu->parentMenuNodes as $node)
                         @if ($node->has_child)
                         <li class="nav-item-sub p-relative">
