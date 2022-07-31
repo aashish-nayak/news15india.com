@@ -150,7 +150,7 @@ class NewsController extends Controller
         $news->content = $request->content;
         $news->is_published = $request->is_published;
         $news->status =  1;
-        $news->is_verified = 0;
+        $news->is_verified = 1;
         $news->page_order = 0;
         $news->image = $request->image;
         $news->format = $request->format;
