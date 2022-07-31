@@ -19,7 +19,7 @@ class MediaFactory extends Factory
     public function definition()
     {
         // \App\Traits\LoremImageTrait::imageSave();
-        $filedata = $this->model::imageSave(now()->format('Y_m_d_H_i_s')."_".$this->faker->domainWord);
+        $filedata = \App\Traits\LoremImageTrait::imageSave(now()->format('Y_m_d_H_i_s')."_".$this->faker->domainWord);
         return [
             'admin_id' => Admin::inRandomOrder()->first()->id,
             'filename' => $filedata['filename'],
