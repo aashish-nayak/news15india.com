@@ -32,6 +32,14 @@
         $alt = $obj->pageImage->alt;
         $type = $obj->pageImage->type;
         $size = $obj->pageImage->size;
+    }elseif($page == 'author-page'){
+        $title = $obj->name;
+        $description = $obj->about;
+        $tags = '';
+        $image = $obj->details->avatar->filename;
+        $alt = $obj->details->avatar->alt;
+        $type = $obj->details->avatar->type;
+        $size = $obj->details->avatar->size;
     }else{
         $title = '';
         $description = '';

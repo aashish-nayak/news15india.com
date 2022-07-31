@@ -343,10 +343,13 @@ function stringslug(str) {
     return str;
 };
 $(document).ready(function () {
-    // $(document).on("click",".parent-cat",function() {
-    //     var child = $(this).parent().next().children().find('.sub-cat');
-    //     $(child).prop("checked", $(this).prop("checked"));
-    // });
+    $(document).on("click","input[name='categories[]']",function() {
+        if($(this).is(':checked')){
+            $(this).parent().parent().parent().prev().children().first().prop('checked', true);
+        }else{
+            $(this).parent().parent().parent().prev().children().first().prop('checked', false);
+        }
+    });
     $(document).on("keyup", ".titletoslug", function() {
         let slug = stringslug($(this).val());
         $("#slug").html(slug);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Tag;
@@ -253,7 +254,7 @@ class FrontController extends Controller
         }else{
             $currentTag = $currentTag->inRandomOrder()->firstOrFail();
         }
-        $tagNews = $currentTag->news()->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate(25);
+        $tagNews = $currentTag->news()->latest()->paginate(25);
         
         $catIds = [18,19,20,5];
         $sidebar_1 = Category::with(['news'=>function($query){
@@ -293,9 +294,53 @@ class FrontController extends Controller
         //
     }
 
-    public function author($id)
+    public function author($url)
     {
+        $author = Admin::whereHas('details',function($query) use($url){
+            $query->where('url',$url);
+        })->with('details')->firstOrFail();
+
+        $creatorNews = News::where('admin_id',$author->id)->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate(18);
+
+        $popularCategoryId = 13;
+        $popularCategory = Category::with(['news'=>function($query)use($author){
+            $query->where('admin_id',$author->id)->latest()->limit(14);
+        }])->find($popularCategoryId);
         
+        $shareCurrent = Share::currentPage()
+        ->facebook()
+        ->twitter()
+        ->whatsapp()
+        ->linkedin()
+        ->getRawLinks();
+
+        $catIds = [18,19,20,5];
+        $sidebar_1 = Category::with(['news'=>function($query){
+            $query->latest()->limit(5);
+        }])->find($catIds[0]);
+
+        $sidebar_2 = Category::with(['news'=>function($query){
+            $query->latest()->limit(10)->with('newsImage');
+        }])->find($catIds[1]);
+
+        $sidebar_3 = Category::with(['news'=>function($query){
+            $query->latest()->limit(5);
+        }])->find($catIds[2]);
+
+        $sidebar_4 = Category::with(['news'=>function($query){
+            $query->latest()->limit(10)->with('newsImage');
+        }])->find($catIds[3]);
+
+        return view('author',compact(
+            'creatorNews',
+            'author',
+            'popularCategory',
+            'sidebar_1',
+            'sidebar_2',
+            'sidebar_3',
+            'sidebar_4',
+            'shareCurrent'
+        ));
     }
 
 }

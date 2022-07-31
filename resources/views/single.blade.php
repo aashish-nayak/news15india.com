@@ -31,21 +31,29 @@
             <div class="container-fluid mx-auto py-2" style="border-bottom: 2px dotted gray;">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
-                        <img src="{{asset('front-assets/img/user.png')}}" style="height:70px;width:auto;" class="rounded-circle bg-primary" alt="" loading="lazy">
+                        <div style="height: 70px;width:80px;">
+                            <img src="{{asset('storage/media/'.$news->creator->details->avatar->filename)}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
+                        </div>
                     </div>
                     <div class="col-md-4 col-9 pl-3 px-1">
-                        <div class="col-12" style="font-size: 16px; font-weight:500;">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span>By</span> <a href="javascript:void(0)"><span><strong>{{$news->creator->name}}</strong></span></a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="col-md-9">
+                                <div  style="font-size: 16px; font-weight:500;">
+                                    <span>By</span> 
+                                    <a href="{{route('author',$news->creator->details->url)}}">
+                                        <span><strong>{{$news->creator->name}}</strong></span>
+                                    </a>
                                 </div>
-                                <div class="pr-3">
-                                    <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a>
-                                </div>
+                                <p class="m-0">
+                                    <span>{{$news->creator->details->city->name.", ".$news->creator->details->state->name}}</span>
+                                </p>
+                                <p class="m-0">
+                                    <span>{{\Carbon\Carbon::parse($news->created_at)->format('D d M Y, H:i A')}}</span>
+                                </p>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <p class="m-0"><span>Location,</span> <span>{{\Carbon\Carbon::parse($news->created_at)->format('D d M Y, H:i A')}}</span></p>
+                            <div class="col-md-3">
+                                <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 font-size-sm">
@@ -270,7 +278,7 @@
             </div>
             {{-- ........... Tags ........  --}}
             <div class="main-bg-clr container-fluid px-1 mt-3">
-                @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-25'])
+                @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-75'])
                 <div class="row mx-auto">
                     @foreach ($moreCategoryNews->news as $key => $otherNews)
                         @if($key <= 3)

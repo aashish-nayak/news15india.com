@@ -19,7 +19,7 @@ class Tag extends Model
     ];
 
     public function news(){
-        return $this->belongsToMany(News::class,'news_tag');
+        return $this->belongsToMany(News::class,'news_tag')->where('is_published',1)->where('is_verified',1)->where('status',1);
     }
 
     public function tagImage(){
