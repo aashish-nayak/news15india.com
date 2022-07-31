@@ -4,16 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\Admin;
-use App\Models\AdminDetail;
-use App\Models\City;
-use App\Models\Country;
-use App\Models\Media;
 use App\Models\Permission;
-use App\Models\State;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 class AdminSeeder extends Seeder
 {
     /**
@@ -229,7 +223,6 @@ class AdminSeeder extends Seeder
         DB::table('admin_roles')->truncate();
         DB::table('admin_permissions')->truncate();
         DB::table('role_permissions')->truncate();
-        AdminDetail::truncate();
         Permission::truncate();
         Role::truncate();
         Admin::truncate();
@@ -253,78 +246,17 @@ class AdminSeeder extends Seeder
         $role = Role::find(4);
         $role->permissions()->attach($permissions3);
         
-        $countryId = Country::where('code','India')->first()->id;
-        $stateId = State::where('country_id',$countryId)->inRandomOrder()->limit(1)->first()->id;
         $admin = Admin::find(1);
         $admin->roles()->attach([1]);
-        AdminDetail::insert([
-            'admin_id' => $admin->id,
-            'url' => Str::slug($admin->name),
-            'about' => Str::random(100),
-            'avatar_id' => Media::inRandomOrder()->limit(1)->first()->id,
-            'phone' => Str::random(10),
-            'address' => Str::random(50),
-            'country_id' => $countryId,
-            'state_id' => $stateId,
-            'city_id' => City::where('state_id',$stateId)->inRandomOrder()->limit(1)->first()->id,
-            'zip' => Str::random(6),
-            'created_at' => now()->toDateTimeString(),
-            'updated_at' => now()->toDateTimeString()
-        ]);
 
-        $stateId = State::where('country_id',$countryId)->inRandomOrder()->limit(1)->first()->id;
         $admin = Admin::find(2);
         $admin->roles()->attach([2]);
-        AdminDetail::insert([
-            'admin_id' => $admin->id,
-            'url' => Str::slug($admin->name),
-            'about' => Str::random(100),
-            'avatar_id' => Media::inRandomOrder()->limit(1)->first()->id,
-            'phone' => Str::random(10),
-            'address' => Str::random(50),
-            'country_id' => $countryId,
-            'state_id' => $stateId,
-            'city_id' => City::where('state_id',$stateId)->inRandomOrder()->limit(1)->first()->id,
-            'zip' => Str::random(6),
-            'created_at' => now()->toDateTimeString(),
-            'updated_at' => now()->toDateTimeString()
-        ]);
         
-        $stateId = State::where('country_id',$countryId)->inRandomOrder()->limit(1)->first()->id;
         $admin = Admin::find(3);
         $admin->roles()->attach([3]);
-        AdminDetail::insert([
-            'admin_id' => $admin->id,
-            'url' => Str::slug($admin->name),
-            'about' => Str::random(100),
-            'avatar_id' => Media::inRandomOrder()->limit(1)->first()->id,
-            'phone' => Str::random(10),
-            'address' => Str::random(50),
-            'country_id' => $countryId,
-            'state_id' => $stateId,
-            'city_id' => City::where('state_id',$stateId)->inRandomOrder()->limit(1)->first()->id,
-            'zip' => Str::random(6),
-            'created_at' => now()->toDateTimeString(),
-            'updated_at' => now()->toDateTimeString()
-        ]);
 
-        $stateId = State::where('country_id',$countryId)->inRandomOrder()->limit(1)->first()->id;
         $admin = Admin::find(4);
         $admin->roles()->attach([4]);
-        AdminDetail::insert([
-            'admin_id' => $admin->id,
-            'url' => Str::slug($admin->name),
-            'about' => Str::random(100),
-            'avatar_id' => Media::inRandomOrder()->limit(1)->first()->id,
-            'phone' => Str::random(10),
-            'address' => Str::random(50),
-            'country_id' => $countryId,
-            'state_id' => $stateId,
-            'city_id' => City::where('state_id',$stateId)->inRandomOrder()->limit(1)->first()->id,
-            'zip' => Str::random(6),
-            'created_at' => now()->toDateTimeString(),
-            'updated_at' => now()->toDateTimeString()
-        ]);
 
     }
 }
