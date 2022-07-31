@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(StateSeeder::class);
         $this->call(CitySeeder::class);
-        // $this->call(MediaSeeder::class);
-        // $this->call(CategorySeeder::class);
+        $this->call(MediaSeeder::class);
+        $this->call(CategorySeeder::class);
         $this->call(AdminSeeder::class);
-        // $this->call(UserSeeder::class);
-        // $this->call(TagSeeder::class);
-        // $this->call(NewsSeeder::class);
-        // $this->call(MenuSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(TagSeeder::class);
+        $this->call(NewsSeeder::class);
+        $this->call(MenuSeeder::class);
     }
 }
