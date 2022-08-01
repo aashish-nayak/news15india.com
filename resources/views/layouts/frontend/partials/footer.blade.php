@@ -11,7 +11,7 @@
                             <ul class="list-unstyled">
                                 @foreach ($footer->child as $subFooter)
                                 <li>
-                                    <a href="{{route($subFooter->url,$subFooter->fetchUrl->slug)}}" title="">
+                                    <a href="{{route($subFooter->route_name,$subFooter->url)}}" title="">
                                         <i class="fa fa-angle-double-right"></i>
                                         {{$subFooter->title}}
                                     </a>

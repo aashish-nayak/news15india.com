@@ -8,8 +8,10 @@ use App\Models\MenuLocation;
 use App\Models\MenuNodes;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redis;
-
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 class MenuController extends Controller
 {
     public function index($menu_id = null)
@@ -18,7 +20,8 @@ class MenuController extends Controller
         $menus = Menu::all();
         $categories = Category::orderBy('parent_id','ASC')->select('id','cat_name','slug')->get();
         $tags = Tag::orderBy('id','ASC')->select('id','name','slug')->get();
-        return view('backpanel.menu.index',compact('categories','tags','MenuLocations','menus','menu_id'));
+        $nodes = MenuNodes::where('menu_id',$menu_id)->where('parent_id', 0)->orderBy('position')->get();
+        return view('backpanel.menu.index',compact('categories','tags','MenuLocations','menus','menu_id','nodes'));
     }
 
     public function create(Request $request)
@@ -39,90 +42,12 @@ class MenuController extends Controller
         $request->session()->flash('success', 'Location Saved!');
         return redirect()->back();
     }
-    public function structure($value,$selcted,$selcted2)
-    {
-        return '<li class="dd-item">
-            <div class="dd-handle dd3-handle"></div>
-            <div class="dd3-content">
-                <span class="float-start menu-name">'.$value->title.'</span>
-                <span class="float-end modal-name me-4">'.$value->reference_type.'</span>
-                <a class="show-item-details" type="button"><i class="bx bx-chevron-down"></i></a>
-            </div>
-            <div class="item-details">
-                <div class="form-body">
-                    <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Title</b></label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" value="'.$value->title.'" placeholder="Title">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Icon</b></label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" value="'.$value->icon.'" placeholder="Icon">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>css</b></label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" value="'.$value->css.'" placeholder="CSS Class">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Target</b></label>
-                        <div class="col-sm-9">
-                            <select name="" id="" class="form-control form-control-sm">
-                                <option '.$selcted.' value="_self">Open Link Directly</option>
-                                <option '.$selcted2.' value="_blank">Open Link in New Tab</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-12 text-end">
-                            <button type="button" class="btn btn-sm btn-danger me-1 remove-menu" data-id="'.$value->id.'">Remove</button>
-                            <button type="button" class="btn btn-sm btn-primary" for="">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>';
-    }
-    public function nestedMenu($menu)
-    {
-        $html = '<ol class="dd-list">';
-        foreach ($menu->child as $value) {
-            $selcted = ($value->target == '_self') ? 'selected' : '';
-            $selcted2 = ($value->target == '_blank') ? 'selected' : '';
-            if ($value->has_child == 1) {
-                $html .= $this->structure($value,$selcted,$selcted2);
-                $html .= $this->nestedMenu($value).'</li>';
-            } else {
-                $html .= $this->structure($value,$selcted,$selcted2).'</li>';
-            }
-        }
-        $html .= "</ol>";
-        return $html;
-    }
-    public function structureFetch($menu_id)
-    {   
-        $nodes = MenuNodes::where('menu_id',$menu_id)->where('parent_id', 0)->orderBy('position')->get();
-        $tree = '<ol class="dd-list">';
-        foreach ($nodes as $value) {
-            $selcted = ($value->target == '_self') ? 'selected' : '';
-            $selcted2 = ($value->target == '_blank') ? 'selected' : '';
-            $tree .= $this->structure($value,$selcted,$selcted2);
-            if($value->has_child == 1){
-                $tree .= $this->nestedMenu($value);
-            }
-            $tree .= '</li>';
-        }
-        $tree .= '</ol>';
-        return response()->json($tree);
-    }
 
     public function addToMenu(Request $request)
     {
         try {
             if(isset($request->menus)){
+                $ids = [];
                 foreach ($request->menus as $key => $value) {
                     $menuNode = new MenuNodes();
                     $menuNode->menu_id = $request->menus[$key]['menu_id'];
@@ -131,28 +56,47 @@ class MenuController extends Controller
                     $menuNode->title = $request->menus[$key]['title'];
                     switch ($request->menus[$key]['reference_type']) {
                         case 'App\Models\Category':
-                            $menuNode->url = 'category-news';
+                            $menuNode->route_name = 'category-news';
                             break;
                         case 'App\Models\Tag':
-                            $menuNode->url = 'tag-news';
+                            $menuNode->route_name = 'tag-news';
                             break;
                         case 'App\Models\Page':
-                            $menuNode->url = 'page';
+                            $menuNode->route_name = 'page';
                             break;
                         default:
-                            $menuNode->url = NULL;
+                            $menuNode->route_name = NULL;
                             break;
                     }
                     $menuNode->position = MenuNodes::where('menu_id',$request->menus[$key]['menu_id'])->count() + 1;
                     $menuNode->save();
+                    $ids[] .= $menuNode->id;
                 }
+                return view("backpanel.menu.menu-structure",["menu"=>MenuNodes::find($ids)]);
             }
-            return response()->json(['success'=>'Node Saved']);
         } catch (\Exception $e) {
             return response()->json(['error'=>$e->getMessage()]);
         }
     }
 
+    public function addToMenuLink(Request $request)
+    {
+        try {
+            $menuNode = new MenuNodes();
+            $menuNode->menu_id = $request->menu_id;
+            $menuNode->title = $request->title;
+            $menuNode->route_name = "custom-link";
+            $menuNode->url = $request->url;
+            $menuNode->css = $request->css;
+            $menuNode->icon = $request->icon;
+            $menuNode->target = $request->target;
+            $menuNode->position = MenuNodes::where('menu_id',$request->menu_id)->count() + 1;
+            $menuNode->save();
+            return view("backpanel.menu.menu-structure",["menu"=>MenuNodes::where('id',$menuNode->id)->get()]);
+        } catch (\Exception $e) {
+            return response()->json(['error'=>$e->getMessage()]);
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *

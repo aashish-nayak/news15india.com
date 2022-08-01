@@ -343,4 +343,8 @@ class FrontController extends Controller
         ));
     }
 
+    public function customLink($slug = '')
+    {
+        return url($slug);
+    }
 }

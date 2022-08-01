@@ -35,7 +35,6 @@
                 </div>
             </div>
         </div>
-        <textarea name="menu_nodes" id="nestable-output" class="form-control d-none"></textarea>
         <div class="col-md-3">
             <div class="card accordion">
                 <div class="accordion-item">
@@ -93,61 +92,60 @@
                     </div>
                 </div>
             </div>
+            <div class="card accordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#addLinkSidebar" aria-expanded="false">
+                            Add Link
+                        </button>
+                    </h2>
+                    <div id="addLinkSidebar" class="accordion-collapse collapse">
+                        <form action="{{route('admin.menu.add-to-menu-link')}}" method="post" id="addLinkSidebarForm">
+                            <input type="hidden" name="menu_id" value="{{$menu_id}}">
+                            <div class="card-body">
+                                <div class="form-body">
+                                    <div class="form-group mb-1">
+                                        <label for="inputEnterYourName" class="col-form-label"><b>Title</b></label>
+                                        <input type="text" required class="form-control form-control-sm" name="title" value="" placeholder="Title">
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="inputEnterYourName" class="col-form-label"><b>Url</b></label>
+                                        <input type="text" required class="form-control form-control-sm" name="url" value="" placeholder="Url">
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="inputEnterYourName" class="col-form-label"><b>Icon</b></label>
+                                        <input type="text" class="form-control form-control-sm" name="icon" value="" placeholder="Icon">
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="inputEnterYourName" class="col-form-label"><b>css</b></label>
+                                        <input type="text" class="form-control form-control-sm" name="css" value="" placeholder="css">
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="inputEnterYourName" class="col-form-label"><b>Target</b></label>
+                                        <select name="target" required id="" class="form-control form-control-sm">
+                                            <option selected value="_self">Open Link Directly</option>
+                                            <option value="_blank">Open Link in New Tab</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-end">
+                                <button type="submit" class="btn btn-primary btn-sm"><span class="mt-1 bx bx-plus"></span> Add to Menu</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-9">
             <form action="" method="post">
+                <textarea name="menu_nodes" id="nestable-output" class="form-control d-none"></textarea>
                 <div class="card widget meta-boxes">
                     <div class="card-header">
                         <h6>Menu Structure</h6>
                     </div>
                     <div class="dd nestable-menu card-body" id="nestable" data-depth="0">
-                        {{-- <ol class="dd-list">
-                            <li class="dd-item">
-                                <div class="dd-handle dd3-handle"></div>
-                                <div class="dd3-content">
-                                    <span class="float-start menu-name">Category</span>
-                                    <span class="float-end modal-name me-4">Category</span>
-                                    <a class="show-item-details" type="button"><i class="bx bx-chevron-down"></i></a>
-                                </div>
-                                <div class="item-details">
-                                    <div class="form-body">
-                                        <div class="row mb-3">
-                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Title</b></label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEnterYourName" placeholder="Title">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Icon</b></label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEnterYourName" placeholder="Icon">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>css</b></label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEnterYourName" placeholder="CSS Class">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Target</b></label>
-                                            <div class="col-sm-9">
-                                                <select name="" id="" class="form-control form-control-sm">
-                                                    <option value="_self">Open Link Directly</option>
-                                                    <option value="_self">Open Link in New Tab</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-12 text-end">
-                                                <button type="button" class="btn btn-sm btn-danger me-1">Remove</button>
-                                                <button type="button" class="btn btn-sm btn-primary">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol> --}}
+                        @includeIf('backpanel.menu.menu-structure',["menu"=>$nodes])
                     </div>
                     <div class="card-footer text-end">
                         <button type="submit" class="btn btn-primary">Save</button>
@@ -236,19 +234,7 @@
     <script src="{{ asset('assets/plugins/nested/nested.js') }}"></script>
     <script src="{{ asset('assets/plugins/nested/menu.js') }}"></script>
     <script>
-        function loadStructure() {
-            var url = "{{ route('admin.menu.structure-fetch',$menu_id) }}";
-            $.ajax({
-                url: url,
-                type: "GET",
-                success: function(data) {
-                    // console.log(data);
-                    $("#nestable").html(data);
-                }
-            });
-        }
         $(document).ready(function() {
-            loadStructure();
             $(document).on('click','.btn-add-to-menu',function(){
                 let checked = $(this).parent().parent().find('input[type=checkbox]:checked');
                 let labelData = $(checked).next();
@@ -271,11 +257,33 @@
                     type: "POST",
                     data : obj,
                     success: function(data) {
-                        loadStructure();
-                        $(checked).prop('checked',false);
+                        $("#nestable").append(data);
                     }
                 });
             });
+
+            $("#addLinkSidebarForm").submit(function (e) {
+                e.preventDefault();
+                var obj = {
+                    _token : "{{csrf_token()}}",
+                    title:$(this).find("input[name='title']").val(),
+                    url:$(this).find("input[name='url']").val(),
+                    css:$(this).find("input[name='css']").val(),
+                    icon:$(this).find("input[name='icon']").val(),
+                    target:$(this).find("select[name='target']").val(),
+                    menu_id:$(this).find("input[name='menu_id']").val(),
+                }
+                let url = "{{route('admin.menu.add-to-menu-link')}}";
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data : obj,
+                    success: function(response) {
+                        $("#nestable").append(response);
+                    }
+                });
+            });
+
             $(document).on('click', '.remove-menu', function() {
             var row = $(this);
             var id = $(this).data('id');
@@ -295,7 +303,6 @@
                         url: url,
                         type: "GET",
                         success: function(data) {
-                            loadStructure();
                         }
                     });
                 }

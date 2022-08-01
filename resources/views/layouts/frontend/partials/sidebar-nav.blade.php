@@ -50,7 +50,7 @@
                     @foreach ($sideMenu->parentMenuNodes as $menu)
                     @if ($menu->has_child)
                     <li class="position-relative">
-                        <a href="{{route($menu->url,$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
+                        <a href="{{route($menu->route_name,$menu->url)}}" class="list-group-item d-flex align-items-center">
                             {{$menu->title}}
                         </a>
                         <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapse{{$menu->id}}" role="button"
@@ -62,7 +62,7 @@
                                 <ul>
                                     @foreach ($menu->child as $subMenu)
                                     <li>
-                                        <a href="{{route($subMenu->url,$subMenu->fetchUrl->slug)}}">{{$subMenu->title}}</a>
+                                        <a href="{{route($subMenu->route_name,$subMenu->url)}}">{{$subMenu->title}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -71,7 +71,7 @@
                     </li>
                     @else
                     <li>
-                        <a href="{{route($menu->url,$menu->fetchUrl->slug)}}" class="list-group-item d-flex align-items-center">
+                        <a href="{{route($menu->route_name,$menu->url)}}" class="list-group-item d-flex align-items-center">
                             {{$menu->title}}
                         </a>
                     </li>

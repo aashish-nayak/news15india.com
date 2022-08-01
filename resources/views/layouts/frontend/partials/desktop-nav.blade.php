@@ -25,52 +25,52 @@
                         @foreach ($menu->parentMenuNodes as $node)
                         @if ($node->has_child)
                         <li class="nav-item-sub p-relative">
-                            <a href="{{route($node->url,$node->fetchUrl->slug)}}" class="nav-link dropdown-toggle">
+                            <a href="{{route($node->route_name,$node->url)}}" class="nav-link dropdown-toggle">
                                 {{$node->title}} <span class="fas fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 @foreach ($node->child as $sub)
                                     @if ($sub->has_child)
                                     <li class="dropdown-sub dropright">
-                                        <a href="{{route($sub->url,$sub->fetchUrl->slug)}}" class="dropdown-item dropdown-toggle">{{$sub->title}}</a>
+                                        <a href="{{route($sub->route_name,$sub->url)}}" class="dropdown-item dropdown-toggle">{{$sub->title}}</a>
                                         <ul class="dropdown-sub-menu" role="menu">
                                             @foreach ($sub->child as $sub2)
                                             @if ($sub2->has_child)
                                             <li class="dropdown-sub-2 dropright">
-                                                <a href="{{route($sub2->url,$sub2->fetchUrl->slug)}}" class="dropdown-item dropdown-toggle">{{$sub2->title}}</a>
+                                                <a href="{{route($sub2->route_name,$sub2->url)}}" class="dropdown-item dropdown-toggle">{{$sub2->title}}</a>
                                                 <ul class="dropdown-sub-menu-2" role="menu">
                                                     @foreach ($sub2->child as $sub3)
                                                         @if($sub3->has_child)
                                                         <li class="dropdown-sub-3 dropright">
-                                                            <a href="{{route($sub3->url,$sub3->fetchUrl->slug)}}" class="dropdown-item dropdown-toggle">{{$sub3->title}}</a>
+                                                            <a href="{{route($sub3->route_name,$sub3->url)}}" class="dropdown-item dropdown-toggle">{{$sub3->title}}</a>
                                                             <ul class="dropdown-sub-menu-3" role="menu">
                                                                 @foreach ($sub3->child as $sub4)
                                                                     @if($sub4->has_child == 0)
-                                                                    <li><a href="{{route($sub4->url,$sub4->fetchUrl->slug)}}" class="dropdown-item">{{$sub4->title}}</a></li>
+                                                                    <li><a href="{{route($sub4->route_name,$sub4->url)}}" class="dropdown-item">{{$sub4->title}}</a></li>
                                                                     @endif
                                                                 @endforeach
                                                             </ul>
                                                         </li>
                                                         @else
-                                                        <li><a href="{{route($sub3->url,$sub3->fetchUrl->slug)}}" class="dropdown-item">{{$sub3->title}}</a></li>
+                                                        <li><a href="{{route($sub3->route_name,$sub3->url)}}" class="dropdown-item">{{$sub3->title}}</a></li>
                                                         @endif
                                                     @endforeach
                                                 </ul>
                                             </li>
                                             @else
-                                            <li><a href="{{route($sub2->url,$sub2->fetchUrl->slug)}}" class="dropdown-item">{{$sub2->title}}</a></li>
+                                            <li><a href="{{route($sub2->route_name,$sub2->url)}}" class="dropdown-item">{{$sub2->title}}</a></li>
                                             @endif
                                             @endforeach
                                         </ul>
                                     </li>
                                     @else
-                                    <li><a href="{{route($sub->url,$sub->fetchUrl->slug)}}" class="dropdown-item">{{$sub->title}}</a></li>
+                                    <li><a href="{{route($sub->route_name,$sub->url)}}" class="dropdown-item">{{$sub->title}}</a></li>
                                     @endif
                                 @endforeach
                             </ul>
                         </li>
                         @else 
-                        <li><a href="{{route($node->url,$node->fetchUrl->slug)}}" class="nav-link">{{$node->title}}</a></li>
+                        <li><a href="{{route($node->route_name,$node->url)}}" class="nav-link">{{$node->title}}</a></li>
                         @endif
                         @endforeach
                         {{-- <li class="droppable">

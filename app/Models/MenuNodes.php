@@ -39,10 +39,27 @@ class MenuNodes extends Model
     public function nested_child(){
         return $this->children()->with('nested_child');
     }
-
-    public function fetchUrl()
+    
+    public function reference()
     {
         // MorphTo function used to get relation with same table column and their relation id column
         return $this->morphTo(__FUNCTION__, 'reference_type', 'reference_id');
+    }
+
+    /**
+     * @param string $value
+     * @return string
+     */
+    public function getUrlAttribute($value)
+    {
+        if (!$this->reference_type) {
+            return $value ? (string)$value : '/';
+        }
+
+        if (!$this->reference) {
+            return '/';
+        }
+
+        return (string)$this->reference->url;
     }
 }

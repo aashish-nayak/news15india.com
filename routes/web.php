@@ -33,6 +33,7 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
     Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
+    Route::get('/custom-link/{slug}',[FrontController::class,'customLink'])->name('custom-link');
 });
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
@@ -122,13 +123,12 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
 
     Route::prefix('/menu')->name('menu.')->group(function(){
-
         Route::get('/view/{menu_id?}',[MenuController::class,'index'])->name('index');
         Route::post('/store', [MenuController::class,'store'])->name('store');
         Route::post('/view/selected',[MenuController::class,'create'])->name('select');
         Route::post('/location-store', [MenuController::class,'location_store'])->name('location-store');
         Route::get('/delete/{menu_nodes}',[MenuController::class,'destroy'])->name('delete');
-        Route::get('/structure-fetch/{menu_id}',[MenuController::class,'structureFetch'])->name('structure-fetch');
         Route::post('/add-to-menu', [MenuController::class,'addToMenu'])->name('add-to-menu');
+        Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->name('add-to-menu-link');
     });
 });
