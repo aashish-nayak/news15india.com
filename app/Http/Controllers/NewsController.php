@@ -159,12 +159,15 @@ class NewsController extends Controller
         $news->meta_title = $request->meta_title;
         $news->meta_keywords = $request->meta_keywords;
         $news->meta_description = $request->meta_description;
+        $news->created_at = ($request->created_at != '') ? Carbon::parse($request->created_at)->format("Y-m-d H:i:s") : now()->toDateTimeString();
         $news->save();
         $news->categories()->sync($request->categories);
         $news->tags()->sync($request->tags);
         if ($request->has('edit_btn')) {
             return redirect()->route('admin.news.edit', $news->id)->with('success', $message);
-        } else {
+        } else if($request->has('save_add_new')){
+            return redirect()->route('admin.news.create')->with('success', $message);
+        }else{
             return redirect()->route('admin.news.view-all-news')->with('success', $message);
         }
     }
@@ -190,6 +193,9 @@ class NewsController extends Controller
             $users = Admin::whereHas('roles', function (Builder $query) {
                 $query->where('slug', '!=', 'super-admin');
             })->get();
+        }
+        if(News::where('admin_id',auth('admin')->user()->id)->where('id',$id)->count() == 0 && (auth('admin')->user()->hasRole('super-admin') == false && auth('admin')->user()->hasRole('admin') == false)){
+            return redirect()->back();
         }
         $media = Media::latest()->paginate(12);
         $tags = Tag::where('status', 1)->get();

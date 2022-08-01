@@ -315,7 +315,7 @@ a:focus {
     position: relative;
     display: block;
     font-family: "Maven Pro" !important;
-    padding: 14px 14px 14px 25px;
+    padding: 14px;
     margin-bottom: -1px;
     background-color: #fff;
     border: 0;

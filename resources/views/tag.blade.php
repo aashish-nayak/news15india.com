@@ -122,7 +122,7 @@
             </div>
             <div class="container-fluid px-0 mx-auto mt-4">
                 <div class="d-flex justify-content-center align-items-center">
-                    {{$tagNews->onEachSide(10)->links()}}
+                    {{$tagNews->onEachSide(0)->links()}}
                 </div>
             </div>
             <!-- Ad Banner  -->
@@ -132,8 +132,11 @@
             <!-- Ad Banner  -->
         </div>
         <aside class="col-md-3 col-12 px-1 my-md-0">
-            <div class="col-12 px-0">
-                <img loading="lazy" src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
+            <div class="ad-box mb-2">
+                <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
+                <div class="box">
+                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                </div>
             </div>
             @includeIf('components.whatsapp-ad')
             @includeIf('components.poll')

@@ -150,7 +150,13 @@
                                     <p id="seo-section-link">{{url('/')}}@isset($page){{'/'.$page->slug}}@endisset{{old('slug')}}</p>
                                 </div>
                                 <div class="ws-nm">
-                                    <span style="color: #70757a;">Mar 24, 2022 - </span>
+                                    <span style="color: #70757a;">
+                                        @isset($page)
+                                        {{\Carbon\Carbon::parse($page->created_at)->format('M d, Y')}}
+                                        @else
+                                        {{\Carbon\Carbon::now()->format('M d, Y')}}
+                                        @endisset - 
+                                    </span>
                                     <span class="page-description-seo" id="seo-section-desc">@if(isset($page)){{($page->meta_description != '')? $page->meta_description : $page->short_description;}}@else{{old('short_desc')}}@endif</span>
                                 </div>
                             </div>
@@ -187,11 +193,32 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="header-title m-0" style="font-weight: 600">Publish</h6>
                     </div>
-                    <div class="card-body">
-                        <button type="submit" name="save_btn" value="save_btn" class="btn btn-sm btn-primary"><i class="bx bx-save"></i>Publish</button>
-                        <button type="submit" name="edit_btn" value="edit_btn" class="btn btn-sm btn-success ms-3"><i class="bx bx-edit"></i>Save&Edit</button>
+                    <div class="card-body text-center">
+                        <div class="btn-group">
+                            <button type="submit" name="save_btn" value="save_btn" class="btn btn-primary"><i class="bx bx-save"></i> Publish & View</button>
+                            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" style="margin: 0px;">
+                                <li><button type="submit" name="edit_btn" value="edit_btn" class="dropdown-item">Save & Edit</button></li>
+                                <hr class="dropdown-divider">
+                                <li><button type="submit" name="save_add_new" value="save_and_add" class="dropdown-item">Save & Add New</button></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <div class="card mt-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="header-title m-0" style="font-weight: 600">Publish Date <span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="card-body">
+                        <input type="date" value="@if(isset($page)){{\Carbon\Carbon::parse($page->created_at)->toDateString()}}@else{{old('created_at')}}@endif" name="created_at" class="form-control">
+                        @error('created_at')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                @role('super-admin','admin')
                 <div class="card mt-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="header-title m-0" style="font-weight: 600">Author <span class="text-danger">*</span></h6>
@@ -207,6 +234,7 @@
                         @enderror
                     </div>
                 </div>
+                @endrole
                 <div class="card mt-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="header-title m-0" style="font-weight: 600">Status <span class="text-danger">*</span></h6>

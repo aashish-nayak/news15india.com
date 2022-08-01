@@ -17,6 +17,7 @@ class MenuNodes extends Model
         'reference_type',
         'title',
         'url',
+        'route_name',
         'icon',
         'css',
         'target',
@@ -59,7 +60,7 @@ class MenuNodes extends Model
         if (!$this->reference) {
             return '/';
         }
-
-        return (string)$this->reference->url;
+        
+        return (string) route($this->route_name,$this->reference->slug);
     }
 }

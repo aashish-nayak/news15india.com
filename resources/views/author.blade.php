@@ -12,8 +12,11 @@
         <!-- Ad Banner  -->
         <aside class="col-md-3 col-12 my-1 pt-1 px-1 my-md-0 order-2 order-md-1">
             @includeIf('components.whatsapp-ad')
-            <div class="col-12 p-0 mt-1">
-                <img loading="lazy" src="{{asset('front-assets/img/pepsi-ad.png')}}" class="w-100" alt="">
+            <div class="ad-box my-2">
+                <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
+                <div class="box">
+                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                </div>
             </div>
             @includeIf('components.poll')
             <div class="col-12 mt-1 side-position mx-auto px-0">
@@ -90,7 +93,7 @@
                     </div>
                     <a href="{{route('category-news',$sidebar_4->slug)}}" class="nav-link p-0" style="color:#FE9517;font-size:15px;font-weight:600;">और भी</a>
                 </div>
-                <div class="side-bar" style="height:335px;background-color:#333;">
+                <div class="side-bar" style="height:380px;background-color:#333;">
                     <div class="my-1" style="background-color:#333;">
                         @foreach ($sidebar_4->news as $key => $sidebar_news)
                         <div class="py-1 border-bottom border-secondary">
@@ -147,8 +150,7 @@
                                     <a target="_blank" href="{{$shareCurrent['whatsapp']}}" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-whatsapp"></a>
                                 </div>
                                 <div class="col-md-12 mt-3 text-center">
-                                    <p class="mb-0 font-weight-bold" style="font-size:1.3rem;">Lorem ipsum dolor sit amet.</p>
-                                    <a href="javascript:void(0)" style="font-size:1.4rem;" class="btn btn-primary font-weight-bold my-2">Follow</a>
+                                    <p class="mb-0 font-weight-bold" style="font-size:1.4rem;">{{$author->details->city->name}} की ताजा खबरे देखने के लिए  <br> मुझे <a href="javascript:void(0)" style="font-size:1.3rem;" class="btn btn-primary btn-sm font-weight-bold my-2 mx-1">Follow</a> करें</p>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +258,7 @@
             </div>
             <div class="container-fluid px-0 mx-auto mt-3">
                 <div class="d-flex align-items-center justify-content-center">
-                {{$creatorNews->onEachSide(5)->links()}}
+                {{$creatorNews->onEachSide(0)->links()}}
                 </div>
             </div>
             <!-- Ad Banner  -->

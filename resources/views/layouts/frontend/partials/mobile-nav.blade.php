@@ -2,7 +2,7 @@
 <div class="container-fluid d-md-none d-block">
     <div class="scrollmenu">
         @foreach ($mobileMenu->parentMenuNodes as $mobile)
-        <a class="link-swipe" href="{{route($mobile->route_name,$mobile->url)}}">{{$mobile->title}}</a>
+        <a class="link-swipe" target="{{$mobile->target}}" href="{{$mobile->url}}">{{$mobile->title}}</a>
         @endforeach
     </div>
 </div>

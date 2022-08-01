@@ -257,6 +257,7 @@
                     type: "POST",
                     data : obj,
                     success: function(data) {
+                        $(checked).prop('checked',false);
                         $("#nestable").append(data);
                     }
                 });
@@ -264,14 +265,20 @@
 
             $("#addLinkSidebarForm").submit(function (e) {
                 e.preventDefault();
+                var input_title = $(this).find("input[name='title']");
+                var input_url = $(this).find("input[name='url']");
+                var input_css = $(this).find("input[name='css']");
+                var input_icon = $(this).find("input[name='icon']");
+                var input_target = $(this).find("select[name='target']");
+                var input_menu_id = $(this).find("input[name='menu_id']");
                 var obj = {
                     _token : "{{csrf_token()}}",
-                    title:$(this).find("input[name='title']").val(),
-                    url:$(this).find("input[name='url']").val(),
-                    css:$(this).find("input[name='css']").val(),
-                    icon:$(this).find("input[name='icon']").val(),
-                    target:$(this).find("select[name='target']").val(),
-                    menu_id:$(this).find("input[name='menu_id']").val(),
+                    title: input_title.val(),
+                    url: input_url.val(),
+                    css: input_css.val(),
+                    icon: input_icon.val(),
+                    target: input_target.val(),
+                    menu_id: input_menu_id.val(),
                 }
                 let url = "{{route('admin.menu.add-to-menu-link')}}";
                 $.ajax({
@@ -279,6 +286,11 @@
                     type: "POST",
                     data : obj,
                     success: function(response) {
+                        input_title.val('');
+                        input_url.val('');
+                        input_css.val('');
+                        input_icon.val('');
+                        input_target.children().prop('selected',false);
                         $("#nestable").append(response);
                     }
                 });

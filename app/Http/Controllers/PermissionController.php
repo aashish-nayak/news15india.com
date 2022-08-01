@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -25,12 +26,13 @@ class PermissionController extends Controller
             'slug' => $request->name
         ];
         if($request->has('id')){
-            Permission::find($request->id)->update($save);
+            $permission = Permission::find($request->id)->update($save);
             $request->session()->flash('success', 'Permission Updated successfully!');
         }else{
-            Permission::create($save);
+            $permission = Permission::create($save);
             $request->session()->flash('success', 'Permission Saved successfully!');
         }
+        Role::where('slug','super-admin')->first()->permissions()->sync(Permission::all()->pluck('id')->toArray());
         return redirect()->route('admin.permission.show');
     }
 

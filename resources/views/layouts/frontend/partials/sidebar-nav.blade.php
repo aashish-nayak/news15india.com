@@ -47,10 +47,28 @@
             </div>
             <div class="user_menus">
                 <ul class="list-group">
+                    <li>
+                        <a href="{{route('home')}}" class="list-group-item d-flex align-items-center">
+                            <span class="badge badge-primary badge-pill"><i class="fa fa-home-alt"></i></span>
+                            होम
+                        </a>
+                    </li>
+                    <li class="position-relative">
+                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center">
+                            <span class="badge badge-primary badge-pill"><i class="far fa-tv-retro"></i></span>
+                            Live
+                        </a>
+                        <a class="sidenav-dropbtn" role="button">
+                            <i class="far fa-dot-circle text-danger"></i>
+                        </a>
+                    </li>
                     @foreach ($sideMenu->parentMenuNodes as $menu)
                     @if ($menu->has_child)
                     <li class="position-relative">
-                        <a href="{{route($menu->route_name,$menu->url)}}" class="list-group-item d-flex align-items-center">
+                        <a href="{{$menu->url}}" target="{{$menu->target}}" class="list-group-item d-flex align-items-center">
+                            @if($menu->icon)
+                            <span class="badge badge-primary badge-pill">{!!$menu->icon!!}</span>
+                            @endif 
                             {{$menu->title}}
                         </a>
                         <a class="sidenav-dropbtn" data-toggle="collapse" href="#collapse{{$menu->id}}" role="button"
@@ -62,7 +80,7 @@
                                 <ul>
                                     @foreach ($menu->child as $subMenu)
                                     <li>
-                                        <a href="{{route($subMenu->route_name,$subMenu->url)}}">{{$subMenu->title}}</a>
+                                        <a href="{{$subMenu->url}}" target="{{$subMenu->target}}">{{$subMenu->title}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -71,7 +89,10 @@
                     </li>
                     @else
                     <li>
-                        <a href="{{route($menu->route_name,$menu->url)}}" class="list-group-item d-flex align-items-center">
+                        <a href="{{$menu->url}}" target="{{$menu->target}}" class="list-group-item d-flex align-items-center">
+                            @if($menu->icon)
+                            <span class="badge badge-primary badge-pill">{!!$menu->icon!!}</span>
+                            @endif
                             {{$menu->title}}
                         </a>
                     </li>

@@ -339,21 +339,23 @@
                         </div>
                         @endif
                     @endforeach
-                    <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
-                    <div class="single-item">
-                        <div class="holder">
-                            <div class="box">
-                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                    <div class="ad-box mb-2">
+                        <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
+                        <div class="single-item">
+                            <div class="holder">
+                                <div class="box">
+                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="holder">
-                            <div class="box">
-                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                            <div class="holder">
+                                <div class="box">
+                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="holder">
-                            <div class="box">
-                                <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                            <div class="holder">
+                                <div class="box">
+                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -576,9 +578,11 @@
                         </div>
                         @endforeach
                     </div>
-                    <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
-                    <div class="p-0">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" class=" w-100 p-0" style="height:250px;" loading="lazy" alt=""></a>
+                    <div class="ad-box my-2">
+                        <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
+                        <div class="box">
+                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
+                        </div>
                     </div>
                 </div>
             </aside>

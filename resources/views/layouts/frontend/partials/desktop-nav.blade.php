@@ -25,56 +25,56 @@
                         @foreach ($menu->parentMenuNodes as $node)
                         @if ($node->has_child)
                         <li class="nav-item-sub p-relative">
-                            <a href="{{route($node->route_name,$node->url)}}" class="nav-link dropdown-toggle">
-                                {{$node->title}} <span class="fas fa-angle-down"></span>
+                            <a href="{{$node->url}}" target="{{$node->target}}" class="nav-link">
+                                {{$node->title}}
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 @foreach ($node->child as $sub)
                                     @if ($sub->has_child)
                                     <li class="dropdown-sub dropright">
-                                        <a href="{{route($sub->route_name,$sub->url)}}" class="dropdown-item dropdown-toggle">{{$sub->title}}</a>
+                                        <a href="{{$sub->url}}" target="{{$sub->target}}" class="dropdown-item">{{$sub->title}}</a>
                                         <ul class="dropdown-sub-menu" role="menu">
                                             @foreach ($sub->child as $sub2)
                                             @if ($sub2->has_child)
                                             <li class="dropdown-sub-2 dropright">
-                                                <a href="{{route($sub2->route_name,$sub2->url)}}" class="dropdown-item dropdown-toggle">{{$sub2->title}}</a>
+                                                <a href="{{$sub2->url}}" target="{{$sub2->target}}" class="dropdown-item">{{$sub2->title}}</a>
                                                 <ul class="dropdown-sub-menu-2" role="menu">
                                                     @foreach ($sub2->child as $sub3)
                                                         @if($sub3->has_child)
                                                         <li class="dropdown-sub-3 dropright">
-                                                            <a href="{{route($sub3->route_name,$sub3->url)}}" class="dropdown-item dropdown-toggle">{{$sub3->title}}</a>
+                                                            <a href="{{$sub3->url}}" target="{{$sub3->target}}" class="dropdown-item">{{$sub3->title}}</a>
                                                             <ul class="dropdown-sub-menu-3" role="menu">
                                                                 @foreach ($sub3->child as $sub4)
                                                                     @if($sub4->has_child == 0)
-                                                                    <li><a href="{{route($sub4->route_name,$sub4->url)}}" class="dropdown-item">{{$sub4->title}}</a></li>
+                                                                    <li><a href="{{$sub4->url}}" target="{{$sub4->target}}" class="dropdown-item">{{$sub4->title}}</a></li>
                                                                     @endif
                                                                 @endforeach
                                                             </ul>
                                                         </li>
                                                         @else
-                                                        <li><a href="{{route($sub3->route_name,$sub3->url)}}" class="dropdown-item">{{$sub3->title}}</a></li>
+                                                        <li><a href="{{$sub3->url}}" target="{{$sub3->target}}" class="dropdown-item">{{$sub3->title}}</a></li>
                                                         @endif
                                                     @endforeach
                                                 </ul>
                                             </li>
                                             @else
-                                            <li><a href="{{route($sub2->route_name,$sub2->url)}}" class="dropdown-item">{{$sub2->title}}</a></li>
+                                            <li><a href="{{$sub2->url}}" target="{{$sub2->target}}" class="dropdown-item">{{$sub2->title}}</a></li>
                                             @endif
                                             @endforeach
                                         </ul>
                                     </li>
                                     @else
-                                    <li><a href="{{route($sub->route_name,$sub->url)}}" class="dropdown-item">{{$sub->title}}</a></li>
+                                    <li><a href="{{$sub->url}}" target="{{$sub->target}}" class="dropdown-item">{{$sub->title}}</a></li>
                                     @endif
                                 @endforeach
                             </ul>
                         </li>
                         @else 
-                        <li><a href="{{route($node->route_name,$node->url)}}" class="nav-link">{{$node->title}}</a></li>
+                        <li><a href="{{$node->url}}" target="{{$node->target}}" class="nav-link">{{$node->title}}</a></li>
                         @endif
                         @endforeach
                         {{-- <li class="droppable">
-                            <a href="javascript:void(0)" class="nav-link">Mega Menu One <span class="fas fa-angle-down"></span></a>
+                            <a href="javascript:void(0)" class="nav-link">Mega Menu One</a>
                             <div class="mega-menu mx-auto">
                                 <div class="col-12 py-4">
                                     <div class="row justify-content-center align-items-center">
@@ -143,7 +143,7 @@
                             </div>
                         </li>
                         <li class="droppable">
-                            <a href="javascript:void(0)" class="nav-link">Mega Menu Two <span class="fas fa-angle-down"></span></a>
+                            <a href="javascript:void(0)" class="nav-link">Mega Menu Two</a>
                             <div class="mega-menu row justify-content-center">
                                 <div class="cf col-10 py-4">
                                     <div class="row justify-content-center align-items-center">
@@ -711,7 +711,7 @@
                             </div>
                         </li>
                         <li class="droppable">
-                            <a href="javascript:void(0)" class="nav-link">Mega Menu Three <span class="fas fa-angle-down"></span></a>
+                            <a href="javascript:void(0)" class="nav-link">Mega Menu Three</a>
                             <div class="mega-menu col-12">
                                 <div class="row justify-content-center">
                                     <div class="cf col-12 py-4">

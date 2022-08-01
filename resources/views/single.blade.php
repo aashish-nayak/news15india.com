@@ -30,7 +30,7 @@
                     {{$news->short_description}}
                 </p>
             </div>
-            <div class="container-fluid mx-auto py-2" style="border-bottom: 2px dotted gray;">
+            <div class="container-fluid mx-auto py-2" style="border-bottom: 2px dotted gray;border-top: 2px dotted gray;">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
                         <div style="height: 80px;width:80px;">
@@ -232,10 +232,10 @@
                         <div class="col-md-4 col-12 px-0 mx-auto">
                             <p class="my-3 my-md-1 font-weight-bold text-center" style="color: black;font-size:2rem">Download App</p>
                             <div class="row align-items-center m-0">
-                                <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
+                                <a class="col-6 text-center" href="javascript:void(0)">
                                     <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
                                 </a>
-                                <a class="col-12 col-md-6 text-center" href="javascript:void(0)">
+                                <a class="col-6 text-center" href="javascript:void(0)">
                                     <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
                                 </a>
                             </div>
@@ -250,7 +250,7 @@
             </div>
             {{-- ........... Tags ........  --}}
             <div class="main-bg-clr container-fluid px-1 mt-3">
-                @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-50'])
+                @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-25'])
                 <div class="row mx-auto">
                     @foreach ($moreCategoryNews->news as $key => $otherNews)
                         @if($key <= 3)
@@ -327,8 +327,8 @@
         <aside class="col-md-3 col-12 mt-1 my-md-0 px-1">
             @includeIf('components.whatsapp-ad')
             @includeIf('components.poll')
-            <div class="col-12 p-0 mt-1 ">
-                <p class="m-0 text-center" style="font-size:1.2rem">Advertisement</p>
+            <div class="ad-box my-1">
+                <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
                 <div class="single-item">
                     <div class="holder">
                         <div class="box">
@@ -419,7 +419,7 @@
                                 <h6 class="text-light m-0">
                                     <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-white">{{\Str::limit($sidebar_news->title,60)}}</a>
                                 </h6>
-                                <p class="m-0 p-1">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                <p class="m-0 p-1 text-light">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
                             </div>
                         </div>
                     </div>
@@ -442,7 +442,7 @@
                                         {{\Str::limit($sidebar_news->title,60)}}
                                     </h6>
                                 </a>
-                                <p class="post-date m-m p-1">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                <p class="post-date m-m p-1 text-light">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
                             </div>
                         </div>
                     </div>

@@ -8,6 +8,7 @@ use App\Models\Permission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+
 class AdminSeeder extends Seeder
 {
     /**
@@ -19,61 +20,61 @@ class AdminSeeder extends Seeder
     {
         $admins = [
             [
-                'name'=>'Super Admin',
-                'email'=>'super@gmail.com',
-                'password'=>bcrypt('SuperPassword'),
+                'name' => 'Super Admin',
+                'email' => 'super@gmail.com',
+                'password' => bcrypt('SuperPassword'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name'=>'Admin',
-                'email'=>'admin@gmail.com',
-                'password'=>bcrypt('password'),
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('password'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name'=>'Reporter',
-                'email'=>'reporter@gmail.com',
-                'password'=>bcrypt('password'),
+                'name' => 'Reporter',
+                'email' => 'reporter@gmail.com',
+                'password' => bcrypt('password'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name'=>'Editor',
-                'email'=>'editor@gmail.com',
-                'password'=>bcrypt('password'),
+                'name' => 'Editor',
+                'email' => 'editor@gmail.com',
+                'password' => bcrypt('password'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
         ];
         $roles = [
             [
-                'name'=>'Super Admin',
-                'slug'=>'super-admin',
+                'name' => 'Super Admin',
+                'slug' => 'super-admin',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name'=>'Admin',
-                'slug'=>'admin',
+                'name' => 'Admin',
+                'slug' => 'admin',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name'=>'Reporter',
-                'slug'=>'reporter',
+                'name' => 'Reporter',
+                'slug' => 'reporter',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name'=>'Editor',
-                'slug'=>'editor',
+                'name' => 'Editor',
+                'slug' => 'editor',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
         ];
-        $permissions = [
+        $permissions = array(
             [
                 'name' => 'Create Category',
                 'slug' => 'create-category',
@@ -217,8 +218,116 @@ class AdminSeeder extends Seeder
                 'slug' => 'delete-permission',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Restore News',
+                'slug' => 'restore-news',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Destroy News',
+                'slug' => 'destroy-news',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Trash News',
+                'slug' => 'trash-news',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read Member',
+                'slug' => 'read-member',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update Member',
+                'slug' => 'update-member',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Create Member',
+                'slug' => 'create-member',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Block Member',
+                'slug' => 'block-member',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete Member',
+                'slug' => 'delete-member',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Restore Member',
+                'slug' => 'restore-member',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Destroy Member',
+                'slug' => 'destroy-member',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read Menu',
+                'slug' => 'read-menu',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Create Menu',
+                'slug' => 'create-menu',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete Menu',
+                'slug' => 'delete-menu',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Read User',
+                'slug' => 'read-user',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Block User',
+                'slug' => 'block-user',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Update User',
+                'slug' => 'update-user',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Delete User',
+                'slug' => 'delete-user',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ],
+            [
+                'name' => 'Restore User',
+                'slug' => 'restore-user',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
             ]
-        ];
+        );
         Schema::disableForeignKeyConstraints();
         DB::table('admin_roles')->truncate();
         DB::table('admin_permissions')->truncate();
@@ -232,8 +341,8 @@ class AdminSeeder extends Seeder
         Permission::insert($permissions);
 
         $permissions = Permission::get()->pluck('id')->toArray();
-        $permissions2 = Permission::whereIn('slug',['create-news','read-news','update-news','delete-news','create-media','read-media','update-media','delete-media'])->get()->pluck('id')->toArray();
-        $permissions3 = Permission::whereIn('slug', ['create-news','read-news','update-news','delete-news'])->get()->pluck('id')->toArray();
+        $permissions2 = Permission::whereIn('slug', ['create-news', 'read-news', 'update-news', 'delete-news', 'create-media', 'read-media', 'update-media', 'delete-media'])->get()->pluck('id')->toArray();
+        $permissions3 = Permission::whereIn('slug', ['create-news', 'read-news', 'update-news', 'delete-news'])->get()->pluck('id')->toArray();
         $role = Role::find(1);
         $role->permissions()->attach($permissions);
 
@@ -245,18 +354,17 @@ class AdminSeeder extends Seeder
 
         $role = Role::find(4);
         $role->permissions()->attach($permissions3);
-        
+
         $admin = Admin::find(1);
         $admin->roles()->attach([1]);
 
         $admin = Admin::find(2);
         $admin->roles()->attach([2]);
-        
+
         $admin = Admin::find(3);
         $admin->roles()->attach([3]);
 
         $admin = Admin::find(4);
         $admin->roles()->attach([4]);
-
     }
 }

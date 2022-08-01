@@ -22,7 +22,7 @@
                     <div class="row mb-3">
                         <label for="inputEnterYourName" class="col-sm-3 col-form-label"><b>Url</b></label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="custom-url" value="{{ $value->url }}" data-old="{{ $value->url }}">
+                            <input type="text" class="form-control" name="custom_url" value="{{ $value->url }}" data-old="{{ $value->url }}">
                         </div>
                     </div>
                 @endif
