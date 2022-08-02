@@ -1,8 +1,6 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Members')
-@push('plugin-css')
-<link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
-@endpush
+
 @section('sections')
     <div class="col-12 mt-4 text-end">
         <a href="{{route('admin.user.add')}}" class="btn btn-primary mr-3 btn-sm">Add Member</a>
@@ -62,17 +60,6 @@
     </div>
 @endsection
 @push('scripts')
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 <script>
     $(document).ready(function() {
         $('#users').DataTable();

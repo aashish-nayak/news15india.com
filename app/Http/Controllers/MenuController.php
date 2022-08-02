@@ -8,10 +8,7 @@ use App\Models\MenuLocation;
 use App\Models\MenuNodes;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Str;
+
 class MenuController extends Controller
 {
     public function index($menu_id = null)
@@ -97,35 +94,7 @@ class MenuController extends Controller
             return response()->json(['error'=>$e->getMessage()]);
         }
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(MenuNodes $menuNodes)
     {
         $menuNodes->delete();

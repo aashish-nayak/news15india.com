@@ -1,8 +1,6 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Permissions')
-@push('plugin-css')
-<link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
-@endpush
+
 @section('sections')
     <div class="col-12 mt-4 text-end">
         <a href="javascript:void(0)" class="btn btn-secondary mr-3 btn-sm" data-bs-toggle="modal" data-bs-target="#AddPermission">Add Permissions</a>
@@ -74,17 +72,6 @@
     </form>
 @endsection
 @push('scripts')
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 @isset($data)
 <script>
     $(document).ready(function () {

@@ -9,11 +9,6 @@ use Illuminate\Support\Carbon;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $categories = Category::get();
@@ -34,6 +29,7 @@ class CategoryController extends Controller
         $tree .= '</ul>';
         return view('backpanel.category.index', compact('categories','tree','media'));
     }
+
     public function getBreadcrumb($parent_id,$breadcrumb = '')
     {
         $category = Category::find($parent_id);
@@ -61,15 +57,8 @@ class CategoryController extends Controller
         return $html;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // dd($request->all());
         if ($request['parent_id'] == '0') {
             $request['parent_id'] = NULL;
         }
@@ -142,36 +131,12 @@ class CategoryController extends Controller
         return response()->json($response);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Category $category)
     {   
         $category->editImg = $category->catImage;
         return response()->json($category);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Category $category)
     {
         $category->delete();

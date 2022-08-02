@@ -110,8 +110,30 @@
             </div>
         </div>
     </div>
-    {{-- scripts --}}
-    @includeIf('layouts.backpanel.partials.scripts')
+{{-- scripts --}}
+@includeIf('layouts.backpanel.partials.scripts')
+@if (Session::has('success'))
+<script>
+    $(document).ready(function() {
+        Swal.fire(
+            'Successful!',
+            "{{ Session::get('success') }}",
+            'success'
+        )
+    });
+</script>
+@endif
+@if (Session::has('error'))
+<script>
+    $(document).ready(function() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: "{{ Session::get('error') }}"
+        })
+    });
+</script>
+@endif
 </body>
 
 </html>

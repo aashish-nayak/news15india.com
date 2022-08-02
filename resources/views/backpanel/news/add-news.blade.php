@@ -11,57 +11,9 @@
 @section('title', $title)
 @push('plugin-css')
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
-<link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 @endpush
 @push('css')
-    <style>
-        .bootstrap-tagsinput .badge {
-            margin: 2px 4px;
-            padding: 5px 8px;
-            font-size: 75%;
-            font-weight: 700;
-        }
-
-        .bootstrap-tagsinput .badge [data-role="remove"] {
-            margin-left: 5px;
-            cursor: pointer;
-        }
-
-        .img-box {
-            background: #fff;
-            border: 3px dashed #e8e8e8;
-            color: #aaa;
-            cursor: pointer;
-            display: block;
-            font-size: 22px;
-            padding: 40px 0 26px;
-            position: relative;
-            text-align: center;
-        }
-
-        .img-box button {
-            font-size: 14px;
-            color: #555555;
-            background: #cccccc;
-        }
-
-        .img-box span {
-            font-size: 10px;
-        }
-        .btn-group-sm>.btn, .btn-sm{
-            font-size: .800rem;
-        }
-        .btn i{
-            margin-top: -20px;
-            font-size: 1rem;
-        }
-        .category-input{
-            max-height: 300px;
-            overflow-y: scroll;
-        }
-    </style>
 @endpush
-
 @section('sections')
 <div class="col-12">
     <div class="col-12 d-flex justify-content-between">
@@ -340,19 +292,7 @@
 @include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}" referrerpolicy="origin"> </script>
 <script src="{{ asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 @include('backpanel.includes.media-model-script')

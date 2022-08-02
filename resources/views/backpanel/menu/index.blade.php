@@ -110,7 +110,11 @@
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="inputEnterYourName" class="col-form-label"><b>Url</b></label>
-                                        <input type="text" required class="form-control form-control-sm" name="url" value="" placeholder="Url">
+                                        <input type="text" required class="form-control form-control-sm" name="url" value="" placeholder="https://www.example.com">
+                                        <div style="font-size:10px;line-height:1.0;margin-top:5px">
+                                            <span class="text-muted">External Link : https://www.google.com</span>
+                                            <span class="text-muted">Internal Link : /home</span>
+                                        </div>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="inputEnterYourName" class="col-form-label"><b>Icon</b></label>
@@ -220,17 +224,6 @@
     </form>
 @endsection
 @push('scripts')
-    @if (Session::has('success'))
-        <script>
-            $(document).ready(function() {
-                Swal.fire(
-                    'Successful!',
-                    "{{ Session::get('success') }}",
-                    'success'
-                )
-            });
-        </script>
-    @endisset
     <script src="{{ asset('assets/plugins/nested/nested.js') }}"></script>
     <script src="{{ asset('assets/plugins/nested/menu.js') }}"></script>
     <script>
@@ -315,6 +308,7 @@
                         url: url,
                         type: "GET",
                         success: function(data) {
+                            $(row).closest('li').remove();
                         }
                     });
                 }
