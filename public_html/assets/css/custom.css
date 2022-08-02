@@ -109,3 +109,143 @@
     top: 5px;
     width: 30px;
 }
+
+/* Tags style  */
+.bootstrap-tagsinput .badge {
+    margin: 2px 4px;
+    padding: 5px 8px;
+    font-size: 75%;
+    font-weight: 700;
+}
+.bootstrap-tagsinput{
+    max-height: 150px;
+    overflow-y: scroll;
+}
+.bootstrap-tagsinput .badge [data-role="remove"] {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+ /* Media Box Style  */
+.img-box {
+    background: #fff;
+    border: 3px dashed #e8e8e8;
+    color: #aaa;
+    cursor: pointer;
+    display: block;
+    font-size: 22px;
+    padding: 40px 0 26px;
+    position: relative;
+    text-align: center;
+}
+
+.img-box button {
+    font-size: 14px;
+    color: #555555;
+    background: #cccccc;
+}
+
+.img-box span {
+    font-size: 10px;
+}
+
+.controls {
+background: #fff;
+padding: 6px 10px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.controls button {
+    border: 0px;
+    color: #5a5cbb;
+    margin: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.controls button.active,
+.controls button.active:hover {
+    background: #5a5cbb;
+    color: #fff;
+}
+
+.controls button:hover {
+    background: #efefef;
+}
+
+input[type=checkbox] {
+    vertical-align: middle !important;
+}
+
+ /* Category Page Tree Style  */
+.tree {
+    margin: 2% auto;
+    width: 80%;
+}
+
+.tree ul {
+    display: none;
+    margin: 4px auto;
+    margin-left: 6px;
+    border-left: 1px dashed #dfdfdf;
+}
+
+
+.tree li {
+    padding: 12px 18px;
+    cursor: pointer;
+    vertical-align: middle;
+    background: #fff;
+}
+
+.tree li:first-child {
+    border-radius: 3px 3px 0 0;
+}
+
+.tree li:last-child {
+    border-radius: 0 0 3px 3px;
+}
+
+.tree .active,
+.active li {
+    background: #efefef;
+}
+
+.tree label {
+    cursor: pointer;
+}
+
+.tree input[type=checkbox] {
+    margin: -2px 6px 0 0px;
+}
+
+.has>label {
+    color: #000;
+}
+
+.tree .total {
+    color: #5a5cbb;
+}
+ /* News Module Style  */
+#news .bg-secondary{
+    font-size: 10px;
+}
+.custom-banner{
+    border-radius: 5px;
+}
+#news tr > td{
+    padding: 20px 10px;
+}
+
+.btn-group-sm>.btn, .btn-sm{
+    font-size: .800rem;
+}
+.btn i{
+    margin-top: -20px;
+    font-size: 1rem;
+}
+.category-input{
+    max-height: 300px;
+    overflow-y: scroll;
+}

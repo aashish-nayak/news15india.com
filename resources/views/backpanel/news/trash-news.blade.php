@@ -1,18 +1,6 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Trash News')
 @push('plugin-css')
-<link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
-<style>
-    #news .bg-secondary{
-        font-size: 10px;
-    }
-    .custom-banner{
-        border-radius: 5px;
-    }
-    #news tr > td{
-        padding: 20px 10px;
-    }
-</style>
 @endpush
 @section('sections')
     <div class="col-12 mt-4 text-end">
@@ -46,17 +34,6 @@
     </div>
 @endsection
 @push('scripts')
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 <script>
     $(document).ready(function() {
         $('#news').DataTable({

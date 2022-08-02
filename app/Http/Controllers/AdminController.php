@@ -25,11 +25,6 @@ class AdminController extends Controller
         return view('backpanel.user.index',compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $roles = Role::where('slug','!=','super-admin')->get();
@@ -37,12 +32,6 @@ class AdminController extends Controller
         return view('backpanel.user.add-user',compact('roles','permissions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         if($request->has('id')){
@@ -85,24 +74,12 @@ class AdminController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
         $users = Admin::onlyTrashed()->get();
         return view('backpanel.user.blocked',compact('users'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $count = Admin::whereHas('roles', function (Builder $query) {
@@ -117,30 +94,13 @@ class AdminController extends Controller
         return view('backpanel.user.add-user',compact('user','roles','permissions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $count = Admin::whereHas('roles', function (Builder $query) {
             $query->where('slug','super-admin');
         })->where('id',$id)->count();
         if($count > 0){
+            session()->flash('error', 'Not Authorised to delete');
             return redirect()->back();
         }
         Admin::find($id)->delete();
@@ -161,6 +121,7 @@ class AdminController extends Controller
             $query->where('slug','super-admin');
         })->where('id',$id)->count();
         if($count > 0){
+            session()->flash('error', 'Not Authorised to Permanent delete');
             return redirect()->back();
         }
         Admin::withTrashed()->find($id)->forceDelete();

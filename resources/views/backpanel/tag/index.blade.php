@@ -1,46 +1,5 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Tags')
-@push('plugin-css')
-    <link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
-@endpush
-@push('css')
-    <style>
-        .bootstrap-tagsinput .badge {
-            margin: 2px 4px;
-            padding: 5px 8px;
-            font-size: 75%;
-            font-weight: 700;
-        }
-
-        .bootstrap-tagsinput .badge [data-role="remove"] {
-            margin-left: 5px;
-            cursor: pointer;
-        }
-
-        .img-box {
-            background: #fff;
-            border: 3px dashed #e8e8e8;
-            color: #aaa;
-            cursor: pointer;
-            display: block;
-            font-size: 22px;
-            padding: 40px 0 26px;
-            position: relative;
-            text-align: center;
-        }
-
-        .img-box button {
-            font-size: 14px;
-            color: #555555;
-            background: #cccccc;
-        }
-
-        .img-box span {
-            font-size: 10px;
-        }
-
-    </style>
-@endpush
 @section('sections')
 <div class="row">
     <div class="col-md-4">
@@ -116,7 +75,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label"><b>Meta Keywords</b></label>
-                                <textarea class="form-control form-control-sm" placeholder="comma separated (,)" data-role="tagsinput" name="meta_keywords" id="metakey" rows="3"></textarea>
+                                <input class="form-control form-control-sm" placeholder="comma separated (,)" data-role="tagsinput" name="meta_keywords" id="metakey">
                             </div>
                             <div class="form-group">
                                 <label for="metadesc" class="col-form-label"><b>Meta Description</b></label>
@@ -161,21 +120,13 @@
 @include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
-<script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 @include('backpanel.includes.media-model-script')
 <script>
+    function loadtag(){
+        $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+    }
     $(document).ready(function() {
+        loadtag();
         $('#tags').DataTable({
             processing: true,
             serverSide: true,
@@ -268,10 +219,11 @@
                     $(".status-input").prop('checked', false);
                     $(".status-input[value='" + data.status + "']").prop('checked', true);
                     $("#metatitle").html(data.meta_title);
-                    $("#metakey").html(data.meta_keywords);
+                    $("#metakey").val(data.meta_keywords);
                     $("#metadesc").html(data.meta_description);
                     $("#submit").html('Update');
                     $("#cancel-btn").html('<a href="" class="btn btn-sm btn-secondary px-3" id="cancel">Cancel</a>');
+                    loadtag();
                 }
             });
         });

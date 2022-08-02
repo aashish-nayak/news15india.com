@@ -33,6 +33,7 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
     Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
+    Route::view('reporter-form','reporter-form');
 });
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
@@ -129,5 +130,6 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/delete/{menu_nodes}',[MenuController::class,'destroy'])->middleware('permission:delete-menu')->name('delete');
         Route::post('/add-to-menu', [MenuController::class,'addToMenu'])->middleware('permission:create-menu')->name('add-to-menu');
         Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->middleware('permission:create-menu')->name('add-to-menu-link');
+        Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
     });
 });

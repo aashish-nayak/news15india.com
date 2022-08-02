@@ -24,7 +24,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layouts.frontend.partials.desktop-nav',function($view){
             $loc_id = MenuLocation::where('location','main-menu')->first()->id;
             $menu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
-            return $view->with(compact('menu'));
+            $megaMenu1 = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->where('slug','mega-menu-1')->first();
+            $megaMenu2 = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->where('slug','mega-menu-2')->first();
+            $megaMenu3 = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->where('slug','mega-menu-3')->first();
+            return $view->with(compact('menu','megaMenu1','megaMenu2','megaMenu3'));
         });
         View::composer('layouts.frontend.partials.sidebar-nav',function($view){
             $loc_id = MenuLocation::where('location','sidebar-menu')->first()->id;
@@ -39,7 +42,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layouts.frontend.partials.footer',function($view){
             $loc_id = MenuLocation::where('location','footer-menu')->first()->id;
             $footerMenu = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->first();
-            return $view->with(compact('footerMenu'));
+            $bottomFooter = Menu::with('parentMenuNodes')->where('menu_location_id',$loc_id)->where('slug','bottom-footer')->first();
+            return $view->with(compact('footerMenu','bottomFooter'));
         });
     }
 

@@ -8,10 +8,7 @@ use App\Models\MenuLocation;
 use App\Models\MenuNodes;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Str;
+
 class MenuController extends Controller
 {
     public function index($menu_id = null)
@@ -97,38 +94,63 @@ class MenuController extends Controller
             return response()->json(['error'=>$e->getMessage()]);
         }
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function recursiveSave($structure, $parent = 0)
     {
-        
+        try {
+            foreach ($structure as $key => $node) {
+                $menu = MenuNodes::find($node->id);
+                $menu->title = $node->title;
+                $menu->url = ($node->customUrl != '') ? $node->customUrl : NULL;
+                $menu->css = $node->class;
+                $menu->target = $node->target;
+                $menu->icon = $node->iconFont;
+                $menu->position = $node->position;
+                $menu->has_child = (count($node->children) > 0) ? 1 : 0;
+                $menu->parent_id = $parent;
+                $menu->save();
+                if(count($node->children) > 0){
+                    $this->recursiveSave($node->children,$node->id);
+                }
+            }
+            return true;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function structure(Request $request)
     {
-        //
+        $structure = json_decode($request->menu_nodes);
+        $response = $this->recursiveSave($structure);
+        if($response == true){
+            $request->session()->flash('success', 'Menu Saved successfully!');
+        }else{
+            $request->session()->flash('error', $response);
+        }
+        return redirect()->back();
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function recursiveDeleteId($node)
+    {
+        $collection = collect();
+        $childs = MenuNodes::where('parent_id',$node->id);
+        $count = $childs->count();
+        if($count > 0){
+            foreach ($childs->get() as $key => $subnode) {
+                $collection->push($subnode->id);
+                $collection = $this->recursiveDeleteId($subnode)->merge($collection);
+            }
+        }
+        return $collection;
+    }
     public function destroy(MenuNodes $menuNodes)
     {
+        $ids = $this->recursiveDeleteId($menuNodes)->toArray();
+        foreach ($ids as $child) {
+            MenuNodes::find($child)->delete();
+        }
         $menuNodes->delete();
-        return response()->json(['success' => 'MenuNode deleted successfully!']);
+        return response()->json(['success' => 'Menus deleted successfully!']);
     }
 }

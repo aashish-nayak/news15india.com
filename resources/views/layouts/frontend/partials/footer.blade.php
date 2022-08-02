@@ -74,21 +74,24 @@
         <div class="container-fluid px-1 text-center">
             <nav class="col-12 mx-auto">
                 <ul class="m-0 p-1">
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">About Us</a></li>
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">Contact Us</a></li>
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">Feedback</a></li>
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">Careers</a></li>
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">Advertisment with Us</a></li>
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">Sitemap</a></li>
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">Privacy Policy</a></li>
-                    <li class="nav-item"><a class="p-0 nav-link" href="javascript:void(0)">Disclamer</a></li>
+                    @foreach ($bottomFooter->parentMenuNodes as $menu)
+                    <li class="nav-item">
+                        <a class="p-0 nav-link" target="{{$menu->target}}" href="{{$menu->url}}">{{$menu->title}}</a>
+                    </li>
+                    @endforeach
                 </ul>
             </nav>
             <div class="col-sm-12 p-0">
-                <p>Copyright © 20219 All Rights Reserved | <a href="javascript:void(0)"
-                        class="text-decoration-none text-light"> <b><span style="color:orange;">NEWS</span><span
-                                style="color:white;">15</span><span style="color:green">INDIA</span></b> </a>
-                    (Mahira News Network Pvt. Ltd.)</p>
+                <p>Copyright © 20219 All Rights Reserved | 
+                    <a href="javascript:void(0)" class="text-decoration-none text-light">
+                        <b>
+                            <span style="color:orange;">NEWS</span>
+                            <span style="color:white;">15</span>
+                            <span style="color:green">INDIA</span>
+                        </b>
+                    </a>
+                    (Mahira News Network Pvt. Ltd.)
+                </p>
             </div>
         </div>
     </section>
