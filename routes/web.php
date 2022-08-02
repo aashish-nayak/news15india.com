@@ -33,6 +33,7 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
     Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
+    Route::view('reporter-form','reporter-form');
 });
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');

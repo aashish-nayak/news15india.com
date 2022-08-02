@@ -139,7 +139,7 @@ class MenuController extends Controller
         if($count > 0){
             foreach ($childs->get() as $key => $subnode) {
                 $collection->push($subnode->id);
-                $collection = $this->recursiveDelete($subnode)->merge($collection);
+                $collection = $this->recursiveDeleteId($subnode)->merge($collection);
             }
         }
         return $collection;

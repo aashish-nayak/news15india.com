@@ -7,7 +7,7 @@
                     <span class="text-light mt-1" onclick="openNav()">&#9776;</span>
                     <a href="{{ route('home') }}" class="m-0">
                         <div class="navbar-brand p-0 m-0">
-                            <img src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid" style="margin-top:-11px;" alt="logo">
+                            <img loading="lazy" src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid" style="margin-top:-11px;" alt="logo">
                         </div>
                     </a>
                 </div>
@@ -73,734 +73,120 @@
                         <li><a href="{{$node->url}}" target="{{$node->target}}" class="nav-link">{{$node->title}}</a></li>
                         @endif
                         @endforeach
-                        {{-- <li class="droppable">
-                            <a href="javascript:void(0)" class="nav-link">Mega Menu One</a>
+                        @foreach ($megaMenu1->parentMenuNodes as $megaNode)
+                        <li class="droppable">
+                            <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
+                            @if ($megaNode->has_child)
                             <div class="mega-menu mx-auto">
                                 <div class="col-12 py-4">
                                     <div class="row justify-content-center align-items-center">
+                                        @foreach ($megaNode->child as $subMegaNode)
                                         <div class="col-md-2">
                                             <ul class="ul-reset">
-                                                <h3>Heading 1</h3>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
+                                                <a href="{{$subMegaNode->url}}" target="{{$subMegaNode->target}}"><h3>{{$subMegaNode->title}}</h3></a>
+                                                @if ($subMegaNode->has_child)
+                                                @foreach ($subMegaNode->child as $subMega2)
+                                                <li><a class="dropdown-item text-decoration-none" target="{{$subMega2->target}}" href="{{$subMega2->url}}">{{$subMega2->title}}</a></li>
+                                                @endforeach
+                                                @endif
                                             </ul>
                                         </div>
-                                        <div class="col-md-2">
-                                            <ul class="ul-reset">
-                                                <h3>Heading 2</h3>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <ul class="ul-reset">
-                                                <h3>Heading 3</h3>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <ul class="ul-reset">
-                                                <h3>Heading 4</h3>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <ul class="ul-reset">
-                                                <h3>Heading 5</h3>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <ul class="ul-reset">
-                                                <h3>Heading 6</h3>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                                <li><a class="dropdown-item text-decoration-none" href="javascript:void(0)">Category Two Sublink</a></li>
-                                            </ul>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                            @endif
+                        </li>   
+                        @endforeach
+                        @foreach ($megaMenu2->parentMenuNodes as $megaNode)
                         <li class="droppable">
-                            <a href="javascript:void(0)" class="nav-link">Mega Menu Two</a>
+                            <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
                             <div class="mega-menu row justify-content-center">
                                 <div class="cf col-10 py-4">
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-md-3">
-                                            <h5 class="mb-2">Parent Category Name</h5>
+                                            <h5 class="text-capitalize mb-4">Categories Name</h5>
                                             <div class="mega-menu-tabs nav flex-column flex-nowrap nav-pills pr-1" style="max-height: 300px;overflow-y:scroll;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link active" id="v-pills-home-tab" data-toggle="pill" data-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Category Name 1</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-profile-tab" data-toggle="pill" data-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Category Name 2</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-messages-tab" data-toggle="pill" data-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Category Name 3</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-settings-tab" data-toggle="pill" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Category Name 4</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-settings-tab2" data-toggle="pill" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Category Name 5</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-settings-tab3" data-toggle="pill" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Category Name 6</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-settings-tab4" data-toggle="pill" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Category Name 7</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-settings-tab5" data-toggle="pill" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Category Name 8</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-settings-tab6" data-toggle="pill" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Category Name 9</a>
-                                                <a href="javascript:void(0)" class="mb-2 py-1 nav-link" id="v-pills-settings-tab7" data-toggle="pill" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Category Name 10</a>
+                                                @if($megaNode->has_child)
+                                                    @foreach ($megaNode->child as $key => $subMegaNode)
+                                                        @php
+                                                            if($key == 0){
+                                                                $active = 'active';
+                                                                $show = 'show';
+                                                            }else{
+                                                                $active = '';
+                                                                $show = '';
+                                                            }
+                                                        @endphp
+                                                            <a href="{{$subMegaNode->url}}" target="{{$subMegaNode->target}}" class="mb-2 py-1 nav-link {{$active}}" id="tab-{{$subMegaNode->id}}-data" data-toggle="pill" data-target="#tab-{{$subMegaNode->id}}" type="button" role="tab" aria-controls="tab-{{$subMegaNode->id}}" aria-selected="true">{{$subMegaNode->title}}</a>
+                                                        @push('tabs')
+                                                            @includeIf('components.tab', ['subMegaNode' => $subMegaNode,'active'=>$active,'show'=>$show])
+                                                        @endpush
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-9">
                                             <div class="tab-content" id="v-pills-tabContent">
-                                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings3" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings4" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings7" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <div class="col-12">
-                                                        <div class="row justify-content-center align-items-center">
-                                                            <div class="col-md-7">
-                                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                        Natus doloremque dolorum laborum voluptate.
-                                                                    </h6>
-                                                                </a>
-                                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="row row-cols-2 p-0">
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col mb-2 px-2">
-                                                                        <div class="card card-shadow">
-                                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @stack('tabs')
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
+                        @endforeach
+                        @foreach ($megaMenu3->parentMenuNodes as $megaNode)
                         <li class="droppable">
-                            <a href="javascript:void(0)" class="nav-link">Mega Menu Three</a>
+                            <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
+                            @if($megaNode->reference->news()->count() > 1)
+                            @foreach ($megaNode->reference->news()->latest()->limit(9)->get() as $key => $nodeNews)
+                                @if($key == 0)
+                                    @section('mega_design_1')
+                                    <div class="col-5">
+                                        <a href="{{route('single-news',$nodeNews->slug)}}" class="text-decoration-none">
+                                            <img loading="lazy" src="{{asset('storage/media/'.$nodeNews->newsImage->filename)}}" class="img-fluid" alt="{{$nodeNews->newsImage->alt}}">
+                                            <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
+                                                {{\Str::limit($nodeNews->title,60)}}
+                                            </h6>
+                                        </a>
+                                        <p class="text-muted" style="font-size: 1.2rem">
+                                            {{\Str::limit($nodeNews->short_description,100)}}
+                                        </p>
+                                    </div>
+                                    @endsection
+                                @else
+                                    @push('mega_design_2')
+                                    <div class="col mb-2 px-2">
+                                        <div class="card card-shadow">
+                                            <a href="{{route('single-news',$nodeNews->slug)}}" class="text-muted text-decoration-none">
+                                                <img loading="lazy" src="{{asset('storage/media/'.$nodeNews->newsImage->filename)}}" class="card-img-top" alt="{{$nodeNews->newsImage->alt}}">
+                                            </a>
+                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
+                                                <a href="{{route('single-news',$nodeNews->slug)}}" class="text-decoration-none font-weight-bold">{{\Str::limit($nodeNews->title,60)}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endpush
+                                @endif
+                            @endforeach
                             <div class="mega-menu col-12">
                                 <div class="row justify-content-center">
                                     <div class="cf col-12 py-4">
                                         <div class="row justify-content-center">
-                                            <div class="col-5">
-                                                <a href="javascript:void(0)" class="text-decoration-none">
-                                                    <img src="{{asset('front-assets/img/landscape.jpg')}}" class="img-fluid" alt="">
-                                                    <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                        Natus doloremque dolorum laborum voluptate.
-                                                    </h6>
-                                                </a>
-                                                <p class="text-muted" style="font-size: 1.2rem">
-                                                    Some representati. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo.
-                                                </p>
-                                            </div>
+                                            @yield('mega_design_1')
                                             <div class="col-7">
                                                 <div class="row row-cols-4 mx-0">
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col mb-2 px-2">
-                                                        <div class="card card-shadow">
-                                                            <a href="javascript:void(0)" class="text-muted text-decoration-none"><img src="{{asset('front-assets/img/square.jpg')}}" class="card-img-top" alt="..."></a>
-                                                            <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
-                                                                <a href="javascript:void(0)" class="text-decoration-none font-weight-bold">Lorem ipsum dolor amet consectetur.</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @stack('mega_design_2')
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </li> --}}
+                            @endif
+                        </li>
+                        @endforeach
                     </ul>
                 </nav>
                 <!-- Main Navbar End  -->

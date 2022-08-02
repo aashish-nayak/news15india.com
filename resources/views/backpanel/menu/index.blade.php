@@ -58,7 +58,7 @@
                                             <div class="form-check m-0">
                                                 <input type="checkbox" value="{{ $cat->id }}"
                                                     class="form-check-input parent-cat" id="category{{ $cat->id }}">
-                                                <label class="form-check-label" data-title="{{ $cat->cat_name }}"
+                                                <label class="form-check-label cursor-pointer" data-title="{{ $cat->cat_name }}"
                                                     data-reference-id="{{ $cat->id }}"
                                                     data-reference-type="App\Models\Category"
                                                     data-menu-id="{{ $menu_id }}"
