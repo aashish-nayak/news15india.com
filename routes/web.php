@@ -129,5 +129,6 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/delete/{menu_nodes}',[MenuController::class,'destroy'])->middleware('permission:delete-menu')->name('delete');
         Route::post('/add-to-menu', [MenuController::class,'addToMenu'])->middleware('permission:create-menu')->name('add-to-menu');
         Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->middleware('permission:create-menu')->name('add-to-menu-link');
+        Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
     });
 });
