@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-9 pl-md-3 px-md-1">
-                        <div class="row justify-content-between align-items-center">
+                        <div class="row justify-content-between align-items-center mx-0">
                             <div class="col-12 col-md-9">
                                 <div  style="font-size: 16px; font-weight:500;">
                                     <span>By</span> 
@@ -62,8 +62,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6 font-size-sm">
-                        <p class="m-0"><i class="fa fa-eye px-2"></i> <span>2.5k</span> <span>Views</span></p>
+                    <div class="col-md-3 col-6">
+                        <p class="m-0" style="font-size: 16px"><i class="fa fa-eye px-2"></i> <span>2.5k</span> <span>Views</span></p>
+                        <p class="m-0" style="font-size: 16px"><i class="fa fa-comment-alt px-2"></i> <span>500</span> <span>Comments</span></p>
+                        <p class="m-0" style="font-size: 16px"><i class="fa fa-share px-2"></i> <span>200</span> <span>Shares</span></p>
                     </div>
                     <div class="col-md-4 col-6 font-size-sm">
                         <div class="row">
