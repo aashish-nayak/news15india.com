@@ -41,9 +41,9 @@
                             @endisset
                         </div>
                     </div>
-                    <div class="col-md-4 col-9 pl-3 px-1">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="col-md-9">
+                    <div class="col-md-4 col-9 pl-md-3 px-md-1">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-12 col-md-9">
                                 <div  style="font-size: 16px; font-weight:500;">
                                     <span>By</span> 
                                     <a href="{{route('author',$news->creator->details->url)}}">
@@ -57,7 +57,7 @@
                                     <span>{{\Carbon\Carbon::parse($news->created_at)->format('D d M Y, H:i A')}}</span>
                                 </p>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-12 col-md-3">
                                 <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a>
                             </div>
                         </div>

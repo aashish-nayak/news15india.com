@@ -119,9 +119,9 @@
                 <div class="d-flex flex-wrap justify-content-center">
                     <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center d-flex align-items-center justify-content-center">
                         @isset($author->details->avatar->filename)
-                        <img loading="lazy" src="{{asset('storage/media/'.$author->details->avatar->filename)}}" class="text-center img-fluid w-100" style="height:90%;border:5px solid white;border-radius:50%;object-fit:cover;" alt="">
+                        <img loading="lazy" src="{{asset('storage/media/'.$author->details->avatar->filename)}}" class="text-center img-fluid author-avatar" alt="">
                         @else
-                        <img src="{{asset('front-assets/img/user.png')}}" class="text-center img-fluid w-100" style="height:90%;border:5px solid white;border-radius:50%;object-fit:cover;" alt="" loading="lazy">
+                        <img src="{{asset('front-assets/img/user.png')}}" class="text-center img-fluid author-avatar" alt="" loading="lazy">
                         @endisset
                     </div>
                     <div class="col-md-9 col-12" style="background-color: #d8d8d8;">
@@ -131,26 +131,38 @@
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <div class="col-md-6 col-12 px-4 my-3 author-des">
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class="mr-md-3 mr-2 fas fa-user"></i> {{$author->name}}</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
+                                        <i class="mr-md-3 mr-2 fas fa-user"></i> {{$author->name}}
+                                    </p>
                                 </a>
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class=" mr-2 mr-md-3 fas fa-envelope"></i> {{$author->email}}</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
+                                        <i class=" mr-2 mr-md-3 fas fa-envelope"></i> {{$author->email}}
+                                    </p>
                                 </a>
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class=" mr-2 mr-md-3 far fa-user-crown"></i> {{$author->roles[0]->name}}</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
+                                        <i class=" mr-2 mr-md-3 far fa-user-crown"></i> {{$author->roles[0]->name}}
+                                    </p>
                                 </a>
                                 <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;"><i class=" mr-2 mr-md-3 far fa-map-marker"></i> {{$author->details->city->name.", ".$author->details->state->name}}</p>
+                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
+                                        <i class=" mr-2 mr-md-3 far fa-map-marker"></i> {{$author->details->city->name.", ".$author->details->state->name}}
+                                    </p>
                                 </a>
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="d-flex flex-wrap justify-content-around align-items-center text-center flag-author-border">
-                                    <a target="_blank" href="{{$shareCurrent['facebook']}}" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-facebook-f"></a>
-                                    <a target="_blank" href="{{$shareCurrent['twitter']}}" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-twitter"></a>
-                                    <a target="_blank" href="{{$shareCurrent['whatsapp']}}" style="font-size:x-large;" class="py-2 bottom mb-2 fab fa-whatsapp"></a>
-                                </div>
-                                <div class="col-md-12 mt-3 text-center">
-                                    <p class="mb-0 font-weight-bold" style="font-size:1.4rem;">{{$author->details->city->name}} की ताजा खबरे देखने के लिए  <br> मुझे <a href="javascript:void(0)" style="font-size:1.3rem;" class="btn btn-primary btn-sm font-weight-bold my-2 mx-1">Follow</a> करें</p>
+                                <div class="row align-items-center">
+                                    <div class="col-md-12 mb-2 mb-md-0">
+                                        <div class="d-flex justify-content-around align-items-center flag-author-border">
+                                            <a target="_blank" href="{{$shareCurrent['facebook']}}" style="font-size:30px;" class="py-2 bottom mb-2 fab fa-facebook-square"></a>
+                                            <a target="_blank" href="{{$shareCurrent['twitter']}}" style="font-size:30px;" class="py-2 bottom mb-2 fab fa-twitter-square"></a>
+                                            <a target="_blank" href="{{$shareCurrent['whatsapp']}}" style="font-size:30px;" class="py-2 bottom mb-2 fab fa-whatsapp-square"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-center mt-md-3">
+                                        <p class="mb-0 font-weight-bold" style="font-size:1.4rem;">{{$author->details->city->name}} की ताजा खबरे देखने के लिए  <br> मुझे <a href="javascript:void(0)" style="font-size:1.3rem;" class="btn btn-primary btn-sm font-weight-bold my-2 mx-1">Follow</a> करें</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

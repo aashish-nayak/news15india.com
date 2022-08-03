@@ -62,7 +62,7 @@
                             <i class="far fa-dot-circle text-danger"></i>
                         </a>
                     </li>
-                    @foreach ($sideMenu->parentMenuNodes as $menu)
+                    @foreach ($sideMenu as $menu)
                     @if ($menu->has_child)
                     <li class="position-relative">
                         <a href="{{$menu->url}}" target="{{$menu->target}}" class="list-group-item d-flex align-items-center">
