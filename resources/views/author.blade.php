@@ -130,24 +130,28 @@
                         </div>
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <div class="col-md-6 col-12 px-4 my-3 author-des">
-                                <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
-                                        <i class="mr-md-3 mr-2 fas fa-user"></i> {{$author->name}}
+                                <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2" style="font-size:18px">
+                                    <i class="mr-md-3 mr-2 fas fa-user"></i> 
+                                    <p class="text-secondary-clr m-0" style="font-size:18px">
+                                        {{$author->name}}
                                     </p>
                                 </a>
-                                <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
-                                        <i class=" mr-2 mr-md-3 fas fa-envelope"></i> {{$author->email}}
+                                <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2" style="font-size:18px">
+                                    <i class="mr-md-3 mr-2 fas fa-envelope"></i> 
+                                    <p class="text-secondary-clr m-0" style="font-size:18px">
+                                        {{$author->email}}
                                     </p>
                                 </a>
-                                <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
-                                        <i class=" mr-2 mr-md-3 far fa-user-crown"></i> {{$author->roles[0]->name}}
+                                <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2" style="font-size:18px">
+                                    <i class="mr-md-3 mr-2 fas fa-user-crown"></i> 
+                                    <p class="text-secondary-clr m-0" style="font-size:18px">
+                                        {{$author->roles[0]->name}}
                                     </p>
                                 </a>
-                                <a href="javascript:void(0)">
-                                    <p style="font-size:20px; color:var(--secondary); margin-bottom:4px;">
-                                        <i class=" mr-2 mr-md-3 far fa-map-marker"></i> {{$author->details->city->name.", ".$author->details->state->name}}
+                                <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2" style="font-size:18px">
+                                    <i class="mr-md-3 mr-2 fas fa-map-marker"></i> 
+                                    <p class="text-secondary-clr m-0" style="font-size:18px">
+                                        {{$author->details->city->name.", ".$author->details->state->name}}
                                     </p>
                                 </a>
                             </div>
