@@ -1,25 +1,3 @@
-.accordion-button,
-.accordion-button:focus {
-    outline: none;
-    box-shadow: none;
-    border: none;
-    border-radius: 0px;
-}
-
-.accordion-button {
-    padding: 0.7rem 0.8rem;
-}
-
-.card {
-    border: 1px solid #80808033;
-    border-radius: 0px;
-    box-shadow: none;
-}
-
-.category-input {
-    max-height: 300px;
-    overflow-y: auto;
-}
 /**
  * Nestable
  */

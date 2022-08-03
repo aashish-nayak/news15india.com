@@ -52,26 +52,11 @@
                     <div id="categoriesSidebar" class="accordion-collapse collapse">
                         <div class="card-body">
                             <div class="border p-2 category-input">
-                                <ul class="m-0">
-                                    @foreach ($categories as $cat)
-                                        <li class="mb-2">
-                                            <div class="form-check m-0">
-                                                <input type="checkbox" value="{{ $cat->id }}"
-                                                    class="form-check-input parent-cat" id="category{{ $cat->id }}">
-                                                <label class="form-check-label" data-title="{{ $cat->cat_name }}"
-                                                    data-reference-id="{{ $cat->id }}"
-                                                    data-reference-type="App\Models\Category"
-                                                    data-menu-id="{{ $menu_id }}"
-                                                    for="category{{ $cat->id }}">{{ $cat->cat_name }}</label>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                                @includeIf('backpanel.includes.nested-categories', ['categories' => $categories,'menu_id' => $menu_id])
                             </div>
                         </div>
                         <div class="card-footer text-end">
-                            <button class="btn-add-to-menu btn btn-primary btn-sm"><span class="mt-1 bx bx-plus"></span> Add
-                                to Menu</button>
+                            <button class="btn-add-to-menu btn btn-primary btn-sm"><span class="mt-1 bx bx-plus"></span> Add to Menu</button>
                         </div>
                     </div>
                 </div>

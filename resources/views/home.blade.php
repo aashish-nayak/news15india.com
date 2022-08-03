@@ -542,7 +542,7 @@
                                     <div class="img-square-wrapper col-4 col-md-4 p-0">
                                         <img src="{{asset('storage/media/'.$news7->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                     </div>
-                                    <div class="card-body col-8 col-md-8 p-0 pl-1">
+                                    <div class="card-body col-8 col-md-8">
                                         <h6 class="card-text p-0">{{\Str::limit($news7->title,80)}}</h6>
                                     </div>
                                 </div>

@@ -18,12 +18,15 @@
                     <table id="news" class="w-100 table responsive display table-striped table-bordered align-middle border table-hover" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th data-orderable="false"><input type="checkbox" value="all"/></th>
                                 <th>ID</th>
                                 <th data-orderable="false">Image</th>
                                 <th>Title</th>
                                 <th data-orderable="false" >Categories</th>
                                 <th>Status</th>
-                                <th data-orderable="false">Created by</th>
+                                <th data-orderable="false">Reporter</th>
+                                <th data-orderable="false">Views</th>
+                                <th data-orderable="false">Time/Date</th>
                                 <th data-orderable="false">Action</th>
                             </tr>
                         </thead>
@@ -51,10 +54,22 @@
                 { responsivePriority: 2, targets: 1 },
                 { responsivePriority: 3, targets: 4 },
                 { responsivePriority: 4, targets: 6 },
-                { width: "10%", targets: 1}
+                { width: "2%", targets: 1},
+                { width: "15%", targets: 2},
+                { width: "40%", targets: 3},
+                { width: "10%", targets: 4},
+                { width: "15%", targets: 8},
+                { width: "10%", targets: 9},
             ],
             ajax: "{{ route('admin.news.ajax-list') }}",
-            columns: [{
+            columns: [
+                {
+                    data: null,
+                    render: function(data, type, row) {
+                        return '<input type="checkbox" value="' + row.id + '"/>';
+                    }
+                },
+                {
                     data: 'id'
                 },
                 {
@@ -66,12 +81,12 @@
                     }
                 },
                 {
-                    data: 'title'
+                    data: 'title',
+                    className: 'fw-bold',
                 },
                 {
                     data: null,
                     render: function(data, type, row) {
-                        // console.log(data.categories);
                         var categories = data.categories.split(',');
                         var categories_html = '';
                         for (var i = 0; i < categories.length; i++) {
@@ -93,18 +108,33 @@
                     }
                 },
                 {
-                    data: 'created'
+                    data: 'created_by',
+                    className: 'fw-bold',
+                },
+                {
+                    data: 'views'
+                },
+                {
+                    data: null,
+                    render: function(data, type, row) {
+                        return `<div class="fw-bold text-muted border-bottom border-success py-1 mb-1">${data.created_at}</div>
+                        <div class="text-muted fw-bold">${data.created_date}</div>`;
+                    }
                 },
                 {
                     data: null,
                     render: function(data, type, row) {
                         let del = "{{route('admin.news.delete',':id')}}";
                         let edit = "{{route('admin.news.edit',':id')}}";
+                        let view = "{{route('single-news',':slug')}}";
                         del = del.replace(':id', data.id);
                         edit = edit.replace(':id', data.id);
-                        return ' <div class="d-flex order-actions">' +
-                            '<a href="'+edit+'" class="edit-category border" title="Edit"><i class="bx bxs-edit"></i></a>' +
-                            '<a href="'+del+'" class="text-danger ms-3 border delete" title="Trash"><i class="bx bxs-trash"></i></a>' +
+                        view = view.replace(':slug',data.slug);
+                        return '<div class="row row-cols-2 order-actions justify-content-center gap-1">' +
+                            '<a href="'+edit+'" class="col edit-category border border-dark" title="Edit"><i class="bx bxs-edit"></i></a>' +
+                            '<a href="'+del+'" class="col delete text-danger border border-dark" title="Trash"><i class="bx bxs-trash"></i></a>' +
+                            '<a href="'+view+'" class="col text-dark border border-dark" target="_blank"><i class="bx bxs-show"></i></a>' +
+                            '<a href="javascript:void(0)" class="col text-dark border border-dark"><i class="bx bxs-download"></i></a>' +
                         '</div>';
                     }
                 },

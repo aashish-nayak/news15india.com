@@ -33,7 +33,7 @@ class NewsController extends Controller
         }
         $media = Media::latest()->paginate(12);
         $tags = Tag::where('status', 1)->get();
-        $categories = Category::with('children')->where('parent_id', NULL)->where('status', 1)->get();
+        $categories = $this->nestedCategoryPath();
         return view('backpanel.news.add-news', compact('categories', 'tags', 'media', 'users'));
     }
 
@@ -95,6 +95,7 @@ class NewsController extends Controller
             $banner = ($record->image != NULL) ? $record->newsImage->filename : 'No Image';
             $status = $record->status;
             $created = $record->created_at;
+            $createdDate = date('d-M-Y', strtotime($created));
             $createdby = $record->creator->name;
             $data_arr[] = array(
                 "sno" => $sno,
@@ -104,7 +105,10 @@ class NewsController extends Controller
                 "categories" => $categories,
                 "banner" => $banner,
                 "status" => $status,
-                "created" => $createdby,
+                "created_by" => $createdby,
+                "views" => 0,
+                "created_at" => $created,
+                "created_date" => $createdDate,
             );
         }
 
@@ -199,7 +203,7 @@ class NewsController extends Controller
         }
         $media = Media::latest()->paginate(12);
         $tags = Tag::where('status', 1)->get();
-        $categories = Category::with('children')->where('parent_id', NULL)->where('status', 1)->get();
+        $categories = $this->nestedCategoryPath();
         $page = News::find($id);
         return view('backpanel.news.add-news', compact('categories', 'tags', 'page', 'media', 'users'));
     }

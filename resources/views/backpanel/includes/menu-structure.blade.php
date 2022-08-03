@@ -56,7 +56,7 @@
             </div>
         </div>
         @if ($value->has_child == 1)
-            @includeIf('backpanel.menu.menu-structure', ['menu' => $value->child()->orderBy('position')->get()])
+            @includeIf('backpanel.includes.menu-structure', ['menu' => $value->child()->orderBy('position')->get()])
         @endif
     </li>
     @endforeach

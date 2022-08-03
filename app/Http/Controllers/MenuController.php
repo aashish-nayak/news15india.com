@@ -15,7 +15,7 @@ class MenuController extends Controller
     {
         $MenuLocations = MenuLocation::all();
         $menus = Menu::all();
-        $categories = Category::orderBy('parent_id','ASC')->select('id','cat_name','slug')->get();
+        $categories = Category::where('parent_id', NULL)->where('status', 1)->orderBy('id')->get();
         $tags = Tag::orderBy('id','ASC')->select('id','name','slug')->get();
         $nodes = MenuNodes::where('menu_id',$menu_id)->where('parent_id', 0)->orderBy('position')->get();
         return view('backpanel.menu.index',compact('categories','tags','MenuLocations','menus','menu_id','nodes'));
@@ -69,7 +69,7 @@ class MenuController extends Controller
                     $menuNode->save();
                     $ids[] .= $menuNode->id;
                 }
-                return view("backpanel.menu.menu-structure",["menu"=>MenuNodes::find($ids)]);
+                return view("backpanel.includes.menu-structure",["menu"=>MenuNodes::find($ids)]);
             }
         } catch (\Exception $e) {
             return response()->json(['error'=>$e->getMessage()]);
@@ -89,7 +89,7 @@ class MenuController extends Controller
             $menuNode->target = $request->target;
             $menuNode->position = MenuNodes::where('menu_id',$request->menu_id)->count() + 1;
             $menuNode->save();
-            return view("backpanel.menu.menu-structure",["menu"=>MenuNodes::where('id',$menuNode->id)->get()]);
+            return view("backpanel.includes.menu-structure",["menu"=>MenuNodes::where('id',$menuNode->id)->get()]);
         } catch (\Exception $e) {
             return response()->json(['error'=>$e->getMessage()]);
         }
