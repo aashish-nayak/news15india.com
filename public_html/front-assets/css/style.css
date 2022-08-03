@@ -101,6 +101,24 @@ a:focus {
     color: var(--text-color-dark);
 }
 
+.section-header {
+    border-top:2px solid #fcba03;
+    box-sizing:border-box;
+    display:block;
+    font-family: "roboto",sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  .section-header-title {
+    display:inline-block;
+    margin:0;
+    padding:5px 20px;
+    text-align:left;
+    color: #fff;
+    box-sizing: border-box;
+  }
 .single-page-style {
     height: 226.3rem;
     overflow-x: hidden;
@@ -125,6 +143,12 @@ a:focus {
     background: #b30000;
 }
 
+.section-heading h2{
+    color: var(--primary);
+    font-size: 23px;
+    font-weight: 800;
+    font-family: "Noto Sans", sans-serif;
+}
 /* ============= Top Header Style ============ */
 .small-top {
     text-align: center;
@@ -891,16 +915,17 @@ div.scrollmenu {
     background-color: var(--text-color-light);
     overflow: auto;
     white-space: nowrap;
-    padding: 5px 0px;
+    margin: 10px 0px 0px 0px;
 }
 
 .link-swipe {
     display: inline-block;
     color: var(--text-color-dark);
     text-align: center;
-    padding: 10px 15px;
+    padding: 0px 15px;
     font-weight: bold;
     text-decoration: none;
+    margin-bottom: 10px;
     background-color: transparent;
     transition: all 0.5s ease-out;
     font-size: 1.8rem;
@@ -2262,6 +2287,11 @@ footer nav > ul > li > a.active {
     .footer-text {
         font-size: 100%;
     }
+    
+    .author-avatar {
+        height: 250px !important;
+        width: 250px;
+    }
 }
 /* // Paginateion Style  */
 .page-link {
@@ -2428,4 +2458,10 @@ button.back-to-top.show:active {
     .sidenav.show {
         width: 90%;
     }
+}
+
+.author-avatar{
+    height:80%;
+    border:5px solid white;border-radius:50%;
+    object-fit:cover;
 }

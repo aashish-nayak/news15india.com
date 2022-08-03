@@ -3,7 +3,7 @@
     <div class="container-fluid mx-auto position-relative">
         <div class="row align-items-center">
             <div class="col-md-2-custom col-12 px-md-1 pt-0 d-flex justify-content-between justify-content-md-start mobile-toggle mobile-height-black align-items-center">
-                <div class="col-md-12 col-6 px-0">
+                <div class="col-md-12 col-6 px-0 py-2 py-md-1">
                     <span class="text-light mt-1" onclick="openNav()">&#9776;</span>
                     <a href="{{ route('home') }}" class="m-0">
                         <div class="navbar-brand p-0 m-0">
@@ -22,7 +22,7 @@
                 <nav class="nav sticky-top d-none d-lg-block d-md-block position-static">
                     <ul class="ul-reset ml-2 ">
                         <li><a href="{{route('home')}}" class="nav-link"><i class="fa fa-home"></i></a></li>
-                        @foreach ($menu->parentMenuNodes as $node)
+                        @foreach ($menuNodes as $node)
                         @if ($node->has_child)
                         <li class="nav-item-sub p-relative">
                             <a href="{{$node->url}}" target="{{$node->target}}" class="nav-link">
@@ -73,7 +73,7 @@
                         <li><a href="{{$node->url}}" target="{{$node->target}}" class="nav-link">{{$node->title}}</a></li>
                         @endif
                         @endforeach
-                        @foreach ($megaMenu1->parentMenuNodes as $megaNode)
+                        @foreach ($megaMenu1 as $megaNode)
                         <li class="droppable">
                             <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
                             @if ($megaNode->has_child)
@@ -98,7 +98,7 @@
                             @endif
                         </li>   
                         @endforeach
-                        @foreach ($megaMenu2->parentMenuNodes as $megaNode)
+                        @foreach ($megaMenu2 as $megaNode)
                         <li class="droppable">
                             <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
                             <div class="mega-menu row justify-content-center">
@@ -136,7 +136,7 @@
                             </div>
                         </li>
                         @endforeach
-                        @foreach ($megaMenu3->parentMenuNodes as $megaNode)
+                        @foreach ($megaMenu3 as $megaNode)
                         <li class="droppable">
                             <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
                             @if($megaNode->reference->news()->count() > 1)

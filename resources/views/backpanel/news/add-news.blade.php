@@ -159,129 +159,163 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Publish Date <span class="text-danger">*</span></h6>
+                <div class="card accordion mt-3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button show" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#PublishDateWidget" aria-expanded="true">
+                                <h6 class="header-title m-0" style="font-weight: 600">Publish Date </h6>
+                            </button>
+                        </h2>
                     </div>
-                    <div class="card-body">
-                        <input type="date" value="@if(isset($page)){{\Carbon\Carbon::parse($page->created_at)->toDateString()}}@else{{old('created_at')}}@endif" name="created_at" class="form-control">
-                        @error('created_at')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                    <div id="PublishDateWidget" class="accordion-collapse collapse show">
+                        <div class="card-body p-2">
+                            <input type="date" value="@if(isset($page)){{\Carbon\Carbon::parse($page->created_at)->toDateString()}}@else{{old('created_at')}}@endif" name="created_at" class="form-control">
+                            @error('created_at')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 @role('super-admin','admin')
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Author <span class="text-danger">*</span></h6>
-                    </div>
-                    <div class="card-body">
-                        <select class="form-select" required name="user_id" aria-label="Default select example">
-                            @foreach ($users as $user)
-                            <option @if (isset($page) && $page->admin_id == $user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>
-                            @endforeach
-                        </select>
-                        @error('user_id')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                <div class="card accordion mt-3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button show" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#AuthorWidget" aria-expanded="true">
+                                <h6 class="header-title m-0" style="font-weight: 600">Author <span class="text-danger">*</span></h6>
+                            </button>
+                        </h2>
+                        <div id="AuthorWidget" class="accordion-collapse collapse show">
+                            <div class="card-body p-2">
+                                <select class="form-select" required name="user_id" aria-label="Default select example">
+                                    @foreach ($users as $user)
+                                    <option @if (isset($page) && $page->admin_id == $user->id) selected @endif value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @endrole
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Status <span class="text-danger">*</span></h6>
-                    </div>
-                    <div class="card-body">
-                        <select class="form-select" required name="is_published" aria-label="Default select example">
-                            <option @if (isset($page) && $page->status == 1) selected @endif @if (!isset($page)) selected @endif value="1">Published</option>
-                            <option @if (isset($page) && $page->status == 0) selected @endif value="0">Draft</option>
-                        </select>
-                        @error('is_published')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                <div class="card accordion mt-3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button show" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#categoryWidget" aria-expanded="true">
+                                <h6 class="header-title m-0" style="font-weight: 600">Categories <span class="text-danger">*</span></h6>
+                            </button>
+                        </h2>
+                        <div id="categoryWidget" class="accordion-collapse collapse show">
+                            <div class="card-body p-2">
+                                <select class="form-select form-select-sm mb-3 multi-select" multiple data-placeholder="Select Categories" required id="parent" name="categories[]" aria-label=".form-select-sm example">
+                                    <option disabled></option>
+                                    @forelse ($categories as $cat)
+                                        <option value="{{ $cat->id }}" @if(isset($page) && in_array($cat->id, $page->categories->pluck('id')->toArray())) selected @endif>{{ $cat->bread }} ({{$cat->slug}})</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                                @error('categories')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Format <span class="text-danger">*</span></h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="default" name="format" @if (isset($page) && $page->format == 'default') checked @endif @if (!isset($page)) checked @endif id="flexRadioDefault1" >
-                            <label class="form-check-label" for="flexRadioDefault1">Default</label>
+                <div class="card accordion mt-3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button show" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#ImageWidget" aria-expanded="true">
+                                <h6 class="header-title m-0" style="font-weight: 600">Primary Image <span class="text-danger">*</span></h6>
+                            </button>
+                        </h2>
+                        <div id="ImageWidget" class="accordion-collapse collapse show">
+                            <div class="card-body">
+                                <div class="preview-image-wrapper ">
+                                    <img src="@if(isset($page) && isset($page->newsImage->filename)){{asset('storage/media/'.$page->newsImage->filename)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                    <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X</a>
+                                </div><br>
+                                <input type="hidden" required name="image" id="banner_data" value="@isset($page){{$page->image}}@else{{old('banner_data')}}@endisset">
+                                <a href="javascript:void(0)" id="banner-img">Choose Image</a>
+                                @error('image')
+                                    <br><span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="video" name="format" @if (isset($page) && $page->format == 'video') checked @endif id="flexRadioDefault2" >
-                            <label class="form-check-label" for="flexRadioDefault2">Video</label>
-                        </div>
-                        @error('format')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
                 </div>
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Categories <span class="text-danger">*</span></h6>
+                <div class="card accordion mt-3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button show" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#publishWidget" aria-expanded="true">
+                                <h6 class="header-title m-0" style="font-weight: 600">Status <span class="text-danger">*</span></h6>
+                            </button>
+                        </h2>
+                        <div id="publishWidget" class="accordion-collapse collapse show">
+                            <div class="card-body">
+                                <select class="form-select" required name="is_published" aria-label="Default select example">
+                                    <option @if (isset($page) && $page->is_published == 1) selected @endif @if (!isset($page)) selected @endif value="1">Published</option>
+                                    <option @if (isset($page) && $page->is_published == 0) selected @endif value="0">Draft</option>
+                                </select>
+                                @error('is_published')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body category-input">
-                        <ul>
-                            @foreach ($categories as $item)
-                            <li>
+                </div>
+                <div class="card accordion mt-3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button show" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#formatWidget" aria-expanded="true">
+                                <h6 class="header-title m-0" style="font-weight: 600">Format <span class="text-danger">*</span></h6>
+                            </button>
+                        </h2>
+                        <div id="formatWidget" class="accordion-collapse collapse show">
+                            <div class="card-body">
                                 <div class="form-check">
-                                    <input type="checkbox" name="categories[]" @if(isset($page) && in_array($item->id, $page->categories->pluck('id')->toArray())) checked @endif value="{{$item->id}}" class="form-check-input parent-cat" id="customCheck{{$item->id}}">
-                                    <label class="form-check-label" for="customCheck{{$item->id}}">{{$item->cat_name}}</label>
+                                    <input class="form-check-input" type="radio" value="default" name="format" @if (isset($page) && $page->format == 'default') checked @endif @if (!isset($page)) checked @endif id="flexRadioDefault1" >
+                                    <label class="form-check-label" for="flexRadioDefault1">Default</label>
                                 </div>
-                                @if (count($item->children)>0)
-                                <ul>
-                                    @foreach($item->children as $sub_cat)
-                                        <li class="ml-4">
-                                            <div class="form-check">
-                                                <input type="checkbox" name="categories[]" @if(isset($page) && in_array($sub_cat->id, $page->categories->pluck('id')->toArray())) checked @endif value="{{$sub_cat->id}}" class="form-check-input sub-cat" id="customCheck{{$sub_cat->id}}">
-                                                <label class="form-check-label" for="customCheck{{$sub_cat->id}}">{{$sub_cat->cat_name}}</label>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @error('categories')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Primary Image <span class="text-danger">*</span></h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="preview-image-wrapper ">
-                            <img src="@if(isset($page) && isset($page->newsImage->filename)){{asset('storage/media/'.$page->newsImage->filename)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
-                            <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X</a>
-                        </div><br>
-                        <input type="hidden" required name="image" id="banner_data" value="@isset($page){{$page->image}}@else{{old('banner_data')}}@endisset">
-                        <a href="javascript:void(0)" id="banner-img">Choose Image</a>
-                        @error('image')
-                            <br><span class="text-danger">{{ $message }}</span>
-                        @enderror
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="video" name="format" @if (isset($page) && $page->format == 'video') checked @endif id="flexRadioDefault2" >
+                                    <label class="form-check-label" for="flexRadioDefault2">Video</label>
+                                </div>
+                                @error('format')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card mt-3 col-12">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Tags <span class="text-danger"></span></h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3 col-12">
-                            <label class="form-label">Select Tags</label>
-                            <select class="multiple-select" name="tags[]" data-placeholder="Choose anything" multiple="multiple">
-                                @foreach ($tags as $tag)
-                                    <option @if(isset($page) && in_array($tag->id, $page->tags->pluck('id')->toArray())) selected @endif value="{{$tag->id}}">{{$tag->name}}</option>
-                                @endforeach
-                            </select>
-                            @error('tags')
-                                <br><span class="text-danger">{{ $message }}</span>
-                            @enderror
+                <div class="card accordion mt-3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button show" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#TagWidget" aria-expanded="true">
+                                <h6 class="header-title m-0" style="font-weight: 600">Tags <span class="text-danger"></span></h6>
+                            </button>
+                        </h2>
+                        <div id="TagWidget" class="accordion-collapse collapse show">
+                            <div class="card-body">
+                                <div class="mb-3 col-12">
+                                    <label class="form-label">Select Tags</label>
+                                    <select class="multiple-select" name="tags[]" data-placeholder="Choose anything" multiple="multiple">
+                                        @foreach ($tags as $tag)
+                                            <option @if(isset($page) && in_array($tag->id, $page->tags->pluck('id')->toArray())) selected @endif value="{{$tag->id}}">{{$tag->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('tags')
+                                        <br><span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,12 +345,12 @@ function stringslug(str) {
     return str;
 };
 $(document).ready(function () {
-    $(document).on("click","input[name='categories[]']",function() {
-        if($(this).is(':checked')){
-            $(this).parent().parent().parent().prev().children().first().prop('checked', true);
-        }else{
-            $(this).parent().parent().parent().prev().children().first().prop('checked', false);
-        }
+    $('.multi-select').select2({
+        theme: 'bootstrap4',
+        multiple :true,
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        placeholder: $(this).data('placeholder'),
+        allowClear: Boolean($(this).data('allow-clear')),
     });
     $(document).on("keyup", ".titletoslug", function() {
         let slug = stringslug($(this).val());

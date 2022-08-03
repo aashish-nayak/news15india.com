@@ -40,8 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="example-text-input2" class="col-form-label"><b>Parent Category</b></label>
-                                <select class="form-select form-select-sm mb-3 single-select" required id="parent" name="parent_id" aria-label=".form-select-sm example">
-                                    <option selected disabled>Select Parent Category</option>
+                                <select class="form-select form-select-sm mb-3 single-select" data-placeholder="Select Parent Category" required id="parent" name="parent_id" aria-label=".form-select-sm example">
                                     <option value="0">Parent</option>
                                     @forelse ($categories as $item)
                                         <option value="{{ $item->id }}">{{ $item->bread }}</option>
@@ -134,44 +133,6 @@
 
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Categories Tree View
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-12 mb-1">
-                                        <div class="controls">
-                                            <button>Collepsed</button>
-                                            <button>Expanded</button>
-                                            {{-- <button>Checked All</button>
-                                            <button>Unchek All</button> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card ">
-                                            <div class="card-body">
-                                                {!!$tree!!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -308,41 +269,6 @@
                     loadtag();
                 }
             });
-        });
-
-        $(document).on("click", ".tree label", function(e) {
-            $(this).next("ul").fadeToggle();
-            e.stopPropagation();
-        });
-
-        $(document).on("change", ".tree input[type=checkbox]", function(e) {
-            $(this)
-                .siblings("ul")
-                .find("input[type='checkbox']")
-                .prop("checked", this.checked);
-            $(this)
-                .parentsUntil(".tree")
-                .children("input[type='checkbox']")
-                .prop("checked", this.checked);
-            e.stopPropagation();
-        });
-
-        $(document).on("click", "button", function(e) {
-            switch ($(this).text()) {
-                case "Collepsed":
-                    $(".tree ul").fadeOut();
-                    break;
-                case "Expanded":
-                    $(".tree ul").fadeIn();
-                    break;
-                case "Checked All":
-                    $(".tree input[type='checkbox']").prop("checked", true);
-                    break;
-                case "Unchek All":
-                    $(".tree input[type='checkbox']").prop("checked", false);
-                    break;
-                default:
-            }
         });
         
     });

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="row" style="margin: 0px;">
-                    @foreach ($footerMenu->parentMenuNodes as $footer)
+                    @foreach ($footerMenu as $footer)
                     @if ($footer->has_child)
                     <div class="col-md-2 px-md-1 col-sm-6">
                         <div class="footer-info-single">
@@ -74,7 +74,7 @@
         <div class="container-fluid px-1 text-center">
             <nav class="col-12 mx-auto">
                 <ul class="m-0 p-1">
-                    @foreach ($bottomFooter->parentMenuNodes as $menu)
+                    @foreach ($bottomFooter as $menu)
                     <li class="nav-item">
                         <a class="p-0 nav-link" target="{{$menu->target}}" href="{{$menu->url}}">{{$menu->title}}</a>
                     </li>

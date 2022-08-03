@@ -11,50 +11,10 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::get();
+        
         $media = Media::latest()->paginate(12);
-        foreach ($categories as $key => $value) {
-            $categories[$key]->bread = $this->getBreadcrumb($value->parent_id).$value->cat_name;
-        }
-        $Categorys = Category::where('parent_id', NULL)->get();
-        $tree = '<ul class="tree">';
-        foreach ($Categorys as $Category) {
-            $has = (count($Category->children))? 'has': '';
-            $tree .= '<li class="'.$has.'"><input type="checkbox" name="domain[]" value="' . $Category->id . '"><label>' . $Category->cat_name . ' <span class="total">('.count($Category->children).')</span></label>';
-            if (count($Category->children)) {
-                $tree .= $this->childView($Category);
-            }
-            $tree .= '</li>';
-        }
-        $tree .= '</ul>';
-        return view('backpanel.category.index', compact('categories','tree','media'));
-    }
-
-    public function getBreadcrumb($parent_id,$breadcrumb = '')
-    {
-        $category = Category::find($parent_id);
-        if ($category) {
-            $breadcrumb .= $category->cat_name." / ".$this->getBreadcrumb($category->parent_id,$breadcrumb);
-        }
-        return $breadcrumb;
-    }
-    
-    public function childView($Category)
-    {
-        $html = '<ul>';
-        foreach ($Category->children as $arr) {
-            if (count($arr->children)) {
-                $html .= '<li class="has"><input type="checkbox" name="subdomain[]" value="' . $arr->id . '"><label>' . $arr->cat_name . '<span class="total">('.count($arr->children).')</span></label>';
-                $html .= $this->childView($arr);
-            } else {
-                $html .= '<li class=""><input type="checkbox" name="subdomain[]" value="' . $arr->id . '">
-                <label>' . $arr->cat_name . '</label>';
-                $html .= "</li>";
-            }
-        }
-
-        $html .= "</ul>";
-        return $html;
+        $categories = $this->nestedCategoryPath();
+        return view('backpanel.category.index', compact('categories','media'));
     }
 
     public function store(Request $request)

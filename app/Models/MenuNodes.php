@@ -63,4 +63,9 @@ class MenuNodes extends Model
         
         return (string) route($this->route_name,$this->reference->slug);
     }
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
 }
