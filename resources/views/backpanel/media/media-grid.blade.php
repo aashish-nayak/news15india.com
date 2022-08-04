@@ -1,7 +1,7 @@
 @if(!empty($media) && $media->count())
 @foreach ($media as $item)
-<li class="col-md-2 col-4">
-    <div class="file media-file" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->filename)}}" data-alt="{{$item->alt}}" data-name="{{$item->filename}}">
+<li class="col">
+    <div class="file media-file" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->filename)}}" data-alt="{{$item->alt}}" data-name="{{$item->filename}}" data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
         <input type="checkbox" class="d-none">
         <div class="media-item" title="1">
             <span class="media-item-selected">
@@ -19,8 +19,14 @@
     </div>
 </li>
 @endforeach
-<div class="col-12 mt-4">
-    {!! $media->links() !!}
+<div class="col-12 my-2 text-center">
+    <button class="btn btn-primary btn-sm" 
+        data-current="{{$media->currentPage()}}"
+        data-to="{{$media->lastPage()}}"
+        data-per_page="{{$media->perPage()}}"
+        data-next_page_url="{{$media->nextPageUrl()}}">
+        <i class="bx bx-down-arrow-alt"></i> Load More
+    </button>
 </div>
 @else
 <li class="col">

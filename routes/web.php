@@ -56,7 +56,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
 
     Route::prefix('/media')->name('media.')->group(function(){
-        Route::get('/',[MediaController::class,'index'])->middleware('permission:read-media')->name('index');
+        Route::view('/', 'backpanel.media.media')->middleware('permission:read-media')->name('index');
         Route::post('/upload',[MediaController::class,'create'])->middleware('permission:create-media')->name('create');
         Route::post('/update',[MediaController::class,'update'])->middleware('permission:update-media')->name('update');
         Route::get('/fetch-data',[MediaController::class,'fetch'])->middleware('permission:read-media')->name('fetch');

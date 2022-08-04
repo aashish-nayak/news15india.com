@@ -38,16 +38,12 @@ class MediaController extends Controller
         return redirect()->back();
     }
 
-    public function index()
-    {
-        $media = Media::latest()->paginate(10);
-        return view("backpanel.media.media", compact('media'));
-    }
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
-            $media = Media::latest()->paginate(10);
-            return view('backpanel.media.media-paginate', compact('media'))->render();
+            $media = Media::latest()->paginate(12);
+            $view = ($request->view == 'list') ? 'backpanel.media.media-list' : 'backpanel.media.media-grid';
+            return view($view, compact('media'))->render();
         }
     }
     public function update(Request $request)

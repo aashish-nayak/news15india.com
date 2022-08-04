@@ -1,145 +1,26 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Media')
+@push('plugin-css')
+<link rel="stylesheet" href="{{asset('assets/plugins/fancy-box/jquery.fancybox.min.css')}}" />
+@endpush
+@push('plugin-scripts')
+<script src="{{ asset('assets/plugins/fancy-box/jquery.fancybox.min.js')}}"></script>
+@endpush
 @section('sections')
-    {{-- <div class="row">
-        <div class="col-12 mt-4 text-end">
-            <button class="btn btn-success mr-3 btn-sm" id="bulk-select">Select Multiple</button>
-        </div>
-        <div class="col-12 mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <ul class="nav nav-tabs nav-danger" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-bs-toggle="tab" href="#upload" role="tab" aria-selected="true">
-                                <div class="tab-title">Upload New Files</div>
-                            </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#gallery" role="tab"
-                                aria-selected="false">
-                                <div class="tab-title">Images Library</div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content mt-3 " id="myTabContent">
-                        <div class="tab-pane fade" id="upload" role="tabpanel" aria-labelledby="upload-tab">
-                            @if ($errors->any())
-                                @foreach ($errors->all() as $error)
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>Error!</strong> {{ $error }}
-                                        <button type="button" class="close" data-dismiss="alert"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                @endforeach
-                            @endif
-                            <form action="{{ Route('admin.media.create') }}" method="post" id="upload-form" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" class="" hidden name="file[]" multiple accept="image/*" id="uploader">
-                            </form>
-                            <div class="col-12">
-                                <label class="uploader tab-height row" for="uploader">
-                                    <div class="col-12 align-self-center"><i class="fadeIn animated bx bx-upload" style="font-size: 75px"></i><br>Upload Files</div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade active show" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
-                            <div class="row">
-                                <div class="col-md-8 position-relative">
-                                    <div class="row h-100 pb-5" id="imgs-row">
-                                        @include('backpanel.media.media-paginate')
-                                    </div>
-                                </div>
-                                <div class="col-md-4 border-start py-3">
-                                    <div class="row px-0">
-                                        <div class="col-5">
-                                            <div style="height:100px">
-                                                <img class="img-fluid up-file" id="image"
-                                                    src="https://via.placeholder.com/150" />
-                                            </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div><b class="media-title" id="name">FileName</b></div>
-                                            <div><span class="media-size" id="dimen">Dimesion</span></div>
-                                            <div><span class="media-weight" id="size">Size</span></div>
-                                            <div><span class="media-type" id="type">File Type</span></div>
-                                            <a href="" class="text-danger" id="delete">Delete definitely</a>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="sidebar-body">
-                                        <form action="{{ Route('admin.media.update') }}" method="POST" id="update-form">
-                                            <input type="hidden" id="input-id" name="id">
-                                            @csrf
-                                            <div class="form-group m-0 mb-2">
-                                                <label for="input-name" class="col-form-label">Name</label>
-                                                <input class="form-control form-control-sm" type="text" name="filename"
-                                                    value="" id="input-name">
-                                            </div>
-                                            <div class="form-group m-0 mb-2">
-                                                <label for="input-alt" class="col-form-label">Alt name</label>
-                                                <input class="form-control form-control-sm" name="alt_name" type="text"
-                                                    value="" id="input-alt">
-                                            </div>
-                                            <div class="form-group m-0 mb-2">
-                                                <label class="col-form-label" for="input-path">Path</label>
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control form-control-sm" id="input-path"  name="path" value="" readonly>
-                                                    <a href="javascript:void(0)" class="input-group-prepend" style="cursor: pointer" onclick="copy()" title="Copy to Clipboard">
-                                                        <div class="input-group-text"><i class="fadeIn animated bx bx-clipboard"></i></div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="form-group m-0 mb-2">
-                                                <label class="col-form-label" for="input-path">Image ID</label>
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control form-control-sm" id="input-imgid" value="" readonly>
-                                                    <a href="javascript:void(0)" class="input-group-prepend" style="cursor: pointer" onclick="copyID()" title="Copy to Clipboard">
-                                                        <div class="input-group-text"><i class="fadeIn animated bx bx-clipboard"></i></div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="form-group m-0 mb-2">
-                                                <input type="submit" id="submitchange" disabled class="btn btn-primary btn-sm" value="Save Changes">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="copied-success" class="copied">
-        <span>Copied!</span>
-    </div> --}}
-    {{-- @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error!</strong> {{ $error }}
-                <button type="button" class="close" data-dismiss="alert"
-                    aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endforeach
-    @endif --}}
     {{-- <form action="{{ Route('admin.media.create') }}" method="post" id="upload-form" enctype="multipart/form-data">
         @csrf
         <input type="file" class="" hidden name="file[]" multiple accept="image/*" id="uploader">
     </form> --}}
     <div class="card">
         <div class="card-header py-3">
-            <button for="uploader" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0"><i class="bx bx-save"></i> Upload</button>
-            <button class="btn btn-sm btn-dark d-inline mb-2 mb-md-0"><i class="bx bx-cloud-download"></i> Download</button>
-            <button class="btn btn-sm btn-dark d-inline mb-2 mb-md-0"><i class="bx bx-folder"></i> Create Folder</button>
-            <button class="btn btn-sm btn-dark d-inline mb-2 mb-md-0"><i class="bx bx-refresh"></i> Refresh</button>
+            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0" for="uploader"><i class="bx bx-save"></i> Upload</button>
+            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i> Download</button>
+            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i> Create Folder</button>
+            <button id="refreshMedia" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-refresh"></i> Refresh</button>
             <div class="dropdown d-inline"> 
-                <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bx bx-filter-alt"></i><span id="filter">Filter (<i class="bx bx-recycle"></i>Everything)</span><i class="bx bxs-chevron-down ms-1"></i></a>
+                <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bx bx-filter-alt"></i><span id="filter">Filter (<i class="bx bx-recycle"></i>Everything)</span><i class="bx bxs-chevron-down ms-1"></i>
+                </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-recycle"></i> Everything</a>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-image-alt"></i> Image</a>
@@ -148,7 +29,7 @@
                 </div>
             </div>
             <div class="dropdown d-inline"> 
-                <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
+                <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bx bx-show"></i><span id="view">View in (<i class="bx bx-globe"></i>All Media)</span><i class="bx bxs-chevron-down ms-1"></i></a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-globe"></i> All Media</a>
@@ -157,96 +38,173 @@
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-star"></i> Favorites</a>
                 </div>
             </div>
-            {{-- <div class="float-end d-inline">
-                <div class="input-group input-group-sm">
-                    <input type="search" class="form-control form-control-sm" placeholder="Search in Current Folder">
-                    <span class="input-group-text bg-transparent"><i class="bx bx-search"></i></span>
-                </div>
-            </div> --}}
         </div>
         <div class="bottom-header media-actions px-4 py-3 border-top border-bottom">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                    <ul class="breadcrumb m-0">
-                        <li>
-                            <a href="javascript:void(0)" data-folder="0" class="js-change-folder"><i class="fa fa-user-secret"></i> All media</a>
-                        </li>
-                    </ul>
+                    <nav style="--bs-breadcrumb-divider: '/';font-size:12px" aria-label="breadcrumb">
+                        <ul class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        </ul>
+                    </nav>
                 </div>
                 <div class="col-md-4 text-end">
-                    <a href="#MediaSidebar" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="MediaSidebar" class="text-primary fs-5"><i class="bx bx-exit"></i></a>
+                    <div class="dropdown d-inline me-md-2"> 
+                        <a href="#" class="btn btn-outline-secondary btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort <i class="bx bx-sort"></i>
+                        </a>
+                        <div class="dropdown-menu mb-2 mb-md-0" style="font-size: 13px">
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-a-z"></i> File name - ASC</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-z-a"></i> File name - DESC</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-up"></i> Uploaded date - ASC</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-down"></i> Uploaded date - DESC</a>
+                        </div>
+                    </div>
+                    <div class="dropdown d-inline me-md-2"> 
+                        <a href="#" class="btn btn-outline-secondary btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions <i class="bx bx-dots-vertical-rounded"></i>
+                        </a>
+                        <div class="dropdown-menu mb-2 mb-md-0" style="font-size: 13px">
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-show"></i> Preview</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-link"></i> Copy link</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-rename"></i> Rename</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-copy"></i> Make a copy</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-star"></i> Add to favorite</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-download"></i> Download</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-trash"></i> Move to trash</a>
+                        </div>
+                    </div>
+                    <div class="btn-group me-md-3" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary file-view" data-view="grid" style="border-radius: 0%"><span class="fw-bold lni lni-grid"></span></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary file-view" data-view="list" style="border-radius: 0%"><span class="fw-bold lni lni-list"></span></button>
+                    </div>
+                    <a class="text-primary accod-btn" type="button" data-bs-toggle="collapse" data-bs-target="#MediaSidebar" aria-expanded="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out text-primary"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="row align-items-center">
-                <div class="col">
-                    <ul class="row g-2 list-unstyled m-0" id="Media">
-                        @include('backpanel.media.media-paginate')
+        <div class="media-main" id="MediaWrapper">
+            <div class="media-items">
+                <div class="media-grid">
+                    <ul class="row row-cols-6 row-cols-2 g-2 list-unstyled m-0" id="MediaList">
+                        {{-- @include('backpanel.media.media-grid') --}}
+                        {{-- @include('backpanel.media.media-list') --}}
                     </ul>
                 </div>
-                <div class="media-sidebar collapse show" id="MediaSidebar">
-                    <div class="file-details">
-                        <div class="sidebar-image">
-                            <img id="SideBarImage" src="https://via.placeholder.com/150" />
+            </div>
+            <div class="media-sidebar collapse show" id="MediaSidebar">
+                <div class="file-details">
+                    <div class="sidebar-image">
+                        <img id="SideBarImage" src="{{asset('assets/images/placeholder-image.jpg')}}" data-placeholder-image="{{asset('assets/images/placeholder-image.jpg')}}"/>
+                    </div>
+                    <hr>
+                    <div class="sidebar-description">
+                        <div class="mb-1"><b>FileName </b><br><span class="media-title" id="SideBarName">File</span></div>
+                        <div class="mb-1"><b>Alt : </b><span class="media-size" id="SideBarAlt">Alt Name</span></div>
+                        <div class="mb-1"><b>Dimesion : </b><span class="media-size" id="SideBarDimension">Dimesion</span></div>
+                        <div class="mb-1"><b>Size : </b><span class="media-weight" id="SideBarSize">Size</span></div>
+                        <div class="mb-1"><b>File Type : </b><span class="media-type" id="SideBarType">File Type</span></div>
+                        <div class="mb-1"><b>Created at : </b><span class="media-type" id="SideBarCreated">00 00 0000</span></div>
+                        <div class="mb-1"><b>Updated at : </b><span class="media-type" id="SideBarUpdated">00 00 0000</span></div>
+                    </div>
+                    <div class="form-group m-0 mb-1">
+                        <label class="col-form-label fw-bold" for="input-path">FullPath</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="input-path"  name="path" value="" readonly>
+                            <a href="javascript:void(0)" class="input-group-prepend" style="cursor: pointer" onclick="copy()" title="Copy to Clipboard">
+                                <div class="input-group-text"><i class="fadeIn animated bx bx-clipboard"></i></div>
+                            </a>
                         </div>
-                        <div class="sidebar-description">
-                            <div><b>File ID : </b><span class="media-title" id="SideBarName">File ID</span></div>
-                            <div><b>Dimesion : </b><span class="media-size" id="SideBarDimension">Dimesion</span></div>
-                            <div><b>Size : </b><span class="media-weight" id="SideBarSize">Size</span></div>
-                            <div><b>File Type : </b><span class="media-type" id="SideBarType">File Type</span></div>
-                            <div><a href="javascript:void(0)" class="text-danger" id="SideBarDelete">Delete definitely</a></div>
-                        </div>
-                        <hr>
-                        <form action="{{ Route('admin.media.update') }}" method="POST" id="update-form">
-                            <input type="hidden" id="input-id" name="id">
-                            @csrf
-                            <div class="form-group m-0 mb-2">
-                                <label for="input-name" class="col-form-label fw-bold">FileName</label>
-                                <input class="form-control form-control-sm" type="text" name="filename" value="" id="input-name">
-                            </div>
-                            <div class="form-group m-0 mb-2">
-                                <label for="input-alt" class="col-form-label fw-bold">Alt name</label>
-                                <input class="form-control form-control-sm" name="alt_name" type="text" value="" id="input-alt">
-                            </div>
-                            <div class="form-group m-0 mb-2">
-                                <label class="col-form-label fw-bold" for="input-path">FullPath</label>
-                                <div class="input-group mb-2">
-                                    <input type="text" class="form-control form-control-sm" id="input-path"  name="path" value="" readonly>
-                                    <a href="javascript:void(0)" class="input-group-prepend" style="cursor: pointer" onclick="copy()" title="Copy to Clipboard">
-                                        <div class="input-group-text"><i class="fadeIn animated bx bx-clipboard"></i></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="form-group m-0 mb-2">
-                                <input type="submit" id="submitchange" disabled class="btn btn-primary btn-sm" value="Save Changes">
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{-- <div id="copied-success" class="copied">
+        <span>Copied!</span>
+    </div> --}}
 @endsection
 @push('scripts')
+<script type="text/x-custom-template" id="loader">
+    <div class="loading-wrapper">
+        <div class="showbox">
+            <div class="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</script>
 <script>
-    function copy() {
-        var copyText = document.getElementById("input-path");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-        $('#copied-success').fadeIn(800);
-        $('#copied-success').fadeOut(800);
-    }
-    function copyID() {
-        var copyText = document.getElementById("input-imgid");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-        $('#copied-success').fadeIn(800);
-        $('#copied-success').fadeOut(800);
-    }
     $(document).ready(function() {
+        function copy() {
+            var copyText = document.getElementById("input-path");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            $('#copied-success').fadeIn(800);
+            $('#copied-success').fadeOut(800);
+        }
+        function sidebarState(that = '') {
+            let image = (that != '') ? $(that).data('path') : $("#SideBarImage").data('placeholder-image');
+            let name = (that != '') ? $(that).data('name') : 'File';
+            let dimen = (that != '') ? $(that).data('dimen') : 'Alt Name';
+            let size = (that != '') ? $(that).data('size') : '100x100';
+            let type = (that != '') ? $(that).data('type') : 'File Type';
+            let createdat = (that != '') ? $(that).data('createdat') : '00 00 0000';
+            let updatedat = (that != '') ? $(that).data('updatedat') : '00 00 0000';
+            let alt = (that != '') ? $(that).data('alt') : '';
+            let path = (that != '') ? $(that).data('path') : '';
+            $("#SideBarImage").attr("src",image);
+            $("#SideBarName").html(name);
+            $("#SideBarDimension").html(dimen);
+            $("#SideBarSize").html(size);
+            $("#SideBarType").html(type);
+            $("#SideBarCreated").html(createdat);
+            $("#SideBarUpdated").html(updatedat);
+            $("#SideBarAlt").html(alt);
+            $("#input-path").val(path);
+        }
+        function fetch_data(page = '') {
+            if(localStorage.getItem('view') == null){
+                localStorage.setItem('view', 'grid');
+            }
+            page = (page != '') ? "&page=" + page : '';
+            let view = localStorage.getItem('view');
+            $(".file-view[data-view='"+view+"']").addClass('active');
+            $.ajax({
+                url: "{{ route('admin.media.fetch') }}/?view="+view + page,
+                beforeSend: function() {
+                    $('.media-main').addClass('on-loading bb-loading');
+                    $('.media-main').append($('#loader').html());
+                },
+                success: function(data) {
+                    $('.media-main').removeClass('on-loading bb-loading');
+                    $(document).find('.media-main .loading-wrapper').remove();
+                    sidebarState();
+                    $('#MediaList').html(data);
+                    $("#MediaList").find(".file").each(function () {
+                        if(bulkId.includes($(this).data('id')) == true){
+                            $(this).addClass("file-selected");
+                        }
+                    });
+                }
+            });
+        }
+        fetch_data();
+        $(".file-view").on('click',function () {
+            localStorage.setItem('view',$(this).data('view'));
+            $(".file-view").removeClass('active');
+            $(this).addClass('active');
+            fetch_data();
+        });
+        $("#refreshMedia").on('click',function () {
+            fetch_data();
+        });
         $("#delete").on("click",function (e) {
             var url = $(this).attr("href");
             e.preventDefault();
@@ -268,19 +226,6 @@
             $("#upload-form").submit();
             $("#uploader").prop("disabled",true);
         });
-        function fetch_data(page) {
-            $.ajax({
-                url: "{{ route('admin.media.fetch') }}" + "?page=" + page,
-                success: function(data) {
-                    $('#Media').html(data);
-                    $("#Media").find(".file").each(function () {
-                        if(bulkId.includes($(this).data('id')) == true){
-                            $(this).addClass("file-selected");
-                        }
-                    });
-                }
-            });
-        }
         var bulk = false;
         var bulkId = [];
         $(document).on('click', '.pagination a', function(e) {
@@ -354,22 +299,10 @@
                 $(this).toggleClass("file-selected");
             }
             $("#bulk-delete").text(bulkId.length + ' Bulk Delete');
-            $("#SideBarImage").attr("src", $(this).data('path'));
-            let id = $(this).data('id');
-            // if (name.length > 50) name = name.substring(0, 50);
-            $("#SideBarName").html(id);
-            $("#SideBarDimension").html($(this).data('dimen'));
-            $("#SideBarSize").html($(this).data('size'));
-            $("#SideBarType").html($(this).data('type'));
-            let delurl = "{{ Route('admin.media.delete', ':id') }}";
-            delurl = delurl.replace(':id', $(this).data('id'));
-            $("#SideBarDelete").attr('href', delurl);
-            // form 
-            $("#input-id").val($(this).data('id'));
-            $("#input-name").val($(this).data('name'));
-            $("#input-alt").val($(this).data('alt'));
-            $("#input-path").val($(this).data('path'));
-            $("#input-imgid").val($(this).data('id'));
+            sidebarState(this);
+            // let delurl = "{{ Route('admin.media.delete', ':id') }}";
+            // delurl = delurl.replace(':id', $(this).data('id'));
+            // $("#SideBarDelete").attr('href', delurl);
         });
 
         $("#update-form").on("submit", function(e) {

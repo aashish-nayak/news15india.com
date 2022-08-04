@@ -6,15 +6,15 @@
         {{-- sidebar --}}
         @includeIf('layouts.backpanel.partials.sidebar')
         <div class="page-wrapper">
-            <div class="page-content">
+            <div class="page-content p-2">
                 @yield('sections')
             </div>
+            <div class="overlay toggle-icon"></div>
+            <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+            <footer class="page-footer">
+                <p class="mb-0">Copyright © 2022. All right reserved.</p>
+            </footer>
         </div>
-        <div class="overlay toggle-icon"></div>
-        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-        <footer class="page-footer">
-            <p class="mb-0">Copyright © 2022. All right reserved.</p>
-        </footer>
     </div>
     <div class="switcher-wrapper">
         <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
