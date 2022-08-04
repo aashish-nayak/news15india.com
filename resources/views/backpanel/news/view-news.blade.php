@@ -49,7 +49,7 @@
             stateSave : true,
             scrollX : true,
             columnDefs: [
-                { responsivePriority: 1, targets: 0 },
+                { 'targets': 0, 'bSortable': false,},
                 { responsivePriority: 1, targets: 2 },
                 { responsivePriority: 2, targets: 1 },
                 { responsivePriority: 3, targets: 4 },

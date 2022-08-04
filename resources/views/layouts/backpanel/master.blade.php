@@ -16,7 +16,7 @@
             <p class="mb-0">Copyright © 2022. All right reserved.</p>
         </footer>
     </div>
-    <div class="switcher-wrapper">
+    {{-- <div class="switcher-wrapper">
         <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
         </div>
         <div class="switcher-body">
@@ -109,7 +109,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 {{-- scripts --}}
 @includeIf('layouts.backpanel.partials.scripts')
 @if (Session::has('success'))
