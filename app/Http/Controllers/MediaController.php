@@ -40,13 +40,13 @@ class MediaController extends Controller
 
     public function index()
     {
-        $media = Media::latest()->paginate(12);
+        $media = Media::latest()->paginate(10);
         return view("backpanel.media.media", compact('media'));
     }
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
-            $media = Media::latest()->paginate(12);
+            $media = Media::latest()->paginate(10);
             return view('backpanel.media.media-paginate', compact('media'))->render();
         }
     }

@@ -4,63 +4,106 @@ body{
     font-family: 'Noto Sans', sans-serif;
     /* font-family: 'Mukta', sans-serif; */
 }
+:root {
+    --primary: #990000;
+    -webkit-font-smoothing: antialiased;
+}
+
 .tab-height {
     height: 300px;
 }
 .tox .tox-notification {
     display: none !important;
 }
-.uploader {
-    background: #fff;
-    border: 3px dashed #e8e8e8;
-    color: #aaa;
+
+
+/* --------------- Media Module Style --------------  */
+#Media .media-file{
+    border : 2px solid transparent;
     cursor: pointer;
-    font-size: 22px;
-    padding: 40px 0 26px;
+}
+
+#Media .media-file .media-item{
     position: relative;
-    text-align: center;
-    margin: 0px 5px;
 }
 
-.file {
-    height: 130px;
-    cursor: pointer;
-    border: 3px solid transparent;
-    transition: 0.2s all ease-in-out;
-}
-#media-box .file {
-    height: 100px;
-}
-.copied {
-    font-family: "Montserrat", sans-serif;
-    width: 75px;
+#Media .media-file .media-item .media-item-selected{
+    position: absolute;
+    top: 5px;
+    right: 5px;
     display: none;
-    position: fixed;
-    top: 50%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    color: #000;
-    padding: 15px 15px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 3px 15px #b8c6db;
-    -moz-box-shadow: 0 3px 15px #b8c6db;
-    -webkit-box-shadow: 0 3px 15px #b8c6db;
+}
+#Media .media-file .media-item .media-item-selected svg{
+    width: 30px;
+    background: var(--primary);
+    padding: 5px;
+    border-radius: 25px;
+    fill: #fafbfc;
 }
 
-.file-selected,
-.file:hover {
-    border: 3px solid #1c68be;
-    border-radius: 5px;
+#Media .media-file .media-thumbnail{
+    height: 90px;
+    width: 100%;
 }
-
-.up-file {
+#Media .media-file .media-thumbnail img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+#Media .media-file .media-description{
+    padding: 5px 10px;
+    text-align: center;
+    background-color: #dbdbdb;
+}
+#Media .media-file .media-description p{
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+#Media .media-file.file-selected .media-item-selected{
+    display: block;
+}
+#Media .media-file.file-selected{
+    border : 2px solid var(--primary);
+}
+#Media .media-file.file-selected .media-description{
+    background-color: var(--primary);
+    color: #ffffff;
+}
+.media-sidebar{
+    border-left: 1px solid #c2c2c279;
+    max-height: 350px;
+    overflow : hidden;
+    overflow-y: auto;
+    width:25%;
+    transition: all .3s ease-in-out;
+}
 
+#MediaSidebar.collapsing {
+    width: 0;
+    height: auto;
+    transition: width 0.35s ease;
+}
+.media-sidebar .file-details .sidebar-image{
+    width: 100%;
+    height: 200px;
+    border: 1px solid var(--primary);
+}
+.media-sidebar .file-details .sidebar-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+.media-sidebar .file-details .sidebar-description{
+    padding-top: 15px;
+}
+@media screen and (max-width:750px) {
+    .media-sidebar-width{
+        width:100%;
+    }
+}
+/* --------------- Seo Widget News Module -------------  */
 #seo_wrap .seo-preview * {
     word-break: break-all;
 }
@@ -115,7 +158,8 @@ body{
     width: 30px;
 }
 
-/* Tags style  */
+
+/* ------------------- Tags style for all ------------ */
 .bootstrap-tagsinput .badge {
     margin: 2px 4px;
     padding: 5px 8px;
@@ -131,7 +175,8 @@ body{
     cursor: pointer;
 }
 
-/* Media Box Style  */
+
+/* --------------- Media Box Style Model ----------- */
 .img-box {
     background: #fff;
     border: 3px dashed #e8e8e8;
@@ -154,7 +199,7 @@ body{
     font-size: 10px;
 }
 
-/* News Module Style  */
+/* ------------------- News Module Style ------------------ */
 #news .bg-secondary {
     font-size: 10px;
 }
@@ -174,7 +219,7 @@ body{
     font-size: 1rem;
 }
 
-/* Category Accordion  */
+/* ------------------- Category Accordion Style for all ------------ */
 .accordion-button,
 .accordion-button:focus {
     outline: none;
@@ -195,8 +240,9 @@ body{
     overflow-y: auto;
 }
 
-/* Category Tree Style For Category Blade */
 
+
+/* ---------------- Category Tree Style For Category Blade -------------- */
 .controls {
     background: #fff;
     padding: 6px 10px;
