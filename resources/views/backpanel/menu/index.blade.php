@@ -160,7 +160,7 @@
                         <h6>Menu Structure</h6>
                     </div>
                     <div class="dd nestable-menu card-body" id="nestable" data-depth="0">
-                        @includeIf('backpanel.menu.menu-structure', ['menu' => $nodes])
+                        @includeIf('backpanel.includes.menu-structure', ['menu' => $nodes])
                     </div>
                     <div class="card-footer text-end">
                         <button type="button" class="btn btn-primary form-save-menu">Save</button>

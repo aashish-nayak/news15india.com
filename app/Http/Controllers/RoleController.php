@@ -30,9 +30,9 @@ class RoleController extends Controller
         }else{
             $role = new Role();
             $request->session()->flash('success', 'Role Saved successfully!');
+            $role->slug = $request->name;
         }
         $role->name = $request->name;
-        $role->slug = $request->name;
         $role->save();
         $role->permissions()->sync($request->permissions);
         return redirect()->route('admin.role.show');
