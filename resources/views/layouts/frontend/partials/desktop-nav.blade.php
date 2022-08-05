@@ -79,10 +79,10 @@
                             @if ($megaNode->has_child)
                             <div class="mega-menu mx-auto">
                                 <div class="col-12 py-4">
-                                    <div class="row justify-content-center align-items-center">
+                                    <div class="flexrow row-7-el justify-content-start align-items-start">
                                         @foreach ($megaNode->child as $subMegaNode)
-                                        <div class="col-md-2">
-                                            <ul class="ul-reset">
+                                        <div class="element">
+                                            <ul class="ul-reset p-3 w-100">
                                                 <a href="{{$subMegaNode->url}}" target="{{$subMegaNode->target}}"><h3>{{$subMegaNode->title}}</h3></a>
                                                 @if ($subMegaNode->has_child)
                                                 @foreach ($subMegaNode->child as $subMega2)

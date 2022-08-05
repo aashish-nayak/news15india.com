@@ -20,43 +20,43 @@ class AdminSeeder extends Seeder
     {
         $admins = [
             [
-                'name' => 'Super Admin',
-                'email' => 'super@gmail.com',
-                'password' => bcrypt('SuperPassword'),
+                'name' => 'News15India',
+                'email' => 'info@news15india.com',
+                'password' => bcrypt('SuperAdmin@News15India'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name' => 'Admin',
-                'email' => 'admin@gmail.com',
-                'password' => bcrypt('password'),
+                'name' => 'Abdul Malik',
+                'email' => 'abdulmalik@news15india.com',
+                'password' => bcrypt('Password@News15India'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
                 'name' => 'Reporter',
                 'email' => 'reporter@gmail.com',
-                'password' => bcrypt('password'),
+                'password' => bcrypt('Password@News15India'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
                 'name' => 'Editor',
                 'email' => 'editor@gmail.com',
-                'password' => bcrypt('password'),
+                'password' => bcrypt('Password@News15India'),
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
         ];
         $roles = [
             [
-                'name' => 'Super Admin',
+                'name' => 'Super Administrator',
                 'slug' => 'super-admin',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ],
             [
-                'name' => 'Admin',
+                'name' => 'Administrator',
                 'slug' => 'admin',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
