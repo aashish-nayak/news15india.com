@@ -11,7 +11,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Str;
 class NewsController extends Controller
 {
     public function fetch_media(Request $request)
@@ -89,7 +89,7 @@ class NewsController extends Controller
         foreach ($records as $key => $record) {
             $sno = $key + 1;
             $id = $record->id;
-            $cat_name = $record->title;
+            $title = Str::limit($record->title, 50);
             $slug = $record->slug;
             $categories = implode(",", $record->categories->pluck('slug')->toArray());
             $banner = ($record->image != NULL) ? $record->newsImage->filename : 'No Image';
@@ -100,7 +100,7 @@ class NewsController extends Controller
             $data_arr[] = array(
                 "sno" => $sno,
                 "id" => $id,
-                "title" => $cat_name,
+                "title" => $title,
                 "slug" => $slug,
                 "categories" => $categories,
                 "banner" => $banner,

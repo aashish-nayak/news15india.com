@@ -48,23 +48,20 @@
             responsive: true,
             stateSave : true,
             scrollX : true,
-            columnDefs: [
-                { responsivePriority: 1, targets: 0 },
-                { responsivePriority: 1, targets: 2 },
-                { responsivePriority: 2, targets: 1 },
-                { responsivePriority: 3, targets: 4 },
-                { responsivePriority: 4, targets: 6 },
-                { width: "2%", targets: 1},
-                { width: "15%", targets: 2},
-                { width: "40%", targets: 3},
-                { width: "10%", targets: 4},
-                { width: "15%", targets: 8},
-                { width: "10%", targets: 9},
+            "columnDefs": [
+                { "width": "5px", "targets": 0 },
+                { "responsivePriority" : 1, "width": "2%", "targets": 1 },
+                { "responsivePriority" : 2, "width": "15%", "targets": 2 },
+                { "responsivePriority" : 3, "width": "50%", "targets": 3 },
+                { "responsivePriority" : 3, "width": "10%", "targets": 4 },
+                { "responsivePriority" : 4, "width": "10%", "targets": 9 },
             ],
+            "order": [[1, 'asc']],
+            deferRender: true,
             ajax: "{{ route('admin.news.ajax-list') }}",
             columns: [
                 {
-                    data: null,
+                    data: 'id',
                     render: function(data, type, row) {
                         return '<input type="checkbox" value="' + row.id + '"/>';
                     }
@@ -101,9 +98,9 @@
                     data: 'status',
                     render: function(data, type, row) {
                         if (data == 1) {
-                            return '<div class="badge rounded-pill text-success bg-light-success cursor-pointer py-2 text-uppercase px-3 status" data-id="'+row.id+'" title="Change Status"><i class="bx bxs-circle align-middle me-1"></i>Active</div>';
+                            return '<div class="badge rounded-pill text-success bg-light-success cursor-pointer text-uppercase status" data-id="'+row.id+'" title="Change Status"><i class="bx bxs-circle align-middle me-1"></i>Active</div>';
                         } else {
-                            return '<div class="badge rounded-pill text-danger bg-light-danger cursor-pointer py-2 text-uppercase px-3 status" data-id="'+row.id+'" title="Change Status"><i class="bx bxs-circle align-middle me-1"></i>Inactive</div>';
+                            return '<div class="badge rounded-pill text-danger bg-light-danger cursor-pointer text-uppercase status" data-id="'+row.id+'" title="Change Status"><i class="bx bxs-circle align-middle me-1"></i>Inactive</div>';
                         }
                     }
                 },
