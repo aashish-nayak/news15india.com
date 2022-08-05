@@ -12,14 +12,14 @@
         <input type="file" class="" hidden name="file[]" multiple id="uploader">
     </form>
     <div class="card">
-        <div class="card-header py-3">
-            <button id="uploadBtn" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-save"></i> Upload</button>
-            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i> Download</button>
-            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i> Create Folder</button>
-            <button id="refreshMedia" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-refresh"></i> Refresh</button>
+        <div class="card-header py-2">
+            <button id="uploadBtn" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-save"></i>Upload</button>
+            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i>Download</button>
+            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i>Create Folder</button>
+            <button id="refreshMedia" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-refresh"></i>Refresh</button>
             <div class="dropdown d-inline"> 
                 <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bx bx-filter-alt"></i><span id="filter">Filter (<i class="bx bx-recycle"></i>Everything)</span><i class="bx bxs-chevron-down ms-1"></i>
+                    <i class="bx bx-filter-alt"></i><span id="filter">Filter(<i class="bx bx-recycle"></i>Everything)</span><i class="bx bxs-chevron-down ms-1"></i>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-recycle"></i> Everything</a>
@@ -30,7 +30,7 @@
             </div>
             <div class="dropdown d-inline"> 
                 <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bx bx-show"></i><span id="view">View in (<i class="bx bx-globe"></i>All Media)</span><i class="bx bxs-chevron-down ms-1"></i></a>
+                    <i class="bx bx-show"></i><span id="view">View in(<i class="bx bx-globe"></i>All Media)</span><i class="bx bxs-chevron-down ms-1"></i></a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-globe"></i> All Media</a>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-trash"></i> Trash</a>
@@ -38,6 +38,14 @@
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-star"></i> Favorites</a>
                 </div>
             </div>
+            {{-- <div class="d-inline">
+                <div class="input-group input-group-sm"> 
+                    <input type="text" class="form-control" placeholder="People, groups, &amp; messages">
+                    <span class="input-group-text bg-transparent">
+                        <i class="bx bx-search"></i>
+                    </span>
+                </div>
+            </div> --}}
         </div>
         <div class="bottom-header media-actions px-4 py-3 border-top border-bottom">
             <div class="row align-items-center">
@@ -48,6 +56,9 @@
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Data</li>
                         </ul>
+                        <div class="items-loaded mt-1">
+                            <p class="m-0"><span id="loadedItems" class="fw-bold"></span> Items Loaded out of <span id="totalItems" class="fw-bold"></span></p>
+                        </div>
                     </nav>
                 </div>
                 <div class="col-md-4 text-end">
@@ -63,8 +74,8 @@
                         </div>
                     </div>
                     <div class="dropdown d-inline me-md-2"> 
-                        <a href="#" class="btn btn-outline-secondary btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
-                            Actions <i class="bx bx-dots-vertical-rounded"></i>
+                        <a type="button" class="btn btn-outline-secondary btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedFiles" class="fw-bold"></span> Actions<i class="bx bx-dots-vertical-rounded"></i>
                         </a>
                         <div class="dropdown-menu mb-2 mb-md-0" style="font-size: 13px">
                             <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-show"></i> Preview</a>
@@ -148,10 +159,7 @@
         $('#copied-success').fadeIn(800);
         $('#copied-success').fadeOut(800);
     }
-    $(document).ready(function() {
-        var bulk = false;
-        var bulkId = [];
-            
+    $(document).ready(function() {            
         function sidebarState(that = '') {
             let name = (that != '') ? $(that).data('name') : 'File';
             let dimen = (that != '') ? $(that).data('dimen') : 'Alt Name';
@@ -183,7 +191,7 @@
             $("#SideBarAlt").html(alt);
             $("#input-path").val(path);
         }
-        function fetch_data(page = '') {
+        function fetch_data(page = '',...other) {
             if(localStorage.getItem('view') == null){
                 localStorage.setItem('view', 'grid');
             }
@@ -200,15 +208,22 @@
                     $('.media-main').removeClass('on-loading bb-loading');
                     $(document).find('.media-main .loading-wrapper').remove();
                     sidebarState();
-                    $('#MediaList').html(data);
+                    if(other.includes('loadmore')){
+                        $('#MediaList').append(data);
+                    }else{
+                        $('#MediaList').html(data);
+                    }
+                    let loaded = $('#MediaList').find('.media-file').length;
+                    $("#loadedItems").text(loaded);
+                    $("#totalItems").text($(document).find("#loadMoreBtn").data('total'));
                     let gap = (localStorage.getItem('view') == 'grid') ? 'g-2' : '';
                     $('#MediaList').removeClass('g-2');
                     $('#MediaList').addClass(gap);
-                    $("#MediaList").find(".file").each(function () {
-                        if(bulkId.includes($(this).data('id')) == true){
-                            $(this).addClass("file-selected");
-                        }
-                    });
+                    // $("#MediaList").find(".file").each(function () {
+                    //     if(bulkId.includes($(this).data('id')) == true){
+                    //         $(this).addClass("file-selected");
+                    //     }
+                    // });
                 }
             });
         }
@@ -236,23 +251,31 @@
                 ]
             });
         });
-        $(document).on('click', ".file", function() {
-            $("#submitchange").prop("disabled",false);
-            if(bulk === true){
+        $(document).on('click', ".file", function(e) {
+            if(window.event.ctrlKey){
+                // console.log('ctrlKeyPressing');
                 $(this).toggleClass("file-selected");
-                var selected = $(document).find(".file-selected");
-                $(this).hasClass("file-selected") ? bulkId.push($(this).data('id')) : bulkId.splice(bulkId.indexOf($(this).data('id')),1);
+                $(this).find('.checkbox').prop('checked',$(this).hasClass("file-selected"));
             }else{
+                // console.log('NoctrlKeyPressing');
                 $(document).find(".file input[type='checkbox']:checked").prop('checked',false);
                 $(document).find(".file input[value="+$(this).data('id')+"]").prop('checked',true);
                 $(document).find(".file").removeClass("file-selected");
-                $(this).toggleClass("file-selected");
+                $(this).addClass("file-selected");
             }
-            $("#bulk-delete").text(bulkId.length + ' Bulk Delete');
             sidebarState(this);
+            let selected = $(document).find(".checkbox:checked").length;
+            $("#selectedFiles").text((selected > 1) ? selected : '');
+            console.log($(document).find(".checkbox:checked").length);
+            // $("#bulk-delete").text(bulkId.length + ' Bulk Delete');
             // let delurl = "{{ Route('admin.media.delete', ':id') }}";
             // delurl = delurl.replace(':id', $(this).data('id'));
             // $("#SideBarDelete").attr('href', delurl);
+        });
+        $('#MediaList:not(.file, .file-selected)').click(function() {
+            // $(document).find(".file input[type='checkbox']:checked").prop('checked',false);
+            // $(document).find(".file").removeClass("file-selected");
+            sidebarState();
         });
         $("#uploader").change(function() {
             $("#upload-form").trigger('submit');
@@ -289,6 +312,12 @@
                     })
                 }
             });
+        });
+        $(document).on('click',"#loadMoreBtn",function () {
+            let page = $(this).data('current');
+            page++;
+            fetch_data(page,'loadmore');
+            $(this).closest('.loadmore-wrapper').remove();
         });
         $("#delete").on("click",function (e) {
             var url = $(this).attr("href");
@@ -367,7 +396,6 @@
                 }
             })
         });
-
         $("#update-form").on("submit", function(e) {
             e.preventDefault();
             $("#submitchange").prop("disabled",true);

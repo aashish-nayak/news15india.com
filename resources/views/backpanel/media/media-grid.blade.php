@@ -1,13 +1,10 @@
 @if(!empty($media) && $media->count())
 @foreach ($media as $item)
 <li class="col">
-    <div class="file media-file" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->filename)}}" data-alt="{{$item->alt}}" data-name="{{$item->filename}}" data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
-        <input type="checkbox" class="checkbox d-none" value="{{$item->id}}">
+    <div class="file media-file grid" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->filename)}}" data-alt="{{$item->alt}}" data-name="{{$item->filename}}" data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
         <div class="media-item">
             <span class="media-item-selected">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M186.301 339.893L96 249.461l-32 30.507L186.301 402 448 140.506 416 110z"></path>
-                </svg>
+                <input type="checkbox" class="form-check-input checkbox" value="{{$item->id}}">
             </span>
             <div class="media-thumbnail d-flex align-items-center justify-content-center">
                 @if(strpos($item->type, 'image/') !== false)
@@ -27,9 +24,12 @@
     </div>
 </li>
 @endforeach
-<div class="col-12 my-2 text-center">
-    <button class="btn btn-primary btn-sm" 
+
+@if($media->lastPage() != $media->currentPage())
+<div class="col-12 my-2 text-center loadmore-wrapper">
+    <button id="loadMoreBtn" class="btn btn-primary btn-sm"
         data-current="{{$media->currentPage()}}"
+        data-total="{{$media->total()}}"
         data-to="{{$media->lastPage()}}"
         data-per_page="{{$media->perPage()}}"
         data-next_page_url="{{$media->nextPageUrl()}}">
@@ -37,9 +37,11 @@
     </button>
 </div>
 @else
-<li class="col">
+<li class="col-12 py-2">
     <div class="d-flex justify-content-center align-items-center">
-        <p>No Images</p>
+        <h6>No More Files</h6>
     </div>
 </li>
+@endif
+
 @endif

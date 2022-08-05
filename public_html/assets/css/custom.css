@@ -61,9 +61,6 @@ body{
     transition: all .3s ease-in-out;
     width: 250px;
 }
-.media-items .media-grid {
-    padding: 10px 10px 0;
-}
 
 .media-sidebar, .media-items {
     align-items: stretch;
@@ -75,6 +72,9 @@ body{
 #MediaList .media-file{
     border : 2px solid transparent;
     cursor: pointer;
+}
+#MediaList .media-file.grid{
+    border-color : #bbbbbb73;
 }
 
 #MediaList .media-file .media-item{
