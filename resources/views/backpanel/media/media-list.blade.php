@@ -4,8 +4,7 @@
     <div class="file media-file row py-1 align-items-center" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->filename)}}" data-alt="{{$item->alt}}" data-name="{{$item->filename}}" data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
         <div class="col-1">
             <label class="">
-                <input type="checkbox" class="form-check-input">
-                <span></span>
+                <input type="checkbox" class="form-check-input checkbox" value="{{$item->id}}">
             </label>
         </div>
         <div class="col-7" style="font-size: 14px">

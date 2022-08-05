@@ -7,13 +7,13 @@
 <script src="{{ asset('assets/plugins/fancy-box/jquery.fancybox.min.js')}}"></script>
 @endpush
 @section('sections')
-    {{-- <form action="{{ Route('admin.media.create') }}" method="post" id="upload-form" enctype="multipart/form-data">
+    <form action="{{ Route('admin.media.create') }}" method="post" id="upload-form" enctype="multipart/form-data">
         @csrf
         <input type="file" class="" hidden name="file[]" multiple accept="image/*" id="uploader">
-    </form> --}}
+    </form>
     <div class="card">
         <div class="card-header py-3">
-            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0" for="uploader"><i class="bx bx-save"></i> Upload</button>
+            <label id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0" for="uploader"><i class="bx bx-save"></i> Upload</label>
             <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i> Download</button>
             <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i> Create Folder</button>
             <button id="refreshMedia" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-refresh"></i> Refresh</button>
@@ -89,7 +89,7 @@
         <div class="media-main" id="MediaWrapper">
             <div class="media-items">
                 <div class="media-grid">
-                    <ul class="row row-cols-6 row-cols-2 g-2 list-unstyled m-0" id="MediaList">
+                    <ul class="row row-cols-6 row-cols-2 list-unstyled m-0" id="MediaList">
                         {{-- @include('backpanel.media.media-grid') --}}
                         {{-- @include('backpanel.media.media-list') --}}
                     </ul>
@@ -114,7 +114,7 @@
                         <label class="col-form-label fw-bold" for="input-path">FullPath</label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="input-path"  name="path" value="" readonly>
-                            <a href="javascript:void(0)" class="input-group-prepend" style="cursor: pointer" onclick="copy()" title="Copy to Clipboard">
+                            <a type="button" class="input-group-prepend" style="cursor: pointer" onclick="copy()" title="Copy to Clipboard">
                                 <div class="input-group-text"><i class="fadeIn animated bx bx-clipboard"></i></div>
                             </a>
                         </div>
@@ -123,9 +123,9 @@
             </div>
         </div>
     </div>
-    {{-- <div id="copied-success" class="copied">
+    <div id="copied-success" class="copied">
         <span>Copied!</span>
-    </div> --}}
+    </div>
 @endsection
 @push('scripts')
 <script type="text/x-custom-template" id="loader">
@@ -140,15 +140,17 @@
     </div>
 </script>
 <script>
+    function copy() {
+        var copyText = document.getElementById("input-path");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        $('#copied-success').fadeIn(800);
+        $('#copied-success').fadeOut(800);
+    }
     $(document).ready(function() {
-        function copy() {
-            var copyText = document.getElementById("input-path");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            $('#copied-success').fadeIn(800);
-            $('#copied-success').fadeOut(800);
-        }
+        var bulk = false;
+        var bulkId = [];
         function sidebarState(that = '') {
             let image = (that != '') ? $(that).data('path') : $("#SideBarImage").data('placeholder-image');
             let name = (that != '') ? $(that).data('name') : 'File';
@@ -187,6 +189,9 @@
                     $(document).find('.media-main .loading-wrapper').remove();
                     sidebarState();
                     $('#MediaList').html(data);
+                    let gap = (localStorage.getItem('view') == 'grid') ? 'g-2' : '';
+                    $('#MediaList').removeClass('g-2');
+                    $('#MediaList').addClass(gap);
                     $("#MediaList").find(".file").each(function () {
                         if(bulkId.includes($(this).data('id')) == true){
                             $(this).addClass("file-selected");
@@ -205,6 +210,73 @@
         $("#refreshMedia").on('click',function () {
             fetch_data();
         });
+        $(document).on('dblclick','.media-file',function () {
+            $.fancybox.open({
+                src : $(this).data('path'),
+                toolbar: "auto",
+                defaultType: "image",
+                buttons : [
+                    'zoom',
+                    'fullScreen',
+                    'download',
+                    'close',
+                ]
+            });
+        });
+        $(document).on('click', ".file", function() {
+            $("#submitchange").prop("disabled",false);
+            if(bulk === true){
+                $(this).toggleClass("file-selected");
+                var selected = $(document).find(".file-selected");
+                $(this).hasClass("file-selected") ? bulkId.push($(this).data('id')) : bulkId.splice(bulkId.indexOf($(this).data('id')),1);
+            }else{
+                $(document).find(".file input[type='checkbox']:checked").prop('checked',false);
+                $(document).find(".file input[value="+$(this).data('id')+"]").prop('checked',true);
+                $(document).find(".file").removeClass("file-selected");
+                $(this).toggleClass("file-selected");
+            }
+            $("#bulk-delete").text(bulkId.length + ' Bulk Delete');
+            sidebarState(this);
+            // let delurl = "{{ Route('admin.media.delete', ':id') }}";
+            // delurl = delurl.replace(':id', $(this).data('id'));
+            // $("#SideBarDelete").attr('href', delurl);
+        });
+        $("#uploader").change(function() {
+            $("#upload-form").trigger('submit');
+        });
+        $("#upload-form").on('submit',function (e) {
+            e.preventDefault();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: $(this).attr('action'),
+                type: "POST",
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                beforeSend: function() {
+                    $("#uploader").prop("disabled",true);
+                },
+                success: function(response) {
+                    $("#uploader").prop("disabled",false);
+                    fetch_data();
+                    Swal.fire(
+                        'Successful!',
+                        response.message,
+                        'success'
+                    );
+                },
+                error: function(response){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: response.message,
+                    })
+                }
+            });
+        });
         $("#delete").on("click",function (e) {
             var url = $(this).attr("href");
             e.preventDefault();
@@ -222,12 +294,6 @@
                 }
             })
         });
-        $("#uploader").change(function() {
-            $("#upload-form").submit();
-            $("#uploader").prop("disabled",true);
-        });
-        var bulk = false;
-        var bulkId = [];
         $(document).on('click', '.pagination a', function(e) {
             e.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
@@ -287,22 +353,6 @@
                     });
                 }
             })
-        });
-        $(document).on('click', ".file", function() {
-            $("#submitchange").prop("disabled",false);
-            if(bulk === true){
-                $(this).toggleClass("file-selected");
-                var selected = $(document).find(".file-selected");
-                $(this).hasClass("file-selected") ? bulkId.push($(this).data('id')) : bulkId.splice(bulkId.indexOf($(this).data('id')),1);
-            }else{
-                $(document).find(".file").removeClass("file-selected");
-                $(this).toggleClass("file-selected");
-            }
-            $("#bulk-delete").text(bulkId.length + ' Bulk Delete');
-            sidebarState(this);
-            // let delurl = "{{ Route('admin.media.delete', ':id') }}";
-            // delurl = delurl.replace(':id', $(this).data('id'));
-            // $("#SideBarDelete").attr('href', delurl);
         });
 
         $("#update-form").on("submit", function(e) {

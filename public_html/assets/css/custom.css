@@ -18,7 +18,23 @@ body{
     display: none !important;
 }
 
-
+.copied {
+    font-family: "Montserrat", sans-serif;
+    width: 75px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #fff;
+    padding: 15px 15px;
+    background-color: var(--primary);
+    border-radius: 5px;
+    box-shadow: 0 3px 15px #b8c6db;
+    -moz-box-shadow: 0 3px 15px #b8c6db;
+    -webkit-box-shadow: 0 3px 15px #b8c6db;
+}
 /* --------------- Media Module Style --------------  */
 
 .media-main {
@@ -72,7 +88,7 @@ body{
     display: none;
 }
 #MediaList .media-file .media-item .media-item-selected svg{
-    width: 30px;
+    width: 25px;
     background: var(--primary);
     padding: 5px;
     border-radius: 25px;
@@ -107,6 +123,16 @@ body{
 #MediaList .media-file.file-selected .media-description{
     background-color: var(--primary);
     color: #ffffff;
+}
+#MediaList .form-check-input {
+    background-color: transparent;
+    border-color: var(--primary);
+    padding: 8px;
+    border-radius: 25px;
+    transition: all 0.3s linear;
+}
+#MediaList .form-check-input:checked {
+    background-color: var(--primary);
 }
 
 .media-sidebar{
