@@ -9,11 +9,19 @@
                     <path d="M186.301 339.893L96 249.461l-32 30.507L186.301 402 448 140.506 416 110z"></path>
                 </svg>
             </span>
-            <div class="media-thumbnail">
+            <div class="media-thumbnail d-flex align-items-center justify-content-center">
+                @if(strpos($item->type, 'image/') !== false)
                 <img src="{{asset('storage/media/'.$item->filename)}}" alt="1">
+                @elseif(strpos($item->type, 'video/') !== false)
+                    <i class="bx bx-film fs-2"></i>
+                @elseif(strpos($item->type, 'audio/') !== false)
+                    <i class="bx bx-volume-full fs-2"></i>
+                @else
+                    <i class="bx bx-file fs-2"></i>
+                @endif
             </div>
             <div class="media-description">
-                <p>{{$item->filename}}</p>
+                <p>{{\Str::limit($item->filename,30)}}</p>
             </div>
         </div>
     </div>

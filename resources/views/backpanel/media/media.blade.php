@@ -9,11 +9,11 @@
 @section('sections')
     <form action="{{ Route('admin.media.create') }}" method="post" id="upload-form" enctype="multipart/form-data">
         @csrf
-        <input type="file" class="" hidden name="file[]" multiple accept="image/*" id="uploader">
+        <input type="file" class="" hidden name="file[]" multiple id="uploader">
     </form>
     <div class="card">
         <div class="card-header py-3">
-            <label id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0" for="uploader"><i class="bx bx-save"></i> Upload</label>
+            <button id="uploadBtn" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-save"></i> Upload</button>
             <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i> Download</button>
             <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i> Create Folder</button>
             <button id="refreshMedia" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-refresh"></i> Refresh</button>
@@ -97,8 +97,8 @@
             </div>
             <div class="media-sidebar collapse show" id="MediaSidebar">
                 <div class="file-details">
-                    <div class="sidebar-image">
-                        <img id="SideBarImage" src="{{asset('assets/images/placeholder-image.jpg')}}" data-placeholder-image="{{asset('assets/images/placeholder-image.jpg')}}"/>
+                    <div class="sidebar-image d-flex align-items-center justify-content-center" id="SideBarImage" data-placeholder-image="{{asset('assets/images/placeholder-image.jpg')}}">
+
                     </div>
                     <hr>
                     <div class="sidebar-description">
@@ -151,8 +151,8 @@
     $(document).ready(function() {
         var bulk = false;
         var bulkId = [];
+            
         function sidebarState(that = '') {
-            let image = (that != '') ? $(that).data('path') : $("#SideBarImage").data('placeholder-image');
             let name = (that != '') ? $(that).data('name') : 'File';
             let dimen = (that != '') ? $(that).data('dimen') : 'Alt Name';
             let size = (that != '') ? $(that).data('size') : '100x100';
@@ -161,7 +161,19 @@
             let updatedat = (that != '') ? $(that).data('updatedat') : '00 00 0000';
             let alt = (that != '') ? $(that).data('alt') : '';
             let path = (that != '') ? $(that).data('path') : '';
-            $("#SideBarImage").attr("src",image);
+            let sidebarPreview = '';
+            if(type.indexOf('image/') != -1) {
+                sidebarPreview = '<img src="'+$(that).data('path')+'" alt="'+alt+'" class="img-fluid">';
+            } else if(type.indexOf('application/') != -1) {
+                sidebarPreview = '<i class="bx bx-file" style="font-size:80px"></i>';
+            }else if(type.indexOf('audio/') != -1) {
+                sidebarPreview = '<i class="bx bx-volume-full" style="font-size:80px"></i>';
+            }else if(type.indexOf('video/') != -1) {
+                sidebarPreview = '<i class="bx bx-film" style="font-size:80px"></i>';
+            }else{
+                sidebarPreview =  '<img src="'+$("#SideBarImage").data('placeholder-image')+'" class="img-fluid">';
+            }
+            $("#SideBarImage").html(sidebarPreview);
             $("#SideBarName").html(name);
             $("#SideBarDimension").html(dimen);
             $("#SideBarSize").html(size);
@@ -207,6 +219,7 @@
             $(this).addClass('active');
             fetch_data();
         });
+        $("#uploadBtn").click(()=>$("#uploader").trigger('click'));
         $("#refreshMedia").on('click',function () {
             fetch_data();
         });

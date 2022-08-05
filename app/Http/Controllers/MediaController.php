@@ -14,25 +14,27 @@ class MediaController extends Controller
     {
         try {
             $request->validate([
-                'file' => 'required|max:2048',
+                'file.*' => 'required|mimes:jpeg,png,jpg,pdf,ppt, pptx, xlx, xlsx,docx,doc,gif,webm,mp4,mpeg|max:51200',
             ]);
             foreach ($request->file as $key => $value) {
                 $filename = pathinfo($value->getClientOriginalName(), PATHINFO_FILENAME);
                 $extension = $value->getClientOriginalExtension();
                 $type = $value->getMimeType();
                 $size = $value->getSize();
-                $dimension = getimagesize($value);
-                $width = $dimension[0];
-                $height = $dimension[1];
                 $file = Str::limit($filename, 100, '') . '_' . time() . '.' . $extension;
                 $value->storeAs('public/media', $file);
                 $media = new Media;
+                if($type == 'image/*'){
+                    $dimension =  getimagesize($value);
+                    $width = $dimension[0];
+                    $height = $dimension[1];
+                    $media->dimension = $width . 'x' . $height;
+                }
                 $media->admin_id = Auth::guard('admin')->user()->id;
                 $media->filename = $file;
                 $media->alt = $filename;
                 $media->type = $type;
                 $media->size = $size;
-                $media->dimension = $width . 'x' . $height;
                 $media->save();
             }
             $response = ['status'=>'success','message'=> 'Media Files Uploaded successfully!'];
