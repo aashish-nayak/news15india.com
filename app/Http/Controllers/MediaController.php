@@ -47,7 +47,7 @@ class MediaController extends Controller
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
-            $media = Media::latest()->paginate(12);
+            $media = Media::latest()->paginate(18);
             $view = ($request->view == 'list') ? 'backpanel.media.media-list' : 'backpanel.media.media-grid';
             return view($view, compact('media'))->render();
         }
@@ -63,22 +63,32 @@ class MediaController extends Controller
             $media->filename = $file;
             $media->alt = $request->alt_name;
             $media->save();
-            return response()->json(["status"=>"success", $media, "message" => "File updated successfully"]);
+            return response()->json(["status"=>"success", "message" => "File updated successfully"]);
         } catch (\Throwable $th) {
             return response()->json(["status"=>"error", "message" => $th->getMessage()]);
         }
     }
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $media = Media::find($id);
-        if (Storage::exists('public/media/' . $media->filename)) {
-            Storage::delete('public/media/' . $media->filename);
+        // dd($request->all());
+        try {
+            $media = Media::find($request->ids);
+            foreach ($media as $key => $value) {
+                if (Storage::exists('public/media/' . $value->filename)) {
+                    Storage::delete('public/media/' . $value->filename);
+                }
+                $value->delete();
+            }
+            $response = ['status'=>'success','message'=> 'Media Files Deleted successfully!'];
+        } catch (\Exception $e) {
+            $response = ['status'=>'error','message'=> $e->getMessage()];
         }
-        $media->delete();
-        return redirect()->back()->with('success', 'Media deleted successfully');
+        return response()->json($response);
     }
+
     public function bulkDelete(Request $request)
-    {   try{
+    {   
+        try{
             $media = Media::find($request->ids);
             foreach ($media as $key => $value) {
                 if (Storage::exists('public/media/' . $value->filename)) {

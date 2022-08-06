@@ -191,6 +191,15 @@
             $("#SideBarAlt").html(alt);
             $("#input-path").val(path);
         }
+        function ajaxMediaLoader(loaderStart = true) {
+            if(loaderStart == true){
+                $('.media-main').addClass('on-loading bb-loading');
+                $('.media-main').append($('#loader').html());
+            }else{
+                $('.media-main').removeClass('on-loading bb-loading');
+                $(document).find('.media-main .loading-wrapper').remove();
+            }
+        }
         function fetch_data(page = '',...other) {
             if(localStorage.getItem('view') == null){
                 localStorage.setItem('view', 'grid');
@@ -201,12 +210,10 @@
             $.ajax({
                 url: "{{ route('admin.media.fetch') }}/?view="+view + page,
                 beforeSend: function() {
-                    $('.media-main').addClass('on-loading bb-loading');
-                    $('.media-main').append($('#loader').html());
+                    ajaxMediaLoader();
                 },
                 success: function(data) {
-                    $('.media-main').removeClass('on-loading bb-loading');
-                    $(document).find('.media-main .loading-wrapper').remove();
+                    ajaxMediaLoader(false);
                     sidebarState();
                     if(other.includes('loadmore')){
                         $('#MediaList').append(data);
@@ -317,9 +324,11 @@
                 processData: false,
                 beforeSend: function() {
                     $("#uploader").prop("disabled",true);
+                    ajaxMediaLoader();
                 },
                 success: function(response) {
                     $("#uploader").prop("disabled",false);
+                    ajaxMediaLoader(false);
                     fetch_data();
                     Swal.fire(
                         'Successful!',
@@ -328,9 +337,10 @@
                     );
                 },
                 error: function(response){
+                    ajaxMediaLoader(false);
                     Swal.fire({
                         icon: 'error',
-                        title: 'Oops...',
+                        title: 'Error',
                         text: response.message,
                     })
                 }
@@ -338,7 +348,49 @@
         });
         $(".moveToTrash").click(function () {
             let Ids = checkedIds();
-            console.log(Ids);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You Want to Bulk Delete Files!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let url = "{{route('admin.media.delete')}}";
+                    let data = {
+                        "_token": "{{ csrf_token() }}",
+                        ids: Ids
+                    };
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: data,
+                        beforeSend: function() {
+                            ajaxMediaLoader();
+                        },
+                        success: function(response) {
+                            ajaxMediaLoader(false);
+                            Swal.fire(
+                                'Successful!',
+                                response.message,
+                                'success'
+                            );
+                            fetch_data();
+                        },
+                        error: function(response){
+                            ajaxMediaLoader(false);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: response.message,
+                            })
+                        }
+                    });
+                }
+            })
+
         });
         $(document).on('click',"#loadMoreBtn",function () {
             let page = $(this).data('current');

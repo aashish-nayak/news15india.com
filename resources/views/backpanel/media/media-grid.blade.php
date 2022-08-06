@@ -18,7 +18,7 @@
                 @endif
             </div>
             <div class="media-description">
-                <p>{{\Str::limit($item->filename,30)}}</p>
+                <p>{{\Str::limit($item->filename,15)}}</p>
             </div>
         </div>
     </div>
