@@ -84,7 +84,7 @@
                             <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-copy"></i> Make a copy</a>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-star"></i> Add to favorite</a>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-download"></i> Download</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-trash"></i> Move to trash</a>
+                            <a class="dropdown-item moveToTrash" href="javascript:void(0)"><i class="bx bx-trash"></i> Move to trash</a>
                         </div>
                     </div>
                     <div class="btn-group me-md-3" role="group" aria-label="First group">
@@ -159,7 +159,7 @@
         $('#copied-success').fadeIn(800);
         $('#copied-success').fadeOut(800);
     }
-    $(document).ready(function() {            
+    $(document).ready(function() {    
         function sidebarState(that = '') {
             let name = (that != '') ? $(that).data('name') : 'File';
             let dimen = (that != '') ? $(that).data('dimen') : 'Alt Name';
@@ -219,13 +219,25 @@
                     let gap = (localStorage.getItem('view') == 'grid') ? 'g-2' : '';
                     $('#MediaList').removeClass('g-2');
                     $('#MediaList').addClass(gap);
-                    // $("#MediaList").find(".file").each(function () {
-                    //     if(bulkId.includes($(this).data('id')) == true){
-                    //         $(this).addClass("file-selected");
-                    //     }
-                    // });
                 }
             });
+        }
+        function countChecked(){
+            let selected = $(document).find(".file .checkbox:checked").length;
+            $("#selectedFiles").text((selected > 1) ? selected : '');
+            return selected;
+        }
+        function checkedIds(){
+            let allCheckedBox = $(document).find(".file .checkbox:checked");
+            let ids = [];
+            allCheckedBox.each(function(index, el) {
+                ids.push($(el).val());
+            });
+            return ids;
+        }
+        function setFileSelectedClass() {
+            $(document).find(".file").removeClass("file-selected");
+            $(document).find(".file input[type='checkbox']:checked").closest('.file').addClass("file-selected");
         }
         fetch_data();
         $(".file-view").on('click',function () {
@@ -233,6 +245,9 @@
             $(".file-view").removeClass('active');
             $(this).addClass('active');
             fetch_data();
+            lastChecked = null;
+            $(document).find(".file input[type='checkbox']").prop('checked',false);
+            countChecked();
         });
         $("#uploadBtn").click(()=>$("#uploader").trigger('click'));
         $("#refreshMedia").on('click',function () {
@@ -251,32 +266,40 @@
                 ]
             });
         });
+        var lastChecked = null;
         $(document).on('click', ".file", function(e) {
-            if(window.event.ctrlKey){
-                // console.log('ctrlKeyPressing');
-                $(this).toggleClass("file-selected");
-                $(this).find('.checkbox').prop('checked',$(this).hasClass("file-selected"));
-            }else{
-                // console.log('NoctrlKeyPressing');
-                $(document).find(".file input[type='checkbox']:checked").prop('checked',false);
-                $(document).find(".file input[value="+$(this).data('id')+"]").prop('checked',true);
-                $(document).find(".file").removeClass("file-selected");
-                $(this).addClass("file-selected");
+            let thisCheckBoxElement = $(document).find(".file input[value="+$(this).data('id')+"]");
+            let allCheckBoxElements = $(document).find(".file input[type='checkbox']");
+            if(!lastChecked) {
+                lastChecked = thisCheckBoxElement;
+                return;
             }
+            if(e.ctrlKey){
+                thisCheckBoxElement.prop('checked',!$(thisCheckBoxElement).is(':checked'));
+            }else if(e.shiftKey){
+                var from = allCheckBoxElements.index(thisCheckBoxElement);
+                var to = allCheckBoxElements.index(lastChecked);
+                var start = Math.min(from, to);
+                var end = Math.max(from, to) + 1;
+
+                allCheckBoxElements.slice(start, end)
+                    .filter(':not(:disabled)')
+                    .prop('checked', true);
+            }else{
+                allCheckBoxElements.prop('checked',false);
+                thisCheckBoxElement.prop('checked',true);
+            }
+            lastChecked = thisCheckBoxElement;
+            setFileSelectedClass();
+            countChecked();
             sidebarState(this);
-            let selected = $(document).find(".checkbox:checked").length;
-            $("#selectedFiles").text((selected > 1) ? selected : '');
-            console.log($(document).find(".checkbox:checked").length);
-            // $("#bulk-delete").text(bulkId.length + ' Bulk Delete');
-            // let delurl = "{{ Route('admin.media.delete', ':id') }}";
-            // delurl = delurl.replace(':id', $(this).data('id'));
-            // $("#SideBarDelete").attr('href', delurl);
         });
         $('#MediaList:not(.file, .file-selected)').click(function() {
             // $(document).find(".file input[type='checkbox']:checked").prop('checked',false);
             // $(document).find(".file").removeClass("file-selected");
             sidebarState();
         });
+        
         $("#uploader").change(function() {
             $("#upload-form").trigger('submit');
         });
@@ -313,12 +336,18 @@
                 }
             });
         });
+        $(".moveToTrash").click(function () {
+            let Ids = checkedIds();
+            console.log(Ids);
+        });
         $(document).on('click',"#loadMoreBtn",function () {
             let page = $(this).data('current');
             page++;
             fetch_data(page,'loadmore');
             $(this).closest('.loadmore-wrapper').remove();
         });
+
+        // Old FileManager Code //
         $("#delete").on("click",function (e) {
             var url = $(this).attr("href");
             e.preventDefault();
