@@ -58,8 +58,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::prefix('/media')->name('media.')->group(function(){
         Route::view('/', 'backpanel.media.media')->middleware('permission:read-media')->name('index');
         Route::post('/upload',[MediaController::class,'create'])->middleware('permission:create-media')->name('create');
-        Route::post('/update',[MediaController::class,'update'])->middleware('permission:update-media')->name('update');
-        Route::get('/fetch-data',[MediaController::class,'fetch'])->middleware('permission:read-media')->name('fetch');
+        Route::post('/rename',[MediaController::class,'update'])->middleware('permission:update-media')->name('rename');
+        Route::any('/fetch-data',[MediaController::class,'fetch'])->middleware('permission:read-media')->name('fetch');
         Route::post('/delete/files',[MediaController::class,'destroy'])->middleware('permission:delete-media')->name('delete');
         Route::post('/bulk/delete', [MediaController::class, 'bulkDelete'])->middleware('permission:delete-media')->name('bulk.delete');
     });

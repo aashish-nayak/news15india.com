@@ -1,7 +1,16 @@
 @if(!empty($media) && $media->count())
 @foreach ($media as $item)
 <li class="col">
-    <div class="file media-file grid" data-id="{{$item->id}}" data-dimen="{{$item->dimension}}" data-type="{{$item->type}}" data-size="{{formatBytes($item->size,1)}}" data-path="{{asset('storage/media/'.$item->filename)}}" data-alt="{{$item->alt}}" data-name="{{$item->filename}}" data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
+    <div class="file media-file grid" 
+        data-id="{{$item->id}}" 
+        data-dimen="{{$item->dimension}}" 
+        data-type="{{$item->type}}" 
+        data-size="{{formatBytes($item->size,1)}}" 
+        data-path="{{asset('storage/media/'.$item->filename)}}" 
+        data-alt="{{$item->alt}}" 
+        data-name="{{$item->filename}}" 
+        data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" 
+        data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
         <div class="media-item">
             <span class="media-item-selected">
                 <input type="checkbox" class="form-check-input checkbox" value="{{$item->id}}">
@@ -25,14 +34,11 @@
 </li>
 @endforeach
 
-@if($media->lastPage() != $media->currentPage())
+@if($total > $take + $skip)
 <div class="col-12 my-2 text-center loadmore-wrapper">
     <button id="loadMoreBtn" class="btn btn-primary btn-sm"
-        data-current="{{$media->currentPage()}}"
-        data-total="{{$media->total()}}"
-        data-to="{{$media->lastPage()}}"
-        data-per_page="{{$media->perPage()}}"
-        data-next_page_url="{{$media->nextPageUrl()}}">
+        data-skip="{{$take + $skip}}"
+        data-total="{{$total}}">
         <i class="bx bx-down-arrow-alt"></i> Load More
     </button>
 </div>

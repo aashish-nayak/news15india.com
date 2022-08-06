@@ -15,20 +15,21 @@
         <div class="card-header py-2">
             <button id="uploadBtn" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-save"></i>Upload</button>
             <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i>Download</button>
-            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i>Create Folder</button>
+            {{-- <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i>Create Folder</button> --}}
             <button id="refreshMedia" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-refresh"></i>Refresh</button>
             <div class="dropdown d-inline"> 
                 <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bx bx-filter-alt"></i><span id="filter">Filter(<i class="bx bx-recycle"></i>Everything)</span><i class="bx bxs-chevron-down ms-1"></i>
+                    <i class="bx bx-filter-alt"></i>Filter(<span id="filter"><i class="bx bx-recycle"></i>Everything</span>)<i class="bx bxs-chevron-down ms-1"></i>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-recycle"></i> Everything</a>
-                    <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-image-alt"></i> Image</a>
-                    <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-music"></i> Audio</a>
-                    <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-video"></i> Video</a>
+                    <a class="dropdown-item filter" type="button" data-filter="all"><i class="bx bx-recycle"></i> Everything</a>
+                    <a class="dropdown-item filter" type="button" data-filter="image"><i class="bx bxs-image-alt"></i> Image</a>
+                    <a class="dropdown-item filter" type="button" data-filter="audio"><i class="bx bxs-music"></i> Audio</a>
+                    <a class="dropdown-item filter" type="button" data-filter="video"><i class="bx bxs-video"></i> Video</a>
+                    <a class="dropdown-item filter" type="button" data-filter="application"><i class="bx bxs-file"></i> Document</a>
                 </div>
             </div>
-            <div class="dropdown d-inline"> 
+            {{-- <div class="dropdown d-inline"> 
                 <a href="#" class="btn btn-dark btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bx bx-show"></i><span id="view">View in(<i class="bx bx-globe"></i>All Media)</span><i class="bx bxs-chevron-down ms-1"></i></a>
                 <div class="dropdown-menu">
@@ -37,7 +38,7 @@
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-time-five"></i> Recent</a>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="bx bxs-star"></i> Favorites</a>
                 </div>
-            </div>
+            </div> --}}
             {{-- <div class="d-inline">
                 <div class="input-group input-group-sm"> 
                     <input type="text" class="form-control" placeholder="People, groups, &amp; messages">
@@ -67,10 +68,10 @@
                             Sort <i class="bx bx-sort"></i>
                         </a>
                         <div class="dropdown-menu mb-2 mb-md-0" style="font-size: 13px">
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-a-z"></i> File name - ASC</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-z-a"></i> File name - DESC</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-up"></i> Uploaded date - ASC</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-sort-down"></i> Uploaded date - DESC</a>
+                            <a class="dropdown-item sort" type="button" data-sort="created_at,desc"><i class="bx bx-sort-down"></i> Uploaded date - Latest</a>
+                            <a class="dropdown-item sort" type="button" data-sort="created_at,asc"><i class="bx bx-sort-up"></i> Uploaded date - Oldest</a>
+                            <a class="dropdown-item sort" type="button" data-sort="filename,desc"><i class="bx bx-sort-z-a"></i> File name - DESC</a>
+                            <a class="dropdown-item sort" type="button" data-sort="filename,asc"><i class="bx bx-sort-a-z"></i> File name - ASC</a>
                         </div>
                     </div>
                     <div class="dropdown d-inline me-md-2"> 
@@ -78,13 +79,13 @@
                             <span id="selectedFiles" class="fw-bold"></span> Actions<i class="bx bx-dots-vertical-rounded"></i>
                         </a>
                         <div class="dropdown-menu mb-2 mb-md-0" style="font-size: 13px">
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-show"></i> Preview</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-link"></i> Copy link</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-rename"></i> Rename</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-copy"></i> Make a copy</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-star"></i> Add to favorite</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-download"></i> Download</a>
-                            <a class="dropdown-item moveToTrash" href="javascript:void(0)"><i class="bx bx-trash"></i> Move to trash</a>
+                            <a class="dropdown-item action-preview" type="button"><i class="bx bx-show"></i> Preview</a>
+                            <a class="dropdown-item action-copy" type="button"><i class="bx bx-link"></i> Copy link</a>
+                            <a class="dropdown-item action-rename" type="button"><i class="bx bx-rename"></i> Rename</a>
+                            {{-- <a class="dropdown-item" type="button"><i class="bx bx-copy"></i> Make a copy</a> --}}
+                            {{-- <a class="dropdown-item" type="button"><i class="bx bx-star"></i> Add to favorite</a> --}}
+                            <a class="dropdown-item action-download" type="button"><i class="bx bx-download"></i> Download</a>
+                            <a class="dropdown-item action-moveToTrash" type="button"><i class="bx bx-trash"></i> Move to trash</a>
                         </div>
                     </div>
                     <div class="btn-group me-md-3" role="group" aria-label="First group">
@@ -137,6 +138,28 @@
     <div id="copied-success" class="copied">
         <span>Copied!</span>
     </div>
+    <form action="{{route('admin.media.rename')}}" method="POST" id="renameForm">
+        <div class="modal fade" id="renameModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Rename</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @csrf
+                        <div id="renameInputsWrapper">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-primary" id="renameFormSubmit">Save changes</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 @endsection
 @push('scripts')
 <script type="text/x-custom-template" id="loader">
@@ -159,7 +182,8 @@
         $('#copied-success').fadeIn(800);
         $('#copied-success').fadeOut(800);
     }
-    $(document).ready(function() {    
+    $(document).ready(function() {   
+        var lastChecked = null; 
         function sidebarState(that = '') {
             let name = (that != '') ? $(that).data('name') : 'File';
             let dimen = (that != '') ? $(that).data('dimen') : 'Alt Name';
@@ -200,26 +224,50 @@
                 $(document).find('.media-main .loading-wrapper').remove();
             }
         }
-        function fetch_data(page = '',...other) {
+        function fetch_data(params = {}) {
             if(localStorage.getItem('view') == null){
                 localStorage.setItem('view', 'grid');
             }
-            page = (page != '') ? "&page=" + page : '';
-            let view = localStorage.getItem('view');
+            if(localStorage.getItem('filter') == null){
+                localStorage.setItem('filter', 'all');
+            }
+            if(localStorage.getItem('sort') == null){
+                localStorage.setItem('sort', 'created_at,desc');
+            }
+            let skip = (params.skip !== undefined) ? params.skip : 0,
+            loadType = (params.loadType !== undefined) ? params.loadType : 'refresh',
+            filter = localStorage.getItem('filter'),
+            sort = localStorage.getItem('sort'),
+            view = localStorage.getItem('view');
+
             $(".file-view[data-view='"+view+"']").addClass('active');
+            $(".filter[data-filter='"+filter+"']").addClass('active');
+            $("#filter").html($(".filter[data-filter='"+filter+"']").html());
+            $(".sort[data-sort='"+sort+"']").addClass('active');
+
+            let requestData = {
+                "_token": "{{ csrf_token() }}",
+                skip : skip,
+                view : view,
+                filter : filter,
+                sort : sort
+            };
             $.ajax({
-                url: "{{ route('admin.media.fetch') }}/?view="+view + page,
+                url: "{{ route('admin.media.fetch') }}",
+                type: 'POST',
+                data : requestData,
                 beforeSend: function() {
                     ajaxMediaLoader();
                 },
-                success: function(data) {
+                success: function(response) {
                     ajaxMediaLoader(false);
                     sidebarState();
-                    if(other.includes('loadmore')){
-                        $('#MediaList').append(data);
+                    if(loadType == 'loadmore'){
+                        $('#MediaList').append(response);
                     }else{
-                        $('#MediaList').html(data);
+                        $('#MediaList').html(response);
                     }
+                    
                     let loaded = $('#MediaList').find('.media-file').length;
                     $("#loadedItems").text(loaded);
                     $("#totalItems").text($(document).find("#loadMoreBtn").data('total'));
@@ -256,6 +304,24 @@
             $(document).find(".file input[type='checkbox']").prop('checked',false);
             countChecked();
         });
+        $(".filter").on('click',function () {
+            localStorage.setItem('filter',$(this).data('filter'));
+            $(".filter").removeClass('active');
+            $(this).addClass('active');
+            fetch_data();
+            lastChecked = null;
+            $(document).find(".file input[type='checkbox']").prop('checked',false);
+            countChecked();
+        });
+        $(".sort").on('click',function () {
+            localStorage.setItem('sort',$(this).data('sort'));
+            $(".sort").removeClass('active');
+            $(this).addClass('active');
+            fetch_data();
+            lastChecked = null;
+            $(document).find(".file input[type='checkbox']").prop('checked',false);
+            countChecked();
+        });
         $("#uploadBtn").click(()=>$("#uploader").trigger('click'));
         $("#refreshMedia").on('click',function () {
             fetch_data();
@@ -273,7 +339,6 @@
                 ]
             });
         });
-        var lastChecked = null;
         $(document).on('click', ".file", function(e) {
             let thisCheckBoxElement = $(document).find(".file input[value="+$(this).data('id')+"]");
             let allCheckBoxElements = $(document).find(".file input[type='checkbox']");
@@ -301,12 +366,6 @@
             countChecked();
             sidebarState(this);
         });
-        $('#MediaList:not(.file, .file-selected)').click(function() {
-            // $(document).find(".file input[type='checkbox']:checked").prop('checked',false);
-            // $(document).find(".file").removeClass("file-selected");
-            sidebarState();
-        });
-        
         $("#uploader").change(function() {
             $("#upload-form").trigger('submit');
         });
@@ -317,36 +376,35 @@
                 url: $(this).attr('action'),
                 type: "POST",
                 data: formData,
-                async: false,
                 cache: false,
                 contentType: false,
                 enctype: 'multipart/form-data',
                 processData: false,
                 beforeSend: function() {
-                    $("#uploader").prop("disabled",true);
                     ajaxMediaLoader();
+                    $("#uploader").prop("disabled",true);
                 },
                 success: function(response) {
+                    ajaxMediaLoader(false);
                     $("#uploader").prop("disabled",false);
-                    ajaxMediaLoader(false);
-                    fetch_data();
-                    Swal.fire(
-                        'Successful!',
-                        response.message,
-                        'success'
-                    );
-                },
-                error: function(response){
-                    ajaxMediaLoader(false);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: response.message,
-                    })
+                    if(response.status == 'success'){
+                        fetch_data();
+                        Swal.fire(
+                            'Successful!',
+                            response.message,
+                            'success'
+                        );
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: response.message,
+                        })
+                    }
                 }
             });
         });
-        $(".moveToTrash").click(function () {
+        $(".action-moveToTrash").click(function () {
             let Ids = checkedIds();
             Swal.fire({
                 title: 'Are you sure?',
@@ -372,30 +430,119 @@
                         },
                         success: function(response) {
                             ajaxMediaLoader(false);
-                            Swal.fire(
-                                'Successful!',
-                                response.message,
-                                'success'
-                            );
-                            fetch_data();
-                        },
-                        error: function(response){
-                            ajaxMediaLoader(false);
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: response.message,
-                            })
+                            if(response.status == 'success'){
+                                fetch_data();
+                                Swal.fire(
+                                    'Successful!',
+                                    response.message,
+                                    'success'
+                                );
+                            }else{
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: response.message,
+                                })
+                            }
                         }
                     });
                 }
             })
 
         });
+        $(".action-preview").click(function () {
+            let gallary = [];
+            $.each($(document).find('.file.file-selected'), function (key, value) { 
+                gallary.push({
+                    src  : $(value).data('path'),
+                });
+            });
+            $.fancybox.open(gallary,{
+                toolbar: "auto",
+                defaultType: "image",
+                arrows: true,
+                buttons : [
+                    'zoom',
+                    'fullScreen',
+                    "slideShow",
+                    'download',
+                    'close',
+                ]
+            });
+        });
+        $(".action-copy").click(function () {
+            let links = '',
+            elements = $(document).find('.file.file-selected');
+            $.each(elements, function (key, value) {
+                let prefix = (key !== (elements.length -1 )) ? ', \n' : '';
+                links += $(value).data('path')+prefix;
+            });
+            var inp = document.createElement('input');
+            document.body.appendChild(inp);
+            inp.value = links;
+            inp.select();
+            inp.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            $('#copied-success').fadeIn(800);
+            $('#copied-success').fadeOut(800);
+        });
+        $(".action-download").click(function () {
+            elements = $(document).find('.file.file-selected');
+            $.each(elements, function (key, value) {
+                var a = $("<a>")
+                    .attr("href", $(value).data('path'))
+                    .attr("download", $(value).data('name'))
+                    .appendTo("body");
+    
+                a[0].click();
+                a.remove();
+            });
+        });
+        $(".action-rename").click(function () {
+            $("#renameModal").modal("show");
+            elements = $(document).find('.file.file-selected');
+            let inputs = '';
+            $.each(elements, function (key, value) {
+                inputs += `<input type="text" name="filename[${$(value).data('id')}]" value="${$(value).data('name')}" class="form-control form-control-sm mb-3 rounded-0" placeholder="Rename here">`;
+            });
+            $("#renameInputsWrapper").html(inputs);
+        });
+        $("#renameForm").submit(function (e) {
+            e.preventDefault();
+            $("#renameFormSubmit").prop("disabled",true);
+            let form = $(this);
+            $.ajax({
+                url: form.attr('action'),
+                type: "POST",
+                data: form.serialize(),
+                dataType: "json",
+                success: function(response) {
+                    $("#renameFormSubmit").prop("disabled",false);
+                    $("#renameModal").modal("hide");
+                    if (response.status == "success") {
+                        fetch_data(1);
+                        Swal.fire(
+                            'Successful!',
+                            response.message,
+                            'success'
+                        );
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error !',
+                            text: response.message,
+                        })
+                    }
+                }
+            });
+        });
+
         $(document).on('click',"#loadMoreBtn",function () {
-            let page = $(this).data('current');
-            page++;
-            fetch_data(page,'loadmore');
+            let skip = $(this).data("skip");
+            fetch_data({
+                skip : skip,
+                loadType : 'loadmore'
+            });
             $(this).closest('.loadmore-wrapper').remove();
         });
 

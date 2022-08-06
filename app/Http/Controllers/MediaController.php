@@ -7,15 +7,22 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class MediaController extends Controller
 {
     public function create(Request $request)
     {
         try {
-            $request->validate([
-                'file.*' => 'required|mimes:jpeg,png,jpg,pdf,ppt, pptx, xlx, xlsx,docx,doc,gif,webm,mp4,mpeg|max:51200',
+            // $request->validate();
+            $validator = Validator::make($request->all(), [
+                'file.*' => 'required|mimes:jpeg,png,jpg,pdf,ppt, pptx, xlx, xlsx,docx,doc,gif,webm,mp4,mpeg,mp3,wav|max:51200',
             ]);
+            
+            if ($validator->fails())
+            {
+                return response()->json(['status'=>'error','message'=> $validator->errors()->all()]);
+            }
             foreach ($request->file as $key => $value) {
                 $filename = pathinfo($value->getClientOriginalName(), PATHINFO_FILENAME);
                 $extension = $value->getClientOriginalExtension();
@@ -45,27 +52,41 @@ class MediaController extends Controller
     }
 
     public function fetch(Request $request)
-    {
+    {   
         if ($request->ajax()) {
-            $media = Media::latest()->paginate(18);
+            // dd($request->all());
+            $media = Media::query();
+            if($request->filter != 'all'){
+                $media->where('type','like',"$request->filter%");
+            }
+            if($request->sort != ''){
+                $column = explode(",",$request->sort)[0];
+                $sort = explode(",",$request->sort)[1];
+                $media->orderBy($column,$sort);
+            }
+            $skip = $request->skip;
+            $total = $media->count();
+            $take = 18;
+            $media = $media->offset($skip)->take($take)->get();
             $view = ($request->view == 'list') ? 'backpanel.media.media-list' : 'backpanel.media.media-grid';
-            return view($view, compact('media'))->render();
+            return view($view, compact('media','take','skip','total'))->render();
         }
     }
     public function update(Request $request)
     {   
         try {
-            $media = Media::find($request->id);
-            $file = explode(".", $request->filename)[0] . "." . pathinfo($media->filename, PATHINFO_EXTENSION);
-            if (Storage::exists('public/media/' . $media->filename) && $media->filename != $file) {
-                Storage::move("public/media/" . $media->filename, "public/media/" . $file);
+            foreach ($request->filename as $key => $value) {
+                $media = Media::find($key);
+                $file = explode(".", $value)[0] . "." . pathinfo($media->filename, PATHINFO_EXTENSION);
+                if (Storage::exists('public/media/' . $media->filename) && $media->filename != $file) {
+                    Storage::move("public/media/" . $media->filename, "public/media/" . $file);
+                }
+                $media->filename = $file;
+                $media->save();
             }
-            $media->filename = $file;
-            $media->alt = $request->alt_name;
-            $media->save();
-            return response()->json(["status"=>"success", "message" => "File updated successfully"]);
-        } catch (\Throwable $th) {
-            return response()->json(["status"=>"error", "message" => $th->getMessage()]);
+            return response()->json(["status"=>"success", "message" => "File Renamed successfully"]);
+        } catch (\Exception $e) {
+            return response()->json(["status"=>"error", "message" => $e->getMessage()]);
         }
     }
     public function destroy(Request $request)
