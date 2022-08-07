@@ -1,7 +1,7 @@
 @if(!empty($media) && $media->count())
 @foreach ($media as $item)
 <li class="col-12 border-bottom">
-    <div class="file media-file row py-1 align-items-center list" 
+    <div class="file row py-1 align-items-center list" 
         data-id="{{$item->id}}" 
         data-dimen="{{$item->dimension}}" 
         data-type="{{$item->type}}" 

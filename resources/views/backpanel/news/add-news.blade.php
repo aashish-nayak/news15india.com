@@ -236,11 +236,11 @@
                         <div id="ImageWidget" class="accordion-collapse collapse show">
                             <div class="card-body">
                                 <div class="preview-image-wrapper ">
-                                    <img src="@if(isset($page) && isset($page->newsImage->filename)){{asset('storage/media/'.$page->newsImage->filename)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
-                                    <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X</a>
+                                    <img src="@if(isset($page) && isset($page->newsImage->filename)){{asset('storage/media/'.$page->newsImage->filename)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="bannerPreview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                    <a href="javascript:void(0)" class="btn_remove_image" id="removeBanner" title="Remove image">X</a>
                                 </div><br>
-                                <input type="hidden" required name="image" id="banner_data" value="@isset($page){{$page->image}}@else{{old('banner_data')}}@endisset">
-                                <a href="javascript:void(0)" id="banner-img">Choose Image</a>
+                                <input type="hidden" required name="image" id="bannerId" value="@isset($page){{$page->image}}@else{{old('banner_data')}}@endisset">
+                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#media-box">Choose Image</a>
                                 @error('image')
                                     <br><span class="text-danger">{{ $message }}</span>
                                 @enderror

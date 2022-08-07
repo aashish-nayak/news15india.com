@@ -81,12 +81,11 @@
                         </div>
                         <div class="tab-pane fade" id="dangerprofile" role="tabpanel">
                             <div class="preview-image-wrapper " style="width:100%;max-width:none;max-height:none;height:auto">
-                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
-                                <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X
-                                </a>
+                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="bannerPreview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                <a href="javascript:void(0)" class="btn_remove_image" id="removeBanner" title="Remove image">X</a>
                             </div><br>
-                            <input type="hidden" required name="cat_img" id="banner_data" value="">
-                            <a href="javascript:void(0)" id="banner-img">Choose Image</a>
+                            <input type="hidden" required name="cat_img" id="bannerId" value="">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#media-box">Choose Image</a>
                         </div>
                         <div class="tab-pane fade" id="dangercontact" role="tabpanel">
                             <div class="form-group">
@@ -258,8 +257,8 @@
                     }else{
                         preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
                     }
-                    $("#banner-preview").attr('src',preview);
-                    $("#banner_data").val(data.cat_img);
+                    $("#bannerPreview").attr('src',preview);
+                    $("#bannerId").val(data.cat_img);
                     $("#metatitle").html(data.meta_title);
                     $("#metakey").val(data.meta_keywords);
                     $("#metadesc").html(data.meta_description);

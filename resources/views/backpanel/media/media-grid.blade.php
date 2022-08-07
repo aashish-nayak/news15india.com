@@ -1,7 +1,7 @@
 @if(!empty($media) && $media->count())
 @foreach ($media as $item)
 <li class="col">
-    <div class="file media-file grid" 
+    <div class="file grid" 
         data-id="{{$item->id}}" 
         data-dimen="{{$item->dimension}}" 
         data-type="{{$item->type}}" 

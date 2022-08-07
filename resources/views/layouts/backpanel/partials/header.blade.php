@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/dark-theme.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/semi-dark.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/header-colors.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/custom-theme.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" />
     @stack('css')
     <title>@yield('title') - {{ config('app.name') }}</title>
