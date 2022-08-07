@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -85,6 +86,40 @@ class MediaController extends Controller
                 $media->save();
             }
             return response()->json(["status"=>"success", "message" => "File Renamed successfully"]);
+        } catch (\Exception $e) {
+            return response()->json(["status"=>"error", "message" => $e->getMessage()]);
+        }
+    }
+    public function download(Request $request)
+    {
+        try {
+            $links = explode("\r\n",$request->download);
+            if(is_array($links) && count($links) > 0){
+                foreach ($links as $link) {
+                    $basename = pathinfo($link, PATHINFO_FILENAME);
+                    $ext = pathinfo($link, PATHINFO_EXTENSION);
+                    $filename = "Downloaded_".$basename.'_' . time().".".$ext;
+                    $tempImage = tempnam(storage_path('app/public/temp'), $filename);
+                    copy($link, $tempImage);
+                    $res = response()->download($tempImage, $filename);
+                    Storage::putFileAs('public/media',$res->getFile()->getPathname(),$filename);
+                    $filedata = new Collection([
+                        'filename' => $filename,                            // wMUktAWN0L.jpg
+                        'tmp' => $res->getFile()->getPathname(),            // C:\xampp\htdocs\Aashish\Laravel Package Development\news15india.com\storage\app\public\temp\wMU20D9.tmp
+                        'type' => $res->getFile()->getMimeType(),           // image/jpeg
+                        'extension' => $res->getFile()->guessExtension(),   // jpg
+                        'size' => $res->getFile()->getSize(),                // 400
+                    ]);
+                    $media = new Media;
+                    $media->admin_id = Auth::guard('admin')->user()->id;
+                    $media->filename = $filedata['filename'];
+                    $media->alt = $filename;
+                    $media->type = $filedata['type'];
+                    $media->size = $filedata['size'];
+                    $media->save();
+                }
+            }
+            return response()->json(["status"=>"success", "message" => "Files Downloaded successfully"]);
         } catch (\Exception $e) {
             return response()->json(["status"=>"error", "message" => $e->getMessage()]);
         }

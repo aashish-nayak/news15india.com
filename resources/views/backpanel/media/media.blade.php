@@ -14,7 +14,7 @@
     <div class="card">
         <div class="card-header py-2">
             <button id="uploadBtn" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-save"></i>Upload</button>
-            <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i>Download</button>
+            <button data-bs-toggle="modal" data-bs-target="#downloadModal" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-cloud-download"></i>Download</button>
             {{-- <button id="" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-folder"></i>Create Folder</button> --}}
             <button id="refreshMedia" class="btn btn-sm btn-dark d-inline mb-2 mb-md-0 rounded-0"><i class="bx bx-refresh"></i>Refresh</button>
             <div class="dropdown d-inline"> 
@@ -154,6 +154,41 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-sm btn-primary" id="renameFormSubmit">Save changes</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form action="{{route('admin.media.download')}}" method="POST" id="downloadForm">
+        <div class="modal fade" id="downloadModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Download</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @csrf
+<textarea class="form-control form-control-sm" required name="download" 
+placeholder="https://example.com/image.jpg
+https://example.com/image2.jpg
+https://example.com/image3.jpg
+..." rows="4"></textarea>
+                        <div class="alert alert-info border-0 shadow-none rounded-0 px-2 py-2 bg-light-info show mb-0 mt-2" style="cursor: help">
+                            <div class="d-flex align-items-center">
+                                <div class="font-14 text-dark"><i class="bx bx-info-circle fw-bold"></i>
+                                </div>
+                                <div class="ms-2">
+                                    <div style="font-size: 12px" class="text-dark fw-bold"> Enter one URL per line.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-primary" id="downloadFormSubmit">
+                            Download
+                        </button>
                         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -366,9 +401,8 @@
             countChecked();
             sidebarState(this);
         });
-        $("#uploader").change(function() {
-            $("#upload-form").trigger('submit');
-        });
+        $("#uploader").change(()=>$("#upload-form").trigger('submit'));
+        
         $("#upload-form").on('submit',function (e) {
             e.preventDefault();
             var formData = new FormData($(this)[0]);
@@ -499,13 +533,13 @@
             });
         });
         $(".action-rename").click(function () {
-            $("#renameModal").modal("show");
             elements = $(document).find('.file.file-selected');
             let inputs = '';
             $.each(elements, function (key, value) {
-                inputs += `<input type="text" name="filename[${$(value).data('id')}]" value="${$(value).data('name')}" class="form-control form-control-sm mb-3 rounded-0" placeholder="Rename here">`;
+                inputs += `<input type="text" required name="filename[${$(value).data('id')}]" value="${$(value).data('name')}" class="form-control form-control-sm mb-3 rounded-0" placeholder="Rename here">`;
             });
             $("#renameInputsWrapper").html(inputs);
+            $("#renameModal").modal("show");
         });
         $("#renameForm").submit(function (e) {
             e.preventDefault();
@@ -519,6 +553,42 @@
                 success: function(response) {
                     $("#renameFormSubmit").prop("disabled",false);
                     $("#renameModal").modal("hide");
+                    if (response.status == "success") {
+                        fetch_data(1);
+                        Swal.fire(
+                            'Successful!',
+                            response.message,
+                            'success'
+                        );
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error !',
+                            text: response.message,
+                        })
+                    }
+                }
+            });
+        });
+        $("#downloadForm").submit(function (e) {
+            e.preventDefault();
+            let form = $(this);
+            $.ajax({
+                url: $(this).attr('action'),
+                type: "POST",
+                data: form.serialize(),
+                dataType: "json",
+                beforeSend: function() {
+                    ajaxMediaLoader();
+                    $("#downloadFormSubmit").prop("disabled",true);
+                    $("#downloadFormSubmit").html(`<span class="spinner-border spinner-border-sm"></span> Downloading`);
+                },
+                success: function(response) {
+                    $("#downloadModal").modal("hide");
+                    $("#downloadForm").trigger("reset");
+                    $("#downloadFormSubmit").prop("disabled",false);
+                    $("#downloadFormSubmit").html(`Download`);
+                    ajaxMediaLoader(false);
                     if (response.status == "success") {
                         fetch_data(1);
                         Swal.fire(
