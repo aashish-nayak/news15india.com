@@ -83,6 +83,7 @@ class MediaController extends Controller
                     Storage::move("public/media/" . $media->filename, "public/media/" . $file);
                 }
                 $media->filename = $file;
+                $media->alt = $file;
                 $media->save();
             }
             return response()->json(["status"=>"success", "message" => "File Renamed successfully"]);

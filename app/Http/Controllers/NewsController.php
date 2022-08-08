@@ -124,7 +124,6 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         if (isset($request->id)) {
             $news = News::find($request->id);
             $message = 'News Updated Successfully!';
@@ -163,7 +162,7 @@ class NewsController extends Controller
         $news->meta_title = $request->meta_title;
         $news->meta_keywords = $request->meta_keywords;
         $news->meta_description = $request->meta_description;
-        $news->created_at = ($request->created_at != '') ? Carbon::parse($request->created_at)->format("Y-m-d H:i:s") : now()->toDateTimeString();
+        $news->created_at = ($request->created_at != '') ? Carbon::parse($request->created_at)->format("Y-m-d ".now()->format('H:i:s')) : now()->toDateTimeString();
         $news->save();
         $news->categories()->sync($request->categories);
         $news->tags()->sync($request->tags);
