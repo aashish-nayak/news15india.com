@@ -38,11 +38,11 @@
     <div class="row align-items-center">
         <div class="col-md-8">
             <nav style="--bs-breadcrumb-divider: '/';font-size:12px" aria-label="breadcrumb">
-                <ul class="breadcrumb m-0">
+                {{-- <ul class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Data</li>
-                </ul>
+                </ul> --}}
                 <div class="items-loaded mt-1">
                     <p class="m-0"><span id="loadedItems" class="fw-bold"></span> Items Loaded out of <span id="totalItems" class="fw-bold"></span></p>
                 </div>
