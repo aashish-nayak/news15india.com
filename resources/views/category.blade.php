@@ -29,7 +29,7 @@
             <div class="col mb-4 p-1">
                 <div class="card mx-1" style="border:1px solid var(--primary);">
                     <a href="{{route('single-news',$news->slug)}}" class="text-decoration-none">
-                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top" alt="...">
+                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top simple-card" alt="...">
                     </a>
                     <div class="card-body p-2">
                         <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
@@ -42,10 +42,10 @@
             @else
             @push('moreNews')
             <div class="col mt-2 px-1">
-                <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
-                    <div class="col-4 p-1" style="border:1px solid #b2bec3;">
+                <div class="card-horizontal no-gutters card-horizontal-3" style="border:1px solid var(--primary)">
+                    <div class="col-4 p-1 h-100" style="border-right:1px solid #b2bec3;">
                         <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                            <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid" alt="...">
+                            <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid h-100" alt="...">
                         </a>
                     </div>
                     <div class="col-8">

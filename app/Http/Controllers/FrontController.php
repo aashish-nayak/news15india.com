@@ -39,7 +39,7 @@ class FrontController extends Controller
         $section1 = Category::with(['children'=>function($query){
             $query->limit(10);
         },'news'=>function($query){
-            $query->latest()->limit(15)->with('newsImage');
+            $query->latest()->limit(16)->with('newsImage');
         }])->find($catIds[0]);
         $section2 = Category::with(['children'=>function($query){
             $query->limit(10);
@@ -104,7 +104,7 @@ class FrontController extends Controller
             $query->latest()->limit(4)->with('newsImage');
         }])->find($catIds[13]);
         $sidebar_3 = Category::with(['news'=>function($query){
-            $query->latest()->limit(8);
+            $query->latest()->limit(9);
         }])->find($catIds[14]);
         $sidebar_4 = Category::with(['news'=>function($query){
             $query->latest()->limit(6)->with('newsImage');

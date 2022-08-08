@@ -1012,6 +1012,11 @@ div.scrollmenu {
     font-size: 1.6rem;
 }
 
+.box .img-fluid{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 /*=============== Sectioin 1 ===========*/
 .single-blog-post {
     position: relative;
@@ -1022,14 +1027,54 @@ div.scrollmenu {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 80px;
 }
 
+.card-horizontal .img-square-wrapper{
+    height: 100%;
+}
+
+.simple-card{
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.simple-card-2{
+    height: 160px;
+}
+
+.card-horizontal-2{
+    height: 100px;
+}
+.card-horizontal-3{
+    height: 130px;
+}
 .card-horizontal img {
     height: 100%;
     width: 100%;
     -o-object-fit: cover;
     object-fit: cover;
     object-position: center center;
+}
+
+img.img-fluid.section-main-news {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+.single-news-box{
+    height: 450px;
+}
+
+@media (max-width: 767px) {
+    .card-horizontal {
+        height: 100px;
+    }
+    
+    .single-news-box{
+        height: 350px;
+    }
 }
 
 .single-blog-post .post-thumb {
@@ -1213,7 +1258,7 @@ div.section-header-container {
 
 .side-bar {
     width: 100%;
-    max-height: 385px;
+    max-height: 450px;
     overflow-y: scroll;
     background-color: #f1f2f6;
     padding: 0 5px;
@@ -2470,7 +2515,9 @@ button.back-to-top.show:active {
 }
 
 .author-avatar{
-    height:80%;
-    border:5px solid white;border-radius:50%;
+    height:230px;
+    width : 250px;
+    border:5px solid white;
+    border-radius:50%;
     object-fit:cover;
 }

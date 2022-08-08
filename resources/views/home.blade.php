@@ -104,19 +104,18 @@
                     @if($key <= 3)
                     @push('section1_design_1')
                     <div class="col-6 p-1">
-                        <div class="box card-shadow" style="height:130px;">
+                        <div class="box card-shadow" style="height:160px;">
                             <a href="{{route('single-news',$news1->slug)}}">
                                 <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
                                 <div class="content-overlay" style="border-bottom:2px solid var(--primary);"></div>
                                 <div class="img-title">
-                                    <p class="text-light">{{\Str::limit($news1->title,60)}}</p>
+                                    <p class="text-light">{{\Str::limit($news1->title,50)}}</p>
                                 </div>
                             </a>
                         </div>
                     </div>
                     @endpush
-                    @endif
-                    @if ($key > 3 && $key < 7)
+                    @elseif ($key > 5 && $key <= 9)
                     @push('section1_design_2')
                     <div class="card card-shadow mt-md-1 my-2" style="border-left:2px solid var(--primary);">
                         <a href="{{route('single-news',$news1->slug)}}">
@@ -125,7 +124,7 @@
                                     <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                 </div>
                                 <div class="card-body col-8 col-md-9">
-                                    <h6 class="card-text m-0">{{\Str::limit($news1->title,65)}}</h6>
+                                    <h6 class="card-text m-0">{{\Str::limit($news1->title,55)}}</h6>
                                     <p class="post-date m-0">
                                         {{$news1->created_at}}
                                     </p>
@@ -134,8 +133,7 @@
                         </a>
                     </div>
                     @endpush
-                    @endif
-                    @if ($key >= 7)
+                    @else
                     @push('section1_design_3')
                     <div class="col-md-6 col-12 px-2 my-2 my-md-0 mb-md-2 px-md-1">
                         <div class="card card-shadow" style="border-left:2px solid var(--primary);">
@@ -195,7 +193,7 @@
                     <div class="col mb-2 px-2">
                         <div class="card card-shadow">
                             <a href="{{route('single-news',$news2->slug)}}" class="text-muted text-decoration-none">
-                                <img src="{{asset('storage/media/'.$news2->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
+                                <img src="{{asset('storage/media/'.$news2->newsImage->filename)}}" class="card-img-top simple-card" loading="lazy" alt="...">
                             </a>
                             <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                 <a href="{{route('single-news',$news2->slug)}}" class="text-decoration-none">
@@ -270,7 +268,7 @@
                     @push('section3_design_1')
                     <div class="container-fluid p-0">
                         <a href="{{route('single-news',$news3->slug)}}" class="text-decoration-none">
-                            <img src="{{asset('storage/media/'.$news3->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
+                            <img src="{{asset('storage/media/'.$news3->newsImage->filename)}}" class="img-fluid section-main-news" loading="lazy" alt="">
                             <h5 class="mt-2">{{\Str::limit($news3->title,100)}}</h5>
                         </a>
                         <p class="text-muted">{{\Str::limit($news3->short_description,90)}}</p>
@@ -292,7 +290,7 @@
                     @push('section3_design_3')
                     <div class="card mb-1" style="border-right:2px solid var(--primary);">
                         <a href="{{route('single-news',$news3->slug)}}">
-                            <div class="card-horizontal">
+                            <div class="card-horizontal card-horizontal-2">
                                 <div class="card-body col-8 col-md-8 p-0 px-2">
                                     <h6 class="card-text p-md-3 p-1">{{\Str::limit($news3->title,100)}}</h6>
                                 </div>
@@ -375,11 +373,11 @@
                         <div class="col mb-2 px-1">
                             <div class="card" style="border-bottom: 2px solid var(--primary);">
                                 <a href="{{route('single-news',$news4->slug)}}" class="text-muted text-decoration-none">
-                                    <img src="{{asset('storage/media/'.$news4->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
+                                    <img src="{{asset('storage/media/'.$news4->newsImage->filename)}}" class="card-img-top simple-card" loading="lazy" alt="...">
                                 </a>
                                 <div class="card-body py-3 px-2" style="background-color: #E3E9FF;">
                                     <a href="{{route('single-news',$news4->slug)}}" class="text-muted text-decoration-none">
-                                        <h6 class="my-0 text-left">{{\Str::limit($news4->title,70)}}</h6>
+                                        <h6 class="my-0 text-left">{{\Str::limit($news4->title,65)}}</h6>
                                     </a>
                                 </div>
                             </div>
@@ -395,7 +393,7 @@
                     <div class="style-2 border-top d-flex align-items-center px-1">
                         <div class="post-data mt-3">
                             <a href="{{route('single-news',$sideNews->slug)}}" class="post-title ">
-                                <h5>{{\Str::limit($sideNews->title,65)}}</h5>
+                                <h5>{{\Str::limit($sideNews->title,50)}}</h5>
                             </a>
                         </div>
                     </div>
@@ -441,7 +439,7 @@
                     @if($key == 0)
                     @push('section6_design_1')
                     <a href="{{route('single-news',$news6->slug)}}">
-                        <img src="{{asset('storage/media/'.$news6->newsImage->filename)}}" class="img-fluid w-100" loading="lazy" alt="" >
+                        <img src="{{asset('storage/media/'.$news6->newsImage->filename)}}" class="img-fluid section-main-news" loading="lazy" alt="" >
                     </a>
                     @endpush
                     @endif
@@ -521,7 +519,7 @@
                     <div class="col mb-2 px-1">
                         <div class="card" style="border-bottom: 2px solid var(--primary);">
                             <a href="{{route('single-news',$news7->slug)}}" class="">
-                                <img src="{{asset('storage/media/'.$news7->newsImage->filename)}}" class="card-img-top" loading="lazy" alt="...">
+                                <img src="{{asset('storage/media/'.$news7->newsImage->filename)}}" class="card-img-top simple-card-2" loading="lazy" alt="...">
                             </a>
                             <div class="card-body p-2">
                                 <a href="{{route('single-news',$news7->slug)}}" class="text-dark text-decoration-none">
@@ -654,7 +652,7 @@
                 @if($key == 0)
                 <div class="col px-1">
                     <a href="{{route('single-news',$news10->slug)}}" class="text-decoration-none">
-                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
+                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid section-main-news" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
                         </h5>
@@ -685,7 +683,7 @@
                 @if($key == 0)
                 <div class="col px-1">
                     <a href="{{route('single-news',$news10->slug)}}" class="text-decoration-none">
-                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
+                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid section-main-news" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
                         </h5>
@@ -716,7 +714,7 @@
                 @if($key == 0)
                 <div class="col px-1">
                     <a href="{{route('single-news',$news10->slug)}}" class="text-decoration-none">
-                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
+                        <img src="{{asset('storage/media/'.$news10->newsImage->filename)}}" class="img-fluid section-main-news" loading="lazy" alt="" style="border-bottom: 4px solid var(--primary);">
                         <h5 class="mt-2 p-1">
                             {{\Str::limit($news10->title,80)}}
                         </h5>

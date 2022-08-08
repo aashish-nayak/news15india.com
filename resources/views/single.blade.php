@@ -83,9 +83,9 @@
             <div class="container-fluid mx-auto mt-1">
                 <div class="row">
                     <div class="col-md-8 col-12 px-0 pr-md-1">
-                        <div class="box">
+                        <div class="box single-news-box">
                             <a href="javascript:void(0)">
-                                <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid w-100" alt="" loading="lazy">
+                                <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid w-100 h-100" alt="" loading="lazy">
                                 <div class="content-overlay"></div>
                                 <div class="img-title py-3" style="background-color: #333333a6 !important;border-left: 5px solid var(--primary);">
                                     <h4 class="text-white font-weight-normal heading-single">{{$news->title}}</h4>
@@ -260,7 +260,7 @@
                         <div class="col mb-2 px-2">
                             <div class="card card-shadow">
                                 <a href="{{route('single-news',$otherNews->slug)}}" class="text-muted text-decoration-none">
-                                    <img src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" class="card-img-top" alt="..." loading="lazy">
+                                    <img src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" class="card-img-top simple-card" alt="..." loading="lazy">
                                 </a>
                                 <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                     <a href="{{route('single-news',$otherNews->slug)}}" class="text-decoration-none">

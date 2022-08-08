@@ -117,7 +117,7 @@
         <div class="col-md-9 col-12 px-1 pr-md-1 order-1 order-md-2">
             <div class="container-fluid mx-auto px-0 mt-1">
                 <div class="d-flex flex-wrap justify-content-center">
-                    <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center d-flex align-items-center justify-content-center">
+                    <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center">
                         @isset($author->details->avatar->filename)
                         <img loading="lazy" src="{{asset('storage/media/'.$author->details->avatar->filename)}}" class="text-center img-fluid author-avatar" alt="">
                         @else
@@ -186,7 +186,7 @@
                     <div class="col mb-2 px-2">
                         <div class="card card-shadow">
                             <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                                <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top" alt="...">
+                                <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top simple-card" alt="...">
                             </a>
                             <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                 <a href="{{route('single-news',$news->slug)}}" class="text-decoration-none">
@@ -237,10 +237,10 @@
                 <div class="row row-cols-md-2 row-cols-1 ">
                     @foreach ($creatorNews as $news)
                     <div class="col mt-2 px-1">
-                        <div class="card-horizontal no-gutters" style="border:1px solid var(--primary)">
-                            <div class="col-4 p-1" style="border:1px solid #b2bec3;">
+                        <div class="card-horizontal card-horizontal-3 no-gutters" style="border:1px solid var(--primary)">
+                            <div class="col-4 p-1 h-100" style="border-right:1px solid #b2bec3;">
                                 <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                                    <img loading="lazy" loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid" alt="...">
+                                    <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid h-100" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
