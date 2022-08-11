@@ -6,7 +6,7 @@
         {{-- sidebar --}}
         @includeIf('layouts.backpanel.partials.sidebar')
         <div class="page-wrapper">
-            <div class="page-content p-2">
+            <div class="page-content p-3">
                 @yield('sections')
             </div>
             <div class="overlay toggle-icon"></div>

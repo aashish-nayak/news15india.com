@@ -11,6 +11,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
@@ -132,5 +133,9 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/add-to-menu', [MenuController::class,'addToMenu'])->middleware('permission:create-menu')->name('add-to-menu');
         Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->middleware('permission:create-menu')->name('add-to-menu-link');
         Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
+    });
+    Route::prefix('/settings')->name('setting.')->group(function(){
+        Route::get('/index',[SettingController::class,'index'])->name('index');
+        Route::post('/store',[SettingController::class,'store'])->name('store');
     });
 });
