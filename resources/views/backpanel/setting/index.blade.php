@@ -336,41 +336,155 @@
                                 </form>
                             </div>
                             <div class="tab-pane fade active show" id="tab5" role="tabpanel">
-                                <form class="needs-validation" action="{{ route('admin.setting.store') }}" method="POST" role="form">
+                                <form class="needs-validation" action="{{ route('admin.setting.home-setting-store') }}" method="POST" role="form">
+                                    @csrf
                                     <div class="row g-3">
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bold">Live Video Link</label>
-                                            <input type="text" class="form-control" name="" >
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bold">Main Box 2</label>
-                                            <input type="text" class="form-control" name="" >
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bold">Main Box 3</label>
-                                            <input type="text" class="form-control" name="" >
-                                        </div>
                                         <div class="col-md-7">
-                                            <div class="col-md-12">
-                                                <label class="form-label fw-bold">Section 1</label>
-                                                <select class="single-select">
-                                                    <option value="youtube">YouTube</option>
-                                                    <option value="facebook">Facebook</option>
-                                                    <option value="twitter">Twitter</option>
-                                                    <option value="instagram">Instagram</option>
-                                                    <option value="linkedin">LinkedIn</option>
-                                                </select>
+                                            <div class="row g-2">
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 1</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[0]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[0]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 2</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[1]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[1]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 3</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[2]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[2]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 4</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[3]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[3]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 5</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[4]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[4]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 6</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[5]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[5]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 7</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[6]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[6]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 8</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[7]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[7]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 9</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[8]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[8]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 10 Block 1</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[9]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[9]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 10 Block 2</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[10]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[10]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Section 10 Block 3</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'edit'=>$homeSections->home_sections[11]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_section_limit[]" min="0" value="{{$homeSections->home_section_limit[11]}}">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
-                                            <label class="form-label fw-bold">Sidebar 1</label>
-                                            <select class="single-select">
-                                                <option value="youtube">YouTube</option>
-                                                <option value="facebook">Facebook</option>
-                                                <option value="twitter">Twitter</option>
-                                                <option value="instagram">Instagram</option>
-                                                <option value="linkedin">LinkedIn</option>
-                                            </select>
+                                            <div class="row g-2">
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Sidebar 1</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'name'=>'home_sidebars[]','edit'=>$homeSections->home_sidebars[0]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_sidebar_limit[]" value="{{$homeSections->home_sidebar_limit[0]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Sidebar 2</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'name'=>'home_sidebars[]','edit'=>$homeSections->home_sidebars[1]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_sidebar_limit[]" value="{{$homeSections->home_sidebar_limit[1]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Sidebar 3</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'name'=>'home_sidebars[]','edit'=>$homeSections->home_sidebars[2]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_sidebar_limit[]" value="{{$homeSections->home_sidebar_limit[2]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Sidebar 4</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'name'=>'home_sidebars[]','edit'=>$homeSections->home_sidebars[3]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_sidebar_limit[]" value="{{$homeSections->home_sidebar_limit[3]}}">
+                                                </div>
+                                                <div class="col-md-9 mb-2">
+                                                    <label class="form-label fw-bold">Sidebar 5</label>
+                                                    @includeIf('backpanel.setting.categories', ['categories' => $categories,'name'=>'home_sidebars[]','edit'=>$homeSections->home_sidebars[4]])
+                                                </div>
+                                                <div class="col-md-3 mb-2">
+                                                    <label class="form-label fw-bold">Limit</label>
+                                                    <input type="number" required class="form-control" name="home_sidebar_limit[]" value="{{$homeSections->home_sidebar_limit[4]}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-end">
+                                            <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </div>
                                 </form>

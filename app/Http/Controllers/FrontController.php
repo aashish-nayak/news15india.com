@@ -34,85 +34,92 @@ class FrontController extends Controller
 
     public function home()
     {
-        $catIds = [1,2,3,4,12,5,6,7,8,9,10,11,13,14,15,16,17];
+        $homeSections = json_decode(setting('HOME_SECTIONS'));
+        
+        $catIds = $homeSections->home_sections;
+        $catIdsLimit = $homeSections->home_section_limit;
+
+        $sideCatIds = $homeSections->home_sidebars;
+        $sideCatIdsLimit = $homeSections->home_sidebar_limit;
+        
         // ............ Sections Queries ............ 
         $section1 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(16)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[0])->with('newsImage');
         }])->find($catIds[0]);
         $section2 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(14)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[1])->with('newsImage');
         }])->find($catIds[1]);
         $section3 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(12)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[2])->with('newsImage');
         }])->find($catIds[2]);
         $section4 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(12)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[3])->with('newsImage');
         }])->find($catIds[3]);
         $section5 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(16)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[4])->with('newsImage');
         }])->find($catIds[4]);
         $section6 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(13)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[5])->with('newsImage');
         }])->find($catIds[5]);
         $section7 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(20)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[6])->with('newsImage');
         }])->find($catIds[6]);
         $section8 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(9)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[7])->with('newsImage');
         }])->find($catIds[7]);
         $section9 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(12)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[8])->with('newsImage');
         }])->find($catIds[8]);
         $section10 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(5)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[9])->with('newsImage');
         }])->find($catIds[9]);
         $section10_part2 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(5)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[10])->with('newsImage');
         }])->find($catIds[10]);
         $section10_part3 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query){
-            $query->latest()->limit(5)->with('newsImage');
+        },'news'=>function($query)use($catIdsLimit){
+            $query->latest()->limit($catIdsLimit[11])->with('newsImage');
         }])->find($catIds[11]);
         // .......... Sidebar Queries ............ 
-        $sidebar_1 = Category::with(['news'=>function($query){
-            $query->latest()->limit(10);
-        }])->find($catIds[12]);
-        $sidebar_2 = Category::with(['news'=>function($query){
-            $query->latest()->limit(4)->with('newsImage');
-        }])->find($catIds[13]);
-        $sidebar_3 = Category::with(['news'=>function($query){
-            $query->latest()->limit(9);
-        }])->find($catIds[14]);
-        $sidebar_4 = Category::with(['news'=>function($query){
-            $query->latest()->limit(6)->with('newsImage');
-        }])->find($catIds[15]);
-        $sidebar_5 = Category::with(['news'=>function($query){
+        $sidebar_1 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
+            $query->latest()->limit($sideCatIdsLimit[0]);
+        }])->find($sideCatIds[0]);
+        $sidebar_2 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
+            $query->latest()->limit($sideCatIdsLimit[1])->with('newsImage');
+        }])->find($sideCatIds[1]);
+        $sidebar_3 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
+            $query->latest()->limit($sideCatIdsLimit[2]);
+        }])->find($sideCatIds[2]);
+        $sidebar_4 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
+            $query->latest()->limit($sideCatIdsLimit[3])->with('newsImage');
+        }])->find($sideCatIds[3]);
+        $sidebar_5 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
             // ->where('format','video')
-            $query->latest()->limit(6)->with('newsImage');
-        }])->find($catIds[16]);
+            $query->latest()->limit($sideCatIdsLimit[4])->with('newsImage');
+        }])->find($sideCatIds[4]);
         return view('home',compact(
             'section1',
             'section2',

@@ -15,15 +15,38 @@ if (!function_exists('formatBytes')) {
         }
     }
 }
+if(!function_exists('buildSetting')){
+    function buildSetting(string $key, $value) : array {
+        return [
+            'key' => $key,
+            'value' => $value,
+            'created_at' => now()->toDateTimeString(),
+            'updated_at' => now()->toDateTimeString(),
+        ];
+    }
+}
+
+if(!function_exists('createSetting')){
+    function createSetting(string $key, $value = null)
+    {
+        $setting = Setting::where('key',$key)->first();
+        if($setting == null){
+            $setting = Setting::create(buildSetting($key,$value));
+        }
+        return $setting;
+    }
+}
+
 if (!function_exists('setting')) {
-    function setting($key = null, $default = null)
+    function setting($key = null)
     {
         if (!empty($key)) {
             try {
-                return Setting::get($key, $default);
+                return Setting::where('key',$key)->first()->value;
             } catch (Exception $exception) {
-                return $default;
+                return null;
             }
         }
     }
 }
+

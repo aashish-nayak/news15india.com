@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Setting;
+use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -14,7 +16,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('backpanel.setting.index');
+        $categories = Category::select('id','cat_name')->get();
+        $homeSections = json_decode(setting('HOME_SECTIONS'));
+        return view('backpanel.setting.index',compact('categories','homeSections'));
     }
 
     /**
@@ -33,9 +37,26 @@ class SettingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+
+    public function updateSetting(string $key, $value = null)
     {
-        //
+        $setting = createSetting($key);
+        $setting->value = $value;
+        $setting->save();
+        return $setting->id;
+    }
+
+    public function homeSettingStore(Request $request)
+    {
+        try {
+            $sections = json_encode($request->except('_token'));
+            $this->updateSetting('HOME_SECTIONS',$sections);
+            $request->flash('success','Home Page Setting Saved!');
+        } catch (\Exception $e) {
+            $request->flash('error',$e->getMessage());
+        }
+        return redirect()->back();
     }
 
     /**

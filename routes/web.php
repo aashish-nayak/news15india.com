@@ -137,5 +137,6 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::prefix('/settings')->name('setting.')->group(function(){
         Route::get('/index',[SettingController::class,'index'])->name('index');
         Route::post('/store',[SettingController::class,'store'])->name('store');
+        Route::post('/home-setting-store',[SettingController::class,'homeSettingStore'])->name('home-setting-store');
     });
 });
