@@ -131,7 +131,7 @@
                         </div>
                         <div style="background-color:#333;">
                             @foreach ($related as $key=>$news)
-                            @if($key < 10)
+                            @if($key < 9)
                             <div class="border-bottom border-secondary">
                                 <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
                                     <a href="{{route('single-news',$news->slug)}}" class="post-title">
