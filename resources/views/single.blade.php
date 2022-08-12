@@ -2,6 +2,13 @@
 @section('meta-tags')
 @includeIf('components.seo', ['obj' => $news,'page'=>'single-page'])
 @endsection
+@push('css')
+    <style>
+        .single-para.content p{
+            font-size: 1.8rem !important;
+        }
+    </style>
+@endpush
 @section('sections')
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
@@ -147,7 +154,7 @@
             </section>
             {{-- ............ Ad Banner ...........  --}}
             <div class="container-fluid mt-3 px-1">
-                <div class="text-dark single-para mb-3 text-justify fs-5">
+                <div class="text-dark single-para mb-3 text-justify fs-5 content">
                     @php
                     echo html_entity_decode($news->content);
                     @endphp
