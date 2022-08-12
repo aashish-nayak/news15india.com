@@ -1452,7 +1452,20 @@ footer nav > ul > li > a.active {
         background: black;
     }
 }
-
+.whatsapp-cta{
+    background: url("../img/whatsapp-web.jpg");
+    height:80px;
+    background-size:contain;
+    width:100%;
+}
+@media (max-width: 600px) {
+    .whatsapp-cta{
+        background: url("../img/whatsapp-mobile.jpg");
+        height:65px;
+        background-size:contain;
+        width:100%;
+    }
+}
 @media (max-width: 767px) {
     .mobile-height-black {
         min-height: 50px;
@@ -1527,7 +1540,7 @@ footer nav > ul > li > a.active {
     }
 
     .single-para {
-        font-size: 16px !important;
+        font-size: 17px !important;
     }
 
     .social-media-size {
@@ -1641,7 +1654,7 @@ footer nav > ul > li > a.active {
 }
 
 .single-para {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 1.2;
     margin: 0px;
 }
