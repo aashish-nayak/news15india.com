@@ -428,7 +428,7 @@ tinymce.init({
         },
     },
     menubar: "favs file edit view insert format tools table help",
-    content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:16px; color: #333; }",
+    content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:18px; color: #000; }",
 });
 
 $(".card-container").draggable({

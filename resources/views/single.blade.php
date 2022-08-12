@@ -2,6 +2,13 @@
 @section('meta-tags')
 @includeIf('components.seo', ['obj' => $news,'page'=>'single-page'])
 @endsection
+@push('css')
+    <style>
+        .single-para.content p{
+            font-size: 1.8rem !important;
+        }
+    </style>
+@endpush
 @section('sections')
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
@@ -23,10 +30,10 @@
                 @endforeach
             </div>
             <div class="col-12 p-1">
-                <h1 class="text-dark px-2 font-weight-bold" style="border-left: 4px solid var(--primary);">
+                <h1 class="text-dark px-2 font-weight-bold" style="font-size:2.8rem; border-left: 4px solid var(--primary);">
                     {{$news->title}}
                 </h1>
-                <p class="px-3 mt-4 font-weight-bold" style="line-height: 1.3;font-size:1.7rem">
+                <p class="px-3 mt-4 font-weight-bold" style="line-height: 1.3;font-size:2.1rem">
                     {{$news->short_description}}
                 </p>
             </div>
@@ -65,7 +72,6 @@
                     <div class="col-md-3 col-6">
                         <p class="m-0" style="font-size: 16px"><i class="fa fa-eye px-2"></i> <span>2.5k</span> <span>Views</span></p>
                         <p class="m-0" style="font-size: 16px"><i class="fa fa-comment-alt px-2"></i> <span>500</span> <span>Comments</span></p>
-                        <p class="m-0" style="font-size: 16px"><i class="fa fa-share px-2"></i> <span>200</span> <span>Shares</span></p>
                     </div>
                     <div class="col-md-4 col-6 font-size-sm">
                         <div class="row">
@@ -112,87 +118,31 @@
                                 </a>
                             </div>
                         </div>
-                        <a href="javascript:void(0)">
-                            <div class="col-12 px-0 mt-2" style="background: url({{asset('front-assets/img/whatsapp-full.jpg')}});height:94px;background-size:cover;width:100%;">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="col-2"></div>
-                                    <div class="col-md-10 col-9 mt-md-5 mt-2">
-                                        <h4 class="text-light">अपने वॉट्स्ऐप मेसेंजर पर ताज़ा खबरे पाने के लिए सब्सक्राईब करे</>
-                                        <h5 class="text-light">Subscribe To Get The Latest News On Your WhatsApp Messenger</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        <div class="col-12 px-0 mt-2">
+                            <a href="javascript:void(0)">
+                                <div class="whatsapp-cta"></div>
+                            </a>
+                        </div>
                     </div>
                     <div class="col-md-4 col-12 px-0">
+                        @if ($related->count()>0)
                         <div class="bg-primary-clr mt-md-0 mt-1 container-fluid d-flex align-items-center justify-content-between py-2">
-                            <h3 class="m-0 mx-auto text-white">स्टोरी हाईलाइट </h3>
+                            <h3 class="m-0 mx-auto text-white">सम्बंदित खबरे</h3>
                         </div>
                         <div style="background-color:#333;">
+                            @foreach ($related as $key=>$news)
+                            @if($key < 10)
                             <div class="border-bottom border-secondary">
                                 <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                                    <a href="{{route('single-news',$news->slug)}}" class="post-title">
+                                        <h6 class="text-white m-0">{{\Str::limit($news->title,60)}}</h6>
                                     </a>
                                 </div>
                             </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="border-bottom border-secondary">
-                                <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="#" class="post-title">
-                                        <h6 class="text-white m-0">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                    </a>
-                                </div>
-                            </div>
+                            @endif
+                            @endforeach
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -204,9 +154,11 @@
             </section>
             {{-- ............ Ad Banner ...........  --}}
             <div class="container-fluid mt-3 px-1">
-                <p class=" text-dark single-para mb-3 text-justify">@php
+                <div class="text-dark single-para mb-3 text-justify fs-5 content">
+                    @php
                     echo html_entity_decode($news->content);
-                @endphp</p>
+                    @endphp
+                </div>
             </div>
             <section class="container-fluid mx-auto mt-1 px-0 text-center">
                 <a href="javascript:void(0)">
@@ -250,7 +202,6 @@
                     </div>
                 </div>
             </div>
-            {{-- ........... Tags ........  --}}
             <div class="main-bg-clr container-fluid px-1 mt-3">
                 @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-25'])
                 <div class="row mx-auto">
@@ -301,9 +252,10 @@
                     </div>
                 </div>
             </div>
+            {{-- ........... Tags ........  --}}
             <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
                 <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i>
-                <h4 class="text-white mr-2">Related News</h4>
+                    <h4 class="text-white mr-2 pt-2">सम्बंदित केटेगरी</h4>
                 <div class="w-75 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                     <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                 </div>

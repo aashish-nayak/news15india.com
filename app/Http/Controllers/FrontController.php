@@ -159,7 +159,6 @@ class FrontController extends Controller
         })
         ->with('newsImage')
         ->latest()->limit(12)->get();
-
         // ....... Sidebar ..........
         $catIds = [18,19,20,5];
 
