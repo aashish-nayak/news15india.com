@@ -70,17 +70,19 @@
                                 <a class="nav-link" data-bs-toggle="tab" href="#tab1" role="tab"
                                     aria-selected="true">
                                     <div class="d-flex align-items-center">
-                                        <div class="tab-icon"><i class="bx bx-info-circle font-18 me-1"></i>
+                                        <div class="tab-icon">
+                                            <i class="bx bx-info-circle font-18 me-1"></i>
                                         </div>
                                         <div class="tab-title">Web Information</div>
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#tab2" role="tab"
+                                <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab"
                                     aria-selected="false">
                                     <div class="d-flex align-items-center">
-                                        <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
+                                        <div class="tab-icon">
+                                            <i class="bx bx-user-pin font-18 me-1"></i>
                                         </div>
                                         <div class="tab-title">Web Contact</div>
                                     </div>
@@ -90,7 +92,8 @@
                                 <a class="nav-link" data-bs-toggle="tab" href="#tab3" role="tab"
                                     aria-selected="false">
                                     <div class="d-flex align-items-center">
-                                        <div class="tab-icon"><i class="bx bx-image-add font-18 me-1"></i>
+                                        <div class="tab-icon">
+                                            <i class="bx bx-image-add font-18 me-1"></i>
                                         </div>
                                         <div class="tab-title">Web Properties</div>
                                     </div>
@@ -100,9 +103,21 @@
                                 <a class="nav-link" data-bs-toggle="tab" href="#tab4" role="tab"
                                     aria-selected="false">
                                     <div class="d-flex align-items-center">
-                                        <div class="tab-icon"><i class="bx bx-cog font-18 me-1"></i>
+                                        <div class="tab-icon">
+                                            <i class="bx bx-cog font-18 me-1"></i>
                                         </div>
                                         <div class="tab-title">Web Config</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#tab5" role="tab"
+                                    aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon">
+                                            <i class="bx bx-home font-18 me-1"></i>
+                                        </div>
+                                        <div class="tab-title">Home Page</div>
                                     </div>
                                 </a>
                             </li>
@@ -110,7 +125,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="tab-content">
-                            <div class="tab-pane fade " id="tab1" role="tabpanel">
+                            <div class="tab-pane fade" id="tab1" role="tabpanel">
                                 <form class="needs-validation" action="{{ route('admin.setting.store') }}" method="POST"
                                     role="form">
                                     <div class="row g-3">
@@ -141,7 +156,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-pane fade active show" id="tab2" role="tabpanel">
+                            <div class="tab-pane fade" id="tab2" role="tabpanel">
                                 <form class="needs-validation" action="{{ route('admin.setting.store') }}" method="POST"  role="form">
                                     <div class="row g-3">
                                         <div class="col-12">
@@ -284,8 +299,78 @@
                                                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                             </div>
                                         </div>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="row g-3">
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bold">Google Captcha</label>
+                                            <div class="">
+                                                <div class="form-check form-check-inline cursor-pointer">
+                                                    <input type="radio" checked class="form-check-input cursor-pointer" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                    <label class="form-check-label cursor-pointer" for="inlineRadio1">On</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input cursor-pointer" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                    <label class="form-check-label cursor-pointer" for="inlineRadio2">Off</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold">Captcha Site Key</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text px-2 py-0"><i class="bx bxl-google fs-5"></i></span>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold">Captcha Secret Key</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text px-2 py-0"><i class="bx bxl-google fs-5"></i></span>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            </div>
+                                        </div>
                                         <div class="col-12 text-end mt-4">
                                             <button class="btn btn-primary" type="submit">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade active show" id="tab5" role="tabpanel">
+                                <form class="needs-validation" action="{{ route('admin.setting.store') }}" method="POST" role="form">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-bold">Live Video Link</label>
+                                            <input type="text" class="form-control" name="" >
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-bold">Main Box 2</label>
+                                            <input type="text" class="form-control" name="" >
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-bold">Main Box 3</label>
+                                            <input type="text" class="form-control" name="" >
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="col-md-12">
+                                                <label class="form-label fw-bold">Section 1</label>
+                                                <select class="single-select">
+                                                    <option value="youtube">YouTube</option>
+                                                    <option value="facebook">Facebook</option>
+                                                    <option value="twitter">Twitter</option>
+                                                    <option value="instagram">Instagram</option>
+                                                    <option value="linkedin">LinkedIn</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label class="form-label fw-bold">Sidebar 1</label>
+                                            <select class="single-select">
+                                                <option value="youtube">YouTube</option>
+                                                <option value="facebook">Facebook</option>
+                                                <option value="twitter">Twitter</option>
+                                                <option value="instagram">Instagram</option>
+                                                <option value="linkedin">LinkedIn</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </form>

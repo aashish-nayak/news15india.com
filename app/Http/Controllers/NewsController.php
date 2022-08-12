@@ -158,7 +158,7 @@ class NewsController extends Controller
         $news->image = $request->image;
         $news->format = $request->format;
         $news->youtube_url = $request->youtube_url;
-        $news->is_featured = (isset($request->is_featured)) ? 1 : 0;
+        $news->is_featured = (isset($request->is_featured) && auth('admin')->user()->hasRole('super-admin') == true) ? 1 : 0;
         $news->meta_title = $request->meta_title;
         $news->meta_keywords = $request->meta_keywords;
         $news->meta_description = $request->meta_description;
