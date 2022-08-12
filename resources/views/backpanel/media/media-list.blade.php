@@ -9,6 +9,7 @@
         data-path="{{asset('storage/media/'.$item->filename)}}" 
         data-alt="{{$item->alt}}" 
         data-name="{{$item->filename}}" 
+        data-createdby="{{$item->creator->name}}"
         data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" 
         data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
         <div class="col-1">

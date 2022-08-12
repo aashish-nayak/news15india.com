@@ -65,6 +65,9 @@ class MediaController extends Controller
                 $sort = explode(",",$request->sort)[1];
                 $media->orderBy($column,$sort);
             }
+            if (auth('admin')->user()->hasRole('super-admin') == false){
+                $media->where('admin_id',auth('admin')->user()->id);
+            }
             $skip = $request->skip;
             $total = $media->count();
             $take = 18;

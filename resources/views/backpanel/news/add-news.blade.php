@@ -54,6 +54,7 @@
                                 @enderror
                             </div>
                         </div>
+                        @role('super-admin','admin')
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <div class="form-check form-switch">
@@ -62,6 +63,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endrole
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="validationCustom01" class="form-label"><b>Content</b></label>

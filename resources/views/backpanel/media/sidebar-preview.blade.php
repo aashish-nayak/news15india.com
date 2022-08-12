@@ -9,6 +9,7 @@
         <div class="mb-1"><b>Dimesion : </b><span class="media-size" id="SideBarDimension">Dimesion</span></div>
         <div class="mb-1"><b>Size : </b><span class="media-weight" id="SideBarSize">Size</span></div>
         <div class="mb-1"><b>File Type : </b><span class="media-type" id="SideBarType">File Type</span></div>
+        <div class="mb-1"><b>Created by : </b><span class="media-type" id="SideBarCreatedBy">Admin</span></div>
         <div class="mb-1"><b>Created at : </b><span class="media-type" id="SideBarCreated">00 00 0000</span></div>
         <div class="mb-1"><b>Updated at : </b><span class="media-type" id="SideBarUpdated">00 00 0000</span></div>
     </div>

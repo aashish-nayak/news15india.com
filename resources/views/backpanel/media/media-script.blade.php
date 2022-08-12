@@ -25,6 +25,7 @@
             let dimen = (that != '') ? $(that).data('dimen') : 'Alt Name';
             let size = (that != '') ? $(that).data('size') : '100x100';
             let type = (that != '') ? $(that).data('type') : 'File Type';
+            let createdby = (that != '') ? $(that).data('createdby') : 'Admin';
             let createdat = (that != '') ? $(that).data('createdat') : '00 00 0000';
             let updatedat = (that != '') ? $(that).data('updatedat') : '00 00 0000';
             let alt = (that != '') ? $(that).data('alt') : '';
@@ -46,6 +47,7 @@
             $("#SideBarDimension").html(dimen);
             $("#SideBarSize").html(size);
             $("#SideBarType").html(type);
+            $("#SideBarCreatedBy").html(createdby);
             $("#SideBarCreated").html(createdat);
             $("#SideBarUpdated").html(updatedat);
             $("#SideBarAlt").html(alt);

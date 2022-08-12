@@ -77,6 +77,12 @@
                 <div class="menu-title">Menus</div>
             </a>
         </li>
+        <li class="">
+            <a href="{{Route('admin.setting.index')}}">
+                <div class="parent-icon"><i class='bx bx-cog'></i></div>
+                <div class="menu-title">Settings</div>
+            </a>
+        </li>
         @endrole
         @permission('read-user')
         <li class="">

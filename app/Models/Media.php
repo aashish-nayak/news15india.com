@@ -18,4 +18,9 @@ class Media extends Model
         'type',
         'dimension'
     ];
+
+    public function creator()
+    {
+        return $this->belongsTo(Admin::class,'admin_id');
+    }
 }
