@@ -1,6 +1,8 @@
 $(function() {
 	"use strict";
-	new PerfectScrollbar(".header-notifications-list"), 
+	if($(document).find('.header-notifications-list').length > 0){
+		new PerfectScrollbar(".header-notifications-list");
+	}
 	$(".mobile-toggle-menu").on("click", function() {
 		$(".wrapper").addClass("toggled")
 	}), $(".toggle-icon").click(function() {

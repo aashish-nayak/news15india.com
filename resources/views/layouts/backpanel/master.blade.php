@@ -12,7 +12,7 @@
             <div class="overlay toggle-icon"></div>
             <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
             <footer class="page-footer">
-                <p class="mb-0">Copyright © 2022. All right reserved.</p>
+                <p class="mb-0">{!!setting('site_copyright')!!}</p>
             </footer>
         </div>
     </div>
@@ -112,6 +112,18 @@
     </div> --}}
 {{-- scripts --}}
 @includeIf('layouts.backpanel.partials.scripts')
+<script>
+    $(document).ready(function () {
+        $(".coverage-image").on('change',function () {
+            let img = $(this).val();
+            if($(this).next().find('img').length > 0){
+                $(this).next().find('img').attr('src',img);
+            }else{
+                $(this).next().html('<img src="'+img+'" alt="news">');
+            }
+        });
+    });
+</script>
 @if (Session::has('success'))
 <script>
     $(document).ready(function() {

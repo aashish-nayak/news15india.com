@@ -21,16 +21,12 @@ class CreateSettingsTable extends Migration
             $table->text('value')->nullable();
             $table->timestamps();
         });
-
-        Setting::insert([
-            $this->buildSetting('SITE_NAME','News15India'),
-            $this->buildSetting('SITE_URL','https://www.news15india.com'),
-            $this->buildSetting('SITE_LOGO',null),
-            $this->buildSetting('SITE_DESCRIPTION',null),
-            $this->buildSetting('SITE_PHONE','1234567890'),
-            $this->buildSetting('SITE_EMAIL','info@news15india.com'),
-            $this->buildSetting('SITE_SOCIAL_LINKS',null),
-        ]);
+        $settings = config('settings.defaults');
+        foreach ($settings as $key => $value) {
+            Setting::create(
+                $this->buildSetting($key, $value)
+            );
+        }
     }
 
     /**

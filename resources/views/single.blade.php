@@ -131,7 +131,6 @@
                         </div>
                         <div style="background-color:#333;">
                             @foreach ($related as $key=>$news)
-                            @if($key < 9)
                             <div class="border-bottom border-secondary">
                                 <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
                                     <a href="{{route('single-news',$news->slug)}}" class="post-title">
@@ -139,7 +138,6 @@
                                     </a>
                                 </div>
                             </div>
-                            @endif
                             @endforeach
                         </div>
                         @endif
@@ -255,22 +253,22 @@
             {{-- ........... Tags ........  --}}
             <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
                 <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i>
-                    <h4 class="text-white mr-2 pt-2">सम्बंदित केटेगरी</h4>
+                    <h4 class="text-white mr-2 pt-2">{{$bottom_section->cat_name}}</h4>
                 <div class="w-75 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
                     <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ </span>
                 </div>
-                <a href="javascript:void(0)" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
+                <a href="{{ route('category-news',$bottom_section->slug) }}" class="nav-link text-white" style="font-size: 15px;font-weight:600;">औरभी</a>
             </div>
             <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
                 <div class="row row-cols-md-4 row-cols-1">
-                    @foreach ($related as $news)
+                    @foreach ($bottom_section->news as $bottom_news)
                     <div class="col px-2 px-md-2 my-1">
-                        <a href="{{route('single-news',$news->slug)}}" class="text-decoration-none card-horizontal p-0">
+                        <a href="{{route('single-news',$bottom_news->slug)}}" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
+                                <img src="{{asset('storage/media/'.$bottom_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
                             </div>
-                            <h6 class="col-7 single-para" title="{{$news->title}}">
-                                {{\Str::limit($news->title,30)}}
+                            <h6 class="col-7 single-para" title="{{$bottom_news->title}}">
+                                {{\Str::limit($bottom_news->title,30)}}
                             </h6>
                         </a>
                     </div>

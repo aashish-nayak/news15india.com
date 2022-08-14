@@ -134,9 +134,9 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->middleware('permission:create-menu')->name('add-to-menu-link');
         Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
     });
-    Route::prefix('/settings')->name('setting.')->group(function(){
+    Route::prefix('/settings')->name('setting.')->middleware('role:super-admin')->group(function(){
         Route::get('/index',[SettingController::class,'index'])->name('index');
         Route::post('/store',[SettingController::class,'store'])->name('store');
-        Route::post('/home-setting-store',[SettingController::class,'homeSettingStore'])->name('home-setting-store');
+        Route::post('/page-setting-store',[SettingController::class,'pageSettingStore'])->name('page-setting-store');
     });
 });

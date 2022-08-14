@@ -15,6 +15,5 @@ class TestController extends Controller
         $ids = [$cat->id];
         if(isset($cat2->id))
             $ids[] = $cat2->id;
-        dd($ids);
     }
 }

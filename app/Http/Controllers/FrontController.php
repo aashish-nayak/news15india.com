@@ -34,13 +34,13 @@ class FrontController extends Controller
 
     public function home()
     {
-        $homeSections = json_decode(setting('HOME_SECTIONS'));
+        $homeSections = json_decode(setting('home_page_settings'));
         
-        $catIds = $homeSections->home_sections;
-        $catIdsLimit = $homeSections->home_section_limit;
+        $catIds = $homeSections->sections;
+        $catIdsLimit = $homeSections->sections_limit;
 
-        $sideCatIds = $homeSections->home_sidebars;
-        $sideCatIdsLimit = $homeSections->home_sidebar_limit;
+        $sideCatIds = $homeSections->sidebars;
+        $sideCatIdsLimit = $homeSections->sidebars_limit;
         
         // ............ Sections Queries ............ 
         $section1 = Category::with(['children'=>function($query){
@@ -143,6 +143,8 @@ class FrontController extends Controller
 
     public function singleNews($newsUrl)
     {
+        $pageSetting = json_decode(setting('single_page_settings'));
+
         $news = News::with(['categories'=>function($query){
             $query->orderBy('parent_id','ASC');
         },'creator','tags','newsImage'])
@@ -152,8 +154,8 @@ class FrontController extends Controller
         ->where('is_verified',1)
         ->firstOrFail();
         
-        $moreCategoryNews = Category::with(['news'=>function($query)use($newsUrl){
-            $query->where('slug','!=',$newsUrl)->latest()->limit(14)->with('newsImage');
+        $moreCategoryNews = Category::with(['news'=>function($query)use($newsUrl,$pageSetting){
+            $query->where('slug','!=',$newsUrl)->latest()->limit($pageSetting->category_news_limit)->with('newsImage');
         },
         'children'=>function($query){
             $query->limit(10);
@@ -165,25 +167,29 @@ class FrontController extends Controller
             $query->whereIn('tags.id',$news->tags->pluck('id')->toArray());
         })
         ->with('newsImage')
-        ->latest()->limit(12)->get();
+        ->latest()->limit($pageSetting->related_news_limit)->get();
         // ....... Sidebar ..........
-        $catIds = [18,19,20,5];
+        $catIds = $pageSetting->sidebars;
 
-        $sidebar_1 = Category::with(['news'=>function($query){
-            $query->latest()->limit(8);
+        $sidebar_1 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[0]);
         }])->find($catIds[0]);
 
-        $sidebar_2 = Category::with(['news'=>function($query){
-            $query->latest()->limit(10)->with('newsImage');
+        $sidebar_2 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
         }])->find($catIds[1]);
 
-        $sidebar_3 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5);
+        $sidebar_3 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[2]);
         }])->find($catIds[2]);
 
-        $sidebar_4 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5)->with('newsImage');
+        $sidebar_4 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[3])->with('newsImage');
         }])->find($catIds[3]);
+
+        $bottom_section = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->bottom_section_limit)->with('newsImage');
+        }])->find($pageSetting->bottom_section);
 
         $shareCurrent = Share::currentPage()
         ->facebook()
@@ -200,39 +206,42 @@ class FrontController extends Controller
             'sidebar_2',
             'sidebar_3',
             'sidebar_4',
-            'shareCurrent'
+            'shareCurrent',
+            'bottom_section'
         ));
     }
 
     public function categoryNews($slug)
     {
+        $pageSetting = json_decode(setting('category_page_settings'));
+
         $currentCategory = Category::where('slug',$slug)->firstOrFail();
         $parents = collect();
         if($currentCategory->parent_id != NULL){
             $parents = $this->treePerent($currentCategory->parent_id);
         }
 
-        $categoryNews = News::whereHas('categories',function (Builder $query) use($slug) {
+        $categoryNews = News::whereHas('categories',function (Builder $query) use($slug,$pageSetting) {
             $query->where('slug',$slug);
-        })->with('newsImage','creator')->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate(25);
+        })->with('newsImage','creator')->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate($pageSetting->news_per_page);
 
-        $catIds = [18,19,20,5];
+        $catIds = $pageSetting->sidebars;
 
-        $sidebar_1 = Category::with(['news'=>function($query){
-            $query->latest()->limit(10);
+        $sidebar_1 = Category::with(['news'=>function($query) use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[0]);
         }])->find($catIds[0]);
 
-        $sidebar_2 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5)->with('newsImage');
+        $sidebar_2 = Category::with(['news'=>function($query) use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars[1])->with('newsImage');
         }])->find($catIds[1]);
 
-        $sidebar_3 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5);
+        $sidebar_3 = Category::with(['news'=>function($query) use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars[2]);
         }])->find($catIds[2]);
 
-        $bottom_section = Category::with(['news'=>function($query){
-            $query->latest()->limit(10)->with('newsImage');
-        }])->find($catIds[3]);
+        $bottom_section = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->bottom_section_limit)->with('newsImage');
+        }])->find($pageSetting->bottom_section);
 
         $shareCurrent = Share::currentPage()
         ->facebook()
@@ -254,30 +263,32 @@ class FrontController extends Controller
     
     public function tagNews($slug = '')
     {
+        $pageSetting = json_decode(setting('tag_page_settings'));
+
         $currentTag = Tag::query();
         if($slug != ''){
             $currentTag = $currentTag->where('slug', $slug)->firstOrFail();
         }else{
             $currentTag = $currentTag->inRandomOrder()->firstOrFail();
         }
-        $tagNews = $currentTag->news()->latest()->paginate(25);
+        $tagNews = $currentTag->news()->latest()->paginate($pageSetting->news_per_page);
         
-        $catIds = [18,19,20,5];
-        $sidebar_1 = Category::with(['news'=>function($query){
-            $query->latest()->limit(10);
+        $catIds = $pageSetting->sidebars;
+        $sidebar_1 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[0]);
         }])->find($catIds[0]);
 
-        $sidebar_2 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5)->with('newsImage');
+        $sidebar_2 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
         }])->find($catIds[1]);
 
-        $sidebar_3 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5);
+        $sidebar_3 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[2]);
         }])->find($catIds[2]);
 
-        $bottom_section = Category::with(['news'=>function($query){
-            $query->latest()->limit(10)->with('newsImage');
-        }])->find($catIds[3]);
+        $bottom_section = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->bottom_section_limit)->with('newsImage');
+        }])->find($pageSetting->bottom_section);
         $shareCurrent = Share::currentPage()
         ->facebook()
         ->twitter()
@@ -302,15 +313,17 @@ class FrontController extends Controller
 
     public function author($url)
     {
+        $pageSetting = json_decode(setting('author_page_settings'));
+
         $author = Admin::whereHas('details',function($query) use($url){
             $query->where('url',$url);
         })->with('details')->firstOrFail();
 
-        $creatorNews = News::where('admin_id',$author->id)->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate(18);
+        $creatorNews = News::where('admin_id',$author->id)->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate($pageSetting->news_per_page);
 
-        $popularCategoryId = 13;
-        $popularCategory = Category::with(['news'=>function($query)use($author){
-            $query->where('admin_id',$author->id)->latest()->limit(14);
+        $popularCategoryId = $pageSetting->section;
+        $popularCategory = Category::with(['news'=>function($query)use($author,$pageSetting){
+            $query->where('admin_id',$author->id)->latest()->limit($pageSetting->section_limit);
         }])->find($popularCategoryId);
         
         $shareCurrent = Share::currentPage()
@@ -320,21 +333,21 @@ class FrontController extends Controller
         ->linkedin()
         ->getRawLinks();
 
-        $catIds = [18,19,20,5];
-        $sidebar_1 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5);
+        $catIds = $pageSetting->sidebars;
+        $sidebar_1 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[0]);
         }])->find($catIds[0]);
 
-        $sidebar_2 = Category::with(['news'=>function($query){
-            $query->latest()->limit(10)->with('newsImage');
+        $sidebar_2 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
         }])->find($catIds[1]);
 
-        $sidebar_3 = Category::with(['news'=>function($query){
-            $query->latest()->limit(5);
+        $sidebar_3 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[2]);
         }])->find($catIds[2]);
 
-        $sidebar_4 = Category::with(['news'=>function($query){
-            $query->latest()->limit(10)->with('newsImage');
+        $sidebar_4 = Category::with(['news'=>function($query)use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[3])->with('newsImage');
         }])->find($catIds[3]);
 
         return view('author',compact(

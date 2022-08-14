@@ -44,7 +44,7 @@ if (!function_exists('setting')) {
             try {
                 return Setting::where('key',$key)->first()->value;
             } catch (Exception $exception) {
-                return null;
+                return (config('settings.defaults.'.$key) != null) ? config('settings.defaults.'.$key) : null;
             }
         }
     }

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Setting;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class SettingController extends Controller
 {
@@ -17,8 +18,19 @@ class SettingController extends Controller
     public function index()
     {
         $categories = Category::select('id','cat_name')->get();
-        $homeSections = json_decode(setting('HOME_SECTIONS'));
-        return view('backpanel.setting.index',compact('categories','homeSections'));
+        $homeSections = json_decode(setting('home_page_settings'));
+        $categoryPageSetting = json_decode(setting('category_page_settings'));
+        $singlePageSetting = json_decode(setting('single_page_settings'));
+        $authorPageSetting = json_decode(setting('author_page_settings'));
+        $tagPageSetting = json_decode(setting('tag_page_settings'));
+        return view('backpanel.setting.index',compact(
+            'categories',
+            'homeSections',
+            'categoryPageSetting',
+            'singlePageSetting',
+            'authorPageSetting',
+            'tagPageSetting'
+        ));
     }
 
     /**
@@ -26,9 +38,25 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function store(Request $request)
     {
-        //
+        try {
+            foreach ($request->except('_token') as $key => $value) {
+                if($key == 'special_coverage'){
+                    $value['block_1']['status'] = isset($value['block_1']['status']) ? 1 : 0;
+                    $value['block_2']['status'] = isset($value['block_2']['status']) ? 1 : 0;
+                    $value['block_3']['status'] = isset($value['block_3']['status']) ? 1 : 0;
+                }
+                if($key == 'site_social_links' || $key == 'special_coverage'){
+                    $value = json_encode($value);
+                }
+                $this->updateSetting($key,$value);
+            }
+            $request->session()->flash('success','Setting Saved!');
+        } catch (\Exception $e) {
+            $request->session()->flash('error',$e->getMessage());
+        }
+        return redirect()->back();
     }
 
     /**
@@ -47,14 +75,14 @@ class SettingController extends Controller
         return $setting->id;
     }
 
-    public function homeSettingStore(Request $request)
+    public function pageSettingStore(Request $request)
     {
         try {
-            $sections = json_encode($request->except('_token'));
-            $this->updateSetting('HOME_SECTIONS',$sections);
-            $request->flash('success','Home Page Setting Saved!');
+            $sections = json_encode($request->except('_token','page_setting'));
+            $this->updateSetting($request->page_setting,$sections);
+            $request->session()->flash('success','Page Setting Saved!');
         } catch (\Exception $e) {
-            $request->flash('error',$e->getMessage());
+            $request->session()->flash('error',$e->getMessage());
         }
         return redirect()->back();
     }

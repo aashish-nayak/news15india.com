@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{setting('site_favicon')}}" type="image/png" />
     <!-- Meta Data  -->
     @yield('meta-tags')
     <link rel="stylesheet" href="{{ asset('front-assets/css/bootstrap.min.css') }}">

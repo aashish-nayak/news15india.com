@@ -617,6 +617,29 @@
     overflow-y: auto;
 }
 
+/* -------------------- Top Nav Coverage Modal ------------------ */
+.coverage-news .cover-block{
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.coverage-news .cover-header{
+    color: #333;
+    padding: 5px 5px;
+    border-bottom: 1px solid #d1d1d1;
+    margin-bottom: 5px;
+}
+.coverage-news .cover-img{
+    width: 100%;
+    border: 1px solid #cfcfcf;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: scale-down;
+}
+.coverage-news .cover-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
 
 
 /* ---------------- Category Tree Style For Category Blade -------------- */
