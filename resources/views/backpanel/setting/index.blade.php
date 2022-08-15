@@ -172,21 +172,25 @@
                                 <form class="needs-validation" action="{{ route('admin.setting.store') }}" method="POST" role="form">
                                     @csrf
                                     <div class="row g-3">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="inputFirstName" class="form-label fw-bold">Site Name</label>
                                             <input type="text" name="site_name" class="form-control" value="{{setting('site_name')}}">
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="inputFirstName" class="form-label fw-bold">Site URL</label>
                                             <input type="text" name="site_url" class="form-control" value="{{setting('site_url')}}">
                                         </div>
+                                        <div class="col-md-4">
+                                            <label for="inputFirstName" class="form-label fw-bold">Site Meta Title</label>
+                                            <input type="text" name="site_meta_title" class="form-control" value="{{setting('site_meta_title')}}">
+                                        </div>
                                         <div class="col-md-6">
-                                            <label for="inputFirstName" class="form-label fw-bold">Web Description</label>
-                                            <textarea name="site_description" class="form-control" rows="3">{{setting('site_description')}}</textarea>
+                                            <label for="inputFirstName" class="form-label fw-bold">Meta Description</label>
+                                            <textarea name="site_meta_description" class="form-control" rows="3">{{setting('site_meta_description')}}</textarea>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="inputFirstName" class="form-label fw-bold">Meta Keyword</label>
-                                            <textarea name="site_keyword" class="form-control" rows="3">{{setting('site_keyword')}}</textarea>
+                                            <textarea name="site_meta_keyword" class="form-control" rows="3">{{setting('site_meta_keyword')}}</textarea>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="inputFirstName" class="form-label fw-bold">Copyright Footer</label>

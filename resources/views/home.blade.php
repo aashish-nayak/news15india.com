@@ -1,8 +1,8 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
-<title>Home - {{ setting('site_name') }}</title>
-<meta name='description' itemprop='description' content="{{setting('site_description')}}" />
-<meta name='keywords' content='{{setting('site_keyword')}}' />
+<title>Home - {{ setting('site_meta_title') }}</title>
+<meta name='description' itemprop='description' content="{{setting('site_meta_description')}}" />
+<meta name='keywords' content='{{setting('site_meta_keyword')}}' />
 @endsection
 @section('sections')
     <!-- Hero Section   -->
