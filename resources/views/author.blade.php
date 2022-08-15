@@ -173,7 +173,15 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3 text-center mt-md-3">
-                                        <p class="mb-0 font-weight-bold" style="font-size:1.4rem;">{{$author->details->city->name}} की ताजा खबरे देखने के लिए  <br> मुझे <a href="javascript:void(0)" style="font-size:1.3rem;" class="btn btn-primary btn-sm font-weight-bold my-2 mx-1">Follow</a> करें</p>
+                                        @php
+                                            if ($author->roles[0]->slug == 'super-admin'){
+                                                $loc = $author->details->state->name;
+
+                                            }else{
+                                                $loc = $author->details->city->name;
+                                            }
+                                        @endphp
+                                        <p class="mb-0 font-weight-bold" style="font-size:1.4rem;">{{$loc}} की ताजा खबरे देखने के लिए  <br> मुझे <a href="javascript:void(0)" style="font-size:1.3rem;" class="btn btn-primary btn-sm font-weight-bold my-2 mx-1">Follow</a> करें</p>
                                     </div>
                                 </div>
                             </div>
