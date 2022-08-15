@@ -59,7 +59,7 @@
                             <div class="col-md-12 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" style="width:2.3em;height:1.2em" type="checkbox" name="is_featured" id="flexSwitchCheckDefault" value="1" @if (isset($page) && $page->is_featured == 1) checked @endif>
-                                    <label class="form-check-label fw-bold" for="flexSwitchCheckDefault">Is featured?</label>
+                                    <label class="form-check-label fw-bold" for="flexSwitchCheckDefault">Is Breaking?</label>
                                 </div>
                             </div>
                         </div>

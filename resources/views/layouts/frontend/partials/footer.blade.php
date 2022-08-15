@@ -82,16 +82,7 @@
                 </ul>
             </nav>
             <div class="col-sm-12 p-0">
-                <p>Copyright © 20219 All Rights Reserved | 
-                    <a href="javascript:void(0)" class="text-decoration-none text-light">
-                        <b>
-                            <span style="color:orange;">NEWS</span>
-                            <span style="color:white;">15</span>
-                            <span style="color:green">INDIA</span>
-                        </b>
-                    </a>
-                    (Mahira News Network Pvt. Ltd.)
-                </p>
+                <p>{!!setting('site_copyright')!!}</p>
             </div>
         </div>
     </section>

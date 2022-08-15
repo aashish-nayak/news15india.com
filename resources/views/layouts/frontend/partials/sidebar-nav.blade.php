@@ -16,30 +16,25 @@
                 </div>
                 <div class="menu_social">
                     <div class="connectus">
+                        @php
+                            $socials = json_decode(setting('site_social_links'));
+                        @endphp
+                        @if($socials != null)
                         <p>SOCIAL</p>
-                        <a rel="noopener" href="javascript:void(0)" target="_blank">
-                            <img data-src="{{ asset('front-assets/img/sidebar-icons/social-facebook.svg') }}"
-                                alt="facebook" class=" lazyloaded"
-                                src="{{ asset('front-assets/img/sidebar-icons/social-facebook.svg') }}">
-                        </a>
-                        <a rel="noopener" href="javascript:void(0)" target="_blank">
-                            <img data-src="{{ asset('front-assets/img/sidebar-icons/social-twitter.svg') }}"
-                                alt="twitter" class=" lazyloaded"
-                                src="{{ asset('front-assets/img/sidebar-icons/social-twitter.svg') }}">
-                        </a>
-                        <a rel="noopener" href="javascript:void(0)" target="_blank">
-                            <img data-src="{{ asset('front-assets/img/sidebar-icons/social-youtube.svg') }}"
-                                alt="youtube" class=" lazyloaded"
-                                src="{{ asset('front-assets/img/sidebar-icons/social-youtube.svg') }}">
-                        </a>
+                        @foreach ($socials as $social)
+                        <a rel="noopener" href="{{$social->url}}" target="_blank">
+                            <i class="{{$social->icon}}"></i>
+                        </a>                            
+                        @endforeach
+                        @endif
                     </div>
                     <p>APPS</p>
-                    <a rel="noopener" href="javascript:void(0)" target="_blank">
+                    <a rel="noopener" href="{{setting('play_store_app_link')}}" target="_blank">
                         <img data-src="{{ asset('front-assets/img/sidebar-icons/menu_android.svg') }}"
                             alt="Andrioid APP" class=" lazyloaded"
                             src="{{ asset('front-assets/img/sidebar-icons/menu_android.svg') }}">
                     </a>
-                    <a rel="noopener" href="javascript:void(0)" target="_blank">
+                    <a rel="noopener" href="{{setting('apple_store_app_link')}}" target="_blank">
                         <img data-src="{{ asset('front-assets/img/sidebar-icons/menu_ios.svg') }}" alt="IOS APP"
                             class=" lazyloaded" src="{{ asset('front-assets/img/sidebar-icons/menu_ios.svg') }}">
                     </a>

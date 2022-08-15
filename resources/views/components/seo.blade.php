@@ -60,7 +60,7 @@
     $size = $size;
 @endphp
     <meta name="robots" content="noindex, nofollow">
-    <title>{{$title}} - {{ config('app.name') }}</title>
+    <title>{{$title}} - {{ setting('site_name') }}</title>
     <meta name='description' itemprop='description' content="{{$meta_description}}" />
     <meta name='keywords' content='{{$keywords}}' />
     <meta property='article:published_time' content='{{$publish_date}}' />

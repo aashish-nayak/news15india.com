@@ -2,13 +2,6 @@
 @section('meta-tags')
 @includeIf('components.seo', ['obj' => $news,'page'=>'single-page'])
 @endsection
-@push('css')
-    <style>
-        .single-para.content p{
-            font-size: 1.8rem !important;
-        }
-    </style>
-@endpush
 @section('sections')
 <main class="container-fluid mx-auto mt-1">
     <div class="row">
@@ -65,7 +58,7 @@
                                 </p>
                             </div>
                             <div class="col-12 col-md-3">
-                                <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a>
+                                {{-- <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a> --}}
                             </div>
                         </div>
                     </div>
@@ -119,7 +112,7 @@
                             </div>
                         </div>
                         <div class="col-12 px-0 mt-2">
-                            <a href="javascript:void(0)">
+                            <a href="{{setting('whatsapp_group_url')}}" target="_blank">
                                 <div class="whatsapp-cta"></div>
                             </a>
                         </div>
@@ -184,19 +177,14 @@
                         <div class="col-md-4 col-12 px-0 mx-auto">
                             <p class="my-3 my-md-1 font-weight-bold text-center" style="color: black;font-size:2rem">Download App</p>
                             <div class="row align-items-center m-0">
-                                <a class="col-6 text-center" href="javascript:void(0)">
+                                <a class="col-6 text-center" href="{{setting('play_store_app_link')}}" target="_blank">
                                     <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
                                 </a>
-                                <a class="col-6 text-center" href="javascript:void(0)">
+                                <a class="col-6 text-center" href="{{setting('apple_store_app_link')}}" target="_blank">
                                     <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
                                 </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col mt-1">
-                    <div class="row align-items-center">
-                        
                     </div>
                 </div>
             </div>

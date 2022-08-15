@@ -811,7 +811,8 @@
         <label class="form-label fw-bold">YouTube URL</label>
         <div class="input-group">
             <span class="input-group-text px-2 py-0"><i class="bx bxl-youtube fs-5"></i></span>
-            <input type="url" required placeholder="https://youtube.com/example/video" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->youtube)?json_decode(setting('site_social_links'))->youtube:''}}" name="site_social_links[youtube]">
+            <input type="url" required placeholder="https://youtube.com/example/video" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->youtube->url)?json_decode(setting('site_social_links'))->youtube->url:''}}" name="site_social_links[youtube][url]">
+            <input type="hidden" required placeholder="https://youtube.com/example/video" class="form-control" value="fab fa-youtube" name="site_social_links[youtube][icon]">
         </div>
     </div>
 </script>
@@ -820,7 +821,8 @@
         <label class="form-label fw-bold">Facebook URL</label>
         <div class="input-group">
             <span class="input-group-text px-2 py-0"><i class="bx bxl-facebook fs-5"></i></span>
-            <input type="url" required placeholder="https://facebook.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->facebook)?json_decode(setting('site_social_links'))->facebook:''}}" name="site_social_links[facebook]">
+            <input type="url" required placeholder="https://facebook.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->facebook->url)?json_decode(setting('site_social_links'))->facebook->url:''}}" name="site_social_links[facebook][url]">
+            <input type="hidden" required value="fab fa-facebook-f" name="site_social_links[facebook][icon]">
         </div>
     </div>
 </script>
@@ -829,7 +831,8 @@
         <label class="form-label fw-bold">Twitter URL</label>
         <div class="input-group">
             <span class="input-group-text px-2 py-0"><i class="bx bxl-twitter fs-5"></i></span>
-            <input type="url" required placeholder="https://twitter.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->twitter)?json_decode(setting('site_social_links'))->twitter:''}}" name="site_social_links[twitter]">
+            <input type="url" required placeholder="https://twitter.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->twitter->url)?json_decode(setting('site_social_links'))->twitter->url:''}}" name="site_social_links[twitter][url]">
+            <input type="hidden" required value="fab fa-twitter" name="site_social_links[twitter][icon]">
         </div>
     </div>
 </script>
@@ -838,7 +841,8 @@
         <label class="form-label fw-bold">Instagram URL</label>
         <div class="input-group">
             <span class="input-group-text px-2 py-0"><i class="bx bxl-instagram fs-5"></i></span>
-            <input type="url" required placeholder="https://instagram.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->instagram)?json_decode(setting('site_social_links'))->instagram:''}}" name="site_social_links[instagram]">
+            <input type="url" required placeholder="https://instagram.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->instagram->url)?json_decode(setting('site_social_links'))->instagram->url:''}}" name="site_social_links[instagram][url]">
+            <input type="hidden" required value="fab fa-instagram" name="site_social_links[instagram][icon]">
         </div>
     </div>
 </script>
@@ -847,7 +851,8 @@
         <label class="form-label fw-bold">LinkedIn URL</label>
         <div class="input-group">
             <span class="input-group-text px-2 py-0"><i class="bx bxl-linkedin fs-5"></i></span>
-            <input type="url" required placeholder="https://linkedin.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->linkedin)?json_decode(setting('site_social_links'))->linkedin:''}}" name="site_social_links[linkedin]">
+            <input type="url" required placeholder="https://linkedin.com/example/user" class="form-control" value="{{isset(json_decode(setting('site_social_links'))->linkedin->url)?json_decode(setting('site_social_links'))->linkedin->url:''}}" name="site_social_links[linkedin][url]">
+            <input type="hidden" required value="fab fa-linkedin" name="site_social_links[linkedin][icon]">
         </div>
     </div>
 </script>
@@ -874,6 +879,9 @@
                 var template = $('#' + element).html();
                 html += template;
             });
+            if(html == ''){
+                html += '<input type="hidden" name="site_social_links">';
+            }
             $('#socials-inputs').html(html);
         }
         socialInputs();

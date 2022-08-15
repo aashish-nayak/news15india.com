@@ -4,10 +4,14 @@
         <div class="row justify-content-between align-items-center">
             <div class="col-md-2 d-none d-md-block d-md-flex justify-content-start">
                 <div class="social-icon">
-                    <a target="_blank" href="javascript:void(0)" class="fab fa-facebook-f"></a>
-                    <a target="_blank" href="javascript:void(0)" class="fab fa-twitter"></a>
-                    <a target="_blank" href="javascript:void(0)" class="fab fa-youtube"></a>
-                    <a target="_blank" href="javascript:void(0)" class="fab fa-instagram"></a>
+                    @php
+                    $socials = json_decode(setting('site_social_links'));
+                    @endphp
+                    @if($socials != null)
+                    @foreach ($socials as $social)         
+                    <a target="_blank" href="{{$social->url}}" class="{{$social->icon}}"></a>
+                    @endforeach
+                    @endif
                 </div>
             </div>
             <div class="col-md-5 d-none d-md-flex justify-content-center date-time text-center align-items-center">

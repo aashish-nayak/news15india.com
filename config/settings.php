@@ -42,9 +42,7 @@ return [
         'site_analytics' => null,
         'site_status' => 'up',
         'live_stream_url' => null,
-        'live_stream_status' => '1',
         'whatsapp_group_url' => null,
-        'whatsapp_group_status' => '1',
         'play_store_app_link' => null,
         'apple_store_app_link' => null,
         'special_coverage' => json_encode([

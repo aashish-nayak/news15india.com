@@ -7,7 +7,7 @@
                     <span class="text-light mt-1" onclick="openNav()">&#9776;</span>
                     <a href="{{ route('home') }}" class="m-0">
                         <div class="navbar-brand p-0 m-0">
-                            <img loading="lazy" src="{{ asset('front-assets/img/logo.png') }}" class="img-fluid" style="margin-top:-11px;" alt="logo">
+                            <img loading="lazy" src="{{ setting('site_logo') ?? asset('front-assets/img/logo.png') }}" class="img-fluid" style="margin-top:-11px;" alt="logo">
                         </div>
                     </a>
                 </div>

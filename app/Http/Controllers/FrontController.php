@@ -35,13 +35,17 @@ class FrontController extends Controller
     public function home()
     {
         $homeSections = json_decode(setting('home_page_settings'));
-        
         $catIds = $homeSections->sections;
         $catIdsLimit = $homeSections->sections_limit;
 
         $sideCatIds = $homeSections->sidebars;
         $sideCatIdsLimit = $homeSections->sidebars_limit;
         
+        // Main Section Popular News 
+        $popularNews = Category::with(['news'=>function($query){
+            $query->inRandomOrder()->limit(15)->with('newsImage');
+        }])->inRandomOrder()->first();
+
         // ............ Sections Queries ............ 
         $section1 = Category::with(['children'=>function($query){
             $query->limit(10);
@@ -121,6 +125,7 @@ class FrontController extends Controller
             $query->latest()->limit($sideCatIdsLimit[4])->with('newsImage');
         }])->find($sideCatIds[4]);
         return view('home',compact(
+            'popularNews',
             'section1',
             'section2',
             'section3',

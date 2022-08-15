@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Menu;
 use App\Models\MenuLocation;
 use App\Models\MenuNodes;
+use App\Models\News;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -42,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
                 $query->where('menu_location_id',$loc_id)->where('slug','mega-menu-3');
             })->where('parent_id',0)->get();
             return $view->with(compact('menuNodes','megaMenu1','megaMenu2','megaMenu3'));
+        });
+        View::composer('layouts.frontend.partials.mobile-breaking',function($view){
+            $breakingNews = News::where('is_published',1)->where('is_verified',1)->where('status',1)->where('is_featured',1)->inRandomOrder()->limit(10)->get();
+            return $view->with(compact('breakingNews'));
+        });
+        View::composer('layouts.frontend.partials.desktop-breaking',function($view){
+            $breakingNews = News::where('is_published',1)->where('is_verified',1)->where('status',1)->where('is_featured',1)->inRandomOrder()->first();
+            return $view->with(compact('breakingNews'));
         });
         View::composer('layouts.frontend.partials.sidebar-nav',function($view){
             $loc_id = MenuLocation::where('location','sidebar-menu')->first()->id;

@@ -46,8 +46,9 @@ class SettingController extends Controller
                     $value['block_1']['status'] = isset($value['block_1']['status']) ? 1 : 0;
                     $value['block_2']['status'] = isset($value['block_2']['status']) ? 1 : 0;
                     $value['block_3']['status'] = isset($value['block_3']['status']) ? 1 : 0;
+                    $value = json_encode($value);
                 }
-                if($key == 'site_social_links' || $key == 'special_coverage'){
+                if($key == 'site_social_links'){
                     $value = json_encode($value);
                 }
                 $this->updateSetting($key,$value);

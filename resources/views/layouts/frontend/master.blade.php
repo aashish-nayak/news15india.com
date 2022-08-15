@@ -71,7 +71,7 @@
                             <div class="form_wrapper border-top">
                                 <div class="row clearfix">
                                     <div class="w-100">
-                                        <form action="" method="post" id="loginForm" autocomplete="off">
+                                        <form action="javascritp:void(0)" method="post" id="loginForm" autocomplete="off">
                                             <div class="input_field">
                                                 <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                                                 <input type="tel" name="l_mobile" id="l_mobile"
@@ -138,7 +138,7 @@
                             <div class="form_wrapper border-top">
                                 <div class="row clearfix">
                                     <div class="">
-                                        <form action="" method="post" id="signup-form" autocomplete="off">
+                                        <form action="javascritp:void(0)" method="post" id="signup-form" autocomplete="off">
                                             <div class="row m-0 clearfix row-cols-1 row-cols-md-3">
                                                 <div class="inner col">
                                                     <div class="input_field">

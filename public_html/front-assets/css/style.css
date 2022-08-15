@@ -324,13 +324,15 @@ a:focus {
     margin-bottom: 10px;
 }
 .sidebar .user_actions .menu_social a {
-    display: block;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 1px solid #000;
+    border: 1px solid #000 !important;
     margin: 0 auto;
+    display: flex;
     margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
 }
 .sidebar .user_menus {
     padding-left: 64px;
@@ -913,7 +915,7 @@ nav.nav > ul > li > a.active {
     font-size: 16px;
     display: inline;
     font-weight: 500;
-    margin-left: 10px;
+    margin-left: 20px;
     color: var(--text-color-light);
 }
 
@@ -949,10 +951,30 @@ div.scrollmenu {
 
 /* Hero Section  */
 .box {
-    position: relative;
-    overflow: hidden;
+   position: relative;
 }
 
+.calendar-default{
+    height: 300px;
+}
+.calendar-plage {
+   height: calc(33.33% - 2px);
+}
+.calendar-plage:first-child{
+    margin-bottom: 2px;
+}
+.calendar-plage:last-child{
+    margin-top: 2px;
+}
+.custom-space {
+    margin: 0px;
+}
+.custom-space > [class*="col-"]{
+    padding: 0px 1px;
+}
+.custom-space > [class*="col-"] .box{
+    min-height: 300px;
+}
 .content-overlay {
     box-shadow: inset 0px -50px 50px #2b2b2b;
     position: absolute;
@@ -1227,8 +1249,8 @@ div.section-header-container {
 /* ========= Marquee Tag slider News ========  */
 .marquee {
     top: 0px;
-    right: 4px;
-    bottom: 4px;
+    right: 0px;
+    bottom: 1px;
     width: 30%;
     position: absolute;
     box-sizing: border-box;
@@ -1590,22 +1612,12 @@ footer nav > ul > li > a.active {
     .custom-heading-font {
         font-size: 2.3rem !important;
     }
-
-    .home-video {
-        height: auto !important;
-        margin-left: auto;
-        margin-right: auto;
+    .custom-space > [class*="col-"] .box {
+        min-height: auto;
     }
-
-    .mobile-height {
-        height: auto !important;
+    .calendar-default {
+        height: 350px;
     }
-
-    .marquee {
-        right: 4px !important;
-        bottom: 0px;
-    }
-
     .cat-slider-height {
         height: auto !important;
     }
@@ -1657,6 +1669,9 @@ footer nav > ul > li > a.active {
     font-size: 1.8rem;
     line-height: 1.2;
     margin: 0px;
+}
+.single-para.content p{
+    font-size: 1.8rem !important;
 }
 
 .subscribe-btn {

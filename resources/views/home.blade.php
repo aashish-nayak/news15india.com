@@ -1,95 +1,84 @@
 @extends('layouts.frontend.master')
+@section('meta-tags')
+<title>Home - {{ setting('site_name') }}</title>
+<meta name='description' itemprop='description' content="{{setting('site_description')}}" />
+<meta name='keywords' content='{{setting('site_keyword')}}' />
+@endsection
 @section('sections')
     <!-- Hero Section   -->
-    <section class="container-fluid mt-md-1 mx-auto">
-        <div class="row">
-            <div class="col-md-4 px-0 mt-1 my-md-0 mobile-height">
-                <div class="ml-md-1 px-1 px-md-0"> 
-                    <video src="{{asset('front-assets/img/ncs.mp4')}}" autoplay loop controls class="w-100 home-video"></video>
+    <section class="container-fluid mt-md-1 mx-auto px-0">
+        <div class="row justify-content-between custom-space">
+            <div class="col-md-4">
+                <div class="box">
+                    <iframe class="w-100 home-video" src="{{convertYoutube(setting('live_stream_url'))}}?controls=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="col-md-4 p-0 mt-1 my-md-0 ">
-                <div class="mx-1">
+            <div class="col-md-4 mb-2 mb-md-0">
+                <div class="box">
+                    @foreach ($popularNews->news as $key=>$popNews)
+                        @if($key <= 5)
+                        @push('main_slider_news')
+                        <div class="position-relative holder">
+                            <a href="{{route('single-news',$popNews->slug)}}">
+                                <img src="{{asset('storage/media/'.$popNews->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="">
+                                <div class="content-overlay"></div>
+                                <div class="img-title" style="width: 75%;">
+                                    <h5 class="text-light">{{\Str::limit($popNews->title,40)}}</h5>
+                                    <p class="post-date py-1 text-white">{{\Carbon\Carbon::parse($popNews->created_at)->format(' H:i A | d M Y,')}}</p>
+                                </div>
+                            </a>
+                        </div>
+                        @endpush
+                        @else
+                        @push('main_marquee_news')
+                        <div class="news-slider col">
+                            <a href="{{route('single-news',$popNews->slug)}}" class="text-decoration-none">
+                                <h2 class="slider-title">{{\Str::limit($popNews->title,45)}}</h2>
+                            </a>
+                        </div>
+                        @endpush
+                        @endif
+                    @endforeach
                     <div class="single-item position-relative">
-                        <div class="box holder">
-                            <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" loading="lazy" alt="">
-                                <div class="content-overlay"></div>
-                                <div class="img-title" style="width: 75%;">
-                                    <h5 class="text-light">Man City into FA Cup semifinals, keeps quadruple dream alive</h5>
-                                    <p class="post-date m-0 py-1"><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a>
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="box holder">
-                            <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/square.jpg')}}" class="img-fluid" loading="lazy" alt="">
-                                <div class="content-overlay"></div>
-                                <div class="img-title" style="width: 75%;">
-                                    <h5 class="text-light">Man City into FA Cup semifinals, keeps quadruple dream alive</h5>
-                                    <p class="post-date m-0 py-1"><a href="javascript:void(0)" class="text-white">7:00 AM | April 14</a>
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                        @stack('main_slider_news')
                     </div>
-                    <marquee behavior="scroll" direction="up" onmouseover="this.stop();" scrollamount="2"
-                        onmouseout="this.start();" class="marquee" loop="true" scrolldelay="0s">
-                        <div class="news-slider col">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h2 class="slider-title">पति से झगड़ा कर अपनी 6 साल की बेटी को लेकर नहर में कूदी महिला का
-                                    मिला शव, बच्ची की तलाश जारी</h2>
-                            </a>
-                        </div>
-                        <div class="news-slider col">
-                            <a href="javascript:void(0)" class="text-decoration-none ">
-                                <h2 class="slider-title">कच्चे सफाई कर्मचारियों को गृह मंत्री अनिल विज की बड़ी सौगात , 42
-                                    कर्मियों को किया ऑन रोल</h2>
-                            </a>
-                        </div>
-                        <div class="news-slider col">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h2 class="slider-title">होली के पर्व पर लगा कोरोना का ग्रहण , हरियाणा में होली मनाना हुआ
-                                    बैन</h2>
-                            </a>
-                        </div>
-                        <div class="news-slider col">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h2 class="slider-title">होली के पर्व पर लगा कोरोना का ग्रहण , हरियाणा में होली मनाना हुआ
-                                    बैन</h2>
-                            </a>
-                        </div>
-                        <div class="news-slider col">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h2 class="slider-title">होली के पर्व पर लगा कोरोना का ग्रहण , हरियाणा में होली मनाना हुआ
-                                    बैन</h2>
-                            </a>
-                        </div>
-                        <div class="news-slider col">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <h2 class="slider-title">होली के पर्व पर लगा कोरोना का ग्रहण , हरियाणा में होली मनाना हुआ
-                                    बैन</h2>
-                            </a>
-                        </div>
+                    <marquee behavior="scroll" direction="up" onmouseover="this.stop();" scrollamount="2" onmouseout="this.start();" class="marquee" loop="true" scrolldelay="0s">
+                        @stack('main_marquee_news')
                     </marquee>
                 </div>
             </div>
-            <div class="col-md-4 mt-1 p-0 my-md-0">
-                <div class="mx-1 mb-2">
-                    <a href="javascript:void(0)">
-                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:95px;width:100%;object-fit:cover;" class="img-fluid" width="100%" loading="lazy" alt="">
-                    </a>
-                </div>
-                <div class="mx-1 mb-2">
-                    <a href="javascript:void(0)">
-                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:95px;width:100%;object-fit:cover;" class="img-fluid" width="100%" loading="lazy" alt="">
-                    </a>
-                </div>
-                <div class="mx-1 mb-1 mb-md-0">
-                    <a href="javascript:void(0)">
-                        <img src="{{asset('front-assets/img/add.jpg')}}" style="max-height:97px;width:100%;object-fit:cover;" class="img-fluid" width="100%" loading="lazy" alt="">
-                    </a>
+            <div class="col-md-4 mb-2 mb-md-0">
+                <div class="box calendar-default">
+                    @php
+                        $default_url = "javascript:void(0)";
+                        $default_image = asset('front-assets/img/add.jpg');
+
+                        $special = json_decode(setting('special_coverage'));
+
+                        $block_1_url = (isset($special->block_1)&&$special->block_1->status == 1) ? $special->block_1->url : $default_url;
+                        $block_1_image = (isset($special->block_1)&&$special->block_1->status == 1) ? $special->block_1->image : $default_image;
+
+                        $block_2_url = (isset($special->block_2)&&$special->block_2->status == 1) ? $special->block_2->url : $default_url;
+                        $block_2_image = (isset($special->block_2)&&$special->block_2->status == 1) ? $special->block_2->image : $default_image;
+
+                        $block_3_url = (isset($special->block_3)&&$special->block_3->status == 1) ? $special->block_3->url : $default_url;
+                        $block_3_image = (isset($special->block_3)&&$special->block_3->status == 1) ? $special->block_3->image : $default_image;
+                    @endphp
+                    <div class="calendar-plage">
+                        <a href="{{$block_1_url}}">
+                            <img src="{{$block_1_image}}" class="img-fluid" loading="lazy" alt="">
+                        </a>
+                    </div>
+                    <div class="calendar-plage">
+                        <a href="{{$block_2_url}}">
+                            <img src="{{$block_2_image}}" class="img-fluid" loading="lazy" alt="">
+                        </a>
+                    </div>
+                    <div class="calendar-plage">
+                        <a href="{{$block_3_url}}">
+                            <img src="{{$block_3_image}}" class="img-fluid" loading="lazy" alt="">
+                        </a>
+                    </div>                    
                 </div>
             </div>
         </div>
@@ -144,9 +133,7 @@
                                     </div>
                                     <div class="card-body col-8 col-md-9">
                                         <h6 class="card-text m-0">{{\Str::limit($news1->title,65)}}</h6>
-                                        <p class="post-date m-0">
-                                            {{$news1->created_at}}
-                                        </p>
+                                        <p class="post-date m-0">{{$news1->created_at}}</p>
                                     </div>
                                 </div>
                             </a>
