@@ -145,13 +145,17 @@
                                 <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2" style="font-size:18px">
                                     <i class="mr-md-3 mr-2 fas fa-user-crown"></i> 
                                     <p class="text-secondary-clr m-0" style="font-size:18px">
+                                        @if ($author->roles[0]->slug == 'super-admin')
+                                            {{'Administrator'}}
+                                        @else
                                         {{$author->roles[0]->name}}
+                                        @endif
                                     </p>
                                 </a>
                                 <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2" style="font-size:18px">
                                     <i class="mr-md-3 mr-2 fas fa-map-marker"></i> 
                                     <p class="text-secondary-clr m-0" style="font-size:18px">
-                                        {{$author->details->city->name.", ".$author->details->state->name}}
+                                        {{$author->details->state->name.", ".$author->details->country->name}}
                                     </p>
                                 </a>
                             </div>
