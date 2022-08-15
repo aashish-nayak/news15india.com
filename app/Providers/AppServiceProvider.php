@@ -7,6 +7,10 @@ use App\Models\MenuLocation;
 use App\Models\MenuNodes;
 use App\Models\News;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,6 +21,20 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected function includeBladeComponent()
+    {
+        Blade::include('vendor.comments.components.comments', 'comments');
+    }
+
+    /**
+     * Define permission defined in the config.
+     */
+    protected function definePermissions()
+    {
+        foreach(Config::get('comments.permissions', []) as $permission => $policy) {
+            Gate::define($permission, $policy);
+        }
+    }
     public function register()
     {
         $this->app->bind('path.public', function() {
@@ -29,7 +47,6 @@ class AppServiceProvider extends ServiceProvider
             $menuNodes = MenuNodes::whereHas('menu',function($query)use($loc_id){
                 $query->where('menu_location_id',$loc_id)->where('slug','main-menu');
             })->where('parent_id',0)->get();
-            // dd($menuNodes->toArray());
             // Mega Menu 1
             $megaMenu1 = MenuNodes::whereHas('menu',function($query)use($loc_id){
                 $query->where('menu_location_id',$loc_id)->where('slug','mega-menu-1');
@@ -86,5 +103,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+        
+        Route::model('comment', Config::get('comments.model'));
+
+        $this->includeBladeComponent();
+
+        $this->definePermissions();
     }
 }

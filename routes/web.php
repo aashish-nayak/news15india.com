@@ -13,6 +13,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Config;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +38,11 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
     Route::view('reporter-form','reporter-form');
 });
+
+Route::post('comments', [Config::get('comments.controller') , 'store'])->name('comments.store');
+Route::delete('comments/{comment}', [Config::get('comments.controller') , 'destroy'])->name('comments.destroy');
+Route::put('comments/{comment}', [Config::get('comments.controller') , 'update'])->name('comments.update');
+Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply'])->name('comments.reply');
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 
