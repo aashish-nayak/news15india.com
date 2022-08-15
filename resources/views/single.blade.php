@@ -51,7 +51,11 @@
                                     </a>
                                 </div>
                                 <p class="m-0">
+                                    @if ($news->creator->roles[0]->slug == 'super-admin')
+                                    <span>{{$news->creator->details->state->name.", ".$news->creator->details->country->name}}</span>
+                                    @else
                                     <span>{{$news->creator->details->city->name.", ".$news->creator->details->state->name}}</span>
+                                    @endif
                                 </p>
                                 <p class="m-0">
                                     <span>{{\Carbon\Carbon::parse($news->created_at)->format('D d M Y, H:i A')}}</span>
