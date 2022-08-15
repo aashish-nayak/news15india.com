@@ -67,9 +67,9 @@
 @else
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">@lang('vendor.comments.comments.authentication_required')</h5>
-            <p class="card-text">@lang('vendor.comments.comments.you_must_login_to_post_a_comment')</p>
-            <a href="{{ route('login') }}" class="btn btn-primary">@lang('vendor.comments.comments.log_in')</a>
+            <h5 class="card-title">@lang('comments.authentication_required')</h5>
+            <p class="card-text">@lang('comments.you_must_login_to_post_a_comment')</p>
+            <a href="{{ route('login') }}" class="btn btn-primary">@lang('comments.log_in')</a>
         </div>
     </div>
 @endauth

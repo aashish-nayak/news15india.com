@@ -243,7 +243,7 @@
                 </div>
             </div>
             <div class="container-fluid" style="font-size: 16px">
-                @comments(['model' => $news,'approved' => true])
+                @comments(['model' => $news,'approved' => true,'maxIndentationLevel' => 2])
             </div>
             <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
                 <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i>

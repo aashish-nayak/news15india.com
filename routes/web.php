@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
@@ -87,7 +88,19 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/destroy/{id}',[NewsController::class,'destroy'])->middleware('permission:destroy-news')->name('destroy');
         Route::get('/restore/{id}',[NewsController::class,'restore'])->middleware('permission:restore-news')->name('restore');
     });
-    
+
+    Route::prefix('/comment')->name('comment.')->group(function(){
+        Route::get('/ajax/{approved}',[CommentController::class,'index'])->middleware('permission:read-comment')->name('ajax-comments');
+        Route::get('/index', [CommentController::class,'show'])->middleware('permission:read-comment')->name('comments');
+        Route::get('/unapproved', [CommentController::class,'unapproved'])->middleware('permission:read-comment')->name('unapproved');
+        Route::get('/trash/{comment}',[CommentController::class,'trash'])->middleware('permission:delete-comment')->name('delete');
+        Route::get('/approve/{id}/{approve_type}', [CommentController::class, 'status'])->middleware('permission:approve-comment')->name('is_approve');
+        Route::get('/trash-comments', [CommentController::class,'trashview'])->middleware('permission:read-trash-comment')->name('trash');
+        Route::get('/ajax-trash-comments', [CommentController::class,'ajaxtrash'])->middleware('permission:read-trash-comment')->name('ajax-trash-comments');
+        Route::get('/destroy/{id}',[CommentController::class,'admin_destroy'])->middleware('permission:destroy-comment')->name('destroy');
+        Route::get('/restore/{id}',[CommentController::class,'restore'])->middleware('permission:restore-comment')->name('restore');
+    });
+
     Route::prefix('/tag')->name('tag.')->group(function(){
         Route::get('/view',[TagController::class,'index'])->middleware('permission:read-tags')->name('index');
         Route::post('/store', [TagController::class,'store'])->middleware('permission:create-tags')->name('store');

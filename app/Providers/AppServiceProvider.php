@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
 use App\Models\Menu;
 use App\Models\MenuLocation;
 use App\Models\MenuNodes;
@@ -39,6 +40,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('path.public', function() {
             return base_path('public_html');
+        });
+        View::composer('layouts.backpanel.partials.sidebar',function($view){
+            $unapproved_comments = Comment::where('approved',0)->count();
+            $trash_comments = Comment::onlyTrashed()->count();
+            return $view->with(compact('unapproved_comments','trash_comments'));
         });
 
         View::composer('layouts.frontend.partials.desktop-nav',function($view){

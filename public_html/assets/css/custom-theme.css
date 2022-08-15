@@ -28,3 +28,9 @@ body{
 .modal-content-2{
     box-shadow: 1px -1px 10px 2px #0000007a;
 }
+
+.sidebar-wrapper .metismenu ul a {
+    padding: 6px 15px 6px 15px;
+    font-size: 13px;
+    border: 0;
+}
