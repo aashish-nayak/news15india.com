@@ -136,13 +136,13 @@
                             </div>
                         </li>
                         @endforeach
-                        @foreach ($megaMenu3 as $megaNode)
+                        @foreach ($megaMenu3 as $key => $megaNode)
                         <li class="droppable">
                             <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
                             @if($megaNode->reference->news()->count() > 1)
-                            @foreach ($megaNode->reference->news()->latest()->limit(9)->get() as $key => $nodeNews)
-                                @if($key == 0)
-                                    @section('mega_design_1')
+                            @foreach ($megaNode->reference->news()->latest()->limit(9)->get() as $subkey => $nodeNews)
+                                @if($subkey == 0)
+                                    @section('mega_design_1_id'.$key)
                                     <div class="col-5">
                                         <a href="{{route('single-news',$nodeNews->slug)}}" class="text-decoration-none">
                                             <img loading="lazy" src="{{asset('storage/media/'.$nodeNews->newsImage->filename)}}" class="img-fluid" alt="{{$nodeNews->newsImage->alt}}">
@@ -156,7 +156,7 @@
                                     </div>
                                     @endsection
                                 @else
-                                    @push('mega_design_2')
+                                    @push('mega_design_2_id'.$key)
                                     <div class="col mb-2 px-2">
                                         <div class="card card-shadow">
                                             <a href="{{route('single-news',$nodeNews->slug)}}" class="text-muted text-decoration-none">
@@ -174,10 +174,10 @@
                                 <div class="row justify-content-center">
                                     <div class="cf col-12 py-4">
                                         <div class="row justify-content-center">
-                                            @yield('mega_design_1')
+                                            @yield('mega_design_1_id'.$key)
                                             <div class="col-7">
                                                 <div class="row row-cols-4 mx-0">
-                                                    @stack('mega_design_2')
+                                                    @stack('mega_design_2_id'.$key)
                                                 </div>
                                             </div>
                                         </div>

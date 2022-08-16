@@ -29,7 +29,6 @@ class AppServiceProvider extends ServiceProvider
             $menuNodes = MenuNodes::whereHas('menu',function($query)use($loc_id){
                 $query->where('menu_location_id',$loc_id)->where('slug','main-menu');
             })->where('parent_id',0)->get();
-            // dd($menuNodes->toArray());
             // Mega Menu 1
             $megaMenu1 = MenuNodes::whereHas('menu',function($query)use($loc_id){
                 $query->where('menu_location_id',$loc_id)->where('slug','mega-menu-1');
