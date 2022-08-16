@@ -69,7 +69,7 @@ class MenuController extends Controller
                     $menuNode->save();
                     $ids[] .= $menuNode->id;
                 }
-                return view("backpanel.includes.menu-structure",["menu"=>MenuNodes::find($ids)]);
+                return view("backpanel.includes.menu-structure",["menu"=>MenuNodes::find($ids),'child'=>true]);
             }
         } catch (\Exception $e) {
             return response()->json(['error'=>$e->getMessage()]);
@@ -89,7 +89,7 @@ class MenuController extends Controller
             $menuNode->target = $request->target;
             $menuNode->position = MenuNodes::where('menu_id',$request->menu_id)->count() + 1;
             $menuNode->save();
-            return view("backpanel.includes.menu-structure",["menu"=>MenuNodes::where('id',$menuNode->id)->get()]);
+            return view("backpanel.includes.menu-structure",["menu"=>MenuNodes::where('id',$menuNode->id)->get(),'child'=>true]);
         } catch (\Exception $e) {
             return response()->json(['error'=>$e->getMessage()]);
         }

@@ -1,9 +1,16 @@
+@if(!isset($child))
 <ol class="dd-list">
+@endif
     @foreach ($menu as $value)
-    <li class="dd-item dd3-item  @if ($value->reference_id > 0) post-item @endif" data-reference-type="{{ $value->reference_type }}"
-        data-reference-id="{{ $value->reference_id }}" data-title="{{ $value->title }}"
-        data-class="{{ $value->css }}" data-id="{{ $value->id }}" data-custom-url="{{ ($value->reference_type == '') ? $value->url : ''}}"
-        data-icon-font="{{ $value->icon }}" data-target="{{ $value->target }}"">
+    <li class="dd-item dd3-item @if($value->reference_id > 0){{'post-item'}}@endif"
+        data-id="{{ $value->id }}"
+        data-reference-type="{{ $value->reference_type }}"
+        data-reference-id="{{ $value->reference_id }}" 
+        data-title="{{ $value->title }}"
+        data-class="{{ $value->css }}" 
+        data-custom-url="{{ ($value->reference_type == '') ? $value->url : ''}}"
+        data-icon-font="{{ $value->icon }}" 
+        data-target="{{ $value->target }}">
         <div class="dd-handle dd3-handle"></div>
         <div class="dd3-content">
             <span class="text float-start menu-name" data-update="title">{{$value->title}}</span>
@@ -60,4 +67,6 @@
         @endif
     </li>
     @endforeach
+@if(!isset($child))
 </ol>
+@endif

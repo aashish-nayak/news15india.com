@@ -249,13 +249,14 @@ $(document).ready(function() {
         setDataItem(target) {
             target.each((index, el) => {
                 let current = $(el);
-                current.data('id', current.attr('data-id'));
-                current.data('title', current.attr('data-title'));
-                current.data('reference-id', current.attr('data-reference-id'));
-                current.data('reference-type', current.attr('data-reference-type'));
-                current.data('custom-url', current.attr('data-custom-url'));
-                current.data('class', current.attr('data-class'));
-                current.data('target', current.attr('data-target'));
+                current.data('id',current.attr('data-id'));
+                current.data('reference-type',current.attr('data-reference-type'));
+                current.data('reference-id',current.attr('data-reference-id'));
+                current.data('title',current.attr('data-title'));
+                current.data('class',current.attr('data-class'));
+                current.data('custom-url',current.attr('data-custom-url'));
+                current.data('icon-font',current.attr('data-icon-font'));
+                current.data('target',current.attr('data-target'));
             });
         }
 
@@ -284,7 +285,8 @@ $(document).ready(function() {
                 group: 1,
                 maxDepth: depth,
                 expandBtnHTML: '',
-                collapseBtnHTML: ''
+                collapseBtnHTML: '',
+                scroll: true,
             });
             this.handleNestableMenu();
         }
@@ -371,7 +373,8 @@ $(document).ready(function() {
                     data: obj,
                     success: function(data) {
                         $(checked).prop('checked', false);
-                        $("#nestable").append(data);
+                        $(".nestable-menu > ol.dd-list").append(data);
+                        that.setDataItem(that.$nestable.find('> ol.dd-list li.dd-item'));
                     }
                 });
             });
@@ -404,7 +407,8 @@ $(document).ready(function() {
                         input_css.val('');
                         input_icon.val('');
                         input_target.children().prop('selected', false);
-                        $("#nestable").append(response);
+                        $(".nestable-menu > ol.dd-list").append(response);
+                        that.setDataItem(that.$nestable.find('> ol.dd-list li.dd-item'));
                     }
                 });
             });
