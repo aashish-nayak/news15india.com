@@ -145,7 +145,7 @@
                                     @section('mega_design_1_id'.$key)
                                     <div class="col-5">
                                         <a href="{{route('single-news',$nodeNews->slug)}}" class="text-decoration-none">
-                                            <img loading="lazy" src="{{asset('storage/media/'.$nodeNews->newsImage->filename)}}" class="img-fluid" alt="{{$nodeNews->newsImage->alt}}">
+                                            <img loading="lazy" src="{{asset('storage/media/'.$nodeNews->newsImage->filename)}}" class="img-fluid w-100" alt="{{$nodeNews->newsImage->alt}}">
                                             <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                 {{\Str::limit($nodeNews->title,60)}}
                                             </h6>
