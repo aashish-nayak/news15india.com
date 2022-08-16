@@ -36,7 +36,7 @@
                 <li> <a href="{{Route('admin.news.trash-news')}}"><i class="bx bx-right-arrow-alt"></i>Trash News</a></li>
             </ul>
         </li>
-        @permission('read-comment')
+        @permission('read-comments')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bxs-chat"></i>
@@ -46,7 +46,7 @@
             <ul >
                 <li> <a href="{{Route('admin.comment.comments')}}"><i class="bx bx-right-arrow-alt"></i> Comments</a></li>
                 <li> <a href="{{Route('admin.comment.unapproved')}}"><i class="bx bx-right-arrow-alt"></i>Unapproved Comments @if($unapproved_comments > 0)<span class="badge rounded-pill bg-info ms-auto">{{$unapproved_comments}}</span>@endif</a></li>
-                @permission('read-trash-comment')
+                @permission('read-trash-comments')
                 <li> <a href="{{Route('admin.comment.trash')}}"><i class="bx bx-right-arrow-alt"></i>Trash Comments @if($trash_comments > 0)<span class="badge rounded-pill bg-danger ms-auto">{{$trash_comments}}</span>@endif</a></li>
                 @endpermission
             </ul>

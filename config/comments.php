@@ -11,6 +11,8 @@ return [
      * package and change this configuration option to their extended model.
      */
     'model' => Comment::class,
+
+    'guard' => 'web',
     /**
      * You can customize the behaviour of these permissions by
      * creating your own and pointing to it here.

@@ -39,11 +39,14 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
     Route::view('reporter-form','reporter-form');
 });
-
-Route::post('comments', [Config::get('comments.controller') , 'store'])->name('comments.store');
-Route::delete('comments/{comment}', [Config::get('comments.controller') , 'destroy'])->name('comments.destroy');
-Route::put('comments/{comment}', [Config::get('comments.controller') , 'update'])->name('comments.update');
-Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply'])->name('comments.reply');
+if (Config::get('comments.guest_commenting') == true) {
+    Route::post('/comments', [Config::get('comments.controller') , 'store'])->middleware(ProtectAgainstSpam::class)->name('comments.store');
+} else {
+    Route::post('/comments', [Config::get('comments.controller') , 'store'])->middleware('auth')->name('comments.store');
+}
+Route::delete('comments/{comment}', [Config::get('comments.controller') , 'destroy'])->middleware('auth')->name('comments.destroy');
+Route::put('comments/{comment}', [Config::get('comments.controller') , 'update'])->middleware('auth')->name('comments.update');
+Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply'])->middleware('auth')->name('comments.reply');
 
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 
@@ -90,15 +93,15 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
 
     Route::prefix('/comment')->name('comment.')->group(function(){
-        Route::get('/ajax/{approved}',[CommentController::class,'index'])->middleware('permission:read-comment')->name('ajax-comments');
-        Route::get('/index', [CommentController::class,'show'])->middleware('permission:read-comment')->name('comments');
-        Route::get('/unapproved', [CommentController::class,'unapproved'])->middleware('permission:read-comment')->name('unapproved');
-        Route::get('/trash/{comment}',[CommentController::class,'trash'])->middleware('permission:delete-comment')->name('delete');
-        Route::get('/approve/{id}/{approve_type}', [CommentController::class, 'status'])->middleware('permission:approve-comment')->name('is_approve');
-        Route::get('/trash-comments', [CommentController::class,'trashview'])->middleware('permission:read-trash-comment')->name('trash');
-        Route::get('/ajax-trash-comments', [CommentController::class,'ajaxtrash'])->middleware('permission:read-trash-comment')->name('ajax-trash-comments');
-        Route::get('/destroy/{id}',[CommentController::class,'admin_destroy'])->middleware('permission:destroy-comment')->name('destroy');
-        Route::get('/restore/{id}',[CommentController::class,'restore'])->middleware('permission:restore-comment')->name('restore');
+        Route::get('/ajax/{approved}',[CommentController::class,'index'])->middleware('permission:read-comments')->name('ajax-comments');
+        Route::get('/index', [CommentController::class,'show'])->middleware('permission:read-comments')->name('comments');
+        Route::get('/unapproved', [CommentController::class,'unapproved'])->middleware('permission:read-comments')->name('unapproved');
+        Route::get('/trash/{comment}',[CommentController::class,'trash'])->middleware('permission:delete-comments')->name('delete');
+        Route::get('/approve/{id}/{approve_type}', [CommentController::class, 'status'])->middleware('permission:approve-comments')->name('is_approve');
+        Route::get('/trash-comments', [CommentController::class,'trashview'])->middleware('permission:read-trash-comments')->name('trash');
+        Route::get('/ajax-trash-comments', [CommentController::class,'ajaxtrash'])->middleware('permission:read-trash-comments')->name('ajax-trash-comments');
+        Route::get('/destroy/{id}',[CommentController::class,'admin_destroy'])->middleware('permission:destroy-comments')->name('destroy');
+        Route::get('/restore/{id}',[CommentController::class,'restore'])->middleware('permission:restore-comments')->name('restore');
     });
 
     Route::prefix('/tag')->name('tag.')->group(function(){

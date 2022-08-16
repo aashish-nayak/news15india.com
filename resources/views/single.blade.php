@@ -242,7 +242,8 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid" style="font-size: 16px">
+            <div class="container-fluid my-4 border-top border-bottom" style="font-size: 16px">
+                <h3 class="py-3">Comments</h3>
                 @comments(['model' => $news,'approved' => true,'maxIndentationLevel' => 2])
             </div>
             <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">

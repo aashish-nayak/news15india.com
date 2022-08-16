@@ -18,14 +18,14 @@ class CommentController extends Controller implements CommentControllerInterface
 {
     public function __construct()
     {
-        $this->middleware('web');
+        // $this->middleware('web');
 
-        if (Config::get('comments.guest_commenting') == true) {
-            $this->middleware('auth')->except('store');
-            $this->middleware(ProtectAgainstSpam::class)->only('store');
-        } else {
-            $this->middleware('auth');
-        }
+        // if (Config::get('comments.guest_commenting') == true) {
+        //     $this->middleware('auth')->except('store');
+        //     $this->middleware(ProtectAgainstSpam::class)->only('store');
+        // } else {
+        //     $this->middleware('auth');
+        // }
     }
 
     /**
@@ -39,7 +39,7 @@ class CommentController extends Controller implements CommentControllerInterface
         }
 
         // Define guest rules if user is not logged in.
-        if (!Auth::check()) {
+        if (!Auth::guard(Config::get('comments.guard'))->check()) {
             $guest_rules = [
                 'guest_name' => 'required|string|max:255',
                 'guest_email' => 'required|string|email|max:255',
@@ -58,11 +58,11 @@ class CommentController extends Controller implements CommentControllerInterface
         $commentClass = Config::get('comments.model');
         $comment = new $commentClass;
 
-        if (!Auth::check()) {
+        if (!Auth::guard(Config::get('comments.guard'))->check()) {
             $comment->guest_name = $request->guest_name;
             $comment->guest_email = $request->guest_email;
         } else {
-            $comment->commenter()->associate(Auth::user());
+            $comment->commenter()->associate(Auth::guard(Config::get('comments.guard'))->user());
         }
 
         $comment->commentable()->associate($model);
@@ -121,7 +121,7 @@ class CommentController extends Controller implements CommentControllerInterface
 
         $commentClass = Config::get('comments.model');
         $reply = new $commentClass;
-        $reply->commenter()->associate(Auth::user());
+        $reply->commenter()->associate(Auth::guard(Config::get('comments.guard'))->user());
         $reply->commentable()->associate($comment->commentable);
         $reply->parent()->associate($comment);
         $reply->comment = $request->message;
