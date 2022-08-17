@@ -43,7 +43,7 @@ task('deploy:secrets', function () {
 ///////////////////////////////////
 
 host('prod') // Name of the server
-->setHostname('217.21.91.22') // Hostname or IP address
+->setHostname('217.21.91.22:65002') // Hostname or IP address
 ->set('remote_user', 'u845004101') // SSH user
 ->set('branch', 'master') // Git branch
 ->set('deploy_path', 'u845004101/home/domains/news15india.com'); // Deploy path
