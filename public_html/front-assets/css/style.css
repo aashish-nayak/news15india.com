@@ -958,19 +958,19 @@ div.scrollmenu {
     height: 300px;
 }
 .calendar-plage {
-   height: calc(33.33% - 2px);
+   height: calc(33.10% - 5px);
 }
 .calendar-plage:first-child{
-    margin-bottom: 2px;
+    margin-bottom: 8px;
 }
 .calendar-plage:last-child{
-    margin-top: 2px;
+    margin-top: 8px;
 }
 .custom-space {
     margin: 0px;
 }
 .custom-space > [class*="col-"]{
-    padding: 0px 1px;
+    padding: 0px 3px;
 }
 .custom-space > [class*="col-"] .box{
     min-height: 300px;
@@ -1830,7 +1830,7 @@ footer nav > ul > li > a.active {
 
 .flag-color-news {
     font-size: 80px;
-    background: #ff9933;
+    background: #ff7f00;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
