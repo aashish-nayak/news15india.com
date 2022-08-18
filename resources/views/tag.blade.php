@@ -1,6 +1,15 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
-@includeIf('components.seo', ['obj' => $currentTag,'page'=>'tag-page'])
+@meta([
+    'title'         => $currentTag->meta_title,
+    'keywords'      => $currentTag->meta_keywords,
+    'description'   => $currentTag->meta_description,
+    'image'         => asset('storage/media/'.$currentTag->tagImage->filename),
+    'image_alt'     => $currentTag->tagImage->alt,
+    'image_size'    => $currentTag->tagImage->size,
+    'image_type'    => $currentTag->tagImage->type,
+    'type'          => 'tags',
+])
 @endsection
 @section('sections')
 <main class="container-fluid mx-auto mt-1">

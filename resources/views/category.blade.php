@@ -1,6 +1,15 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
-@includeIf('components.seo', ['obj' => $currentCategory,'page'=>'category-page'])
+@meta([
+    'title'         => $currentCategory->meta_title,
+    'keywords'      => $currentCategory->meta_keywords,
+    'description'   => $currentCategory->meta_description,
+    'image'         => asset('storage/media/'.$currentCategory->catImage->filename),
+    'image_alt'     => $currentCategory->catImage->alt,
+    'image_size'    => $currentCategory->catImage->size,
+    'image_type'    => $currentCategory->catImage->type,
+    'type'          => 'category',
+])
 @endsection
 @section('sections')
 <main class="container-fluid mx-auto mt-1">

@@ -32,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('vendor.followable.follow', 'followable');
     }
 
+    protected function includeSeoComponent()
+    {
+        Blade::include('vendor.seo.seo-meta', 'meta');
+    }
+
     /**
      * Define permission defined in the config.
      */
@@ -119,6 +124,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->includeBladeComponent();
         $this->includeFollowComponent();
+        $this->includeSeoComponent();
 
         $this->definePermissions();
     }

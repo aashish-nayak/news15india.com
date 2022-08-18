@@ -1,8 +1,18 @@
 @extends('layouts.frontend.master')
-@section('sections')
 @section('meta-tags')
-@includeIf('components.seo', ['obj' => $author,'page'=>'author-page'])
+@meta([
+    'title'         => $author->name,
+    'prefix'        => ' - '.setting('site_name'),
+    'description'   => $author->about,
+    'image'         => asset('storage/media/'.$author->details->avatar->filename),
+    'image_alt'     => $author->details->avatar->alt,
+    'image_size'    => $author->details->avatar->size,
+    'image_type'    => $author->details->avatar->type,
+    'type'          => 'author',
+    'auhtor'        => $author->name,
+])
 @endsection
+@section('sections')
 <main class="container-fluid mx-auto">
     <div class="row">
         <!-- Ad Banner  -->
