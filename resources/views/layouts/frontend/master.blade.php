@@ -17,15 +17,15 @@
 
 <body onload="startTime()">
     <input type="hidden" value="{{asset('front-assets/img/')}}" id="weather-icon-assets">
-    @includeIf('layouts.frontend.partials.header-nav', ['some' => 'data'])
-    @includeIf('layouts.frontend.partials.desktop-nav', ['some' => 'data'])
-    @includeIf('layouts.frontend.partials.desktop-breaking', ['some' => 'data'])
-    @includeIf('layouts.frontend.partials.mobile-nav', ['some' => 'data'])
-    @includeIf('layouts.frontend.partials.mobile-breaking', ['some' => 'data'])
+    @includeIf('layouts.frontend.partials.header-nav')
+    @includeIf('layouts.frontend.partials.desktop-nav')
+    @includeIf('layouts.frontend.partials.desktop-breaking')
+    @includeIf('layouts.frontend.partials.mobile-nav')
+    @includeIf('layouts.frontend.partials.mobile-breaking')
 
     @yield('sections')
 
-    @includeIf('layouts.frontend.partials.footer', ['some' => 'data'])
+    @includeIf('layouts.frontend.partials.footer')
     <!-- Login Register Modal -->
     <div class="modal fade" style="font-size: 1.6rem;" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -241,7 +241,7 @@
         </div>
     </div>
     <!-- Login Register Modal -->
-    @includeIf('layouts.frontend.partials.sidebar-nav', ['some' => 'data'])
+    @includeIf('layouts.frontend.partials.sidebar-nav')
     <button class="back-to-top" type="button"><i class="fas fa-angle-up"></i></button>
     <script src="{{ asset('front-assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('front-assets/js/popper.min.js') }}"></script>
@@ -250,47 +250,8 @@
     <script src="{{ asset('front-assets/js/time.js') }}"></script>
     <script src="{{ asset('front-assets/js/slick.js') }}"></script>
     <script src="{{ asset('js/share.js') }}"></script>
+    <script src="{{ asset('front-assets/js/app.js') }}"></script>
     @stack('js')
-    <script>
-        $().ready(function() {
-            $('.single-item').slick({
-                infinite: true,
-                arrows: false,
-                autoplay: true,
-            });
-            if ($(window).width() < 514) {
-                $(".custom-margin").removeClass("custom-margin");
-                $(".custom-margin-col-2").removeClass("custom-margin-col-2");
-                $(".add-mb-3").addClass("mb-3");
-            } else {
-                $(".add-mb-3").removeClass("mb-3");
-                $(".custom-margin").addClass("custom-margin");
-                $(".custom-margin-col-2").addClass("custom-margin-col-2");
-            }
-            // Back to top
-            var amountScrolled = 200;
-            var amountScrolledNav = 25;
-
-            $(window).scroll(function() {
-                if ( $(window).scrollTop() > amountScrolled ) {
-                    $('button.back-to-top').addClass('show');
-                } else {
-                    $('button.back-to-top').removeClass('show');
-                }
-            });
-
-            $('button.back-to-top').click(function() {
-                $('html, body').animate({
-                    scrollTop: 0
-                }, 800);
-                return false;
-            });
-            $(".over_lay1").click(function () {
-                $(".over_lay1").css('width',"0%");
-                $(".search_container").css('left',"-360px");
-            });
-        });
-    </script>
 </body>
 
 </html>

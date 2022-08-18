@@ -14,13 +14,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class NewsController extends Controller
 {
-    public function fetch_media(Request $request)
-    {
-        if ($request->ajax()) {
-            $media = Media::latest()->paginate(12);
-            return view('backpanel.news.media-box', compact('media'))->render();
-        }
-    }
 
     public function index()
     {

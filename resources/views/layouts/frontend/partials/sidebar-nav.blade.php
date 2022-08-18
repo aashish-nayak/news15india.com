@@ -397,17 +397,3 @@
         </div>
     </div>
 </div>
-{{-- Search Popup --}}
-<div class="over_lay1" style="width: 0px;"></div>
-<div class="search_container" style="left: -360px;">
-    <div class="search_box">
-        <form action="/Search">
-            <img src="https://english.cdn.zeenews.com/static/public/menusearch.svg" alt="search icon"
-                class="search_icon1 ls-is-cached lazyloaded">
-            <input type="text" placeholder="Search here" name="q" minlength="3" class="search_input"
-                required="true">
-            <button class="search_submit"><img src="https://english.cdn.zeenews.com/static/public/search_arrow.svg"
-                    class=" ls-is-cached lazyloaded" alt="search icon" width="12"></button>
-        </form>
-    </div>
-</div>

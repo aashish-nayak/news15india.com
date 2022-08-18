@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Commenter;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\Follower;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,SoftDeletes,Commenter;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Commenter, Follower;
 
     /**
      * The attributes that are mass assignable.

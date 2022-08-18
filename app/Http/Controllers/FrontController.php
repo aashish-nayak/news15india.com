@@ -6,8 +6,10 @@ use App\Models\Admin;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Jorenvh\Share\ShareFacade as Share;
 class FrontController extends Controller
 {
@@ -148,6 +150,9 @@ class FrontController extends Controller
 
     public function singleNews($newsUrl)
     {
+        if(Session::get('redirect_to')){
+            Session::forget('redirect_to');
+        }
         $pageSetting = json_decode(setting('single_page_settings'));
 
         $news = News::with(['categories'=>function($query){
@@ -370,5 +375,17 @@ class FrontController extends Controller
     public function customLink($slug = '')
     {
         return url($slug);
+    }
+
+    public function follow(Request $request)
+    {
+        try {
+            $creator = Admin::find($request->creator_id);
+            $user = User::find(auth('web')->user()->id);
+            $user->toggleFollow($creator);
+            return response()->json(['status'=>'success','is_follower'=>$creator->isFollowedBy($user)]);
+        } catch (\Exception $e) {
+            return response()->json(['status'=>'error','message'=>$e->getMessage()]);
+        }
     }
 }

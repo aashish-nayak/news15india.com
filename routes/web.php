@@ -14,6 +14,9 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestController;
+use App\Models\Admin;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 /*
@@ -26,10 +29,13 @@ use Illuminate\Support\Facades\Config;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// =============== Admin User Auth Routes ==============
+require __DIR__.'/admin_auth.php';
+require __DIR__.'/auth.php';
 
 Route::any('/test',[TestController::class,'test'])->name('test');
-
 Route::view('/', 'welcome');
+
 Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/', [FrontController::class,'home'])->name('home');
     Route::get('/news/category/{slug}',[FrontController::class,'categoryNews'])->name('category-news');
@@ -39,26 +45,25 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
     Route::view('reporter-form','reporter-form');
 });
-if (Config::get('comments.guest_commenting') == true) {
-    Route::post('/comments', [Config::get('comments.controller') , 'store'])->middleware(ProtectAgainstSpam::class)->name('comments.store');
-} else {
-    Route::post('/comments', [Config::get('comments.controller') , 'store'])->middleware('auth')->name('comments.store');
-}
+
+// =============== Comments Routes ==============
+$middleware = (Config::get('comments.guest_commenting') == true) ? ProtectAgainstSpam::class : 'auth';
+Route::post('/comments', [Config::get('comments.controller') , 'store'])->middleware($middleware)->name('comments.store');
 Route::delete('comments/{comment}', [Config::get('comments.controller') , 'destroy'])->middleware('auth')->name('comments.destroy');
 Route::put('comments/{comment}', [Config::get('comments.controller') , 'update'])->middleware('auth')->name('comments.update');
 Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply'])->middleware('auth')->name('comments.reply');
 
+// =============== User Panel Routes ==============
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
+Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
 
-require __DIR__.'/admin_auth.php';
-require __DIR__.'/auth.php';
-
+// ==================== Backpanel Panel Routes ==================
 Route::get('/admin',function(){
     return redirect()->route('admin.dashboard');
 });
 Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(function(){
     Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
-
+    // ----------------[ Backpanel Panel Category Module Routes ]------------------------
     Route::prefix('/category')->name('category.')->group(function(){
         Route::get('/', [CategoryController::class,'index'])->middleware('permission:read-category')->name('index');
         Route::post('/store', [CategoryController::class,'store'])->middleware('permission:create-category')->name('store');
@@ -66,7 +71,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/{category}/delete',[CategoryController::class,'destroy'])->middleware('permission:delete-category')->name('delete');
         Route::get('/getCategories', [CategoryController::class, 'show'])->middleware('permission:read-category')->name('getCategories');
     });
-
+    // ----------------[ Backpanel Panel Media Module Routes ]------------------------
     Route::prefix('/media')->name('media.')->group(function(){
         Route::view('/', 'backpanel.media.media')->middleware('permission:read-media')->name('index');
         Route::post('/upload',[MediaController::class,'create'])->middleware('permission:create-media')->name('create');
@@ -76,8 +81,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/delete/files',[MediaController::class,'destroy'])->middleware('permission:delete-media')->name('delete');
         Route::post('/bulk/delete', [MediaController::class, 'bulkDelete'])->middleware('permission:delete-media')->name('bulk.delete');
     });
-
-    Route::get('/pages/media/fetch-data',[NewsController::class,'fetch_media'])->name('pages.media');
+    // ----------------[ Backpanel Panel News Module Routes ]------------------------
     Route::prefix('/news')->name('news.')->group(function(){
         Route::get('/create-news', [NewsController::class,'index'])->middleware('permission:create-news')->name('create');
         Route::post('/store-news', [NewsController::class,'store'])->middleware('permission:create-news')->name('store');
@@ -91,7 +95,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/destroy/{id}',[NewsController::class,'destroy'])->middleware('permission:destroy-news')->name('destroy');
         Route::get('/restore/{id}',[NewsController::class,'restore'])->middleware('permission:restore-news')->name('restore');
     });
-
+    // ----------------[ Backpanel Panel Comments Module Routes ]------------------------
     Route::prefix('/comment')->name('comment.')->group(function(){
         Route::get('/ajax/{approved}',[CommentController::class,'index'])->middleware('permission:read-comments')->name('ajax-comments');
         Route::get('/index', [CommentController::class,'show'])->middleware('permission:read-comments')->name('comments');
@@ -103,7 +107,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/destroy/{id}',[CommentController::class,'admin_destroy'])->middleware('permission:destroy-comments')->name('destroy');
         Route::get('/restore/{id}',[CommentController::class,'restore'])->middleware('permission:restore-comments')->name('restore');
     });
-
+    // ----------------[ Backpanel Panel Tags Module Routes ]------------------------
     Route::prefix('/tag')->name('tag.')->group(function(){
         Route::get('/view',[TagController::class,'index'])->middleware('permission:read-tags')->name('index');
         Route::post('/store', [TagController::class,'store'])->middleware('permission:create-tags')->name('store');
@@ -111,7 +115,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/delete/{tag}',[TagController::class,'destroy'])->middleware('permission:delete-tags')->name('delete');
         Route::get('/gettags', [TagController::class, 'show'])->middleware('permission:read-tags')->name('getTags');
     });
-
+    // ----------------[ Backpanel Panel Users Module Routes ]------------------------
     Route::prefix('/users')->name('user.')->group(function(){
         Route::get('/index', [AdminController::class, 'index'])->middleware('permission:read-member')->name('index');
         Route::get('/block', [AdminController::class, 'show'])->middleware('permission:block-member')->name('block');
@@ -122,7 +126,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/restore/{id}',[AdminController::class,'restore'])->middleware('permission:restore-member')->name('restore');
         Route::get('/force-delete/{id}',[AdminController::class,'forceDelete'])->middleware('permission:destroy-member')->name('forceDelete');
     });
-    
+    // ----------------[ Backpanel Panel Viewers Module Routes ]------------------------
     Route::prefix('/viewers')->name('viewer.')->group(function(){
         Route::get('/', [DashboardController::class, 'websiteViewers'])->middleware('permission:read-user')->name('index');
         Route::get('/blocked', [DashboardController::class, 'blockViewers'])->middleware('permission:block-user')->name('block');
@@ -130,7 +134,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/block/{id}', [DashboardController::class, 'viewerBlock'])->middleware('permission:delete-user')->name('delete');
         Route::get('/restore/{id}', [DashboardController::class, 'viewerRestore'])->middleware('permission:restore-user')->name('restore');
     });
-
+    // ----------------[ Backpanel Panel Roles Module Routes ]------------------------
     Route::prefix('/role')->name('role.')->group(function(){
         Route::get('/show',[RoleController::class,'index'])->middleware('permission:read-role')->name('show');
         Route::get('/create',[RoleController::class,'create'])->middleware('permission:create-role')->name('add');
@@ -138,7 +142,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/edit/{id}',[RoleController::class,'edit'])->middleware('permission:update-role')->name('edit');
         Route::get('/delete/{id}',[RoleController::class,'destroy'])->middleware('permission:delete-role')->name('delete');
     });
-
+    // ----------------[ Backpanel Panel Permissions Module Routes ]------------------------
     Route::prefix('/permission')->name('permission.')->middleware('role:super-admin')->group(function(){
         Route::get('/show',[PermissionController::class,'index'])->middleware('permission:read-permission')->name('show');
         Route::get('/create',[PermissionController::class,'create'])->middleware('permission:create-permission')->name('add');
@@ -146,7 +150,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/edit/{id}',[PermissionController::class,'edit'])->middleware('permission:update-permission')->name('edit');
         Route::get('/delete/{id}',[PermissionController::class,'destroy'])->middleware('permission:delete-permission')->name('delete');
     });
-
+    // ----------------[ Backpanel Panel Menu Module Routes ]------------------------
     Route::prefix('/menu')->name('menu.')->group(function(){
         Route::get('/view/{menu_id?}',[MenuController::class,'index'])->middleware('permission:read-menu')->name('index');
         Route::post('/store', [MenuController::class,'store'])->middleware('permission:create-menu')->name('store');
@@ -157,6 +161,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->middleware('permission:create-menu')->name('add-to-menu-link');
         Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
     });
+    // ----------------[ Backpanel Panel Settings Module Routes ]------------------------
     Route::prefix('/settings')->name('setting.')->middleware('role:super-admin')->group(function(){
         Route::get('/index',[SettingController::class,'index'])->name('index');
         Route::post('/store',[SettingController::class,'store'])->name('store');

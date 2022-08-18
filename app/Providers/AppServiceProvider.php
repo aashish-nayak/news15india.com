@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('vendor.comments.components.comments', 'comments');
     }
 
+    protected function includeFollowComponent()
+    {
+        Blade::include('vendor.followable.follow', 'followable');
+    }
+
     /**
      * Define permission defined in the config.
      */
@@ -113,6 +118,7 @@ class AppServiceProvider extends ServiceProvider
         Route::model('comment', Config::get('comments.model'));
 
         $this->includeBladeComponent();
+        $this->includeFollowComponent();
 
         $this->definePermissions();
     }

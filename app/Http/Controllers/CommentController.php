@@ -20,7 +20,7 @@ class CommentController extends Controller implements CommentControllerInterface
     {
         // $this->middleware('web');
 
-        // if (Config::get('comments.guest_commenting') == true) {
+        // if (config('comments.guest_commenting') == true) {
         //     $this->middleware('auth')->except('store');
         //     $this->middleware(ProtectAgainstSpam::class)->only('store');
         // } else {
@@ -34,12 +34,12 @@ class CommentController extends Controller implements CommentControllerInterface
     public function store(Request $request)
     {
         // If guest commenting is turned off, authorize this action.
-        if (Config::get('comments.guest_commenting') == false) {
+        if (config('comments.guest_commenting') == false) {
             Gate::authorize('create-comment', Comment::class);
         }
 
         // Define guest rules if user is not logged in.
-        if (!Auth::guard(Config::get('comments.guard'))->check()) {
+        if (!Auth::guard(config('comments.guard'))->check()) {
             $guest_rules = [
                 'guest_name' => 'required|string|max:255',
                 'guest_email' => 'required|string|email|max:255',
@@ -55,19 +55,19 @@ class CommentController extends Controller implements CommentControllerInterface
 
         $model = $request->commentable_type::findOrFail($request->commentable_id);
 
-        $commentClass = Config::get('comments.model');
+        $commentClass = config('comments.model');
         $comment = new $commentClass;
 
-        if (!Auth::guard(Config::get('comments.guard'))->check()) {
+        if (!Auth::guard(config('comments.guard'))->check()) {
             $comment->guest_name = $request->guest_name;
             $comment->guest_email = $request->guest_email;
         } else {
-            $comment->commenter()->associate(Auth::guard(Config::get('comments.guard'))->user());
+            $comment->commenter()->associate(Auth::guard(config('comments.guard'))->user());
         }
 
         $comment->commentable()->associate($model);
         $comment->comment = $request->message;
-        $comment->approved = !Config::get('comments.approval_required');
+        $comment->approved = !config('comments.approval_required');
         $comment->save();
 
         return Redirect::to(URL::previous() . '#comment-' . $comment->getKey());
@@ -98,7 +98,7 @@ class CommentController extends Controller implements CommentControllerInterface
     {
         Gate::authorize('delete-comment', $comment);
 
-        if (Config::get('comments.soft_deletes') == true) {
+        if (config('comments.soft_deletes') == true) {
 			$comment->delete();
 		}
 		else {
@@ -119,13 +119,13 @@ class CommentController extends Controller implements CommentControllerInterface
             'message' => 'required|string'
         ])->validate();
 
-        $commentClass = Config::get('comments.model');
+        $commentClass = config('comments.model');
         $reply = new $commentClass;
-        $reply->commenter()->associate(Auth::guard(Config::get('comments.guard'))->user());
+        $reply->commenter()->associate(Auth::guard(config('comments.guard'))->user());
         $reply->commentable()->associate($comment->commentable);
         $reply->parent()->associate($comment);
         $reply->comment = $request->message;
-        $reply->approved = !Config::get('comments.approval_required');
+        $reply->approved = !config('comments.approval_required');
         $reply->save();
 
         return Redirect::to(URL::previous() . '#comment-' . $reply->getKey());

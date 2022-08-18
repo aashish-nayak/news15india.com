@@ -181,7 +181,11 @@
                                                 $loc = $author->details->city->name;
                                             }
                                         @endphp
-                                        <p class="mb-0 font-weight-bold" style="font-size:1.4rem;">{{$loc}} की ताजा खबरे देखने के लिए  <br> मुझे <a href="javascript:void(0)" style="font-size:1.3rem;" class="btn btn-primary btn-sm font-weight-bold my-2 mx-1">Follow</a> करें</p>
+                                        @if(auth('web')->check() && $author->isFollowedBy(auth('web')->user()))
+                                            @followable(['followable'=>$author])
+                                        @else
+                                        <p class="mb-0 font-weight-bold" style="font-size:1.4rem;">{{$loc}} की ताजा खबरे देखने के लिए  <br> मुझे @followable(['followable'=>$author]) करें</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

@@ -62,7 +62,7 @@
                                 </p>
                             </div>
                             <div class="col-12 col-md-3">
-                                {{-- <a href="javascript:void(0)" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 mr-5">Follow</a> --}}
+                                @followable(['followable'=>$news->creator])
                             </div>
                         </div>
                     </div>
