@@ -2,6 +2,7 @@
 <html lang="en" class="semi-dark">
 <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{setting('admin_favicon')}}" type="image/png" />
     <!--plugins-->
