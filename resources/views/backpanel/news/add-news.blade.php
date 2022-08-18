@@ -10,7 +10,6 @@
 @endisset
 @section('title', $title)
 @push('plugin-css')
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 @endpush
 @push('css')
 @endpush
@@ -91,56 +90,7 @@
                         @enderror
                     </div>
                 </div>
-                <div id="seo_wrap" class="card mt-4 col-12">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h6 class="header-title m-0" style="font-weight: 600">Search Engine Optimization</h6>
-                        <a href="javascript:void(0)" id="edit-seo">Edit SEO meta</a>
-                    </div>
-                    <div class="card-body pt-3 pb-4">
-                        <div class="seo-preview d-none">
-                            <div class="existed-seo-meta">
-                                <span class="page-title-seo" id="seo-section-title">@if(isset($page)){{($page->meta_title != '')? $page->meta_title : $page->title;}}@else{{old('title')}}@endif</span>
-                                <div class="page-url-seo ws-nm">
-                                    <p id="seo-section-link">{{url('/')}}@isset($page){{'/'.$page->slug}}@endisset{{old('slug')}}</p>
-                                </div>
-                                <div class="ws-nm">
-                                    <span style="color: #70757a;">
-                                        @isset($page)
-                                        {{\Carbon\Carbon::parse($page->created_at)->format('M d, Y')}}
-                                        @else
-                                        {{\Carbon\Carbon::now()->format('M d, Y')}}
-                                        @endisset - 
-                                    </span>
-                                    <span class="page-description-seo" id="seo-section-desc">@if(isset($page)){{($page->meta_description != '')? $page->meta_description : $page->short_description;}}@else{{old('short_desc')}}@endif</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="seo-edit-section d-none">
-                            <hr>
-                            <div class="form-group mb-3">
-                                <label for="seo_title" class="control-label"><b>SEO Title</b></label>
-                                <input class="form-control" id="seo_title" placeholder="SEO Title" data-counter="120" value="@if(isset($page)){{$page->meta_title}}@else{{old('meta_title')}}@endif" name="meta_title" type="text">
-                            </div>
-                            @error('seo_title')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            <div class="form-group mb-3">
-                                <label for="seo_title" class="control-label"><b>SEO Keywords</b></label>
-                                <input class="form-control" id="seo_keywords" data-role="tagsinput" placeholder="SEO Keywords ( , seperated )" data-counter="120" value="@if(isset($page)){{$page->meta_keywords}}@else{{old('meta_keywords')}}@endif" name="meta_keywords" type="text">
-                            </div>
-                            @error('seo_keywords')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            <div class="form-group mb-3">
-                                <label for="seo_description" class="control-label"><b>SEO description</b></label>
-                                <textarea class="form-control" rows="3" id="seo_description" placeholder="SEO description" data-counter="160" name="meta_description" cols="50">@if(isset($page)){{$page->meta_description}}@else{{old('meta_description')}}@endif</textarea>
-                            </div>
-                            @error('meta_description')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
+                @includeIf('backpanel.includes.seo-meta')
             </div>
             <div class="col-lg-3">
                 <div class="card">
@@ -328,24 +278,10 @@
 @include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}" referrerpolicy="origin"> </script>
 <script src="{{ asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 @include('backpanel.includes.media-model-script')
 <script>
-function stringslug(str) {
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase(); // remove accents, swap ñ for n, etc
-    var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
-    var to = "aaaaaeeeeeiiiiooooouuuunc------";
-    for (var i = 0, l = from.length; i < l; i++) {
-        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
-    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-        .replace(/\s+/g, '-') // collapse whitespace and replace by -
-        .replace(/-+/g, '-'); // collapse dashes
-    return str;
-};
 $(document).ready(function () {
     $('.multi-select').select2({
         theme: 'bootstrap4',
@@ -430,10 +366,5 @@ tinymce.init({
     menubar: "favs file edit view insert format tools table help",
     content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:18px; color: #000; }",
 });
-
-$(".card-container").draggable({
-  handle: ".handle"
-});
-
 </script>
 @endpush
