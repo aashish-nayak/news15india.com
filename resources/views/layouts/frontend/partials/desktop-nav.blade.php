@@ -98,37 +98,81 @@
                             @endif
                         </li>   
                         @endforeach
-                        @foreach ($megaMenu2 as $megaNode)
+                        @foreach ($megaMenu2 as $menu_key=>$megaNode)
                         <li class="droppable">
+                            @if($megaNode->has_child)
+                                @foreach ($megaNode->child as $key => $subMegaNode)
+                                    @php
+                                        if($key == 0){
+                                            $active = 'active';
+                                            $show = 'show';
+                                        }else{
+                                            $active = '';
+                                            $show = '';
+                                        }
+                                    @endphp
+                                    @push('tab-link-'.$menu_key)
+                                        <a href="{{$subMegaNode->url}}" target="{{$subMegaNode->target}}" class="mb-1 mt-3 py-1 nav-link {{$active}}" id="tab-{{$subMegaNode->id}}-data" data-toggle="pill" data-target="#tab-{{$subMegaNode->id}}" type="button" role="tab" aria-controls="tab-{{$subMegaNode->id}}" aria-selected="true">{{$subMegaNode->title}}</a>
+                                    @endpush
+                                    @push('tab-'.$menu_key)
+                                        <div class="tab-pane fade {{$active}} {{$show}}" id="tab-{{$subMegaNode->id}}" role="tabpanel" aria-labelledby="tab-{{$subMegaNode->id}}-data">
+                                            @foreach ($subMegaNode->reference->news()->latest()->limit(5)->get() as $tab_key => $megaNews)
+                                            @if($tab_key == 0)
+                                                @push('tab-main-news-'.$subMegaNode->id)
+                                                <div class="col-md-7">
+                                                    <a href="{{route('single-news',$megaNews->slug)}}" class="text-decoration-none">
+                                                        <img loading="lazy" src="{{asset('storage/media/'.$megaNews->newsImage->filename)}}" class="img-fluid" style="width:100%;height:300px;object-fit:cover;" alt="{{$megaNews->newsImage->alt}}">
+                                                        <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
+                                                            {{\Str::limit($megaNews->title,60)}}
+                                                        </h6>
+                                                    </a>
+                                                    <p class="text-muted" style="font-size: 1.2rem">
+                                                        {{\Str::limit($megaNews->short_description,100)}}
+                                                    </p>
+                                                </div>
+                                                @endpush
+                                            @else
+                                                @push('tab-four-news-'.$subMegaNode->id)
+                                                <div class="col mb-2 px-2">
+                                                    <div class="card card-shadow">
+                                                        <a href="{{route('single-news',$megaNews->slug)}}" class="text-muted text-decoration-none">
+                                                            <img loading="lazy" src="{{asset('storage/media/'.$megaNews->newsImage->filename)}}" class="card-img-top" alt="{{$megaNews->newsImage->alt}}">
+                                                        </a>
+                                                        <div class="card-body p-3" style="border-bottom:2px solid var(--primary);">
+                                                            <a href="{{route('single-news',$megaNews->slug)}}" class="text-decoration-none font-weight-bold">{{\Str::limit($megaNews->title,45)}}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endpush
+                                            @endif
+                                            @endforeach
+                                            <div class="col-12">
+                                                <div class="row justify-content-center align-items-start">
+                                                    @stack('tab-main-news-'.$subMegaNode->id)
+                                                    <div class="col-md-5">
+                                                        <div class="row row-cols-2 p-0">
+                                                            @stack('tab-four-news-'.$subMegaNode->id)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endpush
+                                @endforeach
+                            @endif
                             <a href="{{$megaNode->url}}" target="{{$megaNode->target}}" class="nav-link">{{$megaNode->title}}</a>
                             <div class="mega-menu row justify-content-center">
-                                <div class="cf col-10 py-4">
-                                    <div class="row justify-content-center align-items-center">
+                                <div class="cf col-11 py-4">
+                                    <div class="row justify-content-center align-items-start">
                                         <div class="col-md-3">
                                             <h5 class="text-capitalize mb-4">Categories Name</h5>
                                             <div class="mega-menu-tabs nav flex-column flex-nowrap nav-pills pr-1" style="max-height: 300px;overflow-y:scroll;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                                @if($megaNode->has_child)
-                                                    @foreach ($megaNode->child as $key => $subMegaNode)
-                                                        @php
-                                                            if($key == 0){
-                                                                $active = 'active';
-                                                                $show = 'show';
-                                                            }else{
-                                                                $active = '';
-                                                                $show = '';
-                                                            }
-                                                        @endphp
-                                                            <a href="{{$subMegaNode->url}}" target="{{$subMegaNode->target}}" class="mb-2 py-1 nav-link {{$active}}" id="tab-{{$subMegaNode->id}}-data" data-toggle="pill" data-target="#tab-{{$subMegaNode->id}}" type="button" role="tab" aria-controls="tab-{{$subMegaNode->id}}" aria-selected="true">{{$subMegaNode->title}}</a>
-                                                        @push('tabs')
-                                                            @includeIf('components.tab', ['subMegaNode' => $subMegaNode,'active'=>$active,'show'=>$show])
-                                                        @endpush
-                                                    @endforeach
-                                                @endif
+                                                @stack('tab-link-'.$menu_key)
                                             </div>
                                         </div>
                                         <div class="col-md-9">
                                             <div class="tab-content" id="v-pills-tabContent">
-                                                @stack('tabs')
+                                                @stack('tab-'.$menu_key)
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +189,7 @@
                                     @section('mega_design_1_id'.$key)
                                     <div class="col-5">
                                         <a href="{{route('single-news',$nodeNews->slug)}}" class="text-decoration-none">
-                                            <img loading="lazy" src="{{asset('storage/media/'.$nodeNews->newsImage->filename)}}" class="img-fluid w-100" alt="{{$nodeNews->newsImage->alt}}">
+                                            <img loading="lazy" src="{{asset('storage/media/'.$nodeNews->newsImage->filename)}}" style="width:100%;height:300px;object-fit:cover;" class="img-fluid w-100" alt="{{$nodeNews->newsImage->alt}}">
                                             <h6 style="font-size: 1.4rem" class="mt-2 border-bottom">
                                                 {{\Str::limit($nodeNews->title,60)}}
                                             </h6>
