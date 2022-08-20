@@ -163,7 +163,7 @@ class FrontController extends Controller
         ->where('is_published',1)
         ->where('is_verified',1)
         ->firstOrFail();
-        
+        $news->viewsUp();
         $moreCategoryNews = Category::with(['news'=>function($query)use($newsUrl,$pageSetting){
             $query->where('slug','!=',$newsUrl)->latest()->limit($pageSetting->category_news_limit)->with('newsImage');
         },

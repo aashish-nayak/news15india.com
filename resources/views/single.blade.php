@@ -78,8 +78,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <p class="m-0" style="font-size: 16px"><i class="fa fa-eye px-2"></i> <span>2.5k</span> <span>Views</span></p>
-                        <p class="m-0" style="font-size: 16px"><i class="fa fa-comment-alt px-2"></i> <span>500</span> <span>Comments</span></p>
+                        <p class="m-0" style="font-size: 16px"><i class="fa fa-eye px-2"></i> <span>{{$news->frontViews()}}</span> <span>Views</span></p>
+                        <p class="m-0" style="font-size: 16px"><i class="fa fa-comment-alt px-2"></i> <span>{{$news->approvedComments()->count()}}</span> <span>Comments</span></p>
                     </div>
                     <div class="col-md-4 col-6 font-size-sm">
                         <div class="row">

@@ -12,19 +12,8 @@ trait Staticable
         return $this->hasOne(Statistic::class, 'staticable_id')->where('staticable_type', get_class($this));
     }
 
-    public function checkRelationExists()
+    public function updatedStats(array $attributes = [])
     {
-        if (!$this->statistics()->exists()) {
-            return false;
-        }
-        return true;
-    }
-
-    public function stats(array $attributes = [])
-    {
-        if($attributes == []) {
-            return $this->statistics()->first();
-        }
         $instance = [
             'staticable_id' => $this->id,
             'staticable_type' => get_class($this),
@@ -38,27 +27,41 @@ trait Staticable
     }
 
 
-    public function getView()
+    public function getViews()
     {
-        return $this->stats()->views;
+        return $this->statistics()->select('views')->first()->views;
     }
     
-    public function getEditableView()
+    public function getEditableViews()
     {
-        return $this->stats()->editable_views;
+        return $this->statistics()->select('editable_views')->first()->editable_views;
+    }
+
+    public function frontViews()
+    {
+        if($this->statistics != null && $this->getEditableViews() > 0){
+            return $this->getEditableViews();
+        }
+        return $this->getViews();
     }
 
     public function viewsUp($counts = 1)
     {
         $views = ($this->statistics != null)? $this->statistics->views + $counts : $counts;
-        $this->stats(['views' => $views]);
+        $this->updatedStats(['views' => $views]);
         return $this;
     }
 
     public function editableViewsUp($counts = 1)
     {
         $views = ($this->statistics != null)? $this->statistics->editable_views + $counts : $counts;
-        $this->stats(['editable_views' => $views]);
+        $this->updatedStats(['editable_views' => $views]);
+        return $this;
+    }
+
+    public function editableViewsDown()
+    {
+        $this->updatedStats(['editable_views' => 0]);
         return $this;
     }
 }

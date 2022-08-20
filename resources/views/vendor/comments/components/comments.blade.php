@@ -69,7 +69,7 @@
         <div class="card-body">
             <h5 class="card-title">@lang('comments.authentication_required')</h5>
             <p class="card-text">@lang('comments.you_must_login_to_post_a_comment')</p>
-            <a href="{{ route('login') }}" class="btn btn-primary">@lang('comments.log_in')</a>
+            <a href="{{ route('login',['redirect_to'=>url()->current()]) }}" class="btn btn-primary">@lang('comments.log_in')</a>
         </div>
     </div>
 @endauth
