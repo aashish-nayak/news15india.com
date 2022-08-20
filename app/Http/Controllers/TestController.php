@@ -12,7 +12,7 @@ class TestController extends Controller
     public function test()
     {
         // dd(convertYoutube('https://youtu.be/lyeyoqwXm5o'));
-        $news = News::find(1);
-        
+        $news = News::find(2);
+        dd($news->viewsUp());
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Commentable;
+use App\Traits\Staticable;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class News extends Model
 {
-    use HasFactory, SoftDeletes,Commentable;
+    use HasFactory, SoftDeletes,Commentable, Staticable;
     protected $fillable = [
         'title',
         'slug',
