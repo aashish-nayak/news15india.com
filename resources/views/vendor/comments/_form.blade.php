@@ -40,13 +40,12 @@
 
             <div class="form-group">
                 <label for="message">@lang('comments.enter_your_message_here')</label>
-                <textarea class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
+                <textarea class="form-control @if($errors->has('message')) is-invalid @endif" style="font-size:14px;" name="message" rows="3"></textarea>
                 <div class="invalid-feedback">
                     @lang('comments.your_message_is_required')
                 </div>
-                <small class="form-text text-muted">@lang('comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small>
             </div>
-            <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">@lang('comments.submit')</button>
+            <button type="submit" class="btn subscribe-button text-light text-uppercase px-4" style="font-size:12px;">@lang('comments.submit')</button>
         </form>
     </div>
 </div>
