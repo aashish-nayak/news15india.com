@@ -78,7 +78,7 @@ trait Followable
          * @var Model $this
          */
         return $this->hasMany(
-            config('follow.followables_model', \Overtrue\LaravelFollow\Followable::class),
+            config('follow.followables_model', \App\Models\Followable::class),
             'followable_id',
         )->where('followable_type', $this->getMorphClass());
     }
