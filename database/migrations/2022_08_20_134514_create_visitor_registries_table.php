@@ -15,7 +15,7 @@ class CreateVisitorRegistriesTable extends Migration
     {
         Schema::create('visitor_registries', function (Blueprint $table) {
             $table->id();
-            $table->string('ip', 32);
+            $table->string('ip');
             $table->string('country', 4)->nullable();
             $table->integer('clicks')->unsigned()->default(0);
             $table->timestamps();
