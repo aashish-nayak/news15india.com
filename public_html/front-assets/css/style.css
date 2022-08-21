@@ -1504,7 +1504,9 @@ footer nav > ul > li > a.active {
         flex: 100% !important;
         max-width: 100% !important;
     }
-
+    .calendar-plage {
+        height: calc(32% - 20px);
+    }
     .form-control-1 {
         font-size: medium !important;
         padding: 5px 20px !important;
@@ -1616,7 +1618,7 @@ footer nav > ul > li > a.active {
         min-height: auto;
     }
     .calendar-default {
-        height: 350px;
+        height: auto;
     }
     .cat-slider-height {
         height: auto !important;

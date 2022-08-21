@@ -14,7 +14,7 @@
 ])
 @endsection
 @section('sections')
-<main class="container-fluid mx-auto mt-1">
+<main class="container-fluid mx-auto mt-1 position-relative">
     <div class="row">
         <div class="col-md-9 col-12 px-1 pr-md-1">
             {{-- ........... Ad Banner ........  --}}
@@ -55,9 +55,9 @@
                     <div class="col-md-4 col-9 pl-md-3 px-md-1">
                         <div class="row justify-content-between align-items-center mx-0">
                             <div class="col-12 col-md-9">
-                                <div  style="font-size: 16px; font-weight:500;">
+                                <div style="font-size: 16px; font-weight:500;">
                                     <span>By</span> 
-                                    <a href="{{route('author',$news->creator->details->url)}}">
+                                    <a class="text-primary" href="{{route('author',$news->creator->details->url)}}">
                                         <span><strong>{{$news->creator->name}}</strong></span>
                                     </a>
                                 </div>
@@ -78,8 +78,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
-                        <p class="m-0" style="font-size: 16px"><i class="fa fa-eye px-2"></i> <span>{{$news->frontViews()}}</span> <span>Views</span></p>
-                        <p class="m-0" style="font-size: 16px"><i class="fa fa-comment-alt px-2"></i> <span>{{$news->approvedComments()->count()}}</span> <span>Comments</span></p>
+                        <p class="m-0" style="font-size: 16px" title="{{$news->frontViews()}} Views"><i class="fa fa-eye px-2"></i> <span>{{kmb($news->frontViews())}}</span> <span>Views</span></p>
+                        <p class="m-0" style="font-size: 16px" title="{{$news->approvedComments()->count()}} Comments"><i class="fa fa-comment-alt px-2"></i> <span>{{kmb($news->approvedComments()->count())}}</span> <span>Comments</span></p>
                     </div>
                     <div class="col-md-4 col-6 font-size-sm">
                         <div class="row">
@@ -171,6 +171,10 @@
                     <img src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" loading="lazy">
                 </a>
             </section>
+            <div class="container-fluid my-4 py-4 border-top border-bottom" style="font-size: 16px">
+                <h3 class="py-2">Comments</h3>
+                @comments(['model' => $news,'approved' => true,'maxIndentationLevel' => 2])
+            </div>
             {{-- ........... Tags ........  --}}
             <div class="container-fluid my-2 px-0">
                 <div class="col-12">
@@ -253,10 +257,6 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid my-4 border-top border-bottom" style="font-size: 16px">
-                <h3 class="py-3">Comments</h3>
-                @comments(['model' => $news,'approved' => true,'maxIndentationLevel' => 2])
-            </div>
             <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
                 <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i>
                     <h4 class="text-white mr-2 pt-2">{{$bottom_section->cat_name}}</h4>
@@ -283,128 +283,130 @@
             </section>
         </div>
         <aside class="col-md-3 col-12 mt-1 my-md-0 px-1">
-            @includeIf('components.whatsapp-ad')
-            @includeIf('components.poll')
-            <div class="ad-box my-1">
-                <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
-                <div class="single-item">
-                    <div class="holder">
-                        <div class="box">
-                            <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/pepsi-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
-                            </a>
+            <div class="sticky-top"  style="z-index:1">
+                @includeIf('components.whatsapp-ad')
+                @includeIf('components.poll')
+                <div class="ad-box my-1">
+                    <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
+                    <div class="single-item">
+                        <div class="holder">
+                            <div class="box">
+                                <a href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/pepsi-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box">
-                            <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
-                            </a>
+                        <div class="holder">
+                            <div class="box">
+                                <a href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="holder">
-                        <div class="box">
-                            <a href="javascript:void(0)">
-                                <img src="{{asset('front-assets/img/square.jpg')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
-                            </a>
+                        <div class="holder">
+                            <div class="box">
+                                <a href="javascript:void(0)">
+                                    <img src="{{asset('front-assets/img/square.jpg')}}" style="height: 250px;object-fit:cover;" class="w-100" alt="" loading="lazy">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 mt-1 p-0">
-                @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
-                @foreach ($sidebar_1->news as $key => $sidebar_news)
-                    @if($key == 0)
-                    @push('sidebar1_design1')
-                    <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-decoration-none ">
-                        <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
-                        <h6 class="mt-2">{{\Str::limit($sidebar_news->title,60)}}</h6>
-                    </a>
-                    <p class="text-muted">
-                        {{\Str::limit($sidebar_news->short_description,60)}}
-                    </p>
-                    @endpush
-                    @else
-                    @push('sidebar1_design2')
-                    <div class="style-2 border-top d-flex align-items-center px-1">
-                        <div class="post-data mt-1">
-                            <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
-                                <h6>{{\Str::limit($sidebar_news->title,60)}}</h6>
-                            </a>
-                        </div>
-                    </div>
-                    @endpush
-                    @endif
-                @endforeach
-                <div class="container-fluid px-1">
-                    @stack('sidebar1_design1')
-                </div>
-                @stack('sidebar1_design2')
-            </div>
-            <div class="col-12 mt-1 side-position mx-auto px-0">
-                @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
-                <div class="side-bar">
-                    @foreach ($sidebar_2->news as $sidebar_news)
-                    <div class="card card-shadow my-1">
-                        <div class="card-body px-3 py-1 border-bottom border-secondary">
-                            <div class="post-data ">
+                <div class="col-12 mt-1 p-0">
+                    @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
+                    @foreach ($sidebar_1->news as $key => $sidebar_news)
+                        @if($key == 0)
+                        @push('sidebar1_design1')
+                        <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-decoration-none ">
+                            <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
+                            <h6 class="mt-2">{{\Str::limit($sidebar_news->title,60)}}</h6>
+                        </a>
+                        <p class="text-muted">
+                            {{\Str::limit($sidebar_news->short_description,60)}}
+                        </p>
+                        @endpush
+                        @else
+                        @push('sidebar1_design2')
+                        <div class="style-2 border-top d-flex align-items-center px-1">
+                            <div class="post-data mt-1">
                                 <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
-                                    <div class="post-meta">
-                                        <p class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
-                                    </div>
                                     <h6>{{\Str::limit($sidebar_news->title,60)}}</h6>
                                 </a>
                             </div>
                         </div>
-                    </div>
+                        @endpush
+                        @endif
                     @endforeach
+                    <div class="container-fluid px-1">
+                        @stack('sidebar1_design1')
+                    </div>
+                    @stack('sidebar1_design2')
                 </div>
-                <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
-                </div>
-            </div>
-            <div class="col-12 mt-1 side-position mx-auto px-0">
-                @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
-                <div class="single-item">
-                    @foreach ($sidebar_3->news as $sidebar_news)
-                    <div class="holder">
-                        <div class="box mt-1" style="height:200px;">
-                            <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                            <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
-                            </a>
-                            <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
-                            <div class="img-title">
-                                <h6 class="text-light m-0">
-                                    <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-white">{{\Str::limit($sidebar_news->title,60)}}</a>
-                                </h6>
-                                <p class="m-0 p-1 text-light">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                <div class="col-12 mt-1 side-position mx-auto px-0">
+                    @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
+                    <div class="side-bar">
+                        @foreach ($sidebar_2->news as $sidebar_news)
+                        <div class="card card-shadow my-1">
+                            <div class="card-body px-3 py-1 border-bottom border-secondary">
+                                <div class="post-data ">
+                                    <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
+                                        <div class="post-meta">
+                                            <p class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                        </div>
+                                        <h6>{{\Str::limit($sidebar_news->title,60)}}</h6>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
+                    <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 mt-1 side-position mx-auto px-0">
-                @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar'=>true,'width'=>'w-25'])
-                <div class="single-item">
-                    @foreach ($sidebar_4->news as $sidebar_news)
-                    <div class="holder">
-                        <div class="box mt-1" style="height:250px;">
-                            <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="" loading="lazy">
-                                <div class="content-overlay"></div>
-                            </a>
-                            <div class="img-title">
+                <div class="col-12 mt-1 side-position mx-auto px-0">
+                    @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
+                    <div class="single-item">
+                        @foreach ($sidebar_3->news as $sidebar_news)
+                        <div class="holder">
+                            <div class="box mt-1" style="height:200px;">
+                                <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
                                 <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                    <h6 class="text-light m-0">
-                                        {{\Str::limit($sidebar_news->title,60)}}
-                                    </h6>
+                                    <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                                 </a>
-                                <p class="post-date m-m p-1 text-light">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
+                                <div class="img-title">
+                                    <h6 class="text-light m-0">
+                                        <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-white">{{\Str::limit($sidebar_news->title,60)}}</a>
+                                    </h6>
+                                    <p class="m-0 p-1 text-light">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
+                </div>
+                <div class="col-12 mt-1 side-position mx-auto px-0">
+                    @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar'=>true,'width'=>'w-25'])
+                    <div class="single-item">
+                        @foreach ($sidebar_4->news as $sidebar_news)
+                        <div class="holder">
+                            <div class="box mt-1" style="height:250px;">
+                                <a href="{{route('single-news',$sidebar_news->slug)}}">
+                                    <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="" loading="lazy">
+                                    <div class="content-overlay"></div>
+                                </a>
+                                <div class="img-title">
+                                    <a href="{{route('single-news',$sidebar_news->slug)}}">
+                                        <h6 class="text-light m-0">
+                                            {{\Str::limit($sidebar_news->title,60)}}
+                                        </h6>
+                                    </a>
+                                    <p class="post-date m-m p-1 text-light">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </aside>

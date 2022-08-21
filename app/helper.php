@@ -15,8 +15,28 @@ if (!function_exists('formatBytes')) {
         }
     }
 }
-if(!function_exists('buildSetting')){
-    function buildSetting(string $key, $value) : array {
+
+if (!function_exists('kmb')) {
+    function kmb($count, $precision = 2)
+    {
+        if($count < 1000){
+            $n_format = number_format($count / 1);
+        }else if ($count < 1000000) {
+            // Anything less than a million
+            $n_format = number_format($count / 1000) . 'K';
+        } else if ($count < 1000000000) {
+            // Anything less than a billion
+            $n_format = number_format($count / 1000000, $precision) . 'M';
+        } else {
+            // At least a billion
+            $n_format = number_format($count / 1000000000, $precision) . 'B';
+        }
+        return $n_format;
+    }
+}
+if (!function_exists('buildSetting')) {
+    function buildSetting(string $key, $value): array
+    {
         return [
             'key' => $key,
             'value' => $value,
@@ -26,12 +46,12 @@ if(!function_exists('buildSetting')){
     }
 }
 
-if(!function_exists('createSetting')){
+if (!function_exists('createSetting')) {
     function createSetting(string $key, $value = null)
     {
-        $setting = Setting::where('key',$key)->first();
-        if($setting == null){
-            $setting = Setting::create(buildSetting($key,$value));
+        $setting = Setting::where('key', $key)->first();
+        if ($setting == null) {
+            $setting = Setting::create(buildSetting($key, $value));
         }
         return $setting;
     }
@@ -42,16 +62,17 @@ if (!function_exists('setting')) {
     {
         if (!empty($key)) {
             try {
-                return Setting::where('key',$key)->first()->value;
+                return Setting::where('key', $key)->first()->value;
             } catch (Exception $exception) {
-                return (config('settings.defaults.'.$key) != null) ? config('settings.defaults.'.$key) : null;
+                return (config('settings.defaults.' . $key) != null) ? config('settings.defaults.' . $key) : null;
             }
         }
     }
 }
 
-if(!function_exists('convertYoutube')){
-    function convertYoutube($string) {
+if (!function_exists('convertYoutube')) {
+    function convertYoutube($string)
+    {
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
             "www.youtube.com/embed/$2",
@@ -59,4 +80,3 @@ if(!function_exists('convertYoutube')){
         );
     }
 }
-
