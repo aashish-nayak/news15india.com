@@ -87,6 +87,7 @@ class NewsController extends Controller
             $categories = implode(",", $record->categories->pluck('slug')->toArray());
             $banner = ($record->image != NULL) ? $record->newsImage->filename : 'No Image';
             $status = $record->status;
+            $views = $record->getViews();
             $created = $record->created_at;
             $createdDate = date('d-M-Y', strtotime($created));
             $createdby = $record->creator->name;
@@ -99,7 +100,7 @@ class NewsController extends Controller
                 "banner" => $banner,
                 "status" => $status,
                 "created_by" => $createdby,
-                "views" => 0,
+                "views" =>$views,
                 "created_at" => $created,
                 "created_date" => $createdDate,
             );
