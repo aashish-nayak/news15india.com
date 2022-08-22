@@ -14,9 +14,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestController;
-use App\Models\Admin;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Controllers\WorldDataController;
 use Illuminate\Support\Facades\Config;
 
 /*
@@ -45,6 +43,10 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
     Route::view('reporter-form','reporter-form');
 });
+// =============== Country State City Routes ==============
+Route::get('/countries',[WorldDataController::class,'countries'])->name('countries');
+Route::get('/states/{country_id}',[WorldDataController::class,'states'])->name('states');
+Route::get('/cities/{state_id}',[WorldDataController::class,'cities'])->name('cities');
 
 // =============== Comments Routes ==============
 $middleware = (Config::get('comments.guest_commenting') == true) ? ProtectAgainstSpam::class : 'auth';

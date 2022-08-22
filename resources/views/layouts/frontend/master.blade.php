@@ -27,7 +27,7 @@
 
     @includeIf('layouts.frontend.partials.footer')
     <!-- Login Register Modal -->
-    <div class="modal fade" style="font-size: 1.6rem;" id="exampleModal" tabindex="-1"
+    {{-- <div class="modal fade" style="font-size: 1.6rem;" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -234,12 +234,11 @@
                     </div>
                 </div>
                 <div class="modal-footer-login text-center">
-                    <!-- <p class="m-0 footer-text">Part Of Mahira News Network Private Limited</p> -->
                     <h6 class="m-0">Part Of Mahira News Network Private Limited</h6>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Login Register Modal -->
     @includeIf('layouts.frontend.partials.sidebar-nav')
     <button class="back-to-top" type="button"><i class="fas fa-angle-up"></i></button>
@@ -251,6 +250,7 @@
     <script src="{{ asset('front-assets/js/slick.js') }}"></script>
     <script src="{{ asset('js/share.js') }}"></script>
     <script src="{{ asset('front-assets/js/app.js') }}"></script>
+    @includeIf('vendor.worlddata.ajax-script')
     @stack('js')
 </body>
 

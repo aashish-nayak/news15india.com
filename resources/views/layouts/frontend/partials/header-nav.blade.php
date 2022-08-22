@@ -26,7 +26,12 @@
                 <a href="javascript:void(0)" class="google-play"><i class="fas fa-newspaper"></i> E-Paper</a>
                 <a href="javascript:void(0)" class="google-play"><i class="fas fa-download"></i> Download App</a>
                 <a href="javascript:void(0)" class="google-play"><i class="fas fa-bell"></i> Notification</a>
-                <a href="javascript:void(0)" class="google-play" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user"></i> Login / Signup</a>
+                @auth('web')
+                <a href="{{route('dashboard')}}" class="google-play"><i class="fas fa-user"></i> Profile</a>
+                @else
+                <a href="{{route('login')}}" class="google-play"><i class="fas fa-user"></i> Login / Signup</a>
+                @endauth
+                {{-- <a href="javascript:void(0)" class="google-play" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user"></i> Login / Signup</a> --}}
             </div>
         </div>
     </div>

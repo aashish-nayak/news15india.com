@@ -5,34 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AdminDetail extends Model
+class UserDetail extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'admin_id',
-        'url',
-        'avatar_id',
-        'about',
-        'facebook',
-        'twitter',
-        'instagram',
-        'youtube',
-        'linkedin',
-        'website',
-        'phone',
-        'address',
+        'user_id',
         'country_id',
         'state_id',
         'city_id',
         'zip',
-        'latitude',
-        'longitude',
-        'timezone',
-        'language',
-        'meta_title',
-        'meta_keywords',
-        'meta_description',
+        'address',
+        'avatar',
+        'phone_number',
+        'whatsapp_number',
     ];
 
     public function country()
@@ -52,6 +37,6 @@ class AdminDetail extends Model
 
     public function avatar()
     {
-        return $this->belongsTo(Media::class,'avatar_id');
+        return $this->belongsTo(Media::class,'avatar');
     }
 }
