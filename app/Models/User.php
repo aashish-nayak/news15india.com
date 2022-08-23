@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Commenter;
 use App\Traits\Follower;
+use App\Traits\Poll\Voter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Commenter, Follower;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Commenter, Follower, Voter;
 
     /**
      * The attributes that are mass assignable.

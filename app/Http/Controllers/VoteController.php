@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Classes\Guest;
+use App\Models\Poll;
+use Exception;
+use Illuminate\Http\Request;
+
+class VoteController extends Controller
+{
+    /**
+     * Make a Vote
+     *
+     * @param Poll $poll
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function vote(Poll $poll, Request $request)
+    {
+        try{
+            $vote = $this->resolveVoter($request, $poll)
+                ->poll($poll)
+                ->vote($request->get('options'));
+
+            if($vote){
+                return back()->with('success', 'Vote Done');
+            }
+        }catch (Exception $e){
+            return back()->with('errors', $e->getMessage());
+        }
+    }
+
+    /**
+     * Get the instance of the voter
+     *
+     * @param Request $request
+     * @param Poll $poll
+     * @return Guest|mixed
+     */
+    protected function resolveVoter(Request $request, Poll $poll)
+    {
+        if($poll->canGuestVote()){
+            return new Guest($request);
+        }
+        return $request->user(config('larapoll_config.admin_guard'));
+    }
+}
