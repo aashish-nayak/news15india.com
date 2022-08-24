@@ -19,6 +19,8 @@ class CreatePollsTable extends Migration
             $table->integer('maxCheck')->default(1);
             $table->boolean('canVisitorsVote')->default(0);
             $table->boolean('canVoterSeeResult')->default(0);
+            $table->string('organized_by')->nullable();
+            $table->string('image')->nullable();
             $table->timestamp('isClosed')->nullable();
             $table->timestamp('starts_at')->nullable();
             $table->timestamp('ends_at')->nullable();

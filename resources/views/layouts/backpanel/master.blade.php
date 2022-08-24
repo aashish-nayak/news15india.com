@@ -258,6 +258,7 @@
         </div>
     </div> --}}
 {{-- scripts --}}
+@includeIf('layouts.backpanel.partials.scripts')
 <script>
     function stringslug(str) {
         str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -273,7 +274,7 @@
         return str;
     };
     $(document).ready(function () {
-        $(".coverage-image").on('change',function () {
+        $(document).on('change',".coverage-image",function () {
             let img = $(this).val();
             if($(this).next().find('img').length > 0){
                 $(this).next().find('img').attr('src',img);
@@ -283,7 +284,6 @@
         });
     });
 </script>
-@includeIf('layouts.backpanel.partials.scripts')
 @if (Session::has('success'))
 <script>
     $(document).ready(function() {

@@ -12,7 +12,7 @@ class Poll extends Model
 {
     use PollCreator, PollAccessor, PollManipulator, PollQueries;
 
-    protected $fillable = ['question', 'canVisitorsVote', 'canVoterSeeResult'];
+    protected $fillable = ['question', 'image', 'canVisitorsVote', 'canVoterSeeResult','organized_by'];
 
     protected $table = 'polls';
 
@@ -69,5 +69,9 @@ class Poll extends Model
     public function canChangeOptions()
     {
         return $this->votes()->count() === 0;
+    }
+
+    public function pollImage(){
+        return $this->belongsTo(Media::class, 'image');
     }
 }

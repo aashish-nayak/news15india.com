@@ -9,13 +9,7 @@ use Illuminate\Http\Request;
 
 class VoteController extends Controller
 {
-    /**
-     * Make a Vote
-     *
-     * @param Poll $poll
-     * @param Request $request
-     * @return $this|\Illuminate\Http\RedirectResponse
-     */
+
     public function vote(Poll $poll, Request $request)
     {
         try{
@@ -31,13 +25,6 @@ class VoteController extends Controller
         }
     }
 
-    /**
-     * Get the instance of the voter
-     *
-     * @param Request $request
-     * @param Poll $poll
-     * @return Guest|mixed
-     */
     protected function resolveVoter(Request $request, Poll $poll)
     {
         if($poll->canGuestVote()){

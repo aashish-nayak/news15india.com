@@ -28,7 +28,9 @@ class PollHandler
 
         $poll = new Poll([
             'question' => $request['question'],
-            'canVisitorsVote' => $request['canVisitorsVote']
+            'canVisitorsVote' => $request['canVisitorsVote'],
+            'image' => $request['image'],
+            'organized_by' => $request['organized_by'],
         ]);
 
         $poll->addOptions($request['options']);
@@ -58,7 +60,6 @@ class PollHandler
     {
         if($poll->canChangeOptions()){
             $poll->options()->delete();
-
             collect($data['options'])->each(function ($option) use($poll){
                 Option::create([
                     'name' => $option,
@@ -85,6 +86,8 @@ class PollHandler
         }
 
         $poll->question = $data['question'];
+        $poll->image = $data['image'];
+        $poll->organized_by = $data['organized_by'];
 
         if(isset($data['ends_at'])){
             $poll->endsAt($data['ends_at']);

@@ -11,9 +11,11 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PollController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\VoteController;
 use App\Http\Controllers\WorldDataController;
 use Illuminate\Support\Facades\Config;
 
@@ -58,6 +60,7 @@ Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply']
 // =============== User Panel Routes ==============
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
+Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->middleware(['auth'])->name('poll.vote');
 
 // ==================== Backpanel Panel Routes ==================
 Route::get('/admin',function(){
@@ -108,6 +111,18 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/ajax-trash-comments', [CommentController::class,'ajaxtrash'])->middleware('permission:read-trash-comments')->name('ajax-trash-comments');
         Route::get('/destroy/{id}',[CommentController::class,'admin_destroy'])->middleware('permission:destroy-comments')->name('destroy');
         Route::get('/restore/{id}',[CommentController::class,'restore'])->middleware('permission:restore-comments')->name('restore');
+    });
+    // ----------------[ Backpanel Panel Polls Module Routes ]------------------------
+    Route::prefix('/polls')->name('poll.')->group(function(){
+        // Route::get('/', [PollController::class,'home'])->name('home');
+        Route::get('/', [PollController::class,'index'])->name('index');
+        Route::post('/', [PollController::class,'store'])->name('store');
+        Route::get('/create', [PollController::class,'create'])->name('create');
+        Route::get('/edit/{poll}', [PollController::class,'edit'])->name('edit');
+        Route::patch('/{poll}', [PollController::class,'update'])->name('update');
+        Route::delete('/{poll}', [PollController::class,'remove'])->name('remove');
+        Route::patch('/{poll}/lock', [PollController::class,'lock'])->name('lock');
+        Route::patch('/{poll}/unlock', [PollController::class,'unlock'])->name('unlock');
     });
     // ----------------[ Backpanel Panel Tags Module Routes ]------------------------
     Route::prefix('/tag')->name('tag.')->group(function(){
