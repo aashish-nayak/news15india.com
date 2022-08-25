@@ -13,10 +13,10 @@ class VoteController extends Controller
     public function vote(Poll $poll, Request $request)
     {
         try{
+            // dd($request->all());
             $vote = $this->resolveVoter($request, $poll)
                 ->poll($poll)
                 ->vote($request->get('options'));
-
             if($vote){
                 return back()->with('success', 'Vote Done');
             }
@@ -30,6 +30,6 @@ class VoteController extends Controller
         if($poll->canGuestVote()){
             return new Guest($request);
         }
-        return $request->user(config('larapoll_config.admin_guard'));
+        return $request->user(config('larapoll_config.user_guard','web'));
     }
 }

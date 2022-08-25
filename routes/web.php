@@ -43,7 +43,9 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
     Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
-    Route::view('reporter-form','reporter-form');
+    Route::view('/reporter-form','reporter-form');
+    Route::get('/polls/{id?}',[FrontController::class,'poll'])->name('poll');
+
 });
 // =============== Country State City Routes ==============
 Route::get('/countries',[WorldDataController::class,'countries'])->name('countries');
@@ -114,7 +116,6 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel Polls Module Routes ]------------------------
     Route::prefix('/polls')->name('poll.')->group(function(){
-        // Route::get('/', [PollController::class,'home'])->name('home');
         Route::get('/', [PollController::class,'index'])->name('index');
         Route::post('/', [PollController::class,'store'])->name('store');
         Route::get('/create', [PollController::class,'create'])->name('create');

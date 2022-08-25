@@ -89,12 +89,12 @@ trait Voter
         $poll = Poll::findOrFail($poll_id);
 
         if ($poll->canGuestVote()) {
-            $result = DB::table('larapoll_polls')
+            $result = DB::table('polls')
                 ->selectRaw('count(*) As total')
-                ->join('larapoll_options', 'larapoll_polls.id', '=', 'larapoll_options.poll_id')
-                ->join('larapoll_votes', 'larapoll_votes.option_id', '=', 'larapoll_options.id')
-                ->where('larapoll_votes.user_id', request()->ip())
-                ->where('larapoll_options.poll_id', $poll_id)->count();
+                ->join('options', 'polls.id', '=', 'options.poll_id')
+                ->join('votes', 'votes.option_id', '=', 'options.id')
+                ->where('votes.user_id', request()->ip())
+                ->where('options.poll_id', $poll_id)->count();
             return $result !== 0;
         }
 
@@ -108,6 +108,6 @@ trait Voter
      */
     public function options()
     {
-        return $this->belongsToMany(Option::class, 'larapoll_votes')->withTimestamps();
+        return $this->belongsToMany(Option::class, 'votes')->withTimestamps();
     }
 }

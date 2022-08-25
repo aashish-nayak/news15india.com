@@ -91,7 +91,7 @@ trait PollAccessor
      */
     public function hasStarted()
     {
-        return $this->starts_at <= now();
+        return $this->starts_at <= now()->format('Y-m-d');
     }
 
     /**
@@ -101,7 +101,7 @@ trait PollAccessor
      */
     public function isComingSoon()
     {
-        return $this->isOpen() && now() < $this->starts_at;
+        return $this->isOpen() && now()->format('Y-m-d') < $this->starts_at;
     }
 
     /**
@@ -111,6 +111,6 @@ trait PollAccessor
      */
     public function hasEnded()
     {
-        return $this->ends_at < now();
+        return $this->ends_at <= now()->format('Y-m-d');
     }
 }

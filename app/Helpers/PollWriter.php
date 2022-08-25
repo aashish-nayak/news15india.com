@@ -33,8 +33,7 @@ class PollWriter
         }
 
 
-        $voter = $poll->canGuestVote() ? new Guest(request()) : auth(config('larapoll_config.admin_guard'))->user();
-
+        $voter = $poll->canGuestVote() ? new Guest(request()) : auth(config('larapoll_config.user_guard'))->user();
         if (is_null($voter) || $voter->hasVoted($poll->id) || $poll->isLocked() || $poll->hasEnded()) {
             if (!$poll->showResultsEnabled()) {
                 return 'Thanks for voting';

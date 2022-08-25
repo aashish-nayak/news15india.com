@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Poll;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -387,5 +388,16 @@ class FrontController extends Controller
         } catch (\Exception $e) {
             return response()->json(['status'=>'error','message'=>$e->getMessage()]);
         }
+    }
+
+    public function poll($poll_id = '')
+    {
+        $now = date('Y-m-d');
+        $polls = Poll::query();
+        if($poll_id != ''){
+            $polls->where('id',$poll_id);
+        }
+        $polls = $polls->get();
+        return view('poll',compact('polls'));
     }
 }

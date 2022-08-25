@@ -21,9 +21,10 @@ class CreatePollsTable extends Migration
             $table->boolean('canVoterSeeResult')->default(0);
             $table->string('organized_by')->nullable();
             $table->string('image')->nullable();
+            $table->integer('views')->default(0);
             $table->timestamp('isClosed')->nullable();
-            $table->timestamp('starts_at')->nullable();
-            $table->timestamp('ends_at')->nullable();
+            $table->date('starts_at')->nullable();
+            $table->date('ends_at')->nullable();
             $table->timestamps();
         });
     }

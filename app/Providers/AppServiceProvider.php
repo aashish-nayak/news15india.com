@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\MenuLocation;
 use App\Models\MenuNodes;
 use App\Models\News;
+use App\Models\Poll;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-
+use Jorenvh\Share\ShareFacade as Share;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -108,6 +109,12 @@ class AppServiceProvider extends ServiceProvider
                 $query->where('menu_location_id',$loc_id)->where('slug','bottom-footer');
             })->where('parent_id',0)->get();
             return $view->with(compact('footerMenu','bottomFooter'));
+        });
+
+        View::composer('components.poll',function($view){
+            $now = date('Y-m-d');
+            $poll = Poll::whereDate('starts_at','<=',$now)->whereDate('ends_at','>=',$now)->orderBy('views')->first();
+            return $view->with(compact('poll'));
         });
     }
 

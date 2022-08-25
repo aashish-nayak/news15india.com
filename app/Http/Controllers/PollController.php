@@ -87,8 +87,8 @@ class PollController extends Controller
         $poll->isLocked = $poll->isLocked();
         $poll->isRunning = $poll->isRunning();
         $poll->hasEnded = $poll->hasEnded();
-        $poll->edit_link = route('poll.edit', $poll->id);
-        $poll->delete_link = route('poll.remove', $poll->id);
+        $poll->edit_link = route('admin.poll.edit', $poll->id);
+        $poll->delete_link = route('admin.poll.remove', $poll->id);
 
         return response()->json([
             'poll' => $poll
@@ -102,8 +102,8 @@ class PollController extends Controller
         $poll->isComingSoon = $poll->isComingSoon();
         $poll->isLocked = $poll->isLocked();
         $poll->isRunning = $poll->isRunning();
-        $poll->edit_link = route('poll.edit', $poll->id);
-        $poll->delete_link = route('poll.remove', $poll->id);
+        $poll->edit_link = route('admin.poll.edit', $poll->id);
+        $poll->delete_link = route('admin.poll.remove', $poll->id);
 
         return response()->json([
             'poll' => $poll
