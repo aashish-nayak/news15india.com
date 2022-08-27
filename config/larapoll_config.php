@@ -8,5 +8,5 @@ return [
     'radio' => 'components.poll-stub.radio',
     'checkbox' => 'components.poll-stub.checkbox',
     'user_guard' => 'web',
-    'user_model' => App\Models\Auth\User::class,
+    'user_model' => App\Models\User::class,
 ];

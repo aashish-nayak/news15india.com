@@ -7,6 +7,7 @@ use App\Helpers\PollHandler;
 use App\Http\Requests\PollCreationRequest;
 use App\Models\Admin;
 use App\Models\Poll;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PollController extends Controller
@@ -26,7 +27,7 @@ class PollController extends Controller
             $poll->hasEnded = $poll->hasEnded();
             $poll->edit_link = route('admin.poll.edit', $poll->id);
             $poll->delete_link = route('admin.poll.remove', $poll->id);
-            $poll->lock_link = route('admin.poll.lock', $poll->id);
+            $poll->users_link = route('admin.poll.users', $poll->id);
             return $poll;
         });
         $creators = Admin::get();
@@ -62,8 +63,17 @@ class PollController extends Controller
             $poll->unlock_link = route('admin.poll.unlock', $poll->id);
             return $poll;
         });
+        $total = $poll->votes->count();
+        $results = $poll->results()->grab();
+        $options = collect($results)->map(function ($result) use ($total){
+                return (object) [
+                    'votes' => $result['votes'],
+                    'percent' => $total === 0 ? 0 : ($result['votes'] / $total) * 100,
+                    'name' => $result['option']->name,
+                ];
+        });
         $creators = Admin::get();
-        return view('backpanel.poll.index', compact('polls','creators','edit','canChangeOptions'));
+        return view('backpanel.poll.index', compact('polls','creators','edit','canChangeOptions','options'));
     }
 
 
@@ -77,6 +87,18 @@ class PollController extends Controller
     {
         $poll->remove();
         return redirect()->back()->with('success','Poll Deleted Successfully!');
+    }
+
+    public function users(Poll $poll)
+    {
+        $users = collect();
+        foreach ($poll->options as $key => $option) {
+            if($option->voters->count()>0){
+                $users->push($option->voters);
+            }
+        }
+        $users = $users->flatten();
+        return view('backpanel.poll.user-poll',compact('poll','users'));
     }
 
     public function lock(Poll $poll)

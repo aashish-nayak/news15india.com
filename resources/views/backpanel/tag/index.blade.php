@@ -206,6 +206,7 @@
                 url: url,
                 type: "GET",
                 success: function(data) {
+                    $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput('destroy');
                     $("#idarea").html("<input type='hidden' name='id' value='" + data.id + "'>");      
                     $("#catname").val(data.name);
                     $("#slug").val(data.slug);

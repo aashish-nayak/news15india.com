@@ -19,7 +19,6 @@
     <div class="col-12 mt-4 text-end">
         <a href="javascript:void(0)" class="btn btn-primary mr-3 btn-sm" data-bs-toggle="modal"
             data-bs-target="#exampleLargeModal">Create Poll</a>
-        <a href="{{ route('admin.news.trash-news') }}" class="btn btn-danger mr-3 btn-sm">View Trash</a>
     </div>
     <div class="col-12 mt-2">
         <div class="card">
@@ -57,7 +56,7 @@
                                     <td>{{ $poll->votes->count() }}</td>
                                     <td>
                                         <div class="row row-cols-3 order-actions justify-content-center gap-1">
-                                            <a href="{{$poll->lock_link}}" class="col text-dark border border-dark" title="Edit"><i class="bx bxs-show"></i></a>
+                                            <a href="{{$poll->users_link}}" class="col text-dark border border-dark" title="Edit"><i class="bx bxs-show"></i></a>
                                             <a href="{{$poll->edit_link}}" class="col edit-category border border-dark" title="Edit"><i class="bx bxs-edit"></i></a>
                                             <form method="POST" action="{{ $poll->delete_link }}" class="col p-0">
                                                 @csrf
@@ -152,52 +151,60 @@
                                 <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">1</span>
                                     <input type="text" required name="options[]" value="@if(isset($edit)){{$edit->options[0]->name}}@elseif(isset(old('options')[0])){{old('options')[0]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <div class="border mt-1 position-relative d-none">
-                                    <div class="option-vote" style="width:74%">
+                                @isset($edit)
+                                <div class="border mt-1 position-relative">
+                                    <div class="option-vote" style="width:{{$options[0]->percent}}%">
                                         <div class="d-flex align-items-center justify-content-center position-absolute top-0 left-0 w-100">
-                                            <span class="text-dark me-2">566 Vote</span> <span class="text-dark">(74%)</span>
+                                            <span class="text-dark me-2">{{$options[0]->votes}} Votes</span> <span class="text-dark">({{$options[0]->percent}}%)</span>
                                         </div>
                                     </div>
                                 </div>
+                                @endisset
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label class="form-label mb-1">Option B</label>
                                 <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">2</span>
                                     <input type="text" required name="options[]" value="@if(isset($edit)){{$edit->options[1]->name}}@elseif(isset(old('options')[1])){{old('options')[1]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <div class="border mt-1 position-relative d-none">    
-                                    <div class="option-vote" style="width:56%">
+                                @isset($edit)
+                                <div class="border mt-1 position-relative">    
+                                    <div class="option-vote" style="width:{{$options[1]->percent}}%">
                                         <div class="d-flex align-items-center justify-content-center position-absolute top-0 left-0 w-100">
-                                            <span class="text-dark me-2">12 Vote</span> <span class="text-dark">(7%)</span>
+                                            <span class="text-dark me-2">{{$options[1]->votes}} Votes</span> <span class="text-dark">({{$options[1]->percent}}%)</span>
                                         </div>
                                     </div>
                                 </div>
+                                @endisset
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label class="form-label mb-1">Option C</label>
                                 <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">3</span>
                                     <input type="text" required name="options[]" value="@if(isset($edit)){{$edit->options[2]->name}}@elseif(isset(old('options')[2])){{old('options')[2]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <div class="border mt-1 position-relative d-none">    
-                                    <div class="option-vote" style="width:25%">
+                                @isset($edit)
+                                <div class="border mt-1 position-relative">    
+                                    <div class="option-vote" style="width:{{$options[2]->percent}}%">
                                         <div class="d-flex align-items-center justify-content-center position-absolute top-0 left-0 w-100">
-                                            <span class="text-dark me-2">123 Vote</span> <span class="text-dark">(21%)</span>
+                                            <span class="text-dark me-2">{{$options[2]->votes}} Votes</span> <span class="text-dark">({{$options[2]->percent}}%)</span>
                                         </div>
                                     </div>
                                 </div>
+                                @endisset
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label class="form-label mb-1">Option D</label>
                                 <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">4</span>
                                     <input type="text" required name="options[]" value="@if(isset($edit)){{$edit->options[3]->name}}@elseif(isset(old('options')[3])){{old('options')[3]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <div class="border mt-1 position-relative d-none">    
-                                    <div class="option-vote" style="width:19%">
+                                @isset($edit)
+                                <div class="border mt-1 position-relative">    
+                                    <div class="option-vote" style="width:{{$options[3]->percent}}%">
                                         <div class="d-flex align-items-center justify-content-center position-absolute top-0 left-0 w-100">
-                                            <span class="text-dark me-2">88 Vote</span> <span class="text-dark">(19%)</span>
+                                            <span class="text-dark me-2">{{$options[3]->votes}} Votes</span> <span class="text-dark">({{$options[3]->percent}}%)</span>
                                         </div>
                                     </div>
                                 </div>
+                                @endisset
                             </div>
                         </div>
                     </div>

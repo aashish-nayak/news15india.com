@@ -28,6 +28,7 @@ trait PollWriterVoting
             'question' => $poll->question,
             'options' => $options,
             'sharePoll' => $sharePoll,
+            'poll' => $poll,
         ]);
     }
 
@@ -52,6 +53,7 @@ trait PollWriterVoting
             'question' => $poll->question,
             'options' => $options,
             'sharePoll' => $sharePoll,
+            'poll' => $poll,
         ]);
     }
 }
