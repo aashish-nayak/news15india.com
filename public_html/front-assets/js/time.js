@@ -71,13 +71,6 @@ function checkTime(i) {
     } // add zero in front of numbers < 10
     return i;
 }
-function openNav() {
-    $("#mySidenav").toggleClass('show');
-    $('body').toggleClass('overflow-hidden');
-}
-function searchPop(){
-    $(".over_lay1").css('width',"100%");
-    $(".search_container").css('left',"0");
-}
+
 
 

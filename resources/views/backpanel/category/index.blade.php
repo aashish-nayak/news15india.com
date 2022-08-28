@@ -1,124 +1,8 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Category')
 @push('plugin-css')
-<link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 @endpush
 @push('css')
-    <style>
-        .bootstrap-tagsinput .badge {
-            margin: 2px 4px;
-            padding: 5px 8px;
-            font-size: 75%;
-            font-weight: 700;
-        }
-        .bootstrap-tagsinput{
-            max-height: 150px;
-            overflow-y: scroll;
-        }
-        .bootstrap-tagsinput .badge [data-role="remove"] {
-            margin-left: 5px;
-            cursor: pointer;
-        }
-
-        .img-box {
-            background: #fff;
-            border: 3px dashed #e8e8e8;
-            color: #aaa;
-            cursor: pointer;
-            display: block;
-            font-size: 22px;
-            padding: 40px 0 26px;
-            position: relative;
-            text-align: center;
-        }
-
-        .img-box button {
-            font-size: 14px;
-            color: #555555;
-            background: #cccccc;
-        }
-
-        .img-box span {
-            font-size: 10px;
-        }
-        .controls {
-        background: #fff;
-        padding: 6px 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .controls button {
-            border: 0px;
-            color: #5a5cbb;
-            margin: 4px;
-            padding: 4px 12px;
-            cursor: pointer;
-            background: transparent;
-        }
-
-        .controls button.active,
-        .controls button.active:hover {
-            background: #5a5cbb;
-            color: #fff;
-        }
-
-        .controls button:hover {
-            background: #efefef;
-        }
-
-        input[type=checkbox] {
-            vertical-align: middle !important;
-        }
-
-        .tree {
-            margin: 2% auto;
-            width: 80%;
-        }
-
-        .tree ul {
-            display: none;
-            margin: 4px auto;
-            margin-left: 6px;
-            border-left: 1px dashed #dfdfdf;
-        }
-
-
-        .tree li {
-            padding: 12px 18px;
-            cursor: pointer;
-            vertical-align: middle;
-            background: #fff;
-        }
-
-        .tree li:first-child {
-            border-radius: 3px 3px 0 0;
-        }
-
-        .tree li:last-child {
-            border-radius: 0 0 3px 3px;
-        }
-
-        .tree .active,
-        .active li {
-            background: #efefef;
-        }
-
-        .tree label {
-            cursor: pointer;
-        }
-
-        .tree input[type=checkbox] {
-            margin: -2px 6px 0 0px;
-        }
-
-        .has>label {
-            color: #000;
-        }
-
-        .tree .total {
-            color: #5a5cbb;
-        }
-    </style>
 @endpush
 @section('sections')
 <div class="row">
@@ -156,8 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="example-text-input2" class="col-form-label"><b>Parent Category</b></label>
-                                <select class="form-select form-select-sm mb-3 single-select" required id="parent" name="parent_id" aria-label=".form-select-sm example">
-                                    <option selected disabled>Select Parent Category</option>
+                                <select class="form-select form-select-sm mb-3 single-select" data-placeholder="Select Parent Category" required id="parent" name="parent_id" aria-label=".form-select-sm example">
                                     <option value="0">Parent</option>
                                     @forelse ($categories as $item)
                                         <option value="{{ $item->id }}">{{ $item->bread }}</option>
@@ -198,12 +81,11 @@
                         </div>
                         <div class="tab-pane fade" id="dangerprofile" role="tabpanel">
                             <div class="preview-image-wrapper " style="width:100%;max-width:none;max-height:none;height:auto">
-                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
-                                <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X
-                                </a>
+                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="bannerPreview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                <a href="javascript:void(0)" class="btn_remove_image" id="removeBanner" title="Remove image">X</a>
                             </div><br>
-                            <input type="hidden" required name="cat_img" id="banner_data" value="">
-                            <a href="javascript:void(0)" id="banner-img">Choose Image</a>
+                            <input type="hidden" required name="cat_img" id="bannerId" value="">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#media-box">Choose Image</a>
                         </div>
                         <div class="tab-pane fade" id="dangercontact" role="tabpanel">
                             <div class="form-group">
@@ -216,7 +98,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="metadesc" class="col-form-label"><b>Meta Description</b></label>
-                                <textarea class="form-control form-control-sm" name="meta_desc" id="metadesc" rows="5"></textarea>
+                                <textarea class="form-control form-control-sm" name="meta_description" id="metadesc" rows="5"></textarea>
                             </div>
                         </div>
                     </div>
@@ -254,60 +136,10 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Categories Tree View
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-12 mb-1">
-                                        <div class="controls">
-                                            <button>Collepsed</button>
-                                            <button>Expanded</button>
-                                            {{-- <button>Checked All</button>
-                                            <button>Unchek All</button> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card ">
-                                            <div class="card-body">
-                                                {!!$tree!!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 @include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
-<script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 @include('backpanel.includes.media-model-script')
 <script>
     function loadselect() {  
@@ -421,56 +253,21 @@
                     $(".status-input[value='" + data.status + "']").prop('checked', true);
                     let preview = '';
                     if(data.editImg != null){
-                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;
+                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.filename;
                     }else{
                         preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
                     }
-                    $("#banner-preview").attr('src',preview);
-                    $("#banner_data").val(data.cat_img);
+                    $("#bannerPreview").attr('src',preview);
+                    $("#bannerId").val(data.cat_img);
                     $("#metatitle").html(data.meta_title);
                     $("#metakey").val(data.meta_keywords);
-                    $("#metadesc").html(data.meta_desc);
+                    $("#metadesc").html(data.meta_description);
                     $("#submit").html('Update');
                     $("#cancel-btn").html('<a href="" class="btn btn-sm btn-secondary px-3" id="cancel">Cancel</a>');
                     loadselect();
                     loadtag();
                 }
             });
-        });
-
-        $(document).on("click", ".tree label", function(e) {
-            $(this).next("ul").fadeToggle();
-            e.stopPropagation();
-        });
-
-        $(document).on("change", ".tree input[type=checkbox]", function(e) {
-            $(this)
-                .siblings("ul")
-                .find("input[type='checkbox']")
-                .prop("checked", this.checked);
-            $(this)
-                .parentsUntil(".tree")
-                .children("input[type='checkbox']")
-                .prop("checked", this.checked);
-            e.stopPropagation();
-        });
-
-        $(document).on("click", "button", function(e) {
-            switch ($(this).text()) {
-                case "Collepsed":
-                    $(".tree ul").fadeOut();
-                    break;
-                case "Expanded":
-                    $(".tree ul").fadeIn();
-                    break;
-                case "Checked All":
-                    $(".tree input[type='checkbox']").prop("checked", true);
-                    break;
-                case "Unchek All":
-                    $(".tree input[type='checkbox']").prop("checked", false);
-                    break;
-                default:
-            }
         });
         
     });

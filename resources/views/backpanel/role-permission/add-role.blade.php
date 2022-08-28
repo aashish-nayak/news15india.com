@@ -9,10 +9,6 @@
 @endphp
 @endisset
 @section('title', $title)
-@push('plugin-css')
-<link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
-@endpush
-
 @section('sections')
 <div class="col-12 mb-5">
     <div class="col-12 d-flex justify-content-between">
@@ -74,17 +70,6 @@
 </div>
 @endsection
 @push('scripts')
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 <script>
     $(document).ready(function () {
         function rolePermission(Element) {

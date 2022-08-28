@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasPermissionsTrait;
+use App\Traits\Followable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasPermissionsTrait, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, HasPermissionsTrait, SoftDeletes, Followable;
 
     protected $guard = "admin";
     /**
@@ -43,5 +44,15 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
     
+    public function details()
+    {
+        return $this->hasOne(AdminDetail::class);
+    }
+
 }

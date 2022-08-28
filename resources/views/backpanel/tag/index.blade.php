@@ -1,46 +1,5 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Tags')
-@push('plugin-css')
-    <link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
-@endpush
-@push('css')
-    <style>
-        .bootstrap-tagsinput .badge {
-            margin: 2px 4px;
-            padding: 5px 8px;
-            font-size: 75%;
-            font-weight: 700;
-        }
-
-        .bootstrap-tagsinput .badge [data-role="remove"] {
-            margin-left: 5px;
-            cursor: pointer;
-        }
-
-        .img-box {
-            background: #fff;
-            border: 3px dashed #e8e8e8;
-            color: #aaa;
-            cursor: pointer;
-            display: block;
-            font-size: 22px;
-            padding: 40px 0 26px;
-            position: relative;
-            text-align: center;
-        }
-
-        .img-box button {
-            font-size: 14px;
-            color: #555555;
-            background: #cccccc;
-        }
-
-        .img-box span {
-            font-size: 10px;
-        }
-
-    </style>
-@endpush
 @section('sections')
 <div class="row">
     <div class="col-md-4">
@@ -102,12 +61,12 @@
                         </div>
                         <div class="tab-pane fade" id="dangerprofile" role="tabpanel">
                             <div class="preview-image-wrapper " style="width:100%;max-width:none;max-height:none;height:auto">
-                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="banner-preview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
-                                <a href="javascript:void(0)" class="btn_remove_image" id="banner-img-id" title="Remove image">X
+                                <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="bannerPreview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                <a href="javascript:void(0)" class="btn_remove_image" id="removeBanner" title="Remove image">X
                                 </a>
                             </div><br>
-                            <input type="hidden" required name="tag_img" id="banner_data" value="">
-                            <a href="javascript:void(0)" id="banner-img">Choose Image</a>
+                            <input type="hidden" required name="tag_img" id="bannerId" value="">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#media-box">Choose Image</a>
                         </div>
                         <div class="tab-pane fade" id="dangercontact" role="tabpanel">
                             <div class="form-group">
@@ -116,7 +75,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label"><b>Meta Keywords</b></label>
-                                <textarea class="form-control form-control-sm" placeholder="comma separated (,)" data-role="tagsinput" name="meta_keyword" id="metakey" rows="3"></textarea>
+                                <input class="form-control form-control-sm" placeholder="comma separated (,)" data-role="tagsinput" name="meta_keywords" id="metakey">
                             </div>
                             <div class="form-group">
                                 <label for="metadesc" class="col-form-label"><b>Meta Description</b></label>
@@ -161,23 +120,13 @@
 @include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
-<script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 @include('backpanel.includes.media-model-script')
 <script>
+    function loadtag(){
+        $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+    }
     $(document).ready(function() {
-        $(document).ready(function () {
-        });
+        loadtag();
         $('#tags').DataTable({
             processing: true,
             serverSide: true,
@@ -257,23 +206,25 @@
                 url: url,
                 type: "GET",
                 success: function(data) {
+                    $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput('destroy');
                     $("#idarea").html("<input type='hidden' name='id' value='" + data.id + "'>");      
                     $("#catname").val(data.name);
                     $("#slug").val(data.slug);
                     if(data.editImg != null){
-                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.img;
+                        preview = '{{asset("storage/media/")}}'+'/'+data.editImg.filename;
                     }else{
                         preview = 'https://cms.botble.com/vendor/core/core/base/images/placeholder.png';
                     }
-                    $("#banner-preview").attr('src',preview);
-                    $("#banner_data").val(data.cat_img);
+                    $("#bannerPreview").attr('src',preview);
+                    $("#bannerId").val(data.tag_img);
                     $(".status-input").prop('checked', false);
                     $(".status-input[value='" + data.status + "']").prop('checked', true);
                     $("#metatitle").html(data.meta_title);
-                    $("#metakey").html(data.meta_keyword);
+                    $("#metakey").val(data.meta_keywords);
                     $("#metadesc").html(data.meta_description);
                     $("#submit").html('Update');
                     $("#cancel-btn").html('<a href="" class="btn btn-sm btn-secondary px-3" id="cancel">Cancel</a>');
+                    loadtag();
                 }
             });
         });

@@ -9,7 +9,7 @@
                             <i class='bx bx-link-external me-1'></i> <span style="font-size:12px">View Website</span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown dropdown-large">
+                    {{-- <li class="nav-item dropdown dropdown-large">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
                                 class="alert-count">7</span>
@@ -138,6 +138,21 @@
                                 <div class="text-center msg-footer">View All Notifications</div>
                             </a>
                         </div>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" title="WhatsApp Group Link" data-bs-toggle="modal" data-bs-target="#whatsappGroupModel" role="button"> 
+                            <i class='bx bxl-whatsapp fs-3'></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" title="Youtube Live Stream" data-bs-toggle="modal" data-bs-target="#liveStreamModel" role="button"> 
+                            <i class='bx bx-station fs-3'></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" title="Special Coverage" data-bs-toggle="modal" data-bs-target="#coverage" role="button"> 
+                            <i class='bx bx-news fs-3'></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -146,8 +161,8 @@
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('assets/images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">
-                        <p class="user-name mb-0">NEWS15INDIA</p>
-                        <p class="designattion mb-0">Admin</p>
+                        <p class="user-name mb-0">{{auth('admin')->user()->name}}</p>
+                        <p class="designattion mb-0">{{auth('admin')->user()->roles()->first()->name}}</p>
                     </div>
                 </a>
             </div>

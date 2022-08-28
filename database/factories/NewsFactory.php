@@ -18,23 +18,23 @@ class NewsFactory extends Factory
 
     public function definition()
     {
-        $title = $this->faker->sentence();
+        $title = $this->faker->sentences(3, true);
         return [
             'title'=> $title,
-            'slug'=> Str::slug($title),
-            'short_description'=> $this->faker->text(100),
-            'user_id'=> Admin::inRandomOrder()->limit(1)->first()->id,
-            'content'=> implode(". ",$this->faker->paragraphs(20)),
+            'slug'=> $this->faker->slug(5,true),
+            'short_description'=> $this->faker->text(300),
+            'admin_id'=> Admin::inRandomOrder()->first()->id,
+            'content'=> implode(".\n",$this->faker->paragraphs(20)),
             'is_published'=> 1,
             'status'=>  1,
             'is_verified'=> 1,
             'page_order'=> $this->faker->randomNumber(5),
-            'image'=> Media::inRandomOrder()->limit(1)->first()->id,
+            'image'=> (Media::inRandomOrder()->count() > 0) ? Media::inRandomOrder()->first()->id : NULL,
             'format'=> 'default',
             'youtube_url'=> NULL,
             'is_featured'=> 0,
             'meta_title'=> $title,
-            'meta_keywords'=> Str::slug($title),
+            'meta_keywords'=> $title,
             'meta_description'=> $this->faker->text(100),
             'created_at' => now()->toDateTimeString(),
             'updated_at' => now()->toDateTimeString()

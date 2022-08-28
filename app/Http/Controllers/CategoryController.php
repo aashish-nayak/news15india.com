@@ -9,66 +9,16 @@ use Illuminate\Support\Carbon;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $categories = Category::get();
+        
         $media = Media::latest()->paginate(12);
-        foreach ($categories as $key => $value) {
-            $categories[$key]->bread = $this->getBreadcrumb($value->parent_id).$value->cat_name;
-        }
-        $Categorys = Category::where('parent_id', NULL)->get();
-        $tree = '<ul class="tree">';
-        foreach ($Categorys as $Category) {
-            $has = (count($Category->children))? 'has': '';
-            $tree .= '<li class="'.$has.'"><input type="checkbox" name="domain[]" value="' . $Category->id . '"><label>' . $Category->cat_name . ' <span class="total">('.count($Category->children).')</span></label>';
-            if (count($Category->children)) {
-                $tree .= $this->childView($Category);
-            }
-        }
-        $tree .= '<ul>';
-        return view('backpanel.category.index', compact('categories','tree','media'));
-    }
-    public function getBreadcrumb($parent_id,$breadcrumb = '')
-    {
-        $category = Category::find($parent_id);
-        if ($category) {
-            $breadcrumb .= $category->cat_name." / ".$this->getBreadcrumb($category->parent_id,$breadcrumb);
-        }
-        return $breadcrumb;
-    }
-    
-    public function childView($Category)
-    {
-        $html = '<ul>';
-        foreach ($Category->children as $arr) {
-            if (count($arr->children)) {
-                $html .= '<li class="has"><input type="checkbox" name="subdomain[]" value="' . $arr->id . '"><label>' . $arr->cat_name . '<span class="total">('.count($arr->children).')</span></label>';
-                $html .= $this->childView($arr);
-            } else {
-                $html .= '<li class=""><input type="checkbox" name="subdomain[]" value="' . $arr->id . '">
-                <label>' . $arr->cat_name . '</label>';
-                $html .= "</li>";
-            }
-        }
-
-        $html .= "</ul>";
-        return $html;
+        $categories = $this->nestedCategoryPath();
+        return view('backpanel.category.index', compact('categories','media'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // dd($request->all());
         if ($request['parent_id'] == '0') {
             $request['parent_id'] = NULL;
         }
@@ -141,36 +91,12 @@ class CategoryController extends Controller
         return response()->json($response);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Category $category)
     {   
-        $category->editImg = $category->img;
+        $category->editImg = $category->catImage;
         return response()->json($category);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Category $category)
     {
         $category->delete();

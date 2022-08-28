@@ -13,16 +13,16 @@ class Tag extends Model
         'slug',
         'tag_img',
         'meta_title',
-        'meta_keyword',
+        'meta_keywords',
         'meta_description',
         'status'
     ];
 
     public function news(){
-        return $this->belongsToMany(News::class,'news_tag');
+        return $this->belongsToMany(News::class,'news_tag')->where('is_published',1)->where('is_verified',1)->where('status',1);
     }
 
-    public function img(){
+    public function tagImage(){
         return $this->belongsTo(Media::class, 'tag_img');
     }
 }

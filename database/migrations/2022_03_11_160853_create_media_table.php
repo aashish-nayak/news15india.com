@@ -15,7 +15,8 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string("img");
+            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
+            $table->string("filename");
             $table->string("alt")->nullable();
             $table->string("size")->nullable();
             $table->string("type")->nullable();

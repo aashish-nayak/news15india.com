@@ -11,10 +11,16 @@ class Media extends Model
     use HasFactory,LoremImageTrait;
     
     protected $fillable = [
-        'img',
+        'admin_id',
+        'filename',
         'alt',
         'size',
         'type',
         'dimension'
     ];
+
+    public function creator()
+    {
+        return $this->belongsTo(Admin::class,'admin_id');
+    }
 }

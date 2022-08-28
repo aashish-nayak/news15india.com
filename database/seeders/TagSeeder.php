@@ -18,6 +18,6 @@ class TagSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Tag::truncate();
         Schema::enableForeignKeyConstraints();
-        Tag::factory(80)->create();
+        Tag::factory(100)->create();
     }
 }

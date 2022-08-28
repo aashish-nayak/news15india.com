@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\Commentable;
+use App\Traits\Staticable;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,12 +11,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class News extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes,Commentable, Staticable;
     protected $fillable = [
         'title',
         'slug',
         'short_description',
-        'user_id',
+        'admin_id',
         'content',
         'is_published',
         'status',
@@ -30,17 +32,17 @@ class News extends Model
     ];
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_news');
+        return $this->belongsToMany(Category::class, 'news_categories');
     }
 
     public function getCreatedAtAttribute(){
         return Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']) )->diffForHumans();
     }
-    public function img(){
+    public function newsImage(){
         return $this->belongsTo(Media::class, 'image');
     }
     public function creator(){
-        return $this->belongsTo(Admin::class, 'user_id');
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
     public function tags(){
         return $this->belongsToMany(Tag::class,'news_tag');

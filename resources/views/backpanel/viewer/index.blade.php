@@ -68,17 +68,6 @@
     </div>
 @endsection
 @push('scripts')
-@if (Session::has('success'))
-<script>
-    $(document).ready(function () {
-        Swal.fire(
-            'Successful!',
-            "{{ Session::get('success') }}",
-            'success'
-        )
-    });
-</script>
-@endisset
 <script>
     $(document).ready(function() {
         $('#users').DataTable();
