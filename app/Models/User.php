@@ -64,6 +64,9 @@ class User extends Authenticatable
 
     public function user_ip()
     {
+        if(Visitor::where('ip',request()->getClientIp())->where('user_id',null)->count() > 0){
+            Visitor::where('ip',request()->getClientIp())->first()->update(['user_id'=>auth('web')->user()->id]);
+        }
         return $this->hasOne(Visitor::class,'user_id');
     }
 }

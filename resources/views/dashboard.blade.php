@@ -347,7 +347,12 @@
                                     </div>
                                     <div class="col-md-4 col-sm-4 col-xs-6">
                                         <div class="uppercase profile-stat-title">
-                                            {{ auth('web')->user()->user_ip->user_stats->count() }} </div>
+                                            @if (auth('web')->user()->user_ip != null)
+                                            {{ auth('web')->user()->user_ip->user_stats->count() }}
+                                            @else
+                                            0
+                                            @endif
+                                        </div>
                                         <div class="uppercase profile-stat-text"> Views </div>
                                     </div>
                                     <div class="col-md-4 col-sm-4 col-xs-6">
