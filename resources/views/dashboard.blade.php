@@ -10,6 +10,190 @@
         'auhtor' => auth('web')->user()->name,
     ])
 @endsection
+@push('css')
+    
+<style>
+    body {
+    background: #F1F3FA;
+    }
+
+    /* Profile container */
+    .profile {
+    margin: 20px 0;
+    }
+
+    /* Profile sidebar */
+    .profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
+    }
+
+    .profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    }
+
+    .profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+    }
+
+    .profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    }
+
+    .profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    }
+
+    .profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+    }
+
+    .profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+    }
+
+    .profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+    }
+        
+    .profile-usermenu {
+    margin-top: 30px;
+    }
+
+    .profile-usermenu ul {
+    border-bottom: 1px solid #f0f4f7;
+    }
+
+    .profile-usermenu ul a:last-child {
+    border-bottom: none;
+    }
+
+    .profile-usermenu ul a {
+    color: #93a3b5;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px 10px;
+    display: block;
+    }
+
+    .profile-usermenu ul a i {
+    margin-right: 8px;
+    font-size: 14px;
+    }
+
+    .profile-usermenu ul a:hover {
+    background-color: #fafcfd;
+    color: #5b9bd1;
+    }
+
+    .profile-usermenu ul a.active {
+    border-bottom: none;
+    }
+
+    .profile-usermenu ul a.active {
+    color: #5b9bd1;
+    background-color: #f6f9fb;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+    }
+
+    /* Profile Content */
+    .profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+    }
+
+    .dashboard-stat, .portlet {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+    }
+    .portlet {
+        margin-top: 0;
+        margin-bottom: 25px;
+        padding: 0;
+        border-radius: 4px;
+    }
+    .portlet.bordered {
+        border-left: 2px solid #e6e9ec!important;
+    }
+    .portlet.light {
+        padding: 12px 20px 15px;
+        background-color: #fff;
+    }
+    .portlet.light.bordered {
+        border: 1px solid #e7ecf1!important;
+    }
+    .list-separated {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    .profile-stat {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f0f4f7;
+    }
+    .profile-stat-title {
+        color: #7f90a4;
+        font-size: 25px;
+        text-align: center;
+    }
+    .uppercase {
+        text-transform: uppercase!important;
+    }
+
+    .profile-stat-text {
+        color: #5b9bd1;
+        font-size: 10px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .profile-desc-title {
+        color: #7f90a4;
+        font-size: 17px;
+        font-weight: 600;
+    }
+    .profile-desc-text {
+        color: #7e8c9e;
+        font-size: 14px;
+    }
+    .margin-top-20 {
+        margin-top: 20px!important;
+    }
+    [class*=" fa-"]:not(.fa-stack), [class*=" glyphicon-"], [class*=" icon-"], [class^=fa-]:not(.fa-stack), [class^=glyphicon-], [class^=icon-] {
+        display: inline-block;
+        line-height: 14px;
+        -webkit-font-smoothing: antialiased;
+    }
+    .profile-desc-link i {
+        width: 22px;
+        font-size: 19px;
+        color: #abb6c4;
+        margin-right: 5px;
+    }
+
+</style>
+@endpush
 @section('sections')
     <main class="container-fluid mx-auto position-relative">
         <div class="row">
@@ -31,104 +215,10 @@
                         </div>
                     </div>
                     @includeIf('components.poll')
-                    {{-- <div class="col-12 mt-1 side-position mx-auto px-0">
-                    @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
-                    <div class="single-item">
-                        @foreach ($sidebar_1->news as $sidebar_news)
-                        <div class="holder">
-                            <div class="box mt-1" style="height:250px;">
-                                <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                    <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="">
-                                    <div class="content-overlay"></div>
-                                </a>
-                                <div class="img-title">
-                                    <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                        <h6 class="text-light m-0">{{\Str::limit($sidebar_news->title,40)}}</h6>
-                                    </a>
-                                    <p class="post-date m-1 text-white">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-12 mt-2 side-position mx-auto px-0">
-                    @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
-                    <div class="side-bar">
-                        @foreach ($sidebar_2->news as $sidebar_news)
-                        <div class="card card-shadow my-1">
-                            <div class="card-body px-3 py-1 border-bottom border-secondary">
-                                <div class="post-data">
-                                    <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
-                                        <div class="post-meta">
-                                            <p class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
-                                        </div>
-                                        <h6>{{\Str::limit($sidebar_news->title,50)}}</h6>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
-                    </div>
-                </div>
-                <div class="col-12 mt-2 side-position mx-auto px-0">
-                    @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
-                    <div class="single-item">
-                        @foreach ($sidebar_3->news as $sidebar_news)
-                        <div class="holder">
-                            <div class="box mt-1" style="height:200px;">
-                                <div class="content-overlay" style="background-color: #5a5a5a66;"></div>
-                                <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                    <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
-                                </a>
-                                <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="">
-                                <div class="img-title">
-                                    <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                        <h6 class="text-light m-0">
-                                            {{\Str::limit($sidebar_news->title,50)}}
-                                        </h6>
-                                    </a>
-                                    <p class="m-1 text-white">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-12 p-0 mt-1 side-position mx-auto">
-                    <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
-                        <i class="fa fa-sort-up mr-1" style="color:#FE9517;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color:#FE9517; font-weight:600;">{{$sidebar_4->cat_name}}</h4>
-                        <div class="w-50 mx-3 text-white" style=" margin-top:-5px;font-size:1.8rem; word-spacing:-5px;overflow: hidden; white-space: nowrap;text-overflow:' ';">
-                            <span>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</span>
-                        </div>
-                        <a href="{{route('category-news',$sidebar_4->slug)}}" class="nav-link p-0" style="color:#FE9517;font-size:15px;font-weight:600;">और भी</a>
-                    </div>
-                    <div class="side-bar" style="height:380px;background-color:#333;">
-                        <div class="my-1" style="background-color:#333;">
-                            @foreach ($sidebar_4->news as $key => $sidebar_news)
-                            <div class="py-1 border-bottom border-secondary">
-                                <div class="post-data ">
-                                    <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
-                                        <div class="row m-0">
-                                            <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">{{$key+1}}</span>
-                                            <div class="post-meta col-10 p-0">
-                                                <p style="color:#f2f2f2;" class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
-                                                <h6 style="color:#f2f2f2;">{{\Str::limit($sidebar_news->title,50)}}</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div> --}}
                 </div>
             </aside>
             <div class="col-md-9 col-12 px-1 pr-md-1 order-1 order-md-2">
-                <div class="container-fluid mx-auto px-0 mt-1">
+                {{-- <div class="container-fluid mx-auto px-0 mt-1">
                     <div class="d-flex flex-wrap justify-content-center">
                         <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center">
                             @isset(auth('web')->user()->details->avatar->filename)
@@ -188,34 +278,108 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="main-bg-clr container-fluid my-3">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link mr-2 active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-                            <button class="nav-link mr-2" id="nav-profile-tab" data-toggle="tab" data-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+                </div> --}}
+                <div class="row profile" style="font-size: 16px">
+                    <div class="col-md-3">
+                      <div class="profile-sidebar">
+                        <!-- SIDEBAR USERPIC -->
+                        <div class="profile-userpic text-center">
+                          @isset(auth('web')->user()->details->avatar->filename)
+                            <img loading="lazy"
+                                src="{{ asset('storage/media/' . auth('web')->user()->details->avatar->filename) }}"
+                                class="text-center img-fluid author-avatar border" alt="">
+                        @else
+                            <img src="{{ asset('front-assets/img/user.png') }}" class="text-center img-fluid author-avatar border"
+                                alt="" loading="lazy">
+                        @endisset
                         </div>
-                    </nav>
-                    <div class="tab-content" style="font-size: 16px" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                            aria-labelledby="nav-home-tab">
-                            Placeholder content for the tab panel. This one relates to the home tab. Takes you miles high,
-                            so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a
-                            pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of
-                            anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the
-                            roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I
-                            guess that I forgot I had a choice.
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                          <div class="profile-usertitle-name">
+                            {{ auth('web')->user()->name }}
+                          </div>
+                          <div class="profile-usertitle-job">
+                            {{ auth('web')->user()->email }}
+                          </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            Placeholder content for the tab panel. This one relates to the home tab. Takes you miles high,
-                            so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a
-                            pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of
-                            anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the
-                            roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I
-                            guess that I forgot I had a choice.
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR BUTTONS -->
+                        <div class="profile-userbuttons">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a hre="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();" class="btn btn-primary btn-sm">Logout</a>
+                            </form>
+                          {{-- <button type="button" class="btn btn-success btn-sm">Follow</button>
+                          <button type="button" class="btn btn-danger btn-sm">Message</button> --}}
                         </div>
+                        <!-- END SIDEBAR BUTTONS -->
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu d-none">
+                          <ul class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <li>
+                                <a type="button" class=" active" id="v-pills-home-tab" data-toggle="tab" data-target="#v-pills-home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-home"></i>Overview</a>
+                            </li>
+                            <li>
+                                <a type="button" class="" id="v-pills-profile-tab" data-toggle="tab" data-target="#v-pills-profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-user"></i> Profile</a>
+                            </li>
+                            <li>
+                                <a type="button" class="" id="v-pills-messages-tab" data-toggle="tab" data-target="#v-pills-messages" type="button" role="tab" aria-controls="messages" aria-selected="false"><i class="fa fa-flag"></i> Messages</a>
+                            </li>
+                            <li>
+                                <a type="button" class="" id="v-pills-settings-tab" data-toggle="tab" data-target="#v-pills-settings" type="button" role="tab" aria-controls="settings" aria-selected="false"><i class="fa fa-flag"></i> Settings</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- END MENU -->
+                        <div class="portlet light bordered d-none">
+                          <!-- STAT -->
+                          <div class="row list-separated profile-stat">
+                            <div class="col-md-4 col-sm-4 col-xs-6">
+                              <div class="uppercase profile-stat-title"> 37 </div>
+                              <div class="uppercase profile-stat-text"> Projects </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-6">
+                              <div class="uppercase profile-stat-title"> 51 </div>
+                              <div class="uppercase profile-stat-text"> Tasks </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-6">
+                              <div class="uppercase profile-stat-title"> 61 </div>
+                              <div class="uppercase profile-stat-text"> Uploads </div>
+                            </div>
+                          </div>
+                          <!-- END STAT -->
+                          <div>
+                            <h4 class="profile-desc-title">About Jason Davis</h4>
+                            <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+                            <div class="margin-top-20 profile-desc-link">
+                              <i class="fa fa-globe"></i>
+                              <a href="https://www.apollowebstudio.com">example.com</a>
+                            </div>
+                            <div class="margin-top-20 profile-desc-link">
+                              <i class="fab fa-twitter"></i>
+                              <a href="https://www.twitter.com/jasondavisfl/">@jasondavisfl</a>
+                            </div>
+                            <div class="margin-top-20 profile-desc-link">
+                              <i class="fab fa-facebook"></i>
+                              <a href="https://www.facebook.com/">JasonDavisFL</a>
+                            </div>
+                          </div>
+                        </div>
+                
+                      </div>
                     </div>
-                </div>
+                    <div class="col-md-9">
+                      <div class="profile-content">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">Welcome to News15India </div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Tab 2</div>
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <!-- Ad Banner  -->
                 <section class="container-fluid my-md-1 mt-1 mx-auto px-0 text-center">
                     <a href="javascript:void(0)"><img loading="lazy" src="{{ asset('front-assets/img/banner.png') }}" class="w-100 banner-height" alt="" srcset=""></a>
@@ -228,55 +392,6 @@
                     </div>
                 </div>
                 @endisset
-                {{-- <div class="container-fluid mx-auto">
-                    <div class="row row-cols-md-2 row-cols-1 ">
-                        @foreach ($creatorNews as $news)
-                        <div class="col mt-2 px-1">
-                            <div class="card-horizontal card-horizontal-3 no-gutters" style="border:1px solid var(--primary)">
-                                <div class="col-4 p-1 h-100" style="border-right:1px solid #b2bec3;">
-                                    <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid h-100" alt="...">
-                                    </a>
-                                </div>
-                                <div class="col-8">
-                                    <div class="card-body py-0 px-2">
-                                        <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                                            <h6 class="card-text p-2">{{\Str::limit($news->title,50)}}</h6>
-                                        </a>
-                                    </div>
-                                    <div class="d-flex justify-content-start px-md-3">
-                                        <div class="col news-status px-2 ml-2"><i class="fas fa-user mr-3"></i>{{$news->creator->name}}</div>
-                                        <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>{{$news->created_at}}</div>
-                                    </div>
-                                    <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
-                                        @php
-                                            $share = Jorenvh\Share\ShareFacade::page(route('single-news',$news->slug), $news->title)
-                                            ->facebook()
-                                            ->twitter()
-                                            ->whatsapp()
-                                            ->linkedin()
-                                            ->getRawLinks();
-                                        @endphp
-                                        <a target="_blank" href="{{$share['facebook']}}" style="color:#FE9517;" class="mr-2 fab fa-facebook-f"></a>
-                                        <a target="_blank" href="{{$share['twitter']}}" style="color:#FE9517;" class="mr-2 fab fa-twitter"></a>
-                                        <a target="_blank" href="{{$share['whatsapp']}}" style="color:#FE9517;" class="mr-2 fab fa-whatsapp"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="container-fluid px-0 mx-auto mt-3">
-                    <div class="d-flex align-items-center justify-content-center">
-                        {{$creatorNews->onEachSide(0)->links()}}
-                    </div>
-                </div> --}}
-                <!-- Ad Banner  -->
-                <section class="container-fluid mx-auto px-0 text-center">
-                    <a href="javascript:void(0)"><img loading="lazy" src="{{ asset('front-assets/img/banner.png') }}"
-                            class="w-100 banner-height" alt="" srcset=""></a>
-                </section>
                 <!-- Ad Banner  -->
             </div>
         </div>
