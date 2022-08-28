@@ -94,14 +94,18 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Survey Start Date :</label>
-                                        <input type="date" required name="starts_at" class="form-control form-control-sm" value="@if(isset($edit)){{\Carbon\Carbon::parse($edit->starts_at)->format('Y-m-d')}}@else{{old('starts_at')}}@endif" />
+                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0 bg-danger text-light" id="inputGroup-sizing-sm">C</span>
+                                            <input type="date" required name="starts_at" value="@if(isset($edit)){{\Carbon\Carbon::parse($edit->starts_at)->format('Y-m-d')}}@else{{old('starts_at')}}@endif" class="form-control rounded-0" />
+                                        </div>
                                         @error('starts_at')
                                             <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Survey End Date :</label>
-                                        <input type="date" required name="ends_at" class="form-control form-control-sm" value="@if(isset($edit)){{\Carbon\Carbon::parse($edit->ends_at)->format('Y-m-d')}}@else{{old('ends_at')}}@endif" />
+                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0 bg-danger text-light" id="inputGroup-sizing-sm">C</span>
+                                            <input type="date" required name="ends_at" value="@if(isset($edit)){{\Carbon\Carbon::parse($edit->ends_at)->format('Y-m-d')}}@else{{old('ends_at')}}@endif" class="form-control rounded-0" />
+                                        </div>
                                         @error('ends_at')
                                             <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
                                         @enderror
@@ -112,27 +116,17 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">Survey Organized By :</label>
-                                <select class="form-select form-select-sm" required name="organized_by" aria-label="Default select example">
-                                    <option  @if(!isset($edit)) selected @endif disabled>Select One</option>
-                                    @foreach ($creators as $creator)
-                                    <option @if(isset($edit) && $edit->organized_by == $creator->name) selected @endif value="{{$creator->name}}">{{$creator->name}}</option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-user"></i></span>
+                                    <input type="text" required name="organized_by" value="@if(isset($edit)){{$edit->organized_by}}@else{{old('organized_by')}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
                                 @error('organized_by')
                                     <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
                                 @enderror
                             </div>
                             <div class="col-md-8 mb-3">
                                 <label for="inputAddress3" class="form-label">Survey Question</label>
-                                <textarea class="form-control" required name="question" id="inputAddress3" placeholder="Enter Question here" rows="4">@if(isset($edit)){{$edit->question}}@else{{old('question')}}@endif</textarea>
+                                <textarea class="form-control" required name="question" id="inputAddress3" placeholder="Enter Question here" rows="5">@if(isset($edit)){{$edit->question}}@else{{old('question')}}@endif</textarea>
                                 @error('question')
-                                    <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
-                                @enderror
-                                <label class="custom-label d-flex justify-content-start align-items-center d-none">
-                                    <input id="canVisitors" checked name="canVisitorsVote" type="checkbox" class="hidden" value="0">
-                                    <span class="ms-2">Allow guests to vote on the question</span><br>
-                                </label>
-                                @error('canVisitorsVote')
                                     <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
                                 @enderror
                             </div>
@@ -145,6 +139,28 @@
                                 @error('image')
                                     <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
                                 @enderror
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <div class="row row-cols-md-2">
+                                    <div class="col">
+                                        <label class="custom-label d-flex justify-content-start align-items-center">
+                                            <input id="canVoterSeeResult" @if(isset($edit) && $edit->canVoterSeeResult == 1) checked @elseif(!isset($edit)) checked @endif name="canVoterSeeResult" type="checkbox" value="1">
+                                            <span class="ms-2">Allow Voters to See Results</span><br>
+                                        </label>
+                                        @error('canVoterSeeResult')
+                                            <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col">
+                                        <label class="custom-label d-flex justify-content-start align-items-center">
+                                            <input id="canVisitors" @if(isset($edit) && $edit->canVisitorsVote == 1) checked @endif name="canVisitorsVote" type="checkbox" value="1">
+                                            <span class="ms-2">Allow guests to vote on the question</span><br>
+                                        </label>
+                                        @error('canVisitorsVote')
+                                            <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label class="form-label mb-1">Option A</label>

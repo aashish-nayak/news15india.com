@@ -28,7 +28,6 @@ class PollHandler
 
         $poll = new Poll([
             'question' => $request['question'],
-            'canVisitorsVote' => $request['canVisitorsVote'],
             'image' => $request['image'],
             'organized_by' => $request['organized_by'],
         ]);
@@ -43,6 +42,19 @@ class PollHandler
 
         if(isset($request['ends_at'])){
             $poll->endsAt($request['ends_at']);
+        }
+
+        if (isset($request['canVisitorsVote'])) {
+            $poll->canVisitorsVote = $request['canVisitorsVote'];
+        }elseif(!isset($request['canVisitorsVote'])){
+            $poll->canVisitorsVote = 0;
+        }
+
+        // change see result value
+        if (isset($request['canVoterSeeResult'])) {
+            $poll->canVoterSeeResult = $request['canVoterSeeResult'];
+        }elseif(!isset($request['canVoterSeeResult'])){
+            $poll->canVoterSeeResult = 0;
         }
 
         $poll->generate();
@@ -78,11 +90,15 @@ class PollHandler
         // change the ability to vote by the guests
         if (isset($data['canVisitorsVote'])) {
             $poll->canVisitorsVote = $data['canVisitorsVote'];
+        }elseif(!isset($data['canVisitorsVote'])){
+            $poll->canVisitorsVote = 0;
         }
 
         // change see result value
         if (isset($data['canVoterSeeResult'])) {
             $poll->canVoterSeeResult = $data['canVoterSeeResult'];
+        }elseif(!isset($data['canVoterSeeResult'])){
+            $poll->canVoterSeeResult = 0;
         }
 
         $poll->question = $data['question'];
