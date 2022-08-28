@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserDetail;
+use App\Models\Visitor;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -49,8 +50,16 @@ class RegisteredUserController extends Controller
             'city_id' => $request->city,
             'zip' => $request->pincode
         ]);
-        event(new Registered($user));
 
+        event(new Registered($user));
+        if(Visitor::where('user_id',$user->id)->count() == 0){
+            $data = [
+                'user_id' => $user->id,
+                'ip' => request()->getClientIp(),
+                'clicks' => 0,
+            ];
+            return Visitor::create($data);
+        }
         Auth::login($user);
         if(Session::get('redirect_to')){
             return redirect(Session::get('redirect_to'));

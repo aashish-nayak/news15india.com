@@ -18,10 +18,10 @@ class VoteController extends Controller
                 ->poll($poll)
                 ->vote($request->get('options'));
             if($vote){
-                return back()->with('success', 'Vote Done');
+                return redirect()->back()->with('success', 'Vote Done');
             }
         }catch (Exception $e){
-            return back()->with('errors', $e->getMessage());
+            return redirect()->back()->with('errors', $e->getMessage());
         }
     }
 

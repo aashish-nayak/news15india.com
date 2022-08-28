@@ -22,10 +22,14 @@ trait Staticable
     public function registerIp()
     {
         if(Visitor::where('ip',request()->getClientIp())->count() == 0){
-            return Visitor::create([
+            $data = [
                 'ip' => request()->getClientIp(),
                 'clicks' => 1,
-            ]);
+            ];
+            if(auth('web')->check() == true){
+                $data['user_id'] = auth('web')->user()->id;
+            }
+            return Visitor::create($data);
         }else{
             $visitor = Visitor::where('ip',request()->getClientIp())->first();
             $visitor->clicks = $visitor->clicks+1;

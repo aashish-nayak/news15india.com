@@ -8,9 +8,11 @@ use App\Models\News;
 use App\Models\Poll;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Jorenvh\Share\ShareFacade as Share;
 class FrontController extends Controller
 {
@@ -399,5 +401,44 @@ class FrontController extends Controller
         }
         $polls = $polls->get();
         return view('poll',compact('polls'));
+    }
+
+    public function profile(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required','integer'],
+            'pincode' => ['integer'],
+            'country' => ['required'],
+            'state' => ['required'],
+            'city' => ['required'],
+        ]);
+        User::find(auth('web')->user()->id)->update(['name'=>$request->name]);
+        $details = UserDetail::where('user_id',auth('web')->user()->id)->first();
+        if($details == null){
+            $details = new UserDetail();
+            $details->user_id = auth('web')->user()->id;
+        }
+        if($request->hasFile('avatar')){
+            if(Storage::exists('public/user-avatars/'.$details->avatar)){
+                Storage::delete('public/user-avatars/'.$details->avatar);
+            }
+            $file = $request->file('avatar');
+            $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $filename =  auth('web')->user()->name . '_' . $filename . '_' . time() . '.' . $extension;
+            $file->storeAs('public/user-avatars', $filename);
+            $details->avatar = $filename;
+        }
+        $details->phone_number = $request->phone_number;
+        $details->whatsapp_number = $request->whatsapp_number;
+        $details->gender = $request->gender;
+        $details->address = $request->address;
+        $details->zip = $request->zip;
+        $details->country_id = $request->country;
+        $details->state_id = $request->state;
+        $details->city_id = $request->city;
+        $details->save();
+        return redirect()->back();
     }
 }

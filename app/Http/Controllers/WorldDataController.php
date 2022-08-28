@@ -11,16 +11,34 @@ class WorldDataController extends Controller
 {
     public function countries()
     {
-        return response()->json(['countries'=>Country::get()]);
+        $data = collect();
+        Country::orderBy('name')->select(['id','name'])->chunk(10, function($countries)use($data){
+            foreach ($countries as $country){
+                $data->push($country);
+            }
+        });
+        return response()->json($data);
     }
 
     public function states($country_id)
     {
-        return response()->json(['states'=>State::where('country_id',$country_id)->get()]);
+        $data = collect();
+        State::where('country_id', $country_id)->orderBy('name')->select(['id','name'])->chunk(10, function($states)use($data){
+            foreach ($states as $state){
+                $data->push($state);
+            }
+        });
+        return response()->json($data);
     }
 
     public function cities($state_id)
     {
-        return response()->json(['cities'=>City::where('state_id',$state_id)->get()]);
+        $data = collect();
+        City::where('state_id', $state_id)->orderBy('name')->select(['id','name'])->chunk(10, function($cities)use($data){
+            foreach ($cities as $city){
+                $data->push($city);
+            }
+        });
+        return response()->json($data);
     }
 }

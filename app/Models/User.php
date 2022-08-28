@@ -61,4 +61,9 @@ class User extends Authenticatable
             'updated_at' => now()->toDateTimeString(),
         ]);
     }
+
+    public function user_ip()
+    {
+        return $this->hasOne(Visitor::class,'user_id');
+    }
 }

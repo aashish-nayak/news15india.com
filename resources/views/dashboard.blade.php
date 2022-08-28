@@ -11,188 +11,210 @@
     ])
 @endsection
 @push('css')
-    
-<style>
-    body {
-    background: #F1F3FA;
-    }
+    <style>
+        body {
+            background: #F1F3FA;
+        }
 
-    /* Profile container */
-    .profile {
-    margin: 20px 0;
-    }
+        .profile-content .form-control,
+        .profile-content .btn {
+            font-size: 1.6rem;
+        }
 
-    /* Profile sidebar */
-    .profile-sidebar {
-    padding: 20px 0 10px 0;
-    background: #fff;
-    }
+        /* Profile container */
+        .profile {
+            margin: 20px 0;
+        }
 
-    .profile-userpic img {
-    float: none;
-    margin: 0 auto;
-    width: 50%;
-    height: 50%;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    border-radius: 50% !important;
-    }
+        /* Profile sidebar */
+        .profile-sidebar {
+            padding: 20px 0 10px 0;
+            background: #fff;
+        }
 
-    .profile-usertitle {
-    text-align: center;
-    margin-top: 20px;
-    }
+        .profile-userpic img {
+            float: none;
+            margin: 0 auto;
+            width: 50%;
+            height: 50%;
+            -webkit-border-radius: 50% !important;
+            -moz-border-radius: 50% !important;
+            border-radius: 50% !important;
+        }
 
-    .profile-usertitle-name {
-    color: #5a7391;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 7px;
-    }
+        .profile-usertitle {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-    .profile-usertitle-job {
-    text-transform: uppercase;
-    color: #5b9bd1;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    }
+        .profile-usertitle-name {
+            color: #5a7391;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
 
-    .profile-userbuttons {
-    text-align: center;
-    margin-top: 10px;
-    }
+        .profile-usertitle-job {
+            text-transform: uppercase;
+            color: #5b9bd1;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
 
-    .profile-userbuttons .btn {
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 6px 15px;
-    margin-right: 5px;
-    }
+        .profile-userbuttons {
+            text-align: center;
+            margin-top: 10px;
+        }
 
-    .profile-userbuttons .btn:last-child {
-    margin-right: 0px;
-    }
-        
-    .profile-usermenu {
-    margin-top: 30px;
-    }
+        .profile-userbuttons .btn {
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 15px;
+            margin-right: 5px;
+        }
 
-    .profile-usermenu ul {
-    border-bottom: 1px solid #f0f4f7;
-    }
+        .profile-userbuttons .btn:last-child {
+            margin-right: 0px;
+        }
 
-    .profile-usermenu ul a:last-child {
-    border-bottom: none;
-    }
+        .profile-usermenu {
+            margin-top: 30px;
+        }
 
-    .profile-usermenu ul a {
-    color: #93a3b5;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 5px 10px;
-    display: block;
-    }
+        .profile-usermenu ul {
+            border-bottom: 1px solid #f0f4f7;
+        }
 
-    .profile-usermenu ul a i {
-    margin-right: 8px;
-    font-size: 14px;
-    }
+        .profile-usermenu ul a:last-child {
+            border-bottom: none;
+        }
 
-    .profile-usermenu ul a:hover {
-    background-color: #fafcfd;
-    color: #5b9bd1;
-    }
+        .profile-usermenu ul a {
+            color: #93a3b5;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 10px;
+            display: block;
+        }
 
-    .profile-usermenu ul a.active {
-    border-bottom: none;
-    }
+        .profile-usermenu ul a i {
+            margin-right: 8px;
+            font-size: 14px;
+        }
 
-    .profile-usermenu ul a.active {
-    color: #5b9bd1;
-    background-color: #f6f9fb;
-    border-left: 2px solid #5b9bd1;
-    margin-left: -2px;
-    }
+        .profile-usermenu ul a:hover {
+            background-color: #fafcfd;
+            color: #5b9bd1;
+        }
 
-    /* Profile Content */
-    .profile-content {
-    padding: 20px;
-    background: #fff;
-    min-height: 460px;
-    }
+        .profile-usermenu ul a.active {
+            border-bottom: none;
+        }
 
-    .dashboard-stat, .portlet {
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -ms-border-radius: 4px;
-        -o-border-radius: 4px;
-    }
-    .portlet {
-        margin-top: 0;
-        margin-bottom: 25px;
-        padding: 0;
-        border-radius: 4px;
-    }
-    .portlet.bordered {
-        border-left: 2px solid #e6e9ec!important;
-    }
-    .portlet.light {
-        padding: 12px 20px 15px;
-        background-color: #fff;
-    }
-    .portlet.light.bordered {
-        border: 1px solid #e7ecf1!important;
-    }
-    .list-separated {
-        margin-top: 10px;
-        margin-bottom: 15px;
-    }
-    .profile-stat {
-        padding-bottom: 20px;
-        border-bottom: 1px solid #f0f4f7;
-    }
-    .profile-stat-title {
-        color: #7f90a4;
-        font-size: 25px;
-        text-align: center;
-    }
-    .uppercase {
-        text-transform: uppercase!important;
-    }
+        .profile-usermenu ul a.active {
+            color: #5b9bd1;
+            background-color: #f6f9fb;
+            border-left: 2px solid #5b9bd1;
+            margin-left: -2px;
+        }
 
-    .profile-stat-text {
-        color: #5b9bd1;
-        font-size: 10px;
-        font-weight: 600;
-        text-align: center;
-    }
-    .profile-desc-title {
-        color: #7f90a4;
-        font-size: 17px;
-        font-weight: 600;
-    }
-    .profile-desc-text {
-        color: #7e8c9e;
-        font-size: 14px;
-    }
-    .margin-top-20 {
-        margin-top: 20px!important;
-    }
-    [class*=" fa-"]:not(.fa-stack), [class*=" glyphicon-"], [class*=" icon-"], [class^=fa-]:not(.fa-stack), [class^=glyphicon-], [class^=icon-] {
-        display: inline-block;
-        line-height: 14px;
-        -webkit-font-smoothing: antialiased;
-    }
-    .profile-desc-link i {
-        width: 22px;
-        font-size: 19px;
-        color: #abb6c4;
-        margin-right: 5px;
-    }
+        /* Profile Content */
+        .profile-content {
+            padding: 20px;
+            background: #fff;
+            min-height: 460px;
+        }
 
-</style>
+        .dashboard-stat,
+        .portlet {
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            -o-border-radius: 4px;
+        }
+
+        .portlet {
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding: 0;
+            border-radius: 4px;
+        }
+
+        .portlet.bordered {
+            border-left: 2px solid #e6e9ec !important;
+        }
+
+        .portlet.light {
+            padding: 12px 20px 15px;
+            background-color: #fff;
+        }
+
+        .portlet.light.bordered {
+            border: 1px solid #e7ecf1 !important;
+        }
+
+        .list-separated {
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .profile-stat {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f4f7;
+        }
+
+        .profile-stat-title {
+            color: #7f90a4;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .uppercase {
+            text-transform: uppercase !important;
+        }
+
+        .profile-stat-text {
+            color: #5b9bd1;
+            font-size: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .profile-desc-title {
+            color: #7f90a4;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .profile-desc-text {
+            color: #7e8c9e;
+            font-size: 14px;
+        }
+
+        .margin-top-20 {
+            margin-top: 20px !important;
+        }
+
+        [class*=" fa-"]:not(.fa-stack),
+        [class*=" glyphicon-"],
+        [class*=" icon-"],
+        [class^=fa-]:not(.fa-stack),
+        [class^=glyphicon-],
+        [class^=icon-] {
+            display: inline-block;
+            line-height: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .profile-desc-link i {
+            width: 22px;
+            font-size: 19px;
+            color: #abb6c4;
+            margin-right: 5px;
+        }
+    </style>
 @endpush
 @section('sections')
     <main class="container-fluid mx-auto position-relative">
@@ -281,116 +303,228 @@
                 </div> --}}
                 <div class="row profile" style="font-size: 16px">
                     <div class="col-md-3">
-                      <div class="profile-sidebar">
-                        <!-- SIDEBAR USERPIC -->
-                        <div class="profile-userpic text-center">
-                          @isset(auth('web')->user()->details->avatar->filename)
-                            <img loading="lazy"
-                                src="{{ asset('storage/media/' . auth('web')->user()->details->avatar->filename) }}"
-                                class="text-center img-fluid author-avatar border" alt="">
-                        @else
-                            <img src="{{ asset('front-assets/img/user.png') }}" class="text-center img-fluid author-avatar border"
-                                alt="" loading="lazy">
-                        @endisset
-                        </div>
-                        <!-- END SIDEBAR USERPIC -->
-                        <!-- SIDEBAR USER TITLE -->
-                        <div class="profile-usertitle">
-                          <div class="profile-usertitle-name">
-                            {{ auth('web')->user()->name }}
-                          </div>
-                          <div class="profile-usertitle-job">
-                            {{ auth('web')->user()->email }}
-                          </div>
-                        </div>
-                        <!-- END SIDEBAR USER TITLE -->
-                        <!-- SIDEBAR BUTTONS -->
-                        <div class="profile-userbuttons">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a hre="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();" class="btn btn-primary btn-sm">Logout</a>
-                            </form>
-                          {{-- <button type="button" class="btn btn-success btn-sm">Follow</button>
+                        <div class="profile-sidebar">
+                            <!-- SIDEBAR USERPIC -->
+                            <div class="profile-userpic text-center">
+                                @isset(auth('web')->user()->details->avatar)
+                                    <img loading="lazy"
+                                        src="{{ asset('storage/user-avatars/' . auth('web')->user()->details->avatar) }}"
+                                        class="text-center img-fluid author-avatar border" alt="">
+                                @else
+                                    <img src="{{ asset('front-assets/img/user.png') }}"
+                                        class="text-center img-fluid author-avatar border" alt="" loading="lazy">
+                                @endisset
+                            </div>
+                            <!-- END SIDEBAR USERPIC -->
+                            <!-- SIDEBAR USER TITLE -->
+                            <div class="profile-usertitle">
+                                <div class="profile-usertitle-name">
+                                    {{ auth('web')->user()->name }}
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    {{ auth('web')->user()->email }}
+                                </div>
+                            </div>
+                            <!-- END SIDEBAR USER TITLE -->
+                            <!-- SIDEBAR BUTTONS -->
+                            <div class="profile-userbuttons mb-4">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a hre="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); this.closest('form').submit();"
+                                        class="btn btn-primary btn-sm">Logout</a>
+                                </form>
+                                {{-- <button type="button" class="btn btn-success btn-sm">Follow</button>
                           <button type="button" class="btn btn-danger btn-sm">Message</button> --}}
+                            </div>
+                            <!-- END SIDEBAR BUTTONS -->
+                            <div class="portlet light bordered m-0 rounded-0">
+                                <div class="row list-separated justify-content-between">
+                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                        <div class="uppercase profile-stat-title">
+                                            {{ auth('web')->user()->followings->count() }} </div>
+                                        <div class="uppercase profile-stat-text"> Followings </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                        <div class="uppercase profile-stat-title">
+                                            {{ auth('web')->user()->user_ip->user_stats->count() }} </div>
+                                        <div class="uppercase profile-stat-text"> Views </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                        <div class="uppercase profile-stat-title">
+                                            {{ auth('web')->user()->comments->count() }} </div>
+                                        <div class="uppercase profile-stat-text"> Comments </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SIDEBAR MENU -->
+                            <div class="profile-usermenu m-0">
+                                <ul class="nav flex-column border-0" id="v-pills-tab" role="tablist"
+                                    aria-orientation="vertical">
+                                    <li>
+                                        <a type="button" class=" active" id="v-pills-home-tab" data-toggle="tab"
+                                            data-target="#v-pills-home" type="button" role="tab" aria-controls="home"
+                                            aria-selected="true"><i class="fa fa-home"></i>Profile</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END MENU -->
                         </div>
-                        <!-- END SIDEBAR BUTTONS -->
-                        <!-- SIDEBAR MENU -->
-                        <div class="profile-usermenu d-none">
-                          <ul class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <li>
-                                <a type="button" class=" active" id="v-pills-home-tab" data-toggle="tab" data-target="#v-pills-home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-home"></i>Overview</a>
-                            </li>
-                            <li>
-                                <a type="button" class="" id="v-pills-profile-tab" data-toggle="tab" data-target="#v-pills-profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-user"></i> Profile</a>
-                            </li>
-                            <li>
-                                <a type="button" class="" id="v-pills-messages-tab" data-toggle="tab" data-target="#v-pills-messages" type="button" role="tab" aria-controls="messages" aria-selected="false"><i class="fa fa-flag"></i> Messages</a>
-                            </li>
-                            <li>
-                                <a type="button" class="" id="v-pills-settings-tab" data-toggle="tab" data-target="#v-pills-settings" type="button" role="tab" aria-controls="settings" aria-selected="false"><i class="fa fa-flag"></i> Settings</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <!-- END MENU -->
-                        <div class="portlet light bordered d-none">
-                          <!-- STAT -->
-                          <div class="row list-separated profile-stat">
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                              <div class="uppercase profile-stat-title"> 37 </div>
-                              <div class="uppercase profile-stat-text"> Projects </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                              <div class="uppercase profile-stat-title"> 51 </div>
-                              <div class="uppercase profile-stat-text"> Tasks </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                              <div class="uppercase profile-stat-title"> 61 </div>
-                              <div class="uppercase profile-stat-text"> Uploads </div>
-                            </div>
-                          </div>
-                          <!-- END STAT -->
-                          <div>
-                            <h4 class="profile-desc-title">About Jason Davis</h4>
-                            <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
-                            <div class="margin-top-20 profile-desc-link">
-                              <i class="fa fa-globe"></i>
-                              <a href="https://www.apollowebstudio.com">example.com</a>
-                            </div>
-                            <div class="margin-top-20 profile-desc-link">
-                              <i class="fab fa-twitter"></i>
-                              <a href="https://www.twitter.com/jasondavisfl/">@jasondavisfl</a>
-                            </div>
-                            <div class="margin-top-20 profile-desc-link">
-                              <i class="fab fa-facebook"></i>
-                              <a href="https://www.facebook.com/">JasonDavisFL</a>
-                            </div>
-                          </div>
-                        </div>
-                
-                      </div>
                     </div>
                     <div class="col-md-9">
-                      <div class="profile-content">
-                        <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">Welcome to News15India </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Tab 2</div>
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                        <div class="profile-content">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <form action="{{route('user.profile.update')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <h3 class="text-center">Edit Personal Information</h3>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Full Name:</label>
+                                                    <input type="text" name="name" class="form-control"
+                                                        value="{{auth('web')->user()->name}}" required>
+                                                </div>
+                                                @error('name')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Email Address:</label>
+                                                    <input type="email" name="email" readonly class="form-control"
+                                                        value="{{auth('web')->user()->email}}" required>
+                                                </div>
+                                                @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Mobile Number:</label>
+                                                    <input type="tel" name="phone_number" class="form-control"
+                                                        value="{{auth('web')->user()->details->phone_number}}" required pattern=[0-9]{10}>
+                                                </div>
+                                                @error('phone_number')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">WhatsApp Number:</label>
+                                                    <input type="tel" name="whatsapp_number" class="form-control" value="{{auth('web')->user()->details->whatsapp_number}}" pattern=[0-9]{10}>
+                                                </div>
+                                                @error('whatsapp_number')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Gender:</label>
+                                                    <select name="gender" class="form-control">
+                                                        <option {{(auth('web')->user()->details->gender == 'Male') ? 'selected' : ''}} value="Male">Male</option>
+                                                        <option {{(auth('web')->user()->details->gender == 'Female') ? 'selected' : ''}} value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                                @error('gender')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Profile Image:</label>
+                                                    <input type="file" name="avatar" accept="image/*">
+                                                </div>
+                                                @error('avatar')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Address:</label>
+                                                    <input type="text" name="address" class="form-control"
+                                                        value="{{auth('web')->user()->details->address}}" >
+                                                </div>
+                                                @error('address')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Pincode:</label>
+                                                    <input type="text" name="zip" class="form-control"
+                                                        value="{{auth('web')->user()->details->zip}}">
+                                                </div>
+                                                @error('zip')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">Country:</label>
+                                                    <select name="country" class="form-control" required data-edit="{{auth('web')->user()->details->country_id}}">
+                                                        <option selected disabled>Select Country</option>
+                                                    </select>
+                                                    @error('country')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">State:</label>
+                                                    <select name="state" class="form-control" required data-edit="{{auth('web')->user()->details->state_id}}">
+                                                        <option selected disabled>Select Country First</option>
+                                                    </select>
+                                                    @error('state')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="profile_details_text">City:</label>
+                                                    <select name="city" class="form-control" required data-edit="{{auth('web')->user()->details->city_id}}">
+                                                        <option selected disabled>Select State First</option>
+                                                    </select>
+                                                    @error('city')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 submit">
+                                                <div class="form-group">
+                                                    <input type="submit" class="btn btn-success" value="Submit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
                 <!-- Ad Banner  -->
                 <section class="container-fluid my-md-1 mt-1 mx-auto px-0 text-center">
-                    <a href="javascript:void(0)"><img loading="lazy" src="{{ asset('front-assets/img/banner.png') }}" class="w-100 banner-height" alt="" srcset=""></a>
+                    <a href="javascript:void(0)"><img loading="lazy" src="{{ asset('front-assets/img/banner.png') }}"
+                            class="w-100 banner-height" alt="" srcset=""></a>
                 </section>
                 <!-- Ad Banner  -->
                 @isset($poll)
-                <div class="container-fluid mx-auto">
-                    <div class="row row-cols-md-2 row-cols-1">
-                        @includeIf('components.poll',['poll'=>$poll])
+                    <div class="container-fluid mx-auto">
+                        <div class="row row-cols-md-2 row-cols-1">
+                            @includeIf('components.poll', ['poll' => $poll])
+                        </div>
                     </div>
-                </div>
                 @endisset
                 <!-- Ad Banner  -->
             </div>
