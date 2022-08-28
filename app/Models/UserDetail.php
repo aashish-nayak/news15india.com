@@ -18,6 +18,7 @@ class UserDetail extends Model
         'avatar',
         'phone_number',
         'whatsapp_number',
+        'gender',
     ];
 
     public function country()

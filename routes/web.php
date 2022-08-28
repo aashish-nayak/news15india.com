@@ -48,9 +48,9 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
 
 });
 // =============== Country State City Routes ==============
-Route::get('/countries',[WorldDataController::class,'countries'])->name('countries');
-Route::get('/states/{country_id}',[WorldDataController::class,'states'])->name('states');
-Route::get('/cities/{state_id}',[WorldDataController::class,'cities'])->name('cities');
+Route::get('/location/countries',[WorldDataController::class,'countries'])->name('countries');
+Route::get('/location/states/{country_id}',[WorldDataController::class,'states'])->name('states');
+Route::get('/location/cities/{state_id}',[WorldDataController::class,'cities'])->name('cities');
 
 // =============== Comments Routes ==============
 $middleware = (Config::get('comments.guest_commenting') == true) ? ProtectAgainstSpam::class : 'auth';
@@ -63,6 +63,7 @@ Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply']
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
 Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->middleware(['auth'])->name('poll.vote');
+Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');
 
 // ==================== Backpanel Panel Routes ==================
 Route::get('/admin',function(){

@@ -18,8 +18,8 @@ class TestController extends Controller
         // $news->viewsUp();
         // dd($news->visitors()->toArray());
         // dd(User::find(1)->details);
-        $now = date('Y-m-d');
-        $poll = Poll::where('isClosed','=',NULL)->whereDate('starts_at','<=',$now)->whereDate('ends_at','>=',$now)->orderBy('views')->first();
-        dd($now,$poll->toArray());
+        // $now = date('Y-m-d');
+        // $poll = Poll::where('isClosed','=',NULL)->whereDate('starts_at','<=',$now)->whereDate('ends_at','>=',$now)->orderBy('views')->first();
+        dd(auth('web')->check());
     }
 }
