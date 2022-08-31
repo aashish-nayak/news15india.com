@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\NewsDataTable;
 use App\Models\Admin;
 use Carbon\Carbon;
 use App\Models\Tag;
@@ -177,9 +178,10 @@ class NewsController extends Controller
         return response()->json(['success' => 'Status Changed Successfully!']);
     }
 
-    public function show()
+    public function show(NewsDataTable $datatable)
     {
-        return view('backpanel.news.view-news');
+        // return view('backpanel.news.view-news');
+        return $datatable->render('backpanel.news.view-news');
     }
 
     public function edit($id)
