@@ -27,6 +27,7 @@ class PollHandler
     {
 
         $poll = new Poll([
+            'topic' => $request['topic'],
             'question' => $request['question'],
             'image' => $request['image'],
             'organized_by' => $request['organized_by'],
@@ -101,6 +102,7 @@ class PollHandler
             $poll->canVoterSeeResult = 0;
         }
 
+        $poll->topic = $data['topic'];
         $poll->question = $data['question'];
         $poll->image = $data['image'];
         $poll->organized_by = $data['organized_by'];

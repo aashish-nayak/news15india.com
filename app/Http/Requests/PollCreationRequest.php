@@ -31,7 +31,6 @@ class PollCreationRequest extends FormRequest
 
         return [
             'question' => 'present|required',
-            'canVisitorsVote' => 'required',
             'options.*' => 'present|required',
             'starts_at' => 'required|date',
             'ends_at' => 'sometimes|date|after:starts_at',

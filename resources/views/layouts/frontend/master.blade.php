@@ -252,6 +252,23 @@
     <script src="{{ asset('front-assets/js/app.js') }}"></script>
     @includeIf('vendor.worlddata.ajax-script')
     @stack('js')
+    <script>
+        function clipboardCopy(that) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(that).data('copy')).select();
+            document.execCommand("copy");
+            $temp.remove();
+            $(that).attr('data-original-title','Copied!');
+            $(that).tooltip('show');
+            setTimeout(() => {
+                $(that).attr('data-original-title','Copy To ClipBoard');
+            }, 500);
+        }
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
 </body>
 
 </html>

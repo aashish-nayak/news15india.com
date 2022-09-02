@@ -12,7 +12,7 @@ class Poll extends Model
 {
     use PollCreator, PollAccessor, PollManipulator, PollQueries;
 
-    protected $fillable = ['question', 'image', 'canVisitorsVote', 'canVoterSeeResult','organized_by'];
+    protected $fillable = ['topic', 'question', 'image', 'canVisitorsVote', 'canVoterSeeResult','organized_by'];
 
     protected $table = 'polls';
 
