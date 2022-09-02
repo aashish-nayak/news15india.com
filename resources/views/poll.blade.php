@@ -33,6 +33,7 @@
             </aside>
             <div class="col-md-6 col-12 px-1 pr-md-1 order-1 order-md-2">
                 <div class="main-bg-clr mx-auto container my-2">
+                    @if($polls->count()>0)
                     @foreach ($polls as $poll)
                     @php
                         $new = new App\Helpers\PollWriter();
@@ -44,6 +45,9 @@
                         </a>
                     </section>
                     @endforeach
+                    @else
+                    @includeIf('components.poll-stub.no-poll')
+                    @endif
                 </div>
             </div>
             <aside class="col-md-3 col-12 my-1 pt-1 px-1 my-md-0 order-3 order-md-3">
