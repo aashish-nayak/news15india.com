@@ -30,6 +30,6 @@ trait PollWriterResults
                 ];
         });
         $question = $poll->question;
-        echo view(config('larapoll_config.results') ? config('larapoll_config.results') : 'components.poll-stub.results', compact('options', 'question','sharePoll'));
+        echo view(config('larapoll_config.results') ? config('larapoll_config.results') : 'components.poll-stub.results', compact('options', 'question','sharePoll','poll'));
     }
 }
