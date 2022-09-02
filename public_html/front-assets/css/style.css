@@ -2551,3 +2551,15 @@ button.back-to-top.show:active {
     border-radius:50%;
     object-fit:cover;
 }
+
+.clipboard{
+    font-size: 1.7rem;
+    color: white;
+    background: var(--text-color-dark);
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+.clipboard:hover,.clipboard:focus{
+    color: white;
+    background: var(--text-color-dark);
+}

@@ -19,7 +19,7 @@
                         <div class="d-flex justify-content-between align-content-center my-2 border p-2">
                             <div class="form-group me-1">
                                 <label class="form-label">Survey Start Date :</label>
-                                <div class="input-group input-group-sm"> <span class="input-group-text rounded-0 bg-danger text-light" id="inputGroup-sizing-sm">C</span>
+                                <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
                                     <input type="date" readonly value="{{\Carbon\Carbon::parse($poll->starts_at)->format('Y-m-d')}}" class="form-control rounded-0" />
                                 </div>
                             </div>

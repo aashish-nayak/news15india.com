@@ -88,13 +88,14 @@
                         @if(isset($edit))
                         @method('PATCH')
                         @endif
-                        <h6 class="text-center py-1 fw-bold" style="border: 1px solid #c7c7c7be">RAJASTHAN ELECTION SURVEY 2022</h6>
+                        <label class="form-label">Survey Topic:</label>
+                        <input type="text" required name="topic" value="@if(isset($edit)){{$edit->topic}}@else{{old('topic')}}@endif" class="form-control form-control-sm rounded-0" placeholder="Enter a Poll Topic; exm: RAJASTHAN ELECTION SURVEY 2022" >
                         <div class="row mt-3 justify-content-between align-items-center">
                             <div class="col-md-6 mb-3">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="form-label">Survey Start Date :</label>
-                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0 bg-danger text-light" id="inputGroup-sizing-sm">C</span>
+                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
                                             <input type="date" required name="starts_at" value="@if(isset($edit)){{\Carbon\Carbon::parse($edit->starts_at)->format('Y-m-d')}}@else{{old('starts_at')}}@endif" class="form-control rounded-0" />
                                         </div>
                                         @error('starts_at')
@@ -103,7 +104,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Survey End Date :</label>
-                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0 bg-danger text-light" id="inputGroup-sizing-sm">C</span>
+                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
                                             <input type="date" required name="ends_at" value="@if(isset($edit)){{\Carbon\Carbon::parse($edit->ends_at)->format('Y-m-d')}}@else{{old('ends_at')}}@endif" class="form-control rounded-0" />
                                         </div>
                                         @error('ends_at')

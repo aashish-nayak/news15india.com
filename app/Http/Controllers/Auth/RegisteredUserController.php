@@ -58,7 +58,7 @@ class RegisteredUserController extends Controller
                 'ip' => request()->getClientIp(),
                 'clicks' => 0,
             ];
-            return Visitor::create($data);
+            Visitor::create($data);
         }
         Auth::login($user);
         if(Session::get('redirect_to')){
