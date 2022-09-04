@@ -12,15 +12,15 @@
 <div class="card mt-1">
     <div class="card-header">
         <div class="text-center">
-            <h4 class="m-0 text-primary-clr"><strong>Public Survey</strong></h4>
+            <h5 class="m-0 text-primary-clr"><strong>{{$poll->topic}}</strong></h5>
         </div>
     </div>
     <div class="card-body">
         <div class="text-left mb-4">
-            <h5>Poll: {{ $question }}</h5>
+            <h6 style="color: var(--secondary);">सवाल: {{ $question }}</h6>
         </div>
         @foreach($options as $option)
-            <div class='result-option-id mb-3' style="font-size:14px">
+            <div class='result-option-id mb-2' style="font-size:14px">
                 <div class="d-flex justify-content-between align-items-center mb-1">
                     <strong>{{ $option->name }}</strong><span class='pull-right'>{{ $option->percent }}%</span>
                 </div>
