@@ -21,11 +21,11 @@
             <div class="col-12 px-1">
                 <div class="row row-cols-2 mx-0 justify-content-between align-items-center">
                     <div class="col px-1">
-                        @auth
+                        @if(auth('web')->check() == true || $poll->canVisitorsVote == 1)
                         <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
                         @else
-                        <a href="{{route('login',['redirect_to'=>route('poll',$poll->id)])}}" class="btn btn-dark" style="font-size: 15px;">Login</a>
-                        @endauth
+                        <a href="{{route('login',['redirect_to'=>route('poll',$poll->id)])}}" data-toggle="tooltip" data-placement="top" title="Login for Vote"  class="btn btn-dark" style="font-size: 15px;">Login</a>
+                        @endif
                     </div>
                     <div class="col px-1">
                         <div class="d-flex justify-content-end align-items-center">

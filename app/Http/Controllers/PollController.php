@@ -94,7 +94,12 @@ class PollController extends Controller
         $users = collect();
         foreach ($poll->options as $key => $option) {
             if($option->voters->count()>0){
-                $users->push($option->voters);
+                foreach ($option->voters as $subkey => $voter) {
+                    $voter->reference->voted_option_id = $option->id;
+                    $voter->reference->voted_to = $option->name;
+                    $voter->reference->voted_created_at = $voter->created_at;
+                    $users->push($voter->reference);
+                }
             }
         }
         $users = $users->flatten();

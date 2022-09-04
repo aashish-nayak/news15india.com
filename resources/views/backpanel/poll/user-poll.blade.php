@@ -71,14 +71,14 @@
                         @foreach ($users as $user)
                         <tr>
                             <td>{{$user->id}}</td>
-                            <td>{{\Carbon\Carbon::parse($user->pivot->created_at)->diffForHumans()}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->details->phone_number}}</td>
-                            <td>{{$user->details->zip}}</td>
-                            <td>{{$user->details->city->name}}</td>
-                            <td>{{$user->details->state->name}}</td>
-                            <td>{{$user->details->country->name}}</td>
-                            <td>{{$user->options[0]->name}}</td>
+                            <td>{{\Carbon\Carbon::parse($user->voted_created_at)->diffForHumans()}}</td>
+                            <td>{{(isset($user->name))? $user->name : $user->ip}}</td>
+                            <td>{{(isset($user->details->phone_number))? $user->details->phone_number : 'Nill'}}</td>
+                            <td>{{(isset($user->details->zip))? $user->details->zip : 'Nill'}}</td>
+                            <td>{{(isset($user->details->city->name))? $user->details->city->name : 'Nill'}}</td>
+                            <td>{{(isset($user->details->state->name))? $user->details->state->name : 'Nill'}}</td>
+                            <td>{{(isset($user->details->country->name))? $user->details->country->name : 'Nill'}}</td>
+                            <td>{{$user->voted_to}}</td>
                         </tr>
                         @endforeach
                     </tbody>

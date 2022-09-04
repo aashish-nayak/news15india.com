@@ -62,7 +62,7 @@ Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply']
 // =============== User Panel Routes ==============
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
-Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->middleware(['auth'])->name('poll.vote');
+Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->name('poll.vote');
 Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');
 
 // ==================== Backpanel Panel Routes ==================

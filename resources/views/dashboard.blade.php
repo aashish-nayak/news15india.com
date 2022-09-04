@@ -36,7 +36,8 @@
             float: none;
             margin: 0 auto;
             width: 50%;
-            height: 50%;
+            height: 110px;
+            object-fit: cover;
             -webkit-border-radius: 50% !important;
             -moz-border-radius: 50% !important;
             border-radius: 50% !important;
@@ -214,6 +215,14 @@
             color: #abb6c4;
             margin-right: 5px;
         }
+
+        
+    @media screen and (max-width: 992px) {
+        .profile-userpic img {
+            height: 150px;
+            object-fit: cover;
+        }
+    }
     </style>
 @endpush
 @section('sections')
@@ -309,10 +318,10 @@
                                 @isset(auth('web')->user()->details->avatar)
                                     <img loading="lazy"
                                         src="{{ asset('storage/user-avatars/' . auth('web')->user()->details->avatar) }}"
-                                        class="text-center img-fluid author-avatar border" alt="">
+                                        class="text-center img-fluid  border" alt="">
                                 @else
                                     <img src="{{ asset('front-assets/img/user.png') }}"
-                                        class="text-center img-fluid author-avatar border" alt="" loading="lazy">
+                                        class="text-center img-fluid  border" alt="" loading="lazy">
                                 @endisset
                             </div>
                             <!-- END SIDEBAR USERPIC -->
