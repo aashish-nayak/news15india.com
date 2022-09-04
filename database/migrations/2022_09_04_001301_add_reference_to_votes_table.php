@@ -14,7 +14,7 @@ class AddReferenceToVotesTable extends Migration
     public function up()
     {
         Schema::table('votes', function (Blueprint $table) {
-            // $table->dropConstrainedForeignId('user_id');
+            $table->dropConstrainedForeignId('user_id');
             $table->integer('user_id')->after('id');
             $table->string('reference_type')->after('user_id')->default('App\\\Models\\\User');
         });
