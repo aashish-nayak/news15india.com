@@ -18,12 +18,12 @@
 @section('sections')
     <div class="col-12 mt-4 text-end">
         <a href="javascript:void(0)" class="btn btn-primary mr-3 btn-sm" data-bs-toggle="modal"
-            data-bs-target="#exampleLargeModal">Create Poll</a>
+            data-bs-target="#exampleLargeModal">Create Survey</a>
     </div>
     <div class="col-12 mt-2">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title m-0">Polls</h4>
+                <h4 class="card-title m-0 d-flex align-items-center"><i class="bx bx-poll me-2" style="font-size: 30px"></i> All Surveys</h4>
             </div>
             <div class="card-body">
                 <div class="">
@@ -36,7 +36,10 @@
                                 <th data-priority="2">Survey_Date</th>
                                 <th data-priority="3">Organized</th>
                                 <th data-priority="4" data-width="35%" class="text-center">Question</th>
-                                <th data-priority="5">Options</th>
+                                <th data-priority="5">Option-A</th>
+                                <th data-priority="5">Option-B</th>
+                                <th data-priority="5">Option-C</th>
+                                <th data-priority="5">Option-D</th>
                                 <th data-priority="6">Votes</th>
                                 <th data-priority="7">Actions</th>
                             </tr>
@@ -48,16 +51,16 @@
                                     <td>{{ \Carbon\Carbon::parse($poll->starts_at)->format('d.m.Y') }}</td>
                                     <td>{{ $poll->organized_by }}</td>
                                     <td class="text-primary fw-bold text-center">{{ $poll->question }}</td>
+                                    @foreach ($poll->options as $option)
                                     <td>
-                                        @foreach ($poll->options as $option)
-                                            <span class="badge bg-secondary">{{$option->name}}</span>
-                                        @endforeach
+                                        {{$option->name}}
                                     </td>
+                                    @endforeach
                                     <td>{{ $poll->votes->count() }}</td>
                                     <td>
                                         <div class="row row-cols-3 order-actions justify-content-center gap-1">
-                                            <a href="{{$poll->users_link}}" class="col text-dark border border-dark" title="Edit"><i class="bx bxs-show"></i></a>
-                                            <a href="{{$poll->edit_link}}" class="col edit-category border border-dark" title="Edit"><i class="bx bxs-edit"></i></a>
+                                            {{-- <a href="{{$poll->users_link}}" class="col text-dark border border-dark" title="Edit"><i class="bx bxs-show"></i></a> --}}
+                                            <a href="{{$poll->edit_link}}" class="col edit-category border border-dark" title="View"><i class="bx bxs-show"></i></a>
                                             <form method="POST" action="{{ $poll->delete_link }}" class="col p-0">
                                                 @csrf
                                                 @method('delete')
@@ -75,7 +78,7 @@
             </div>
         </div>
     </div>
-    <form @if(!isset($edit)) action="{{route('admin.poll.store')}}" @else action="{{route('admin.poll.update',$edit->id)}}" @endif method="post">
+    {{-- <form @if(!isset($edit)) action="{{route('admin.poll.store')}}" @else action="{{route('admin.poll.update',$edit->id)}}" @endif method="post">
         <div class="modal fade" id="exampleLargeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
@@ -227,6 +230,125 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">@if(!isset($edit))Publish @else Update @endif</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> --}}
+    <form action="{{route('admin.poll.store')}}" method="post">
+        <div class="modal fade" id="exampleLargeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header py-0">
+                        <h6 class="modal-title d-flex align-items-center"><i class="bx bx-edit fs-4 me-2"></i>  Add New Survey</h6>
+                        <a type="button" data-bs-dismiss="modal" aria-label="Close"><i class="bx bx-x fs-3"></i></a>
+                    </div>
+                    <div class="modal-body">
+                        @csrf
+                        <label class="form-label">Survey Topic:</label>
+                        <input type="text" required name="topic" value="{{old('topic')}}" class="form-control form-control-sm rounded-0" placeholder="Enter a Poll Topic; exm: RAJASTHAN ELECTION SURVEY 2022" >
+                        <div class="row mt-3 justify-content-between align-items-center">
+                            <div class="col-md-6 mb-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Survey Start Date :</label>
+                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
+                                            <input type="date" required name="starts_at" value="{{old('starts_at')}}" class="form-control rounded-0" />
+                                        </div>
+                                        @error('starts_at')
+                                            <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Survey End Date :</label>
+                                        <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
+                                            <input type="date" required name="ends_at" value="{{old('ends_at')}}" class="form-control rounded-0" />
+                                        </div>
+                                        @error('ends_at')
+                                            <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Survey Organized By :</label>
+                                <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-user"></i></span>
+                                    <input type="text" required name="organized_by" value="{{old('organized_by')}}" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                                @error('organized_by')
+                                    <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <label for="inputAddress3" class="form-label">Survey Question</label>
+                                <textarea class="form-control" required name="question" id="inputAddress3" placeholder="Enter Question here" rows="5">{{old('question')}}</textarea>
+                                @error('question')
+                                    <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <div class="preview-image-wrapper poll-preview cursor-pointer m-0" data-bs-toggle="modal" data-bs-target="#media-box">
+                                    <img src="https://cms.botble.com/vendor/core/core/base/images/placeholder.png" alt="Preview image" id="bannerPreview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                    <a href="javascript:void(0)" class="btn_remove_image" id="removeBanner" title="Remove image">X</a>
+                                </div>
+                                <input type="hidden" required name="image" id="bannerId" value="{{old('image')}}">
+                                @error('image')
+                                    <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <div class="row row-cols-md-2">
+                                    <div class="col">
+                                        <label class="custom-label d-flex justify-content-start align-items-center">
+                                            <input id="canVoterSeeResult" checked name="canVoterSeeResult" type="checkbox" value="1">
+                                            <span class="ms-2">Allow Voters to See Results</span><br>
+                                        </label>
+                                        @error('canVoterSeeResult')
+                                            <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col">
+                                        <label class="custom-label d-flex justify-content-start align-items-center">
+                                            <input id="canVisitors" name="canVisitorsVote" type="checkbox" value="1">
+                                            <span class="ms-2">Allow guests to vote on the question</span><br>
+                                        </label>
+                                        @error('canVisitorsVote')
+                                            <span class="text-danger d-inline-flex text-capitalize" style="font-size: 11px">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label class="form-label mb-1">Option A</label>
+                                <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">1</span>
+                                    <input type="text" required name="options[]" value="@if(isset(old('options')[0])){{old('options')[0]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label class="form-label mb-1">Option B</label>
+                                <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">2</span>
+                                    <input type="text" required name="options[]" value="@if(isset(old('options')[1])){{old('options')[1]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label class="form-label mb-1">Option C</label>
+                                <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">3</span>
+                                    <input type="text" required name="options[]" value="@if(isset(old('options')[2])){{old('options')[2]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label class="form-label mb-1">Option D</label>
+                                <div class="input-group input-group-sm"> <span class="input-group-text px-3 rounded-0" id="inputGroup-sizing-sm">4</span>
+                                    <input type="text" required name="options[]" value="@if(isset(old('options')[3])){{old('options')[3]}}@endif" class="form-control rounded-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Publish</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
