@@ -8,7 +8,7 @@
             <div class="modal-content modal-content-2">
                 <div class="modal-header modal-header-2">
                     <h5 class="modal-title"><i class="bx bx-rename"></i> Rename</h5>
-                    <button type="button" class="renameModalClose" aria-label="Close"><i class="fs-18 bx bx-x"></i></button>
+                    <button type="button" class="renameModalClose btn py-0 fs-3 close text-white"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
                     @csrf
@@ -31,7 +31,7 @@
             <div class="modal-content modal-content-2">
                 <div class="modal-header modal-header-2">
                     <h5 class="modal-title"><i class="bx bx-cloud-download"></i> Download</h5>
-                    <button type="button" class="downloadModalClose" aria-label="Close"><i class="fs-18 bx bx-x"></i></button>
+                    <button type="button" class="downloadModalClose btn py-0 fs-3 close text-white"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
                     @csrf

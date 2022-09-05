@@ -119,7 +119,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::prefix('/polls')->name('poll.')->group(function(){
         Route::get('/', [PollController::class,'index'])->name('index');
         Route::post('/', [PollController::class,'store'])->name('store');
-        Route::get('/create', [PollController::class,'create'])->name('create');
+        Route::get('/view/{poll}', [PollController::class,'view'])->name('view');
         Route::get('/edit/{poll}', [PollController::class,'edit'])->name('edit');
         Route::patch('/{poll}', [PollController::class,'update'])->name('update');
         Route::delete('/{poll}', [PollController::class,'remove'])->name('remove');
