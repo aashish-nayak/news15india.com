@@ -17,7 +17,7 @@
     </div>
     <div class="card-body">
         <div class="text-left mb-4">
-            <h6 style="color: var(--secondary);">सवाल: {{ $question }}</h6>
+            <h6 style="color: #333;word-spacing: 2px; font-weight: 800 !important;">सवाल: {{ $question }}</h6>
         </div>
         @foreach($options as $option)
             <div class='result-option-id mb-2' style="font-size:14px">
@@ -34,7 +34,7 @@
                 <div class="col px-1">
                     @auth
                     @else
-                    <a href="{{route('login',['redirect_to'=>route('poll',$poll->id)])}}" data-toggle="tooltip" data-placement="top" title="Login for Vote"  class="btn btn-dark" style="font-size: 15px;">Login</a>
+                    <a href="{{route('login',['redirect_to'=>route('poll',$poll->id)])}}" data-toggle="tooltip" data-placement="top" title="Login for Vote"  class="btn btn-dark" style="font-size: 15px;">वोट करे !</a>
                     @endauth
                 </div>
                 <div class="col px-1">

@@ -75,7 +75,7 @@ class PollController extends Controller
     //     return view('backpanel.poll.index', compact('polls','creators','edit','canChangeOptions','options'));
     // }
 
-    public function view(Poll $poll)
+    public function view(Poll $poll,$innerClass = false)
     {
         $total = $poll->votes()->count();
         $results = $poll->results()->grab();
@@ -87,17 +87,24 @@ class PollController extends Controller
                 ];
         });
         $poll->options_result = $options;
-        $poll->starts_at = date('d-m-Y',strtotime($poll->starts_at));
-        $poll->ends_at = date('d-m-Y',strtotime($poll->ends_at));
         $poll->image_path = asset('storage/media/'.$poll->pollImage()->first()->filename);
         $poll->users_link = route('admin.poll.users', $poll->id);
+        if($innerClass == true){
+            return $poll;
+        }
         return response()->json($poll);
     }
 
-    public function update(Poll $poll, PollCreationRequest $request)
+    public function update(PollCreationRequest $request)
     {
-        PollHandler::modify($poll, $request->all());
-        return redirect()->route('admin.poll.index')->with('success', 'Poll Updated Successfully!');
+        try {
+            $poll = Poll::find($request->id);
+            PollHandler::modify($poll, $request->all());
+            $poll_view = $this->view($poll,true);
+            return response()->json(['status'=>'success','message'=>'Poll Updated Successfully!','poll'=>$poll_view]);
+        } catch (\Exception $e) {
+            return response()->json(['status'=>'error','message'=>$e->getMessage()]);
+        }
     }
 
     public function remove(Poll $poll)
@@ -112,10 +119,12 @@ class PollController extends Controller
         foreach ($poll->options as $key => $option) {
             if($option->voters->count()>0){
                 foreach ($option->voters as $subkey => $voter) {
-                    $voter->reference->voted_option_id = $option->id;
-                    $voter->reference->voted_to = $option->name;
-                    $voter->reference->voted_created_at = $voter->created_at;
-                    $users->push($voter->reference);
+                    if($voter->reference != null){
+                        $voter->reference->voted_option_id = $option->id;
+                        $voter->reference->voted_to = $option->name;
+                        $voter->reference->voted_created_at = $voter->created_at;
+                        $users->push($voter->reference);
+                    }
                 }
             }
         }

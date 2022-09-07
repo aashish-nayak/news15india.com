@@ -1,8 +1,5 @@
 @extends('layouts.frontend.master')
-@section('meta-tags')
-    
-    @stack('metaPoll')
-@endsection
+
 @section('sections')
     <main class="container-fluid mx-auto position-relative">
         <div class="row">
@@ -30,28 +27,31 @@
                     @if($polls->count()>0)
                     @foreach ($polls as $key => $poll)
                     @if ($polls->count()== 1 && $key == 0)
-                        @push('metaPoll')
-                            @meta([
-                                'title' => $poll->topic,
-                                'prefix' => ' - ' . setting('site_name'),
-                                'keywords' => setting('site_meta_keyword'),
-                                'description' => setting('site_meta_description'),
-                                'image' => asset('storage/media/'.$poll->pollImage->filename),
-                                'type' => 'Polls',
-                            ])
-                        @endpush
+                    @php
+                        $meta = [
+                            'title' => $poll->topic,
+                            'prefix' => ' - ' . setting('site_name'),
+                            'keywords' => setting('site_meta_keyword'),
+                            'description' => setting('site_meta_description'),
+                            'image' => asset('storage/media/'.$poll->pollImage->filename),
+                            'type' => 'Polls',
+                        ];
+                    @endphp
                     @else
-                        @push('metaPoll')
-                            @meta([
-                                'title' => 'Polls',
-                                'prefix' => ' - ' . setting('site_name'),
-                                'keywords' => setting('site_meta_keyword'),
-                                'description' => setting('site_meta_description'),
-                                'image' => setting('site_log'),
-                                'type' => 'Polls',
-                            ])
-                        @endpush
+                    @php
+                        $meta = [
+                            'title' => 'Polls',
+                            'prefix' => ' - ' . setting('site_name'),
+                            'keywords' => setting('site_meta_keyword'),
+                            'description' => setting('site_meta_description'),
+                            'image' => setting('site_log'),
+                            'type' => 'Polls',
+                        ];
+                    @endphp
                     @endif
+                    @section('meta-tags')
+                    @meta($meta)
+                    @endsection
                     @php
                         $new = new App\Helpers\PollWriter();
                         $new->draw($poll);

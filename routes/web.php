@@ -121,7 +121,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/', [PollController::class,'store'])->name('store');
         Route::get('/view/{poll}', [PollController::class,'view'])->name('view');
         Route::get('/edit/{poll}', [PollController::class,'edit'])->name('edit');
-        Route::patch('/{poll}', [PollController::class,'update'])->name('update');
+        Route::post('/update', [PollController::class,'update'])->name('update');
         Route::delete('/{poll}', [PollController::class,'remove'])->name('remove');
         Route::get('/{poll}/users', [PollController::class,'users'])->name('users');
         Route::patch('/{poll}/lock', [PollController::class,'lock'])->name('lock');
