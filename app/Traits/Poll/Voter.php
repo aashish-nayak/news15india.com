@@ -10,8 +10,10 @@ use App\Exceptions\VoteInClosedPollException;
 use App\Classes\Guest;
 use App\Models\Option;
 use App\Models\Poll;
+use App\Models\Visitor;
 use App\Models\Vote;
 use InvalidArgumentException;
+use League\CommonMark\Reference\Reference;
 
 trait Voter
 {
@@ -66,9 +68,10 @@ trait Voter
                 throw new InvalidArgumentException("Only id are accepted");
         });
         if ($this instanceof Guest) {
-            collect($options)->each(function ($option) {
+            collect($options)->each(function ($option){
                 Vote::create([
                     'user_id' => $this->user_id,
+                    'reference_type'=>$this->reference,
                     'option_id' => $option
                 ]);
             });
@@ -89,11 +92,17 @@ trait Voter
         $poll = Poll::findOrFail($poll_id);
 
         if ($poll->canGuestVote()) {
+            if(auth('web')->check() == true){
+                $user = auth('web')->user();
+            }else{
+                $user = Visitor::where('ip',request()->ip())->where('user_id',NULL)->first();
+            }
             $result = DB::table('polls')
-                ->selectRaw('count(*) As total')
-                ->join('options', 'polls.id', '=', 'options.poll_id')
+            ->selectRaw('count(*) As total')
+            ->join('options', 'polls.id', '=', 'options.poll_id')
                 ->join('votes', 'votes.option_id', '=', 'options.id')
-                ->where('votes.user_id', request()->ip())
+                ->where('votes.user_id', $user->id)
+                ->where('votes.reference_type', get_class($user))
                 ->where('options.poll_id', $poll_id)->count();
             return $result !== 0;
         }
@@ -108,6 +117,6 @@ trait Voter
      */
     public function options()
     {
-        return $this->belongsToMany(Option::class, 'votes')->withTimestamps();
+        return $this->belongsToMany(Option::class, Vote::class,'user_id','option_id')->withTimestamps();
     }
 }

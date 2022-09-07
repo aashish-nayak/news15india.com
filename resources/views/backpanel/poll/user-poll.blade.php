@@ -1,7 +1,15 @@
 @extends('layouts.backpanel.master')
 @section('title', 'News')
 @push('plugin-css')
-
+<style>
+    .preview-content{
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+    .form-label{
+        font-size: 12px;
+    }
+</style>
 @endpush
 @section('sections')
     <div class="col-12 mt-4 text-end">
@@ -15,41 +23,57 @@
             <div class="card-body">
                 <div class="row mb-3 g-2">
                     <div class="col-md-4">
-                        <h6 class="bg-light-info px-3 py-1 d-inline" style="font-size: 14px">Survey Details</h6>
-                        <div class="d-flex justify-content-between align-content-center my-2 border p-2">
-                            <div class="form-group me-1">
-                                <label class="form-label">Survey Start Date :</label>
-                                <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
-                                    <input type="date" readonly value="{{\Carbon\Carbon::parse($poll->starts_at)->format('Y-m-d')}}" class="form-control rounded-0" />
+                        <div class="position-relative">
+                            <label for="inputAddress3" class="form-label custom-label-float">Survey Details</label>
+                            <div class="d-flex justify-content-between align-content-center my-2 border p-2 pt-4">
+                                <div class="form-group me-1 mb-1">
+                                    <label class="form-label">Survey Start Date :</label>
+                                    <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
+                                        <div class="preview-content form-control rounded-0">
+                                            <p class="m-0">
+                                                {{\Carbon\Carbon::parse($poll->starts_at)->format('d-m-Y')}}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Survey Organized By :</label>
-                                <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-user"></i></span>
-                                    <input type="text" readonly value="{{$poll->organized_by}}" class="form-control rounded-0" />
+                                <div class="form-group col-md-7">
+                                    <label class="form-label">Survey Organized By :</label>
+                                    <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm"><i class="bx bx-calendar"></i></span>
+                                        <div class="preview-content form-control rounded-0">
+                                            <p class="m-0">
+                                                {{$poll->organized_by}}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <h6 class="bg-light-info px-3 py-1 d-inline" style="font-size: 14px">Survey Question</h6>
-                        <div class=" my-2 border p-1">
-                            <textarea readonly class="form-control form-control-sm" rows="2" style="min-height: 70px">{{$poll->question}}</textarea>
+                        <div class="position-relative my-2">
+                            <label for="inputAddress3" class="form-label custom-label-float">Survey Question</label>
+                            <div class="preview-content form-control rounded-0 pt-4" style="height: 100px" id="poll-question">
+                                {{$poll->question}}
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <h6 class="bg-light-info px-3 py-1 d-inline" style="font-size: 14px">Survey Options</h6>
-                        <div class="row row-cols-md-2 g-1 justify-content-between align-content-center my-2 border p-1">
-                            @php
-                                $abc = ["A","B","C","D"];
-                            @endphp
-                            @foreach ($poll->options as $key =>$optionArr)
-                            <div class="col">
-                                <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm">{{$abc[$key]}}</span>
-                                    <input type="text" readonly value="{{$optionArr->name}}" class="form-control rounded-0" >
+                        <div class="position-relative my-2 ">
+                            <label for="inputAddress3" class="form-label custom-label-float">Survey Options</label>
+                            <div class="row row-cols-md-2 g-1 justify-content-between align-content-center border p-1 pt-4 m-0">
+                                @php
+                                    $abc = ["A","B","C","D"];
+                                @endphp
+                                @foreach ($poll->options as $key =>$optionArr)
+                                <div class="col">
+                                    <div class="input-group input-group-sm"> <span class="input-group-text rounded-0" id="inputGroup-sizing-sm">{{$abc[$key]}}</span>
+                                        <div class="preview-content form-control rounded-0" >
+                                            {{$optionArr->name}}
+                                        </div>
+                                    </div>
                                 </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -71,14 +95,14 @@
                         @foreach ($users as $user)
                         <tr>
                             <td>{{$user->id}}</td>
-                            <td>{{\Carbon\Carbon::parse($user->pivot->created_at)->diffForHumans()}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->details->phone_number}}</td>
-                            <td>{{$user->details->zip}}</td>
-                            <td>{{$user->details->city->name}}</td>
-                            <td>{{$user->details->state->name}}</td>
-                            <td>{{$user->details->country->name}}</td>
-                            <td>{{$user->options[0]->name}}</td>
+                            <td>{{\Carbon\Carbon::parse($user->voted_created_at)->diffForHumans()}}</td>
+                            <td>{{(isset($user->name))? $user->name : $user->ip}}</td>
+                            <td>{{(isset($user->details->phone_number))? $user->details->phone_number : '--'}}</td>
+                            <td>{{(isset($user->details->zip))? $user->details->zip : '--'}}</td>
+                            <td>{{(isset($user->details->city->name))? $user->details->city->name : '--'}}</td>
+                            <td>{{(isset($user->details->state->name))? $user->details->state->name : '--'}}</td>
+                            <td>{{(isset($user->details->country->name))? $user->details->country->name : '--'}}</td>
+                            <td>{{$user->voted_to}}</td>
                         </tr>
                         @endforeach
                     </tbody>

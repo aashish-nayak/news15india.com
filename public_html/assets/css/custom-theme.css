@@ -9,14 +9,32 @@ body{
     --secondary: #003d4f;
     -webkit-font-smoothing: antialiased;
 }
-
 .modal-header{
-    background-color :var(--primary);
-    color: whitesmoke;
-    padding: 10px 20px;
+    padding: 0.3rem 1rem;
+    background-color: #efefef;
+    border-bottom: 2px solid #c7c7c7;
+    border-top: 2px solid #c7c7c7;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.modal-content{
+    border-radius: 0px;
 }
 
-.modal-title {
+.custom-label-float{
+    position: absolute;
+    top: -10%;
+    background-color: #ededed;
+    padding: 5px 10px;
+    border: 1px solid #cdcdcd;
+}
+.modal-header-3,.modal-header-2{
+    background-color :var(--primary);
+    color: whitesmoke;
+    padding: 4px 20px;
+}
+
+.modal-header-3 .modal-title ,.modal-header-2 .modal-title{
     margin-bottom: 0;
     line-height: 1.5;
     color: whitesmoke;
@@ -25,6 +43,7 @@ body{
 .modal-header-2{
     background-color :var(--secondary);
 }
+
 .modal-content-2{
     box-shadow: 1px -1px 10px 2px #0000007a;
 }

@@ -65,7 +65,7 @@ Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply']
 // =============== User Panel Routes ==============
 Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
-Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->middleware(['auth'])->name('poll.vote');
+Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->name('poll.vote');
 Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');
 
 // ==================== Backpanel Panel Routes ==================
@@ -122,9 +122,9 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::prefix('/polls')->name('poll.')->group(function(){
         Route::get('/', [PollController::class,'index'])->name('index');
         Route::post('/', [PollController::class,'store'])->name('store');
-        Route::get('/create', [PollController::class,'create'])->name('create');
+        Route::get('/view/{poll}', [PollController::class,'view'])->name('view');
         Route::get('/edit/{poll}', [PollController::class,'edit'])->name('edit');
-        Route::patch('/{poll}', [PollController::class,'update'])->name('update');
+        Route::post('/update', [PollController::class,'update'])->name('update');
         Route::delete('/{poll}', [PollController::class,'remove'])->name('remove');
         Route::get('/{poll}/users', [PollController::class,'users'])->name('users');
         Route::patch('/{poll}/lock', [PollController::class,'lock'])->name('lock');

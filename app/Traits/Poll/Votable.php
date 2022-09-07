@@ -23,7 +23,7 @@ trait Votable
      */
     public function voters()
     {
-        return $this->belongsToMany(app('config')->get('larapoll_config.user_model'), 'votes')->withTimestamps();
+        return $this->hasMany(Vote::class,'option_id');
     }
 
     /**

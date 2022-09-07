@@ -54,7 +54,7 @@
         <li>
             <a href="{{Route('admin.poll.index')}}">
                 <div class="parent-icon"><i class="bx bx-poll"></i></div>
-                <div class="menu-title">Polls</div>
+                <div class="menu-title">Surveys</div>
             </a>
         </li>
         {{-- @endpermission --}}

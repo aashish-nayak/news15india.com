@@ -7,9 +7,9 @@
 <div class="modal fade" id="media-box">
     <div class="modal-dialog modal-dialog-centered modal-xl mt-0" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header modal-header-3">
                 <h5 class="modal-title"><i class="bx bx-images"></i> Media</h5>
-                <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
+                <button type="button" class="btn py-0 fs-3 close text-white" data-bs-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body py-0 row h-100" id="media-row">
                 @includeIf('backpanel.media.media-actions')

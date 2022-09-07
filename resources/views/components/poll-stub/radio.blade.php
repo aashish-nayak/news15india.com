@@ -1,14 +1,12 @@
 <div class="card mt-1">
     <div class="card-header">
         <div class="text-center">
-            <h4 class="m-0 text-primary-clr"><strong>Public Survey</strong></h4>
+            <h5 class="m-0 text-primary-clr"><strong>{{$poll->topic}}</strong></h5>
         </div>
     </div>
     <div class="card-body">
         <div class="text-left">
-            <h6 class="">
-                {{$question}}
-            </h6>
+            <h6 style="color: #333;word-spacing: 2px; font-weight: 800 !important;">सवाल: {{$question}}</h6>
         </div>
         <form action="{{route('poll.vote',$id)}}" method="POST" style="font-size: 15px;" class="py-3">
             @csrf
@@ -21,11 +19,11 @@
             <div class="col-12 px-1">
                 <div class="row row-cols-2 mx-0 justify-content-between align-items-center">
                     <div class="col px-1">
-                        @auth
-                        <button type="submit" class="btn btn-dark" style="font-size: 15px;">VOTE</button>
+                        @if(auth('web')->check() == true || $poll->canVisitorsVote == 1)
+                        <button type="submit" class="btn btn-dark" style="font-size: 15px;">वोट करे !</button>
                         @else
-                        <a href="{{route('login',['redirect_to'=>route('poll',$poll->id)])}}" class="btn btn-dark" style="font-size: 15px;">Login</a>
-                        @endauth
+                        <a href="{{route('login',['redirect_to'=>route('poll',$poll->id)])}}" data-toggle="tooltip" data-placement="top" title="Login for Vote"  class="btn btn-dark" style="font-size: 15px;">वोट करे !</a>
+                        @endif
                     </div>
                     <div class="col px-1">
                         <div class="d-flex justify-content-end align-items-center">
