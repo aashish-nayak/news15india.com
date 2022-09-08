@@ -17,8 +17,8 @@
 <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
 <script src="{{ asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/input-tags/js/tagsinput.js') }}"></script>
+@stack('plugin-scripts')
 
 <!--app JS-->
-@stack('plugin-scripts')
 <script src="{{ asset('assets/js/app.js')}}"></script>
 @stack('scripts')

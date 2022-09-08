@@ -22,6 +22,6 @@
         </div>
     </div>
 @endsection
-@push('scripts')
+@push('plugin-scripts')
 {!! $dataTable->scripts() !!}
 @endpush
