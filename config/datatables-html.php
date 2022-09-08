@@ -24,7 +24,7 @@ return [
     /*
      * Html builder script template.
      */
-    'script' => 'datatables::script',
+    'script' => 'vendor.datatables.script',
 
     /*
      * Html builder script template for DataTables Editor integration.

@@ -128,4 +128,24 @@ class AdminController extends Controller
         session()->flash('success', 'Member Deleted successfully!');
         return redirect()->back();
     }
+
+
+    // Global Function for bulk delete
+    public function bulkDelete(Request $request)
+    {
+        try {
+            foreach ($request->ids as $key => $value) {
+                $request->model::find($value)->delete();
+            }
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Items Delete Successfully'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
 }

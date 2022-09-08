@@ -74,6 +74,7 @@ Route::get('/admin',function(){
 });
 Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(function(){
     Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
+    Route::post('/item/bulk/delete', [AdminController::class,'bulkDelete'])->name('bulk.delete');
     // ----------------[ Backpanel Panel Category Module Routes ]------------------------
     Route::prefix('/category')->name('category.')->group(function(){
         Route::get('/', [CategoryController::class,'index'])->middleware('permission:read-category')->name('index');
@@ -101,8 +102,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/edit/{id}',[NewsController::class,'edit'])->middleware('permission:update-news')->name('edit');
         Route::get('/trash/{id}',[NewsController::class,'trash'])->middleware('permission:delete-news')->name('delete');
         Route::get('/status/{id}', [NewsController::class, 'status'])->middleware('permission:update-news')->name('status');
-        Route::get('/trash-news', [NewsController::class,'trashview'])->middleware('permission:trash-news')->name('trash-news');
-        Route::get('/ajax-trash-news', [NewsController::class,'ajaxtrash'])->middleware('permission:trash-news')->name('ajax-trash-news');
+        Route::get('/trash', [NewsController::class,'trashview'])->middleware('permission:trash-news')->name('trash-news');
+        Route::get('/ajax-trash', [NewsController::class,'ajaxtrash'])->middleware('permission:trash-news')->name('ajax-trash-news');
         Route::get('/destroy/{id}',[NewsController::class,'destroy'])->middleware('permission:destroy-news')->name('destroy');
         Route::get('/restore/{id}',[NewsController::class,'restore'])->middleware('permission:restore-news')->name('restore');
     });
@@ -114,7 +115,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/trash/{comment}',[CommentController::class,'trash'])->middleware('permission:delete-comments')->name('delete');
         Route::get('/approve/{id}/{approve_type}', [CommentController::class, 'status'])->middleware('permission:approve-comments')->name('is_approve');
         Route::get('/trash-comments', [CommentController::class,'trashview'])->middleware('permission:read-trash-comments')->name('trash');
-        Route::get('/ajax-trash-comments', [CommentController::class,'ajaxtrash'])->middleware('permission:read-trash-comments')->name('ajax-trash-comments');
+        Route::get('/ajax-trash', [CommentController::class,'ajaxtrash'])->middleware('permission:read-trash-comments')->name('ajax-trash-comments');
         Route::get('/destroy/{id}',[CommentController::class,'admin_destroy'])->middleware('permission:destroy-comments')->name('destroy');
         Route::get('/restore/{id}',[CommentController::class,'restore'])->middleware('permission:restore-comments')->name('restore');
     });

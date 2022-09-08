@@ -9,6 +9,7 @@
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/select.dataTables.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/datatable.server-side.js')}}"></script>
 
 <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js')}}"></script>

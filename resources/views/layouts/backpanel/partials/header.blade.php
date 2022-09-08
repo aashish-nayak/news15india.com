@@ -7,6 +7,7 @@
     <link rel="icon" href="{{setting('admin_favicon')}}" type="image/png" />
     <!--plugins-->
     <link rel="stylesheet" href="{{asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/plugins/datatable/css/select.dataTables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/plugins/simplebar/css/simplebar.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}" />
 	<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2-bootstrap4.css')}}" />
