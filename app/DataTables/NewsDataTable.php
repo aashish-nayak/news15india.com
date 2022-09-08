@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\News;
 use Carbon\Carbon;
+use Yajra\DataTables\Exports\DataTablesCollectionExport;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -12,12 +13,9 @@ use Yajra\DataTables\Services\DataTable;
 
 class NewsDataTable extends DataTable
 {
-    /**
-     * Build DataTable class.
-     *
-     * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
-     */
+
+    protected $actions = ['pageLength','create','export','print','reset'];
+
     public function dataTable($query)
     {
         return datatables()
@@ -87,17 +85,18 @@ class NewsDataTable extends DataTable
     {
         return $this->builder()
                     ->lengthMenu([10,25,50,100,200])
+                    ->stateSave('true')
                     ->setTableId('news-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
+                        Button::make('pageLength'),
                         Button::make('create'),
                         Button::make('export'),
                         Button::make('print'),
                         Button::make('reset'),
-                        Button::make('reload')
                     );
     }
 
@@ -110,22 +109,26 @@ class NewsDataTable extends DataTable
     {
         return [
             Column::computed('selectbox','<input type="checkbox" />')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(10)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->searchable(false)
+                ->orderable(false)
+                ->width(10)
+                ->addClass('text-center'),
             Column::make('id'),
             Column::make('image'),
             Column::make('title'),
             Column::make('categories'),
             Column::make('admin_id'),
             Column::make('status'),
-            Column::make('views','views'),
-            Column::make('created_at'),
+            Column::make('views','views')->addClass('text-center'),
+            Column::make('created_at')->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(30)
+                ->searchable(false)
+                ->orderable(false)
+                ->width(80)
                 ->addClass('text-center'),
         ];
     }

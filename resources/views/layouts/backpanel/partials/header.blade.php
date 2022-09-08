@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/simplebar/css/simplebar.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}" />
 	<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2-bootstrap4.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/plugins/datatable/css/buttons.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/pace.min.css')}}"/>
@@ -28,5 +29,5 @@
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" />
     @stack('css')
     <title>@yield('title') - {{ setting('site_name') }}</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.4/sweetalert2.all.js" integrity="sha512-aYkxNMS1BrFK2pwC53ea1bO8key+6qLChadZfRk8FtHt36OBqoKX8cnkcYWLs1BR5sqgjU5SMIMYNa85lZWzAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{asset('assets/plugins/limonte-sweetalert2/sweetalert2.all.js')}}"></script>
 </head>

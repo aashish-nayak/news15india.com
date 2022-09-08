@@ -177,6 +177,10 @@ return [
         App\Providers\PermissionServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Yajra\DataTables\HtmlServiceProvider::class,
+        Yajra\DataTables\ButtonsServiceProvider::class,
+        Yajra\DataTables\ExportServiceProvider::class,
+        Yajra\DataTables\EditorServiceProvider::class,
     ],
 
     /*

@@ -180,7 +180,6 @@ class NewsController extends Controller
 
     public function show(NewsDataTable $datatable)
     {
-        // return view('backpanel.news.view-news');
         return $datatable->render('backpanel.news.view-news');
     }
 

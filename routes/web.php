@@ -94,10 +94,10 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel News Module Routes ]------------------------
     Route::prefix('/news')->name('news.')->group(function(){
-        Route::get('/create-news', [NewsController::class,'index'])->middleware('permission:create-news')->name('create');
+        Route::get('/', [NewsController::class,'show'])->middleware('permission:read-news')->name('view-all-news');
+        Route::get('/create', [NewsController::class,'index'])->middleware('permission:create-news')->name('create');
         Route::post('/store-news', [NewsController::class,'store'])->middleware('permission:create-news')->name('store');
         Route::get('/ajax',[NewsController::class,'view_news'])->middleware('permission:read-news')->name('ajax-list');
-        Route::get('/view-news', [NewsController::class,'show'])->middleware('permission:read-news')->name('view-all-news');
         Route::get('/edit/{id}',[NewsController::class,'edit'])->middleware('permission:update-news')->name('edit');
         Route::get('/trash/{id}',[NewsController::class,'trash'])->middleware('permission:delete-news')->name('delete');
         Route::get('/status/{id}', [NewsController::class, 'status'])->middleware('permission:update-news')->name('status');
