@@ -12,8 +12,10 @@ $(function(){
         });
         if(selected.length > 0){
             $('#bulkDelete').removeClass('d-none');
+            $('#trash').addClass('d-none');
         }else{
             $('#bulkDelete').addClass('d-none');
+            $('#trash').removeClass('d-none');
         }
     });
     $(document).on('click','#bulkDelete',function (e) {

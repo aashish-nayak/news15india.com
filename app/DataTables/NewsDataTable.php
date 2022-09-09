@@ -72,7 +72,17 @@ class NewsDataTable extends DataTable
      */
     public function query(News $model)
     {
-        return $model->newQuery();
+        $data = $model->query();
+        if (request()->from_date != '' && request()->to_date != '') {
+            $data = $data->whereBetween('created_at', [request()->from_date, request()->to_date]);
+        }
+        if (request()->author != 'all') {
+            $data = $data->where('admin_id', request()->author);
+        }
+        if (request()->status != '') {
+            $data = $data->where('status', request()->status);
+        }
+        return $this->applyScopes($data);
     }
 
     /**
@@ -88,7 +98,18 @@ class NewsDataTable extends DataTable
             ->stateSave('true')
             ->setTableId('news-table')
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            // ->minifiedAjax('', null, ['from_date'=> "07-05-2022",
+            //          'to_date'=> "30-06-2022",])
+            ->postAjax([
+                'dataType'=>'json',
+                'data'=>'function ( d ) {
+                    d.from_date =  $("#filter_from").val();
+                    d.to_date = $("#filter_to").val();
+                    d.author = $("#author").val();
+                    d.status = $("#status").val();
+                    return d;
+                  }',
+            ])
             ->dom('Bfrtip')
             ->orderBy(1)
             ->parameters([

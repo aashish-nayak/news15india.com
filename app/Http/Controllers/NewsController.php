@@ -31,92 +31,6 @@ class NewsController extends Controller
         return view('backpanel.news.add-news', compact('categories', 'tags', 'media', 'users'));
     }
 
-    public function view_news(Request $request)
-    {
-        $draw = $request->get('draw');
-        $start = $request->get("start");
-        $rowperpage = $request->get("length"); // Rows display per page
-
-        $columnIndex_arr = $request->get('order');
-        $columnName_arr = $request->get('columns');
-        $order_arr = $request->get('order');
-        $search_arr = $request->get('search');
-
-        $columnIndex = $columnIndex_arr[0]['column']; // Column index
-        $columnName = $columnName_arr[$columnIndex]['data']; // Column name
-        $columnSortOrder = $order_arr[0]['dir']; // asc or desc
-        $searchValue = $search_arr['value']; // Search value
-
-        // Total records
-        if (auth('admin')->user()->hasRole('super-admin') == true) {
-            $totalRecords = News::select('count(*) as allcount')->count();
-            $totalRecordswithFilter = News::select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
-        } elseif (auth('admin')->user()->hasRole('admin') == true) {
-            $super = Admin::whereHas('roles',function(Builder $query){
-                $query->where('slug','super-admin');
-            })->first();
-            $totalRecords = News::where('admin_id','!=',$super->id)->select('count(*) as allcount')->count();
-            $totalRecordswithFilter = News::where('admin_id','!=',$super->id)->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
-        } else {
-            $totalRecords = News::where('admin_id', auth('admin')->user()->id)->select('count(*) as allcount')->count();
-            $totalRecordswithFilter = News::where('admin_id', auth('admin')->user()->id)->select('count(*) as allcount')->where('title', 'like', '%' . $searchValue . '%')->count();
-        }
-        // Fetch records
-        $records = News::with('categories', 'newsImage', 'creator')->orderBy($columnName, $columnSortOrder);
-        if (auth('admin')->user()->hasRole('admin') == true) {
-            $super = Admin::whereHas('roles',function(Builder $query){
-                $query->where('slug','super-admin');
-            })->first();
-            $records = $records->where('admin_id','!=',$super->id);
-        } elseif (auth('admin')->user()->hasRole('super-admin') == false && auth('admin')->user()->hasRole('admin') == false) {
-            $records = $records->where('admin_id', auth('admin')->user()->id);
-        }
-        $records = $records->where(function ($query) use ($searchValue) {
-            $query->where('news.title', 'like', '%' . $searchValue . '%')->orWhere('news.slug', 'like', '%' . $searchValue . '%');
-        })
-        ->select('news.*')
-        ->skip($start)
-        ->take($rowperpage)
-        ->get();
-
-        $data_arr = array();
-        foreach ($records as $key => $record) {
-            $sno = $key + 1;
-            $id = $record->id;
-            $title = Str::limit($record->title, 50);
-            $slug = $record->slug;
-            $categories = implode(",", $record->categories->pluck('slug')->toArray());
-            $banner = ($record->image != NULL) ? $record->newsImage->filename : 'No Image';
-            $status = $record->status;
-            $views = $record->getViews();
-            $created = $record->created_at;
-            $createdDate = date('d-M-Y', strtotime($created));
-            $createdby = $record->creator->name;
-            $data_arr[] = array(
-                "sno" => $sno,
-                "id" => $id,
-                "title" => $title,
-                "slug" => $slug,
-                "categories" => $categories,
-                "banner" => $banner,
-                "status" => $status,
-                "created_by" => $createdby,
-                "views" =>$views,
-                "created_at" => $created,
-                "created_date" => $createdDate,
-            );
-        }
-
-        $response = array(
-            "draw" => intval($draw),
-            "iTotalRecords" => $totalRecords,
-            "iTotalDisplayRecords" => $totalRecordswithFilter,
-            "aaData" => $data_arr
-        );
-
-        return response()->json($response);
-    }
-
     public function store(Request $request)
     {
         if (isset($request->id)) {
@@ -180,7 +94,8 @@ class NewsController extends Controller
 
     public function show(NewsDataTable $datatable)
     {
-        return $datatable->render('backpanel.news.view-news');
+        $authors = Admin::get();
+        return $datatable->render('backpanel.news.view-news',compact('authors'));
     }
 
     public function edit($id)
