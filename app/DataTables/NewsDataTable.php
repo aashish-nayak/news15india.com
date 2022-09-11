@@ -122,7 +122,7 @@ class NewsDataTable extends DataTable
             ])
             ->buttons(
                 Button::make('pageLength'),
-                Button::make('export')->exportOptions('modifier: { selected: null }'),
+                // Button::make('export')->exportOptions('modifier: { selected: null }'),
                 Button::make('print')->exportOptions('modifier: { selected: null }'),
                 Button::make('reload'),
                 Button::make('reset'),
