@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-md-2 px-1">
                                     <select class="form-select form-select-sm" required name="status" id="status">
-                                        <option value="">Status</option>
+                                        <option value="all">Status</option>
                                         <option value="1">Active</option>
                                         <option value="0">Reject</option>
                                     </select>

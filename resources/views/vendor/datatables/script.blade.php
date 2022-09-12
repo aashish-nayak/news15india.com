@@ -18,37 +18,9 @@ $(function(){
             $('#trash').removeClass('d-none');
         }
     });
-    $(document).on('click','#bulkDelete',function (e) {
-        e.preventDefault();
-        let url = $(this).attr('href');
-        let model = $(this).data('model');
-        let $this = $(this);
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: {
-                "_token" : "{{ csrf_token() }}",
-                "model" : model,
-                "ids" : selected,
-            },
-            dataType: "json",
-            success: function (response) {
-                if(response.status == 'success'){
-                    Swal.fire(
-                        'Successful!',
-                        response.message,
-                        'success'
-                    );
-                    $(document).find('.buttons-reload').trigger('click');
-                    $this.addClass('d-none');
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: response.message
-                    });
-                }
-            }
-        });
+    $(".dt-buttons .buttons-reset").click(function (e) {
+        $('.filters').find('input').val('');
+        $('.filters').find('select').children().prop('selected',false);
+        selected = [];
     });
 });

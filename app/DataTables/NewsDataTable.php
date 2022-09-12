@@ -79,7 +79,7 @@ class NewsDataTable extends DataTable
         if (request()->author != 'all') {
             $data = $data->where('admin_id', request()->author);
         }
-        if (request()->status != '') {
+        if (request()->status != 'all') {
             $data = $data->where('status', request()->status);
         }
         return $this->applyScopes($data);
@@ -122,7 +122,7 @@ class NewsDataTable extends DataTable
             ])
             ->buttons(
                 Button::make('pageLength'),
-                Button::make('export')->exportOptions('modifier: { selected: null }'),
+                // Button::make('export')->exportOptions('modifier: { selected: null }'),
                 Button::make('print')->exportOptions('modifier: { selected: null }'),
                 Button::make('reload'),
                 Button::make('reset'),
