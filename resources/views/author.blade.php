@@ -4,11 +4,9 @@
     $avatar = $author->details->avatar;
     if(Storage::exists('public/admins-avatar/'.$avatar)){
         $avatar = asset('storage/admins-avatar/'.$avatar);
-    }
-    if($avatar == ''){
+    }else{
         $avatar = 'https://eu.ui-avatars.com/api/?name='.$author->name.'&size=250';
     }
-    return $avatar;
 @endphp
 @meta([
     'title'         => $author->name,
@@ -52,7 +50,7 @@
                                     <a href="{{route('single-news',$sidebar_news->slug)}}">
                                         <h6 class="text-light m-0">{{\Str::limit($sidebar_news->title,40)}}</h6>
                                     </a>
-                                    <p class="post-date m-1 text-white">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                    <p class="post-date m-1 text-white">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +66,7 @@
                                 <div class="post-data">
                                     <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
                                         <div class="post-meta">
-                                            <p class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                            <p class="post-date m-0 ">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                         </div>
                                         <h6>{{\Str::limit($sidebar_news->title,50)}}</h6>
                                     </a>
@@ -97,7 +95,7 @@
                                             {{\Str::limit($sidebar_news->title,50)}}
                                         </h6>
                                     </a>
-                                    <p class="m-1 text-white">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                    <p class="m-1 text-white">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +119,7 @@
                                         <div class="row m-0">
                                             <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">{{$key+1}}</span>
                                             <div class="post-meta col-10 p-0">
-                                                <p style="color:#f2f2f2;" class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                                <p style="color:#f2f2f2;" class="post-date m-0 ">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                                 <h6 style="color:#f2f2f2;">{{\Str::limit($sidebar_news->title,50)}}</h6>
                                             </div>
                                         </div>
@@ -287,7 +285,7 @@
                                 </div>
                                 <div class="d-flex justify-content-start px-md-3">
                                     <div class="col news-status px-2 ml-2"><i class="fas fa-user mr-3"></i>{{$news->creator->name}}</div>
-                                    <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>{{$news->created_at}}</div>
+                                    <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>{{\Carbon\Carbon::parse($news->created_at)->diffForHumans()}}</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
                                     @php

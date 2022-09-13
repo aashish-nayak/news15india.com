@@ -49,8 +49,7 @@
                                 $avatar = $news->creator->details->avatar;
                                 if(Storage::exists('public/admins-avatar/'.$avatar)){
                                     $avatar = asset('storage/admins-avatar/'.$avatar);
-                                }
-                                if($avatar == ''){
+                                }else{
                                     $avatar = 'https://eu.ui-avatars.com/api/?name='.$news->creator->name.'&size=250';
                                 }
                             @endphp

@@ -29,7 +29,7 @@
                                 <div class="content-overlay"></div>
                                 <div class="img-title" style="width: 75%;">
                                     <h5 class="text-light">{{\Str::limit($popNews->title,40)}}</h5>
-                                    <p class="post-date py-1 text-white">{{\Carbon\Carbon::parse($popNews->created_at)->format(' H:i A | d M Y,')}}</p>
+                                    <p class="post-date py-1 text-white">{{frontDateFormat($popNews->created_at)}}</p>
                                 </div>
                             </a>
                         </div>
@@ -118,9 +118,9 @@
                                     <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                 </div>
                                 <div class="card-body col-8 col-md-9">
-                                    <h6 class="card-text m-0">{{\Str::limit($news1->title,55)}}</h6>
+                                    <h6 class="card-text">{{\Str::limit($news1->title,55)}}</h6>
                                     <p class="post-date m-0">
-                                        {{$news1->created_at}}
+                                        {{frontDateFormat($news1->created_at)}}
                                     </p>
                                 </div>
                             </div>
@@ -137,8 +137,8 @@
                                         <img src="{{asset('storage/media/'.$news1->newsImage->filename)}}" loading="lazy" alt="Card image cap" class="">
                                     </div>
                                     <div class="card-body col-8 col-md-9">
-                                        <h6 class="card-text m-0">{{\Str::limit($news1->title,65)}}</h6>
-                                        <p class="post-date m-0">{{$news1->created_at}}</p>
+                                        <h6 class="card-text">{{\Str::limit($news1->title,65)}}</h6>
+                                        <p class="post-date m-0">{{frontDateFormat($news1->created_at)}}</p>
                                     </div>
                                 </div>
                             </a>
@@ -236,7 +236,7 @@
                             <div class="post-data ">
                                 <a href="{{route('single-news',$sideNews->slug)}}" class="post-title">
                                     <div class="post-meta">
-                                        <p class="post-date m-0 ">{{$sideNews->created_at}}</p>
+                                        <p class="post-date m-0">{{frontDateFormat($sideNews->created_at)}}</p>
                                     </div>
                                     <h6>{{\Str::limit($sideNews->title,65)}}</h6>
                                 </a>
@@ -562,7 +562,7 @@
                                 <img src="{{asset('storage/media/'.$sideNews->newsImage->filename)}}" class="img-fluid" loading="lazy" alt="" style="height: 100%;object-fit-cover;">
                                 <div class="img-title">
                                     <h6 class="text-light m-0"><a class="text-white" href="{{route('single-news',$sideNews->slug)}}">{{\Str::limit($sideNews->title,65)}}</a></h6>
-                                    <p class="p-1 m-0 text-light">{{$sideNews->created_at}}</p>
+                                    <p class="p-1 m-0 text-light">{{frontDateFormat($sideNews->created_at)}}</p>
                                 </div>
                             </div>
                         </div>
@@ -626,7 +626,7 @@
                             <h4 class="my-0 text-dark">{{\Str::limit($news9->title,80)}}</h4>
                         </a>
                         <p class="my-2 text-muted">{{\Str::limit($news9->short_description,80)}}</p>
-                        <div class="news-status py-1">{{$news9->created_at}}</div>
+                        <div class="news-status py-1">{{frontDateFormat($news9->created_at)}}</div>
                     </div>
                     <div class="mx-3" style=" border-bottom: 2px dotted #333;"></div>
                 </div>
@@ -650,7 +650,7 @@
                         </h5>
                     </a>
                     <p class="post-date m-0 p-1">
-                        {{$news10->created_at}}
+                        {{frontDateFormat($news10->created_at)}}
                     </p>
                     <p class="text-muted p-1">
                         {{\Str::limit($news10->short_description,80)}}
@@ -681,7 +681,7 @@
                         </h5>
                     </a>
                     <p class="post-date m-0 p-1">
-                        {{$news10->created_at}}
+                        {{frontDateFormat($news10->created_at)}}
                     </p>
                     <p class="text-muted p-1">
                         {{\Str::limit($news10->short_description,80)}}
@@ -712,7 +712,7 @@
                         </h5>
                     </a>
                     <p class="post-date m-0 p-1">
-                        {{$news10->created_at}}
+                        {{frontDateFormat($news10->created_at)}}
                     </p>
                     <p class="text-muted p-1">
                         {{\Str::limit($news10->short_description,80)}}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Setting;
+use Carbon\Carbon;
 
 if (!function_exists('formatBytes')) {
     function formatBytes($size, $precision = 2)
@@ -78,5 +79,12 @@ if (!function_exists('convertYoutube')) {
             "www.youtube.com/embed/$2",
             $string
         );
+    }
+}
+
+if(!function_exists('frontDateFormat')){
+    function frontDateFormat($date)
+    {
+        return Carbon::parse($date)->format('H:i A | d M Y');
     }
 }
