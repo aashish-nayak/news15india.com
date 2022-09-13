@@ -143,7 +143,7 @@ class NewsDataTable extends DataTable
                 ->width(10)
                 ->addClass('text-center select-checkbox'),
             Column::make('id'),
-            Column::make('image'),
+            Column::make('image')->width(60),
             Column::make('title'),
             Column::make('categories'),
             [
