@@ -45,11 +45,15 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
                         <div style="height: 80px;width:80px;">
-                            @isset($news->creator->details->avatar->filename)
-                            <img src="{{asset('storage/media/'.$news->creator->details->avatar->filename)}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
-                            @else
-                            <img src="{{asset('front-assets/img/user.png')}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
-                            @endisset
+                            @php
+                                $avatar = $news->creator->details->avatar;
+                                if(Storage::exists('public/admins-avatar/'.$avatar)){
+                                    $avatar = asset('storage/admins-avatar/'.$avatar);
+                                }else{
+                                    $avatar = 'https://eu.ui-avatars.com/api/?name='.$news->creator->name.'&size=250';
+                                }
+                            @endphp
+                            <img src="{{$avatar}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="col-md-4 col-9 pl-md-3 px-md-1">

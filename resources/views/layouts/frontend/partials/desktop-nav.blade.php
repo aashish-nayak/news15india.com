@@ -15,7 +15,16 @@
                     <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center" ><i class="fas fa-bell mt-3"></i></a>
                     <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center"><i class="far fa-tv-retro mt-3"></i></i></a>
                     @auth('web')
-                    <a href="{{route('dashboard')}}" cstyle="font-size:25px" data-toggle="tooltip" data-placement="top" title="Profile" class="mr-3 p-1 text-center"><i class="fas fa-user mt-3"></i></a>
+                    @php
+                        $avatar = auth('web')->user()->details->avatar;
+                        $default = 'https://eu.ui-avatars.com/api/?name='.auth('web')->user()->name.'&size=250';
+                        if(Storage::exists('public/users-avatar/'.$avatar)){
+                            $avatar = asset('storage/users-avatar/'.$avatar);
+                        }else{
+                            $avatar = $default;
+                        }
+                    @endphp
+                    <a href="{{route('dashboard')}}" style="font-size:25px" data-toggle="tooltip" data-placement="top" title="Profile" class="mr-3 p-1 text-center"><img class="mobile-avatar" src="{{$avatar}}" alt=""></a>
                     @else
                     <a href="{{route('login')}}" style="font-size:25px" data-toggle="tooltip" data-placement="top" title="Login" class="mr-3 p-1 text-center"><i class="fas fa-user mt-3"></i></a>
                     @endauth

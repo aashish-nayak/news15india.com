@@ -94,7 +94,7 @@ class NewsController extends Controller
 
     public function show(NewsDataTable $datatable)
     {
-        $authors = Admin::get();
+        $authors = Admin::select('id','name')->get();
         return $datatable->render('backpanel.news.view-news',compact('authors'));
     }
 

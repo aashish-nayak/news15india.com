@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
@@ -52,7 +53,19 @@ class Admin extends Authenticatable
     
     public function details()
     {
-        return $this->hasOne(AdminDetail::class);
+        $city = City::where('state_id',33)->inRandomOrder()->first()->id;
+        return $this->hasOne(AdminDetail::class)->withDefault([
+            'country_id' => 101,
+            'state_id' => 33,
+            'city_id' => $city,
+            'zip' => '000000',
+            'address' => null,
+            'avatar' => 'https://eu.ui-avatars.com/api/?name='.$this->name.'&size=250',
+            'phone' => null,
+            'created_at' => now()->toDateTimeString(),
+            'updated_at' => now()->toDateTimeString(),
+        ]);
     }
+
 
 }

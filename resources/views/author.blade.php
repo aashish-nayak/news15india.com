@@ -1,13 +1,19 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
+@php
+    $avatar = $author->details->avatar;
+    if(Storage::exists('public/admins-avatar/'.$avatar)){
+        $avatar = asset('storage/admins-avatar/'.$avatar);
+    }else{
+        $avatar = 'https://eu.ui-avatars.com/api/?name='.$author->name.'&size=250';
+    }
+@endphp
 @meta([
     'title'         => $author->name,
     'prefix'        => ' - '.setting('site_name'),
     'description'   => $author->about,
-    'image'         => asset('storage/media/'.$author->details->avatar->filename),
-    'image_alt'     => $author->details->avatar->alt,
-    'image_size'    => $author->details->avatar->size,
-    'image_type'    => $author->details->avatar->type,
+    'image'         => $avatar,
+    'image_alt'     => $author->name,
     'type'          => 'author',
     'auhtor'        => $author->name,
 ])
@@ -44,7 +50,7 @@
                                     <a href="{{route('single-news',$sidebar_news->slug)}}">
                                         <h6 class="text-light m-0">{{\Str::limit($sidebar_news->title,40)}}</h6>
                                     </a>
-                                    <p class="post-date m-1 text-white">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                    <p class="post-date m-1 text-white">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +66,7 @@
                                 <div class="post-data">
                                     <a href="{{route('single-news',$sidebar_news->slug)}}" class="post-title">
                                         <div class="post-meta">
-                                            <p class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                            <p class="post-date m-0 ">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                         </div>
                                         <h6>{{\Str::limit($sidebar_news->title,50)}}</h6>
                                     </a>
@@ -89,7 +95,7 @@
                                             {{\Str::limit($sidebar_news->title,50)}}
                                         </h6>
                                     </a>
-                                    <p class="m-1 text-white">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                    <p class="m-1 text-white">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +119,7 @@
                                         <div class="row m-0">
                                             <span class="col-2 p-0" style="color: #FE9517; font-size:30px;">{{$key+1}}</span>
                                             <div class="post-meta col-10 p-0">
-                                                <p style="color:#f2f2f2;" class="post-date m-0 ">{{\Carbon\Carbon::parse($sidebar_news->created_at)->format(' H:i A | d M Y,')}}</p>
+                                                <p style="color:#f2f2f2;" class="post-date m-0 ">{{frontDateFormat($sidebar_news->created_at)}}</p>
                                                 <h6 style="color:#f2f2f2;">{{\Str::limit($sidebar_news->title,50)}}</h6>
                                             </div>
                                         </div>
@@ -130,11 +136,7 @@
             <div class="container-fluid mx-auto px-0 mt-1">
                 <div class="d-flex flex-wrap justify-content-center">
                     <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center">
-                        @isset($author->details->avatar->filename)
-                        <img loading="lazy" src="{{asset('storage/media/'.$author->details->avatar->filename)}}" class="text-center img-fluid author-avatar" alt="">
-                        @else
-                        <img src="{{asset('front-assets/img/user.png')}}" class="text-center img-fluid author-avatar" alt="" loading="lazy">
-                        @endisset
+                        <img loading="lazy" src="{{$avatar}}" class="text-center img-fluid author-avatar" alt="">
                     </div>
                     <div class="col-md-9 col-12" style="background-color: #d8d8d8;">
                         <div class="col-12 px-1 text-center flag-author-border">
@@ -283,7 +285,7 @@
                                 </div>
                                 <div class="d-flex justify-content-start px-md-3">
                                     <div class="col news-status px-2 ml-2"><i class="fas fa-user mr-3"></i>{{$news->creator->name}}</div>
-                                    <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>{{$news->created_at}}</div>
+                                    <div class="col news-status px-2"><i class="fas fa-watch mr-3"></i>{{\Carbon\Carbon::parse($news->created_at)->diffForHumans()}}</div>
                                 </div>
                                 <div class="social-icon px-4 my-2" style="font-size:18px;color:#FE9517;">
                                     @php

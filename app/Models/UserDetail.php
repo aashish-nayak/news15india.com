@@ -36,8 +36,4 @@ class UserDetail extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function avatar()
-    {
-        return $this->belongsTo(Media::class,'avatar');
-    }
 }
