@@ -1,13 +1,21 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
+@php
+    $avatar = $author->details->avatar;
+    if(Storage::exists('public/admins-avatar/'.$avatar)){
+        $avatar = asset('storage/admins-avatar/'.$avatar);
+    }
+    if($avatar == ''){
+        $avatar = 'https://eu.ui-avatars.com/api/?name='.$author->name.'&size=250';
+    }
+    return $avatar;
+@endphp
 @meta([
     'title'         => $author->name,
     'prefix'        => ' - '.setting('site_name'),
     'description'   => $author->about,
-    'image'         => asset('storage/media/'.$author->details->avatar->filename),
-    'image_alt'     => $author->details->avatar->alt,
-    'image_size'    => $author->details->avatar->size,
-    'image_type'    => $author->details->avatar->type,
+    'image'         => $avatar,
+    'image_alt'     => $author->name,
     'type'          => 'author',
     'auhtor'        => $author->name,
 ])
@@ -130,11 +138,7 @@
             <div class="container-fluid mx-auto px-0 mt-1">
                 <div class="d-flex flex-wrap justify-content-center">
                     <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center">
-                        @isset($author->details->avatar->filename)
-                        <img loading="lazy" src="{{asset('storage/media/'.$author->details->avatar->filename)}}" class="text-center img-fluid author-avatar" alt="">
-                        @else
-                        <img src="{{asset('front-assets/img/user.png')}}" class="text-center img-fluid author-avatar" alt="" loading="lazy">
-                        @endisset
+                        <img loading="lazy" src="{{$avatar}}" class="text-center img-fluid author-avatar" alt="">
                     </div>
                     <div class="col-md-9 col-12" style="background-color: #d8d8d8;">
                         <div class="col-12 px-1 text-center flag-author-border">

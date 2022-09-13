@@ -420,14 +420,14 @@ class FrontController extends Controller
             $details->user_id = auth('web')->user()->id;
         }
         if($request->hasFile('avatar')){
-            if(Storage::exists('public/user-avatars/'.$details->avatar)){
-                Storage::delete('public/user-avatars/'.$details->avatar);
+            if(Storage::exists('public/users-avatar/'.$details->avatar)){
+                Storage::delete('public/users-avatar/'.$details->avatar);
             }
             $file = $request->file('avatar');
             $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             $extension = $file->getClientOriginalExtension();
             $filename =  auth('web')->user()->name . '_' . $filename . '_' . time() . '.' . $extension;
-            $file->storeAs('public/user-avatars', $filename);
+            $file->storeAs('public/users-avatar', $filename);
             $details->avatar = $filename;
         }
         $details->phone_number = $request->phone_number;

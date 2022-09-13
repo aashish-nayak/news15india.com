@@ -316,12 +316,15 @@
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic text-center">
                                 @isset(auth('web')->user()->details->avatar)
-                                    <img loading="lazy"
-                                        src="{{ asset('storage/user-avatars/' . auth('web')->user()->details->avatar) }}"
-                                        class="text-center img-fluid  border" alt="">
+                                @php
+                                    $avatar = auth('web')->user()->details->avatar;
+                                    if(Storage::exists('public/users-avatar/'.$avatar)){
+                                        $avatar = asset('storage/users-avatar/'.$avatar);
+                                    }
+                                @endphp
+                                    <img loading="lazy" src="{{ $avatar }}" class="text-center img-fluid  border" alt="">
                                 @else
-                                    <img src="{{ asset('front-assets/img/user.png') }}"
-                                        class="text-center img-fluid  border" alt="" loading="lazy">
+                                    <img src="{{ asset('front-assets/img/user.png') }}" class="text-center img-fluid  border" alt="" loading="lazy">
                                 @endisset
                             </div>
                             <!-- END SIDEBAR USERPIC -->
