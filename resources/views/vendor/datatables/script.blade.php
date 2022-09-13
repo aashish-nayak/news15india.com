@@ -8,6 +8,7 @@ $(function(){
             var index = $.inArray(id, selected);
             if ( index === -1 ) {
                 selected.push( id );
+                $('#bulkDelete .selectedCount').text(selected.length)
             }
         });
         if(selected.length > 0){
@@ -17,5 +18,53 @@ $(function(){
             $('#bulkDelete').addClass('d-none');
             $('#trash').removeClass('d-none');
         }
+    });
+    $(document).on('click','#bulkDelete',function (e) {
+        e.preventDefault();
+        let url = $(this).attr('href');
+        let model = $(this).data('model');
+        let $this = $(this);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You Want to Move in Trash Bulk News!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Trash it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {
+                        "_token" : "{{ csrf_token() }}",
+                        "model" : model,
+                        "ids" : selected,
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if(response.status == 'success'){
+                            Swal.fire(
+                                'Successful!',
+                                response.message,
+                                'success'
+                            );
+                            $(document).find('.buttons-reload').trigger('click');
+                            $this.addClass('d-none');
+                            if($("#trash").length > 0){
+                                $("#trash").removeClass('d-none');
+                            }
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: response.message
+                            });
+                        }
+                    }
+                });
+            }
+        })
     });
 });

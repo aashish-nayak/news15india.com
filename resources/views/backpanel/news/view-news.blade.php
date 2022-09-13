@@ -43,11 +43,11 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('admin.news.create') }}" id="create" class="btn btn-success mr-3 btn-sm">Add
+                        <a href="{{ route('admin.news.create') }}" id="create" class="btn btn-success btn-sm">Add
                             News</a>
                         <a href="{{ route('admin.bulk.delete') }}" id="bulkDelete" data-model="App\Models\News"
-                            class="btn btn-danger mr-3 btn-sm d-none">Bulk Delete</a>
-                        <a href="{{ route('admin.news.trash-news') }}" id="trash" class="btn btn-info mr-3 btn-sm">View
+                            class="btn btn-danger btn-sm d-none position-relative"><span class="badge bg-dark selectedCount position-absolute top-0 start-100 translate-middle rounded-pill"></span> Bulk Delete</a>
+                        <a href="{{ route('admin.news.trash-news') }}" id="trash" class="btn btn-info btn-sm">View
                             Trash</a>
                     </div>
                 </div>
@@ -63,9 +63,22 @@
 
     <script>
         $(document).ready(function () {
-            $("#filter").click(function (e) { 
+            $(document).on("click",".delete",function (e) {
+                var url = $(this).attr("href");
                 e.preventDefault();
-                $(document).find('.dt-buttons > .buttons-reload').trigger('click');
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You Want to move this News in Trash!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Trash it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
             });
         });
     </script>
