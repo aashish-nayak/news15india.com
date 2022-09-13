@@ -236,6 +236,12 @@
         },
 
         action: function (e, dt, button, config) {
+            if ($('.filters').find('input').length > 0) {
+                $('.filters').find('input').val('');
+            }
+            if ($('.filters').find('select').length > 0) {
+                $('.filters').find('select').children().prop('selected', false);
+            }
             dt.search('');
             dt.columns().search('');
             dt.draw();

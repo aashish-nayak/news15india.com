@@ -42,7 +42,7 @@ class NewsDataTable extends DataTable
                     $q->where('name', 'like', "%$keyword%");
                 });
             })
-           
+
             ->editColumn('status', function (News $news) {
                 return view('components.datatable.status', ['status' => $news->status, 'id' => $news->id]);
             })
@@ -74,7 +74,7 @@ class NewsDataTable extends DataTable
     {
         $data = $model->query();
         if (request()->from_date != '' && request()->to_date != '') {
-            $data = $data->whereBetween('created_at', [request()->from_date, request()->to_date]);
+            $data = $data->whereDate('created_at', '>=', request()->from_date)->whereDate('created_at', '<=', request()->to_date);
         }
         if (request()->author != 'all') {
             $data = $data->where('admin_id', request()->author);
@@ -94,15 +94,13 @@ class NewsDataTable extends DataTable
     {
         return $this->builder()
             ->lengthMenu([10, 25, 50, 100, 200])
-            ->select(["style"=>'os',"selector"=>'td:first-child'])
+            ->select(["style" => 'os', "selector" => 'td:first-child'])
             ->stateSave('true')
             ->setTableId('news-table')
             ->columns($this->getColumns())
-            // ->minifiedAjax('', null, ['from_date'=> "07-05-2022",
-            //          'to_date'=> "30-06-2022",])
             ->postAjax([
-                'dataType'=>'json',
-                'data'=>'function ( d ) {
+                'dataType' => 'json',
+                'data' => 'function ( d ) {
                     d.from_date =  $("#filter_from").val();
                     d.to_date = $("#filter_to").val();
                     d.author = $("#author").val();

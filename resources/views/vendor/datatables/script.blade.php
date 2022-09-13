@@ -18,9 +18,4 @@ $(function(){
             $('#trash').removeClass('d-none');
         }
     });
-    $(".dt-buttons .buttons-reset").click(function (e) {
-        $('.filters').find('input').val('');
-        $('.filters').find('select').children().prop('selected',false);
-        selected = [];
-    });
 });

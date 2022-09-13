@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class News extends Model
 {
-    use HasFactory, SoftDeletes,Commentable, Staticable;
+    use HasFactory, SoftDeletes, Commentable, Staticable;
     protected $fillable = [
         'title',
         'slug',
@@ -34,17 +34,16 @@ class News extends Model
     {
         return $this->belongsToMany(Category::class, 'news_categories');
     }
-
-    public function getCreatedAtAttribute(){
-        return Carbon::createFromTimeStamp(strtotime($this->attributes['created_at']) )->diffForHumans();
-    }
-    public function newsImage(){
+    public function newsImage()
+    {
         return $this->belongsTo(Media::class, 'image');
     }
-    public function creator(){
+    public function creator()
+    {
         return $this->belongsTo(Admin::class, 'admin_id');
     }
-    public function tags(){
-        return $this->belongsToMany(Tag::class,'news_tag');
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'news_tag');
     }
 }
