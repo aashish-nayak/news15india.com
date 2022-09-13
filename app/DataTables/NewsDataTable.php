@@ -146,7 +146,11 @@ class NewsDataTable extends DataTable
             Column::make('image'),
             Column::make('title'),
             Column::make('categories'),
-            Column::make('admin_id'),
+            [
+                "name" => "admin_id",
+                "title" => "Author",
+                "data" => "admin_id"
+            ],
             Column::make('status'),
             Column::make('views', 'views')->addClass('text-center'),
             Column::make('created_at')->addClass('text-center'),
