@@ -11,6 +11,8 @@
     ])
 @endsection
 @push('css')
+    <link rel="stylesheet" href="{{ asset('assets/plugins/smart-wizard/css/smart_wizard_all.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/plugins/dropify/css/dropify.css') }}" />
     <style>
         body {
             background: #F1F3FA;
@@ -23,7 +25,7 @@
 
         /* Profile container */
         .profile {
-            margin: 20px 0;
+            margin: 4px 0;
         }
 
         /* Profile sidebar */
@@ -35,7 +37,7 @@
         .profile-userpic img {
             float: none;
             margin: 0 auto;
-            width: 50%;
+            width: 110px;
             height: 110px;
             object-fit: cover;
             -webkit-border-radius: 50% !important;
@@ -45,7 +47,6 @@
 
         .profile-usertitle {
             text-align: center;
-            margin-top: 20px;
         }
 
         .profile-usertitle-name {
@@ -80,52 +81,11 @@
             margin-right: 0px;
         }
 
-        .profile-usermenu {
-            margin-top: 30px;
-        }
-
-        .profile-usermenu ul {
-            border-bottom: 1px solid #f0f4f7;
-        }
-
-        .profile-usermenu ul a:last-child {
-            border-bottom: none;
-        }
-
-        .profile-usermenu ul a {
-            color: #93a3b5;
-            font-size: 16px;
-            font-weight: 500;
-            padding: 5px 10px;
-            display: block;
-        }
-
-        .profile-usermenu ul a i {
-            margin-right: 8px;
-            font-size: 14px;
-        }
-
-        .profile-usermenu ul a:hover {
-            background-color: #fafcfd;
-            color: #5b9bd1;
-        }
-
-        .profile-usermenu ul a.active {
-            border-bottom: none;
-        }
-
-        .profile-usermenu ul a.active {
-            color: #5b9bd1;
-            background-color: #f6f9fb;
-            border-left: 2px solid #5b9bd1;
-            margin-left: -2px;
-        }
-
         /* Profile Content */
         .profile-content {
             padding: 20px;
             background: #fff;
-            min-height: 460px;
+            min-height: auto;
         }
 
         .dashboard-stat,
@@ -135,7 +95,19 @@
             -ms-border-radius: 4px;
             -o-border-radius: 4px;
         }
-
+        .profile-usermenu .nav-tabs .nav-link{
+            background-color: transparent;
+            color: #333;
+            font-weight: 500;
+            border: 1px solid transparent;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+        .profile-usermenu .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+            background-color: transparent;
+            color: #333;
+            border-color: #dee2e6 #dee2e6 #fff;
+        }
         .portlet {
             margin-top: 0;
             margin-bottom: 25px;
@@ -216,13 +188,17 @@
             margin-right: 5px;
         }
 
-        
-    @media screen and (max-width: 992px) {
-        .profile-userpic img {
-            height: 150px;
-            object-fit: cover;
+
+        @media screen and (max-width: 992px) {
+            /* .profile-userpic img {
+                height: 150px;
+                object-fit: cover;
+            } */
         }
-    }
+
+        .sw.sw-justified>.nav .nav-link, .sw.sw-justified>.nav>li {
+            flex-basis: fit-content;
+        }
     </style>
 @endpush
 @section('sections')
@@ -249,153 +225,88 @@
                 </div>
             </aside>
             <div class="col-md-9 col-12 px-1 pr-md-1 order-1 order-md-2">
-                {{-- <div class="container-fluid mx-auto px-0 mt-1">
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center">
-                            @isset(auth('web')->user()->details->avatar->filename)
-                                <img loading="lazy"
-                                    src="{{ asset('storage/media/' . auth('web')->user()->details->avatar->filename) }}"
-                                    class="text-center img-fluid author-avatar" alt="">
-                            @else
-                                <img src="{{ asset('front-assets/img/user.png') }}" class="text-center img-fluid author-avatar"
-                                    alt="" loading="lazy">
-                            @endisset
-                        </div>
-                        <div class="col-md-9 col-12" style="background-color: #d8d8d8;">
-                            <div class="col-12 px-1 text-center flag-author-border">
-                                <span class="flag-color-news flag-color"><b>NEWS</b></span><span
-                                    class="flag-color-15 flag-color"><b>15</b></span><span
-                                    class="flag-color-india flag-color"><b>INDIA</b> </span>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                <div class="col-md-6 col-12 px-4 my-3 author-des">
-                                    <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2"
-                                        style="font-size:18px">
-                                        <i class="mr-md-3 mr-2 fas fa-user"></i>
-                                        <p class="text-secondary-clr m-0" style="font-size:18px">
-                                            {{ auth('web')->user()->name }}
-                                        </p>
-                                    </a>
-                                    <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2"
-                                        style="font-size:18px">
-                                        <i class="mr-md-3 mr-2 fas fa-envelope"></i>
-                                        <p class="text-secondary-clr m-0" style="font-size:18px">
-                                            {{ auth('web')->user()->email }}
-                                        </p>
-                                    </a>
-                                    <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2"
-                                        style="font-size:18px">
-                                        <i class="mr-md-3 mr-2 fas fa-user-crown"></i>
-                                        <p class="text-secondary-clr m-0" style="font-size:18px">
-                                            {{ 'User' }}
-                                        </p>
-                                    </a>
-                                    <a href="javascript:void(0)" class="d-flex text-secondary-clr mb-2"
-                                        style="font-size:18px">
-                                        <i class="mr-md-3 mr-2 fas fa-map-marker"></i>
-                                        <p class="text-secondary-clr m-0" style="font-size:18px">
-                                            {{ auth('web')->user()->details->city->name . ', ' . auth('web')->user()->details->country->name }}
-                                        </p>
-                                    </a>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-12 mb-2 mb-md-0">
-                                        </div>
-                                        <div class="col-md-12 mb-3 text-center mt-md-3">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                <div class="row profile" style="font-size: 16px">
-                    <div class="col-md-3">
-                        <div class="profile-sidebar">
-                            <!-- SIDEBAR USERPIC -->
-                            <div class="profile-userpic text-center">
+                <div class="profile" style="font-size: 16px">
+                    <div class="profile-sidebar">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 col-5 profile-userpic text-center">
                                 @isset(auth('web')->user()->details->avatar)
-                                @php
-                                    $avatar = auth('web')->user()->details->avatar;
-                                    $default = 'https://eu.ui-avatars.com/api/?name='.auth('web')->user()->name.'&size=250';
-                                    if(Storage::exists('public/users-avatar/'.$avatar)){
-                                        $avatar = asset('storage/users-avatar/'.$avatar);
-                                    }else{
-                                        $avatar = $default;
-                                    }
-                                @endphp
-                                    <img loading="lazy" src="{{ $avatar }}" class="text-center img-fluid  border" alt="">
+                                    @php
+                                        $avatar = auth('web')->user()->details->avatar;
+                                        $default = 'https://eu.ui-avatars.com/api/?name=' . auth('web')->user()->name . '&size=250';
+                                        if (Storage::exists('public/users-avatar/' . $avatar)) {
+                                            $avatar = asset('storage/users-avatar/' . $avatar);
+                                        } else {
+                                            $avatar = $default;
+                                        }
+                                    @endphp
+                                    <img loading="lazy" src="{{ $avatar }}" class="text-center img-fluid  border"
+                                        alt="">
                                 @else
-                                    <img src="{{ asset('front-assets/img/user.png') }}" class="text-center img-fluid  border" alt="" loading="lazy">
+                                    <img src="{{ asset('front-assets/img/user.png') }}" class="text-center img-fluid  border"
+                                        alt="" loading="lazy">
                                 @endisset
                             </div>
-                            <!-- END SIDEBAR USERPIC -->
-                            <!-- SIDEBAR USER TITLE -->
-                            <div class="profile-usertitle">
+                            <div class="col-md-3 col-7 profile-usertitle">
                                 <div class="profile-usertitle-name">
                                     {{ auth('web')->user()->name }}
                                 </div>
                                 <div class="profile-usertitle-job">
                                     {{ auth('web')->user()->email }}
                                 </div>
+                                <div class="profile-userbuttons">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a hre="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); this.closest('form').submit();"
+                                            class="btn btn-primary btn-sm">Logout</a>
+                                    </form>
+                                    {{-- <button type="button" class="btn btn-success btn-sm">Follow</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Message</button> --}}
+                                </div>
                             </div>
-                            <!-- END SIDEBAR USER TITLE -->
-                            <!-- SIDEBAR BUTTONS -->
-                            <div class="profile-userbuttons mb-4">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a hre="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); this.closest('form').submit();"
-                                        class="btn btn-primary btn-sm">Logout</a>
-                                </form>
-                                {{-- <button type="button" class="btn btn-success btn-sm">Follow</button>
-                          <button type="button" class="btn btn-danger btn-sm">Message</button> --}}
-                            </div>
-                            <!-- END SIDEBAR BUTTONS -->
-                            <div class="portlet light bordered m-0 rounded-0">
+                            <div class="col-md-3 portlet light m-0 ">
                                 <div class="row list-separated justify-content-between">
-                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                    <div class="col-4">
                                         <div class="uppercase profile-stat-title">
                                             {{ auth('web')->user()->followings->count() }} </div>
                                         <div class="uppercase profile-stat-text"> Followings </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                    <div class="col-4">
                                         <div class="uppercase profile-stat-title">
                                             @if (auth('web')->user()->user_ip != null)
-                                            {{ auth('web')->user()->user_ip->user_stats->count() }}
+                                                {{ auth('web')->user()->user_ip->user_stats->count() }}
                                             @else
-                                            0
+                                                0
                                             @endif
                                         </div>
                                         <div class="uppercase profile-stat-text"> Views </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                    <div class="col-4">
                                         <div class="uppercase profile-stat-title">
                                             {{ auth('web')->user()->comments->count() }} </div>
                                         <div class="uppercase profile-stat-text"> Comments </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- SIDEBAR MENU -->
-                            <div class="profile-usermenu m-0">
-                                <ul class="nav flex-column border-0" id="v-pills-tab" role="tablist"
-                                    aria-orientation="vertical">
-                                    <li>
-                                        <a type="button" class=" active" id="v-pills-home-tab" data-toggle="tab"
-                                            data-target="#v-pills-home" type="button" role="tab" aria-controls="home"
-                                            aria-selected="true"><i class="fa fa-home"></i>Profile</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- END MENU -->
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <div class="profile-content">
-                            <div class="tab-content" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                    aria-labelledby="v-pills-home-tab">
+                    <div class="profile-content mt-3">
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu m-0">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile"
+                                        type="button" role="tab" aria-controls="profile"
+                                        aria-selected="false">Profile</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="reporter-tab" data-toggle="tab" data-target="#reporter"
+                                        type="button" role="tab" aria-controls="contact"
+                                        aria-selected="false">Reporter Application</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content my-3" id="myTabContent">
+                                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <form action="{{route('user.profile.update')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <h3 class="text-center">Edit Personal Information</h3>
@@ -529,8 +440,12 @@
                                         </div>
                                     </form>
                                 </div>
+                                <div class="tab-pane fade" id="reporter" role="tabpanel" aria-labelledby="reporter-tab">
+                                    @includeIf('components.appform-wizard')
+                                </div>
                             </div>
                         </div>
+                        <!-- END MENU -->
                     </div>
                 </div>
                 <!-- Ad Banner  -->
@@ -551,3 +466,57 @@
         </div>
     </main>
 @endsection
+@push('js')
+    <script src="{{ asset('assets/plugins/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
+    <script>
+        $(function() {
+            "use strict";
+            $(document).ready(function() {
+                $("input[name='is_journalism']").on('change', function() {
+                    $("#reporter-experience").toggleClass('invisible', $(this).val());
+                });
+                $("input[name='is_office']").on('change', function() {
+                    $("#reporter-office").toggleClass('invisible', $(this).val());
+                });
+                $('.dropify').dropify({
+                    messages: {
+                        'default': 'Drag and drop a file here or click',
+                        'replace': 'Drag and drop or click to replace',
+                        'remove': 'Remove',
+                        'error': 'Ooops, something wrong appended.'
+                    },
+                    error: {
+                        'fileSize': 'The file size is too big (2M max).'
+                    },
+                });
+                // Toolbar extra buttons
+                var btnFinish = $('<button></button>').attr('type', 'submit').text('Finish').addClass(
+                    'btn btn-info sw-btn-group-extra d-none').on('click', function() {
+                    alert('Finish Clicked');
+                });
+                $(document).find('#smartwizard').smartWizard({
+                    selected: 0,
+                    theme: 'arrows',
+                    transition: {
+                        animation: 'slide-horizontal',
+                    },
+                    toolbarSettings: {
+                        toolbarPosition: "top",
+                        toolbarExtraButtons: [btnFinish]
+                    },
+                });
+                $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection,
+                    stepPosition) {
+                    if ($('button.sw-btn-next').hasClass('disabled')) {
+                        $('button.sw-btn-next').hide();
+                        $('.sw-btn-group-extra').removeClass('d-none');
+                    } else {
+                        $('button.sw-btn-next').show();
+                        $('.sw-btn-group-extra').addClass('d-none');
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

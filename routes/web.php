@@ -48,6 +48,7 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
     Route::view('/reporter-form','reporter-form');
     Route::get('/polls/{id?}',[FrontController::class,'poll'])->name('poll');
+    Route::view('/application-form','application-form');
 
 });
 // =============== Country State City Routes ==============
