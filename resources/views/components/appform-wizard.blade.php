@@ -40,8 +40,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="dob">Date Of Birth</label>
-                                <input type="date" class="form-control" id="dob"
-                                    placeholder="Enter Date Of Birth">
+                                <input type="date" class="form-control" id="dob" placeholder="Enter Date Of Birth">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="age">Age</label>
@@ -225,7 +224,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-row mb-5 invisible" id="reporter-experience">
+            <div class="form-row mb-5 d-none" id="reporter-experience">
                 <div class="form-group col-md-5">
                     <label for="Organization">Organization Name</label>
                     <input type="text" class="form-control" id="Organization"
@@ -247,14 +246,14 @@
                         <option>Other</option>
                     </select>
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-md-2">
                     <label for="Start-Journalism">Start Journalism</label>
                     <input type="date" class="form-control" id="Start-Journalism">
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-md-1">
                     <label for="Total-Experience">Experience</label>
                     <input type="text" disabled class="form-control" id="Total-Experience"
-                        placeholder="Total-Experience">
+                        placeholder="Experience">
                 </div>
             </div>
             <div class="form-row">
@@ -280,7 +279,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-row mb-5 invisible" id="reporter-office">
+            <div class="form-row mb-5 d-none" id="reporter-office">
                 <div class="form-group col-md-5">
                     <label for="Office-Address">Office Address</label>
                     <input type="text" class="form-control" id="Office-Address"

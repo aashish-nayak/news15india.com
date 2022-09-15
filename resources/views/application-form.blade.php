@@ -34,6 +34,9 @@
         .btn {
             font-size: 16px;
         }
+        .auto-height{
+            height: auto !important;
+        }
     </style>
 </head>
 
@@ -41,6 +44,7 @@
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 100vh">
             <div class="col-12">
+                <a href="{{route('home')}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
                 @includeIf('components.appform-wizard')
             </div>
         </div>
@@ -52,14 +56,20 @@
     <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
     @includeIf('vendor.worlddata.ajax-script')
     <script>
+        function dateToYears(that,changeInput = "#age") {
+            let dob = new Date($(that).val());
+            let today = new Date();
+            let age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            $(changeInput).val(age);
+        }
         $(function() {
             "use strict";
             $(document).ready(function() {
                 $("input[name='is_journalism']").on('change',function () {
-                    $("#reporter-experience").toggleClass('invisible', $(this).val());
+                    $("#reporter-experience").toggleClass('d-none', $(this).val());
                 });
                 $("input[name='is_office']").on('change',function () {
-                    $("#reporter-office").toggleClass('invisible', $(this).val());
+                    $("#reporter-office").toggleClass('d-none', $(this).val());
                 });
                 $('.dropify').dropify({
                     messages: {
@@ -92,10 +102,19 @@
                     if ($('button.sw-btn-next').hasClass('disabled')) {
                         $('button.sw-btn-next').hide();
                         $('.sw-btn-group-extra').removeClass('d-none');
+                        $("#smartwizard .tab-content").addClass('auto-height');
                     } else {
                         $('button.sw-btn-next').show();
                         $('.sw-btn-group-extra').addClass('d-none');
+                        $("#smartwizard .tab-content").removeClass('auto-height');
                     }
+                });
+
+                $("#dob").on('change',function (e) {
+                    dateToYears(this,'#age');
+                });
+                $("#Start-Journalism").on('change',function (e) {
+                    dateToYears(this,'#Total-Experience');
                 });
             });
         });

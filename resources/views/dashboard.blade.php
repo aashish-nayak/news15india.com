@@ -199,6 +199,9 @@
         .sw.sw-justified>.nav .nav-link, .sw.sw-justified>.nav>li {
             flex-basis: fit-content;
         }
+        .auto-height{
+            height: auto !important;
+        }
     </style>
 @endpush
 @section('sections')
@@ -470,14 +473,21 @@
     <script src="{{ asset('assets/plugins/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
     <script>
+        
+        function dateToYears(that,changeInput = "#age") {
+            let dob = new Date($(that).val());
+            let today = new Date();
+            let age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            $(changeInput).val(age);
+        }
         $(function() {
             "use strict";
             $(document).ready(function() {
                 $("input[name='is_journalism']").on('change', function() {
-                    $("#reporter-experience").toggleClass('invisible', $(this).val());
+                    $("#reporter-experience").toggleClass('d-none', $(this).val());
                 });
                 $("input[name='is_office']").on('change', function() {
-                    $("#reporter-office").toggleClass('invisible', $(this).val());
+                    $("#reporter-office").toggleClass('d-none', $(this).val());
                 });
                 $('.dropify').dropify({
                     messages: {
@@ -495,26 +505,44 @@
                     'btn btn-info sw-btn-group-extra d-none').on('click', function() {
                     alert('Finish Clicked');
                 });
-                $(document).find('#smartwizard').smartWizard({
-                    selected: 0,
-                    theme: 'arrows',
-                    transition: {
-                        animation: 'slide-horizontal',
-                    },
-                    toolbarSettings: {
-                        toolbarPosition: "top",
-                        toolbarExtraButtons: [btnFinish]
-                    },
+                $("#reporter-tab").click(function (e) {
+                    setTimeout(() => {
+                        $(document).find('#smartwizard').smartWizard({
+                            selected: 0,
+                            theme: 'arrows',
+                            transition: {
+                                animation: 'slide-horizontal',
+                            },
+                            toolbarSettings: {
+                                toolbarPosition: "top",
+                                toolbarExtraButtons: [btnFinish]
+                            },
+                        });
+                    }, 500);
                 });
-                $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection,
-                    stepPosition) {
+                $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
                     if ($('button.sw-btn-next').hasClass('disabled')) {
                         $('button.sw-btn-next').hide();
                         $('.sw-btn-group-extra').removeClass('d-none');
+                        $("#smartwizard .tab-content").addClass('auto-height');
                     } else {
                         $('button.sw-btn-next').show();
                         $('.sw-btn-group-extra').addClass('d-none');
+                        $("#smartwizard .tab-content").removeClass('auto-height');
                     }
+                });
+                $('header a,footer a,#mySidenav a').on('click', function (e) {
+                    e.preventDefault();
+                    if(confirm('Are you sure want to Leave this page?')){
+                        window.location.href = $(this).attr('href');
+                    }
+                    return false;
+                });
+                $("#dob").on('change',function (e) {
+                    dateToYears(this,'#age')
+                });
+                $("#Start-Journalism").on('change',function (e) {
+                    dateToYears(this,'#Total-Experience')
                 });
             });
         });
