@@ -13,10 +13,11 @@ class ChangeMetaTitleToTagsTable extends Migration
      */
     public function up()
     {
+        Schema::dropColumns('tags',['meta_title','meta_keywords','meta_description']);
         Schema::table('tags', function (Blueprint $table) {
-            $table->longText('meta_title')->nullable()->change();
-            $table->longText('meta_keywords')->nullable()->change();
-            $table->longText('meta_description')->nullable()->change();
+            $table->longText('meta_title')->nullable()->after('status');
+            $table->longText('meta_keywords')->nullable()->after('meta_title');
+            $table->longText('meta_description')->nullable()->after('meta_keywords');
         });
     }
 
@@ -27,10 +28,11 @@ class ChangeMetaTitleToTagsTable extends Migration
      */
     public function down()
     {
+        Schema::dropColumns('tags',['meta_title','meta_keywords','meta_description']);
         Schema::table('tags', function (Blueprint $table) {
-            $table->string('meta_title')->nullable()->change();
-            $table->string('meta_keywords')->nullable()->change();
-            $table->string('meta_description')->nullable()->change();
+            $table->string('meta_title')->nullable()->after('status');
+            $table->string('meta_keywords')->nullable()->after('meta_title');
+            $table->string('meta_description')->nullable()->after('meta_keywords');
         });
     }
 }
