@@ -26,6 +26,7 @@ class Category extends Model
     {
         $this->attributes['slug'] = Str::slug($value);
     }
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');

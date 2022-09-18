@@ -11,8 +11,7 @@ class TagController extends Controller
 {
     public function index()
     {   
-        $media = Media::latest()->paginate(12);
-        return view('backpanel.tag.index',compact('media'));
+        return view('backpanel.tag.index');
     }
 
     public function store(Request $request)
