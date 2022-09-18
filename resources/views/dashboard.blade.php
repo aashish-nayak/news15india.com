@@ -483,11 +483,21 @@
         $(function() {
             "use strict";
             $(document).ready(function() {
-                $("input[name='is_journalism']").on('change', function() {
+                $("input[name='is_journalist']").on('change',function () {
                     $("#reporter-experience").toggleClass('d-none', $(this).val());
+                    $("#reporter-experience input[name='organization_name']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-experience select[name='organization_type']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-experience select[name='designation']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-experience input[name='start_journalism']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
                 });
-                $("input[name='is_office']").on('change', function() {
+                $("input[name='is_personal_office']").on('change',function () {
                     $("#reporter-office").toggleClass('d-none', $(this).val());
+                    $("#reporter-office input[name='office_address']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-office input[name='office_tehsil_block']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-office select[name='office_country_id']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-office select[name='office_state_id']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-office select[name='office_city_id']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
+                    $("#reporter-office input[name='office_zip']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
                 });
                 $('.dropify').dropify({
                     messages: {
