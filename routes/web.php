@@ -12,6 +12,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PollController;
+use App\Http\Controllers\ReporterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestController;
@@ -46,10 +47,10 @@ Route::prefix('/frontend-on-development/news15india')->group(function(){
     Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
     Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
     Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
-    Route::view('/reporter-form','reporter-form');
     Route::get('/polls/{id?}',[FrontController::class,'poll'])->name('poll');
-    Route::view('/application-form','application-form');
-
+    Route::get('/application-form',[ReporterController::class,'application_form'])->name('reporter-application-form');
+    Route::post('/application-form/store',[ReporterController::class,'storeApplication'])->name('reporter-application-store');
+    Route::view('/thank-you','thank-you')->name('thank-you');
 });
 // =============== Country State City Routes ==============
 Route::get('/location/countries',[WorldDataController::class,'countries'])->name('countries');
@@ -64,7 +65,7 @@ Route::put('comments/{comment}', [Config::get('comments.controller') , 'update']
 Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply'])->middleware('auth')->name('comments.reply');
 
 // =============== User Panel Routes ==============
-Route::view('/dashboard','dashboard')->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[FrontController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
 Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->name('poll.vote');
 Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');

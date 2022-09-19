@@ -444,7 +444,9 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="reporter" role="tabpanel" aria-labelledby="reporter-tab">
+                                    @if ($submitted == false)
                                     @includeIf('components.appform-wizard')
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -512,9 +514,7 @@
                 });
                 // Toolbar extra buttons
                 var btnFinish = $('<button></button>').attr('type', 'submit').text('Finish').addClass(
-                    'btn btn-info sw-btn-group-extra d-none').on('click', function() {
-                    alert('Finish Clicked');
-                });
+                    'btn btn-info sw-btn-group-extra d-none');
                 $("#reporter-tab").click(function (e) {
                     setTimeout(() => {
                         $(document).find('#smartwizard').smartWizard({

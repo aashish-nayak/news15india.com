@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Poll;
+use App\Models\Reporter;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\UserDetail;
@@ -402,6 +403,15 @@ class FrontController extends Controller
         }
         $polls = $polls->get();
         return view('poll',compact('polls'));
+    }
+
+    public function dashboard()
+    {
+        $submitted = false;
+        if(auth('web')->check() && Reporter::where('email',auth('web')->user()->email)->count() > 0){
+            $submitted = true;
+        }
+        return view('dashboard',compact('submitted'));
     }
 
     public function profile(Request $request)

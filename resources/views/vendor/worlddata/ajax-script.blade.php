@@ -1,4 +1,14 @@
 <script>
+    var countryEle = `select[name='country']`;
+    var stateEle = `select[name='state']`;
+    var cityEle = `select[name='city']`;
+    var countryEleId = `select[name='country_id']`;
+    var stateEleId = `select[name='state_id']`;
+    var cityEleId = `select[name='city_id']`;
+    var countryEleOffice = `select[name='office_country_id']`;
+    var stateEleOffice = `select[name='office_state_id']`;
+    var cityEleOffice = `select[name='office_city_id']`;
+    
     function cities(ele, state_id) {
         let url = "{{ Route('cities', ':id') }}";
         url = url.replace(':id', state_id);
@@ -28,7 +38,7 @@
         });
     }
 
-    function states(ele, country_id) {
+    function states(ele, country_id,city="select[name='city']") {
         let url = "{{ Route('states', ':id') }}";
         url = url.replace(':id', country_id);
         $(ele).html('<option selected disabled>Loading...</option>');
@@ -49,12 +59,12 @@
                     html += '<option '+editSelected+' value="' + value['id'] + '">' + value['name'] + '</option>';
                 });
                 $(ele).html(html);
-                cities("select[name='city']", $("select[name='state']").val());
+                cities(city, $(ele).val());
             }
         });
     }
 
-    function country(ele) {
+    function country(ele,state = "select[name='state']") {
         $.ajax({
             url: "{{ Route('countries') }}",
             type: "GET",
@@ -70,30 +80,61 @@
                     } else {
                         ok = "";
                     }
-                    html += '<option ' + ok + ' value="' + value['id'] + '">' + value['name'] +
-                        '</option>';
+                    html += '<option ' + ok + ' value="' + value['id'] + '">' + value['name'] + '</option>';
                 });
                 $(ele).html(html);
-                states("select[name='state']", $("select[name='country']").val());
+                states(state, $(ele).val());
             }
         });
     }
 
     $(document).ready(function () {
-        if($(document).find("select[name='country']").length > 0){
-            $(document).find("select[name='country']").html('<option>Select a Country</option>');
-            if($(document).find("select[name='country']").data('edit') != ''){
-                country("select[name='country']");
+        if($(document).find(countryEle).length > 0){
+            $(document).find(countryEle).html('<option>Select a Country</option>');
+            if($(document).find(countryEle).data('edit') != ''){
+                country(countryEle,stateEle);
             }else{
-                $(document).one("click", "select[name='country']", function(e) {
-                    country("select[name='country']");
+                $(document).one("click", countryEle, function(e) {
+                    country(countryEle,stateEle);
                 });
             }
-            $(document).on('change', "select[name='country']", function(e) {
-                states("select[name='state']", $(this).val());
+            $(document).on('change', countryEle, function(e) {
+                states(stateEle, $(this).val(),cityEle);
             });
-            $(document).on('change', "select[name='state']", function(e) {
-                cities("select[name='city']", $(this).val());
+            $(document).on('change', stateEle, function(e) {
+                cities(cityEle, $(this).val());
+            });
+        }
+        if($(document).find(countryEleId).length > 0){
+            $(document).find(countryEleId).html('<option>Select a Country</option>');
+            if($(document).find(countryEleId).data('edit') != ''){
+                country(countryEleId,stateEleId);
+            }else{
+                $(document).one("click", countryEleId, function(e) {
+                    country(countryEleId,stateEleId);
+                });
+            }
+            $(document).on('change', countryEleId, function(e) {
+                states(stateEleId, $(this).val(),cityEleId);
+            });
+            $(document).on('change', stateEleId, function(e) {
+                cities(cityEleId, $(this).val());
+            });
+        }
+        if($(document).find(countryEleOffice).length > 0){
+            $(document).find(countryEleOffice).html('<option>Select a Country</option>');
+            if($(document).find(countryEleOffice).data('edit') != ''){
+                country(countryEleOffice,stateEleOffice);
+            }else{
+                $(document).one("click", countryEleOffice, function(e) {
+                    country(countryEleOffice,stateEleOffice);
+                });
+            }
+            $(document).on('change', countryEleOffice, function(e) {
+                states(stateEleOffice, $(this).val(),cityEleOffice);
+            });
+            $(document).on('change', stateEleOffice, function(e) {
+                cities(cityEleOffice, $(this).val());
             });
         }
     });

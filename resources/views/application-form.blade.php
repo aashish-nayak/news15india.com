@@ -93,10 +93,7 @@
                     },
                 });
                 // Toolbar extra buttons
-                var btnFinish = $('<button></button>').attr('type', 'submit').text('Finish').addClass(
-                    'btn btn-info sw-btn-group-extra d-none').on('click', function() {
-                    alert('Finish Clicked');
-                });
+                var btnFinish = $('<button></button>').attr('type', 'submit').text('Finish').addClass('btn btn-info sw-btn-group-extra d-none');
                 $('#smartwizard').smartWizard({
                     selected: 0,
                     theme: 'arrows',
