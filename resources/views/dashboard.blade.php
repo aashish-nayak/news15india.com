@@ -302,11 +302,11 @@
                                         type="button" role="tab" aria-controls="profile"
                                         aria-selected="false">Profile</button>
                                 </li>
-                                {{-- <li class="nav-item" role="presentation">
+                                <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="reporter-tab" data-toggle="tab" data-target="#reporter"
                                         type="button" role="tab" aria-controls="contact"
                                         aria-selected="false">Reporter Application</button>
-                                </li> --}}
+                                </li>
                             </ul>
                             <div class="tab-content my-3" id="myTabContent">
                                 <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -443,11 +443,11 @@
                                         </div>
                                     </form>
                                 </div>
-                                {{-- <div class="tab-pane fade" id="reporter" role="tabpanel" aria-labelledby="reporter-tab">
+                                <div class="tab-pane fade" id="reporter" role="tabpanel" aria-labelledby="reporter-tab">
                                     @if ($submitted == false)
                                     @includeIf('components.appform-wizard')
                                     @endif
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
                         <!-- END MENU -->
