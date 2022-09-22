@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ApplicationRequest;
 use App\Models\Reporter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -10,10 +11,14 @@ class ReporterController extends Controller
 {
     public function application_form()
     {
+
+        if(Reporter::where('user_ip',request()->ip())->count() > 0){
+            return redirect()->route('thank-you');
+        }
         return view('application-form');
     }
 
-    public function storeApplication(Request $request)
+    public function storeApplication(ApplicationRequest $request)
     {
         $uploadData = $request->except('_token');
         $uploadData['avatar'] = $this->uploader($request,'avatar');
@@ -27,6 +32,7 @@ class ReporterController extends Controller
         $uploadData['voter_driving_image'] = $this->uploader($request,'voter_driving_image');
         $uploadData['police_verification'] = $this->uploader($request,'police_verification');
         $uploadData['other_document'] = $this->uploader($request,'other_document');
+        $uploadData['user_ip'] = request()->ip();
         if(auth('web')->check()){
             $uploadData['user_id'] = auth('web')->user()->id;
             $uploadData['email'] = auth('web')->user()->email;

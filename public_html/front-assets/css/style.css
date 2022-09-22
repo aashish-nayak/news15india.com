@@ -2573,3 +2573,7 @@ button.back-to-top.show:active {
     border-radius: 25px;
     border: 3px solid var(--primary);
 }
+
+span.error{
+    color:red;
+}
