@@ -31,8 +31,8 @@ class ApplicationRequest extends FormRequest
             'gender' => 'required',
             'marital_status' => 'required',
             'blood_group' => 'required',
-            'aadhar_number' => 'required',
-            'pan_number' => 'required',
+            'aadhar_number' => 'required|unique:reporters',
+            'pan_number' => 'required|unique:reporters',
             'home_address' => 'required',
             'tehsil_block' => 'required',
             'country_id' => 'required',
@@ -40,7 +40,7 @@ class ApplicationRequest extends FormRequest
             'city_id' => 'required',
             'zip' => 'required',
             'police_station' => 'required',
-            'phone_number' => 'required',
+            'phone_number' => 'required|unique:reporters',
             'whatsapp_number' => 'required',
             'emergency_number' => 'required',
             // 'organization_name' => [],
@@ -66,7 +66,7 @@ class ApplicationRequest extends FormRequest
             // 'other_document' => [],
         ];
         if(auth('web')->check() == false){
-            $data['email'] = 'required';
+            $data['email'] = 'required|email|unique:reporters';
         }
         return $data;
     }
