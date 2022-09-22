@@ -13,196 +13,7 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/plugins/smart-wizard/css/smart_wizard_all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/plugins/dropify/css/dropify.css') }}" />
-    <style>
-        body {
-            background: #F1F3FA;
-        }
-
-        .profile-content .form-control,
-        .profile-content .btn {
-            font-size: 1.6rem;
-        }
-
-        /* Profile container */
-        .profile {
-            margin: 4px 0;
-        }
-
-        /* Profile sidebar */
-        .profile-sidebar {
-            padding: 20px 0 10px 0;
-            background: #fff;
-        }
-
-        .profile-userpic img {
-            float: none;
-            margin: 0 auto;
-            width: 110px;
-            height: 110px;
-            object-fit: cover;
-            -webkit-border-radius: 50% !important;
-            -moz-border-radius: 50% !important;
-            border-radius: 50% !important;
-        }
-
-        .profile-usertitle {
-            text-align: center;
-        }
-
-        .profile-usertitle-name {
-            color: #5a7391;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 7px;
-        }
-
-        .profile-usertitle-job {
-            text-transform: uppercase;
-            color: #5b9bd1;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .profile-userbuttons {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .profile-userbuttons .btn {
-            text-transform: uppercase;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 6px 15px;
-            margin-right: 5px;
-        }
-
-        .profile-userbuttons .btn:last-child {
-            margin-right: 0px;
-        }
-
-        /* Profile Content */
-        .profile-content {
-            padding: 20px;
-            background: #fff;
-            min-height: auto;
-        }
-
-        .dashboard-stat,
-        .portlet {
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            -ms-border-radius: 4px;
-            -o-border-radius: 4px;
-        }
-        .profile-usermenu .nav-tabs .nav-link{
-            background-color: transparent;
-            color: #333;
-            font-weight: 500;
-            border: 1px solid transparent;
-            border-top-left-radius: 0.25rem;
-            border-top-right-radius: 0.25rem;
-        }
-        .profile-usermenu .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
-            background-color: transparent;
-            color: #333;
-            border-color: #dee2e6 #dee2e6 #fff;
-        }
-        .portlet {
-            margin-top: 0;
-            margin-bottom: 25px;
-            padding: 0;
-            border-radius: 4px;
-        }
-
-        .portlet.bordered {
-            border-left: 2px solid #e6e9ec !important;
-        }
-
-        .portlet.light {
-            padding: 12px 20px 15px;
-            background-color: #fff;
-        }
-
-        .portlet.light.bordered {
-            border: 1px solid #e7ecf1 !important;
-        }
-
-        .list-separated {
-            margin-top: 10px;
-            margin-bottom: 15px;
-        }
-
-        .profile-stat {
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f0f4f7;
-        }
-
-        .profile-stat-title {
-            color: #7f90a4;
-            font-size: 25px;
-            text-align: center;
-        }
-
-        .uppercase {
-            text-transform: uppercase !important;
-        }
-
-        .profile-stat-text {
-            color: #5b9bd1;
-            font-size: 10px;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .profile-desc-title {
-            color: #7f90a4;
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .profile-desc-text {
-            color: #7e8c9e;
-            font-size: 14px;
-        }
-
-        .margin-top-20 {
-            margin-top: 20px !important;
-        }
-
-        [class*=" fa-"]:not(.fa-stack),
-        [class*=" glyphicon-"],
-        [class*=" icon-"],
-        [class^=fa-]:not(.fa-stack),
-        [class^=glyphicon-],
-        [class^=icon-] {
-            display: inline-block;
-            line-height: 14px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .profile-desc-link i {
-            width: 22px;
-            font-size: 19px;
-            color: #abb6c4;
-            margin-right: 5px;
-        }
-
-
-        @media screen and (max-width: 992px) {
-            /* .profile-userpic img {
-                height: 150px;
-                object-fit: cover;
-            } */
-        }
-
-        .sw.sw-justified>.nav .nav-link, .sw.sw-justified>.nav>li {
-            flex-basis: fit-content;
-        }
-        .auto-height{
-            height: auto !important;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('front-assets/css/dashboard.css') }}">
 @endpush
 @section('sections')
     <main class="container-fluid mx-auto position-relative">
@@ -446,6 +257,89 @@
                                 {{-- <div class="tab-pane fade" id="reporter" role="tabpanel" aria-labelledby="reporter-tab">
                                     @if ($submitted == false)
                                     @includeIf('components.appform-wizard')
+                                    @else
+                                    <div class="container py-5">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12">
+                                                <div id="tracking-pre"></div>
+                                                <div id="tracking">
+                                                    <div class="tracking-list d-md-flex">
+                                                        @php
+                                                            $doneicon = 'status-intransit';
+                                                            $donelist = 'tracking-item';
+                                                            $currenticon = 'status-current blinker';
+                                                            $currentlist = 'tracking-item';
+                                                            $pendingicon = 'status-intransit';
+                                                            $pendinglist = 'tracking-item-pending';
+                                                            if($data->app_status == 'pending'){
+                                                                $doneicon = 'status-current blinker';
+                                                                $donelist = 'tracking-item';
+                                                                $currenticon = 'status-intransit';
+                                                                $currentlist = 'tracking-item-pending';
+                                                                $pendingicon = 'status-intransit';
+                                                                $pendinglist = 'tracking-item-pending';
+                                                            }elseif ($data->app_status == 'processing') {
+                                                                $doneicon = 'status-intransit';
+                                                                $donelist = 'tracking-item';
+                                                                $currenticon = 'status-current blinker';
+                                                                $currentlist = 'tracking-item';
+                                                                $pendingicon = 'status-intransit';
+                                                                $pendinglist = 'tracking-item-pending';
+                                                            }else{
+                                                                $doneicon = 'status-intransit';
+                                                                $donelist = 'tracking-item';
+                                                                $currenticon = 'status-intransit';
+                                                                $currentlist = 'tracking-item';
+                                                                $pendingicon = 'status-intransit';
+                                                                $pendinglist = 'tracking-item';
+                                                            }
+                                                        @endphp
+                                                        <div class="{{$donelist}}">
+                                                            <div class="tracking-icon {{$doneicon}}">
+                                                                <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                                    <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <div class="tracking-date">
+                                                                <i class="far fa-user-edit process-icon"></i>
+                                                            </div>
+                                                            <div class="tracking-content">Form Submitted<span>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->updated_at)->format('d M Y, h:i A')}}</span></div>
+                                                        </div>
+                                                        <div class="{{$currentlist}}">
+                                                            <div class="tracking-icon {{$currenticon}}">
+                                                                <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                                    <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <div class="tracking-date">
+                                                                <i class="far fa-spinner process-icon"></i>
+                                                            </div>
+                                                            <div class="tracking-content">Data Checking in Process<span>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->updated_at)->format('d M Y, h:i A')}}</span></div>
+                                                        </div>
+                                                        <div class="{{$pendinglist}}">
+                                                            <div class="tracking-icon {{$pendingicon}}">
+                                                                <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                                    <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <div class="tracking-date">
+                                                                @if ($data->app_status == 'rejected')
+                                                                <i class="far fa-times-circle process-icon"></i>
+                                                                @else
+                                                                <i class="far fa-check-circle process-icon"></i>
+                                                                @endif
+                                                            </div>
+                                                            @if ($data->app_status == 'rejected')
+                                                            <div class="tracking-content">Application Rejected<span>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->updated_at)->format('d M Y, h:i A')}}</span></div>
+                                                            @else
+                                                            <div class="tracking-content">Application Done<span>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->updated_at)->format('d M Y, h:i A')}}</span></div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endif
                                 </div> --}}
                             </div>
@@ -474,87 +368,9 @@
 @push('js')
     <script src="{{ asset('assets/plugins/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
-    <script>
-        
-        function dateToYears(that,changeInput = "#age") {
-            let dob = new Date($(that).val());
-            let today = new Date();
-            let age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-            $(changeInput).val(age);
-        }
-        $(function() {
-            "use strict";
-            $(document).ready(function() {
-                $("input[name='is_journalist']").on('change',function () {
-                    $("#reporter-experience").toggleClass('d-none', $(this).val());
-                    $("#reporter-experience input[name='organization_name']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-experience select[name='organization_type']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-experience select[name='designation']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-experience input[name='start_journalism']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                });
-                $("input[name='is_personal_office']").on('change',function () {
-                    $("#reporter-office").toggleClass('d-none', $(this).val());
-                    $("#reporter-office input[name='office_address']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-office input[name='office_tehsil_block']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-office select[name='office_country_id']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-office select[name='office_state_id']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-office select[name='office_city_id']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                    $("#reporter-office input[name='office_zip']").prop('required', (_, attr) => attr == 1 ? 0 : 1);
-                });
-                $('.dropify').dropify({
-                    messages: {
-                        'default': 'Drag and drop a file here or click',
-                        'replace': 'Drag and drop or click to replace',
-                        'remove': 'Remove',
-                        'error': 'Ooops, something wrong appended.'
-                    },
-                    error: {
-                        'fileSize': 'The file size is too big (2M max).'
-                    },
-                });
-                // Toolbar extra buttons
-                var btnFinish = $('<button></button>').attr('type', 'submit').text('Finish').addClass(
-                    'btn btn-info sw-btn-group-extra d-none');
-                $("#reporter-tab").click(function (e) {
-                    setTimeout(() => {
-                        $(document).find('#smartwizard').smartWizard({
-                            selected: 0,
-                            theme: 'arrows',
-                            transition: {
-                                animation: 'slide-horizontal',
-                            },
-                            toolbarSettings: {
-                                toolbarPosition: "top",
-                                toolbarExtraButtons: [btnFinish]
-                            },
-                        });
-                    }, 500);
-                });
-                $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
-                    if ($('button.sw-btn-next').hasClass('disabled')) {
-                        $('button.sw-btn-next').hide();
-                        $('.sw-btn-group-extra').removeClass('d-none');
-                        $("#smartwizard .tab-content").addClass('auto-height');
-                    } else {
-                        $('button.sw-btn-next').show();
-                        $('.sw-btn-group-extra').addClass('d-none');
-                        $("#smartwizard .tab-content").removeClass('auto-height');
-                    }
-                });
-                $('header a,footer a,#mySidenav a').on('click', function (e) {
-                    e.preventDefault();
-                    if(confirm('Are you sure want to Leave this page?')){
-                        window.location.href = $(this).attr('href');
-                    }
-                    return false;
-                });
-                $("#dob").on('change',function (e) {
-                    dateToYears(this,'#age')
-                });
-                $("#Start-Journalism").on('change',function (e) {
-                    dateToYears(this,'#Total-Experience')
-                });
-            });
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+    @if ($submitted == false)
+    <script src="{{ asset('front-assets/js/dashboard.js') }}"></script>
+    @endif
 @endpush

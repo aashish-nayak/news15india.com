@@ -408,10 +408,12 @@ class FrontController extends Controller
     public function dashboard()
     {
         $submitted = false;
-        if(auth('web')->check() && Reporter::where('email',auth('web')->user()->email)->count() > 0){
+        $data = Reporter::where('user_ip',request()->ip());
+        if($data->count() > 0){
             $submitted = true;
+            $data = $data->first();
         }
-        return view('dashboard',compact('submitted'));
+        return view('dashboard',compact('submitted','data'));
     }
 
     public function profile(Request $request)

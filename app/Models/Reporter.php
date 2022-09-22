@@ -10,6 +10,7 @@ class Reporter extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'user_ip',
         'admin_id',
         'name',
         'father_name',
@@ -54,7 +55,7 @@ class Reporter extends Model
         'office_state_id',
         'office_city_id',
         'office_zip',
-        'reporter_status',
+        'app_status',
         'status',
     ];
 
