@@ -42,11 +42,6 @@
         span.text-danger {
             font-size: 20px
         }
-
-        .dropify-wrapper:has(input[name='avatar']) {
-            margin-top: 30px;
-        }
-
         .sw-btn-group-extra,
         .sw-btn-prev,
         .sw-btn-next {
@@ -62,6 +57,9 @@
             border-color: #0067d4 !important;
         }
         
+        .dropify-label-custom{
+            font-size:14px;
+        }
     </style>
 </head>
 
