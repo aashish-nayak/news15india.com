@@ -23,6 +23,7 @@ class ApplicationRequest extends FormRequest
      */
     public function rules()
     {
+        // dd(request()->all());
         $data = [
             'name' => 'required',
             'father_name' => 'required',
@@ -65,35 +66,10 @@ class ApplicationRequest extends FormRequest
             // 'police_verification' => [],
             // 'other_document' => [],
         ];
-        if(auth('web')->check() == false){
+        if(!auth('web')->check()){
             $data['email'] = 'required|email|unique:reporters';
         }
         return $data;
     }
 
-    public function messages()
-    {
-        return [
-            'email.required' => 'Email is required!',
-            'name.required' => 'Name is required!',
-            'father_name.required' => 'Father Name is required',
-            'mother_name.required' => 'Mother Name is required',
-            'dob.required' => 'Date of Birth is required',
-            'gender.required' => 'Gender is required',
-            'marital_status.required' => 'Marital Status is required',
-            'blood_group.required' => 'Blood Group is required',
-            'aadhar_number.required' => 'Aadhar Number is required',
-            'pan_number.required' => 'Pan Number is required',
-            'home_address.required' => 'Home Address is required',
-            'tehsil_block.required' => 'Block/Tehsil is required',
-            'country_id.required' => 'Country is required',
-            'state_id.required' => 'State is required',
-            'city_id.required' => 'City is required',
-            'zip.required' => 'Zip is required',
-            'police_station.required' => 'Police Station is required',
-            'phone_number.required' => 'Phone Number is required',
-            'whatsapp_number.required' => 'Whatsapp is required',
-            'emergency_number.required' => 'Emergency is required',
-        ];
-    }
 }

@@ -22,6 +22,7 @@ class Reporter extends Model
         'dob',
         'gender',
         'avatar',
+        'applied_designation',
         'marital_status',
         'blood_group',
         'home_address',

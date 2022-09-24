@@ -7,9 +7,7 @@ function dateToYears(that, changeInput = "#age") {
 function reloadPrevent() {
     window.onbeforeunload = function () {
         var r = confirm("Are you sure you want to reload the page.");
-        if (r) {
-            window.location.reload();
-        } else {
+        if (!r) {
             return false;
         }
     };
@@ -95,6 +93,7 @@ $(function () {
             if (!$("#reporter-form").valid()) {
                 return false;
             }
+            
         });
         $("#dob").on('change', function (e) {
             dateToYears(this, '#age')

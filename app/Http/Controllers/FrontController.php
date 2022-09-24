@@ -413,6 +413,11 @@ class FrontController extends Controller
             $submitted = true;
             $data = $data->first();
         }
+        if (auth('web')->check() && Reporter::where('user_id',auth('web')->user()->id)->count() > 0) {
+            $data = Reporter::where('user_id',auth('web')->user()->id);
+            $submitted = true;
+            $data = $data->first();
+        }
         return view('dashboard',compact('submitted','data'));
     }
 

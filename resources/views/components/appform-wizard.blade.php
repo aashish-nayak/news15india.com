@@ -1,5 +1,24 @@
+
 <h2 class="text-center mb-4 border-bottom pb-3" style="border-width: 2px !important">Reporter Application Form</h2>
 
+@if($errors->any())
+@foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible fade show mb-2" role="alert">
+        {{ $error }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+@endforeach
+@endif
+@if (Session::has('error'))
+<div class="alert alert-danger alert-dismissible fade show mb-2" role="alert">
+    {{ Session::get('error') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 <div id="smartwizard">
     <ul class="nav">
         <li class="nav-item">
@@ -28,7 +47,7 @@
                                 <div class="form-group col-md-6">
                                     @csrf
                                     <label for="app-name">Applicant Name<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name" value="{{old('name')}}" id="app-name" required placeholder="Enter Applicant Name" >
+                                    <input type="text" class="form-control" name="name" value="@if(old('name')){{old('name')}}@elseif(auth('web')->check()){{auth('web')->user()->name}}@endif" id="app-name" required placeholder="Enter Applicant Name" >
                                     @error('name')
                                     <span class="error">{{ $message }}</span>
                                     @enderror
@@ -58,7 +77,7 @@
                                     <label for="age">Age<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" disabled id="age" placeholder="Age">
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-2">
                                     <label for="Gender">Gender<span class="text-danger">*</span></label>
                                     <select id="Gender" class="form-control" name="gender" required>
                                         <option value="Male" {{(old('gender') == 'Male') ? 'selected' : ''}}>Male</option>
@@ -69,7 +88,7 @@
                                     <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label for="Marital-Status">Marital Status<span class="text-danger">*</span></label>
                                     <select id="Marital-Status" class="form-control" name="marital_status" required>
                                         <option value="Married" {{(old('marital_status') == 'Married') ? 'selected' : ''}}>Married</option>
@@ -79,7 +98,7 @@
                                     <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label for="Blood-Group">Blood Group<span class="text-danger">*</span></label>
                                     <select id="Blood-Group" class="form-control" name="blood_group" required>
                                         <option value="A+" {{(old('blood_group') == 'A+') ? 'selected' : ''}} >A positive (A+)</option>
@@ -92,6 +111,22 @@
                                         <option value="AB-" {{(old('blood_group') == 'AB-') ? 'selected' : ''}} >AB negative (AB-)</option>
                                     </select>
                                     @error('blood_group')
+                                    <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Designation<span class="text-danger">*</span></label>
+                                    <select class="form-control" name="applied_designation">
+                                        <option {{(old('applied_designation') == 'Reporter') ? 'selected' : ''}} value="Reporter">Reporter</option>
+                                        <option {{(old('applied_designation') == 'Bureau Chief') ? 'selected' : ''}} value="Bureau Chief">Bureau Chief</option>
+                                        <option {{(old('applied_designation') == 'Sub Editor') ? 'selected' : ''}} value="Sub Editor">Sub Editor</option>
+                                        <option {{(old('applied_designation') == '"Editor"') ? 'selected' : ''}} value="Editor">Editor</option>
+                                        <option {{(old('applied_designation') == 'State Head') ? 'selected' : ''}} value="State Head">State Head</option>
+                                        <option {{(old('applied_designation') == 'Advertisement Head') ? 'selected' : ''}} value="Advertisement Head">Advertisement Head</option>
+                                        <option {{(old('applied_designation') == 'Video Editor') ? 'selected' : ''}} value="Video Editor">Video Editor</option>
+                                        <option {{(old('applied_designation') == 'Content Writer') ? 'selected' : ''}} value="Content Writer">Content Writer</option>
+                                    </select>
+                                    @error('applied_designation')
                                     <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -112,7 +147,8 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" data-height="74%" data-max-file-size="3M" name="avatar" value="{{old('avatar')}}" required accept="image/*">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom">Passport Size Photo<span class="text-danger">*</span></label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" data-height="68%" data-max-file-size="3M" name="avatar" value="{{old('avatar')}}" required accept="image/*">
                             @error('avatar')
                             <span class="error">{{ $message }}</span>
                             @enderror
@@ -125,7 +161,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="home-address">Home Address<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="home_address" value="{{old('home_address')}}" required id="home-address" placeholder="Enter Home Address">
+                            <input type="text" class="form-control" name="home_address" value="@if(old('home_address')){{old('home_address')}}@elseif(auth('web')->check()){{auth('web')->user()->details->address}}@endif" required id="home-address" placeholder="Enter Home Address">
                             @error('home_address')
                             <span class="error">{{ $message }}</span>
                             @enderror
@@ -141,7 +177,7 @@
                         </select>
                         <div class="form-group col-md-6">
                             <label for="State">State<span class="text-danger">*</span></label>
-                            <select name="state_id" class="form-control state" data-edit="{{old('state_id')}}" required>
+                            <select name="state_id" class="form-control state" data-edit="@if(old('state_id')){{old('state_id')}}@elseif(auth('web')->check()){{auth('web')->user()->details->state_id}}@endif" required>
                                 
                             </select>
                             @error('state_id')
@@ -150,7 +186,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="District">District<span class="text-danger">*</span></label>
-                            <select name="city_id" class="form-control city" data-edit="{{old('city_id')}}" required>
+                            <select name="city_id" class="form-control city" data-edit="@if(old('city_id')){{old('city_id')}}@elseif(auth('web')->check()){{auth('web')->user()->details->city_id}}@endif" required>
                                 <option>Select State First</option>
                             </select>
                             @error('city_id')
@@ -159,7 +195,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="pincode">Area Pin Code<span class="text-danger">*</span></label>
-                            <input type="text" pattern="[0-9]+" name="zip" value="{{old('zip')}}" required maxlength="6" class="form-control" id="pincode" placeholder="Enter Area Pin Code">
+                            <input type="text" pattern="[0-9]+" name="zip" value="@if(old('zip')){{old('zip')}}@elseif(auth('web')->check()){{auth('web')->user()->details->zip}}@endif" required maxlength="6" class="form-control" id="pincode" placeholder="Enter Area Pin Code">
                             @error('zip')
                             <span class="error">{{ $message }}</span>
                             @enderror
@@ -179,14 +215,14 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="Mobile">Mobile Number<span class="text-danger">*</span></label>
-                            <input type="text" pattern="[0-9]+" maxlength="10" class="form-control" name="phone_number" value="{{old('phone_number')}}" required id="Mobile" placeholder="Enter Mobile Number">
+                            <input type="text" pattern="[0-9]+" maxlength="10" class="form-control" name="phone_number" value="@if(old('phone_number')){{old('phone_number')}}@elseif(auth('web')->check()){{auth('web')->user()->details->phone_number}}@endif" required id="Mobile" placeholder="Enter Mobile Number">
                             @error('phone_number')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col-md-3">
                             <label for="WhatsApp">WhatsApp Number<span class="text-danger">*</span></label>
-                            <input type="text" pattern="[0-9]+" maxlength="10" class="form-control" name="whatsapp_number" value="{{old('whatsapp_number')}}" required id="WhatsApp" placeholder="Enter WhatsApp Number">
+                            <input type="text" pattern="[0-9]+" maxlength="10" class="form-control" name="whatsapp_number" value="@if(old('whatsapp_number')){{old('whatsapp_number')}}@elseif(auth('web')->check()){{auth('web')->user()->details->whatsapp_number}}@endif" required id="WhatsApp" placeholder="Enter WhatsApp Number">
                             @error('whatsapp_number')
                             <span class="error">{{ $message }}</span>
                             @enderror
@@ -212,36 +248,36 @@
                 <div class="col-12">
                     <div class="form-row">
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="10Marksheet">10<sup>th</sup> Marksheet<span class="text-danger">*</span></label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="10Marksheet" name="10th_image" required accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom">10<sup>th</sup> Marksheet<span class="text-danger">*</span></label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="10th_image" required accept="image/*" data-max-file-size="3M">
                             @error('10th_image')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="12Marksheet">12<sup>th</sup> Marksheet<span class="text-danger">*</span></label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="12Marksheet" name="12th_image" required accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >12<sup>th</sup> Marksheet<span class="text-danger">*</span></label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="12th_image" required accept="image/*" data-max-file-size="3M">
                             @error('12th_image')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="Graduation">Graduation Marksheet </label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Graduation" name="graduation_image" accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom">Graduation Marksheet </label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="graduation_image" accept="image/*" data-max-file-size="3M">
                             @error('graduation_image')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="Digree">Digree/Diploma</label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Digree" name="diploma_image" accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >Digree/Diploma</label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg"  name="diploma_image" accept="image/*" data-max-file-size="3M">
                             @error('diploma_image')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="Other">Other Certificate</label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Other" name="other_certificate" accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >Other Certificate</label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="other_certificate" accept="image/*" data-max-file-size="3M">
                             @error('other_certificate')
                             <span class="error">{{ $message }}</span>
                             @enderror
@@ -253,36 +289,36 @@
                 <div class="col-12">
                     <div class="form-row">
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="Aadhaar-img">Aadhaar Card<span class="text-danger">*</span></label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Aadhaar-img" name="aadhar_image" required accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >Aadhaar Card<span class="text-danger">*</span></label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="aadhar_image" required accept="image/*" data-max-file-size="3M">
                             @error('aadhar_image')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="Pan-img">Pan Card<span class="text-danger">*</span></label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Pan-img" name="pan_image" required accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >Pan Card<span class="text-danger">*</span></label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="pan_image" required accept="image/*" data-max-file-size="3M">
                             @error('pan_image')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="Voter-Driving-img">Voter ID/Driving License<span class="text-danger">*</span></label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Voter-Driving-img" name="voter_driving_image" required accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >Voter ID/Driving License<span class="text-danger">*</span></label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="voter_driving_image" required accept="image/*" data-max-file-size="3M">
                             @error('voter_driving_image')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label class="border w-100 p-2 border-dark" for="Police-img">Police Verification</label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Police-img" name="police_verification" accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >Police Verification</label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="police_verification" accept="image/*" data-max-file-size="3M">
                             @error('police_verification')
                             <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col mb-5">
-                            <label class="border w-100 p-2 border-dark" for="Other-img">Other Document</label>
-                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" id="Other-img" name="other_document" accept="image/*" data-max-file-size="3M">
+                            <label class="border w-100 p-2 border-dark dropify-label-custom" >Other Document</label>
+                            <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="other_document" accept="image/*" data-max-file-size="3M">
                             @error('other_document')
                             <span class="error">{{ $message }}</span>
                             @enderror

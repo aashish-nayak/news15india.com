@@ -412,6 +412,10 @@ body {
     animation-iteration-count: infinite;
 }
 
+.dropify-label-custom{
+    font-size: 14px;
+}
+
 @keyframes blink {
     50% {
         border-color: #fff;
