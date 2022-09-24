@@ -40,7 +40,7 @@
         }
 
         span.text-danger {
-            font-size: 20px
+            font-size: 20px;
         }
         .sw-btn-group-extra,
         .sw-btn-prev,
