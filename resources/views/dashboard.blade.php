@@ -352,12 +352,12 @@
                                         <div class="row">
                                             <form action="" class="col-md-4 border">
                                                 @csrf
-                                                <h3 class="text-center px-3 py-2 text-dark mb-3" style="background-color: #dddddd;margin: 0px -15px;">Compaint Form</h3>
+                                                <h3 class="text-center px-3 py-2 text-dark mb-3" style="background-color: #dddddd;margin: 0px -15px;">Complaint Form</h3>
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label class="profile_details_text">Name Of Complainant:</label>
-                                                            <input type="text" name="title" class="form-control" value="{{old('title')}}" required placeholder="Complaint Name">
+                                                            <input type="text" name="title" class="form-control" value="@if(old('title')){{old('title')}}@else{{auth('web')->user()->name}}@endif" required placeholder="Complainant Name">
                                                         </div>
                                                         @error('title')
                                                             <span class="text-danger">{{ $message }}</span>
