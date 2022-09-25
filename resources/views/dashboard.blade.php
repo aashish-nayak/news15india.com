@@ -109,7 +109,7 @@
                         <div class="profile-usermenu m-0">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile"
+                                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile"
                                         type="button" role="tab" aria-controls="profile"
                                         aria-selected="false">Profile</button>
                                 </li>
@@ -118,9 +118,14 @@
                                         type="button" role="tab" aria-controls="contact"
                                         aria-selected="false">Reporter Application</button>
                                 </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="complaint-tab" data-toggle="tab" data-target="#complaint"
+                                        type="button" role="tab" aria-controls="contact"
+                                        aria-selected="false">Complaint Box</button>
+                                </li>
                             </ul>
                             <div class="tab-content my-3" id="myTabContent">
-                                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <form action="{{route('user.profile.update')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <h3 class="text-center">Edit Personal Information</h3>
@@ -342,6 +347,93 @@
                                     </div>
                                     @endif
                                 </div>
+                                <div class="tab-pane fade show active" id="complaint" role="tabpanel" aria-labelledby="complaint-tab">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <form action="" class="col-md-4 border">
+                                                @csrf
+                                                <h3 class="text-center px-3 py-2 text-dark mb-3" style="background-color: #dddddd;margin: 0px -15px;">Compaint Form</h3>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label class="profile_details_text">Name Of Complainant:</label>
+                                                            <input type="text" name="title" class="form-control" value="{{old('title')}}" required placeholder="Complaint Name">
+                                                        </div>
+                                                        @error('title')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label class="profile_details_text">Complaint Subject:</label>
+                                                            <input type="text" name="subject" class="form-control" value="{{old('subject')}}" required placeholder="Subject">
+                                                        </div>
+                                                        @error('subject')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label class="profile_details_text">Complaint Link: </label>
+                                                            <input type="text" name="link" class="form-control" value="{{old('link')}}" required placeholder="News Link, Advertisement Number, Survey Link :">
+                                                        </div>
+                                                        @error('link')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label class="profile_details_text">Complaint Message :</label>
+                                                            <textarea name="message" class="form-control" rows="6" placeholder="write your complaint message here...">{{old('message')}}</textarea>
+                                                        </div>
+                                                        @error('message')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-12 mb-3">
+                                                        <button type="submit" class="btn btn-sm btn-success px-4">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="col-md-8">
+                                                <div class="border position-relative mt-3">
+                                                    <div class="d-inline-block px-3 py-1 complaint-replies-header">
+                                                        <h5 class="m-0">Complaint Replies</h5>
+                                                    </div>
+                                                    <div class="accordion mt-4 accordion-height" id="accordionExample">
+                                                        @foreach (range(1,15) as $key => $complent)
+                                                        @php
+                                                            $show = ($key == 0) ? 'show' : '';
+                                                        @endphp
+                                                        <div class="card">
+                                                            <div class="card-header" id="compaint-heading-{{$key}}">
+                                                                <h2 class="mb-0">
+                                                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                                                        data-target="#compaint-{{$key}}" aria-expanded="true" aria-controls="collapseOne">
+                                                                        Collapsible Group Item #1
+                                                                    </button>
+                                                                </h2>
+                                                            </div>
+                                                    
+                                                            <div id="compaint-{{$key}}" class="collapse {{$show}}" aria-labelledby="compaint-heading-{{$key}}" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <div class="border-bottom border-top position-relative mt-2">
+                                                                        <span class="reply-date">20.7.2022</span>
+                                                                        <p class="mt-4 mb-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus, atque?</p>
+                                                                    </div>
+                                                                    <a type="button" class="mt-3" data-toggle="modal" data-target="#replyModal">
+                                                                        Reply
+                                                                      </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- END MENU -->
@@ -364,8 +456,31 @@
             </div>
         </div>
     </main>
+    
+    
 @endsection
 @push('js')
+<div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="replyModalLabel">Reply</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea name="" id="" class="form-control" rows="4" placeholder="Write Your Reply"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="{{ asset('assets/plugins/smart-wizard/js/jquery.smartWizard.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>

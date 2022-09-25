@@ -415,7 +415,25 @@ body {
 .dropify-label-custom{
     font-size: 14px;
 }
-
+.complaint-replies-header{
+    background-color: #dddddd;position: absolute;top: -12px;z-index: 10;left: -1px;
+}
+.accordion-height{
+    max-height: 500px;overflow-y: auto
+}
+.modal,.modal-footer .btn,.modal .form-control{
+    font-size: 1.6rem !important;
+}
+.modal-sm {
+    max-width: 300px !important;
+}
+.reply-date{
+    background-color: #f7f7f7;
+    position: absolute;
+    top: -10px;
+    padding: 0px 5px;
+    font-size: 13px;
+}
 @keyframes blink {
     50% {
         border-color: #fff;
