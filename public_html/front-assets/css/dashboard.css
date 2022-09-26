@@ -424,8 +424,8 @@ body {
 .modal,.modal-footer .btn,.modal .form-control{
     font-size: 1.6rem !important;
 }
-.modal-sm {
-    max-width: 300px !important;
+.modal-md {
+    max-width: 450px !important;
 }
 .reply-date{
     background-color: #f7f7f7;

@@ -352,21 +352,26 @@
                                         <div class="row">
                                             <form action="" class="col-md-4 border">
                                                 @csrf
-                                                <h3 class="text-center px-3 py-2 text-dark mb-3" style="background-color: #dddddd;margin: 0px -15px;">Complaint Form</h3>
+                                                <h4 class="text-center px-3 py-2 text-dark mb-3" style="background-color: #dddddd;margin: 0px -15px;">Write Your Complaint</h3>
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label class="profile_details_text">Name Of Complainant:</label>
-                                                            <input type="text" name="title" class="form-control" value="@if(old('title')){{old('title')}}@else{{auth('web')->user()->name}}@endif" required placeholder="Complainant Name">
+                                                            <input type="text" name="name" class="form-control" value="@if(old('name')){{old('name')}}@else{{auth('web')->user()->name}}@endif" required placeholder="Complainant Name">
                                                         </div>
-                                                        @error('title')
+                                                        @error('name')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label class="profile_details_text">Complaint Subject:</label>
-                                                            <input type="text" name="subject" class="form-control" value="{{old('subject')}}" required placeholder="Subject">
+                                                            <select name="subject" class="form-control">
+                                                                <option value="News Related">News Related</option>
+                                                                <option value="Survey Related">Survey Related</option>
+                                                                <option value="Advertisement Related">Advertisement Related</option>
+                                                                <option value="User Data Related">User Data Related</option>
+                                                            </select>
                                                         </div>
                                                         @error('subject')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -398,7 +403,7 @@
                                             <div class="col-md-8">
                                                 <div class="border position-relative mt-3">
                                                     <div class="d-inline-block px-3 py-1 complaint-replies-header">
-                                                        <h5 class="m-0">Complaint Replies</h5>
+                                                        <h5 class="m-0">All Complaints</h5>
                                                     </div>
                                                     <div class="accordion mt-4 accordion-height" id="accordionExample">
                                                         @foreach (range(1,15) as $key => $complent)
@@ -414,14 +419,19 @@
                                                                     </button>
                                                                 </h2>
                                                             </div>
-                                                    
+                                                            
                                                             <div id="compaint-{{$key}}" class="collapse {{$show}}" aria-labelledby="compaint-heading-{{$key}}" data-parent="#accordionExample">
                                                                 <div class="card-body">
-                                                                    <div class="border-bottom border-top position-relative mt-2">
+                                                                    <span class="text-dark">Compaint Message:</span>
+                                                                    <p class="mb-4" style="color:#a5a5a5 !important">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit commodi accusamus, quae similique excepturi iste voluptas officia pariatur rem quidem veniam praesentium provident corporis aliquam. Aliquid harum minima saepe eius.</p>
+                                                                    @foreach (range(1,5) as $reply)
+                                                                    <div class="border-top position-relative mb-4 ml-4">
                                                                         <span class="reply-date">20.7.2022</span>
+                                                                        <span class="reply-date" style="right:0px">Admin</span>
                                                                         <p class="mt-4 mb-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus, atque?</p>
                                                                     </div>
-                                                                    <a type="button" class="mt-3" data-toggle="modal" data-target="#replyModal">
+                                                                    @endforeach
+                                                                    <a type="button" class="btn btn-sm mt-3 py-0" style="font-size: 13px;background-color: #dddddd;" data-toggle="modal" data-target="#replyModal">
                                                                         Reply
                                                                       </a>
                                                                 </div>
@@ -461,17 +471,14 @@
 @endsection
 @push('js')
 <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="replyModalLabel">Reply</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <textarea name="" id="" class="form-control" rows="4" placeholder="Write Your Reply"></textarea>
+                    <textarea name="" id="" class="form-control" rows="6" placeholder="Write Your Reply"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
