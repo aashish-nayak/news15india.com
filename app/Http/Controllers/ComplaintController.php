@@ -35,7 +35,21 @@ class ComplaintController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'subject' => 'required|string',
+            'link' => 'url',
+            'complaint_message' => 'required|string',
+        ]);
+        try {
+            $data = $request->except('_token');
+            $data['user_id'] = auth('web')->id();
+            Complaint::create();
+            $request->session()->flash('success','Complaint Submitted');
+        } catch (\Exception $e) {
+            $request->session()->flash('error',$e->getMessage());
+        }
+        return redirect()->back();
     }
 
     /**

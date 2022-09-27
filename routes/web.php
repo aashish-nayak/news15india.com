@@ -6,6 +6,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
@@ -69,6 +70,7 @@ Route::get('/dashboard',[FrontController::class,'dashboard'])->middleware(['auth
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
 Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->name('poll.vote');
 Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');
+Route::post('/complaint/store',[ComplaintController::class,'store'])->middleware(['auth'])->name('user.complaint.store');
 
 // ==================== Backpanel Panel Routes ==================
 Route::get('/admin',function(){

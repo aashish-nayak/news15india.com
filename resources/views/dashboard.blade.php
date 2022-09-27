@@ -350,7 +350,7 @@
                                 <div class="tab-pane fade show active" id="complaint" role="tabpanel" aria-labelledby="complaint-tab">
                                     <div class="col-12">
                                         <div class="row">
-                                            <form action="" class="col-md-4 border">
+                                            <form action="{{route('user.complaint.store')}}" method="POST" class="col-md-4 border">
                                                 @csrf
                                                 <h4 class="text-center px-3 py-2 text-dark mb-3" style="background-color: #dddddd;margin: 0px -15px;">Write Your Complaint</h3>
                                                 <div class="row">
@@ -389,9 +389,9 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label class="profile_details_text">Complaint Message :</label>
-                                                            <textarea name="message" class="form-control" rows="6" placeholder="write your complaint message here...">{{old('message')}}</textarea>
+                                                            <textarea name="complaint_message" class="form-control" rows="6" placeholder="write your complaint message here...">{{old('message')}}</textarea>
                                                         </div>
-                                                        @error('message')
+                                                        @error('complaint_message')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -492,7 +492,32 @@
     <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+    <script src="{{asset('assets/plugins/limonte-sweetalert2/sweetalert2.all.js')}}"></script>
     @if ($submitted == false)
     <script src="{{ asset('front-assets/js/dashboard.js') }}"></script>
     @endif
+    @if (Session::has('success'))
+    <script>
+        $(document).ready(function() {
+            Swal.fire(
+                'Successful!',
+                "{{ Session::get('success') }}",
+                'success'
+            )
+        });
+    </script>
+    @endif
+    @if (Session::has('error'))
+    <script>
+        $(document).ready(function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ Session::get('error') }}"
+            })
+        });
+    </script>
+    @endif
+
+
 @endpush
