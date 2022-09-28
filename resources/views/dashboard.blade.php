@@ -111,7 +111,7 @@
                         <div class="profile-usermenu m-0">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile"
+                                    <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile"
                                         type="button" role="tab" aria-controls="profile"
                                         aria-selected="false">Profile</button>
                                 </li>
@@ -126,13 +126,13 @@
                                         aria-selected="false">Complaint Box</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="surveys-tab" data-toggle="tab" data-target="#surveys"
+                                    <button class="nav-link" id="surveys-tab" data-toggle="tab" data-target="#surveys"
                                         type="button" role="tab" aria-controls="surveys"
                                         aria-selected="false">Surveys</button>
                                 </li>
                             </ul>
                             <div class="tab-content my-3" id="myTabContent">
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <form action="{{route('user.profile.update')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <h3 class="text-center">Edit Personal Information</h3>
@@ -462,7 +462,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade show active" id="surveys" role="tabpanel" aria-labelledby="surveys-tab">
+                                <div class="tab-pane fade" id="surveys" role="tabpanel" aria-labelledby="surveys-tab">
                                     <div class="col-12">
                                         <a href="{{route('poll')}}" class="btn btn-sm btn-primary mb-3">All Surveys</a>
                                         <table id="surveys-table" class="table table-bordered table-sm w-100">
