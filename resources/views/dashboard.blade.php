@@ -556,7 +556,7 @@
             $("#form-complaint-id").val($(this).data('complaint'));
             $("#replyModal").modal('show');
         });
-        $("#surveys-tab").click(function(){
+        $("#surveys-tab").one('click',function(){
             setTimeout(() => {
                 $("#surveys-table").DataTable({
                     responsive : true,
