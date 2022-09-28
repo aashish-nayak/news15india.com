@@ -556,16 +556,20 @@
             $("#form-complaint-id").val($(this).data('complaint'));
             $("#replyModal").modal('show');
         });
-        $("#surveys-table").DataTable({
-            responsive : true,
-            scrollX : true,
-            "columnDefs": [
-                { "width": "5%", "targets": 0 },
-                { "width": "55%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-
-            ]
+        $("#surveys-tab").click(function(){
+            setTimeout(() => {
+                $("#surveys-table").DataTable({
+                    responsive : true,
+                    scrollX : true,
+                    "columnDefs": [
+                        { "width": "5%", "targets": 0 },
+                        { "width": "55%", "targets": 1 },
+                        { "width": "20%", "targets": 2 },
+                        { "width": "20%", "targets": 3 },
+        
+                    ]
+                });
+            }, 500);
         });
     });
 </script>
