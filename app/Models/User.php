@@ -69,4 +69,9 @@ class User extends Authenticatable
         }
         return $this->hasOne(Visitor::class,'user_id');
     }
+
+    public function complaints()
+    {
+        return $this->hasMany(Complaint::class);
+    }
 }

@@ -401,7 +401,7 @@ class FrontController extends Controller
         if($poll_id != ''){
             $polls->where('id',$poll_id);
         }
-        $polls = $polls->get();
+        $polls = $polls->whereDate('starts_at','<=',$now)->whereDate('ends_at','>=',$now)->get();
         return view('poll',compact('polls'));
     }
 
@@ -418,7 +418,9 @@ class FrontController extends Controller
             $submitted = true;
             $data = $data->first();
         }
-        return view('dashboard',compact('submitted','data'));
+        $surveys = User::find(auth('web')->id())->options()->latest()->with('poll')->get();
+        // dd($surveys->toArray());
+        return view('dashboard',compact('submitted','data','surveys'));
     }
 
     public function profile(Request $request)

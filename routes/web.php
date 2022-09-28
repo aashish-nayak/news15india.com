@@ -71,6 +71,7 @@ Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->
 Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->name('poll.vote');
 Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');
 Route::post('/complaint/store',[ComplaintController::class,'store'])->middleware(['auth'])->name('user.complaint.store');
+Route::post('/complaint/reply/store',[ComplaintController::class,'store_reply'])->middleware(['auth'])->name('user.complaint.store-reply');
 
 // ==================== Backpanel Panel Routes ==================
 Route::get('/admin',function(){

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaint;
+use App\Models\ComplaintReply;
+use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ComplaintController extends Controller
 {
     /**
@@ -44,9 +46,24 @@ class ComplaintController extends Controller
         try {
             $data = $request->except('_token');
             $data['user_id'] = auth('web')->id();
-            Complaint::create();
+            $data['complaint_id'] = Str::uuid();
+            Complaint::create($data);
             $request->session()->flash('success','Complaint Submitted');
         } catch (\Exception $e) {
+            $request->session()->flash('error',$e->getMessage());
+        }
+        return redirect()->back();
+    }
+
+    public function store_reply(Request $request)
+    {
+        try {
+            $data = $request->except('_token');
+            $data['reference_id'] = auth('web')->id();
+            $data['reference_type'] = get_class(auth('web')->user());
+            ComplaintReply::create($data);
+            $request->session()->flash('success','Reply Sent!!!');
+        } catch (Exception $e) {
             $request->session()->flash('error',$e->getMessage());
         }
         return redirect()->back();

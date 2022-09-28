@@ -22,6 +22,7 @@ class CreateComplaintsTable extends Migration
             $table->text('link')->nullable();
             $table->text('complaint_message');
             $table->enum('status',['pending','process','solve','reject'])->default('pending');
+            $table->boolean('read')->default(0);
             $table->timestamps();
         });
     }

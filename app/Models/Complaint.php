@@ -12,4 +12,14 @@ class Complaint extends Model
     protected $fillable = [
         'complaint_id', 'name', 'user_id', 'subject', 'link', 'complaint_message', 'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(ComplaintReply::class);
+    }
 }
