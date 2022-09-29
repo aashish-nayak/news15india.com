@@ -93,6 +93,14 @@
                 @endpermission
             </ul>
         </li>
+        @permission('read-applications')
+        <li>
+            <a href="{{Route('admin.reporter.index')}}">
+                <div class="parent-icon"><i class='bx bx-group'></i></div>
+                <div class="menu-title">Reporters</div>
+            </a>
+        </li>
+        @endpermission
         <li>
             <a href="{{Route('admin.menu.index',1)}}">
                 <div class="parent-icon"><i class='bx bx-menu-alt-right'></i></div>

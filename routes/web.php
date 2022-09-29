@@ -144,7 +144,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/delete/{tag}',[TagController::class,'destroy'])->middleware('permission:delete-tags')->name('delete');
         Route::get('/gettags', [TagController::class, 'show'])->middleware('permission:read-tags')->name('getTags');
     });
-    // ----------------[ Backpanel Panel Users Module Routes ]------------------------
+    // ----------------[ Backpanel Panel Members Module Routes ]------------------------
     Route::prefix('/users')->name('user.')->group(function(){
         Route::get('/index', [AdminController::class, 'index'])->middleware('permission:read-member')->name('index');
         Route::get('/block', [AdminController::class, 'show'])->middleware('permission:block-member')->name('block');
@@ -154,6 +154,10 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/block/{id}',[AdminController::class,'destroy'])->middleware('permission:delete-member')->name('delete');
         Route::get('/restore/{id}',[AdminController::class,'restore'])->middleware('permission:restore-member')->name('restore');
         Route::get('/force-delete/{id}',[AdminController::class,'forceDelete'])->middleware('permission:destroy-member')->name('forceDelete');
+    });
+    // ----------------[ Backpanel Panel Reporter Form Module Routes ]------------------------
+    Route::prefix('/reporters')->name('reporter.')->group(function(){
+        Route::get('/', [ReporterController::class, 'show'])->name('index');
     });
     // ----------------[ Backpanel Panel Viewers Module Routes ]------------------------
     Route::prefix('/viewers')->name('viewer.')->group(function(){

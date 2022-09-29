@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ReporterDataTable;
 use App\Http\Requests\ApplicationRequest;
 use App\Models\Reporter;
 use Illuminate\Http\Request;
@@ -61,5 +62,10 @@ class ReporterController extends Controller
             return $filename;
         }
         return null;
+    }
+
+    public function show(ReporterDataTable $datatable)
+    {
+        return $datatable->render('backpanel.reporter.index');
     }
 }
