@@ -9,11 +9,11 @@
                         <i class="far fa-times"></i>
                     </a>
                 </div>
-                <div class="menu_search">
+                {{-- <div class="menu_search">
                     <a href="javascript:void(0)" class="p-4" onclick="searchPop()">
                         <i class="far fa-search"></i>
                     </a>
-                </div>
+                </div> --}}
                 <div class="menu_social">
                     <div class="connectus">
                         @php
@@ -102,7 +102,7 @@
 <div class="over_lay1" style="width: 0px;"></div>
 <div class="search_container" style="left: -360px;">
     <div class="search_box">
-        <form action="/Search">
+        <form action="javascript:void(0)">
             <img src="https://english.cdn.zeenews.com/static/public/menusearch.svg" alt="search icon"
                 class="search_icon1 ls-is-cached lazyloaded">
             <input type="text" placeholder="Search here" name="q" minlength="3" class="search_input"

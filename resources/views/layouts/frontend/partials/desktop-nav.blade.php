@@ -249,7 +249,7 @@
                 <!-- Main Navbar End  -->
             </div>
             <!-- Search Button  -->
-            <div class="col px-1">
+            {{-- <div class="col px-1">
                 <div id="block-search-form" class="block block-search block-odd d-none d-md-flex justify-content-end">
                     <div class="content">
                         <form action="/drupal/globalnews/" method="post" id="search-block-form"
@@ -269,7 +269,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Search Button End  -->
         </div>
     </div>
