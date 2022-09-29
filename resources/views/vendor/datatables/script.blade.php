@@ -67,4 +67,10 @@ $(function(){
             }
         })
     });
+    if($(document).find('#filter').length > 0){
+        $(document).on('click','#filter',function(e){
+            e.preventDefault();
+            $(document).find('.dt-buttons button.buttons-reload').trigger('click');
+        });
+    }
 });
