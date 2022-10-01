@@ -48,7 +48,8 @@ class ReporterDataTable extends DataTable
             ->addColumn('action', function (Reporter $report) {
                 return view('components.datatable.actions', [
                     'item' => $report,
-                    'view' => 'single-news',
+                    'current' => true,
+                    'view' => 'admin.reporter.view',
                     'viewParam' => $report->id,
                 ]);
             });
@@ -73,6 +74,8 @@ class ReporterDataTable extends DataTable
     public function html()
     {
         return $this->builder()
+                    ->scrollX(true)
+                    ->addTableClass('table-responsive')
                     ->lengthMenu([10, 25, 50, 100, 200])
                     ->select(["style" => 'os', "selector" => 'td:first-child'])
                     ->stateSave('true')

@@ -158,6 +158,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     // ----------------[ Backpanel Panel Reporter Form Module Routes ]------------------------
     Route::prefix('/reporters')->name('reporter.')->group(function(){
         Route::get('/', [ReporterController::class, 'show'])->name('index');
+        Route::get('/view/{id}', [ReporterController::class, 'view'])->name('view');
     });
     // ----------------[ Backpanel Panel Viewers Module Routes ]------------------------
     Route::prefix('/viewers')->name('viewer.')->group(function(){

@@ -104,4 +104,14 @@ class Reporter extends Model
     {
         return $this->morphOne(Payment::class,__FUNCTION__,'reference_type','reference_id','id');
     }
+
+    public function getAge(){
+        return now()->diff($this->attributes['dob'])
+        ->format('%y years');
+    }
+
+    public function exp(){
+        return now()->diff($this->attributes['start_journalism'])
+        ->format('%y years');
+    }
 }

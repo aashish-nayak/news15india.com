@@ -108,9 +108,15 @@ class ReporterController extends Controller
         }
         return null;
     }
-
+    
     public function show(ReporterDataTable $datatable)
     {
         return $datatable->render('backpanel.reporter.index');
+    }
+
+    public function view($id)
+    {
+        $reporter = Reporter::find($id);
+        return view('backpanel.reporter.view-form',compact('reporter'));
     }
 }
