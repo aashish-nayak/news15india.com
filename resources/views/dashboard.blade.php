@@ -6,7 +6,7 @@
         'description' => auth('web')->user()->about,
         'image' => setting('site_log'),
         'image_alt' => auth('web')->user()->name,
-        'type' => 'User',
+        'type' => 'Profile',
         'auhtor' => auth('web')->user()->name,
     ])
 @endsection
