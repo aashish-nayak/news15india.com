@@ -1,9 +1,9 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
 @meta([
-    'title'         => $currentCategory->meta_title,
+    'title'         => $currentCategory->meta_title ?? $currentCategory->cat_name,
     'keywords'      => $currentCategory->meta_keywords,
-    'description'   => $currentCategory->meta_description,
+    'description'   => $currentCategory->meta_description ?? $currentCategory->cat_name,
     'image'         => asset('storage/media/'.$currentCategory->catImage->filename),
     'image_alt'     => $currentCategory->catImage->alt,
     'image_size'    => $currentCategory->catImage->size,

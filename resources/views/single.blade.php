@@ -1,9 +1,9 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
 @meta([
-    'title'         => $news->meta_title,
+    'title'         => $news->meta_title ?? $news->title,
     'keywords'      => $news->meta_keywords,
-    'description'   => $news->meta_description,
+    'description'   => $news->meta_description ?? $news->short_description,
     'image'         => asset('storage/media/'.$news->newsImage->filename),
     'image_alt'     => $news->newsImage->alt,
     'image_size'    => $news->newsImage->size,
