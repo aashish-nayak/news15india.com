@@ -42,7 +42,7 @@ class ReporterController extends Controller
             Reporter::create($uploadData);
             return redirect()->route('thank-you');
         } catch (\Exception $e) {
-            $request->session()->flash('error', $e->getMessage());
+            $request->session()->flash('error', 'Unable to process request.Error:'.json_encode($e->getMessage(), true));
             return redirect()->back();
         }
     }

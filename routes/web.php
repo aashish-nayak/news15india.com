@@ -39,20 +39,20 @@ Route::any('/test',[TestController::class,'test'])->name('test');
 Route::view('/test/view','test')->name('test-view');
 
 
-Route::view('/', 'welcome');
+// Route::view('/', 'welcome');
 
-Route::prefix('/frontend-on-development/news15india')->group(function(){
-    Route::get('/', [FrontController::class,'home'])->name('home');
-    Route::get('/news/category/{slug}',[FrontController::class,'categoryNews'])->name('category-news');
-    Route::get('/news/tag/{slug?}',[FrontController::class,'tagNews'])->name('tag-news');
-    Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
-    Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
-    Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
-    Route::get('/polls/{id?}',[FrontController::class,'poll'])->name('poll');
-    Route::get('/application-form',[ReporterController::class,'application_form'])->name('reporter-application-form');
-    Route::post('/application-form/store',[ReporterController::class,'storeApplication'])->name('reporter-application-store');
-    Route::view('/thank-you','thank-you')->name('thank-you');
-});
+Route::get('/', [FrontController::class,'home'])->name('home');
+Route::get('/news/category/{slug}',[FrontController::class,'categoryNews'])->name('category-news');
+Route::get('/news/tag/{slug?}',[FrontController::class,'tagNews'])->name('tag-news');
+Route::get('/page/{slug}',[FrontController::class,'pages'])->name('page');
+Route::get('/author/{user}', [FrontController::class,'author'])->name('author');
+Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-news');
+Route::get('/polls/{id?}',[FrontController::class,'poll'])->name('poll');
+Route::get('/application-form',[ReporterController::class,'application_form'])->name('reporter-application-form');
+Route::post('/application-form/store',[ReporterController::class,'storeApplication'])->name('reporter-application-store');
+Route::view('/thank-you','thank-you')->name('thank-you');
+// Route::prefix('/frontend-on-development/news15india')->group(function(){
+// });
 // =============== Country State City Routes ==============
 Route::get('/location/countries',[WorldDataController::class,'countries'])->name('countries');
 Route::get('/location/states/{country_id}',[WorldDataController::class,'states'])->name('states');
