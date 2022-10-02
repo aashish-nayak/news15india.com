@@ -36,10 +36,20 @@ class ReporterDataTable extends DataTable
             ->editColumn('state_id', function (Reporter $report) {
                 return $report->state->name;
             })
+            ->editColumn('payment_status', function (Reporter $report) {
+                return ($report->payment->payment_status == 0) ? 'Pending' : 'Recevied';
+            })
+            ->editColumn('payment_method', function (Reporter $report) {
+                return ucwords($report->payment->payment_method) ?? '';
+            })
+            ->editColumn('order_id', function (Reporter $report) {
+                return $report->payment->order_id ?? '';
+            })
             ->addColumn('action', function (Reporter $report) {
                 return view('components.datatable.actions', [
                     'item' => $report,
-                    'view' => 'single-news',
+                    'current' => true,
+                    'view' => 'admin.reporter.view',
                     'viewParam' => $report->id,
                 ]);
             });
@@ -64,6 +74,8 @@ class ReporterDataTable extends DataTable
     public function html()
     {
         return $this->builder()
+                    ->scrollX(true)
+                    ->addTableClass('table-responsive')
                     ->lengthMenu([10, 25, 50, 100, 200])
                     ->select(["style" => 'os', "selector" => 'td:first-child'])
                     ->stateSave('true')
@@ -75,6 +87,7 @@ class ReporterDataTable extends DataTable
                     ->buttons(
                         Button::make('pageLength'),
                         Button::make('print')->exportOptions('modifier: { selected: null }'),
+                        Button::make('excel'),
                         Button::make('reload'),
                         Button::make('reset'),
                     );
@@ -131,6 +144,21 @@ class ReporterDataTable extends DataTable
                 "name" => "app_status",
                 "title" => "Status",
                 "data" => "app_status"
+            ],
+            [
+                "name" => "payment_status",
+                "title" => "P-Status",
+                "data" => "payment_status"
+            ],
+            [
+                "name" => "payment_method",
+                "title" => "P-Mode",
+                "data" => "payment_method"
+            ],
+            [
+                "name" => "order_id",
+                "title" => "P-ID",
+                "data" => "order_id"
             ],
             Column::computed('action')
                 ->exportable(false)

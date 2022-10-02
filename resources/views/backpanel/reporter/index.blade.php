@@ -20,7 +20,6 @@
 @endsection
 @push('plugin-scripts')
     {!! $dataTable->scripts() !!}
-
     <script>
         $(document).ready(function () {
             $(document).on("click",".delete",function (e) {

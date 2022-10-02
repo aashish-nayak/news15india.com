@@ -20,15 +20,24 @@
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
 </head>
-<body>
-	<header class="site-header" id="header">
-		<h1 class="site-header__title" data-lead-id="site-header-title">THANK YOU!</h1>
-	</header>
-
-	<div class="main-content">
-		<i class="fa fa-check main-content__checkmark" id="checkmark"></i>
-		<p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. Our Team Contact You Soon. Thanks for being you.</p>
-        <a href="{{route('home')}}" class="btn btn-primary" >Go To Home Page</a>
+<body style="display: flex;justify-content:center;align-items:center;height:100vh">
+	<div>
+		<header class="site-header" style="padding: 0" id="header">
+			<h1 class="site-header__title" data-lead-id="site-header-title">THANK YOU!</h1>
+		</header>
+	
+		<div class="main-content">
+			<i class="fa fa-check main-content__checkmark" id="checkmark"></i>
+			<p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. Our Team Contact You Soon. Thanks for being you.</p>
+			@if(auth('web')->check())
+			<p class="main-content__body" data-lead-id="main-content-body">You Can check Application Form Status in your Profile <b>Reporter Application</b> Section</p>
+			
+			<p class="main-content__body" data-lead-id="main-content-body"><b>Note : </b> <small>You can login Using Your Email & password is your email</small></p>
+			<p class="main-content__body" data-lead-id="main-content-body"><a href="{{route('dashboard')}}" class="btn btn-primary" >Go To Profile Page</a></p>
+			@else
+			<a href="{{route('home')}}" class="btn btn-primary" >Go To Home Page</a>
+			@endif
+		</div>
 	</div>
 </body>
 </html>

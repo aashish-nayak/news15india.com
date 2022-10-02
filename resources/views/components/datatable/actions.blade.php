@@ -13,7 +13,7 @@
 
     @if (!empty($view))
     {{-- @permission($viewPermission) --}}
-    <a href="{{ route($view, $viewParam) }}" class="col text-dark border border-dark" target="_blank"><i class="bx bxs-show"></i></a>
+    <a href="{{ route($view, $viewParam) }}" class="col text-dark border border-dark" @if(!isset($current)) target="_blank" @endif><i class="bx bxs-show"></i></a>
     {{-- @endpermission --}}
     @endif
 

@@ -120,7 +120,7 @@
                                         <option {{(old('applied_designation') == 'Reporter') ? 'selected' : ''}} value="Reporter">Reporter</option>
                                         <option {{(old('applied_designation') == 'Bureau Chief') ? 'selected' : ''}} value="Bureau Chief">Bureau Chief</option>
                                         <option {{(old('applied_designation') == 'Sub Editor') ? 'selected' : ''}} value="Sub Editor">Sub Editor</option>
-                                        <option {{(old('applied_designation') == '"Editor"') ? 'selected' : ''}} value="Editor">Editor</option>
+                                        <option {{(old('applied_designation') == 'Editor') ? 'selected' : ''}} value="Editor">Editor</option>
                                         <option {{(old('applied_designation') == 'State Head') ? 'selected' : ''}} value="State Head">State Head</option>
                                         <option {{(old('applied_designation') == 'Advertisement Head') ? 'selected' : ''}} value="Advertisement Head">Advertisement Head</option>
                                         <option {{(old('applied_designation') == 'Video Editor') ? 'selected' : ''}} value="Video Editor">Video Editor</option>
@@ -380,7 +380,7 @@
                                 <option {{(old('designation') == 'Reporter') ? 'selected' : ''}} value="Reporter">Reporter</option>
                                 <option {{(old('designation') == 'Bureau Chief') ? 'selected' : ''}} value="Bureau Chief">Bureau Chief</option>
                                 <option {{(old('designation') == 'Sub Editor') ? 'selected' : ''}} value="Sub Editor">Sub Editor</option>
-                                <option {{(old('designation') == '"Editor"') ? 'selected' : ''}} value="Editor">Editor</option>
+                                <option {{(old('designation') == 'Editor') ? 'selected' : ''}} value="Editor">Editor</option>
                                 <option {{(old('designation') == 'State Head') ? 'selected' : ''}} value="State Head">State Head</option>
                                 <option {{(old('designation') == 'Advertisement Head') ? 'selected' : ''}} value="Advertisement Head">Advertisement Head</option>
                                 <option {{(old('designation') == 'Video Editor') ? 'selected' : ''}} value="Video Editor">Video Editor</option>
