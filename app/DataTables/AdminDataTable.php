@@ -101,7 +101,9 @@ class AdminDataTable extends DataTable
     public function query(Admin $model)
     {
         $data = $model->newQuery();
-
+        $data = $data->whereHas('roles', function ($query) {
+            $query->where('slug', '!=', 'super-admin');
+        });
         if (request()->designation != 'all') {
             $data = $data->whereHas('roles', function($q){
                 $q->where('role_id',request()->designation);

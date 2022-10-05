@@ -92,7 +92,7 @@ class AdminController extends Controller
             $query->where('slug','super-admin');
         })->where('id',$id)->count();
         if($count > 0){
-            return redirect()->back();
+        return redirect()->back()->with('error','Not Authrized to Delete Super Admin');
         }
         $user = Admin::find($id);
         $roles = Role::where('slug','!=','super-admin')->get();
