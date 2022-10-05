@@ -12,7 +12,7 @@
 @section('sections')
 
 <div class="col-12 mb-5">
-    <div class="col-12 d-flex justify-content-between">
+    <div class="col-12 d-flex justify-content-between align-items-center">
         <h6 class="mb-0 text-uppercase d-inline-block">{{$title}}</h6>
         <a href="{{route('admin.user.index')}}" class="btn btn-primary btn-sm">All Members</a>
     </div>
@@ -21,43 +21,49 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <div class="card radius-10">
+                    <div class="card-header">
+                        <h4 class="card-title m-0 d-flex align-items-center"><i class="bx bx-user-check fs-3 mt-1 me-2"></i> <span>Authorization</span></h4>
+                    </div>
                     <div class="card-body">
                         @csrf
                         @isset($user) <input type="hidden" name="id" value="{{$user->id}}"> @endisset
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
                                 <label for="name" class="form-label"><b>Name</b><span class="text-danger">*</span></label>
-                                <input type="text" name="name" placeholder="Name" required class="form-control titletoslug" id="name" value="@if(isset($user)){{$user->name}}@else{{old('name')}}@endif">
+                                <input type="text" name="name" placeholder="Name" required class="form-control" id="name" value="@if(isset($user)){{$user->name}}@else{{old('name')}}@endif">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label"><b>Email</b><span class="text-danger">*</span></label>
-                                <input type="email" autocomplete="email" name="email" placeholder="Email" required class="form-control titletoslug" id="email" value="@if(isset($user)){{$user->email}}@else{{old('email')}}@endif">
+                                <input type="email" autocomplete="email" name="email" placeholder="Email" required class="form-control" id="email" value="@if(isset($user)){{$user->email}}@else{{old('email')}}@endif">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-4 mb-3">
+                                <label for="phone" class="form-label"><b>Phone</b><span class="text-danger">*</span></label>
+                                <input type="text" autocomplete="phone" maxlength="12" name="phone" placeholder="Phone" required class="form-control" id="phone" value="@if(isset($user)){{$user->details->phone}}@else{{old('phone')}}@endif">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-4 mb-3">
                                 <label for="password" class="form-label"><b>Password</b><span class="text-danger"></span></label>
-                                <input type="password" autocomplete="password" name="password" placeholder="Password" class="form-control titletoslug" id="password" value="{{old('password')}}">
+                                <input type="password" autocomplete="new-password" name="password" placeholder="Password" class="form-control" id="password" value="{{old('password')}}">
+                                <small class="text-muted" style="font-size: 9px">Fill this field if you want to change password</small>
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <label for="cpassword" class="form-label"><b>Confirm Password</b><span class="text-danger"></span></label>
-                                <input type="password" autocomplete="password" name="confirmed" placeholder="Confirm Password" class="form-control titletoslug" id="cpassword" value="">
-                                @error('password')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            <div class="col-md-4 mb-3">
+                                <label for="location" class="form-label"><b>Location</b><span class="text-danger"></span></label>
+                                <input type="text" autocomplete="new-password" placeholder="location" class="form-control" readonly id="location" value="@if(isset($user) && isset($user->reporter_details->city->name)){{$user->reporter_details->state->name.", ".$user->reporter_details->city->name}}@endif">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="cpassword" class="form-label"><b>Request Designation</b><span class="text-danger"></span></label>
+                                <input type="text" placeholder="designation" readonly value="@if(isset($user) && isset($user->reporter_details->applied_designation)){{$user->reporter_details->applied_designation}}@endif" class="form-control">
                             </div>
                         </div>
                         <div class="form-row">
@@ -98,7 +104,7 @@
             <div class="col-9">
                 <div class="d-flex">
                     <div class="btn-group">
-                        <button type="submit" name="back" value="save_and_back" class="btn btn-success"><i class="bx bx-save"></i> Save & Back</button>
+                        <button type="submit" name="back" value="save_and_back" class="btn btn-success"><i class="bx bx-save"></i> Save & View</button>
                         <button type="button" class="btn btn-success split-bg-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>

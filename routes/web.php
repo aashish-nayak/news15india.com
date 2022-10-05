@@ -50,9 +50,8 @@ Route::get('/news/{slug}',[FrontController::class,'singleNews'])->name('single-n
 Route::get('/polls/{id?}',[FrontController::class,'poll'])->name('poll');
 Route::get('/application-form',[ReporterController::class,'application_form'])->name('reporter-application-form');
 Route::post('/application-form/store',[ReporterController::class,'storeApplication'])->name('reporter-application-store');
-Route::view('/thank-you','thank-you')->name('thank-you');
-// Route::prefix('/frontend-on-development/news15india')->group(function(){
-// });
+Route::get('/thank-you/{order_id?}',[FrontController::class,'thank_you'])->name('thank-you');
+
 // =============== Country State City Routes ==============
 Route::get('/location/countries',[WorldDataController::class,'countries'])->name('countries');
 Route::get('/location/states/{country_id}',[WorldDataController::class,'states'])->name('states');
@@ -145,7 +144,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/gettags', [TagController::class, 'show'])->middleware('permission:read-tags')->name('getTags');
     });
     // ----------------[ Backpanel Panel Members Module Routes ]------------------------
-    Route::prefix('/users')->name('user.')->group(function(){
+    Route::prefix('/member')->name('user.')->group(function(){
         Route::get('/index', [AdminController::class, 'index'])->middleware('permission:read-member')->name('index');
         Route::get('/block', [AdminController::class, 'show'])->middleware('permission:block-member')->name('block');
         Route::get('/create',[AdminController::class,'create'])->middleware('permission:create-member')->name('add');
@@ -159,6 +158,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::prefix('/reporters')->name('reporter.')->group(function(){
         Route::get('/', [ReporterController::class, 'show'])->name('index');
         Route::get('/view/{id}', [ReporterController::class, 'view'])->name('view');
+        Route::post('/update', [ReporterController::class, 'update'])->name('update');
+        Route::get('/approved/{reporter}', [ReporterController::class, 'approved'])->name('approved');
     });
     // ----------------[ Backpanel Panel Viewers Module Routes ]------------------------
     Route::prefix('/viewers')->name('viewer.')->group(function(){

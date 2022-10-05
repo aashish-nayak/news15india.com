@@ -33,17 +33,42 @@ class ReporterDataTable extends DataTable
             ->editColumn('city_id', function (Reporter $report) {
                 return $report->city->name;
             })
+            ->filterColumn('city_id', function ($query, $keyword) {
+                $query->whereHas('city', function ($q) use ($keyword) {
+                    $q->where('name', 'like', "%$keyword%");
+                });
+            })
             ->editColumn('state_id', function (Reporter $report) {
                 return $report->state->name;
+            })
+            ->filterColumn('state_id', function ($query, $keyword) {
+                $query->whereHas('state', function ($q) use ($keyword) {
+                    $q->where('name', 'like', "%$keyword%");
+                });
             })
             ->editColumn('payment_status', function (Reporter $report) {
                 return ($report->payment->payment_status == 0) ? 'Pending' : 'Recevied';
             })
+            ->filterColumn('payment_status', function ($query, $keyword) {
+                $query->whereHas('payment', function ($q) use ($keyword) {
+                    $q->where('payment_status', 'like', "%$keyword%");
+                });
+            })
             ->editColumn('payment_method', function (Reporter $report) {
                 return ucwords($report->payment->payment_method) ?? '';
             })
+            ->filterColumn('payment_method', function ($query, $keyword) {
+                $query->whereHas('payment', function ($q) use ($keyword) {
+                    $q->where('payment_method', 'like', "%$keyword%");
+                });
+            })
             ->editColumn('order_id', function (Reporter $report) {
                 return $report->payment->order_id ?? '';
+            })
+            ->filterColumn('order_id', function ($query, $keyword) {
+                $query->whereHas('payment', function ($q) use ($keyword) {
+                    $q->where('order_id',$keyword);
+                });
             })
             ->addColumn('action', function (Reporter $report) {
                 return view('components.datatable.actions', [
@@ -63,7 +88,18 @@ class ReporterDataTable extends DataTable
      */
     public function query(Reporter $model)
     {
-        return $model->newQuery();
+        $data = $model->newQuery();
+
+        if (request()->from_date != '' && request()->to_date != '') {
+            $data = $data->whereDate('created_at', '>=', request()->from_date)->whereDate('created_at', '<=', request()->to_date);
+        }
+        if (request()->designation != 'all') {
+            $data = $data->where('applied_designation', request()->designation);
+        }
+        if (request()->status != 'all') {
+            $data = $data->where('app_status', request()->status);
+        }
+        return $this->applyScopes($data);
     }
 
     /**
@@ -81,12 +117,20 @@ class ReporterDataTable extends DataTable
                     ->stateSave('true')
                     ->setTableId('reporterdatatable-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
+                    ->postAjax([
+                        'dataType' => 'json',
+                        'data' => 'function ( d ) {
+                            d.from_date =  $("#filter_from").val();
+                            d.to_date = $("#filter_to").val();
+                            d.designation = $("#designation").val();
+                            d.status = $("#status").val();
+                            return d;
+                          }',
+                    ])
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
                         Button::make('pageLength'),
-                        Button::make('print')->exportOptions('modifier: { selected: null }'),
                         Button::make('excel'),
                         Button::make('reload'),
                         Button::make('reset'),

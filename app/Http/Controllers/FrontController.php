@@ -419,7 +419,6 @@ class FrontController extends Controller
             $data = $data->first();
         }
         $surveys = User::find(auth('web')->id())->options()->latest()->with('poll')->get();
-        // dd($surveys->toArray());
         return view('dashboard',compact('submitted','data','surveys'));
     }
 
@@ -460,5 +459,10 @@ class FrontController extends Controller
         $details->city_id = $request->city;
         $details->save();
         return redirect()->back();
+    }
+
+    public function thank_you($transaction_id = null)
+    {
+        return view('thank-you',compact('transaction_id'));
     }
 }

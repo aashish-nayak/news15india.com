@@ -2,64 +2,52 @@
 @section('title', 'Members')
 
 @section('sections')
-    <div class="col-12 mt-4 text-end">
-        <a href="{{route('admin.user.add')}}" class="btn btn-primary mr-3 btn-sm">Add Member</a>
-        <a href="{{route('admin.user.block')}}" class="btn btn-danger mr-3 btn-sm">View Block Members</a>
-    </div>
-    <div class="col-12 mt-2">
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title m-0">Members</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="col-md-3">
+                    <h4 class="card-title m-0 d-flex align-items-center">
+                        <i class="bx bx-group fs-3 mt-1 me-2"></i>
+                        <span>Members</span>
+                    </h4>
+                </div>
+                <div class="col-md-auto col-12">
+                    <div class="d-flex justify-content-end align-items-center gap-2 flex-wrap">
+                        <div class="form-group me-2 filters">
+                            <div class="row justify-content-end align-items-center m-0">
+                                <div class="col px-1">
+                                    <select class="form-select form-select-sm" required name="status" id="status">
+                                        <option value="all">Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col px-1">
+                                    <select class="form-select form-select-sm" required name="designation" id="designation">
+                                        <option value="all">Designation</option>
+                                        @foreach ($roles as $role)
+                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-2 px-1">
+                                    <button type="button" name="filter" id="filter" class="btn btn-info btn-sm">Filter</button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{route('admin.user.add')}}" class="btn btn-primary btn-sm">Add Member</a>
+                        <a href="{{route('admin.user.block')}}" class="btn btn-danger btn-sm">Block Members</a>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
-                <div class="">
-                    <table id="users" class="w-100 table responsive display table-striped table-bordered align-middle border table-hover" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Roles</th>
-                                <th data-orderable="false">Extra Permission</th>
-                                <th data-orderable="false">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $key => $user)
-                            <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>
-                                    @forelse ($user->roles as $role)
-                                        <span class="badge rounded-pill bg-secondary">{{$role->name}}</span>
-                                        @empty
-                                        -
-                                    @endforelse
-                                </td>
-                                <td>
-                                    @forelse ($user->permissions as $permission)
-                                        <span class="badge rounded-pill bg-primary">{{$permission->name}}</span>
-                                        @empty
-                                        -
-                                    @endforelse
-                                </td>
-                                <td>
-                                    <div class="d-flex order-actions">
-                                        <a href="{{route('admin.user.edit',$user->id)}}" class="edit-category border" title="Edit"><i class="bx bxs-edit"></i></a>
-                                        <a href="{{route('admin.user.delete',$user->id)}}" class="text-danger ms-3 border delete" title="Block"><i class="bx bx-block"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                {!! $dataTable->table() !!}
             </div>
         </div>
     </div>
 @endsection
 @push('scripts')
+{!! $dataTable->scripts() !!}
 <script>
     $(document).ready(function() {
         $('#users').DataTable();

@@ -96,6 +96,7 @@ class NewsDataTable extends DataTable
             ->lengthMenu([10, 25, 50, 100, 200])
             ->select(["style" => 'os', "selector" => 'td:first-child'])
             ->stateSave('true')
+            ->addTableClass('w-100')
             ->setTableId('news-table')
             ->columns($this->getColumns())
             ->postAjax([

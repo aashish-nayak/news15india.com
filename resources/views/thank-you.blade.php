@@ -28,7 +28,7 @@
 	
 		<div class="main-content">
 			<i class="fa fa-check main-content__checkmark" id="checkmark"></i>
-			<p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. Our Team Contact You Soon. Thanks for being you.</p>
+			<p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. Our Team Contact You Soon. Thanks for being you. @isset($transaction_id) <b>Transaction ID : {{$transaction_id}}</b> @endisset</p>
 			@if(auth('web')->check())
 			<p class="main-content__body" data-lead-id="main-content-body">You Can check Application Form Status in your Profile <b>Reporter Application</b> Section</p>
 			

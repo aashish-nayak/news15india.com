@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Traits\HasPermissionsTrait;
 use App\Traits\Followable;
+use Facade\FlareClient\Report;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Support\Str;
 class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasPermissionsTrait, SoftDeletes, Followable;
@@ -55,6 +56,7 @@ class Admin extends Authenticatable
     {
         $city = City::where('state_id',33)->inRandomOrder()->first()->id;
         return $this->hasOne(AdminDetail::class)->withDefault([
+            'url' => strtolower(Str::random(20)),
             'country_id' => 101,
             'state_id' => 33,
             'city_id' => $city,
@@ -67,5 +69,17 @@ class Admin extends Authenticatable
         ]);
     }
 
+    public function reporter_details()
+    {
+        return $this->hasOne(Reporter::class,'admin_id')->withDefault([
+            'country_id' => '',
+            'state_id' => '',
+            'city_id' => '',
+            'zip' => '000000',
+            'address' => null,
+            'avatar' => 'https://eu.ui-avatars.com/api/?name='.$this->name.'&size=250',
+            'phone' => null,
+        ]);
+    }
 
 }

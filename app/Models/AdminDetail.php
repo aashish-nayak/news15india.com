@@ -12,7 +12,7 @@ class AdminDetail extends Model
     protected $fillable = [
         'admin_id',
         'url',
-        'avatar_id',
+        'avatar',
         'about',
         'facebook',
         'twitter',

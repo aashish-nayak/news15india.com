@@ -12,6 +12,7 @@
     </style>
 @endpush
 @section('sections')
+<form action="{{ route('admin.reporter.update') }}" method="POST" enctype="multipart/form-data">
     <div class="col-12 mt-2">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -21,6 +22,8 @@
                     </h4>
                 </div>
                 <div class="col-md-6 text-end">
+                    <button type="submit" class="btn btn-secondary btn-sm me-2">Update</button>
+                    <a href="{{ route('admin.reporter.approved',$reporter->id) }}" class="btn btn-success btn-sm me-2">Approved</a>
                     <a href="{{ route('admin.reporter.index') }}" id="trash" class="btn btn-info btn-sm">Back</a>
                 </div>
             </div>
@@ -59,6 +62,7 @@
                                 <div class="row">
                                     <div class="form-group mb-3 col-md-6 mb-3">
                                         @csrf
+                                        <input type="hidden" name="id" value="{{$reporter->id}}">
                                         <label for="app-name">Applicant Name<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="name" value="@if(old('name')){{old('name')}}@else{{$reporter->name}}@endif" id="app-name" required placeholder="Enter Applicant Name" >
                                         @error('name')
@@ -161,10 +165,11 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="border w-100 p-2 border-dark dropify-label-custom">Passport Size Photo<span class="text-danger">*</span></label>
-                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" data-height="75%" data-max-file-size="3M" name="avatar" value="{{old('avatar')}}" data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter->avatar)}}" required accept="image/*">
+                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" data-height="65%" data-max-file-size="3M" name="avatar" value="{{old('avatar')}}" data-default-file="{{$reporter->app_files()}}" accept="image/*">
                                 @error('avatar')
                                 <span class="error">{{ $message }}</span>
                                 @enderror
+                                <a href="{{$reporter->app_files()}}" download="{{$reporter->app_files()}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>
                             </div>
                         </div>
                     </div>
@@ -256,17 +261,19 @@
                         <div class="row">
                             <div class="form-group mb-3 col">
                                 <label class="border w-100 p-2 border-dark dropify-label-custom">10<sup>th</sup> Marksheet<span class="text-danger">*</span></label>
-                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="10th_image" data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['10th_image'])}}" required accept="image/*" data-max-file-size="3M">
+                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="10th_image" data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['10th_image'])}}" accept="image/*" data-max-file-size="3M">
                                 @error('10th_image')
                                 <span class="error">{{ $message }}</span>
                                 @enderror
+                                <a href="{{$reporter->app_files('10th_image')}}" download="{{$reporter->app_files('10th_image')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>
                             </div>
                             <div class="form-group mb-3 col">
                                 <label class="border w-100 p-2 border-dark dropify-label-custom" >12<sup>th</sup> Marksheet<span class="text-danger">*</span></label>
-                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="12th_image" data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['12th_image'])}}" required accept="image/*" data-max-file-size="3M">
+                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="12th_image" data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['12th_image'])}}" accept="image/*" data-max-file-size="3M">
                                 @error('12th_image')
                                 <span class="error">{{ $message }}</span>
                                 @enderror
+                                <a href="{{$reporter->app_files('12th_image')}}" download="{{$reporter->app_files('12th_image')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>
                             </div>
                             <div class="form-group mb-3 col">
                                 <label class="border w-100 p-2 border-dark dropify-label-custom">Graduation Marksheet </label>
@@ -274,6 +281,7 @@
                                 @error('graduation_image')
                                 <span class="error">{{ $message }}</span>
                                 @enderror
+                                @if($reporter['graduation_image'] != '')<a href="{{$reporter->app_files('graduation_image')}}" download="{{$reporter->app_files('graduation_image')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a> @endif
                             </div>
                             <div class="form-group mb-3 col">
                                 <label class="border w-100 p-2 border-dark dropify-label-custom" >Digree/Diploma</label>
@@ -281,6 +289,7 @@
                                 @error('diploma_image')
                                 <span class="error">{{ $message }}</span>
                                 @enderror
+                                @if($reporter['diploma_image'] != '')<a href="{{$reporter->app_files('diploma_image')}}" download="{{$reporter->app_files('diploma_image')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>@endif
                             </div>
                             <div class="form-group mb-3 col">
                                 <label class="border w-100 p-2 border-dark dropify-label-custom" >Other Certificate</label>
@@ -288,6 +297,7 @@
                                 @error('other_certificate')
                                 <span class="error">{{ $message }}</span>
                                 @enderror
+                                @if($reporter['other_certificate'] != '')<a href="{{$reporter->app_files('other_certificate')}}" download="{{$reporter->app_files('other_certificate')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>@endif
                             </div>
                         </div>
                     </div>
@@ -296,24 +306,27 @@
                             <div class="row">
                                 <div class="form-group mb-3 col">
                                     <label class="border w-100 p-2 border-dark dropify-label-custom" >Aadhaar Card<span class="text-danger">*</span></label>
-                                    <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="aadhar_image" @if($reporter['aadhar_image'] != '') data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['aadhar_image'])}}" @endif required accept="image/*" data-max-file-size="3M">
+                                    <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="aadhar_image" @if($reporter['aadhar_image'] != '') data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['aadhar_image'])}}" @endif accept="image/*" data-max-file-size="3M">
                                     @error('aadhar_image')
                                     <span class="error">{{ $message }}</span>
                                     @enderror
+                                    <a href="{{$reporter->app_files('aadhar_image')}}" download="{{$reporter->app_files('aadhar_image')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>
                                 </div>
                                 <div class="form-group mb-3 col">
                                     <label class="border w-100 p-2 border-dark dropify-label-custom" >Pan Card<span class="text-danger">*</span></label>
-                                    <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="pan_image" @if($reporter['pan_image'] != '') data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['pan_image'])}}" @endif required accept="image/*" data-max-file-size="3M">
+                                    <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="pan_image" @if($reporter['pan_image'] != '') data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['pan_image'])}}" @endif accept="image/*" data-max-file-size="3M">
                                     @error('pan_image')
                                     <span class="error">{{ $message }}</span>
                                     @enderror
+                                    <a href="{{$reporter->app_files('pan_image')}}" download="{{$reporter->app_files('pan_image')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>
                                 </div>
                                 <div class="form-group mb-3 col-md-3">
                                     <label class="border w-100 p-2 border-dark dropify-label-custom" >Voter ID/Driving License<span class="text-danger">*</span></label>
-                                    <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="voter_driving_image" @if($reporter['voter_driving_image'] != '') data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['voter_driving_image'])}}" @endif required accept="image/*" data-max-file-size="3M">
+                                    <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" name="voter_driving_image" @if($reporter['voter_driving_image'] != '') data-default-file="{{asset('storage/reporter-application/'.$reporter->email.'/'.$reporter['voter_driving_image'])}}" @endif accept="image/*" data-max-file-size="3M">
                                     @error('voter_driving_image')
                                     <span class="error">{{ $message }}</span>
                                     @enderror
+                                    <a href="{{$reporter->app_files('voter_driving_image')}}" download="{{$reporter->app_files('voter_driving_image')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>
                                 </div>
                                 <div class="form-group mb-3 col">
                                     <label class="border w-100 p-2 border-dark dropify-label-custom" >Police Verification</label>
@@ -321,6 +334,7 @@
                                     @error('police_verification')
                                     <span class="error">{{ $message }}</span>
                                     @enderror
+                                    @if($reporter['police_verification'] != '')<a href="{{$reporter->app_files('police_verification')}}" download="{{$reporter->app_files('police_verification')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>@endif
                                 </div>
                                 <div class="form-group mb-3 col mb-5">
                                     <label class="border w-100 p-2 border-dark dropify-label-custom" >Other Document</label>
@@ -328,6 +342,7 @@
                                     @error('other_document')
                                     <span class="error">{{ $message }}</span>
                                     @enderror
+                                    @if($reporter['other_document'] != '')<a href="{{$reporter->app_files('other_document')}}" download="{{$reporter->app_files('other_document')}}" class="btn btn-sm w-100 btn-primary rounded-0">Download File</a>@endif
                                 </div>
                                 <div class="col-12 position-relative">
                                     <hr>
@@ -484,8 +499,10 @@
             </div>
         </div>
     </div>
+</form>
 @endsection
 @push('plugin-scripts')
+@includeIf('vendor.worlddata.ajax-script')
     <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
     <script>
         $(document).ready(function () {

@@ -114,4 +114,9 @@ class Reporter extends Model
         return now()->diff($this->attributes['start_journalism'])
         ->format('%y years');
     }
+
+    public function app_files($attr = 'avatar')
+    {
+        return asset('storage/reporter-application/'.$this->attributes['email'].'/'.$this->attributes[$attr]);
+    }
 }

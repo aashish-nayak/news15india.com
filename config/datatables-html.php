@@ -11,7 +11,7 @@ return [
      * Default table attributes when generating the table.
      */
     'table' => [
-        'class' => 'table w-100 responsive display table-striped table-bordered align-middle border table-hover dataTable no-footer dtr-inline',
+        'class' => 'table responsive display table-striped table-bordered align-middle border table-hover dataTable no-footer dtr-inline',
         'id'    => 'dataTableBuilder',
     ],
 

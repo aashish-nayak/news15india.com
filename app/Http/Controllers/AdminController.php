@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\AdminDataTable;
 use App\Models\Admin;
 use App\Models\Permission;
 use App\Models\Role;
@@ -11,18 +12,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 class AdminController extends Controller
 {
-    public function index()
+    public function index(AdminDataTable $datatable)
     {
-        if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
-            $users = Admin::whereHas('roles', function (Builder $query) {
-                $query->where('slug', '!=', 'super-admin');
-            })->get();
-        }else{
-            $users = Admin::get();
-        }
-        return view('backpanel.user.index',compact('users'));
+        // if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
+        //     $users = Admin::whereHas('roles', function (Builder $query) {
+        //         $query->where('slug', '!=', 'super-admin');
+        //     })->get();
+        // }else{
+        //     $users = Admin::get();
+        // }
+        // return view('backpanel.user.index',compact('users'));
+        $roles = Role::get();
+        return $datatable->render('backpanel.user.index',compact('roles'));
+
     }
 
     public function create()
@@ -48,12 +53,9 @@ class AdminController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255',$checkEmail],
         ]);
-        
-        if($request->has('password')){
-            $admin->password = Hash::make($request->password);
-        }
         $admin->name = $request->name;
         $admin->email = $request->email;
+        $admin->password = ($request->password != '') ? Hash::make($request->password) : Hash::make($request->email);
         $admin->save();
         $admin->roles()->sync($request->roles);
         $newPermission = collect();
@@ -65,6 +67,10 @@ class AdminController extends Controller
             }
         }
         $admin->permissions()->sync($newPermission);
+        $admin->details()->updateOrCreate([
+            'url'=> strtolower(Str::random(16))."/".Str::slug($request->name),
+            'phone' => $request->phone,
+        ]);
         if($request->has('add')){
             return redirect()->route('admin.user.add');
         }else if($request->has('edit')){
