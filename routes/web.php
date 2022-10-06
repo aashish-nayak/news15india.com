@@ -35,8 +35,8 @@ use Illuminate\Support\Facades\Config;
 require __DIR__.'/admin_auth.php';
 require __DIR__.'/auth.php';
 
-Route::any('/test',[TestController::class,'test'])->name('test');
-Route::view('/test/view','test')->name('test-view');
+// Route::any('/test',[TestController::class,'test'])->name('test');
+// Route::view('/test/view','test')->name('test-view');
 
 
 // Route::view('/', 'welcome');
@@ -65,7 +65,11 @@ Route::put('comments/{comment}', [Config::get('comments.controller') , 'update']
 Route::post('comments/{comment}', [Config::get('comments.controller') , 'reply'])->middleware('auth')->name('comments.reply');
 
 // =============== User Panel Routes ==============
-Route::get('/dashboard',[FrontController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',function(){
+    return redirect()->route('dashboard');
+});
+Route::get('/redirect/backpanel',[FrontController::class,'admin_login'])->middleware(['auth'])->name('redirect.dashboard');
+Route::get('/profile',[FrontController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
 Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->name('poll.vote');
 Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');
@@ -73,9 +77,9 @@ Route::post('/complaint/store',[ComplaintController::class,'store'])->middleware
 Route::post('/complaint/reply/store',[ComplaintController::class,'store_reply'])->middleware(['auth'])->name('user.complaint.store-reply');
 
 // ==================== Backpanel Panel Routes ==================
-Route::get('/admin',function(){
-    return redirect()->route('admin.dashboard');
-});
+// Route::get('/admin',function(){
+//     return redirect()->route('admin.dashboard');
+// });
 Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(function(){
     Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
     Route::post('/item/bulk/delete', [AdminController::class,'bulkDelete'])->name('bulk.delete');
@@ -102,7 +106,6 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/', [NewsController::class,'show'])->middleware('permission:read-news')->name('view-all-news');
         Route::get('/create', [NewsController::class,'index'])->middleware('permission:create-news')->name('create');
         Route::post('/store-news', [NewsController::class,'store'])->middleware('permission:create-news')->name('store');
-        Route::get('/ajax',[NewsController::class,'view_news'])->middleware('permission:read-news')->name('ajax-list');
         Route::get('/edit/{id}',[NewsController::class,'edit'])->middleware('permission:update-news')->name('edit');
         Route::get('/trash/{id}',[NewsController::class,'trash'])->middleware('permission:delete-news')->name('delete');
         Route::get('/status/{id}', [NewsController::class, 'status'])->middleware('permission:update-news')->name('status');
@@ -125,15 +128,15 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel Polls Module Routes ]------------------------
     Route::prefix('/polls')->name('poll.')->group(function(){
-        Route::get('/', [PollController::class,'index'])->name('index');
-        Route::post('/', [PollController::class,'store'])->name('store');
-        Route::get('/view/{poll}', [PollController::class,'view'])->name('view');
-        Route::get('/edit/{poll}', [PollController::class,'edit'])->name('edit');
-        Route::post('/update', [PollController::class,'update'])->name('update');
-        Route::delete('/{poll}', [PollController::class,'remove'])->name('remove');
-        Route::get('/{poll}/users', [PollController::class,'users'])->name('users');
-        Route::patch('/{poll}/lock', [PollController::class,'lock'])->name('lock');
-        Route::patch('/{poll}/unlock', [PollController::class,'unlock'])->name('unlock');
+        Route::get('/', [PollController::class,'index'])->middleware('permission:read-polls')->name('index');
+        Route::post('/', [PollController::class,'store'])->middleware('permission:create-polls')->name('store');
+        Route::get('/view/{poll}', [PollController::class,'view'])->middleware('permission:read-polls')->name('view');
+        Route::get('/edit/{poll}', [PollController::class,'edit'])->middleware('permission:update-polls')->name('edit');
+        Route::post('/update', [PollController::class,'update'])->middleware('permission:update-polls')->name('update');
+        Route::delete('/{poll}', [PollController::class,'remove'])->middleware('permission:delete-polls')->name('remove');
+        Route::get('/{poll}/users', [PollController::class,'users'])->middleware('permission:read-polls')->name('users');
+        Route::patch('/{poll}/lock', [PollController::class,'lock'])->middleware('permission:read-polls')->name('lock');
+        Route::patch('/{poll}/unlock', [PollController::class,'unlock'])->middleware('permission:read-polls')->name('unlock');
     });
     // ----------------[ Backpanel Panel Tags Module Routes ]------------------------
     Route::prefix('/tag')->name('tag.')->group(function(){
@@ -156,10 +159,10 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel Reporter Form Module Routes ]------------------------
     Route::prefix('/reporters')->name('reporter.')->group(function(){
-        Route::get('/', [ReporterController::class, 'show'])->name('index');
-        Route::get('/view/{id}', [ReporterController::class, 'view'])->name('view');
-        Route::post('/update', [ReporterController::class, 'update'])->name('update');
-        Route::get('/approved/{reporter}', [ReporterController::class, 'approved'])->name('approved');
+        Route::get('/', [ReporterController::class, 'show'])->middleware('permission:read-reporters')->name('index');
+        Route::get('/view/{id}', [ReporterController::class, 'view'])->middleware('permission:read-reporters')->name('view');
+        Route::post('/update', [ReporterController::class, 'update'])->middleware('permission:update-reporters')->name('update');
+        Route::get('/approved/{reporter}', [ReporterController::class, 'approved'])->middleware('permission:approve-reporters')->name('approved');
     });
     // ----------------[ Backpanel Panel Viewers Module Routes ]------------------------
     Route::prefix('/viewers')->name('viewer.')->group(function(){

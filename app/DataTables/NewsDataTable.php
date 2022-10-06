@@ -42,7 +42,6 @@ class NewsDataTable extends DataTable
                     $q->where('name', 'like', "%$keyword%");
                 });
             })
-
             ->editColumn('status', function (News $news) {
                 return view('components.datatable.status', ['status' => $news->status, 'id' => $news->id]);
             })
@@ -53,13 +52,31 @@ class NewsDataTable extends DataTable
                 return Carbon::parse($news->created_at)->format('Y-m-d h:iA');
             })
             ->addColumn('action', function (News $news) {
-                return view('components.datatable.actions', [
-                    'edit' => 'admin.news.edit',
-                    'delete' => 'admin.news.delete',
-                    'item' => $news,
-                    'view' => 'single-news',
-                    'viewParam' => $news->slug,
-                    'download' => 'javascript:void(0)'
+                return view('components.datatable.actions',[
+                    'buttons' => [
+                        'edit' => [
+                            'url'       => route('admin.news.edit', $news->id),
+                            'icon'      => 'bx bxs-edit',
+                            'permission'=> 'update-news',
+                        ],
+                        'trash' => [
+                            'url'       => route('admin.news.delete', $news->id),
+                            'classes'   => 'delete text-danger',
+                            'icon'      => 'bx bxs-trash',
+                            'permission'=> 'delete-news',
+                        ],
+                        'view' => [
+                            'url'       => route('single-news', $news->slug),
+                            'icon'      => 'bx bxs-show',
+                            'target'    => true,
+                            'permission'=> 'view-news',
+                        ],
+                        'download' => [
+                            'url'       => 'javascript:void(0)',
+                            'icon'      => 'bx bxs-download',
+                            'permission'=> 'download-news',
+                        ],
+                    ]
                 ]);
             });
     }
@@ -73,6 +90,9 @@ class NewsDataTable extends DataTable
     public function query(News $model)
     {
         $data = $model->query();
+        if (auth('admin')->user()->hasRole('super-admin') == false){
+            $data->where('admin_id',auth('admin')->user()->id);
+        }
         if (request()->from_date != '' && request()->to_date != '') {
             $data = $data->whereDate('created_at', '>=', request()->from_date)->whereDate('created_at', '<=', request()->to_date);
         }

@@ -84,10 +84,19 @@ class AdminDataTable extends DataTable
                 })
                 ->addColumn('action', function (Admin $admin) {
                     return view('components.datatable.actions', [
-                        'item' => $admin,
-                        'current' => true,
-                        'edit' => 'admin.user.edit',
-                        'delete' => 'admin.user.delete',
+                        'buttons' => [
+                            'edit'=>[
+                                'url'       => route('admin.user.edit', $admin->id),
+                                'icon'      => 'bx bxs-edit',
+                                'permission'=> 'update-member',
+                            ],
+                            'trash'=>[
+                                'url'       => route('admin.user.delete', $admin->id),
+                                'classes'   => 'delete text-danger',
+                                'icon'      => 'bx bxs-trash',
+                                'permission'=> 'delete-member',
+                            ],
+                        ]
                     ]);
                 });
     }

@@ -72,10 +72,13 @@ class ReporterDataTable extends DataTable
             })
             ->addColumn('action', function (Reporter $report) {
                 return view('components.datatable.actions', [
-                    'item' => $report,
-                    'current' => true,
-                    'view' => 'admin.reporter.view',
-                    'viewParam' => $report->id,
+                    'buttons' => [
+                        'view'=>[
+                            'url'       => route('admin.reporter.view', $report->id),
+                            'icon'      => 'bx bxs-show',
+                            'permission'=> 'approve-reporters',
+                        ],
+                    ]
                 ]);
             });
     }

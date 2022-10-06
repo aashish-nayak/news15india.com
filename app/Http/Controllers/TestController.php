@@ -24,7 +24,8 @@ class TestController extends Controller
         //     return $news->id;
         // })->make(true);
         // dd($datatable);
-        return $datatable->render('test');
+        // return $datatable->render('test');
+        // dd();
     }
 
 }

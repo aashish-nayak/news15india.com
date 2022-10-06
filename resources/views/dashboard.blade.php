@@ -69,15 +69,17 @@
                                 <div class="profile-usertitle-job">
                                     {{ auth('web')->user()->email }}
                                 </div>
-                                <div class="profile-userbuttons">
+                                <div class="profile-userbuttons d-flex justify-content-center">
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <a hre="{{ route('logout') }}"
                                             onclick="event.preventDefault(); this.closest('form').submit();"
                                             class="btn btn-primary btn-sm">Logout</a>
                                     </form>
-                                    {{-- <button type="button" class="btn btn-success btn-sm">Follow</button>
-                                    <button type="button" class="btn btn-danger btn-sm">Message</button> --}}
+                                    @if ($submitted == true && $data->admin_id != '' && $data->admin->status != 0)
+                                    <a href="{{route('redirect.dashboard')}}" class="btn btn-success btn-sm ml-2">Dashboard</a>
+                                    @endif
+                                    {{-- <button type="button" class="btn btn-danger btn-sm">Message</button> --}}
                                 </div>
                             </div>
                             <div class="col-md-3 portlet light m-0 ">

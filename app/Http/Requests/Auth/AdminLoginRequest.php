@@ -44,12 +44,14 @@ class AdminLoginRequest extends FormRequest
     public function authenticate()
     {
         $this->ensureIsNotRateLimited();
-
-        if (! Auth::guard("admin")->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $data = $this->only('email', 'password');
+        $data['status'] = 1;
+        if (! Auth::guard("admin")->attempt($data, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
+                'status' => "or you're not Authrized to login",
             ]);
         }
 

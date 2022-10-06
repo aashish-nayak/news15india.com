@@ -16,14 +16,15 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        @role('super-admin','admin')
+        @permission('read-category')
         <li>
             <a href="{{Route('admin.category.index')}}">
                 <div class="parent-icon"><i class='bx bx-grid-alt'></i></div>
                 <div class="menu-title">Category</div>
             </a>
         </li>
-        @endrole
+        @endpermission
+        @permission('read-news')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-news"></i>
@@ -31,11 +32,16 @@
                 <div class="menu-title">News</div>
             </a>
             <ul >
-                <li> <a href="{{Route('admin.news.create')}}"><i class="bx bx-right-arrow-alt"></i>Add News</a></li>
-                <li> <a href="{{Route('admin.news.view-all-news')}}"><i class="bx bx-right-arrow-alt"></i>View News</a></li>
-                <li> <a href="{{Route('admin.news.trash-news')}}"><i class="bx bx-right-arrow-alt"></i>Trash News</a></li>
+                @permission('create-news')
+                <li><a href="{{Route('admin.news.create')}}"><i class="bx bx-right-arrow-alt"></i>Add News</a></li>
+                @endpermission
+                <li><a href="{{Route('admin.news.view-all-news')}}"><i class="bx bx-right-arrow-alt"></i>View News</a></li>
+                @permission('trash-news')
+                <li><a href="{{Route('admin.news.trash-news')}}"><i class="bx bx-right-arrow-alt"></i>Trash News</a></li>
+                @endpermission
             </ul>
         </li>
+        @endpermission
         @permission('read-comments')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
@@ -44,20 +50,24 @@
                 <div class="menu-title">Comments</div>
             </a>
             <ul >
-                <li> <a href="{{Route('admin.comment.comments')}}"><i class="bx bx-right-arrow-alt"></i> Comments</a></li>
-                <li> <a href="{{Route('admin.comment.unapproved')}}"><i class="bx bx-right-arrow-alt"></i>Unapproved Comments @if($unapproved_comments > 0)<span class="badge rounded-pill bg-info ms-auto">{{$unapproved_comments}}</span>@endif</a></li>
-                <li> <a href="{{Route('admin.comment.trash')}}"><i class="bx bx-right-arrow-alt"></i>Trash Comments @if($trash_comments > 0)<span class="badge rounded-pill bg-danger ms-auto">{{$trash_comments}}</span>@endif</a></li>
+                <li><a href="{{Route('admin.comment.comments')}}"><i class="bx bx-right-arrow-alt"></i> Comments</a></li>
+                @permission('approve-comments')
+                <li><a href="{{Route('admin.comment.unapproved')}}"><i class="bx bx-right-arrow-alt"></i>Unapproved Comments @if($unapproved_comments > 0)<span class="badge rounded-pill bg-info ms-auto">{{$unapproved_comments}}</span>@endif</a></li>
+                @endpermission
+                @permission('read-trash-comments')
+                <li><a href="{{Route('admin.comment.trash')}}"><i class="bx bx-right-arrow-alt"></i>Trash Comments @if($trash_comments > 0)<span class="badge rounded-pill bg-danger ms-auto">{{$trash_comments}}</span>@endif</a></li>
+                @endpermission
             </ul>
         </li>
         @endpermission
-        {{-- @permission('read-polls') --}}
+        @permission('read-polls')
         <li>
             <a href="{{Route('admin.poll.index')}}">
                 <div class="parent-icon"><i class="bx bx-poll"></i></div>
                 <div class="menu-title">Surveys</div>
             </a>
         </li>
-        {{-- @endpermission --}}
+        @endpermission
         @permission('read-media')
         <li>
             <a href="{{Route('admin.media.index')}}">
@@ -88,12 +98,13 @@
                 @permission('read-member')
                 <li><a href="{{Route('admin.user.index')}}"><i class="bx bx-right-arrow-alt"></i>All Members</a></li>
                 @endpermission
-                @permission('read-role')
+                @permission('read-role','read-permission')
                 <li><a href="{{Route('admin.role.show')}}"><i class="bx bx-right-arrow-alt"></i>Roles & Permission</a></li>
                 @endpermission
             </ul>
         </li>
-        @permission('read-applications')
+        @endrole
+        @permission('read-reporters')
         <li>
             <a href="{{Route('admin.reporter.index')}}">
                 <div class="parent-icon"><i class='bx bx-group'></i></div>
@@ -101,6 +112,7 @@
             </a>
         </li>
         @endpermission
+        @role('super-admin')
         <li>
             <a href="{{Route('admin.menu.index',1)}}">
                 <div class="parent-icon"><i class='bx bx-menu-alt-right'></i></div>

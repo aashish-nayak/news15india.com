@@ -13,6 +13,7 @@ use App\Models\UserDetail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Jorenvh\Share\ShareFacade as Share;
@@ -408,11 +409,6 @@ class FrontController extends Controller
     public function dashboard()
     {
         $submitted = false;
-        $data = Reporter::where('user_ip',request()->ip());
-        if($data->count() > 0){
-            $submitted = true;
-            $data = $data->first();
-        }
         if (auth('web')->check() && Reporter::where('user_id',auth('web')->user()->id)->count() > 0) {
             $data = Reporter::where('user_id',auth('web')->user()->id);
             $submitted = true;
@@ -420,6 +416,18 @@ class FrontController extends Controller
         }
         $surveys = User::find(auth('web')->id())->options()->latest()->with('poll')->get();
         return view('dashboard',compact('submitted','data','surveys'));
+    }
+
+    public function admin_login()
+    {
+        if(auth('web')->check()){
+            $log = Reporter::where('user_id',auth('web')->user()->id)->first();
+            if($log->admin_id != '' && $log->admin->status != 0){
+                Auth::guard('admin')->login($log->admin);
+                return redirect()->route('admin.dashboard');
+            }
+        }
+        return redirect()->back();
     }
 
     public function profile(Request $request)

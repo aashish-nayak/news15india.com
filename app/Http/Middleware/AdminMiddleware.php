@@ -20,6 +20,10 @@ class AdminMiddleware
         if(!Auth::guard('admin')->check()){
             return redirect('backpanel/login');
         }
+        if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->status == 0){
+            Auth::guard('admin')->logout();
+            return redirect('backpanel/login');
+        }
         return $next($request);
     }
 }

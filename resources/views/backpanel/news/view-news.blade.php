@@ -3,7 +3,7 @@
 @push('plugin-css')
 @endpush
 @section('sections')
-    <div class="col-12 mt-2">
+    <div class="col-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="col-md-2">
@@ -22,6 +22,7 @@
                                         <input type="date" name="to_date" id="filter_to" class="form-control form-control-sm" />
                                     </div>
                                 </div>
+                                @role('super-admin','admin')
                                 <div class="col-md-2 px-1">
                                     <select class="form-select form-select-sm" required name="author" id="author">
                                         <option value="all">Author</option>
@@ -30,6 +31,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @endrole
                                 <div class="col-md-2 px-1">
                                     <select class="form-select form-select-sm" required name="status" id="status">
                                         <option value="all">Status</option>
