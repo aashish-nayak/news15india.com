@@ -17,14 +17,6 @@ class AdminController extends Controller
 {
     public function index(AdminDataTable $datatable)
     {
-        // if(Auth::guard('admin')->user()->hasRole('super-admin') == false){
-        //     $users = Admin::whereHas('roles', function (Builder $query) {
-        //         $query->where('slug', '!=', 'super-admin');
-        //     })->get();
-        // }else{
-        //     $users = Admin::get();
-        // }
-        // return view('backpanel.user.index',compact('users'));
         $roles = Role::get();
         return $datatable->render('backpanel.user.index',compact('roles'));
 

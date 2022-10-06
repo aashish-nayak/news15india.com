@@ -24,7 +24,6 @@ class PollController extends Controller
             $poll->isLocked = $poll->isLocked();
             $poll->isRunning = $poll->isRunning();
             $poll->hasEnded = $poll->hasEnded();
-            $poll->edit_link = route('admin.poll.edit', $poll->id);
             $poll->delete_link = route('admin.poll.remove', $poll->id);
             $poll->users_link = route('admin.poll.users', $poll->id);
             return $poll;
@@ -46,34 +45,6 @@ class PollController extends Controller
 
         return redirect()->route('admin.poll.index')->with('success', 'Poll Created Successfully!');
     }
-
-    // public function edit(Poll $poll)
-    // {
-    //     $canChangeOptions = $poll->votes()->count() === 0;
-    //     $edit = $poll;
-    //     $polls = Poll::withCount('options', 'votes')->get()->map(function ($poll){
-    //         $poll->isComingSoon = $poll->isComingSoon();
-    //         $poll->isLocked = $poll->isLocked();
-    //         $poll->isRunning = $poll->isRunning();
-    //         $poll->hasEnded = $poll->hasEnded();
-    //         $poll->edit_link = route('admin.poll.edit', $poll->id);
-    //         $poll->delete_link = route('admin.poll.remove', $poll->id);
-    //         $poll->lock_link = route('admin.poll.lock', $poll->id);
-    //         $poll->unlock_link = route('admin.poll.unlock', $poll->id);
-    //         return $poll;
-    //     });
-    //     $total = $poll->votes->count();
-    //     $results = $poll->results()->grab();
-    //     $options = collect($results)->map(function ($result) use ($total){
-    //             return (object) [
-    //                 'votes' => $result['votes'],
-    //                 'percent' => $total === 0 ? 0 : ($result['votes'] / $total) * 100,
-    //                 'name' => $result['option']->name,
-    //             ];
-    //     });
-    //     $creators = Admin::get();
-    //     return view('backpanel.poll.index', compact('polls','creators','edit','canChangeOptions','options'));
-    // }
 
     public function view(Poll $poll,$innerClass = false)
     {

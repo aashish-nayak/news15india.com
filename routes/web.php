@@ -131,7 +131,6 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/', [PollController::class,'index'])->middleware('permission:read-polls')->name('index');
         Route::post('/', [PollController::class,'store'])->middleware('permission:create-polls')->name('store');
         Route::get('/view/{poll}', [PollController::class,'view'])->middleware('permission:read-polls')->name('view');
-        Route::get('/edit/{poll}', [PollController::class,'edit'])->middleware('permission:update-polls')->name('edit');
         Route::post('/update', [PollController::class,'update'])->middleware('permission:update-polls')->name('update');
         Route::delete('/{poll}', [PollController::class,'remove'])->middleware('permission:delete-polls')->name('remove');
         Route::get('/{poll}/users', [PollController::class,'users'])->middleware('permission:read-polls')->name('users');
