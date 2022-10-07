@@ -408,11 +408,11 @@ class FrontController extends Controller
     public function dashboard()
     {
         $submitted = false;
-        if (auth('web')->check() && Reporter::where('user_id',auth('web')->user()->id)->count() > 0) {
-            $data = Reporter::where('user_id',auth('web')->user()->id);
+        $data = Reporter::where('user_id',auth('web')->user()->id);
+        if (auth('web')->check() && $data->count() > 0) {
             $submitted = true;
-            $data = $data->first();
         }
+        $data = $data->first();
         $surveys = User::find(auth('web')->id())->options()->latest()->with('poll')->get();
         return view('dashboard',compact('submitted','data','surveys'));
     }
@@ -421,12 +421,14 @@ class FrontController extends Controller
     {
         if(auth('web')->check()){
             $log = Reporter::where('user_id',auth('web')->user()->id)->first();
-            if($log->admin_id != '' && $log->admin->status != 0){
-                Auth::guard('admin')->login($log->admin);
+            if(!empty($log) && $log->admin->status != 0){
+                if(auth('admin')->check() == false){
+                    Auth::guard('admin')->login($log->admin);
+                }
                 return redirect()->route('admin.dashboard');
             }
         }
-        return redirect()->back();
+        return redirect()->route('dashboard')->with('error','Not Authrized User');
     }
 
     public function profile(Request $request)
