@@ -58,8 +58,7 @@
                                     <img loading="lazy" src="{{ $avatar }}" class="text-center img-fluid  border"
                                         alt="">
                                 @else
-                                    <img src="{{ asset('front-assets/img/user.png') }}" class="text-center img-fluid  border"
-                                        alt="" loading="lazy">
+                                    <img src="{{ 'https://eu.ui-avatars.com/api/?name=' . auth('web')->user()->name . '&size=250' }}" class="text-center img-fluid  border" alt="" loading="lazy">
                                 @endisset
                             </div>
                             <div class="col-md-3 col-7 profile-usertitle">
