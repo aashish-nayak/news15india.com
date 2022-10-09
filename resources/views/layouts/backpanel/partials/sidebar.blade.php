@@ -112,6 +112,14 @@
             </a>
         </li>
         @endpermission
+        @permission('read-reporters')
+        <li>
+            <a href="{{Route('admin.complaint.index')}}">
+                <div class="parent-icon"><i class='bx bx-box'></i></div>
+                <div class="menu-title">Complaints</div>
+            </a>
+        </li>
+        @endpermission
         @role('super-admin')
         <li>
             <a href="{{Route('admin.menu.index',1)}}">

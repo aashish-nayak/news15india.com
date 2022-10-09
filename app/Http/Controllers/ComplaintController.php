@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ComplaintDataTable;
 use App\Models\Complaint;
 use App\Models\ComplaintReply;
 use Exception;
@@ -14,9 +15,9 @@ class ComplaintController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ComplaintDataTable $datatable)
     {
-        //
+        return $datatable->render('backpanel.complaint.index');
     }
 
     /**
