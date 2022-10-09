@@ -11,12 +11,12 @@
             </div>
             <div class="overlay toggle-icon"></div>
             <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-            <footer class="page-footer">
-                <p class="mb-0">{!!setting('site_copyright')!!}</p>
-            </footer>
         </div>
+        <footer class="page-footer">
+            <p class="mb-0">{!!setting('site_copyright')!!}</p>
+        </footer>
     </div>
-
+    @role('super-admin','admin')
     <div class="modal fade" id="whatsappGroupModel" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -163,6 +163,7 @@
             </div>
         </div>
     </div>
+    @endrole
     {{-- <div class="switcher-wrapper">
         <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
         </div>

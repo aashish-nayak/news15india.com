@@ -6,24 +6,35 @@
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center" title="Go To Website" href="{{route('home')}}" target="_blank" role="button"> 
-                            <i class='bx bx-link-external me-1'></i> <span style="font-size:12px">View Website</span>
+                            <i class='bx bx-link-external me-1'></i> <span style="font-size:12px">News15India</span>
                         </a>
                     </li>
                     @role('super-admin','admin')
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" title="WhatsApp Group Link" data-bs-toggle="modal" data-bs-target="#whatsappGroupModel" role="button"> 
-                            <i class='bx bxl-whatsapp fs-3'></i>
+                    <li class="nav-item dropdown dropdown-large ms-md-3 ms-2">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class='bx bx-grid-alt'></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" title="Youtube Live Stream" data-bs-toggle="modal" data-bs-target="#liveStreamModel" role="button"> 
-                            <i class='bx bx-station fs-3'></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" title="Special Coverage" data-bs-toggle="modal" data-bs-target="#coverage" role="button"> 
-                            <i class='bx bx-news fs-3'></i>
-                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="row row-cols-3 g-3 p-3">
+                                <div class="col text-center">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#whatsappGroupModel" role="button"> 
+                                        <div class="app-box mx-auto bg-gradient-lush text-white"><i class='bx bxl-whatsapp'></i></div>
+                                        <div class="app-title">WhatsApp Group</div>
+                                    </a>
+                                </div>
+                                <div class="col text-center">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#liveStreamModel" role="button"> 
+                                        <div class="app-box mx-auto bg-gradient-burning text-white"><i class='bx bx-broadcast'></i></div>
+                                        <div class="app-title">Youtube Live</div>
+                                    </a>
+                                </div>
+                                <div class="col text-center">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#coverage" role="button"> 
+                                        <div class="app-box mx-auto bg-gradient-cosmic text-white"><i class='bx bx-news'></i></div>
+                                        <div class="app-title">Special Coverage</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     @endrole
                 </ul>

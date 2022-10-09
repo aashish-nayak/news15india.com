@@ -48,9 +48,9 @@
                 </div>
             </nav>
         </div>
-        <div class="col-md-4 text-end">
+        <div class="col-md-4 text-md-end mt-2 mt-md-0">
             <div class="dropdown d-inline me-md-2"> 
-                <a href="#" class="btn btn-outline-secondary btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
+                <a href="#" class="btn btn-outline-secondary btn-sm rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
                     Sort <i class="bx bx-sort"></i>
                 </a>
                 <div class="dropdown-menu mb-2 mb-md-0" style="font-size: 13px">
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="dropdown d-inline me-md-2"> 
-                <a type="button" class="btn btn-outline-secondary btn-sm mb-2 mb-md-0 rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
+                <a type="button" class="btn btn-outline-secondary btn-sm rounded-0 radio_option dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" aria-expanded="false">
                     <span id="selectedFiles" class="fw-bold"></span> Actions<i class="bx bx-dots-vertical-rounded"></i>
                 </a>
                 <div class="dropdown-menu mb-2 mb-md-0" style="font-size: 13px">

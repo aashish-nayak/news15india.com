@@ -16,13 +16,13 @@
                 <div class="media-main" style="height: 300px;" id="MediaWrapper">
                     <div class="media-items">
                         <div class="media-grid">
-                            <ul class="row row-cols-6 row-cols-2 list-unstyled m-0" style="overflow-x: hidden" id="MediaList">
+                            <ul class="row row-cols-md-6 row-cols-2 list-unstyled m-0" style="overflow-x: hidden" id="MediaList">
                                 {{-- @include('backpanel.media.media-grid') --}}
                                 {{-- @include('backpanel.media.media-list') --}}
                             </ul>
                         </div>
                     </div>
-                    <div class="media-sidebar collapse show" id="MediaSidebar">
+                    <div class="media-sidebar collapse" id="MediaSidebar">
                         @includeIf('backpanel.media.sidebar-preview')
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <div id="seo_wrap" class="card mt-4 col-12">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h6 class="header-title m-0" style="font-weight: 600">Search Engine Optimization</h6>
-        <a href="javascript:void(0)" id="edit-seo">Edit SEO meta</a>
+        <a href="javascript:void(0)" id="edit-seo">Edit SEO</a>
     </div>
     <div class="card-body pt-3 pb-4">
         <div class="seo-preview d-none">
@@ -32,7 +32,7 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
             <div class="form-group mb-3">
-                <label for="seo_title" class="control-label"><b>SEO Keywords</b></label>
+                <label for="seo_keywords" class="control-label"><b>SEO Keywords</b></label>
                 <input class="form-control" id="seo_keywords" data-role="tagsinput" placeholder="SEO Keywords ( , seperated )" data-counter="120" value="@if(isset($page)){{$page->meta_keywords}}@else{{old('meta_keywords')}}@endif" name="meta_keywords" type="text">
             </div>
             @error('seo_keywords')

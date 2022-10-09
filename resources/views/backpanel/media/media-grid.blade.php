@@ -36,7 +36,7 @@
 @endforeach
 
 @if($total > $take + $skip)
-<div class="col-12 my-2 text-center loadmore-wrapper">
+<div class="col-12 col-md-12 col-lg-12 my-2 text-center loadmore-wrapper">
     <button id="loadMoreBtn" class="btn btn-primary btn-sm"
         data-skip="{{$take + $skip}}"
         data-total="{{$total}}">

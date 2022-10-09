@@ -12,7 +12,7 @@
         data-createdby="{{$item->creator->name}}"
         data-createdat="{{date('Y-m-d H:i:s',strtotime($item->created_at))}}" 
         data-updatedat="{{date('Y-m-d H:i:s',strtotime($item->updated_at))}}">
-        <div class="col-1">
+        <div class="col-2 col-md-1">
             <label class="d-flex align-items-center">
                 <input type="checkbox" class="form-check-input checkbox" value="{{$item->id}}">
                 @if(strpos($item->type, 'image/') !== false)
@@ -26,17 +26,17 @@
                 @endif
             </label>
         </div>
-        <div class="col-7" style="font-size: 14px">
+        <div class="col-10 col-md-7" style="font-size: 14px">
             <span>{{$item->filename}}</span>
         </div>
-        <div class="col-2">{{formatBytes($item->size,1)}}</div>
-        <div class="col-2">{{date('Y-m-d H:i:s',strtotime($item->created_at))}}</div>
+        <div class="col-md-2 d-none d-md-block">{{formatBytes($item->size,1)}}</div>
+        <div class="col-md-2 d-none d-md-block">{{date('Y-m-d H:i:s',strtotime($item->created_at))}}</div>
     </div>
 </li>
 @endforeach
 
 @if($total > $take + $skip)
-<div class="col-12 my-2 text-center loadmore-wrapper">
+<div class="col-12 col-md-12 col-lg-12 my-2 text-center loadmore-wrapper">
     <button id="loadMoreBtn" class="btn btn-primary btn-sm"
         data-skip="{{$take + $skip}}"
         data-total="{{$total}}">

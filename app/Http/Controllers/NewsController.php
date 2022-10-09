@@ -26,7 +26,7 @@ class NewsController extends Controller
             })->get();
         }
         $media = Media::latest()->paginate(12);
-        $tags = Tag::where('status', 1)->get();
+        $tags = Tag::where('status', 1)->select('id','name','slug')->get();
         $categories = $this->nestedCategoryPath();
         return view('backpanel.news.add-news', compact('categories', 'tags', 'media', 'users'));
     }
