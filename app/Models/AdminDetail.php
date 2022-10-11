@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class AdminDetail extends Model
 {
@@ -34,6 +35,11 @@ class AdminDetail extends Model
         'meta_keywords',
         'meta_description',
     ];
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class,'admin_id');
+    }
 
     public function country()
     {

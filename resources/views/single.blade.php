@@ -45,15 +45,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
                         <div style="height: 80px;width:80px;">
-                            @php
-                                $avatar = $news->creator->details->avatar;
-                                if(Storage::exists('public/admins-avatar/'.$avatar)){
-                                    $avatar = asset('storage/admins-avatar/'.$avatar);
-                                }else{
-                                    $avatar = 'https://eu.ui-avatars.com/api/?name='.$news->creator->name.'&size=250';
-                                }
-                            @endphp
-                            <img src="{{$avatar}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
+                            <img src="{{$news->creator->getAvatar()}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="col-md-4 col-9 pl-md-3 px-md-1">
@@ -142,11 +134,11 @@
                             <h3 class="m-0 mx-auto text-white">सम्बंदित खबरे</h3>
                         </div>
                         <div style="background-color:#333;">
-                            @foreach ($related as $key=>$news)
+                            @foreach ($related as $key=>$relate)
                             <div class="border-bottom border-secondary">
                                 <div class="post-data p-3" style="border-left: 3px solid var(--primary);">
-                                    <a href="{{route('single-news',$news->slug)}}" class="post-title">
-                                        <h6 class="text-white m-0">{{\Str::limit($news->title,60)}}</h6>
+                                    <a href="{{route('single-news',$relate->slug)}}" class="post-title">
+                                        <h6 class="text-white m-0">{{\Str::limit($relate->title,60)}}</h6>
                                     </a>
                                 </div>
                             </div>

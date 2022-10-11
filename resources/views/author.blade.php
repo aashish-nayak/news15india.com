@@ -1,12 +1,7 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
 @php
-    $avatar = $author->details->avatar;
-    if(Storage::exists('public/admins-avatar/'.$avatar)){
-        $avatar = asset('storage/admins-avatar/'.$avatar);
-    }else{
-        $avatar = 'https://eu.ui-avatars.com/api/?name='.$author->name.'&size=250';
-    }
+    $avatar = $author->getAvatar();
 @endphp
 @meta([
     'title'         => $author->name,

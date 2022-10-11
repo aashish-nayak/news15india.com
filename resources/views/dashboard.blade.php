@@ -45,21 +45,7 @@
                     <div class="profile-sidebar">
                         <div class="row align-items-center">
                             <div class="col-md-2 col-5 profile-userpic text-center">
-                                @isset(auth('web')->user()->details->avatar)
-                                    @php
-                                        $avatar = auth('web')->user()->details->avatar;
-                                        $default = 'https://eu.ui-avatars.com/api/?name=' . auth('web')->user()->name . '&size=250';
-                                        if (Storage::exists('public/users-avatar/' . $avatar)) {
-                                            $avatar = asset('storage/users-avatar/' . $avatar);
-                                        } else {
-                                            $avatar = $default;
-                                        }
-                                    @endphp
-                                    <img loading="lazy" src="{{ $avatar }}" class="text-center img-fluid  border"
-                                        alt="">
-                                @else
-                                    <img src="{{ 'https://eu.ui-avatars.com/api/?name=' . auth('web')->user()->name . '&size=250' }}" class="text-center img-fluid  border" alt="" loading="lazy">
-                                @endisset
+                                <img src="{{ auth('web')->user()->getAvatar() }}" class="text-center img-fluid  border" alt="" loading="lazy">
                             </div>
                             <div class="col-md-3 col-7 profile-usertitle">
                                 <div class="profile-usertitle-name">

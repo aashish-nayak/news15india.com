@@ -42,12 +42,7 @@
             <div class="user-box dropdown">
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     @php
-                        $avatar = auth('admin')->user()->details->avatar;
-                        if(Storage::exists('public/admins-avatar/'.$avatar)){
-                            $avatar = asset('storage/admins-avatar/'.$avatar);
-                        }else{
-                            $avatar = 'https://eu.ui-avatars.com/api/?name='.auth('admin')->user()->name.'&size=250';
-                        }
+                        $avatar = auth('admin')->user()->getAvatar();
                     @endphp
                     <img src="{{$avatar}}" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">

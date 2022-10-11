@@ -21,6 +21,11 @@ class UserDetail extends Model
         'gender',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class);

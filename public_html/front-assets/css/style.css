@@ -1675,7 +1675,10 @@ footer nav > ul > li > a.active {
 .single-para.content p{
     font-size: 1.8rem !important;
 }
-
+.single-para img {
+    max-width: 100% !important;
+    object-fit: cover;
+}
 .subscribe-btn {
     margin-top: -3px;
     font-size: 18px !important;

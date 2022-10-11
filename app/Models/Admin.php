@@ -52,6 +52,17 @@ class Admin extends Authenticatable
         return $this->hasMany(News::class);
     }
     
+    public function getAvatar()
+    {
+        $avatar = $this->details->avatar;
+        if(!empty($avatar) && Storage::exists('public/reporter-application/'.$this->email.'/'.$avatar)){
+            $avatar = asset('storage/reporter-application/'.$this->email.'/'.$avatar);
+        }else{
+            $avatar = 'https://eu.ui-avatars.com/api/?name='.$this->name.'&size=250';
+        }
+        return $avatar;
+    }
+    
     public function details()
     {
         $city = City::where('state_id',33)->inRandomOrder()->first()->id;

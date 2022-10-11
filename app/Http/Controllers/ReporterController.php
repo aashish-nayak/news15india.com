@@ -206,7 +206,7 @@ class ReporterController extends Controller
                 'password'=> Hash::make($reporter->email),
             ]);
             $admin->details()->create([
-                'url' => strtolower(Str::random(16))."/".Str::slug($reporter->name),
+                'url' => Str::slug($reporter->name)."__".strtolower(Str::random(10)).date('d-m-Y',strtotime($admin->created_at)),
                 'avatar' => $reporter->avatar,
                 'phone' => $reporter->phone_number,
                 'address' => $reporter->home_address,
