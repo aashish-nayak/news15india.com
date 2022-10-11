@@ -15,14 +15,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class NewsController extends Controller
 {
-    protected $authAdmin;
-    public function __construct()
-    {
-        $this->authAdmin = Admin::find(auth('admin')->id());   
-    }
     public function index()
     {
-        if ($this->authAdmin->hasRole('super-admin') == true) {
+        if (Admin::find(auth('admin')->id())->hasRole('super-admin') == true) {
             $users = Admin::get();
         } else {
             $users = Admin::whereHas('roles', function (Builder $query) {
@@ -37,6 +32,7 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
+        $auth = Admin::find(auth('admin')->id());
         if (isset($request->id)) {
             $news = News::find($request->id);
             $message = 'News Updated Successfully!';
@@ -62,7 +58,7 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->slug = $request->slug;
         $news->short_description = $request->short_desc;
-        $news->admin_id = ($this->authAdmin->hasRole('super-admin') == true || $this->authAdmin->hasRole('admin') == true) ? $request->user_id : auth('admin')->user()->id;
+        $news->admin_id = ($auth->hasRole('super-admin') == true || $auth->hasRole('admin') == true) ? $request->user_id : $auth->id;
         $news->content = $request->content;
         $news->is_published = $request->is_published;
         $news->status =  1;
@@ -71,7 +67,7 @@ class NewsController extends Controller
         $news->image = $request->image;
         $news->format = $request->format;
         $news->youtube_url = $request->youtube_url;
-        $news->is_featured = (isset($request->is_featured) && $this->authAdmin->hasRole('super-admin') == true) ? 1 : 0;
+        $news->is_featured = (isset($request->is_featured) && $auth->hasRole('super-admin') == true) ? 1 : 0;
         $news->meta_title = $request->meta_title;
         $news->meta_keywords = $request->meta_keywords;
         $news->meta_description = $request->meta_description;
@@ -104,14 +100,15 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        if ($this->authAdmin->hasRole('super-admin') == true) {
+        $auth = Admin::find(auth('admin')->id());
+        if (Admin::find(auth('admin')->id())->hasRole('super-admin') == true) {
             $users = Admin::get();
         } else {
             $users = Admin::whereHas('roles', function (Builder $query) {
                 $query->where('slug', '!=', 'super-admin');
             })->get();
         }
-        if(News::where('admin_id',auth('admin')->user()->id)->where('id',$id)->count() == 0 && ($this->authAdmin->hasRole('super-admin') == false && $this->authAdmin->hasRole('admin') == false)){
+        if(News::where('admin_id',$auth->id)->where('id',$id)->count() == 0 && ($auth->hasRole('super-admin') == false && $auth->hasRole('admin') == false)){
             return redirect()->back();
         }
         $media = Media::latest()->paginate(12);
