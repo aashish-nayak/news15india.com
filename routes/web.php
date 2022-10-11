@@ -83,6 +83,7 @@ Route::post('/complaint/reply/store',[ComplaintController::class,'store_reply'])
 Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(function(){
     Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
     Route::post('/item/bulk/delete', [AdminController::class,'bulkDelete'])->name('bulk.delete');
+    Route::post('/item/bulk/destroy', [AdminController::class,'bulkDestroy'])->name('bulk.destroy');
     // ----------------[ Backpanel Panel Category Module Routes ]------------------------
     Route::prefix('/category')->name('category.')->group(function(){
         Route::get('/', [CategoryController::class,'index'])->middleware('permission:read-category')->name('index');
@@ -110,7 +111,6 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/trash/{id}',[NewsController::class,'trash'])->middleware('permission:delete-news')->name('delete');
         Route::get('/status/{id}', [NewsController::class, 'status'])->middleware('permission:update-news')->name('status');
         Route::get('/trash', [NewsController::class,'trashview'])->middleware('permission:trash-news')->name('trash-news');
-        Route::get('/ajax-trash', [NewsController::class,'ajaxtrash'])->middleware('permission:trash-news')->name('ajax-trash-news');
         Route::get('/destroy/{id}',[NewsController::class,'destroy'])->middleware('permission:destroy-news')->name('destroy');
         Route::get('/restore/{id}',[NewsController::class,'restore'])->middleware('permission:restore-news')->name('restore');
     });

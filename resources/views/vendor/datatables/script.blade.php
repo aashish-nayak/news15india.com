@@ -23,15 +23,17 @@ $(function(){
         e.preventDefault();
         let url = $(this).attr('href');
         let model = $(this).data('model');
+        let message = $(this).data('message');
+        let btnText = $(this).data('button');
         let $this = $(this);
         Swal.fire({
             title: 'Are you sure?',
-            text: "You Want to Move in Trash Bulk News!",
+            text: message,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Trash it!'
+            confirmButtonText: btnText
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({

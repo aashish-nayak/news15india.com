@@ -3,113 +3,82 @@
 @push('plugin-css')
 @endpush
 @section('sections')
-    <div class="col-12 mt-4 text-end">
-        <a href="{{route('admin.news.view-all-news')}}" class="btn btn-primary mr-3 btn-sm">View News</a>
-    </div>
-    <div class="col-12 mt-4">
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title m-0">Trash News</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="col-md-2">
+                    <h4 class="card-title m-0 d-flex align-items-center">
+                        <i class="bx bx-news fs-3 mt-1 me-2"></i>
+                        <span>Trash</span>
+                    </h4>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-end align-items-center gap-2">
+                        <div class="form-group me-2 filters">
+                            <div class="row justify-content-end align-items-center m-0">
+                                <div class="col px-1">
+                                    <div class="input-group input-daterange d-flex align-items-center">
+                                        &nbsp;<div class="input-group-addon">From</div>&nbsp;
+                                        <input type="date" name="from_date" id="filter_from" class="form-control form-control-sm" />
+                                        &nbsp;<div class="input-group-addon">To</div>&nbsp;
+                                        <input type="date" name="to_date" id="filter_to" class="form-control form-control-sm" />
+                                    </div>
+                                </div>
+                                @role('super-admin','admin')
+                                <div class="col-md-2 px-1">
+                                    <select class="form-select form-select-sm" required name="author" id="author">
+                                        <option value="all">Author</option>
+                                        @foreach ($authors as $author)
+                                        <option value="{{$author->id}}">{{$author->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endrole
+                                <div class="col-md-2 px-1">
+                                    <select class="form-select form-select-sm" required name="status" id="status">
+                                        <option value="all">Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Reject</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1 px-1">
+                                    <button type="button" name="filter" id="filter"
+                                        class="btn btn-info btn-sm">Filter</button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{ route('admin.news.create') }}" id="create" class="btn btn-success btn-sm">Add News</a>
+                        <a href="{{ route('admin.bulk.destroy') }}" id="bulkDelete" data-model="App\Models\News" data-message="You Want to Delete Permanently Bulk News!" data-button="Yes, Delete it!" class="btn btn-danger btn-sm d-none position-relative"><span class="badge bg-dark selectedCount position-absolute top-0 start-100 translate-middle rounded-pill"></span> Bulk Delete</a>
+                        <a href="{{ route('admin.news.view-all-news') }}" id="trash" class="btn btn-info btn-sm">View News</a>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
-                <div class="">
-                    <table id="news" class="w-100 table responsive display table-striped table-bordered align-middle border table-hover" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th data-orderable="false">Image</th>
-                                <th>Title</th>
-                                <th data-orderable="false">Categories</th>
-                                <th data-orderable="false">Deleted At</th>
-                                <th data-orderable="false">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
-                </div>
+                {!! $dataTable->table() !!}
             </div>
         </div>
     </div>
 @endsection
 @push('scripts')
+{!! $dataTable->scripts() !!}
 <script>
-    $(document).ready(function() {
-        $('#news').DataTable({
-            processing: true,
-            serverSide: true,
-            responsive:true,
-            stateSave : true,
-            scrollX:true,
-            ajax: "{{ route('admin.news.ajax-trash-news') }}",
-            columnDefs : [
-                { responsivePriority: 1, targets: 2 },
-                { responsivePriority: 2, targets: 1 },
-                { width: "10%", targets: 1}
-            ],
-            columns: [{
-                    data: 'id'
-                },
-                {
-                    data: null,
-                    render: function(data, type, row) {
-                        let img = "{{asset('storage/media/'.':img')}}";
-                        img = img.replace(':img',data.banner);
-                        return '<img src="' + img + '" class="img-fluid custom-banner">';
-                    }
-                },
-                {
-                    data: 'title'
-                },
-                {
-                    data: null,
-                    render: function(data, type, row) {
-                        // console.log(data.categories);
-                        var categories = data.categories.split(',');
-                        var categories_html = '';
-                        for (var i = 0; i < categories.length; i++) {
-                            let cat = categories[i];
-                            cat = cat.replace('-', ' ');
-                            categories_html += '<span class="badge bg-secondary me-1">' + cat.toUpperCase() + '</span>';
-                        }
-                        return categories_html;
-                    }
-                },
-                {
-                    data: 'created'
-                },
-                {
-                    data: null,
-                    render: function(data, type, row) {
-                        let del = "{{route('admin.news.destroy',':id')}}";
-                        let edit = "{{route('admin.news.restore',':id')}}";
-                        del = del.replace(':id', data.id);
-                        edit = edit.replace(':id', data.id);
-                        return ' <div class="d-flex order-actions">' +
-                            '<a href="'+edit+'" class="edit-category border" title="Restore"><i class="bx bx-reset"></i></a>' +
-                            '<a href="'+del+'" class="text-danger ms-3 border delete" title="Delete"><i class="bx bxs-trash"></i></a>' +
-                        '</div>';
-                    }
-                },
-            ]
-        });
+    $(document).ready(function () {
         $(document).on("click",".delete",function (e) {
             var url = $(this).attr("href");
             e.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You Want to Permanently Delete this News!",
+                text: "You Want to Permanenty Delete this News!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Yes, Delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = url;
                 }
-            })
+            });
         });
     });
 </script>

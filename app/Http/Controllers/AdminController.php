@@ -132,12 +132,25 @@ class AdminController extends Controller
     public function bulkDelete(Request $request)
     {
         try {
-            foreach ($request->ids as $key => $value) {
-                $request->model::find($value)->delete();
-            }
+            $request->model::whereIn('id',$request->ids)->delete();
             return response()->json([
                 'status' => 'success',
-                'message' => 'Items Delete Successfully'
+                'message' => 'Items Delete Successfully!!!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+    public function bulkDestroy(Request $request)
+    {
+        try {
+            $request->model::onlyTrashed()->whereIn('id',$request->ids)->forceDelete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Items Delete Permanently Successfully!!!'
             ]);
         } catch (\Exception $e) {
             return response()->json([

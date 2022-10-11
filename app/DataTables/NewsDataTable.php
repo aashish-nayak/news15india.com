@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\Admin;
 use App\Models\News;
 use Carbon\Carbon;
 use Yajra\DataTables\Exports\DataTablesCollectionExport;
@@ -14,9 +15,71 @@ use Yajra\DataTables\Services\DataTable;
 class NewsDataTable extends DataTable
 {
 
+    protected $auth;
+    protected $view;
+    protected $column;
+    public function __construct($view = 'news')
+    {
+        $this->view = $view;
+        $this->auth = Admin::find(auth('admin')->id());
+        if($view == 'news'){
+            $this->column = 'created_at';
+        }else{   
+            $this->column = 'deleted_at';
+        }
+    }
+
+    public function actions($news)
+    {
+        if($this->view == 'news'){
+            $buttons = [
+                'buttons' => [
+                    'edit' => [
+                        'url'       => route('admin.news.edit', $news->id),
+                        'icon'      => 'bx bxs-edit',
+                        'permission'=> 'update-news',
+                    ],
+                    'trash' => [
+                        'url'       => route('admin.news.delete', $news->id),
+                        'classes'   => 'delete text-danger',
+                        'icon'      => 'bx bxs-trash',
+                        'permission'=> 'delete-news',
+                    ],
+                    'view' => [
+                        'url'       => route('single-news', $news->slug),
+                        'icon'      => 'bx bxs-show',
+                        'target'    => true,
+                        'permission'=> 'view-news',
+                    ],
+                    'download' => [
+                        'url'       => 'javascript:void(0)',
+                        'icon'      => 'bx bxs-download',
+                        'permission'=> 'download-news',
+                    ],
+                ]
+            ];
+        }else{
+            $buttons = [
+                'buttons' => [
+                    'restore' => [
+                        'url'       => route('admin.news.restore', $news->id),
+                        'icon'      => 'bx bx-reset',
+                        'permission'=> 'restore-news',
+                    ],
+                    'trash' => [
+                        'url'       => route('admin.news.destroy', $news->id),
+                        'classes'   => 'delete text-danger',
+                        'icon'      => 'bx bxs-trash',
+                        'permission'=> 'destroy-news',
+                    ],
+                ]
+            ];
+        }
+        return $buttons;
+    }
     public function dataTable($query)
     {
-        return datatables()
+        $data = datatables()
             ->eloquent($query)
             ->setRowId('id')
             ->addColumn('selectbox', '')
@@ -47,38 +110,14 @@ class NewsDataTable extends DataTable
             })
             ->addColumn('views', function (News $news) {
                 return $news->getViews();
-            })
-            ->editColumn('created_at', function (News $news) {
-                return Carbon::parse($news->created_at)->format('Y-m-d h:iA');
+            });
+            $data->editColumn($this->column, function (News $news) {
+                return Carbon::parse($news[$this->column])->format('Y-m-d h:iA');
             })
             ->addColumn('action', function (News $news) {
-                return view('components.datatable.actions',[
-                    'buttons' => [
-                        'edit' => [
-                            'url'       => route('admin.news.edit', $news->id),
-                            'icon'      => 'bx bxs-edit',
-                            'permission'=> 'update-news',
-                        ],
-                        'trash' => [
-                            'url'       => route('admin.news.delete', $news->id),
-                            'classes'   => 'delete text-danger',
-                            'icon'      => 'bx bxs-trash',
-                            'permission'=> 'delete-news',
-                        ],
-                        'view' => [
-                            'url'       => route('single-news', $news->slug),
-                            'icon'      => 'bx bxs-show',
-                            'target'    => true,
-                            'permission'=> 'view-news',
-                        ],
-                        'download' => [
-                            'url'       => 'javascript:void(0)',
-                            'icon'      => 'bx bxs-download',
-                            'permission'=> 'download-news',
-                        ],
-                    ]
-                ]);
+                return view('components.datatable.actions',$this->actions($news));
             });
+        return $data;
     }
 
     /**
@@ -90,8 +129,11 @@ class NewsDataTable extends DataTable
     public function query(News $model)
     {
         $data = $model->query();
-        if (auth('admin')->user()->hasRole('super-admin') == false){
-            $data->where('admin_id',auth('admin')->user()->id);
+        if($this->view == 'trash'){
+            $data->onlyTrashed();
+        }
+        if ($this->auth->hasRole('super-admin') == false){
+            $data->where('admin_id',auth('admin')->id());
         }
         if (request()->from_date != '' && request()->to_date != '') {
             $data = $data->whereDate('created_at', '>=', request()->from_date)->whereDate('created_at', '<=', request()->to_date);
@@ -174,7 +216,7 @@ class NewsDataTable extends DataTable
             ],
             Column::make('status'),
             Column::make('views', 'views')->addClass('text-center'),
-            Column::make('created_at')->addClass('text-center'),
+            Column::make($this->column)->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

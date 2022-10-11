@@ -45,12 +45,9 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('admin.news.create') }}" id="create" class="btn btn-success btn-sm">Add
-                            News</a>
-                        <a href="{{ route('admin.bulk.delete') }}" id="bulkDelete" data-model="App\Models\News"
-                            class="btn btn-danger btn-sm d-none position-relative"><span class="badge bg-dark selectedCount position-absolute top-0 start-100 translate-middle rounded-pill"></span> Bulk Delete</a>
-                        <a href="{{ route('admin.news.trash-news') }}" id="trash" class="btn btn-info btn-sm">View
-                            Trash</a>
+                        <a href="{{ route('admin.news.create') }}" id="create" class="btn btn-success btn-sm">Add News</a>
+                        <a href="{{ route('admin.bulk.delete') }}" id="bulkDelete" data-model="App\Models\News" data-message="You Want to Move in Trash Bulk News!" data-button="Yes, Trash it!" class="btn btn-danger btn-sm d-none position-relative"><span class="badge bg-dark selectedCount position-absolute top-0 start-100 translate-middle rounded-pill"></span> Bulk Delete</a>
+                        <a href="{{ route('admin.news.trash-news') }}" id="trash" class="btn btn-danger btn-sm">View Trash</a>
                     </div>
                 </div>
             </div>
