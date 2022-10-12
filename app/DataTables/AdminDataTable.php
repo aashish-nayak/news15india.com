@@ -80,7 +80,12 @@ class AdminDataTable extends DataTable
                     return ($admin->pro == 1) ? 'Yes' : 'No';
                 })
                 ->editColumn('status', function (Admin $admin) {
-                    return view('components.datatable.status', ['status' => $admin->status, 'id' => $admin->id]);
+                    return view('components.datatable.status', [
+                        'status' => $admin->status,
+                        'id' => $admin->id,
+                        'url' => route('admin.user.status',$admin->id),
+                        'element'=>'switch',
+                    ]);
                 })
                 ->addColumn('action', function (Admin $admin) {
                     return view('components.datatable.actions', [

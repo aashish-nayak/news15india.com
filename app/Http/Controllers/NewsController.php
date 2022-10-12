@@ -86,10 +86,10 @@ class NewsController extends Controller
 
     public function status($id)
     {
-        $status = News::find($id);
+        $status = News::withTrashed()->find($id);
         $status->status = ($status->status == 1) ? 0 : 1;
         $status->save();
-        return response()->json(['success' => 'Status Changed Successfully!']);
+        return response()->json(['success' => 'Status Changed Successfully!','status'=>$status->status]);
     }
 
     public function show(NewsDataTable $datatable)

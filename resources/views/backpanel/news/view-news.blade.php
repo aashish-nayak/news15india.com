@@ -59,26 +59,8 @@
 @endsection
 @push('plugin-scripts')
     {!! $dataTable->scripts() !!}
-
-    <script>
-        $(document).ready(function () {
-            $(document).on("click",".delete",function (e) {
-                var url = $(this).attr("href");
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You Want to move this News in Trash!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Trash it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = url;
-                    }
-                });
-            });
-        });
-    </script>
+    @includeIf('components.datatable.common-module-script',[
+        'deleteMessage' => "You Want to move this News in Trash!",
+        'deleteConfirmMessage' => "Yes, Trash it!",
+    ])
 @endpush

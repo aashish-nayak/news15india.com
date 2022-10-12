@@ -127,6 +127,13 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function status($id)
+    {
+        $status = Admin::withTrashed()->find($id);
+        $status->status = ($status->status == 1) ? 0 : 1;
+        $status->save();
+        return response()->json(['success' => 'Status Changed Successfully!','status'=>$status->status]);
+    }
 
     // Global Function for bulk delete
     public function bulkDelete(Request $request)

@@ -106,7 +106,12 @@ class NewsDataTable extends DataTable
                 });
             })
             ->editColumn('status', function (News $news) {
-                return view('components.datatable.status', ['status' => $news->status, 'id' => $news->id ,'element'=>'switch']);
+                return view('components.datatable.status', [
+                    'status' => $news->status,
+                    'id' => $news->id,
+                    'url' => route('admin.news.status',$news->id),
+                    'element'=>'switch',
+                ]);
             })
             ->addColumn('views', function (News $news) {
                 return $news->getViews();

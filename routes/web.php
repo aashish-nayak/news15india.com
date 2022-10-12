@@ -152,6 +152,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/create',[AdminController::class,'create'])->middleware('permission:create-member')->name('add');
         Route::post('/store', [AdminController::class,'store'])->middleware('permission:create-member')->name('store');
         Route::get('/edit/{id}',[AdminController::class,'edit'])->middleware('permission:update-member')->name('edit');
+        Route::get('/status/{id}', [AdminController::class, 'status'])->middleware('permission:update-member')->name('status');
         Route::get('/block/{id}',[AdminController::class,'destroy'])->middleware('permission:delete-member')->name('delete');
         Route::get('/restore/{id}',[AdminController::class,'restore'])->middleware('permission:restore-member')->name('restore');
         Route::get('/force-delete/{id}',[AdminController::class,'forceDelete'])->middleware('permission:destroy-member')->name('forceDelete');

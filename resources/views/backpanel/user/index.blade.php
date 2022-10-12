@@ -48,26 +48,13 @@
 @endsection
 @push('scripts')
 {!! $dataTable->scripts() !!}
+@includeIf('components.datatable.common-module-script',[
+    'deleteMessage' => "You Want to Block this Member!",
+    'deleteConfirmMessage' => "Yes, Block it!",
+])
 <script>
     $(document).ready(function() {
         $('#users').DataTable();
-        $(document).on("click",".delete",function (e) {
-            var url = $(this).attr("href");
-            e.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You Want to Block this Member!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Block it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url;
-                }
-            })
-        });
     });
 </script>
 @endpush

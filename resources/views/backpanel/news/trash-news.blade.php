@@ -61,25 +61,8 @@
 @endsection
 @push('scripts')
 {!! $dataTable->scripts() !!}
-<script>
-    $(document).ready(function () {
-        $(document).on("click",".delete",function (e) {
-            var url = $(this).attr("href");
-            e.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You Want to Permanenty Delete this News!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url;
-                }
-            });
-        });
-    });
-</script>
+@includeIf('components.datatable.common-module-script',[
+    'deleteMessage' => "You Want to Permanenty Delete this News!",
+    'deleteConfirmMessage' => "Yes, Delete it!",
+])
 @endpush
