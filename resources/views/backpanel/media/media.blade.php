@@ -7,12 +7,12 @@
 <script src="{{ asset('assets/plugins/fancy-box/jquery.fancybox.min.js')}}"></script>
 @endpush
 @section('sections')
-    <div class="card">
+    <div class="card m-0">
         @includeIf('backpanel.media.media-actions')
         <div class="media-main" id="MediaWrapper">
             <div class="media-items">
                 <div class="media-grid">
-                    <ul class="row row-cols-6 row-cols-2 list-unstyled m-0" id="MediaList">
+                    <ul class="row list-unstyled m-0" id="MediaList">
                         {{-- @include('backpanel.media.media-grid') --}}
                         {{-- @include('backpanel.media.media-list') --}}
                     </ul>

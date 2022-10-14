@@ -16,13 +16,13 @@
             <label class="d-flex align-items-center">
                 <input type="checkbox" class="form-check-input checkbox" value="{{$item->id}}">
                 @if(strpos($item->type, 'image/') !== false)
-                <i class="bx bx-image-alt fs-4 ms-3"></i>
+                <i class="bx bx-image-alt fs-4 ms-3 d-none d-md-inline-block"></i>
                 @elseif(strpos($item->type, 'video/') !== false)
-                <i class="bx bx-film fs-4 ms-3"></i>
+                <i class="bx bx-film fs-4 ms-3 d-none d-md-inline-block"></i>
                 @elseif(strpos($item->type, 'audio/') !== false)
-                <i class="bx bx-volume-full fs-4 ms-3"></i>
+                <i class="bx bx-volume-full fs-4 ms-3 d-none d-md-inline-block"></i>
                 @else
-                <i class="bx bx-file fs-4 ms-3"></i>
+                <i class="bx bx-file fs-4 ms-3 d-none d-md-inline-block"></i>
                 @endif
             </label>
         </div>

@@ -1,6 +1,6 @@
 @if(!empty($media) && $media->count())
 @foreach ($media as $item)
-<li class="col">
+<li class="col-6 col-md-2 col-lg-2">
     <div class="file grid" 
         data-id="{{$item->id}}" 
         data-dimen="{{$item->dimension}}" 

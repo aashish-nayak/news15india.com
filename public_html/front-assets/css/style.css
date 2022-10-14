@@ -483,9 +483,9 @@ a:focus {
 }
 
 .col-md-2-custom {
-    -ms-flex: 0 0 12%;
-    flex: 0 0 12%;
-    max-width: 12%;
+    -ms-flex: 0 0 14%;
+    flex: 0 0 14%;
+    max-width: 14%;
 }
 
 .start-header {

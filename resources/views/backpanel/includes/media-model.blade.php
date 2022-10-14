@@ -5,7 +5,7 @@
 <script src="{{ asset('assets/plugins/fancy-box/jquery.fancybox.min.js')}}"></script>
 @endpush
 <div class="modal fade" id="media-box">
-    <div class="modal-dialog modal-dialog-centered modal-xl mt-0" role="document">
+    <div class="modal-dialog modal-dialog-top modal-xl mt-0" role="document">
         <div class="modal-content">
             <div class="modal-header modal-header-3">
                 <h5 class="modal-title"><i class="bx bx-images"></i> Media</h5>
@@ -13,10 +13,10 @@
             </div>
             <div class="modal-body py-0 row h-100" id="media-row">
                 @includeIf('backpanel.media.media-actions')
-                <div class="media-main" style="height: 300px;" id="MediaWrapper">
+                <div class="media-main" style="height: 350px;" id="MediaWrapper">
                     <div class="media-items">
                         <div class="media-grid">
-                            <ul class="row row-cols-md-6 row-cols-2 list-unstyled m-0" style="overflow-x: hidden" id="MediaList">
+                            <ul class="row list-unstyled m-0" style="overflow-x: hidden" id="MediaList">
                                 {{-- @include('backpanel.media.media-grid') --}}
                                 {{-- @include('backpanel.media.media-list') --}}
                             </ul>
