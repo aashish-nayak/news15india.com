@@ -4,7 +4,7 @@
         <div class="row align-items-center">
             <div class="col-md-2-custom col-12 px-md-1 pt-0 d-flex justify-content-between justify-content-md-start mobile-toggle mobile-height-black align-items-center">
                 <div class="col-md-12 col-6 px-0 py-2 py-md-1">
-                    <span class="text-light mt-1" onclick="openNav()">&#9776;</span>
+                    <span class="text-light p-3" onclick="openNav()">&#9776;</span>
                     <a href="{{ route('home') }}" class="m-0">
                         <div class="navbar-brand p-0 m-0">
                             <img loading="lazy" src="{{ setting('site_logo') ?? asset('front-assets/img/logo.png') }}" class="img-fluid" style="margin-top:-11px;" alt="logo">

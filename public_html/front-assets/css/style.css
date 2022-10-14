@@ -1569,6 +1569,7 @@ footer nav > ul > li > a.active {
     .single-para img {
         max-width: 100% !important;
         object-fit: contain !important;
+        height: auto;
     }
     .social-media-size {
         font-size: 18px !important;
