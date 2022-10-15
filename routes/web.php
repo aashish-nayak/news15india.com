@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdvertCategoryController;
+use App\Http\Controllers\AdvertController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
@@ -205,6 +207,16 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/add-to-menu', [MenuController::class,'addToMenu'])->middleware('permission:create-menu')->name('add-to-menu');
         Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->middleware('permission:create-menu')->name('add-to-menu-link');
         Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
+    });
+    // ----------------[ Backpanel Panel Advertisement Module Routes ]------------------------
+    Route::prefix('/advertisement')->name('advert.')->middleware('role:super-admin')->group(function(){
+        Route::get('/',[AdvertController::class,'index'])->name('index');
+        Route::get('/create',[AdvertController::class,'create'])->name('create');
+        Route::post('/store',[AdvertController::class,'store'])->name('store');
+        Route::get('/categories',[AdvertCategoryController::class,'index'])->name('categories');
+        Route::post('/categories/store',[AdvertCategoryController::class,'store'])->name('categories');
+        Route::get('/categories/edit/{advert_category}',[AdvertCategoryController::class,'edit'])->name('categories.edit');
+        Route::get('/categories/delete/{advert_category}',[AdvertCategoryController::class,'destroy'])->name('categories.delete');
     });
     // ----------------[ Backpanel Panel Settings Module Routes ]------------------------
     Route::prefix('/settings')->name('setting.')->middleware('role:super-admin')->group(function(){

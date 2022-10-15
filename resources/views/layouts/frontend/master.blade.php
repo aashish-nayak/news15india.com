@@ -22,7 +22,13 @@
     @includeIf('layouts.frontend.partials.desktop-breaking')
     @includeIf('layouts.frontend.partials.mobile-nav')
     @includeIf('layouts.frontend.partials.mobile-breaking')
-
+    @includeIf('components.advert',[
+        'img' => asset('front-assets/img/banner.png'),
+        'url' => 'javascript:void(0)',
+        'alt' => 'Aashish nayak',
+        'width' => '100%',
+        'height' => 'auto',
+    ])
     @yield('sections')
 
     @includeIf('layouts.frontend.partials.footer')

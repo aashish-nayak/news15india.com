@@ -38,7 +38,7 @@
                                     <select class="form-select form-select-sm" required name="status" id="status">
                                         <option value="all">Status</option>
                                         <option value="1">Active</option>
-                                        <option value="0">Reject</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                                 <div class="col-md-1 px-1">

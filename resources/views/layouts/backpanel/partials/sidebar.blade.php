@@ -6,7 +6,7 @@
         <div>
             <h4 class="logo-text">{{setting('site_name')}}</h4>
         </div>
-        <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i> </div>
+        <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i></div>
     </div>
     <ul class="metismenu" id="menu">
         {{-- <li class="menu-label">UI Elements</li> --}}
@@ -27,8 +27,7 @@
         @permission('read-news')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-news"></i>
-                </div>
+                <div class="parent-icon"><i class="bx bx-news"></i></div>
                 <div class="menu-title">News</div>
             </a>
             <ul >
@@ -45,8 +44,7 @@
         @permission('read-comments')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-comment-dots"></i>
-                </div>
+                <div class="parent-icon"><i class="bx bx-comment-dots"></i></div>
                 <div class="menu-title">Comments</div>
             </a>
             <ul >
@@ -79,7 +77,7 @@
         @permission('read-tags')
         <li>
             <a href="{{Route('admin.tag.index')}}">
-                <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hash"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg></div>
+                <div class="parent-icon"><i class="bx bx-hash"></i></div>
                 <div class="menu-title">Tags</div>
             </a>
         </li>
@@ -87,8 +85,7 @@
         @role('super-admin','admin')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-lock"></i>
-                </div>
+                <div class="parent-icon"><i class="bx bx-lock"></i></div>
                 <div class="menu-title">Authentication</div>
             </a>
             <ul>
@@ -101,6 +98,17 @@
                 @permission('read-role','read-permission')
                 <li><a href="{{Route('admin.role.show')}}"><i class="bx bx-right-arrow-alt"></i>Roles & Permission</a></li>
                 @endpermission
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-book-content"></i></div>
+                <div class="menu-title">Advertisements</div>
+            </a>
+            <ul>
+                <li><a href="{{Route('admin.advert.categories')}}"><i class="bx bx-right-arrow-alt"></i>AD Categories</a></li>
+                <li><a href="{{Route('admin.advert.create')}}"><i class="bx bx-right-arrow-alt"></i>Add Advertisement</a></li>
+                <li><a href="{{Route('admin.advert.index')}}"><i class="bx bx-right-arrow-alt"></i>Advertisements</a></li>
             </ul>
         </li>
         @endrole

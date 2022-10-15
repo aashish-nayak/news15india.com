@@ -281,7 +281,6 @@
         <aside class="col-md-3 col-12 mt-1 my-md-0 px-1">
             <div class="sticky-top"  style="z-index:1">
                 @includeIf('components.whatsapp-ad')
-                @includeIf('components.poll')
                 <div class="ad-box my-1">
                     <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
                     <div class="single-item">
@@ -308,6 +307,7 @@
                         </div>
                     </div>
                 </div>
+                @includeIf('components.poll')
                 <div class="col-12 mt-1 p-0">
                     @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
                     @foreach ($sidebar_1->news as $key => $sidebar_news)

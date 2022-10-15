@@ -16,13 +16,13 @@
 @section('sections')
 <div class="col-12">
     <div class="col-12 d-flex justify-content-between">
-        <h6 class="mb-0 text-uppercase d-inline-block">{{$title}}</h6>
+        <h6 class="mb-0 text-uppercase d-inline-block align-self-center">{{$title}}</h6>
         <div class="d-flex align-items-center justify-content-center">
-            <a type="button" id="fullscreen"><i class="bx bx-fullscreen fs-4 fw-bolder"></i></a>
+            {{-- <a type="button" id="fullscreen"><i class="bx bx-fullscreen fs-4 fw-bolder"></i></a> --}}
             <a href="{{route('admin.news.view-all-news')}}" class="btn btn-primary btn-sm ms-5">View News</a>
         </div>
     </div>
-    <hr>
+    <hr class="my-2">
     <form class="needs-validation" action="{{route('admin.news.store')}}" method="POST" role="form">
         <div class="row">
             <div class="col-lg-9">

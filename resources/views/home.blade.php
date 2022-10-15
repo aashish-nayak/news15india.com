@@ -158,18 +158,24 @@
                     </div>
                     @stack('section1_design_3')
                     <div class="col-12 px-1">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/8x1ad.png')}}" width="100%" loading="lazy" alt="" srcset=""></a>
+                        @includeIf('components.advert',[
+                            'img' => asset('front-assets/img/8x1ad.png'),
+                            'url' => 'javascript:void(0)',
+                            'alt' => 'Aashish nayak',
+                        ])
                     </div>
                 </div>
             </div>
             <aside class="col-md-3 col-12 my-3 my-md-0 px-0">
                 @includeIf('components.whatsapp-ad')
-                @includeIf('components.poll')
-                <div class="col-md-12 px-0 mt-1">
-                    <a href="javascript:void(0)">
-                        <img src="{{asset('front-assets/img/job-ad.png')}}" class="w-100" loading="lazy" alt="" srcset="">
-                    </a>
+                <div class="col-12 px-0 mt-1">
+                    @includeIf('components.advert',[
+                        'img' => asset('front-assets/img/job-ad.png'),
+                        'url' => 'javascript:void(0)',
+                        'alt' => 'Aashish nayak',
+                    ])
                 </div>
+                @includeIf('components.poll')
             </aside>
         </div>
     </section>
