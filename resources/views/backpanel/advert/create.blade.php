@@ -203,7 +203,12 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="ad_duration" class="form-label"><b>Ad Duration</b><span class="text-danger">*</span></label>
-                        <input type="text" name="ad_duration" placeholder="Ad Duration" required class="form-control" id="ad_duration" value="@if(old('ad_duration')){{old('ad_duration')}}@elseif(isset($edit)){{$edit->ad_duration}}@endif">
+                        <select name="ad_duration" class="form-control" id="ad_duration" required>
+                            <option value="1">1 Time</option>
+                            <option value="5">5 a Week</option>
+                            <option value="10">10 a Week</option>
+                            <option value="30">1 Month</option>
+                        </select>
                         @error('ad_duration')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

@@ -214,7 +214,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/create',[AdvertController::class,'create'])->name('create');
         Route::post('/store',[AdvertController::class,'store'])->name('store');
         Route::get('/categories',[AdvertCategoryController::class,'index'])->name('categories');
-        Route::post('/categories/store',[AdvertCategoryController::class,'store'])->name('categories');
+        Route::post('/categories/store',[AdvertCategoryController::class,'store'])->name('categories.store');
         Route::get('/categories/edit/{advert_category}',[AdvertCategoryController::class,'edit'])->name('categories.edit');
         Route::get('/categories/delete/{advert_category}',[AdvertCategoryController::class,'destroy'])->name('categories.delete');
     });

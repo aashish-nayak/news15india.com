@@ -107,10 +107,12 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid px-0">
-                <img loading="lazy" class="img-fluid w-100" style="height: 130px;object-fit: cover; margin: 3px 0px;" src="{{asset('front-assets/img/8x1ad.png')}}" alt="">
-            </div>
-            <div class="container-fluid mx-auto">
+            @includeIf('components.advert',[
+                'img' => asset('front-assets/img/banner.png'),
+                'url' => 'javascript:void(0)',
+                'alt' => 'News15India',
+            ])
+            <div class="container-fluid mx-auto mt-1">
                 <div class="row">
                     <div class="col-md-6 col-12 px-1 pr-md-1 my-md-0 my-1">
                         <div class="single-item">
@@ -136,17 +138,22 @@
             </div>
             <!-- Ad Banner  -->
             <section class="container-fluid mx-auto mt-3 mb-2 mb-md-0 px-0 text-center">
-                <a href="javascript:void(0)"><img loading="lazy" src="{{asset('front-assets/img/banner.png')}}" class="w-100 banner-height" alt="" srcset=""></a>
+                @includeIf('components.advert',[
+                    'img' => asset('front-assets/img/banner.png'),
+                    'url' => 'javascript:void(0)',
+                    'alt' => 'News15India',
+                ])
             </section>
             <!-- Ad Banner  -->
         </div>
         <aside class="col-md-3 col-12 px-1 my-md-0">
             <div class="sticky-top"  style="z-index:1">
                 <div class="ad-box mb-2">
-                    <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
-                    <div class="box">
-                        <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
-                    </div>
+                    @includeIf('components.advert',[
+                        'img' => asset('front-assets/img/square-ad.png'),
+                        'url' => 'javascript:void(0)',
+                        'alt' => 'News15India',
+                    ])
                 </div>
                 @includeIf('components.whatsapp-ad')
                 @includeIf('components.poll')

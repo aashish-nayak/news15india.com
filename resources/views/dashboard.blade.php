@@ -22,20 +22,22 @@
         <div class="row">
             <!-- Ad Banner  -->
             <section class="container-fluid mx-auto px-0 text-center">
-                <a href="javascript:void(0)"><img loading="lazy" src="{{ asset('front-assets/img/banner.png') }}"
-                        class="w-100 banner-height" alt="" srcset=""></a>
+                @includeIf('components.advert',[
+                    'img' => asset('front-assets/img/banner.png'),
+                    'url' => 'javascript:void(0)',
+                    'alt' => 'News15India',
+                ])
             </section>
             <!-- Ad Banner  -->
             <aside class="col-md-3 col-12 my-1 pt-1 px-1 my-md-0 order-2 order-md-1">
                 <div class="sticky-top" style="z-index:1">
                     @includeIf('components.whatsapp-ad')
                     <div class="ad-box my-2">
-                        <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
-                        <div class="box">
-                            <a href="javascript:void(0)"><img src="{{ asset('front-assets/img/square-ad.png') }}"
-                                    style="height: 250px;object-fit:cover;" class="w-100" loading="lazy"
-                                    alt=""></a>
-                        </div>
+                        @includeIf('components.advert',[
+                            'img' => asset('front-assets/img/square-ad.png'),
+                            'url' => 'javascript:void(0)',
+                            'alt' => 'News15India',
+                        ])
                     </div>
                     @includeIf('components.poll')
                 </div>
@@ -487,8 +489,11 @@
                 </div>
                 <!-- Ad Banner  -->
                 <section class="container-fluid my-md-1 mt-1 mx-auto px-0 text-center">
-                    <a href="javascript:void(0)"><img loading="lazy" src="{{ asset('front-assets/img/banner.png') }}"
-                            class="w-100 banner-height" alt="" srcset=""></a>
+                    @includeIf('components.advert',[
+                        'img' => asset('front-assets/img/banner.png'),
+                        'url' => 'javascript:void(0)',
+                        'alt' => 'News15India',
+                    ])
                 </section>
                 <!-- Ad Banner  -->
                 @isset($poll)

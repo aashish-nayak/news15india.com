@@ -15,7 +15,7 @@ class AdvertCategoryController extends Controller
      */
     public function index()
     {
-        $categories = AdvertCategory::get();
+        $categories = AdvertCategory::latest()->get();
         return view('backpanel.advert.advert-categories',compact('categories'));
     }
 

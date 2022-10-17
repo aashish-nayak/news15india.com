@@ -10,12 +10,23 @@
 ])
 @endsection
 @section('sections')
+    @includeIf('components.advert',[
+        'img' => asset('front-assets/img/banner.png'),
+        'url' => 'javascript:void(0)',
+        'alt' => 'News15India',
+    ])
     <!-- Hero Section   -->
     <section class="container-fluid mt-md-1 mx-auto px-0">
         <div class="row justify-content-between custom-space">
             <div class="col-md-4">
                 <div class="box">
-                    <iframe class="w-100 home-video" src="{{convertYoutube(setting('live_stream_url'))}}?controls=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    @if (setting('live_stream_url') != '')
+                        <iframe class="w-100 home-video" src="{{convertYoutube(setting('live_stream_url'))}}?controls=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    @else
+                        <div class="box border w-100 d-flex justify-content-center align-items-center">
+                            <h4>Live Stream Not Available</h4>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-4 mb-2 mb-md-0">
@@ -159,9 +170,9 @@
                     @stack('section1_design_3')
                     <div class="col-12 px-1">
                         @includeIf('components.advert',[
-                            'img' => asset('front-assets/img/8x1ad.png'),
+                            'img' => asset('front-assets/img/banner.png'),
                             'url' => 'javascript:void(0)',
-                            'alt' => 'Aashish nayak',
+                            'alt' => 'News15India',
                         ])
                     </div>
                 </div>
@@ -172,7 +183,7 @@
                     @includeIf('components.advert',[
                         'img' => asset('front-assets/img/job-ad.png'),
                         'url' => 'javascript:void(0)',
-                        'alt' => 'Aashish nayak',
+                        'alt' => 'News15India',
                     ])
                 </div>
                 @includeIf('components.poll')
@@ -310,6 +321,13 @@
                         @stack('section3_design_3')
                     </div>
                 </div>
+                <div class="col-12 px-1">
+                    @includeIf('components.advert',[
+                        'img' => asset('front-assets/img/banner.png'),
+                        'url' => 'javascript:void(0)',
+                        'alt' => 'News15India',
+                    ])
+                </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 mt-1 my-md-0 px-1">
                 <div class="col-md-12 px-0">
@@ -336,23 +354,18 @@
                         @endif
                     @endforeach
                     <div class="ad-box mb-2">
-                        <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
+                        <p class="m-0 text-center bg-light text-dark" style="font-size:1.2rem">Advertisement</p>
                         <div class="single-item">
+                            @foreach (range(1,5) as $sidebar_ad)
                             <div class="holder">
-                                <div class="box">
-                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
-                                </div>
+                                @includeIf('components.advert',[
+                                    'img' => asset('front-assets/img/square-ad.png'),
+                                    'url' => 'javascript:void(0)',
+                                    'alt' => 'News15India',
+                                    'ad_text' => true
+                                ])
                             </div>
-                            <div class="holder">
-                                <div class="box">
-                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="holder">
-                                <div class="box">
-                                    <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -484,6 +497,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 px-1">
+                    @includeIf('components.advert',[
+                        'img' => asset('front-assets/img/banner.png'),
+                        'url' => 'javascript:void(0)',
+                        'alt' => 'News15India',
+                    ])
+                </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-3 my-md-0 px-1">
                 @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar' => true])
@@ -575,10 +595,11 @@
                         @endforeach
                     </div>
                     <div class="ad-box my-2">
-                        <p class="m-0 text-center bg-secondary text-light" style="font-size:1.2rem">Advertisement</p>
-                        <div class="box">
-                            <a href="javascript:void(0)"><img src="{{asset('front-assets/img/square-ad.png')}}" style="height: 250px;object-fit:cover;" class="w-100" loading="lazy" alt=""></a>
-                        </div>
+                        @includeIf('components.advert',[
+                            'img' => asset('front-assets/img/square-ad.png'),
+                            'url' => 'javascript:void(0)',
+                            'alt' => 'News15India',
+                        ])
                     </div>
                 </div>
             </aside>
@@ -617,6 +638,11 @@
                 </div>
             </div>
         </div>
+        @includeIf('components.advert',[
+            'img' => asset('front-assets/img/banner.png'),
+            'url' => 'javascript:void(0)',
+            'alt' => 'News15India',
+        ])
     </section>
     <!-- Section - 8 End  -->
     <!-- Section - 9 Start  -->

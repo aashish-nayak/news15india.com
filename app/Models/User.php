@@ -49,7 +49,7 @@ class User extends Authenticatable
     public function getAvatar()
     {
         $avatar = $this->details->avatar;
-        if (Storage::exists('public/users-avatar/' . $avatar)) {
+        if (!empty($avatar) && Storage::exists('public/users-avatar/' . $avatar)) {
             $avatar = asset('storage/users-avatar/' . $avatar);
         } else {
             $avatar = 'https://eu.ui-avatars.com/api/?name=' . $this->name . '&size=250';

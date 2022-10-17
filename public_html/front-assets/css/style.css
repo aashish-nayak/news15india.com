@@ -1811,7 +1811,7 @@ footer nav > ul > li > a.active {
 /* side bar Slider  */
 .holder {
     height: auto;
-    background: gray;
+    background: #f3f3f3;
     color: #fff;
     text-align: center;
 }

@@ -85,6 +85,6 @@ if (!function_exists('convertYoutube')) {
 if(!function_exists('frontDateFormat')){
     function frontDateFormat($date)
     {
-        return Carbon::parse($date)->format('H:i A | d M Y');
+        return Carbon::parse($date)->format('h:i A | d M Y');
     }
 }

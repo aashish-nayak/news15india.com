@@ -11,7 +11,7 @@
         <hr>
         <div class="card radius-10">
             <div class="card-body">
-                <form action="{{ Route('admin.advert.categories') }}" method="post" role="form">
+                <form action="{{ Route('admin.advert.categories.store') }}" method="post" role="form">
                     @csrf
                     <div id="idarea">
 
