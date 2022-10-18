@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertCategoryController;
 use App\Http\Controllers\AdvertController;
+use App\Http\Controllers\AdvertPlacementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
@@ -213,10 +214,20 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/',[AdvertController::class,'index'])->name('index');
         Route::get('/create',[AdvertController::class,'create'])->name('create');
         Route::post('/store',[AdvertController::class,'store'])->name('store');
-        Route::get('/categories',[AdvertCategoryController::class,'index'])->name('categories');
-        Route::post('/categories/store',[AdvertCategoryController::class,'store'])->name('categories.store');
-        Route::get('/categories/edit/{advert_category}',[AdvertCategoryController::class,'edit'])->name('categories.edit');
-        Route::get('/categories/delete/{advert_category}',[AdvertCategoryController::class,'destroy'])->name('categories.delete');
+
+        Route::prefix('/categories')->name('categories.')->group(function(){
+            Route::get('/',[AdvertCategoryController::class,'index'])->name('index');
+            Route::post('/store',[AdvertCategoryController::class,'store'])->name('store');
+            Route::get('/edit/{advert_category}',[AdvertCategoryController::class,'edit'])->name('edit');
+            Route::get('/delete/{advert_category}',[AdvertCategoryController::class,'destroy'])->name('delete');
+        });
+
+        Route::prefix('/placements')->name('placements.')->group(function(){
+            Route::get('/',[AdvertPlacementController::class,'index'])->name('index');
+            Route::post('/store',[AdvertPlacementController::class,'store'])->name('store');
+            Route::get('/edit/{advert_placement}',[AdvertPlacementController::class,'edit'])->name('edit');
+            Route::get('/delete/{advert_placement}',[AdvertPlacementController::class,'destroy'])->name('delete');
+        });
     });
     // ----------------[ Backpanel Panel Settings Module Routes ]------------------------
     Route::prefix('/settings')->name('setting.')->middleware('role:super-admin')->group(function(){

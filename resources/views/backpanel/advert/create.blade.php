@@ -171,20 +171,11 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="ad_location" class="form-label"><b>Advertisement Location</b><span class="text-danger">*</span></label>
-                        <select name="ad_location" class="form-control" id="ad_location" required>
+                        <select name="ad_location[]" class="form-control multi-select" multiple data-placeholder="Select Locations" id="ad_location" required>
                             <option value="">Select Ad Placement</option>
-                            <optgroup label="Home Page">
-                            </optgroup>
-                            <optgroup label="Category Page">
-                            </optgroup>
-                            <optgroup label="Tag Page">
-                            </optgroup>
-                            <optgroup label="Detail Page">
-                            </optgroup>
-                            <optgroup label="Author Page">
-                            </optgroup>
-                            <optgroup label="Profile Page">
-                            </optgroup>
+                            @foreach ($placements as $place)
+                                <option value="{{$place->id}}">{{ucwords(str_replace('-',' ',$place->slug))}}</option>
+                            @endforeach
                         </select>
                         @error('ad_location')
                             <span class="text-danger">{{ $message }}</span>
@@ -246,7 +237,7 @@
                                     color: black;
                                     padding: 14px 16px;
                                 "><b>DISCOUNT COUPON CODE</b></label>
-                                <input class="form-control rounded-0 text-center" id="discount" style="box-shadow: none; border-color: #dddddd;" type="text" value="@if(old('discount')){{old('discount')}}@elseif(isset($edit)){{$edit->discount}}@endif" placeholder="Enter 6 Digit Coupon Code" maxlength="6">
+                                <input class="form-control rounded-0 text-center" name="discount" id="discount" style="box-shadow: none; border-color: #dddddd;" type="text" value="@if(old('discount')){{old('discount')}}@elseif(isset($edit)){{$edit->discount}}@endif" placeholder="Enter 6 Digit Coupon Code" maxlength="6">
                             </div>
                             <div class="col-md-7 mb-3">
                                 <table class="table table-bordered mb-0">
@@ -280,19 +271,24 @@
                         <hr>
                         <label for="" class="form-label custom-label-float" style="top: 0%;left: 50%;transform: translate(-50%)">Upload Your Advertisement</label>
                     </div>
-                    <div class="col-md-2 d-none d-md-block"></div>
-                    <div class="col-md-8 mb-3">
-                        <label for="form-title" class="form-label"><b>Advertisement Title</b><span class="text-danger">*</span></label>
-                        <input type="text" name="ad_title" placeholder="Enter Advertisement Title" style="box-shadow: none; border-color: #dddddd;" required class="form-control rounded-0" id="form-title" value="@if(old('ad_title')){{old('ad_title')}}@elseif(isset($edit)){{$edit->ad_title}}@endif">
-                        @error('ad_title')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                        <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" data-height="300" data-max-file-size="3M" name="ad_image" accept="image/*">
-                    </div>
-                    <div class="col-md-3 d-none d-md-block"></div>
-                    <div class="col-md-6 position-relative mb-3">
-                        <hr>
-                        <button class="btn btn-success btn-lg custom-label-float bg-success" style="top: 0%;left: 50%;transform: translate(-50%)">Submit</button>
+                    <div class="col-12 text-center">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 mb-3">
+                                <label for="form-title" class="form-label"><b>Advertisement Title</b><span class="text-danger">*</span></label>
+                                <input type="text" name="ad_title" placeholder="Enter Advertisement Title" style="box-shadow: none; border-color: #dddddd;" required class="form-control rounded-0" id="form-title" value="@if(old('ad_title')){{old('ad_title')}}@elseif(isset($edit)){{$edit->ad_title}}@endif">
+                                <textarea name="ad_description" class="form-control rounded-0" rows="3" placeholder="Write here..." style="box-shadow: none; border-color: #dddddd;"></textarea>
+                                @error('ad_title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" data-height="300" data-max-file-size="3M" name="ad_image" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 position-relative mb-3">
+                                <hr>
+                                <button class="btn btn-success btn-lg custom-label-float bg-success" style="top: 0%;left: 50%;transform: translate(-50%)">Submit</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -306,6 +302,13 @@
 <script src="{{ asset('assets/plugins/dropify/js/dropify.js') }}"></script>
     <script>
         $(document).ready(function () {
+            $('.multi-select').select2({
+                theme: 'bootstrap4',
+                multiple :true,
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: $(this).data('placeholder'),
+                allowClear: Boolean($(this).data('allow-clear')),
+            });
             $('.dropify').dropify({
                 messages: {
                     'default': 'Drag and drop a file here or click',

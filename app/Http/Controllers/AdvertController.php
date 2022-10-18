@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\AdvertCategory;
+use App\Models\AdvertPlacement;
 use Illuminate\Http\Request;
 
 class AdvertController extends Controller
@@ -26,7 +27,8 @@ class AdvertController extends Controller
     public function create()
     {
         $categories = AdvertCategory::where('status',1)->select('id','category')->get();
-        return view('backpanel.advert.create',compact('categories'));
+        $placements = AdvertPlacement::where('status',1)->select('id','slug')->get();
+        return view('backpanel.advert.create',compact('categories','placements'));
     }
 
     /**

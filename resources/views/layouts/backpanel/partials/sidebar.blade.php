@@ -106,7 +106,8 @@
                 <div class="menu-title">Advertisements</div>
             </a>
             <ul>
-                <li><a href="{{Route('admin.advert.categories')}}"><i class="bx bx-right-arrow-alt"></i>AD Categories</a></li>
+                <li><a href="{{Route('admin.advert.placements.index')}}"><i class="bx bx-right-arrow-alt"></i>Ad Placements</a></li>
+                <li><a href="{{Route('admin.advert.categories.index')}}"><i class="bx bx-right-arrow-alt"></i>Ad Categories</a></li>
                 <li><a href="{{Route('admin.advert.create')}}"><i class="bx bx-right-arrow-alt"></i>Add Advertisement</a></li>
                 <li><a href="{{Route('admin.advert.index')}}"><i class="bx bx-right-arrow-alt"></i>Advertisements</a></li>
             </ul>
