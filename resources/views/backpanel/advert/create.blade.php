@@ -48,6 +48,9 @@
         <div class="card radius-10">
             <div class="card-body">
                 @csrf
+                @isset($edit)
+                    <input type="hidden" name="id" value="{{$edit->id}}">
+                @endisset
                 <div class="row justify-content-start align-items-center">
                     <div class="col-12 position-relative mb-3">
                         <hr>
@@ -99,7 +102,7 @@
                     </select>
                     <div class="col-md-3 mb-3">
                         <label for="state" class="form-label"><b>State</b><span class="text-danger">*</span></label>
-                        <select name="state" class="form-control state" data-edit="@if(old('state')){{old('state')}}@elseif(isset($edit)){{$edit->state}}@endif" required>
+                        <select name="state" class="form-control state" data-edit="@if(old('state')){{old('state')}}@elseif(isset($edit)){{$edit->state_id}}@else{{'33'}}@endif" required>
                         </select>
                         @error('state')
                             <span class="text-danger">{{ $message }}</span>
@@ -107,7 +110,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="district" class="form-label"><b>District</b><span class="text-danger">*</span></label>
-                        <select name="city" class="form-control city" data-edit="@if(old('city')){{old('city')}}@elseif(isset($edit)){{$edit->city}}@endif" required>
+                        <select name="city" class="form-control city" data-edit="@if(old('city')){{old('city')}}@elseif(isset($edit)){{$edit->city_id}}@endif" required>
                             <option>Select State First</option>
                         </select>
                         @error('city')
@@ -129,15 +132,15 @@
                         <label for="form-title" class="form-label w-100"><b>Package Details</b><span class="text-danger">*</span></label>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="package" id="normal" value="normal" checked>
+                                <input class="form-check-input" type="radio" name="package" id="normal" value="normal" @if ((old('package') && old('package') == 'normal') || (isset($edit) && $edit->package == 'normal')) checked @endif @if (old('package') && !isset($edit)) checked @endif>
                                 <label class="form-check-label" for="normal">Normal Advertisement</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="package" id="monthly" value="monthly">
+                                <input class="form-check-input" type="radio" name="package" id="monthly" value="monthly" @if ((old('package') && old('package') == 'monthly') || (isset($edit) && $edit->package == 'monthly')) checked @endif>
                                 <label class="form-check-label" for="monthly">Monthly Advertisement</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="package" id="special" value="special">
+                                <input class="form-check-input" type="radio" name="package" id="special" value="special" @if ((old('package') && old('package') == 'special') || (isset($edit) && $edit->package == 'special')) checked @endif>
                                 <label class="form-check-label" for="special">Special Package</label>
                             </div>
                         </div>
@@ -162,26 +165,25 @@
                         <select name="ad_category" class="form-control" id="ad_category" required>
                             <option value="">Select Ad Category</option>
                             @foreach ($categories as $cat)
-                                <option value="{{$cat->id}}">{{$cat->category}}</option>
+                                <option value="{{$cat->id}}" @if((old('ad_category') && old('ad_category') == $cat->id) || (isset($edit) && $edit->ad_category == $cat->id)) selected @endif>{{$cat->category}}</option>
                             @endforeach
                         </select>
                         @error('ad_category')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="ad_location" class="form-label"><b>Advertisement Location</b><span class="text-danger">*</span></label>
                         <select name="ad_location[]" class="form-control multi-select" multiple data-placeholder="Select Locations" id="ad_location" required>
-                            <option value="">Select Ad Placement</option>
                             @foreach ($placements as $place)
-                                <option value="{{$place->id}}">{{ucwords(str_replace('-',' ',$place->slug))}}</option>
+                                <option value="{{$place->id}}" @if((old('ad_location') && in_array($place->id,old('ad_location'))) || (isset($edit) && in_array($place->id,$edit->ad_locations->pluck('id')->toArray()))) selected @endif >{{ucwords(str_replace('-',' ',$place->slug))}}</option>
                             @endforeach
                         </select>
                         @error('ad_location')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-2 mb-3">
                         <label for="ad_size" class="form-label"><b>Ad Size</b><span class="text-danger">*</span></label>
                         <div class="input-group">
                             <input type="text" class="form-control" name="ad_width" required value="@if(old('ad_width')){{old('ad_width')}}@elseif(isset($edit)){{$edit->ad_width}}@endif" placeholder="Width" id="ad_size">
@@ -195,10 +197,10 @@
                     <div class="col-md-3 mb-3">
                         <label for="ad_duration" class="form-label"><b>Ad Duration</b><span class="text-danger">*</span></label>
                         <select name="ad_duration" class="form-control" id="ad_duration" required>
-                            <option value="1">1 Time</option>
-                            <option value="5">5 a Week</option>
-                            <option value="10">10 a Week</option>
-                            <option value="30">1 Month</option>
+                            <option value="1" @if((old('ad_duration') && old('ad_duration') == '1') || (isset($edit) && $edit->ad_duration == '1')) selected @endif>1 Time</option>
+                            <option value="5" @if((old('ad_duration') && old('ad_duration') == '5') || (isset($edit) && $edit->ad_duration == '5')) selected @endif>5 a Week</option>
+                            <option value="10" @if((old('ad_duration') && old('ad_duration') == '10') || (isset($edit) && $edit->ad_duration == '10')) selected @endif>10 a Week</option>
+                            <option value="30" @if((old('ad_duration') && old('ad_duration') == '30') || (isset($edit) && $edit->ad_duration == '30')) selected @endif>1 Month</option>
                         </select>
                         @error('ad_duration')
                             <span class="text-danger">{{ $message }}</span>
@@ -220,7 +222,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="booking_id" class="form-label"><b>Booking ID</b><span class="text-danger">*</span></label>
-                        <input type="text" name="booking_id" readonly placeholder="Enter Booking ID" required class="form-control" id="booking_id" value="@if(old('booking_id')){{old('booking_id')}}@elseif(isset($edit)){{$edit->booking_id}}@endif">
+                        <input type="text" name="booking_id" readonly placeholder="Enter Booking ID" required class="form-control" id="booking_id" value="@if(old('booking_id')){{old('booking_id')}}@elseif(isset($edit)){{$edit->booking_id}}@else{{$booking_id}}@endif">
                         @error('booking_id')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -276,17 +278,17 @@
                             <div class="col-md-8 mb-3">
                                 <label for="form-title" class="form-label"><b>Advertisement Title</b><span class="text-danger">*</span></label>
                                 <input type="text" name="ad_title" placeholder="Enter Advertisement Title" style="box-shadow: none; border-color: #dddddd;" required class="form-control rounded-0" id="form-title" value="@if(old('ad_title')){{old('ad_title')}}@elseif(isset($edit)){{$edit->ad_title}}@endif">
-                                <textarea name="ad_description" class="form-control rounded-0" rows="3" placeholder="Write here..." style="box-shadow: none; border-color: #dddddd;"></textarea>
+                                <textarea name="ad_description" class="form-control rounded-0" rows="3" placeholder="Write here..." style="box-shadow: none; border-color: #dddddd;">@if(old('ad_description')){{old('ad_description')}}@elseif(isset($edit)){{$edit->ad_description}}@endif</textarea>
                                 @error('ad_title')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                                <input type="file" class="dropify" data-allowed-file-extensions="png jpg jpeg svg" data-height="300" data-max-file-size="3M" name="ad_image" accept="image/*">
+                                <input type="file" class="dropify" @if(!isset($edit)) required @endif data-allowed-file-extensions="png jpg jpeg svg" data-height="300" data-show-remove="false" data-default-file="@if(isset($edit)){{asset('storage/advertisements/'.$edit->ad_image)}}@endif" data-max-file-size="3M" name="ad_image" accept="image/*">
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-8 position-relative mb-3">
                                 <hr>
-                                <button class="btn btn-success btn-lg custom-label-float bg-success" style="top: 0%;left: 50%;transform: translate(-50%)">Submit</button>
+                                <button type="submit" class="btn btn-success btn-lg custom-label-float bg-success" style="top: 0%;left: 50%;transform: translate(-50%)">Submit</button>
                             </div>
                         </div>
                     </div>

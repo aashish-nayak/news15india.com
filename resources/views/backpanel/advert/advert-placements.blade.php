@@ -86,8 +86,8 @@
                                 <th>Page</th>
                                 <th>Placement</th>
                                 <th>Slug</th>
-                                <th>Size</th>
-                                <th>Price</th>
+                                {{-- <th>Size</th>
+                                <th>Price</th> --}}
                                 <th>Status</th>
                                 <th data-orderable="false">Action</th>
                             </tr>
@@ -99,8 +99,8 @@
                                     <td>{{$placement->group_name}}</td>
                                     <td>{{$placement->name}}</td>
                                     <td>{{$placement->slug}}</td>
-                                    <td>{{$placement->width."x".$placement->height}}</td>
-                                    <td>{{$placement->price ?? '-'}}</td>
+                                    {{-- <td>{{$placement->width."x".$placement->height}}</td>
+                                    <td>{{$placement->price ?? '-'}}</td> --}}
                                     <td>
                                         @if ($placement->status == 1)
                                         <span class="badge text-success">Active</span>

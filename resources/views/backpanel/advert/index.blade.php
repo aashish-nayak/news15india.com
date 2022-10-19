@@ -1,5 +1,5 @@
 @extends('layouts.backpanel.master')
-@section('title', 'Complaints')
+@section('title', 'Advertisements')
 @push('plugin-css')
 @endpush
 @section('sections')
@@ -7,8 +7,8 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="col-md-3">
-                    <h4 class="card-title m-0 d-flex align-items-center"><i class="bx bx-message-square-edit fs-3 mt-1 me-2"></i>
-                        <span>All Complaints</span>
+                    <h4 class="card-title m-0 d-flex align-items-center"><i class="bx bx-book-content fs-3 mt-1 me-2"></i>
+                        <span>Advertisements</span>
                     </h4>
                 </div>
                 <div class="col-md-auto col-12">
@@ -23,22 +23,18 @@
                                         <input type="date" name="to_date" id="filter_to" class="form-control form-control-sm" />
                                     </div>
                                 </div>
-                                <div class="col-md-2 px-1">
-                                    <select class="form-select form-select-sm" required name="status" id="status">
-                                        <option value="all">Status</option>
-                                        <option value="pending">Pending</option>
-                                        <option value="process">Process</option>
-                                        <option value="solve">Solve</option>
-                                        <option value="reject">Reject</option>
+                                <div class="col-md-3 px-1">
+                                    <select class="form-select form-select-sm" required name="date_type" id="date_type">
+                                        <option value="created_at" selected>Booking Date</option>
+                                        <option value="publish_date">Publish Date</option>
+                                        <option value="expire_date">Expire Date</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2 px-1">
-                                    <select class="form-select form-select-sm" required name="subject" id="subject">
-                                        <option value="all">Subject</option>
-                                        <option value="News Related">News Related</option>
-                                        <option value="Survey Related">Survey Related</option>
-                                        <option value="Advertisement Related">Advertisement Related</option>
-                                        <option value="User Data Related">User Data Related</option>
+                                    <select class="form-select form-select-sm" required name="status" id="status">
+                                        <option value="all">Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                                 <div class="col-md-1 px-1">
@@ -58,7 +54,7 @@
 @push('plugin-scripts')
     {!! $dataTable->scripts() !!}
     @includeIf('components.datatable.common-module-script',[
-        'deleteMessage' => "You Want to Delete this Complaint !",
+        'deleteMessage' => "You Want to Delete this Ad",
         'deleteConfirmMessage' => "Yes, Delete it!",
     ])
 @endpush

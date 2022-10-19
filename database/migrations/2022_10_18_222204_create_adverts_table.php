@@ -42,6 +42,8 @@ class CreateAdvertsTable extends Migration
             $table->text('ad_description')->nullable();
             $table->text('ad_image');
             $table->text('ad_redirect')->nullable();
+            $table->enum('is_approved',['approved','reject','pending'])->default('pending');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\NewsDataTable;
+use App\Models\Advert;
 use App\Models\Category;
 use App\Models\Media;
 use App\Models\News;
@@ -25,7 +26,8 @@ class TestController extends Controller
         // })->make(true);
         // dd($datatable);
         // return $datatable->render('test');
-        // dd();
+        $id = Advert::latest()->select('id')->first()->id ?? 1;
+        dd($id,rand(1000000, 9999999).str_pad(1, 3, STR_PAD_LEFT));
     }
 
 }

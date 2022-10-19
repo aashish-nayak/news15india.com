@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Config;
 require __DIR__.'/admin_auth.php';
 require __DIR__.'/auth.php';
 
-// Route::any('/test',[TestController::class,'test'])->name('test');
+Route::any('/test',[TestController::class,'test'])->name('test');
 // Route::view('/test/view','test')->name('test-view');
 
 
@@ -214,6 +214,9 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/',[AdvertController::class,'index'])->name('index');
         Route::get('/create',[AdvertController::class,'create'])->name('create');
         Route::post('/store',[AdvertController::class,'store'])->name('store');
+        Route::get('/edit/{advert}',[AdvertController::class,'edit'])->name('edit');
+        Route::get('/delete/{advert}',[AdvertController::class,'destroy'])->name('delete');
+        Route::get('/status/{advert}',[AdvertController::class,'status'])->name('status');
 
         Route::prefix('/categories')->name('categories.')->group(function(){
             Route::get('/',[AdvertCategoryController::class,'index'])->name('index');
@@ -222,7 +225,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
             Route::get('/delete/{advert_category}',[AdvertCategoryController::class,'destroy'])->name('delete');
         });
 
-        Route::prefix('/placements')->name('placements.')->group(function(){
+        Route::prefix('/placements')->name('placements.')->middleware('role:super-admin')->group(function(){
             Route::get('/',[AdvertPlacementController::class,'index'])->name('index');
             Route::post('/store',[AdvertPlacementController::class,'store'])->name('store');
             Route::get('/edit/{advert_placement}',[AdvertPlacementController::class,'edit'])->name('edit');
