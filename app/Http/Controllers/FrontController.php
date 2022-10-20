@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Advert;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Poll;
@@ -473,5 +474,12 @@ class FrontController extends Controller
     public function thank_you($transaction_id = null)
     {
         return view('thank-you',compact('transaction_id'));
+    }
+    
+    public function advert_redirect($slug)
+    {
+        $ad = Advert::where('slug',$slug)->first();
+        $ad->plusClicks();
+        return redirect($ad->ad_redirect);
     }
 }

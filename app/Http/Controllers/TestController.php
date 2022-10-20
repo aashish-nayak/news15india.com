@@ -8,8 +8,11 @@ use App\Models\Category;
 use App\Models\Media;
 use App\Models\News;
 use App\Models\Poll;
+use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
@@ -26,8 +29,10 @@ class TestController extends Controller
         // })->make(true);
         // dd($datatable);
         // return $datatable->render('test');
-        $id = Advert::latest()->select('id')->first()->id ?? 1;
-        dd($id,rand(1000000, 9999999).str_pad(1, 3, STR_PAD_LEFT));
+        $loc = 'home-section-1-sidebar-300x350';
+        $loc = 'home-section-3-bottom-800x100';
+        $ad = AdvertHTML($loc);
+        dd($ad);
     }
 
 }

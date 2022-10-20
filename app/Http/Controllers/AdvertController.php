@@ -8,7 +8,7 @@ use App\Models\AdvertCategory;
 use App\Models\AdvertPlacement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Str;
 class AdvertController extends Controller
 {
     /**
@@ -56,6 +56,7 @@ class AdvertController extends Controller
         }else{
             $ad = new Advert();
             $ad->booking_id = rand(1000000, 9999999).str_pad($id+1, 3, STR_PAD_LEFT);
+            $ad->slug = Str::random().rand(10000, 99999).str_pad($id+1, 3, STR_PAD_LEFT);
             $message = 'Advertisement added Successfully !';
         }
         $ad->advertiser_name = $request->advertiser_name;
@@ -81,7 +82,7 @@ class AdvertController extends Controller
         $ad->ad_description = $request->ad_description;
         $ad->ad_redirect = (isset($request->ad_redirect)) ? $request->ad_redirect : '';
         if($request->hasFile('ad_image')){
-            $ad->ad_image = $this->uploader($request,'ad_image');
+            $ad->ad_image = (!$request->has('id')) ? $this->uploader($request,'ad_image') : $this->uploader($request,'ad_image',$ad);
         }
         $ad->is_approved = 'approved';
         $ad->status =  1;
@@ -153,9 +154,7 @@ class AdvertController extends Controller
     public function destroy($id)
     {
         $ad = Advert::where('booking_id',$id)->first();
-        if(Storage::exists('public/advertisements/'.$ad->ad_image)){
-            Storage::delete('public/advertisements/'.$ad->ad_image);
-        }
+        $ad->deleteImage();
         $ad->delete();
         request()->session()->flash('success','Ad Deleted Successfully !');
         return back();

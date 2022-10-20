@@ -15,7 +15,12 @@ class CreateAdvertsTable extends Migration
     {
         Schema::create('adverts', function (Blueprint $table) {
             $table->id();
+            $table->integer('views')->default(0);
+            $table->integer('editable_views')->default(0);
+            $table->integer('clicks')->default(0);
+            $table->integer('editable_clicks')->default(0);
             $table->text('booking_id');
+            $table->string('slug')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('advertiser_name')->nullable();
             $table->string('advertiser_number');

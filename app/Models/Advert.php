@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Advert extends Model
 {
@@ -38,15 +39,51 @@ class Advert extends Model
         'ad_redirect',
         'is_approved',
         'status',
+        'views',
+        'clicks',
+        'editable_views',
+        'editable_clicks',
     ];
 
     public function ad_locations()
     {
-        return $this->belongsToMany(AdvertPlacement::class,'advert_advert_placement','advert_id','advert_placement_id');
+        return $this->belongsToMany(AdvertPlacement::class, 'advert_advert_placement', 'advert_id', 'advert_placement_id');
     }
 
     public function advert_category()
     {
-        return $this->belongsTo(AdvertCategory::class,'ad_category','id');
+        return $this->belongsTo(AdvertCategory::class, 'ad_category', 'id');
+    }
+
+    public function plusViews($up = 1)
+    {
+        return $this->update(['views' => $this->views + $up]);
+    }
+
+    public function plusClicks($up = 1)
+    {
+        return $this->update(['clicks' => $this->clicks + $up]);
+    }
+
+    public function resetViews()
+    {
+        return $this->update(['views' => 0]);
+    }
+
+    public function resetClicks()
+    {
+        return $this->update(['clicks' => 0]);
+    }
+
+    public function deleteImage()
+    {
+        if (Storage::exists('public/advertisements/' . $this->ad_image)) {
+            Storage::delete('public/advertisements/' . $this->ad_image);
+        }
+    }
+
+    public function getImage()
+    {
+        return asset('storage/advertisements/' . $this->ad_image);
     }
 }

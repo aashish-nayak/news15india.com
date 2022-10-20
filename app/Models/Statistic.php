@@ -9,7 +9,7 @@ class Statistic extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['staticable_type','staticable_id','views','editable_views','likes','dislikes','json_data'];
+    protected $fillable = ['staticable_type','staticable_id','views','editable_views','clicks','editable_clicks','likes','dislikes','json_data'];
 
     public function staticable()
     {

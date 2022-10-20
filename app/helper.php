@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Advert;
 use App\Models\Setting;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\HtmlString;
 
 if (!function_exists('formatBytes')) {
     function formatBytes($size, $precision = 2)
@@ -86,5 +89,31 @@ if(!function_exists('frontDateFormat')){
     function frontDateFormat($date)
     {
         return Carbon::parse($date)->format('h:i A | d M Y');
+    }
+}
+
+if(!function_exists('AdvertHTML')){
+    function AdvertHTML($loc,$adtext = true){
+        $advert = Advert::whereHas('ad_locations',function($query)use($loc){
+            $query->where('slug','like',"%$loc%");
+        })->where('publish_date','<=',now()->toDateString())
+        ->where('expire_date','>=',now()->toDateString())
+        ->where('is_approved','approved')
+        ->where('status',1)->orderBy('views')->first();
+        
+        if($advert){
+            $advert->plusViews();
+            $html = View::make('components.advert', [
+                'url' => ($advert->ad_redirect != '') ? route('advert.redirect',$advert->slug) : 'javascript:void(0)',
+                'img' => $advert->getImage(),
+                'width' => $advert->ad_width,
+                'height' => $advert->ad_height,
+                'target' => ($advert->ad_redirect != '') ? '_blank' : '_self',
+                'ad_text' => $adtext,
+            ])->render();
+            return new HtmlString($html);
+        } else {
+            return '';
+        }
     }
 }

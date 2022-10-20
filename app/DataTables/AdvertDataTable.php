@@ -154,7 +154,7 @@ class AdvertDataTable extends DataTable
                 ->printable(false)
                 ->searchable(false)
                 ->orderable(false)
-                ->width(40)
+                ->width(90)
                 ->addClass('text-center'),
         ];
     }
