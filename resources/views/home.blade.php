@@ -10,11 +10,7 @@
 ])
 @endsection
 @section('sections')
-    @includeIf('components.advert',[
-        'img' => asset('front-assets/img/banner.png'),
-        'url' => 'javascript:void(0)',
-        'alt' => 'News15India',
-    ])
+    {!!AdvertHTML('home-header-1200x150')!!}
     <!-- Hero Section   -->
     <section class="container-fluid mt-md-1 mx-auto px-0">
         <div class="row justify-content-between custom-space">
@@ -169,22 +165,14 @@
                     </div>
                     @stack('section1_design_3')
                     <div class="col-12 px-1">
-                        @includeIf('components.advert',[
-                            'img' => asset('front-assets/img/banner.png'),
-                            'url' => 'javascript:void(0)',
-                            'alt' => 'News15India',
-                        ])
+                        {!!AdvertHTML('home-section-1-bottom-800x100')!!}
                     </div>
                 </div>
             </div>
             <aside class="col-md-3 col-12 my-3 my-md-0 px-0">
                 @includeIf('components.whatsapp-ad')
                 <div class="col-12 px-0 mt-1">
-                    @includeIf('components.advert',[
-                        'img' => asset('front-assets/img/job-ad.png'),
-                        'url' => 'javascript:void(0)',
-                        'alt' => 'News15India',
-                    ])
+                    {!!AdvertHTML('home-section-1-sidebar-300x350')!!}
                 </div>
                 @includeIf('components.poll')
             </aside>
@@ -322,11 +310,7 @@
                     </div>
                 </div>
                 <div class="col-12 px-1">
-                    @includeIf('components.advert',[
-                        'img' => asset('front-assets/img/banner.png'),
-                        'url' => 'javascript:void(0)',
-                        'alt' => 'News15India',
-                    ])
+                    {!!AdvertHTML('home-section-3-bottom-800x100')!!}
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 mt-1 my-md-0 px-1">
@@ -353,21 +337,19 @@
                         </div>
                         @endif
                     @endforeach
+                    @php
+                        $ad = AdvertHTML('home-section-3-sidebar-slider-300x350',[
+                            'adtext' => false,
+                            'slider' => true,
+                            'counts' => 5,
+                        ]);
+                    @endphp
+                    @if (!empty($ad))
                     <div class="ad-box mb-2">
                         <p class="m-0 text-center bg-light text-dark" style="font-size:1.2rem">Advertisement</p>
-                        <div class="single-item">
-                            @foreach (range(1,5) as $sidebar_ad)
-                            <div class="holder">
-                                @includeIf('components.advert',[
-                                    'img' => asset('front-assets/img/square-ad.png'),
-                                    'url' => 'javascript:void(0)',
-                                    'alt' => 'News15India',
-                                    'ad_text' => true
-                                ])
-                            </div>
-                            @endforeach
-                        </div>
+                        {!!$ad!!}
                     </div>
+                    @endif
                 </div>
             </aside>
         </div>
@@ -498,11 +480,7 @@
                     </div>
                 </div>
                 <div class="col-12 px-1">
-                    @includeIf('components.advert',[
-                        'img' => asset('front-assets/img/banner.png'),
-                        'url' => 'javascript:void(0)',
-                        'alt' => 'News15India',
-                    ])
+                    {!!AdvertHTML('home-section-6-bottom-800x100')!!}
                 </div>
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-3 my-md-0 px-1">
@@ -595,11 +573,7 @@
                         @endforeach
                     </div>
                     <div class="ad-box my-2">
-                        @includeIf('components.advert',[
-                            'img' => asset('front-assets/img/square-ad.png'),
-                            'url' => 'javascript:void(0)',
-                            'alt' => 'News15India',
-                        ])
+                        {!!AdvertHTML('home-section-7-sidebar-300x350')!!}
                     </div>
                 </div>
             </aside>
@@ -638,11 +612,7 @@
                 </div>
             </div>
         </div>
-        @includeIf('components.advert',[
-            'img' => asset('front-assets/img/banner.png'),
-            'url' => 'javascript:void(0)',
-            'alt' => 'News15India',
-        ])
+        {!!AdvertHTML('home-section-8-bottom-800x100')!!}
     </section>
     <!-- Section - 8 End  -->
     <!-- Section - 9 Start  -->

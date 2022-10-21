@@ -186,9 +186,9 @@
                     <div class="col-md-2 mb-3">
                         <label for="ad_size" class="form-label"><b>Ad Size</b><span class="text-danger">*</span></label>
                         <div class="input-group">
-                            <input type="text" class="form-control" name="ad_width" required value="@if(old('ad_width')){{old('ad_width')}}@elseif(isset($edit)){{$edit->ad_width}}@endif" placeholder="Width" id="ad_size">
+                            <input type="text" class="form-control" name="ad_width" required value="@if(old('ad_width')){{old('ad_width')}}@elseif(isset($edit)){{$edit->ad_width}}@else{{'100%'}}@endif" placeholder="Width" id="ad_size">
                             <span class="input-group-text">X</span>
-                            <input type="text" class="form-control" name="ad_height" required value="@if(old('ad_height')){{old('ad_height')}}@elseif(isset($edit)){{$edit->ad_height}}@endif" placeholder="Height">
+                            <input type="text" class="form-control" name="ad_height" required value="@if(old('ad_height')){{old('ad_height')}}@elseif(isset($edit)){{$edit->ad_height}}@else{{'auto'}}@endif" placeholder="Height">
                         </div>
                         @error('ad_width')
                             <span class="text-danger">{{ $message }}</span>

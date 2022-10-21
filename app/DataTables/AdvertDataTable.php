@@ -36,7 +36,6 @@ class AdvertDataTable extends DataTable
                 return view('components.datatable.badges', [
                     'data' => $locations,
                     'param' => 'name',
-                    'bgcolor' => 'bg-info',
                 ]);
             })
             ->filterColumn('ad_locations', function ($query, $keyword) {
@@ -140,7 +139,7 @@ class AdvertDataTable extends DataTable
                 ->orderable(false)
                 ->width(10)
                 ->addClass('text-center select-checkbox'),
-            Column::make('booking_id'),
+            Column::make('id'),
             Column::make('advertiser_name'),
             Column::make('advertiser_email'),
             Column::make('ad_category'),
@@ -154,7 +153,7 @@ class AdvertDataTable extends DataTable
                 ->printable(false)
                 ->searchable(false)
                 ->orderable(false)
-                ->width(40)
+                ->width(90)
                 ->addClass('text-center'),
         ];
     }

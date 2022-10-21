@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Advert;
 use App\Models\Setting;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\HtmlString;
 
 if (!function_exists('formatBytes')) {
     function formatBytes($size, $precision = 2)
@@ -86,5 +89,72 @@ if(!function_exists('frontDateFormat')){
     function frontDateFormat($date)
     {
         return Carbon::parse($date)->format('h:i A | d M Y');
+    }
+}
+
+if(!function_exists('AdvertHTML')){
+    function AdvertHTML($loc,array $option = []){
+        if(!isset($option['counts'])){
+            $option['counts'] = 1;
+        }
+        if(!isset($option['adtext'])){
+            $option['adtext'] = true;
+        }
+
+        $adverts = Advert::whereHas('ad_locations',function($query)use($loc){
+            $query->where('slug','like',"%$loc%");
+        })->where('publish_date','<=',now()->toDateString())
+        ->where('expire_date','>=',now()->toDateString())
+        ->where('is_approved','approved')
+        ->where('status',1)->orderBy('views');
+        if($option['counts'] == 1){
+            $adverts = $adverts->first();
+            if($adverts){
+                $adverts->plusViews();
+                $html = View::make('components.advert', [
+                    'url' => ($adverts->ad_redirect != '') ? route('advert.redirect',$adverts->slug) : 'javascript:void(0)',
+                    'img' => $adverts->getImage(),
+                    'width' => $adverts->ad_width,
+                    'height' => $adverts->ad_height,
+                    'target' => ($adverts->ad_redirect != '') ? '_blank' : '_self',
+                    'ad_text' => $option['adtext'],
+                ])->render();
+                return new HtmlString($html);
+            } else {
+                return '';
+            }
+        }else{
+            $adverts = $adverts->take($option['counts'])->get();
+            $html = '';
+            $slider = false;
+            if($adverts->count() > 0){
+                if(isset($option['slider']) && $option['slider'] == true){
+                    $html = "<div class='single-item'>\n";
+                    $slider = true;
+                }
+                foreach ($adverts as $key => $advert) {
+                    if($advert){
+                        $advert->plusViews();
+                        $html .= View::make('components.advert', [
+                            'url' => ($advert->ad_redirect != '') ? route('advert.redirect',$advert->slug) : 'javascript:void(0)',
+                            'img' => $advert->getImage(),
+                            'width' => $advert->ad_width,
+                            'height' => $advert->ad_height,
+                            'target' => ($advert->ad_redirect != '') ? '_blank' : '_self',
+                            'ad_text' => $option['adtext'],
+                            'slider' => $slider,
+                        ])->render();
+                    } else {
+                        $html .= '';
+                    }
+                }
+                if(isset($option['slider']) && $option['slider'] == true){
+                    $html .= "</div>";
+                }
+                return new HtmlString($html);
+            }else{
+                return '';
+            }
+        }
     }
 }

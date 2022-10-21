@@ -13,6 +13,7 @@ trait Staticable
         return $this->hasOne(Statistic::class, 'staticable_id')->where('staticable_type', get_class($this))->withDefault([
             'staticable_type'=> get_class($this),
             'views' => 0,
+            'clicks' => 0,
             'likes' => 0,
             'dislikes' => 0,
             'comments' => 0,
@@ -68,12 +69,30 @@ trait Staticable
         return $this->statistics->editable_views;
     }
 
+    public function getClicks()
+    {
+        return $this->statistics->clicks;
+    }
+
+    public function getEditableClicks()
+    {
+        return $this->statistics->editable_clicks;
+    }
+
     public function frontViews()
     {
         if($this->statistics != null && $this->getEditableViews() > 0){
             return $this->getEditableViews();
         }
         return $this->getViews();
+    }
+
+    public function frontClicks()
+    {
+        if($this->statistics != null && $this->getEditableClicks() > 0){
+            return $this->getEditableClicks();
+        }
+        return $this->getClicks();
     }
 
     public function viewsUp($counts = 1)
@@ -86,9 +105,21 @@ trait Staticable
         return $this;
     }
 
+    public function clicksUp($counts = 1)
+    {
+        $this->updatedStats(['clicks' => $this->statistics->clicks + $counts]);
+        return $this;
+    }
+
     public function editableViewsUp($counts = 1)
     {
         $this->updatedStats(['editable_views' => $counts]);
+        return $this;
+    }
+
+    public function editableClicksUp($counts = 1)
+    {
+        $this->updatedStats(['editable_clicks' => $counts]);
         return $this;
     }
 

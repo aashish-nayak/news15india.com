@@ -5,22 +5,14 @@
         <div class="row">
             <!-- Ad Banner  -->
             <section class="container-fluid mx-auto px-0 text-center">
-                @includeIf('components.advert',[
-                    'img' => asset('front-assets/img/banner.png'),
-                    'url' => 'javascript:void(0)',
-                    'alt' => 'News15India',
-                ])
+                {!!AdvertHTML('polls-header-1250x150')!!}
             </section>
             <!-- Ad Banner  -->
             <aside class="col-md-3 col-12 my-1 pt-1 px-1 my-md-0 order-2 order-md-1">
                 <div class="sticky-top" style="z-index:1">
                     @includeIf('components.whatsapp-ad')
                     <div class="ad-box my-2">
-                        @includeIf('components.advert',[
-                            'img' => asset('front-assets/img/square-ad.png'),
-                            'url' => 'javascript:void(0)',
-                            'alt' => 'News15India',
-                        ])
+                        {!!AdvertHTML('polls-left-sidebar-350x300')!!}
                     </div>
                 </div>
             </aside>
@@ -51,35 +43,37 @@
                         ];
                     @endphp
                     @endif
-                    @section('meta-tags')
-                    @meta($meta)
-                    @endsection
                     @php
                         $new = new App\Helpers\PollWriter();
                         $new->draw($poll);
                     @endphp
                     <section class="container-fluid mx-auto px-0 text-center my-3">
-                        @includeIf('components.advert',[
-                            'img' => asset('front-assets/img/banner.png'),
-                            'url' => 'javascript:void(0)',
-                            'alt' => 'News15India',
-                        ])
+                        {!!AdvertHTML('polls-bottom-each-800x100')!!}
                     </section>
                     @endforeach
                     @else
+                    @php
+                        $meta = [
+                            'title' => 'Polls',
+                            'prefix' => ' - ' . setting('site_name'),
+                            'keywords' => setting('site_meta_keyword'),
+                            'description' => setting('site_meta_description'),
+                            'image' => setting('site_log'),
+                            'type' => 'Polls',
+                        ];
+                    @endphp
                     @includeIf('components.poll-stub.no-poll')
                     @endif
+                    @section('meta-tags')
+                    @meta($meta)
+                    @endsection
                 </div>
             </div>
             <aside class="col-md-3 col-12 my-1 pt-1 px-1 my-md-0 order-3 order-md-3">
                 <div class="sticky-top" style="z-index:1">
                     @includeIf('components.whatsapp-ad')
                     <div class="ad-box my-2">
-                        @includeIf('components.advert',[
-                            'img' => asset('front-assets/img/square-ad.png'),
-                            'url' => 'javascript:void(0)',
-                            'alt' => 'News15India',
-                        ])
+                        {!!AdvertHTML('polls-right-sidebar-350x300')!!}
                     </div>
                 </div>
             </aside>
