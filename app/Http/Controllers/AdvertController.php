@@ -102,7 +102,7 @@ class AdvertController extends Controller
             $file = $request->file($uploadfile);
             $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             $extension = $file->getClientOriginalExtension();
-            $filename =  $uploadfile .'___' . $request->ad_width .'x'. $request->ad_height . '__' . $request->email . '__' .  time() . '.' . $extension;
+            $filename =  $uploadfile .'___' . Str::slug($request->ad_width) .'x'. Str::slug($request->ad_height) . '__' . $request->email . '__' .  time() . '.' . $extension;
             $file->storeAs('public/advertisements', $filename);
             return $filename;
         }
