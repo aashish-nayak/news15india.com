@@ -43,7 +43,6 @@ class CreateAdvertsTable extends Migration
             $table->string('ad_duration')->nullable();
             $table->date('publish_date');
             $table->date('expire_date');
-            $table->string('discount')->nullable();
             $table->string('ad_title');
             $table->text('ad_description')->nullable();
             $table->text('ad_image');
@@ -51,7 +50,7 @@ class CreateAdvertsTable extends Migration
             $table->enum('is_approved',['approved','reject','pending'])->default('pending');
             $table->boolean('status')->default(0);
             $table->decimal('total_amount')->default(0);
-            $table->string('discount')->default('0%');
+            $table->string('discount')->nullable();
             $table->decimal('subtotal_amount')->default(0);
             $table->decimal('net_amount')->default(0);
             $table->timestamps();
