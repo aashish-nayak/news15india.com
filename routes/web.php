@@ -211,19 +211,19 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
     });
     // ----------------[ Backpanel Panel Advertisement Module Routes ]------------------------
-    Route::prefix('/advertisement')->name('advert.')->middleware('role:super-admin')->group(function(){
-        Route::get('/',[AdvertController::class,'index'])->name('index');
-        Route::get('/create',[AdvertController::class,'create'])->name('create');
-        Route::post('/store',[AdvertController::class,'store'])->name('store');
-        Route::get('/edit/{advert}',[AdvertController::class,'edit'])->name('edit');
-        Route::get('/delete/{advert}',[AdvertController::class,'destroy'])->name('delete');
-        Route::get('/status/{advert}',[AdvertController::class,'status'])->name('status');
+    Route::prefix('/advertisement')->name('advert.')->group(function(){
+        Route::get('/',[AdvertController::class,'index'])->middleware('permission:read-advertisement')->name('index');
+        Route::get('/create',[AdvertController::class,'create'])->middleware('permission:create-advertisement')->name('create');
+        Route::post('/store',[AdvertController::class,'store'])->middleware('permission:create-advertisement')->name('store');
+        Route::get('/edit/{advert}',[AdvertController::class,'edit'])->middleware('permission:edit-advertisement')->name('edit');
+        Route::get('/delete/{advert}',[AdvertController::class,'destroy'])->middleware('permission:delete-advertisement')->name('delete');
+        Route::get('/status/{advert}',[AdvertController::class,'status'])->middleware('permission:edit-advertisement')->name('status');
 
         Route::prefix('/categories')->name('categories.')->group(function(){
-            Route::get('/',[AdvertCategoryController::class,'index'])->name('index');
-            Route::post('/store',[AdvertCategoryController::class,'store'])->name('store');
-            Route::get('/edit/{advert_category}',[AdvertCategoryController::class,'edit'])->name('edit');
-            Route::get('/delete/{advert_category}',[AdvertCategoryController::class,'destroy'])->name('delete');
+            Route::get('/',[AdvertCategoryController::class,'index'])->middleware('permission:read-advertisement-category')->name('index');
+            Route::post('/store',[AdvertCategoryController::class,'store'])->middleware('permission:create-advertisement-category')->name('store');
+            Route::get('/edit/{advert_category}',[AdvertCategoryController::class,'edit'])->middleware('permission:edit-advertisement-category')->name('edit');
+            Route::get('/delete/{advert_category}',[AdvertCategoryController::class,'destroy'])->middleware('permission:delete-advertisement-category')->name('delete');
         });
 
         Route::prefix('/placements')->name('placements.')->middleware('role:super-admin')->group(function(){

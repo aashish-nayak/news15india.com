@@ -31,7 +31,13 @@ class TestController extends Controller
         // return $datatable->render('test');
         $loc = 'home-section-1-sidebar-300x350';
         $loc = 'home-section-3-bottom-800x100';
-        $ad = AdvertHTML($loc);
+        // $loc = 'home-header-1200x150';
+        $ad = AdvertHTML($loc,[
+            'adtext' => false,
+            'slider' => true,
+            'counts' => 2,
+        ]);
+        // $ad = AdvertHTML($loc);
         dd($ad);
     }
 

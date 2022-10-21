@@ -12,6 +12,7 @@ class Advert extends Model
 
     protected $fillable = [
         'booking_id',
+        'admin_id',
         'user_id',
         'advertiser_name',
         'advertiser_number',
@@ -43,7 +44,16 @@ class Advert extends Model
         'clicks',
         'editable_views',
         'editable_clicks',
+        'total_amount',
+        'discount',
+        'subtotal_amount',
+        'net_amount',
     ];
+
+    public function creator()
+    {
+        return $this->belongsTo(Admin::class,'admin_id');
+    }
 
     public function ad_locations()
     {

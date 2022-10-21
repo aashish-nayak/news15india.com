@@ -18,22 +18,14 @@
     <div class="row">
         <!-- Ad Banner  -->
         <section class="container-fluid mx-auto px-0 text-center">
-            @includeIf('components.advert',[
-                'img' => asset('front-assets/img/banner.png'),
-                'url' => 'javascript:void(0)',
-                'alt' => 'News15India',
-            ])
+            {!!AdvertHTML('author-header-1250x150')!!}
         </section>
         <!-- Ad Banner  -->
         <aside class="col-md-3 col-12 my-1 pt-1 px-1 my-md-0 order-2 order-md-1">
             <div class="sticky-top"  style="z-index:1">
                 @includeIf('components.whatsapp-ad')
                 <div class="ad-box my-2">
-                    @includeIf('components.advert',[
-                        'img' => asset('front-assets/img/square-ad.png'),
-                        'url' => 'javascript:void(0)',
-                        'alt' => 'News15India',
-                    ])
+                    {!!AdvertHTML('author-header-1250x150')!!}
                 </div>
                 @includeIf('components.poll')
                 <div class="col-12 mt-1 side-position mx-auto px-0">
@@ -209,11 +201,7 @@
             </div>
             <!-- Ad Banner  -->
             <section class="container-fluid my-md-1 mt-1 mx-auto px-0 text-center">
-                @includeIf('components.advert',[
-                    'img' => asset('front-assets/img/banner.png'),
-                    'url' => 'javascript:void(0)',
-                    'alt' => 'News15India',
-                ])
+                {!!AdvertHTML('author-detail-bottom-800x100')!!}
             </section>
             <!-- Ad Banner  -->
             <div class="main-bg-clr container-fluid px-0">
@@ -268,11 +256,7 @@
             </div>
             <!-- Ad Banner  -->
             <section class="container-fluid my-md-1 mt-1 mx-auto px-0 text-center">
-                @includeIf('components.advert',[
-                    'img' => asset('front-assets/img/banner.png'),
-                    'url' => 'javascript:void(0)',
-                    'alt' => 'News15India',
-                ])
+                {!!AdvertHTML('author-category-bottom-800x100')!!}
             </section>
             <!-- Ad Banner  -->
             <div class="container-fluid mx-auto">
@@ -321,11 +305,7 @@
             </div>
             <!-- Ad Banner  -->
             <section class="container-fluid mx-auto px-0 text-center">
-                @includeIf('components.advert',[
-                    'img' => asset('front-assets/img/banner.png'),
-                    'url' => 'javascript:void(0)',
-                    'alt' => 'News15India',
-                ])
+                {!!AdvertHTML('author-pagination-bottom-800x100')!!}
             </section>
             <!-- Ad Banner  -->
         </div>

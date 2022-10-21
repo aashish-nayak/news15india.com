@@ -107,11 +107,7 @@
                     </div>
                 </div>
             </div>
-            @includeIf('components.advert',[
-                'img' => asset('front-assets/img/banner.png'),
-                'url' => 'javascript:void(0)',
-                'alt' => 'News15India',
-            ])
+            {!!AdvertHTML('tag-breadcrumb-bottom-header-800x100')!!}
             <div class="container-fluid mx-auto mt-1">
                 <div class="row">
                     <div class="col-md-6 col-12 px-1 pr-md-1 my-md-0 my-1">
@@ -138,22 +134,14 @@
             </div>
             <!-- Ad Banner  -->
             <section class="container-fluid mx-auto mt-3 mb-2 mb-md-0 px-0 text-center">
-                @includeIf('components.advert',[
-                    'img' => asset('front-assets/img/banner.png'),
-                    'url' => 'javascript:void(0)',
-                    'alt' => 'News15India',
-                ])
+                {!!AdvertHTML('tag-pagination-bottom-800x100')!!}
             </section>
             <!-- Ad Banner  -->
         </div>
         <aside class="col-md-3 col-12 px-1 my-md-0">
             <div class="sticky-top"  style="z-index:1">
                 <div class="ad-box mb-2">
-                    @includeIf('components.advert',[
-                        'img' => asset('front-assets/img/square-ad.png'),
-                        'url' => 'javascript:void(0)',
-                        'alt' => 'News15India',
-                    ])
+                    {!!AdvertHTML('tag-sidebar-350x300')!!}
                 </div>
                 @includeIf('components.whatsapp-ad')
                 @includeIf('components.poll')

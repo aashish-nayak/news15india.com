@@ -59,6 +59,7 @@ class AdvertController extends Controller
             $ad->slug = Str::random().rand(10000, 99999).str_pad($id+1, 3, STR_PAD_LEFT);
             $message = 'Advertisement added Successfully !';
         }
+        $ad->admin_id = auth('admin')->id();
         $ad->advertiser_name = $request->advertiser_name;
         $ad->advertiser_number = $request->advertiser_number;
         $ad->advertiser_email = $request->advertiser_email;
@@ -80,7 +81,7 @@ class AdvertController extends Controller
         $ad->discount = $request->discount;
         $ad->ad_title = $request->ad_title;
         $ad->ad_description = $request->ad_description;
-        $ad->ad_redirect = (isset($request->ad_redirect)) ? $request->ad_redirect : '';
+        $ad->ad_redirect = (isset($request->ad_redirect)) ? $request->ad_redirect : null;
         if($request->hasFile('ad_image')){
             $ad->ad_image = (!$request->has('id')) ? $this->uploader($request,'ad_image') : $this->uploader($request,'ad_image',$ad);
         }
@@ -95,8 +96,8 @@ class AdvertController extends Controller
     public function uploader($request,$uploadfile,$edit = null)
     {
         if($request->hasFile($uploadfile)){
-            if($edit != null && Storage::exists('public/advertisements/'.$edit[$uploadfile])){
-                Storage::delete('public/advertisements/'.$edit[$uploadfile]);
+            if($edit != null){
+                $edit->deleteImage();
             }
             $file = $request->file($uploadfile);
             $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);

@@ -100,19 +100,27 @@
                 @endpermission
             </ul>
         </li>
+        @endrole
+        @permission('read-advertisement')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-book-content"></i></div>
                 <div class="menu-title">Advertisements</div>
             </a>
             <ul>
-                <li><a href="{{Route('admin.advert.placements.index')}}"><i class="bx bx-right-arrow-alt"></i>Ad Placements</a></li>
-                <li><a href="{{Route('admin.advert.categories.index')}}"><i class="bx bx-right-arrow-alt"></i>Ad Categories</a></li>
+                @role('super-admin')
+                <li><a href="{{Route('admin.advert.placements.index')}}"><i class="bx bx-right-arrow-alt"></i>Advert Placements</a></li>
+                @endrole
+                @permission('read-advertisement-category')
+                <li><a href="{{Route('admin.advert.categories.index')}}"><i class="bx bx-right-arrow-alt"></i>Advert Categories</a></li>
+                @endpermission
+                @permission('create-advertisement')
                 <li><a href="{{Route('admin.advert.create')}}"><i class="bx bx-right-arrow-alt"></i>Add Advertisement</a></li>
+                @endpermission
                 <li><a href="{{Route('admin.advert.index')}}"><i class="bx bx-right-arrow-alt"></i>Advertisements</a></li>
             </ul>
         </li>
-        @endrole
+        @endpermission
         @permission('read-reporters')
         <li>
             <a href="{{Route('admin.reporter.index')}}">

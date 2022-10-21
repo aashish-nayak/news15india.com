@@ -21,6 +21,7 @@ class CreateAdvertsTable extends Migration
             $table->integer('editable_clicks')->default(0);
             $table->text('booking_id');
             $table->string('slug')->nullable();
+            $table->foreignId('admin_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('advertiser_name')->nullable();
             $table->string('advertiser_number');
@@ -49,6 +50,10 @@ class CreateAdvertsTable extends Migration
             $table->text('ad_redirect')->nullable();
             $table->enum('is_approved',['approved','reject','pending'])->default('pending');
             $table->boolean('status')->default(0);
+            $table->decimal('total_amount')->default(0);
+            $table->string('discount')->default('0%');
+            $table->decimal('subtotal_amount')->default(0);
+            $table->decimal('net_amount')->default(0);
             $table->timestamps();
         });
     }

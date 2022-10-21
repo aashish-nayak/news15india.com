@@ -1,5 +1,5 @@
 @extends('layouts.backpanel.master')
-@section('title', 'Advertisement Categories')
+@section('title', 'Advertisement Placements')
 @push('plugin-css')
 @endpush
 @push('css')
@@ -89,7 +89,7 @@
                                 {{-- <th>Size</th>
                                 <th>Price</th> --}}
                                 <th>Status</th>
-                                <th data-orderable="false">Action</th>
+                                {{-- <th data-orderable="false">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -108,12 +108,12 @@
                                         <span class="badge text-danger">Inactive</span>
                                         @endif
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <div class="d-flex order-actions">
                                             <a href="{{route('admin.advert.placements.edit',$placement->id)}}" class="edit"><i class="bx bxs-edit"></i></a>
                                             <a href="{{route('admin.advert.placements.delete',$placement->id)}}" class="text-danger delete ms-3"><i class="bx bxs-trash"></i></a>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
