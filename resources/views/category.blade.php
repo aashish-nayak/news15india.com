@@ -1,14 +1,13 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
 @meta([
-    'title'         => $currentCategory->meta_title ?? $currentCategory->cat_name,
+    'title'         => (!empty($currentCategory->meta_title)) ? $currentCategory->meta_title : $currentCategory->cat_name,
     'keywords'      => $currentCategory->meta_keywords,
-    'description'   => $currentCategory->meta_description ?? $currentCategory->cat_name,
+    'description'   => (!empty($currentCategory->meta_description)) ? $currentCategory->meta_description : $currentCategory->cat_name,
     'image'         => asset('storage/media/'.$currentCategory->catImage->filename),
     'image_alt'     => $currentCategory->catImage->alt,
     'image_size'    => $currentCategory->catImage->size,
     'image_type'    => $currentCategory->catImage->type,
-    'type'          => 'category',
 ])
 @endsection
 @section('sections')

@@ -1,9 +1,9 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
 @meta([
-    'title'         => $currentTag->meta_title ?? $currentTag->name,
+    'title'         => (!empty($currentTag->meta_title)) ? $currentTag->meta_title : $currentTag->name,
     'keywords'      => $currentTag->meta_keywords,
-    'description'   => $currentTag->meta_description ?? $currentTag->name,
+    'description'   => (!empty($currentTag->meta_description)) ? $currentTag->meta_description : $currentTag->name,
     'image'         => asset('storage/media/'.$currentTag->tagImage->filename),
     'image_alt'     => $currentTag->tagImage->alt,
     'image_size'    => $currentTag->tagImage->size,
