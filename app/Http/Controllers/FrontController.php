@@ -482,4 +482,13 @@ class FrontController extends Controller
         $ad->plusClicks();
         return redirect($ad->ad_redirect);
     }
+
+    public function sitemap()
+    {
+        $cats = Category::where('status', 1)->orderBy('id','desc')->get();
+        $tags = Tag::where('status', 1)->orderBy('id','desc')->get();
+        $news = News::where('status', 1)->orderBy('id','desc')->get();
+        $authors = Admin::where('status',1)->orderBy('id','desc')->get();
+        return response()->view('sitemap', compact('cats','news','tags','authors'))->header('Content-Type', 'text/xml');
+    }
 }

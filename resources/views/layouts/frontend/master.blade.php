@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="CH3Cn8zDTCv2sxOV7LSaXYOfDMzdBG1ZE_Jjlh_d3BE" />
     <link rel="icon" href="{{setting('site_favicon')}}" type="image/png" />
     <!-- Meta Data  -->
     @yield('meta-tags')

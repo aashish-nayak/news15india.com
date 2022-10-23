@@ -55,7 +55,7 @@ Route::get('/application-form',[ReporterController::class,'application_form'])->
 Route::post('/application-form/store',[ReporterController::class,'storeApplication'])->name('reporter-application-store');
 Route::get('/thank-you/{order_id?}',[FrontController::class,'thank_you'])->name('thank-you');
 Route::get('/advert-redirect/{url}',[FrontController::class,'advert_redirect'])->name('advert.redirect');
-
+Route::get('sitemap.xml',[FrontController::class,'sitemap'])->name('sitemap');
 // =============== Country State City Routes ==============
 Route::get('/location/countries',[WorldDataController::class,'countries'])->name('countries');
 Route::get('/location/states/{country_id}',[WorldDataController::class,'states'])->name('states');
