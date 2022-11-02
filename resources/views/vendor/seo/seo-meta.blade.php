@@ -1,22 +1,24 @@
     <!-- Standard SEO -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="referrer" content="{{((!empty($referrer))) ? $referrer : config('meta.referrer')}}">
-    <meta name="robots" content="{{((!empty($robots))) ? $robots : config('meta.robots')}}">
+    <meta name="referrer" content="{{(!empty($referrer)) ? $referrer : config('meta.referrer')}}">
+    <meta name="robots" content="{{(!empty($robots)) ? $robots : config('meta.robots')}}">
+    
     @php
         $prefix = (isset($prefix)) ? $prefix : '';
     @endphp
     <title>{{(isset($title)) ? $title.$prefix : setting('site_meta_title')}}</title>
-    <meta name="title" content="Your Page Title">
-    <meta name="description" content="{{((!empty($description))) ? $description : setting('site_meta_description')}}">
-    <meta name="keywords" content="{{((!empty($keywords))) ? $keywords : setting('site_meta_keyword')}}">
+    <meta name="title" content="{{(isset($title)) ? $title.$prefix : setting('site_meta_title')}}">
+    <meta name="description" content="{{(!empty($description)) ? $description : setting('site_meta_description')}}">
+    <meta name="keywords" content="{{(!empty($keywords)) ? $keywords : setting('site_meta_keyword')}}">
+
     @if (config('meta.geo_region') !== '')
     <meta name="geo.region" content="{{config('meta.geo_region')}}">
     @endif
     @if (config('meta.geo_position') !== '')
     <meta name="geo.position" content="{{config('meta.geo_position')}}">
     <meta name="ICBM" content="{{config('meta.geo_position')}}">
-    @endif
     <meta name="geo.placename" content="{{setting('site_name')}}">
+    @endif
 
 
     <!-- Dublin Core basic info -->
