@@ -1,5 +1,7 @@
 @extends('layouts.frontend.master')
-
+@section('meta-tags')
+{!! SEO::generate() !!}
+@endsection
 @section('sections')
     <main class="container-fluid mx-auto position-relative">
         <div class="row">
@@ -18,31 +20,7 @@
             </aside>
             <div class="col-md-6 col-12 px-1 pr-md-1 order-1 order-md-2">
                 <div class="main-bg-clr mx-auto container my-2">
-                    @if($polls->count()>0)
-                    @foreach ($polls as $key => $poll)
-                    @if ($polls->count()== 1 && $key == 0)
-                    @php
-                        $meta = [
-                            'title' => $poll->topic,
-                            'prefix' => ' - ' . setting('site_name'),
-                            'keywords' => setting('site_meta_keyword'),
-                            'description' => setting('site_meta_description'),
-                            'image' => asset('storage/media/'.$poll->pollImage->filename),
-                            'type' => 'Polls',
-                        ];
-                    @endphp
-                    @else
-                    @php
-                        $meta = [
-                            'title' => 'Polls',
-                            'prefix' => ' - ' . setting('site_name'),
-                            'keywords' => setting('site_meta_keyword'),
-                            'description' => setting('site_meta_description'),
-                            'image' => setting('site_log'),
-                            'type' => 'Polls',
-                        ];
-                    @endphp
-                    @endif
+                    @forelse ($polls as $key => $poll)
                     @php
                         $new = new App\Helpers\PollWriter();
                         $new->draw($poll);
@@ -50,23 +28,9 @@
                     <section class="container-fluid mx-auto px-0 text-center my-3">
                         {!!AdvertHTML('polls-bottom-each-800x100')!!}
                     </section>
-                    @endforeach
-                    @else
-                    @php
-                        $meta = [
-                            'title' => 'Polls',
-                            'prefix' => ' - ' . setting('site_name'),
-                            'keywords' => setting('site_meta_keyword'),
-                            'description' => setting('site_meta_description'),
-                            'image' => setting('site_log'),
-                            'type' => 'Polls',
-                        ];
-                    @endphp
+                    @empty
                     @includeIf('components.poll-stub.no-poll')
-                    @endif
-                    @section('meta-tags')
-                    @meta($meta)
-                    @endsection
+                    @endforelse
                 </div>
             </div>
             <aside class="col-md-3 col-12 my-1 pt-1 px-1 my-md-0 order-3 order-md-3">

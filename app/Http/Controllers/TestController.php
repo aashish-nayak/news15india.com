@@ -27,7 +27,7 @@ class TestController extends Controller
         // ->setRowId(function ($news) {
         //     return $news->id;
         // })->make(true);
-        // dd($datatable);
+        dd(request()->url());
         // return $datatable->render('test');
         $loc = 'home-section-1-sidebar-300x350';
         $loc = 'home-section-3-bottom-800x100';

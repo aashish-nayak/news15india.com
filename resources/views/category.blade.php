@@ -1,14 +1,6 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
-@meta([
-    'title'         => (!empty($currentCategory->meta_title)) ? $currentCategory->meta_title : $currentCategory->cat_name,
-    'keywords'      => $currentCategory->meta_keywords,
-    'description'   => (!empty($currentCategory->meta_description)) ? $currentCategory->meta_description : $currentCategory->cat_name,
-    'image'         => asset('storage/media/'.$currentCategory->catImage->filename),
-    'image_alt'     => $currentCategory->catImage->alt,
-    'image_size'    => $currentCategory->catImage->size,
-    'image_type'    => $currentCategory->catImage->type,
-])
+{!! SEO::generate() !!}
 @endsection
 @section('sections')
 <main class="container-fluid mx-auto mt-1 position-relative">

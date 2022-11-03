@@ -18,10 +18,42 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
+// ========== SEO Package ==========
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+// OR with multi
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+
+// OR
+use Artesaos\SEOTools\Facades\SEOTools;
 class ReporterController extends Controller
 {
     public function application_form()
     {
+        SEOMeta::setTitle('Reporter Application Form');
+        SEOMeta::setDescription(setting('site_meta_description'));
+        SEOMeta::addKeyword(setting('site_meta_keyword'));
+
+        TwitterCard::setTitle('Reporter Application Form');
+        TwitterCard::setDescription(setting('site_meta_description'));
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle('Reporter Application Form');
+        OpenGraph::setDescription(setting('site_meta_description'));
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'Form');
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(setting('site_logo'));
+        OpenGraph::addImage(['url' => setting('site_logo'), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle('Reporter Application Form');
+        JsonLd::setDescription(setting('site_meta_description'));
+        JsonLd::addImage(setting('site_logo'));
 
         $reporter = Reporter::where('user_id',auth('web')->id());
         $reporter2 = Reporter::where('user_ip',request()->ip());

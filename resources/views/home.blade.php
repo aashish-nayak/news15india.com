@@ -1,13 +1,6 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
-@meta([
-    'title'         => setting('site_meta_title'),
-    'keywords'      => setting('site_meta_keyword'),
-    'description'   => setting('site_meta_description'),
-    'image'         => setting('site_logo'),
-    'type'          => 'website',
-    'author'        => setting('site_name'),
-])
+{!! SEO::generate() !!}
 @endsection
 @section('sections')
     {!!AdvertHTML('home-header-1200x150')!!}

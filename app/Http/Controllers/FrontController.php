@@ -17,6 +17,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Jorenvh\Share\ShareFacade as Share;
+// ========== SEO Package ==========
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+// OR with multi
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+
+// OR
+use Artesaos\SEOTools\Facades\SEOTools;
+
 class FrontController extends Controller
 {
     protected function treePerent($id){
@@ -42,6 +53,28 @@ class FrontController extends Controller
 
     public function home()
     {
+        SEOMeta::setTitle(setting('site_meta_title'));
+        SEOMeta::setDescription(setting('site_meta_description'));
+        SEOMeta::addKeyword(setting('site_meta_keyword'));
+
+        TwitterCard::setTitle(setting('site_meta_title'));
+        TwitterCard::setDescription(setting('site_meta_description'));
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle(setting('site_meta_title'));
+        OpenGraph::setDescription(setting('site_meta_description'));
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(setting('site_logo'));
+        OpenGraph::addImage(['url' => setting('site_logo'), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle(setting('site_meta_title'));
+        JsonLd::setDescription(setting('site_meta_description'));
+        JsonLd::addImage(setting('site_logo'));
+
         $homeSections = json_decode(setting('home_page_settings'));
         $catIds = $homeSections->sections;
         $catIdsLimit = $homeSections->sections_limit;
@@ -169,6 +202,35 @@ class FrontController extends Controller
         ->where('is_published',1)
         ->where('is_verified',1)
         ->firstOrFail();
+
+        SEOMeta::setTitle($news->meta_title);
+        SEOMeta::setDescription($news->meta_description);
+        SEOMeta::addMeta('article:published_time', $news->created_at->toW3CString(), 'property');
+        SEOMeta::addMeta('article:section', $news->categories()->select('cat_name')->first()->cat_name, 'property');
+        SEOMeta::addKeyword($news->meta_keywords);
+
+        TwitterCard::setTitle($news->meta_title);
+        TwitterCard::setDescription($news->meta_description);
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle($news->meta_title);
+        OpenGraph::setDescription($news->meta_description);
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('published_time', $news->created_at->toW3CString());
+        OpenGraph::addProperty('modified_time', $news->updated_at->toW3CString());
+        OpenGraph::addProperty('author', $news->creator->name);
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(asset('storage/media/'.$news->newsImage->filename));
+        OpenGraph::addImage(['url' => asset('storage/media/'.$news->newsImage->filename), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($news->meta_title);
+        JsonLd::setDescription($news->meta_description);
+        JsonLd::setType('Article');
+        JsonLd::addImage(asset('storage/media/'.$news->newsImage->filename));
+
         $news->viewsUp();
         $moreCategoryNews = Category::with(['news'=>function($query)use($newsUrl,$pageSetting){
             $query->where('slug','!=',$newsUrl)->latest()->limit($pageSetting->category_news_limit)->with('newsImage');
@@ -232,6 +294,32 @@ class FrontController extends Controller
         $pageSetting = json_decode(setting('category_page_settings'));
 
         $currentCategory = Category::where('slug',$slug)->firstOrFail();
+
+        SEOMeta::setTitle($currentCategory->meta_title);
+        SEOMeta::setDescription($currentCategory->meta_description);
+        SEOMeta::addKeyword($currentCategory->meta_keywords);
+
+        TwitterCard::setTitle($currentCategory->meta_title);
+        TwitterCard::setDescription($currentCategory->meta_description);
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle($currentCategory->meta_title);
+        OpenGraph::setDescription($currentCategory->meta_description);
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addProperty('published_time', $currentCategory->created_at->toW3CString());
+        OpenGraph::addProperty('modified_time', $currentCategory->updated_at->toW3CString());
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(asset('storage/media/'.$currentCategory->catImage->filename));
+        OpenGraph::addImage(['url' => asset('storage/media/'.$currentCategory->catImage->filename), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($currentCategory->meta_title);
+        JsonLd::setDescription($currentCategory->meta_description);
+        JsonLd::setType('Articles');
+        JsonLd::addImage(asset('storage/media/'.$currentCategory->catImage->filename));
+
         $parents = collect();
         if($currentCategory->parent_id != NULL){
             $parents = $this->treePerent($currentCategory->parent_id);
@@ -289,6 +377,31 @@ class FrontController extends Controller
         }
         $tagNews = $currentTag->news()->latest()->paginate($pageSetting->news_per_page);
         
+        SEOMeta::setTitle($currentTag->meta_title);
+        SEOMeta::setDescription($currentTag->meta_description);
+        SEOMeta::addKeyword($currentTag->meta_keywords);
+
+        TwitterCard::setTitle($currentTag->meta_title);
+        TwitterCard::setDescription($currentTag->meta_description);
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle($currentTag->meta_title);
+        OpenGraph::setDescription($currentTag->meta_description);
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'tags');
+        OpenGraph::addProperty('published_time', $currentTag->created_at->toW3CString());
+        OpenGraph::addProperty('modified_time', $currentTag->updated_at->toW3CString());
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(asset('storage/media/'.$currentTag->tagImage->filename));
+        OpenGraph::addImage(['url' => asset('storage/media/'.$currentTag->tagImage->filename), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($currentTag->meta_title);
+        JsonLd::setDescription($currentTag->meta_description);
+        JsonLd::setType('Tags');
+        JsonLd::addImage(asset('storage/media/'.$currentTag->tagImage->filename));
+
         $catIds = $pageSetting->sidebars;
         $sidebar_1 = Category::with(['news'=>function($query)use($pageSetting){
             $query->latest()->limit($pageSetting->sidebars_limit[0]);
@@ -334,6 +447,31 @@ class FrontController extends Controller
         $author = Admin::whereHas('details',function($query) use($url){
             $query->where('url',$url);
         })->with('details')->firstOrFail();
+
+        SEOMeta::setTitle($author->name);
+        SEOMeta::setDescription($author->about);
+        SEOMeta::addKeyword(setting('site_meta_keyword'));
+
+        TwitterCard::setTitle($author->name);
+        TwitterCard::setDescription($author->about);
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle($author->name)
+             ->setDescription($author->about)
+            ->setType('profile')
+            ->setProfile([
+                'first_name' => explode(' ',$author->name)[0],
+                'last_name' => explode(' ',$author->name)[1] ?? '',
+                'username' => $author->details->url,
+            ]);
+
+        OpenGraph::addImage($author->getAvatar());
+        OpenGraph::addImage(['url' => $author->getAvatar(), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($author->name);
+        JsonLd::setDescription($author->about);
+        JsonLd::setType('Profile');
+        JsonLd::addImage($author->getAvatar());
 
         $creatorNews = News::where('admin_id',$author->id)->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate($pageSetting->news_per_page);
 
@@ -397,6 +535,28 @@ class FrontController extends Controller
 
     public function poll($poll_id = '')
     {
+        SEOMeta::setTitle(setting('site_meta_title'));
+        SEOMeta::setDescription(setting('site_meta_description'));
+        SEOMeta::addKeyword(setting('site_meta_keyword'));
+
+        TwitterCard::setTitle(setting('site_meta_title'));
+        TwitterCard::setDescription(setting('site_meta_description'));
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle(setting('site_meta_title'));
+        OpenGraph::setDescription(setting('site_meta_description'));
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'Surveys');
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(setting('site_logo'));
+        OpenGraph::addImage(['url' => setting('site_logo'), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle(setting('site_meta_title'));
+        JsonLd::setDescription(setting('site_meta_description'));
+        JsonLd::addImage(setting('site_logo'));
+
         $now = date('Y-m-d');
         $polls = Poll::query();
         if($poll_id != ''){
@@ -415,6 +575,32 @@ class FrontController extends Controller
         }
         $data = $data->first();
         $surveys = User::find(auth('web')->id())->options()->latest()->with('poll')->get();
+        $loggedUser = User::find(auth('web')->id());
+        SEOMeta::setTitle('Profile - ' . $loggedUser->name);
+        SEOMeta::setDescription($loggedUser->about);
+        SEOMeta::addKeyword(setting('site_meta_keyword'));
+
+        TwitterCard::setTitle('Profile - ' . $loggedUser->name);
+        TwitterCard::setDescription($loggedUser->about);
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle('Profile - ' . $loggedUser->name)
+             ->setDescription($loggedUser->about)
+            ->setType('profile')
+            ->setProfile([
+                'first_name' => explode(' ', $loggedUser->name)[0],
+                'last_name' => explode(' ', $loggedUser->name)[1] ?? '',
+                'username' => $loggedUser->email,
+            ]);
+
+        OpenGraph::addImage($loggedUser->getAvatar());
+        OpenGraph::addImage(['url' => $loggedUser->getAvatar(), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle('Profile - ' . $loggedUser->name);
+        JsonLd::setDescription($loggedUser->about);
+        JsonLd::setType('Profile');
+        JsonLd::addImage($loggedUser->getAvatar());
+
         return view('dashboard',compact('submitted','data','surveys'));
     }
 
@@ -473,6 +659,27 @@ class FrontController extends Controller
 
     public function thank_you($transaction_id = null)
     {
+        SEOMeta::setTitle('Thank You');
+        SEOMeta::setDescription(setting('site_meta_description'));
+        SEOMeta::addKeyword(setting('site_meta_keyword'));
+
+        TwitterCard::setTitle('Thank You');
+        TwitterCard::setDescription(setting('site_meta_description'));
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle('Thank You');
+        OpenGraph::setDescription(setting('site_meta_description'));
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'thank-you-page');
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(setting('site_logo'));
+        OpenGraph::addImage(['url' => setting('site_logo'), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle('Thank You');
+        JsonLd::setDescription(setting('site_meta_description'));
+        JsonLd::addImage(setting('site_logo'));
         return view('thank-you',compact('transaction_id'));
     }
     

@@ -1,14 +1,6 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
-    @meta([
-        'title' => 'Profile - ' . auth('web')->user()->name,
-        'prefix' => ' - ' . setting('site_name'),
-        'description' => auth('web')->user()->about,
-        'image' => setting('site_log'),
-        'image_alt' => auth('web')->user()->name,
-        'type' => 'Profile',
-        'auhtor' => auth('web')->user()->name,
-    ])
+{!! SEO::generate() !!}
 @endsection
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/plugins/smart-wizard/css/smart_wizard_all.min.css') }}" />

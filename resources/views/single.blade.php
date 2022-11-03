@@ -1,17 +1,6 @@
 @extends('layouts.frontend.master')
 @section('meta-tags')
-@meta([
-    'title'         => (!empty($news->meta_title)) ? $news->meta_title : $news->title,
-    'keywords'      => $news->meta_keywords,
-    'description'   => (!empty($news->meta_description)) ? $news->meta_description : $news->short_description,
-    'image'         => asset('storage/media/'.$news->newsImage->filename),
-    'image_alt'     => $news->newsImage->alt,
-    'image_size'    => $news->newsImage->size,
-    'image_type'    => $news->newsImage->type,
-    'type'          => 'article',
-    'author'        => $news->creator->name,
-    'publish_date'  => \Carbon\Carbon::parse($news->created_at)->toDateTimeString()
-])
+{!! SEO::generate() !!}
 @endsection
 @section('sections')
 <main class="container-fluid mx-auto mt-1 position-relative">

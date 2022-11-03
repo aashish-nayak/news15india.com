@@ -13,14 +13,7 @@
     <link rel="stylesheet" href="{{ asset('front-assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/smart-wizard/css/smart_wizard_all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/plugins/dropify/css/dropify.css') }}" />
-    @meta([
-        'title' => 'Reporter Application Form - ' . setting('site_name'),
-        'keywords' => setting('site_meta_keyword'),
-        'description' => setting('site_meta_description'),
-        'image' => setting('site_logo'),
-        'type' => 'Form',
-        'author' => setting('site_name'),
-    ])
+    {!! SEO::generate() !!}
     <style>
         body {
             font-size: 16px;

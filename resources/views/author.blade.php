@@ -1,17 +1,9 @@
 @extends('layouts.frontend.master')
-@section('meta-tags')
 @php
     $avatar = $author->getAvatar();
 @endphp
-@meta([
-    'title'         => $author->name,
-    'prefix'        => ' - '.setting('site_name'),
-    'description'   => $author->about,
-    'image'         => $avatar,
-    'image_alt'     => $author->name,
-    'type'          => 'author',
-    'auhtor'        => $author->name,
-])
+@section('meta-tags')
+{!! SEO::generate() !!}
 @endsection
 @section('sections')
 <main class="container-fluid mx-auto position-relative">
