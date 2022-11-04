@@ -98,7 +98,7 @@ class NewsDataTable extends DataTable
                 });
             })
             ->editColumn('admin_id', function (News $news) {
-                return $news->creator->name;
+                return $news->creator->name ?? 'User Deleted';
             })
             ->filterColumn('admin_id', function ($query, $keyword) {
                 $query->whereHas('creator', function ($q) use ($keyword) {
