@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
-
+use AkkiIo\LaravelGoogleAnalytics\Facades\LaravelGoogleAnalytics;
+use AkkiIo\LaravelGoogleAnalytics\Period;
+use Google\Analytics\Data\V1beta\Filter\StringFilter\MatchType;
+use Google\Analytics\Data\V1beta\MetricAggregation;
+use Google\Analytics\Data\V1beta\Filter\NumericFilter\Operation;
 class TestController extends Controller
 {
     public function test(NewsDataTable $datatable)
@@ -39,10 +43,19 @@ class TestController extends Controller
         //     'counts' => 2,
         // ]);
         // // $ad = AdvertHTML($loc);
-        dd(Admin::with(['details'])->whereHas('roles',function($query){
-            $query->where('slug','super-admin');
-        })->first()->toArray());
+        // dd(Admin::with(['details'])->whereHas('roles',function($query){
+        //     $query->where('slug','super-admin');
+        // })->first()->toArray());
 
+        $res = LaravelGoogleAnalytics::dateRanges(Period::days(1), Period::days(60))
+            ->metrics('active1DayUsers', 'active7DayUsers')
+            ->dimensions('browser', 'language')
+            ->metricAggregations(MetricAggregation::TOTAL, MetricAggregation::MINIMUM)
+            ->whereDimension('browser', MatchType::CONTAINS, 'firefox')
+            ->whereMetric('active7DayUsers', Operation::GREATER_THAN, 50)
+            ->orderByDimensionDesc('language')
+            ->get();
+            dd($res);
     }
 
 }
