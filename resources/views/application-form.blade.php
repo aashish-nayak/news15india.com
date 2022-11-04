@@ -5,7 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="{{ setting('site_favicon') }}" type="image/png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148414371-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148414371-1');
+    </script>
     <!-- Meta Data  -->
+    {!! SEO::generate() !!}
     <link rel="stylesheet" href="{{ asset('front-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="{{ asset('front-assets/css/slick.css') }}">
@@ -13,7 +23,6 @@
     <link rel="stylesheet" href="{{ asset('front-assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/smart-wizard/css/smart_wizard_all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/plugins/dropify/css/dropify.css') }}" />
-    {!! SEO::generate() !!}
     <style>
         body {
             font-size: 16px;

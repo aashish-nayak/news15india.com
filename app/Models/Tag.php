@@ -26,11 +26,21 @@ class Tag extends Model
 
     public function news()
     {
-        return $this->belongsToMany(News::class, 'news_tag')->where('is_published', 1)->where('is_verified', 1)->where('status', 1);
+        return $this->belongsToMany(News::class, 'news_tag')->whereHas('creator',function($query){
+            if(isset($query->name)){
+                return $query;
+            }
+        })->where('is_published', 1)->where('is_verified', 1)->where('status', 1);
     }
 
     public function tagImage()
     {
-        return $this->belongsTo(Media::class, 'tag_img');
+        return $this->belongsTo(Media::class, 'tag_img')->withDefault([
+            'filename' => 'https://eu.ui-avatars.com/api/?name='.$this->name.'&size=250',
+            'alt' => $this->name,
+            'size' => '250',
+            'type' => 'image/jpg',
+            'dimension' => '250x250',
+        ]);
     }
 }

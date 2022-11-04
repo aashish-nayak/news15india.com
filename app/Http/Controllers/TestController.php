@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\NewsDataTable;
+use App\Models\Admin;
 use App\Models\Advert;
 use App\Models\Category;
 use App\Models\Media;
@@ -27,18 +28,21 @@ class TestController extends Controller
         // ->setRowId(function ($news) {
         //     return $news->id;
         // })->make(true);
-        dd(request()->url());
-        // return $datatable->render('test');
-        $loc = 'home-section-1-sidebar-300x350';
-        $loc = 'home-section-3-bottom-800x100';
-        // $loc = 'home-header-1200x150';
-        $ad = AdvertHTML($loc,[
-            'adtext' => false,
-            'slider' => true,
-            'counts' => 2,
-        ]);
-        // $ad = AdvertHTML($loc);
-        dd($ad);
+        // dd(request()->url());
+        // // return $datatable->render('test');
+        // $loc = 'home-section-1-sidebar-300x350';
+        // $loc = 'home-section-3-bottom-800x100';
+        // // $loc = 'home-header-1200x150';
+        // $ad = AdvertHTML($loc,[
+        //     'adtext' => false,
+        //     'slider' => true,
+        //     'counts' => 2,
+        // ]);
+        // // $ad = AdvertHTML($loc);
+        dd(Admin::with(['details'])->whereHas('roles',function($query){
+            $query->where('slug','super-admin');
+        })->first()->toArray());
+
     }
 
 }

@@ -49,11 +49,21 @@ class Category extends Model
 
     public function catImage()
     {
-        return $this->belongsTo(Media::class, 'cat_img');
+        return $this->belongsTo(Media::class, 'cat_img')->withDefault([
+            'filename' => 'https://eu.ui-avatars.com/api/?name='.$this->cat_name.'&size=250',
+            'alt' => $this->cat_name,
+            'size' => '250',
+            'type' => 'image/jpg',
+            'dimension' => '250x250',
+        ]);
     }
 
     public function news()
     {
-        return $this->belongsToMany(News::class, 'news_categories')->where('is_published', 1)->where('is_verified', 1)->where('status', 1);
+        return $this->belongsToMany(News::class, 'news_categories')->whereHas('creator',function($query){
+            if(isset($query->name)){
+                return $query;
+            }
+        })->where('is_published', 1)->where('is_verified', 1)->where('status', 1);
     }
 }

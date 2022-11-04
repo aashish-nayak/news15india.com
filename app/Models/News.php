@@ -36,7 +36,13 @@ class News extends Model
     }
     public function newsImage()
     {
-        return $this->belongsTo(Media::class, 'image');
+        return $this->belongsTo(Media::class, 'image')->withDefault([
+            'filename' => 'https://eu.ui-avatars.com/api/?name=News15India&size=250',
+            'alt' => 'News15India',
+            'size' => '250',
+            'type' => 'image/jpg',
+            'dimension' => '250x250',
+        ]);
     }
     public function creator()
     {

@@ -197,6 +197,11 @@ class FrontController extends Controller
         $news = News::with(['categories'=>function($query){
             $query->orderBy('parent_id','ASC');
         },'creator','tags','newsImage'])
+        ->whereHas('creator',function($query){
+            if(isset($query->name)){
+                return $query;
+            }
+        })
         ->where('slug',$newsUrl)
         ->where('status',1)
         ->where('is_published',1)

@@ -5,6 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-site-verification" content="CH3Cn8zDTCv2sxOV7LSaXYOfDMzdBG1ZE_Jjlh_d3BE" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148414371-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148414371-1');
+    </script>
+
     <link rel="icon" href="{{setting('site_favicon')}}" type="image/png" />
     <!-- Meta Data  -->
     @yield('meta-tags')
