@@ -332,6 +332,10 @@ class FrontController extends Controller
 
         $categoryNews = News::whereHas('categories',function (Builder $query) use($slug,$pageSetting) {
             $query->where('slug',$slug);
+        })->whereHas('creator',function($query){
+            if(isset($query->name)){
+                return $query;
+            }
         })->with('newsImage','creator')->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate($pageSetting->news_per_page);
 
         $catIds = $pageSetting->sidebars;
