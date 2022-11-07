@@ -163,7 +163,7 @@ class AdvertDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'Advert_' . date('YmdHis');
     }

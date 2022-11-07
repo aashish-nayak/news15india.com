@@ -237,7 +237,7 @@ class NewsDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'News_' . date('YmdHis');
     }
