@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
   </head>
   <body>
-    <div class="container my-5">
+    <div class="container-fluid my-4">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" style="height: 90vh">
                 {{-- <table id="example" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -29,7 +29,7 @@
                     <tbody>
                     </tbody>
                 </table> --}}
-                {!! $dataTable->table() !!}
+                {{-- {!! $dataTable->table() !!} --}}
             </div>
         </div>
     </div>
@@ -58,6 +58,6 @@
             });
         });
     </script> --}}
-    {!!$dataTable->scripts()!!}
+    {{-- {!!$dataTable->scripts()!!} --}}
   </body>
 </html>

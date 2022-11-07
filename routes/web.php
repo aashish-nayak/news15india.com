@@ -39,7 +39,7 @@ require __DIR__.'/admin_auth.php';
 require __DIR__.'/auth.php';
 
 Route::any('/test',[TestController::class,'test'])->name('test');
-// Route::view('/test/view','test')->name('test-view');
+Route::view('/test/view','test')->name('test-view');
 
 
 // Route::view('/', 'welcome');

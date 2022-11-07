@@ -47,15 +47,7 @@ class TestController extends Controller
         //     $query->where('slug','super-admin');
         // })->first()->toArray());
 
-        $res = LaravelGoogleAnalytics::dateRanges(Period::days(1), Period::days(60))
-            ->metrics('active1DayUsers', 'active7DayUsers')
-            ->dimensions('browser', 'language')
-            ->metricAggregations(MetricAggregation::TOTAL, MetricAggregation::MINIMUM)
-            ->whereDimension('browser', MatchType::CONTAINS, 'firefox')
-            ->whereMetric('active7DayUsers', Operation::GREATER_THAN, 50)
-            ->orderByDimensionDesc('language')
-            ->get();
-            dd($res);
+        
     }
 
 }
