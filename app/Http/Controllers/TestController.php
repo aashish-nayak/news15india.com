@@ -16,11 +16,9 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
-use AkkiIo\LaravelGoogleAnalytics\Facades\LaravelGoogleAnalytics;
-use AkkiIo\LaravelGoogleAnalytics\Period;
-use Google\Analytics\Data\V1beta\Filter\StringFilter\MatchType;
-use Google\Analytics\Data\V1beta\MetricAggregation;
-use Google\Analytics\Data\V1beta\Filter\NumericFilter\Operation;
+use Spatie\Analytics\AnalyticsFacade as Analytics;
+use Spatie\Analytics\Period;
+
 class TestController extends Controller
 {
     public function test(NewsDataTable $datatable)
@@ -47,7 +45,8 @@ class TestController extends Controller
         //     $query->where('slug','super-admin');
         // })->first()->toArray());
 
+        //fetch the most visited pages for today and the past week
         
+        dd(Analytics::fetchVisitorsAndPageViews(Period::days(7)));
     }
-
 }

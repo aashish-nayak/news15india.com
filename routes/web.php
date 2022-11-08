@@ -170,10 +170,11 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel Complaint Form Module Routes ]------------------------
     Route::prefix('/complaints')->name('complaint.')->group(function(){
-        Route::get('/', [ComplaintController::class, 'index'])->middleware('permission:read-reporters')->name('index');
-        Route::get('/view/{id}', [ComplaintController::class, 'view'])->middleware('permission:read-reporters')->name('view');
-        Route::post('/update', [ComplaintController::class, 'update'])->middleware('permission:update-reporters')->name('update');
-        Route::get('/approved/{complaint}', [ComplaintController::class, 'approved'])->middleware('permission:approve-reporters')->name('approved');
+        Route::get('/', [ComplaintController::class, 'index'])->middleware('permission:read-complaints')->name('index');
+        Route::get('/view/{complaint}', [ComplaintController::class, 'show'])->middleware('permission:read-complaints')->name('view');
+        Route::post('/update', [ComplaintController::class, 'update'])->middleware('permission:update-complaints')->name('update');
+        Route::get('/status', [ComplaintController::class, 'status'])->middleware('permission:approve-complaints')->name('status');
+        Route::post('/store-reply', [ComplaintController::class, 'send_reply'])->middleware('permission:update-complaints')->name('store-reply');
     });
     // ----------------[ Backpanel Panel Viewers Module Routes ]------------------------
     Route::prefix('/viewers')->name('viewer.')->group(function(){

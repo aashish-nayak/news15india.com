@@ -15,6 +15,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "phpoffice/phpspreadsheet": "^1.25",
+        "spatie/laravel-analytics": "^4.1",
         "spatie/laravel-honeypot": "^4.3",
         "yajra/laravel-datatables": "*",
         "yajra/laravel-datatables-export": "^0.13.0"

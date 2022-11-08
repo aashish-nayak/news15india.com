@@ -47,7 +47,7 @@ class ComplaintController extends Controller
         try {
             $data = $request->except('_token');
             $data['user_id'] = auth('web')->id();
-            $data['complaint_id'] = Str::uuid();
+            $data['complaint_id'] = Str::random(16);
             Complaint::create($data);
             $request->session()->flash('success','Complaint Submitted');
         } catch (\Exception $e) {
@@ -70,6 +70,20 @@ class ComplaintController extends Controller
         return redirect()->back();
     }
 
+    public function send_reply(Request $request)
+    {
+        try {
+            $data = $request->except('_token');
+            $data['reference_id'] = auth('admin')->id();
+            $data['reference_type'] = get_class(auth('admin')->user());
+            ComplaintReply::create($data);
+            request()->session()->flash('success','Reply Sent!!!');
+        } catch (Exception $e) {
+            request()->session()->flash('error',$e->getMessage());
+        }
+        return redirect()->route('admin.complaint.view',$request->complaint_id);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -78,7 +92,7 @@ class ComplaintController extends Controller
      */
     public function show(Complaint $complaint)
     {
-        //
+        return view('backpanel.complaint.detail',compact('complaint'));
     }
 
     /**
@@ -99,6 +113,14 @@ class ComplaintController extends Controller
      * @param  \App\Models\Complaint  $complaint
      * @return \Illuminate\Http\Response
      */
+    public function status(Request $request)
+    {
+        $status = Complaint::find($request->id);
+        $status->status = $request->status;
+        $status->save();
+        return response()->json(['success' => 'Status Changed Successfully!','status'=>$status->status]);
+    }
+
     public function update(Request $request, Complaint $complaint)
     {
         //
