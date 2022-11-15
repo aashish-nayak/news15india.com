@@ -137,6 +137,12 @@
             </a>
         </li>
         @endpermission
+        <li>
+            <a href="{{Route('admin.page.index')}}">
+                <div class="parent-icon"><i class='bx bx-detail'></i></div>
+                <div class="menu-title">Pages</div>
+            </a>
+        </li>
         @role('super-admin')
         <li>
             <a href="{{Route('admin.menu.index',1)}}">

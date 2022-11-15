@@ -14,6 +14,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\ReporterController;
@@ -210,6 +211,15 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/add-to-menu', [MenuController::class,'addToMenu'])->middleware('permission:create-menu')->name('add-to-menu');
         Route::post('/add-to-menu-link', [MenuController::class,'addToMenuLink'])->middleware('permission:create-menu')->name('add-to-menu-link');
         Route::post('/save-menu-structure', [MenuController::class,'structure'])->middleware('permission:create-menu')->name('save-menu-structure');
+    });
+    // ----------------[ Backpanel Panel Page Module Routes ]------------------------
+    Route::prefix('/page')->name('page.')->group(function(){
+        Route::get('/',[PageController::class,'index'])->middleware('permission:read-page')->name('index');
+        Route::get('/create',[PageController::class,'create'])->middleware('permission:create-page')->name('create');
+        Route::post('/store',[PageController::class,'store'])->middleware('permission:create-page')->name('store');
+        Route::get('/edit/{page}',[PageController::class,'edit'])->middleware('permission:update-page')->name('edit');
+        Route::get('/status/{page}', [PageController::class, 'status'])->middleware('permission:update-page')->name('status');
+        Route::get('/delete/{page}',[PageController::class,'destroy'])->middleware('permission:delete-page')->name('delete');
     });
     // ----------------[ Backpanel Panel Advertisement Module Routes ]------------------------
     Route::prefix('/advertisement')->name('advert.')->group(function(){

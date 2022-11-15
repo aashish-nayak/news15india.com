@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Advert;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Page;
 use App\Models\Poll;
 use App\Models\Reporter;
 use App\Models\Tag;
@@ -27,7 +28,7 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 
 // OR
 use Artesaos\SEOTools\Facades\SEOTools;
-
+use Illuminate\Support\Str;
 class FrontController extends Controller
 {
     protected function treePerent($id){
@@ -345,11 +346,11 @@ class FrontController extends Controller
         }])->find($catIds[0]);
 
         $sidebar_2 = Category::with(['news'=>function($query) use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars[1])->with('newsImage');
+            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
         }])->find($catIds[1]);
 
         $sidebar_3 = Category::with(['news'=>function($query) use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars[2]);
+            $query->latest()->limit($pageSetting->sidebars_limit[2]);
         }])->find($catIds[2]);
 
         $bottom_section = Category::with(['news'=>function($query)use($pageSetting){
@@ -446,7 +447,48 @@ class FrontController extends Controller
     
     public function pages($slug)
     {
-        //
+        $page = Page::where('slug',$slug)->where('status',1)->firstOrFail();
+        SEOMeta::setTitle($page->meta_title ?? $page->name);
+        SEOMeta::setDescription($page->meta_description ?? Str::limit($page->content,200));
+        SEOMeta::addMeta('page:published_time', $page->created_at->toW3CString(), 'property');
+        SEOMeta::addKeyword($page->meta_keywords);
+
+        TwitterCard::setTitle($page->meta_title ?? $page->name);
+        TwitterCard::setDescription($page->meta_description ?? Str::limit($page->content,200));
+        TwitterCard::setUrl(request()->url());
+
+        OpenGraph::setTitle($page->meta_title ?? $page->name);
+        OpenGraph::setDescription($page->meta_description ?? Str::limit($page->content,200));
+        OpenGraph::setUrl(request()->url());
+        OpenGraph::addProperty('type', 'page');
+        OpenGraph::addProperty('published_time', $page->created_at->toW3CString());
+        OpenGraph::addProperty('modified_time', $page->updated_at->toW3CString());
+        OpenGraph::addProperty('author', $page->creator->name);
+        OpenGraph::addProperty('locale', 'hi-in');
+        OpenGraph::addProperty('locale:alternate', ['hi-in', 'en-us']);
+
+        OpenGraph::addImage(asset('storage/media/'.$page->pageImage->filename));
+        OpenGraph::addImage(['url' => asset('storage/media/'.$page->pageImage->filename), 'size' => 300,'height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($page->meta_title ?? $page->name);
+        JsonLd::setDescription($page->meta_description ?? Str::limit($page->content,200));
+        JsonLd::setType('Page');
+        JsonLd::addImage(asset('storage/media/'.$page->pageImage->filename));
+        $page->viewsUp();
+        $shareCurrent = Share::currentPage()
+        ->facebook()
+        ->twitter()
+        ->whatsapp()
+        ->linkedin()
+        ->getRawLinks();
+        
+        $pageSetting = json_decode(setting('category_page_settings'));
+        $catIds = $pageSetting->sidebars;
+        $sidebar_1 = Category::with(['news'=>function($query) use($pageSetting){
+            $query->latest()->limit($pageSetting->sidebars_limit[0])->with('newsImage');
+        }])->find($catIds[0]);
+
+        return view('page', compact('page','shareCurrent','sidebar_1'));
     }
 
     public function author($url)

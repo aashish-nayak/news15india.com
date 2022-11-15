@@ -2,46 +2,34 @@
 
 namespace App\Models;
 
-use App\Traits\Commentable;
 use App\Traits\Staticable;
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class News extends Model
+class Page extends Model
 {
-    use HasFactory, SoftDeletes, Commentable, Staticable;
+    use HasFactory, Staticable;
+
     protected $fillable = [
-        'title',
+        'name',
         'slug',
-        'short_description',
-        'admin_id',
         'content',
-        'is_published',
-        'status',
-        'is_verified',
-        'page_order',
         'image',
-        'format',
-        'youtube_url',
-        'is_featured',
+        'admin_id',
+        'template',
+        'status',
         'meta_title',
         'meta_keywords',
-        'meta_description'
+        'meta_description',
     ];
+
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class, 'news_categories');
-    }
-
-    public function newsImage()
+    public function pageImage()
     {
         return $this->belongsTo(Media::class, 'image')->withDefault([
             'filename' => 'https://eu.ui-avatars.com/api/?name=News15India&size=250',
@@ -55,10 +43,5 @@ class News extends Model
     public function creator()
     {
         return $this->belongsTo(Admin::class, 'admin_id');
-    }
-    
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'news_tag');
     }
 }

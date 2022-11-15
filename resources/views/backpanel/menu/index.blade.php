@@ -45,6 +45,39 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#pagesSidebar" aria-expanded="false">
+                            Pages
+                        </button>
+                    </h2>
+                    <div id="pagesSidebar" class="accordion-collapse collapse">
+                        <div class="card-body">
+                            <div class="border p-2 category-input">
+                                <ul class="m-0">
+                                    @foreach ($pages as $pageMenu)
+                                        <li class="mb-2">
+                                            <div class="form-check m-0">
+                                                <input type="checkbox" value="{{ $pageMenu->id }}"
+                                                    class="form-check-input parent-cat" id="tag{{ $pageMenu->id }}">
+                                                <label class="form-check-label" data-title="{{ $pageMenu->name }}"
+                                                    data-reference-id="{{ $pageMenu->id }}"
+                                                    data-reference-type="App\Models\Page" data-menu-id="{{ $menu_id }}"
+                                                    for="tag{{ $pageMenu->id }}">{{ $pageMenu->name }}</label>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer text-end">
+                            <button class="btn-add-to-menu btn btn-primary btn-sm"><span class="mt-1 bx bx-plus"></span> Add to Menu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card accordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#categoriesSidebar" aria-expanded="false">
                             Categories
                         </button>

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Menu;
 use App\Models\MenuLocation;
 use App\Models\MenuNodes;
+use App\Models\Page;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,9 @@ class MenuController extends Controller
         $menus = Menu::all();
         $categories = Category::where('parent_id', NULL)->where('status', 1)->orderBy('id')->get();
         $tags = Tag::orderBy('id','ASC')->select('id','name','slug')->get();
+        $pages = Page::where('status',1)->get();
         $nodes = MenuNodes::where('menu_id',$menu_id)->where('parent_id', 0)->orderBy('position')->get();
-        return view('backpanel.menu.index',compact('categories','tags','MenuLocations','menus','menu_id','nodes'));
+        return view('backpanel.menu.index',compact('categories','tags','pages','MenuLocations','menus','menu_id','nodes'));
     }
 
     public function create(Request $request)

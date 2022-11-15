@@ -73,4 +73,8 @@ return [
     'create-advertisement-category',
     'edit-advertisement-category',
     'delete-advertisement-category',
+    'read-page',
+    'create-page',
+    'update-page',
+    'delete-page',
 ];
