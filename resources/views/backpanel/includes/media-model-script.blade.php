@@ -11,9 +11,7 @@
             $("#media-box").modal("hide");
         }
         $(document).on('click','#insert',insertImage);
-        $(document).on('dblclick','.file',function () {
-            insertImage();
-        });
+        $(document).on('dblclick','#media-row .file',insertImage);
         $("#removeBanner").on("click",function () {
             $("#bannerId").val('');
             $("#bannerPreview").attr('src','https://cms.botble.com/vendor/core/core/base/images/placeholder.png');

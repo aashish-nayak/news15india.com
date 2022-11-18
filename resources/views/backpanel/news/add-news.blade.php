@@ -10,6 +10,7 @@
 @endisset
 @section('title', $title)
 @push('plugin-css')
+<link rel="stylesheet" href="{{asset('assets/plugins/richtexteditor/rte_theme_default.css')}}">
 @endpush
 @push('css')
 @endpush
@@ -69,7 +70,7 @@
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="contentEditor" class="form-label"><b>Content</b></label>
-                                <textarea name="content" id="contentEditor" class="text-editor">@if(isset($page))@php
+                                <textarea name="content" id="contentEditor" class="text-editor" style="min-height: 500px;max-height:800px;">@if(isset($page))@php
                                     echo $page->content;
                                 @endphp @else{{ html_entity_decode(old('content')) }}@endif</textarea>
                                 @error('content')
@@ -184,7 +185,7 @@
                         <div id="ImageWidget" class="accordion-collapse collapse show">
                             <div class="card-body">
                                 <div class="preview-image-wrapper ">
-                                    <img src="@if(isset($page) && isset($page->newsImage->filename)){{asset('storage/media/'.$page->newsImage->filename)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="bannerPreview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
+                                <img src="@if(isset($page) && $page->image != ''){{asset('storage/media/'.$page->newsImage->filename)}}@else https://cms.botble.com/vendor/core/core/base/images/placeholder.png @endif" alt="Preview image" id="bannerPreview" style="width: 100%;height: inherit;object-fit: scale-down;" class="preview_image">
                                     <a href="javascript:void(0)" class="btn_remove_image" id="removeBanner" title="Remove image">X</a>
                                 </div><br>
                                 <input type="hidden" required name="image" id="bannerId" value="@isset($page){{$page->image}}@else{{old('banner_data')}}@endisset">
@@ -239,10 +240,13 @@
 @include('backpanel.includes.media-model')
 @endsection
 @push('scripts')
-<script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}" referrerpolicy="origin"> </script>
+{{-- <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}" referrerpolicy="origin"> </script> --}}
+<script src="{{ asset('assets/plugins/richtexteditor/rte.js') }}"> </script>
+<script src="{{ asset('assets/plugins/richtexteditor/plugins/all_plugins.js') }}"> </script>
 <script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
 @include('backpanel.includes.media-model-script')
 <script>
+
 $(document).ready(function () {
     if ($(window).width() < 720) {
         $("#publishCard").toggleClass('position-fixed top-0 start-0 end-0 mt-3');
@@ -311,28 +315,51 @@ $(document).ready(function () {
         $(".seo-edit-section").toggleClass('d-none');
     });
 });
-
-tinymce.init({
-    selector: "#contentEditor",
-    encoding: 'xml',
-    height: 600,
-    plugins: [
-        "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-        "table emoticons template paste help",
-    ],
-    toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | help",
-    menu: {
-        favs: {
-            title: "My Favorites",
-            items: "code visualaid | searchreplace | emoticons",
-        },
-    },
-    mobile: {
-        menubar: true
-    },
-    menubar: "favs file edit view insert format tools table help",
-    content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:18px; color: #000; }",
-});
+function initRichText(element) {
+    var editor1cfg = {};
+    editor1cfg.toolbar = "mytoolbar";
+    editor1cfg.svgCode_menu_justify = `<svg viewBox="-2 -2 20 20" fill="#5F6368" style="width: 100%; height: 100%; margin: 0px; border: 0px; align-self: self-start;"><path d="M2 12.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path></svg>`;
+    editor1cfg.svgCode_media = `<svg viewBox="-2 -2 20 20" fill="#5F6368" style="width: 100%; height: 100%; margin: 0px; border: 0px; align-self: self-start;"><path fill-rule="evenodd" d="M14.002 2h-12a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V3a1 1 0 00-1-1zm-12-1a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V3a2 2 0 00-2-2h-12z" clip-rule="evenodd"></path><path fill="#666666" d="M10.648 7.646a.5.5 0 01.577-.093L15.002 9.5V14h-14v-2l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71z"></path><path fill-rule="evenodd" d="M4.502 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"></path></svg>`;
+    editor1cfg.toolbar_mytoolbar = "{bold,italic,underline,forecolor,backcolor}|{paragraphs:toggle,fontname:toggle,fontsize:toggle}|{menu_justify,insertorderedlist,insertunorderedlist,indent,outdent,insertblockquote,insertemoji} #{preview,fullscreenenter,fullscreenexit} /{removeformat,cut,copy,paste,delete,find}|{insertlink,insertchars,inserttable,media,insertvideo,insertcode}|{code,selectall} #{undo,redo,togglemore}";
+    editor1cfg.subtoolbar_justify = 'justifyleft,justifycenter,justifyright,justifyfull';
+    editor1cfg.editorResizeMode = "none";
+    editor1cfg.subtoolbar_more = "{strike,superscript,subscript,ucase,lcase,inserthorizontalrule,html2pdf,insertdate} #{save,print}";
+    editor1cfg.skin = "rounded-corner";
+    editor1cfg.enableDragDrop = true;
+    editor1cfg.showFloatParagraph = false;
+    
+    var editor1 = new RichTextEditor(element, editor1cfg);
+    editor1.attachEvent("exec_command_media", function (state, cmd, value) {
+		state.returnValue = true;//set it has been handled
+        $("#media-box").modal("show");
+        $("#media-box").find("#insert").attr('id','insert2');
+        $("#media-box").find("#media-row").attr('id','media-row2');
+		
+	});
+    $(document).on('click','#insert2',function(){
+        $("#media-box").find("#insert2").attr('id','insert');
+        $("#media-box").find("#media-row2").attr('id','media-row');
+        let selected = $(document).find("#MediaList .file-selected")[0];
+        var img=editor1.document.createElement("IMG");
+        img.style.cssText = "display:inline-block;max-width:200px";
+        img.src=$(selected).data('path');          
+        editor1.insertElement(img);        
+        $("#media-box").modal("hide");
+        $(document).find("#MediaList .file").removeClass('file-selected');
+    });
+    
+    $(document).on('dblclick','#media-row2 .file',function () {
+        $("#media-box").find("#insert2").attr('id','insert');
+        $("#media-box").find("#media-row2").attr('id','media-row');
+        let selected = $(document).find("#MediaList .file-selected")[0];
+        var img=editor1.document.createElement("IMG");
+        img.style.cssText = "display:inline-block;max-width:200px";
+        img.src=$(selected).data('path');          
+        editor1.insertElement(img);        
+        $("#media-box").modal("hide");
+        $(document).find("#MediaList .file").removeClass('file-selected');
+    });
+}
+initRichText("#contentEditor");
 </script>
 @endpush
