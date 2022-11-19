@@ -250,4 +250,10 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/store',[SettingController::class,'store'])->name('store');
         Route::post('/page-setting-store',[SettingController::class,'pageSettingStore'])->name('page-setting-store');
     });
+    // ----------------[ Backpanel Panel Chat Module Routes ]------------------------
+    Route::prefix('/chats')->name('chat.')->group(function(){
+        Route::view('/','backpanel.chat.chat')->name('index');
+    });
+
+    
 });
