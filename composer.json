@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "artesaos/seotools": "^1.0",
+        "beyondcode/laravel-websockets": "^1.13",
         "erusev/parsedown": "^1.7",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -15,6 +16,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "phpoffice/phpspreadsheet": "^1.25",
+        "pusher/pusher-php-server": "^5.0",
         "spatie/laravel-analytics": "^4.1",
         "spatie/laravel-honeypot": "^4.3",
         "yajra/laravel-datatables": "*",

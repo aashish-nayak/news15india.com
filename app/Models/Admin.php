@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\HasPermissionsTrait;
 use App\Traits\Followable;
-use Facade\FlareClient\Report;
+use App\Traits\Messageable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 class Admin extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasPermissionsTrait, SoftDeletes, Followable;
+    use HasApiTokens, HasFactory, Notifiable, HasPermissionsTrait, SoftDeletes, Followable, Messageable;
 
     protected $guard = "admin";
     /**
@@ -26,6 +26,10 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
+    ];
+
+    protected $appends = [
+        'chat_avatar'
     ];
 
     /**
@@ -62,7 +66,12 @@ class Admin extends Authenticatable
         }
         return $avatar;
     }
-    
+
+    public function getChatAvatarAttribute() {
+        // your logic of how to get discount value
+        return $this->attributes['avatar'] = $this->getAvatar();
+    }
+
     public function details()
     {
         $city = City::where('state_id',33)->inRandomOrder()->first()->id;

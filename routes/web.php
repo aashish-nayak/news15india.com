@@ -252,7 +252,11 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel Chat Module Routes ]------------------------
     Route::prefix('/chats')->name('chat.')->group(function(){
-        Route::view('/','backpanel.chat.chat')->name('index');
+        Route::get('/', [App\Http\Controllers\MessageController::class, 'index'])->name('index');
+        Route::get('/users', [App\Http\Controllers\MessageController::class, 'users'])->name('users');
+        Route::get('/messages', [App\Http\Controllers\MessageController::class, 'messages'])->name('messages');
+        Route::post('/messages', [App\Http\Controllers\MessageController::class, 'messageStore'])->name('message-store');
+        Route::get('/contact-messages/{id}', [App\Http\Controllers\MessageController::class, 'contactMessages'])->name('contact-messages');
     });
 
     
