@@ -1704,7 +1704,8 @@ input::placeholder {
 		margin-left: 0
 	}
 	.page-footer {
-		left: 0
+		left: 0;
+		font-size: 6px;
 	}
 	.search-bar {
 		display: none

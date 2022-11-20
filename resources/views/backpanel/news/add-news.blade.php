@@ -327,10 +327,11 @@ function initRichText(element) {
     editor1cfg.skin = "rounded-corner";
     editor1cfg.enableDragDrop = true;
     editor1cfg.showFloatParagraph = false;
-    
+    editor1cfg.toolbar_mobile = "{bold,italic,underline} #{paragraphs:toggle,fontname:toggle,fontsize:toggle}/{menu_justify,insertorderedlist,insertunorderedlist} #{undo,redo,fullscreenenter,fullscreenexit,togglemore}";
+    editor1cfg.subtoolbar_more_mobile = "{insertlink,insertchars,inserttable,media,insertvideo,insertemoji,preview}/{removeformat,cut,copy,paste,find,code,selectall}";
     var editor1 = new RichTextEditor(element, editor1cfg);
     editor1.attachEvent("exec_command_media", function (state, cmd, value) {
-		state.returnValue = true;//set it has been handled
+		state.returnValue = false;//set it has been handled
         $("#media-box").modal("show");
         $("#media-box").find("#insert").attr('id','insert2');
         $("#media-box").find("#media-row").attr('id','media-row2');
@@ -342,7 +343,7 @@ function initRichText(element) {
         let selected = $(document).find("#MediaList .file-selected")[0];
         var img=editor1.document.createElement("IMG");
         img.style.cssText = "display:inline-block;max-width:200px";
-        img.src=$(selected).data('path');          
+        img.src=$(selected).data('path');
         editor1.insertElement(img);        
         $("#media-box").modal("hide");
         $(document).find("#MediaList .file").removeClass('file-selected');
