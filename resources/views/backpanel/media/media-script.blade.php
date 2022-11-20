@@ -256,10 +256,21 @@
         });
         $(".action-rename").click(function () {
             elements = $(document).find('.file.file-selected');
-            let inputs = '';
+            let inputs = `<div class="col-12"><div class="row">`;
             $.each(elements, function (key, value) {
-                inputs += `<input type="text" required name="filename[${$(value).data('id')}]" value="${$(value).data('name')}" class="form-control form-control-sm mb-3 rounded-0" placeholder="Rename here">`;
+                inputs += `
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Filename</label>
+                        <input type="text" required name="filename[${$(value).data('id')}]" value="${$(value).data('name')}" class="form-control form-control-sm mb-3 rounded-0" placeholder="Rename here">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Alt</label>
+                        <input type="text" required name="alt[${$(value).data('id')}]" value="${$(value).data('alt')}" class="form-control form-control-sm mb-3 rounded-0" placeholder="Alt Change">
+                    </div>
+                    <hr>
+                `;
             });
+            inputs += `</div></div>`;
             $("#renameInputsWrapper").html(inputs);
             $("#renameModal").modal("show");
         });
