@@ -22915,8 +22915,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       scrollBottom();
     });
     Echo["private"]('chat-channel').listen('SendMessage', function (e) {
-      console.log(e);
       messages.value.push(e.message);
+      console.log(props.user, users.value, chatUser.value, e.message);
+      if (e.message.sender_id != chatUser.value.id && e.message.receiver_id == props.user.id && e.message.read == 0) {
+        var i = users.value.map(function (item) {
+          return item.id;
+        }).indexOf(e.message.sender_id); // find index of your object
+        users.value.splice(i, 1);
+        fetchUnread(e.message.sender_id);
+      }
+      console.log(users.value);
     });
     var fetchUsers = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -22938,59 +22946,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref.apply(this, arguments);
       };
     }();
-    var fetchMessages = /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(selectedUser) {
+    var fetchUnread = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(user) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                document.querySelector('#chatBox').classList.remove('d-none');
-                // console.log(chatUser.value.id,selectedUser.id);
-                if (chatUser.value.id != selectedUser.id) {
-                  chatUser.value = selectedUser;
-                  axios__WEBPACK_IMPORTED_MODULE_1___default().get('/backpanel/chats/contact-messages/' + selectedUser.id).then(function (response) {
-                    messages.value = response.data;
-                    // console.log(response.data);
-                  });
-                }
-              case 2:
+                axios__WEBPACK_IMPORTED_MODULE_1___default().get('/backpanel/chats/user/fetch-unread/' + user).then(function (response) {
+                  users.value.unshift(response.data);
+                });
+              case 1:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
       }));
-      return function fetchMessages(_x) {
+      return function fetchUnread(_x) {
         return _ref2.apply(this, arguments);
       };
     }();
-    var onSelectEmoji = /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(emoji) {
+    var fetchMessages = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(selectedUser) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                newMessage.value += emoji.i;
-              case 1:
+                document.querySelector('#chatBox').classList.remove('d-none');
+                if (chatUser.value.id != selectedUser.id) {
+                  chatUser.value = selectedUser;
+                  axios__WEBPACK_IMPORTED_MODULE_1___default().get('/backpanel/chats/contact-messages/' + selectedUser.id).then(function (response) {
+                    messages.value = response.data;
+                  });
+                }
+              case 2:
               case "end":
                 return _context3.stop();
             }
           }
         }, _callee3);
       }));
-      return function onSelectEmoji(_x2) {
+      return function fetchMessages(_x2) {
         return _ref3.apply(this, arguments);
+      };
+    }();
+    var onSelectEmoji = /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(emoji) {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                newMessage.value += emoji.i;
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+      return function onSelectEmoji(_x3) {
+        return _ref4.apply(this, arguments);
       };
     }();
     function showEmoji() {
       document.querySelector('.v3-emoji-picker').classList.toggle('d-none');
     }
     var addMessage = /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
         var user_message;
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 user_message = {
                   user: props.user.id,
@@ -23003,17 +23029,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 newMessage.value = '';
               case 3:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4);
+        }, _callee5);
       }));
       return function addMessage() {
-        return _ref4.apply(this, arguments);
+        return _ref5.apply(this, arguments);
       };
     }();
     var scrollBottom = function scrollBottom() {
       if (messages.value.length > 1) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().get('/backpanel/chats/read/' + chatUser.value.id).then(function (response) {
+          if (document.querySelector('.selected-user > .unread-badge') != null) {
+            document.querySelector('.selected-user > .unread-badge').remove();
+          }
+        });
         var el = hasScrolledToBottom.value;
         el.scrollTop = el.scrollHeight;
       }
@@ -23023,6 +23054,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       messages: messages,
       chatUser: chatUser,
       newMessage: newMessage,
+      fetchUnread: fetchUnread,
       addMessage: addMessage,
       fetchMessages: fetchMessages,
       showEmoji: showEmoji,
@@ -23097,9 +23129,10 @@ var _hoisted_20 = {
 var _hoisted_21 = {
   "class": "mb-0 chat-msg"
 };
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_22 = {
+  key: 0,
   "class": "badge text-bg-danger unread-badge"
-}, null, -1 /* HOISTED */);
+};
 var _hoisted_23 = {
   "class": "d-none",
   id: "chatBox"
@@ -23225,7 +23258,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       height: "42",
       "class": "rounded-circle",
       alt: ""
-    }, null, 8 /* PROPS */, _hoisted_18)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.email), 1 /* TEXT */)]), _hoisted_22])], 10 /* CLASS, PROPS */, _hoisted_15);
+    }, null, 8 /* PROPS */, _hoisted_18)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.email), 1 /* TEXT */)]), contact.unread_messages_count > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.unread_messages_count), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 10 /* CLASS, PROPS */, _hoisted_15);
   }), 256 /* UNKEYED_FRAGMENT */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $setup.chatUser.chat_avatar,
     width: "50",

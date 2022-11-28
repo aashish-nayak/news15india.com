@@ -20,7 +20,7 @@
             <div class="chat-sidebar-header">
                 <div class="d-flex align-items-center">
                     <div class="chat-user-online">
-                        <img v-bind:src="user.chat_avatar" width="45" height="45" class="rounded-circle border" alt="" />
+                        <img v-bind:src='user.chat_avatar' width="45" height="45" class="rounded-circle border" alt="" />
                     </div>
                     <div class="flex-grow-1 ms-2">
                         <p class="mb-0">{{user.name}}</p>
@@ -42,7 +42,7 @@
             <div class="chat-sidebar-content">
                 <div class="chat-list">
                     <div class="list-group list-group-flush">
-                        <template v-for="contact in users">
+                        <template v-for='contact in users'>
                             <a href="javascript:;" class="list-group-item" v-bind:class="(contact.id == chatUser.id) ? 'active' : '' " @click="fetchMessages(contact)">
                                 <div class="d-flex">
                                     <div class="chat-user-online">
@@ -52,7 +52,7 @@
                                         <h6 class="mb-0 chat-title">{{ contact.name }}</h6>
                                         <p class="mb-0 chat-msg">{{ contact.email }}</p>
                                     </div>
-                                    <span class="badge text-bg-danger unread-badge"></span>
+                                    <span class="badge text-bg-danger unread-badge" v-if='contact.unread_messages_count > 0'>{{contact.unread_messages_count}}</span>
                                 </div>
                             </a>
                         </template>
@@ -76,8 +76,8 @@
                 </div>
             </div>
             <div class="chat-content" ref="hasScrolledToBottom">
-                <div v-if="messages.length > 0">
-                    <template v-for="message in messages">
+                <div v-if='messages.length > 0'>
+                    <template v-for='message in messages'>
                         <div class="chat-content-leftside" v-if="chatUser.id == message.sender_id">
                             <div class="d-flex">
                                 <img v-bind:src="message.sender.chat_avatar" width="48" height="48" class="rounded-circle" alt="" />
@@ -142,22 +142,31 @@ export default {
         })
         Echo.private('chat-channel')
             .listen('SendMessage', (e) => {
-                console.log(e);
                 messages.value.push(e.message);
+                console.log(props.user,users.value,chatUser.value,e.message);
+                if(e.message.sender_id != chatUser.value.id && e.message.receiver_id == props.user.id && e.message.read == 0){
+                    let i = users.value.map(item => item.id).indexOf(e.message.sender_id) // find index of your object
+                    users.value.splice(i, 1);
+                    fetchUnread(e.message.sender_id);
+                }
+                console.log(users.value);
             })
         const fetchUsers = async () => {
             axios.get('/backpanel/chats/users').then(response => {
                 users.value = response.data;
             });
         }
+        const fetchUnread = async (user) => {
+            axios.get('/backpanel/chats/user/fetch-unread/'+user).then(response => {
+                users.value.unshift(response.data);
+            });
+        }
         const fetchMessages = async (selectedUser) => {
             document.querySelector('#chatBox').classList.remove('d-none');
-            // console.log(chatUser.value.id,selectedUser.id);
             if(chatUser.value.id != selectedUser.id){
                 chatUser.value = selectedUser;
                 axios.get('/backpanel/chats/contact-messages/' + selectedUser.id).then(response => {
                     messages.value = response.data;
-                    // console.log(response.data);
                 });
             }
         }
@@ -180,6 +189,11 @@ export default {
         }
         const scrollBottom = () => {
             if (messages.value.length > 1) {
+                axios.get('/backpanel/chats/read/' + chatUser.value.id).then(response => {
+                    if(document.querySelector('.selected-user > .unread-badge') != null){
+                        document.querySelector('.selected-user > .unread-badge').remove();
+                    }
+                });
                 let el = hasScrolledToBottom.value;
                 el.scrollTop = el.scrollHeight;
             }
@@ -189,6 +203,7 @@ export default {
             messages,
             chatUser,
             newMessage,
+            fetchUnread,
             addMessage,
             fetchMessages,
             showEmoji,

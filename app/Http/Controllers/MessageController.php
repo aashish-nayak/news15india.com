@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         return view('backpanel.chat.chat');
@@ -18,7 +23,7 @@ class MessageController extends Controller
     public function users()
     {
         //    return Admin::has('messages')->where('id','!=',auth('admin')->id())->get();
-        return Admin::where('id', '!=', auth('admin')->id())->get();
+        return Admin::withCount('messages','unread_messages')->orderBy('unread_messages_count','DESC')->where('id', '!=', auth('web')->id())->get();
     }
 
     public function messages()
@@ -43,5 +48,17 @@ class MessageController extends Controller
         broadcast(new SendMessage($messages))->toOthers();
 
         return response()->json($messages);
+    }
+
+    public function read($sender)
+    {
+        $messages = Message::where('sender_id', $sender);
+        $messages->where('read',0)->update(['read'=>1]);
+    }
+
+    public function fetchUnread($sender_id)
+    {
+        $user = Admin::withCount('messages','unread_messages')->find($sender_id);
+        return response()->json($user);
     }
 }

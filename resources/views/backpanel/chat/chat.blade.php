@@ -3,6 +3,11 @@
 @push('plugin-css')
 <link href="{{ asset('css/chatApp.css') }}" rel="stylesheet">
 <script src="{{ asset('js/chatApp.js') }}" defer></script>
+<style>
+    .chat-content {
+    overflow-y: auto;
+}
+</style>
 @endpush
 @section('sections')
     <div class="col-12" id="app">

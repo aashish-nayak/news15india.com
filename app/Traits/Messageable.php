@@ -10,4 +10,8 @@ trait Messageable
         return $this->hasMany(Message::class,'sender_id');
     }
 
+    public function unread_messages()
+    {
+        return $this->messages()->where('read',0);
+    }
 }

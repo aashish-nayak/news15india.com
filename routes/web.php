@@ -13,6 +13,7 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
@@ -252,11 +253,13 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel Chat Module Routes ]------------------------
     Route::prefix('/chats')->name('chat.')->group(function(){
-        Route::get('/', [App\Http\Controllers\MessageController::class, 'index'])->name('index');
-        Route::get('/users', [App\Http\Controllers\MessageController::class, 'users'])->name('users');
-        Route::get('/messages', [App\Http\Controllers\MessageController::class, 'messages'])->name('messages');
-        Route::post('/messages', [App\Http\Controllers\MessageController::class, 'messageStore'])->name('message-store');
-        Route::get('/contact-messages/{id}', [App\Http\Controllers\MessageController::class, 'contactMessages'])->name('contact-messages');
+        Route::get('/', [MessageController::class, 'index'])->name('index');
+        Route::get('/users', [MessageController::class, 'users'])->name('users');
+        Route::get('/messages', [MessageController::class, 'messages'])->name('messages');
+        Route::post('/messages', [MessageController::class, 'messageStore'])->name('message-store');
+        Route::get('/contact-messages/{id}', [MessageController::class, 'contactMessages'])->name('contact-messages');
+        Route::get('/read/{recevier}', [MessageController::class, 'read'])->name('read');
+        Route::get('/user/fetch-unread/{sender}', [MessageController::class, 'fetchUnread'])->name('fetch.unread');
     });
 
     
