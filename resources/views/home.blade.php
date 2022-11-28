@@ -93,6 +93,7 @@
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
             <div class="col-md-9 col-12 px-0 pr-md-1">
+                @if($section1->news->count() > 0)
                 @includeIf('components.news-header', ['section' => $section1,'width'=>'w-50'])
                 @foreach ($section1->news as $key => $news1)
                     @if($key <= 3)
@@ -161,6 +162,7 @@
                         {!!AdvertHTML('home-section-1-bottom-800x100')!!}
                     </div>
                 </div>
+                @endif
             </div>
             <aside class="col-md-3 col-12 my-3 my-md-0 px-0">
                 @includeIf('components.whatsapp-ad')
@@ -176,6 +178,7 @@
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
             <div class="col-md-9 col-12 px-1 pr-md-1 main-bg-clr">
+                @if($section2->news->count() > 0)
                 @includeIf('components.news-header', ['section' => $section2])
                 @foreach ($section2->news as $key => $news2)
                     @if($key <= 3)
@@ -224,8 +227,10 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-md-0 px-1 mt-md-2">
+                @if ($sidebar_1->news->count() > 0)                    
                 @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar' => true,'width'=>"w-25"])
                 <div class="side-bar">
                     @foreach ($sidebar_1->news as $sideNews)
@@ -244,6 +249,7 @@
                     @endforeach
                 </div>
                 <div class="side-footer d-none d-md-flex justify-content-between align-items-center"></div>
+                @endif
             </aside>
         </div>
     </section>
@@ -252,6 +258,7 @@
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
             <div class="col-md-9 col-12 px-1 pr-md-1">
+                @if ($section3->news->count() > 0)
                 @includeIf('components.news-header', ['section' => $section3])
                 @foreach ($section3->news as $key => $news3)
                     @if($key == 0)
@@ -305,8 +312,10 @@
                 <div class="col-12 px-1">
                     {!!AdvertHTML('home-section-3-bottom-800x100')!!}
                 </div>
+                @endif
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 mt-1 my-md-0 px-1">
+                @if ($sidebar_2->news->count() > 0)
                 <div class="col-md-12 px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar' => true,'width'=>"w-25"])
                     @foreach ($sidebar_2->news as $key => $sideNews)
@@ -344,6 +353,7 @@
                     </div>
                     @endif
                 </div>
+                @endif
             </aside>
         </div>
     </section>
@@ -352,6 +362,7 @@
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
             <div class="col-md-9 col-12 px-0">
+                @if ($section4->news->count() > 0)                    
                 @includeIf('components.news-header', ['section' => $section4])
                 <div class="container-fluid">
                     <div class="row row-cols-2 row-cols-md-6 p-0" style="background-color: #E3E9FF;">
@@ -371,8 +382,10 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 my-md-0 px-1">
+                @if ($sidebar_3->news->count() > 0)
                 @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar' => true,'width'=>"w-25"])
                 <div class="col-md-12 px-0">
                     @foreach ($sidebar_3->news as $sideNews)
@@ -385,11 +398,13 @@
                     </div>
                     @endforeach
                 </div>
+                @endif
             </aside>
         </div>
     </section>
     <!-- Sectioon - 4 End -->
     <!-- Sectioon - 5 start -->
+    @if ($section5->news->count() > 0)\        
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
             <div class="col-12 px-1 mt-2">
@@ -415,11 +430,13 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- Section - 5 end  -->
     <!-- Section - 6 Start  -->
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
             <div class="col-md-9 col-12 px-1 pr-md-1">
+                @if ($section6->news->count() > 0)                    
                 @includeIf('components.news-header', ['section' => $section6])
                 @foreach ($section6->news as $key => $news6)
                     @if($key == 0)
@@ -475,8 +492,10 @@
                 <div class="col-12 px-1">
                     {!!AdvertHTML('home-section-6-bottom-800x100')!!}
                 </div>
+                @endif
             </div>
             <aside class="col-md-3 side-position mx-auto col-11 my-3 my-md-0 px-1">
+                @if ($sidebar_4->news->count() > 0)                    
                 @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar' => true])
                 <div class="container-fluid px-0 px-md-4">
                     @foreach ($sidebar_4->news as $sideNews)
@@ -493,6 +512,7 @@
                     </div>
                     @endforeach
                 </div>
+                @endif
             </aside>
         </div>
     </section>
@@ -501,6 +521,7 @@
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
             <div class="col-md-9 col-12 px-1 pr-md-1">
+                @if ($section7->news->count() > 0)                    
                 @includeIf('components.news-header', ['section' => $section7])
                 @foreach ($section7->news as $key => $news7)
                     @if($key <= 7)
@@ -544,9 +565,11 @@
                         @stack('section7_design_1')
                     </div>
                 </div>
+                @endif
             </div>
             <aside class="col-md-3 side-position mx-auto col-12 my-md-1 px-1">
                 <div class="p-0">
+                    @if ($sidebar_5->news->count() > 0)                        
                     @includeIf('components.news-header', ['section' => $sidebar_5,'sidebar' => true,'width'=>"w-50"])
                     <div class="single-item mb-1">
                         @foreach ($sidebar_5->news as $sideNews)
@@ -568,6 +591,7 @@
                     <div class="ad-box my-2">
                         {!!AdvertHTML('home-section-7-sidebar-300x350')!!}
                     </div>
+                    @endif
                 </div>
             </aside>
             <div class="col-12 mx-auto mt-2 mt-md-0 px-1">
@@ -579,6 +603,7 @@
     </section>
     <!-- Section - 7 End  -->
     <!-- Section - 8 Start  -->
+    @if($section8->news->count() > 0)
     <section class="container-fluid mx-auto mt-2">
         <div class="row">
             @includeIf('components.news-header', ['section' => $section8])
@@ -607,8 +632,10 @@
         </div>
         {!!AdvertHTML('home-section-8-bottom-800x100')!!}
     </section>
+    @endif
     <!-- Section - 8 End  -->
     <!-- Section - 9 Start  -->
+    @if ($section9->news->count() > 0)        
     <div class="container-fluid px-1 mt-1" style="color: var(--text-color-light-hover);">
         @includeIf('components.news-header', ['section' => $section9])
         <div class="col-12">
@@ -629,10 +656,12 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- Section - 9 End  -->
     <!-- Section - 10 Start  -->
     <section class="container-fluid mx-auto mt-1">
         <div class="row">
+            @if ($section10->news->count() > 0)                
             <aside class="col-md-4 col-12 mb-1 my-md-0 px-0">
                 @includeIf('components.news-header', ['section' => $section10])
                 @foreach ($section10->news as $key => $news10)
@@ -664,6 +693,8 @@
                 @endif
                 @endforeach
             </aside>
+            @endif
+            @if ($section10_part2->news->count() > 0)
             <aside class="col-md-4 col-12 mb-1 my-md-0 px-0">
                 @includeIf('components.news-header', ['section' => $section10_part2])
                 @foreach ($section10_part2->news as $key => $news10)
@@ -695,6 +726,8 @@
                 @endif
                 @endforeach
             </aside>
+            @endif
+            @if ($section10_part3->news->count() > 0)                
             <aside class="col-md-4 col-12 mb-1 my-md-0 px-0">
                 @includeIf('components.news-header', ['section' => $section10_part3])
                 @foreach ($section10_part3->news as $key => $news10)
@@ -726,6 +759,7 @@
                 @endif
                 @endforeach
             </aside>
+            @endif
         </div>
     </section>
     <!-- Section - 10 End  -->

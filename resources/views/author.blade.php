@@ -20,6 +20,7 @@
                     {!!AdvertHTML('author-header-1250x150')!!}
                 </div>
                 @includeIf('components.poll')
+                @if ($sidebar_1->news->count() > 0)                  
                 <div class="col-12 mt-1 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
                     <div class="single-item">
@@ -41,6 +42,8 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
+                @if ($sidebar_2->news->count() > 0)                 
                 <div class="col-12 mt-2 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
                     <div class="side-bar">
@@ -62,6 +65,8 @@
                     <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
                     </div>
                 </div>
+                @endif
+                @if ($sidebar_3->news->count() > 0)                 
                 <div class="col-12 mt-2 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
@@ -86,6 +91,8 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
+                @if($sidebar_4->news->count() > 0)
                 <div class="col-12 p-0 mt-1 side-position mx-auto">
                     <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
                         <i class="fa fa-sort-up mr-1" style="color:#FE9517;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color:#FE9517; font-weight:600;">{{$sidebar_4->cat_name}}</h4>
@@ -114,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </aside>
         <div class="col-md-9 col-12 px-1 pr-md-1 order-1 order-md-2">
@@ -196,6 +204,7 @@
                 {!!AdvertHTML('author-detail-bottom-800x100')!!}
             </section>
             <!-- Ad Banner  -->
+            @if ($popularCategory->news->count() > 0)                
             <div class="main-bg-clr container-fluid px-0">
                 @includeIf('components.news-header', ['section' => $popularCategory,'width'=>'w-25'])
                 @foreach ($popularCategory->news as $key => $news)
@@ -246,6 +255,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+
             <!-- Ad Banner  -->
             <section class="container-fluid my-md-1 mt-1 mx-auto px-0 text-center">
                 {!!AdvertHTML('author-category-bottom-800x100')!!}

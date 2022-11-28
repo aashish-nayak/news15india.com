@@ -39,6 +39,7 @@
             <div class="sticky-top"  style="z-index:1">
                 @includeIf('components.whatsapp-ad')
                 @includeIf('components.poll')
+                @if ($sidebar_1->news->count() > 0)                    
                 <div class="col-12 mt-2 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
@@ -60,6 +61,7 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
             </div>
         </aside>
         @endif

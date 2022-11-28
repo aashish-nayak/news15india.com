@@ -136,6 +136,7 @@
                 </div>
                 @includeIf('components.whatsapp-ad')
                 @includeIf('components.poll')
+                @if ($sidebar_1->news->count() > 0)                  
                 <div class="col-12 p-0 mt-2 side-position mx-auto">
                     <div class="container-fluid d-flex align-items-center justify-content-between bg-dark py-2 nav-height">
                         <i class="fa fa-sort-up mr-1" style="color:#FE9517;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i><h4 style="color:#FE9517; font-weight:600;">{{$sidebar_1->cat_name}}</h4>
@@ -164,6 +165,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if ($sidebar_2->news->count() > 0)
                 <div class="col-12 mt-2 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
@@ -185,6 +188,8 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
+                @if ($sidebar_3->news->count() > 0)
                 <div class="col-12 mt-2 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
@@ -205,8 +210,10 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
             </div>
         </aside>
+        @if ($bottom_section->news->count() > 0)
         <div class="col-12 px-1">
             @includeIf('components.news-header', ['section' => $bottom_section])
             <section class="container-fluid mx-auto py-4" style="background-color:#FE9517;">
@@ -226,6 +233,7 @@
                 </div>
             </section>
         </div>
+        @endif
     </div>
 </main>
 @endsection
