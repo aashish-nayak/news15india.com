@@ -83,7 +83,7 @@
                         <div class="box single-news-box">
                             <a href="javascript:void(0)">
                                 @if($news->format != 'default' && $news->youtube_url != '')
-                                <iframe src="{{convertYoutube($news->youtube_url)}}" class="img-fluid w-100 h-100" frameborder="0"></iframe>
+                                <iframe src="{{convertYoutube($news->youtube_url)}}?controls=1&autoplay=1&mute=1" class="img-fluid w-100 h-100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 @else
                                 <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid w-100 h-100" alt="" loading="lazy">
                                 @endif
@@ -186,6 +186,7 @@
                     </div>
                 </div>
             </div>
+            @if ($moreCategoryNews->news->count() > 0)
             <div class="main-bg-clr container-fluid px-1 mt-3">
                 @includeIf('components.news-header', ['section' => $moreCategoryNews,'width'=>'w-25'])
                 <div class="row mx-auto">
@@ -236,6 +237,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+            @if ($bottom_section->news->count() > 0)
             <div class="d-flex mt-2 align-items-center px-3 justify-content-between bg-dark nav-height">
                 <i class="fa fa-sort-up mr-1" style="color:#f3f3f3;font-size: 30px;transform: rotate(45deg);padding-right: 3px;"></i>
                     <h4 class="text-white mr-2 pt-2">{{$bottom_section->cat_name}}</h4>
@@ -260,6 +263,7 @@
                     @endforeach
                 </div>
             </section>
+            @endif
         </div>
         <aside class="col-md-3 col-12 mt-1 my-md-0 px-1">
             <div class="sticky-top"  style="z-index:1">
@@ -268,6 +272,7 @@
                     {!!AdvertHTML('news-sidebar-350x300')!!}
                 </div>
                 @includeIf('components.poll')
+                @if ($bottom_section->news->count() > 0)
                 <div class="col-12 mt-1 p-0">
                     @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
                     @foreach ($sidebar_1->news as $key => $sidebar_news)
@@ -298,6 +303,9 @@
                     </div>
                     @stack('sidebar1_design2')
                 </div>
+                @endif
+
+                @if ($bottom_section->news->count() > 0)
                 <div class="col-12 mt-1 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
                     <div class="side-bar">
@@ -319,6 +327,9 @@
                     <div class="side-footer d-none d-xl-flex justify-content-between align-items-center">
                     </div>
                 </div>
+                @endif
+
+                @if ($bottom_section->news->count() > 0)
                 <div class="col-12 mt-1 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
@@ -341,6 +352,9 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
+
+                @if ($bottom_section->news->count() > 0)
                 <div class="col-12 mt-1 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
@@ -364,6 +378,7 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
             </div>
         </aside>
     </div>
