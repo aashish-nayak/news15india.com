@@ -272,7 +272,7 @@
                     {!!AdvertHTML('news-sidebar-350x300')!!}
                 </div>
                 @includeIf('components.poll')
-                @if ($bottom_section->news->count() > 0)
+                @if ($sidebar_1->news->count() > 0)
                 <div class="col-12 mt-1 p-0">
                     @includeIf('components.news-header', ['section' => $sidebar_1,'sidebar'=>true,'width'=>'w-50'])
                     @foreach ($sidebar_1->news as $key => $sidebar_news)
@@ -305,7 +305,7 @@
                 </div>
                 @endif
 
-                @if ($bottom_section->news->count() > 0)
+                @if ($sidebar_2->news->count() > 0)
                 <div class="col-12 mt-1 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_2,'sidebar'=>true,'width'=>'w-25'])
                     <div class="side-bar">
@@ -329,7 +329,7 @@
                 </div>
                 @endif
 
-                @if ($bottom_section->news->count() > 0)
+                @if ($sidebar_3->news->count() > 0)
                 <div class="col-12 mt-1 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_3,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
@@ -354,7 +354,7 @@
                 </div>
                 @endif
 
-                @if ($bottom_section->news->count() > 0)
+                @if ($sidebar_4->news->count() > 0)
                 <div class="col-12 mt-1 side-position mx-auto px-0">
                     @includeIf('components.news-header', ['section' => $sidebar_4,'sidebar'=>true,'width'=>'w-25'])
                     <div class="single-item">
