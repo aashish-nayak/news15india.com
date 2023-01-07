@@ -252,15 +252,15 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/page-setting-store',[SettingController::class,'pageSettingStore'])->name('page-setting-store');
     });
     // ----------------[ Backpanel Panel Chat Module Routes ]------------------------
-    Route::prefix('/chats')->name('chat.')->group(function(){
-        Route::get('/', [MessageController::class, 'index'])->name('index');
-        Route::get('/users', [MessageController::class, 'users'])->name('users');
-        Route::get('/messages', [MessageController::class, 'messages'])->name('messages');
-        Route::post('/messages', [MessageController::class, 'messageStore'])->name('message-store');
-        Route::get('/contact-messages/{id}', [MessageController::class, 'contactMessages'])->name('contact-messages');
-        Route::get('/read/{recevier}', [MessageController::class, 'read'])->name('read');
-        Route::get('/user/fetch-unread/{sender}', [MessageController::class, 'fetchUnread'])->name('fetch.unread');
-    });
-
     
+    
+});
+Route::prefix('backpanel/chats')->name('chat.')->group(function(){
+    Route::get('/', [MessageController::class, 'index'])->name('index');
+    Route::get('/users', [MessageController::class, 'users'])->name('users');
+    Route::get('/messages', [MessageController::class, 'messages'])->name('messages');
+    Route::post('/messages', [MessageController::class, 'messageStore'])->name('message-store');
+    Route::get('/contact-messages/{id}', [MessageController::class, 'contactMessages'])->name('contact-messages');
+    Route::get('/read/{recevier}', [MessageController::class, 'read'])->name('read');
+    Route::get('/user/fetch-unread/{sender}', [MessageController::class, 'fetchUnread'])->name('fetch.unread');
 });

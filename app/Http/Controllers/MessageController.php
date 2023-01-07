@@ -23,7 +23,7 @@ class MessageController extends Controller
     public function users()
     {
         //    return Admin::has('messages')->where('id','!=',auth('admin')->id())->get();
-        return Admin::withCount('messages','unread_messages')->orderBy('unread_messages_count','DESC')->where('id', '!=', auth('web')->id())->get();
+        return Admin::withCount('messages','unread_messages')->orderBy('unread_messages_count','DESC')->where('id', '!=', auth('admin')->id())->get();
     }
 
     public function messages()
