@@ -37,8 +37,12 @@
                                 </div>
                             </div>
                         </div>
+                        @permission('create-page')
                         <a href="{{ route('admin.page.create') }}" id="create" class="btn btn-success btn-sm">Add Page</a>
+                        @endpermission
+                        @permission('delete-page')
                         <a href="{{ route('admin.bulk.delete') }}" id="bulkDelete" data-model="App\Models\Page" data-message="You Want to delete Bulk Pages!" data-button="Yes, Delete it!" class="btn btn-danger btn-sm d-none position-relative"><span class="badge bg-dark selectedCount position-absolute top-0 start-100 translate-middle rounded-pill"></span> Bulk Delete</a>
+                        @endpermission
                     </div>
                 </div>
             </div>

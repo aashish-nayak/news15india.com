@@ -82,6 +82,13 @@
             </a>
         </li>
         @endpermission
+        <li>
+            <a href="{{Route('admin.chat.index')}}">
+                <div class="parent-icon"><i class='bx bx-chat'></i></div>
+                <div class="menu-title">Messanger</div>
+                @if($new_messages_count > 0)<span class="badge rounded-pill bg-danger ms-auto">{{$new_messages_count}}</span>@endif
+            </a>
+        </li>
         @role('super-admin','admin')
         <li>
             <a href="javascript:void(0);" class="has-arrow">
@@ -137,12 +144,14 @@
             </a>
         </li>
         @endpermission
+        @permission('read-page')
         <li>
             <a href="{{Route('admin.page.index')}}">
                 <div class="parent-icon"><i class='bx bx-detail'></i></div>
                 <div class="menu-title">Pages</div>
             </a>
         </li>
+        @endpermission
         @role('super-admin')
         <li>
             <a href="{{Route('admin.menu.index',1)}}">

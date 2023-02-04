@@ -33,7 +33,7 @@ class MessageController extends Controller
 
     public function contactMessages($receiver)
     {
-        return Message::with('receiver', 'sender')->where('sender_id', auth('admin')->id())->where('receiver_id', $receiver)->orWhere('sender_id', $receiver)->where('receiver_id', auth('admin')->id())->get();
+        return Message::with('receiver', 'sender')->where('sender_id', auth('admin')->id())->where('receiver_id', $receiver)->orWhere('sender_id', $receiver)->where('receiver_id', auth('admin')->id())->latest()->take(40)->get();
     }
 
     public function messageStore(Request $request)

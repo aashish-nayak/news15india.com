@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Menu;
 use App\Models\MenuLocation;
 use App\Models\MenuNodes;
+use App\Models\Message;
 use App\Models\News;
 use App\Models\Poll;
 use Illuminate\Pagination\Paginator;
@@ -55,7 +56,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layouts.backpanel.partials.sidebar',function($view){
             $unapproved_comments = Comment::where('approved',0)->count();
             $trash_comments = Comment::onlyTrashed()->count();
-            return $view->with(compact('unapproved_comments','trash_comments'));
+            $new_messages_count = Message::where('read',0)->where('receiver_id',auth('admin')->id())->count();
+            return $view->with(compact('unapproved_comments','trash_comments','new_messages_count'));
         });
 
         View::composer('layouts.frontend.partials.desktop-nav',function($view){

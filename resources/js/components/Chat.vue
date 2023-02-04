@@ -11,7 +11,12 @@
 .unread-badge{
     font-size: 11px;
     border-radius: 25px;
-    padding: 3px 5px;
+    position: absolute;
+    right: 5%;
+    top: 30%;
+}
+.chat-content {
+    overflow-y: auto;
 }
 </style>
 <template>
@@ -25,24 +30,16 @@
                     <div class="flex-grow-1 ms-2">
                         <p class="mb-0">{{user.name}}</p>
                     </div>
-                    <div class="dropdown">
-                        <div class="cursor-pointer font-24 dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded'></i>
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-end"> <a class="dropdown-item" href="javascript:;">Settings</a>
-                            <div class="dropdown-divider"></div>	
-                            <a class="dropdown-item" href="javascript:;">Help & Feedback</a>
-                        </div>
-                    </div>
                 </div>
-                <div class="mb-3"></div>
+                <!-- <div class="mb-3"></div>
                 <div class="input-group input-group-sm"> <span class="input-group-text bg-transparent"><i class='bx bx-search'></i></span>
                     <input type="text" class="form-control" placeholder="People, groups, & messages"> <span class="input-group-text bg-transparent"><i class='bx bx-dialpad'></i></span>
-                </div>
+                </div> -->
             </div>
             <div class="chat-sidebar-content">
                 <div class="chat-list">
                     <div class="list-group list-group-flush">
-                        <template v-for='contact in users'>
+                        <template v-for='contact in state.users'>
                             <a href="javascript:;" class="list-group-item" v-bind:class="(contact.id == chatUser.id) ? 'active' : '' " @click="fetchMessages(contact)">
                                 <div class="d-flex">
                                     <div class="chat-user-online">
@@ -52,7 +49,7 @@
                                         <h6 class="mb-0 chat-title">{{ contact.name }}</h6>
                                         <p class="mb-0 chat-msg">{{ contact.email }}</p>
                                     </div>
-                                    <span class="badge text-bg-danger unread-badge" v-if='contact.unread_messages_count > 0'>{{contact.unread_messages_count}}</span>
+                                    <span class="badge text-danger bg-light-danger unread-badge" v-if='contact.unread_messages_count > 0'>{{contact.unread_messages_count}}</span>
                                 </div>
                             </a>
                         </template>
@@ -119,47 +116,38 @@
 <script>
 import { reactive, inject, ref, onMounted, onUpdated } from 'vue';
 import axios from 'axios';
-// import "bootstrap/dist/js/bootstrap.min.js";
-import { Popover } from 'bootstrap/dist/js/bootstrap.esm.min.js'
 
 export default {
     props: ['user'],
     setup(props) {
-        let users = ref([])
+        let state = reactive({
+            users:[],
+        })
         let chatUser = ref('')
         let messages = ref([])
         let newMessage = ref('')
         let hasScrolledToBottom = ref('')
         onMounted(() => {
-            Array.from(document.querySelectorAll('button[data-bs-toggle="popover"],a[data-bs-toggle="popover"]'))
-                .forEach(popoverNode => new Popover(popoverNode,{
-                    trigger : 'focus body',
-                }))
             fetchUsers()
         })
         onUpdated(() => {
             scrollBottom()
         })
         Echo.private('chat-channel')
-            .listen('SendMessage', (e) => {
-                messages.value.push(e.message);
-                console.log(props.user,users.value,chatUser.value,e.message);
-                if(e.message.sender_id != chatUser.value.id && e.message.receiver_id == props.user.id && e.message.read == 0){
-                    let i = users.value.map(item => item.id).indexOf(e.message.sender_id) // find index of your object
-                    users.value.splice(i, 1);
-                    fetchUnread(e.message.sender_id);
-                }
-                console.log(users.value);
-            })
+        .listen('SendMessage', (e) => {
+            messages.value.push(e.message);
+            if(e.message.sender_id != chatUser.value.id && e.message.receiver_id == props.user.id && e.message.read == 0){
+                let i = state.users.map(item => item.id).indexOf(e.message.sender_id) // find index of your object
+                fetchUnread(i);
+            }
+        });
         const fetchUsers = async () => {
             axios.get('/backpanel/chats/users').then(response => {
-                users.value = response.data;
+                state.users = response.data;
             });
         }
-        const fetchUnread = async (user) => {
-            axios.get('/backpanel/chats/user/fetch-unread/'+user).then(response => {
-                users.value.unshift(response.data);
-            });
+        const fetchUnread = (i) => {
+            state.users[i].unread_messages_count += 1;
         }
         const fetchMessages = async (selectedUser) => {
             document.querySelector('#chatBox').classList.remove('d-none');
@@ -170,17 +158,20 @@ export default {
                 });
             }
         }
-        const onSelectEmoji = async (emoji) => {
+        const onSelectEmoji = (emoji) => {
             newMessage.value += emoji.i;
         }
         function showEmoji() {
             document.querySelector('.v3-emoji-picker').classList.toggle('d-none');
         }
-        const addMessage = async () => {
+        const addMessage = () => {
+            if(newMessage.value.trim().length == 0){
+                return;
+            }
             let user_message = {
                 user: props.user.id,
                 receiver : chatUser.value.id,
-                message: newMessage.value
+                message: newMessage.value,
             };
             axios.post('/backpanel/chats/messages', user_message).then(response => {
                 messages.value.push(response.data);
@@ -189,17 +180,17 @@ export default {
         }
         const scrollBottom = () => {
             if (messages.value.length > 1) {
-                axios.get('/backpanel/chats/read/' + chatUser.value.id).then(response => {
-                    if(document.querySelector('.selected-user > .unread-badge') != null){
-                        document.querySelector('.selected-user > .unread-badge').remove();
-                    }
-                });
                 let el = hasScrolledToBottom.value;
                 el.scrollTop = el.scrollHeight;
+                axios.get('/backpanel/chats/read/' + chatUser.value.id).then(response => {
+                    if(document.querySelector('.list-group a.active .unread-badge') != null){
+                        document.querySelector('.list-group a.active .unread-badge').remove();
+                    }
+                });
             }
         }
         return {
-            users,
+            state,
             messages,
             chatUser,
             newMessage,
