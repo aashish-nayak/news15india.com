@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MessageController;
@@ -260,5 +261,9 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/contact-messages/{id}', [MessageController::class, 'contactMessages'])->name('contact-messages');
         Route::get('/read/{recevier}', [MessageController::class, 'read'])->name('read');
         Route::get('/user/fetch-unread/{sender}', [MessageController::class, 'fetchUnread'])->name('fetch.unread');
+    });
+    // ----------------[ Backpanel Panel E-mail Module Routes ]------------------------
+    Route::prefix('/emailbox')->name('emailbox.')->group(function(){
+        Route::get('/', [EmailController::class, 'index'])->name('index');
     });
 });
