@@ -1,93 +1,46 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Website Users')
-@push('plugin-css')
-@endpush
+
 @section('sections')
-@php
-    if(!isset($users_blocked)){
-        $isBlockedUsersUrl = route('admin.viewer.block');
-        $urlTitle = 'Blocked';
-        $CardTitle = 'All';
-    }else{
-        $CardTitle = 'Blocked';
-        $urlTitle = 'All';
-        $isBlockedUsersUrl = route('admin.viewer.index');
-    }
-@endphp
-    <div class="col-12 mt-4 text-end">
-        <a href="{{$isBlockedUsersUrl}}" class="btn btn-danger mr-3 btn-sm">{{$urlTitle}} Users</a>
-    </div>
-    <div class="col-12 mt-2">
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title m-0">{{$CardTitle}} Users</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="col-md-3">
+                    <h4 class="card-title m-0 d-flex align-items-center">
+                        <i class="bx bx-group fs-3 mt-1 me-2"></i>
+                        <span>Website Users</span>
+                    </h4>
+                </div>
+                <div class="col-md-auto col-12">
+                    <div class="d-flex justify-content-end align-items-center gap-2 flex-wrap">
+                        <div class="form-group me-2 filters">
+                            <div class="row justify-content-end align-items-center m-0">
+                                <div class="col-md-auto px-1">
+                                    <select class="form-select form-select-sm" required name="status" id="status">
+                                        <option value="all">Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-auto px-1">
+                                    <button type="button" name="filter" id="filter" class="btn btn-info btn-sm">Filter</button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{route('admin.viewer.block')}}" class="btn btn-danger btn-sm">Block Users</a>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
-                <div class="">
-                    <table id="users" class="w-100 table responsive display table-striped table-bordered align-middle border table-hover" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $key => $user)
-                            <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>
-                                    <div class="d-flex order-actions">
-                                        @php
-                                            if(!isset($users_blocked)){
-                                                $isRetoreUrl = route('admin.viewer.delete',$user->id);
-                                                $linkIcon = '<i class="bx bx-block"></i>';
-                                                $title = 'Block';
-                                                $class = 'delete';
-                                            }else{
-                                                $isRetoreUrl = route('admin.viewer.restore',$user->id);
-                                                $linkIcon = '<i class="bx bx-reset"></i>';
-                                                $title = 'Restore';
-                                                $class = '';
-                                            }
-                                        @endphp
-                                        {{-- <a href="{{route('admin.viewer.edit',$user->id)}}" class="edit-category border" title="Edit"><i class="bx bxs-edit"></i></a> --}}
-                                        <a href="{{$isRetoreUrl}}" class="text-danger ms-3 border {{$class}}" title="{{$title}}">{!!$linkIcon!!}</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                {!! $dataTable->table() !!}
             </div>
         </div>
     </div>
 @endsection
 @push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#users').DataTable();
-        $(document).on("click",".delete",function (e) {
-            var url = $(this).attr("href");
-            e.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You Want to Block this User!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Block it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url;
-                }
-            })
-        });
-    });
-</script>
+{!! $dataTable->scripts() !!}
+@includeIf('components.datatable.common-module-script',[
+    'deleteMessage' => "You Want to Delete this User!",
+    'deleteConfirmMessage' => "Yes, Delete it!",
+])
 @endpush

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UserDataTable;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function websiteViewers()
+    public function websiteViewers(UserDataTable $datatable)
     {
-        $users = User::get();
-        return view('backpanel.viewer.index',compact('users'));
+        return $datatable->render('backpanel.viewer.index');
     }
     public function viewerBlock($id)
     {
