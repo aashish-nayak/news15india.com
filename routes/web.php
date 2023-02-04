@@ -183,9 +183,10 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::prefix('/viewers')->name('viewer.')->group(function(){
         Route::get('/', [DashboardController::class, 'websiteViewers'])->middleware('permission:read-user')->name('index');
         Route::get('/blocked', [DashboardController::class, 'blockViewers'])->middleware('permission:block-user')->name('block');
-        Route::get('/edit/{id}', [DashboardController::class, 'viewerEdit'])->middleware('permission:update-user')->name('edit');
-        Route::get('/block/{id}', [DashboardController::class, 'viewerBlock'])->middleware('permission:delete-user')->name('delete');
+        Route::get('/details/{id}/{page?}', [DashboardController::class, 'details'])->middleware('permission:read-user')->name('view');
+        Route::get('/block/{id}', [DashboardController::class, 'viewerBlock'])->middleware('permission:update-user')->name('delete');
         Route::get('/restore/{id}', [DashboardController::class, 'viewerRestore'])->middleware('permission:restore-user')->name('restore');
+        Route::get('/destroy/{id}', [DashboardController::class, 'viewerDestroy'])->middleware('permission:delete-user')->name('destroy');
     });
     // ----------------[ Backpanel Panel Roles Module Routes ]------------------------
     Route::prefix('/role')->name('role.')->group(function(){

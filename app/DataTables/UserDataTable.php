@@ -13,21 +13,77 @@ use Yajra\DataTables\Services\DataTable;
 
 class UserDataTable extends DataTable
 {
+    protected $view;
+    protected $column;
+    public function __construct($view = 'users')
+    {
+        $this->view = $view;
+        if($view == 'users'){
+            $this->column = 'created_at';
+        }else{   
+            $this->column = 'deleted_at';
+        }
+    }
+
+    public function actions($User)
+    {
+        if($this->view == 'users'){
+            $buttons = [
+                'buttons' => [
+                    'view'=>[
+                        'url'       => route('admin.viewer.view', $User->id),
+                        'classes'   => 'text-primary',
+                        'icon'      => 'bx bxs-show',
+                        'permission'=> 'read-user',
+                    ],
+                    'trash'=>[
+                        'url'       => route('admin.viewer.delete', $User->id),
+                        'classes'   => 'delete text-danger',
+                        'icon'      => 'bx bx-block',
+                        'permission'=> 'update-user',
+                    ],
+                ]
+            ];
+        }else{
+            $buttons = [
+                'buttons' => [
+                    'view'=>[
+                        'url'       => route('admin.viewer.view', [$User->id,'trash']),
+                        'classes'   => 'text-primary',
+                        'icon'      => 'bx bxs-show',
+                        'permission'=> 'read-user',
+                    ],
+                    'restore' => [
+                        'url'       => route('admin.viewer.restore', $User->id),
+                        'icon'      => 'bx bx-reset',
+                        'permission'=> 'restore-user',
+                    ],
+                    'trash' => [
+                        'url'       => route('admin.viewer.destroy', $User->id),
+                        'classes'   => 'delete text-danger',
+                        'icon'      => 'bx bxs-trash',
+                        'permission'=> 'delete-user',
+                    ],
+                ]
+            ];
+        }
+        return $buttons;
+    }
 
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return datatables()
             ->eloquent($query)
             ->setRowId('id')
-            ->editColumn('created_at', function (User $User) {
-                return Carbon::create($User->created_at)->format('Y-m-d h:iA');
+            ->editColumn($this->column, function (User $User) {
+                return Carbon::create($User[$this->column])->format('Y-m-d h:iA');
             })
             ->editColumn('phone_number', function (User $User) {
                 return $User->details->phone_number ?? '-';
             })
-            ->filterColumn('phone', function ($query, $keyword) {
+            ->filterColumn('phone_number', function ($query, $keyword) {
                 $query->whereHas('details', function ($q) use ($keyword) {
-                    $q->where('phone','like', "%$keyword%");
+                    $q->where('phone_number','like', "%$keyword%");
                 });
             })
             ->editColumn('whatsapp_number', function (User $User) {
@@ -63,16 +119,7 @@ class UserDataTable extends DataTable
                 });
             })
             ->addColumn('action', function (User $User) {
-                return view('components.datatable.actions', [
-                    'buttons' => [
-                        'trash'=>[
-                            'url'       => route('admin.viewer.delete', $User->id),
-                            'classes'   => 'delete text-danger',
-                            'icon'      => 'bx bxs-trash',
-                            'permission'=> 'delete-user',
-                        ],
-                    ]
-                ]);
+                return view('components.datatable.actions', $this->actions($User));
             });
     }
 
@@ -85,6 +132,9 @@ class UserDataTable extends DataTable
     public function query(User $model): QueryBuilder
     {
         $data = $model->newQuery();
+        if($this->view == 'trash'){
+            $data->onlyTrashed();
+        }
         if (request()->from_date != '' && request()->to_date != '') {
             $data = $data->whereDate('created_at', '>=', request()->from_date)->whereDate('created_at', '<=', request()->to_date);
         }
@@ -102,19 +152,19 @@ class UserDataTable extends DataTable
             ->scrollX(true)
             ->addTableClass('w-100 table-responsive')
             ->select(["style" => 'os', "selector" => 'td:first-child'])
-            ->stateSave('true')
+            ->stateSave('false')
             ->setTableId('user-table')
             ->columns($this->getColumns())
             ->postAjax([
                 'dataType' => 'json',
                 'data' => 'function ( d ) {
-                    d.designation = $("#designation").val();
-                    d.status = $("#status").val();
+                    d.from_date =  $("#filter_from").val();
+                    d.to_date = $("#filter_to").val();
                     return d;
                   }',
             ])
             ->dom('Bfrtip')
-            ->orderBy(1)
+            ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
                 Button::make('pageLength'),
@@ -134,7 +184,7 @@ class UserDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('created_at'),
+            Column::make($this->column),
             Column::make('name'),
             Column::make('email'),
             [
@@ -154,7 +204,7 @@ class UserDataTable extends DataTable
             ],
             [
                 "name" => "city_id",
-                "title" => "Location",
+                "title" => "City",
                 "data" => "city_id"
             ],
             [
