@@ -1,6 +1,52 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Email Box')
 @push('plugin-css')
+<style>
+    .image-attachment {
+        position: relative;
+        border: 1px solid #ddd;
+        border-radius: 0.3rem;
+        background-color: rgba(55, 190, 255, 0.05);
+        float: left;
+        margin: 0.5rem;
+        min-width: 47%;
+        min-height: 250px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-attachment .attach-details {
+        color: #737677;
+        padding: 0 0.5rem;
+        font-size: 90%;
+        white-space: nowrap;
+        position: absolute;
+        line-height: 1.5rem;
+    }
+
+    .image-attachment .attach-details.attach-filename {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        left: 0;
+        top: 0;
+        right: 0;
+        padding-right: 4rem;
+    }
+
+    .image-attachment .attach-details.attach-filesize {
+        right: 0;
+        top: 0;
+    }
+    .image-attachment .attachment-links{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px;
+        text-align: center;
+    }
+</style>
 @endpush
 @section('sections')
 <!--start email wrapper-->
@@ -10,66 +56,41 @@
             <a href="javascript:;" class="btn btn-primary compose-mail-btn"><i class="bx bx-plus me-2"></i> Compose</a>
         </div>
         <div class="email-sidebar-content">
-            <div class="email-navigation">
+            <div class="email-navigation border-0">
                 <div class="list-group list-group-flush">
-                    <a href="app-emailbox.html" class="list-group-item active d-flex align-items-center"><i
-                            class="bx bxs-inbox me-3 font-20"></i><span>Inbox</span><span
-                            class="badge bg-primary rounded-pill ms-auto">7,513</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-star me-3 font-20"></i><span>Starred</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-alarm-snooze me-3 font-20"></i><span>Snoozed</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-send me-3 font-20"></i><span>Sent</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-file-blank me-3 font-20"></i><span>Drafts</span><span
-                            class="badge bg-primary rounded-pill ms-auto">4</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-bookmark me-3 font-20"></i><span>Important</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-message-rounded-error me-3 font-20"></i><span>Chats</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bx-mail-send me-3 font-20"></i><span>Scheduled</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-envelope-open me-3 font-20"></i><span>All Mail</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-info-circle me-3 font-20"></i><span>Spam</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-trash-alt me-3 font-20"></i><span>Trash</span></a>
-                </div>
-            </div>
-            <div class="email-meeting">
-                <div class="list-group list-group-flush">
-                    <div class="list-group-item"><span>Meet</span></div>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-video me-3 font-20"></i><span>Start a meeting</span></a>
-                    <a href="javascript:;" class="list-group-item d-flex align-items-center"><i
-                            class="bx bxs-group me-3 font-20"></i><span>Join a meeting</span></a>
-                    <div class="list-group-item email-hangout cursor-pointer border-top">
-                        <div class="d-flex align-items-center">
-                            <div class="chat-user-online">
-                                <img src="assets/images/avatars/avatar-1.png" width="42" height="42"
-                                    class="rounded-circle" alt="" />
-                            </div>
-                            <div class="flex-grow-1 ms-2">
-                                <p class="mb-0">Jessica Doe</p>
-                            </div>
-                            <div class="dropdown">
-                                <div class="font-24 dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
-                                    <i class="bx bx-plus"></i>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:;">Settings</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:;">Help & Feedback</a>
-                                    <a class="dropdown-item" href="javascript:;">Enable Split View Mode</a>
-                                    <a class="dropdown-item" href="javascript:;">Keyboard Shortcuts</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:;">Sign Out</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @php
+                        $icons = [
+                            'INBOX' => 'bxs-inbox',
+                            'INBOX.Archive' => 'bx-box',
+                            'INBOX.spam' => 'bxs-info-circle',
+                            'INBOX.Sent' => 'bxs-send',
+                            'INBOX.Drafts' => 'bxs-file-blank',
+                            'INBOX.Trash' => 'bxs-trash-alt',
+                            'INBOX.Junk' => 'bx-mail-send',
+                        ];
+                    @endphp
+                    @foreach ($folders as $folder)
+                    <a href="{{route('admin.emailbox.index',['mode'=>'list','mbox'=>$folder->path])}}"
+                        class="list-group-item d-flex align-items-center {{($box == $folder->path) ? 'active' : ''}}">
+                        <i class="bx {{$icons[$folder->path] ?? 'bxs-folder'}} me-3 font-20"></i><span>{{ucfirst($folder->name)}}</span>
+                        @if($folder->messages()->all()->count() > 0)
+                        <span
+                            class="badge bg-primary rounded-pill ms-auto">{{$folder->messages()->all()->count()}}</span>
+                        @endif
+                    </a>
+                    @if($folder->hasChildren())
+                    @foreach ($folder->children as $subFolder)
+                    <a href="{{route('admin.emailbox.index',['mode'=>'list','mbox'=>$subFolder->path])}}"
+                        class="list-group-item d-flex align-items-center {{($box == $subFolder->path) ? 'active' : ''}}">
+                        <i class="bx {{$icons[$subFolder->path] ?? 'bxs-folder'}} me-3 font-20"></i><span>{{ucwords($subFolder->name)}}</span>
+                        @if($subFolder->messages()->all()->count() > 0)
+                        <span
+                            class="badge bg-primary rounded-pill ms-auto">{{$subFolder->messages()->all()->count()}}</span>
+                        @endif
+                    </a>
+                    @endforeach
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -81,9 +102,9 @@
                 <input class="form-check-input" type="checkbox" />
             </div>
             <div class="">
-                <button type="button" class="btn btn-white ms-2">
+                <a href="{{request()->fullUrl()}}" class="btn btn-white ms-2">
                     <i class="bx bx-refresh me-0"></i>
-                </button>
+                </a>
             </div>
             <div class="">
                 <button type="button" class="btn btn-white ms-2">
@@ -101,14 +122,14 @@
                 </button>
             </div>
         </div>
-        <div class="flex-grow-1 mx-xl-2 my-2 my-xl-0">
+        {{-- <div class="flex-grow-1 mx-xl-2 my-2 my-xl-0">
             <div class="input-group">
                 <span class="input-group-text bg-transparent"><i class="bx bx-search"></i></span>
                 <input type="text" class="form-control" placeholder="Search mail" />
             </div>
-        </div>
+        </div> --}}
         <div class="ms-auto d-flex align-items-center">
-            <button class="btn btn-sm btn-light">1-50 of 8,740</button>
+            <button class="btn btn-sm btn-light">1-10</button>
             <button class="btn btn-white px-2 ms-2">
                 <i class="bx bx-chevron-left me-0"></i>
             </button>
@@ -119,80 +140,61 @@
     </div>
     <div class="email-content">
         <div class="">
-            {{-- <div class="email-list">
-                @foreach (range(1,40) as $item)
-                <a href="app-emailread.html">
+            @if($mode == 'list')
+            <div class="email-list">
+                @foreach ($messages as $message)
+                <a href="{{route('admin.emailbox.index',['mode'=>'read','mbox'=>$box,'message'=>$message->uid])}}">
                     <div class="d-md-flex align-items-center email-message px-3 py-1">
-                        <div class="d-flex align-items-center email-actions">
-                            <input class="form-check-input" type="checkbox" value="" />
-                            <i class="bx bx-star font-20 mx-2 email-star"></i>
-                            <p class="mb-0"><b>Wordpress</b></p>
-                        </div>
-                        <div class="">
-                            <p class="mb-0">
-                                It is a long established fact that a reader will be
-                                distracted by the readable...
-                            </p>
+                        <div class="d-flex align-items-center email-actions w-auto">
+                            <input class="form-check-input me-3" type="checkbox" value="" />
+                            <p class="mb-0">{{$message->get('from')}} <br><b>{{$message->get('subject')}}</b></p>
                         </div>
                         <div class="ms-auto">
-                            <p class="mb-0 email-time">5:56 PM</p>
+                            <p class="mb-0 email-time">{{date('h:iA d-M-Y',strtotime($message->get('date')))}}</p>
                         </div>
                     </div>
                 </a>
                 @endforeach
-            </div> --}}
-            <div class="email-read-box p-3">
-                <h4>It is a long established fact that a reader will be distracted.</h4>
+            </div>
+            @elseif($mode == 'read')
+            <div class="email-read-box p-3" style="overflow-y: auto;height: 430px;">
+                <h4>{{$readMessage->get('subject')}}</h4>
                 <hr>
                 <div class="d-flex align-items-center">
-                    <img src="assets/images/avatars/avatar-1.png" width="42" height="42" class="rounded-circle" alt="" />
+                    <img src="{{asset('assets/images/avatars/avatar-1.png')}}" width="42" height="42" class="rounded-circle" alt="" />
                     <div class="flex-grow-1 ms-2">
-                        <p class="mb-0 font-weight-bold">Himalaya India</p>
+                        <p class="mb-0 font-weight-bold">{{$readMessage->get('sender')}}</p>
                         <div class="dropdown">
-                            <div class="dropdown-toggle" data-bs-toggle="dropdown">to me</div>
-                            <div class="dropdown-menu"> <a class="dropdown-item" href="javascript:;">Settings</a>
-                                <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Help &
-                                    Feedback</a>
-                                <a class="dropdown-item" href="javascript:;">Enable Split View Mode</a>
-                                <a class="dropdown-item" href="javascript:;">Keyboard Shortcuts</a>
-                                <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Sign
-                                    Out</a>
-                            </div>
+                            <div>to me</div>
                         </div>
                     </div>
-                    <p class="mb-0 chat-time ps-5 ms-auto">Sep 15, 2020, 11:04 PM (19 hours ago)</p>
+                    <p class="mb-0 chat-time ps-5 ms-auto">{{date('M d,Y h:iA',strtotime($readMessage->get('date')))}}
+                        ({{\Carbon\Carbon::parse($readMessage->get('date'))->diffForHumans()}})</p>
                 </div>
-                <div class="email-read-content px-md-5 py-5">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when
-                        looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                        distribution of letters, as opposed to using 'Content here, content here', making it look like
-                        readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                        default model text, and a search for 'lorem ipsum' will uncover many web sites still in their
-                        infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose
-                        (injected humour and the like).</p>
-                    <h5>Where can I get some?</h5>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                        alteration in some form, by injected humour, or randomised words which don't look even slightly
-                        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
-                        anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet
-                        tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
-                    </p>
-                    <hr>
-                    <h5>Where does it come from?</h5>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-                        professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                    <p>consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical
-                        literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
-                        of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This
-                        book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of
-                        Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                        Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in
-                        their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-                    </p>
+                <div class="email-read-content p-1 p-md-2">
+                    {!!$readMessage->getHTMLBody()!!}
                 </div>
+                @if($readMessage->hasAttachments())
+                @foreach ($readMessage->getAttachments() as $attach)
+                @if($attach->mask()->content_type != 'application/octet-stream')
+                <div class="p-4 image-attachment">
+                    @if($attach->mask()->content_type == 'image/png')
+                    <img src="{{$attach->mask()->getImageSrc()}}" style="width: 240px;" alt="attachment">
+                    @endif
+                    <span class="attach-details attach-filename">{{$attach->mask()->name}}</span>
+                    <span class="attach-details attach-filesize">{{formatBytes($attach->mask()->size)}}</span>
+                    <span class="attachment-links">
+                        <a href="{{$attach->mask()->getImageSrc()}}" class="mb-3" download="{{$attach->mask()->name}}">
+                            <i class="bx bx-download"></i>
+                            Download
+                        </a>
+                    </span>
+                </div>
+                @endif
+                @endforeach
+                @endif
             </div>
+            @endif
         </div>
     </div>
     <!--start compose mail-->
@@ -273,9 +275,6 @@
     new PerfectScrollbar('.email-navigation');
     if(document.querySelectorAll('.email-list').length > 0){
         new PerfectScrollbar('.email-list');
-    }
-    if(document.querySelectorAll('.email-read-box').length > 0){
-        new PerfectScrollbar('.email-read-box');
     }
 </script>
 @endpush

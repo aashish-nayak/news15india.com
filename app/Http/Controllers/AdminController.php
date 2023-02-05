@@ -35,10 +35,14 @@ class AdminController extends Controller
             $admin = Admin::find($request->id);
             $checkEmail = '';
             $request->session()->flash('success', 'Member Updated successfully!');
+            if($request->password != ''){
+                $admin->password = Hash::make($request->password);
+            }
         }else{
             $admin = new Admin();
             $checkEmail = 'unique:admins';
             $request->session()->flash('success', 'Member Added successfully!');
+            $admin->password = ($request->password != '') ? Hash::make($request->password) : Hash::make($request->email);
         }
         
         $request->validate([
@@ -47,7 +51,6 @@ class AdminController extends Controller
         ]);
         $admin->name = $request->name;
         $admin->email = $request->email;
-        $admin->password = ($request->password != '') ? Hash::make($request->password) : Hash::make($request->email);
         $admin->save();
         $admin->roles()->sync($request->roles);
         $newPermission = collect();
