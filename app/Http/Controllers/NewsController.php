@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Berkayk\OneSignal\OneSignalFacade as OneSignal;
 class NewsController extends Controller
 {
     public function index()
@@ -75,6 +76,15 @@ class NewsController extends Controller
         $news->save();
         $news->categories()->sync($request->categories);
         $news->tags()->sync($request->tags);
+        if(!isset($request->id) && $request->is_published == 1){
+            OneSignal::sendNotificationToAll(
+                $request->title,
+                $url = route('single-news',$request->slug), 
+                $data = null, 
+                $buttons = null, 
+                $schedule = null
+            );
+        }
         if ($request->has('edit_btn')) {
             return redirect()->route('admin.news.edit', $news->id)->with('success', $message);
         } else if($request->has('save_add_new')){

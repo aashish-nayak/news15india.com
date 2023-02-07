@@ -8,14 +8,17 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148414371-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'UA-148414371-1');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-148414371-1');
     </script>
 
-    <link rel="icon" href="{{setting('site_favicon')}}" type="image/png" />
+    <link rel="icon" href="{{ setting('site_favicon') }}" type="image/png" />
     <!-- Meta Data  -->
     @yield('meta-tags')
     <link rel="stylesheet" href="{{ asset('front-assets/css/bootstrap.min.css') }}">
@@ -27,7 +30,7 @@
 </head>
 
 <body onload="startTime()">
-    <input type="hidden" value="{{asset('front-assets/img/')}}" id="weather-icon-assets">
+    <input type="hidden" value="{{ asset('front-assets/img/') }}" id="weather-icon-assets">
     @includeIf('layouts.frontend.partials.header-nav')
     @includeIf('layouts.frontend.partials.desktop-nav')
     @includeIf('layouts.frontend.partials.desktop-breaking')
@@ -42,30 +45,16 @@
     <script src="{{ asset('front-assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('front-assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('front-assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('front-assets/js/weather.js')}}"></script>
+    <script src="{{ asset('front-assets/js/weather.js') }}"></script>
     <script src="{{ asset('front-assets/js/time.js') }}"></script>
     <script src="{{ asset('front-assets/js/slick.js') }}"></script>
     <script src="{{ asset('js/share.js') }}"></script>
     <script src="{{ asset('front-assets/js/app.js') }}"></script>
     @includeIf('vendor.worlddata.ajax-script')
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     @stack('js')
-    <script>
-        function clipboardCopy(that) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(that).data('copy')).select();
-            document.execCommand("copy");
-            $temp.remove();
-            $(that).attr('data-original-title','Copied!');
-            $(that).tooltip('show');
-            setTimeout(() => {
-                $(that).attr('data-original-title','Copy To ClipBoard');
-            }, 500);
-        }
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+    <script src="{{ asset('front-assets/js/master.js') }}"></script>
+
 </body>
 
 </html>

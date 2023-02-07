@@ -184,6 +184,7 @@ return [
 
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Berkayk\OneSignal\OneSignalServiceProvider::class,
     ],
 
     /*
@@ -250,6 +251,7 @@ return [
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'OneSignal' => Berkayk\OneSignal\OneSignalFacade::class,
     ],
 
 ];
