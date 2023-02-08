@@ -134,6 +134,15 @@
             </ul>
         </li>
         @endpermission
+        <li class="{{request()->routeIs('admin.account.*') ? 'mm-active' : ''}}">
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-money"></i></div>
+                <div class="menu-title">Accounting</div>
+            </a>
+            <ul>
+                <li><a href="{{Route('admin.account.banking')}}"><i class="bx bx-right-arrow-alt"></i>Banking</a></li>
+            </ul>
+        </li>
         @permission('read-reporters')
         <li class="{{request()->routeIs('admin.reporter.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.reporter.index')}}">

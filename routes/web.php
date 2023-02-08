@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertCategoryController;
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\AdvertPlacementController;
+use App\Http\Controllers\BankAccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
@@ -266,5 +267,15 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     // ----------------[ Backpanel Panel E-mail Module Routes ]------------------------
     Route::prefix('/emailbox')->name('emailbox.')->group(function(){
         Route::get('/', [EmailController::class, 'index'])->name('index');
+    });
+    // ----------------[ Backpanel Panel Accounts Module Routes ]------------------------
+    Route::prefix('/accounting')->name('account.')->group(function(){
+        Route::prefix('/bank-account')->controller(BankAccountController::class)->group(function(){
+            Route::get('/', 'index')->name('banking');
+            Route::get('/create','create')->name('banking.create');
+            Route::post('/save','store')->name('banking.save');
+            Route::get('/edit/{id}','edit')->name('banking.edit');
+            Route::get('/delete/{id}','destroy')->name('banking.delete');
+        });
     });
 });
