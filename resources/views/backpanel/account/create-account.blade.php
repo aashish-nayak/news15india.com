@@ -1,17 +1,6 @@
 @extends('layouts.backpanel.master')
 @section('title', (isset($edit)) ? 'Update Bank Account' : 'Create Bank Account')
-@push('css')
-<style>
-    .nav-primary.nav-tabs .nav-link.active {
-        border-color: #fff #fff #0d6efd #fff;
-    }
 
-    .nav-tabs .nav-link:focus,
-    .nav-tabs .nav-link:hover {
-        border-color: transparent;
-    }
-</style>
-@endpush
 @section('sections')
 <div class="col-10 mx-auto">
     <div class="card">

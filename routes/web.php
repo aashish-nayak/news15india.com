@@ -5,6 +5,7 @@ use App\Http\Controllers\AdvertCategoryController;
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\AdvertPlacementController;
 use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\BankTransferController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
@@ -270,6 +271,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel Accounts Module Routes ]------------------------
     Route::prefix('/accounting')->name('account.')->group(function(){
+        // ------------ [ Bank Accounts SubModule ] ------------
         Route::prefix('/bank-account')->controller(BankAccountController::class)->group(function(){
             Route::get('/', 'index')->name('banking');
             Route::get('/create','create')->name('banking.create');
@@ -277,5 +279,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
             Route::get('/edit/{id}','edit')->name('banking.edit');
             Route::get('/delete/{id}','destroy')->name('banking.delete');
         });
+        // ------------ [ Bank Transfer SubModule ] ------------
+        Route::resource('/bank-transfer', BankTransferController::class);
     });
 });
