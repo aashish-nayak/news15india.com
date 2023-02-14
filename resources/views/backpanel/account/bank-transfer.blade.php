@@ -1,37 +1,9 @@
 @extends('layouts.backpanel.master')
 @section('title', 'Bank Transfer')
 @push('css')
-<style>
-    .nav-primary.nav-tabs .nav-link.active {
-        border-color: #fff #fff #0d6efd #fff;
-    }
-
-    .nav-tabs .nav-link:focus,
-    .nav-tabs .nav-link:hover {
-        border-color: transparent;
-    }
-</style>
 @endpush
 @section('sections')
 <div class="col-12">
-    <ul class="nav nav-tabs nav-primary mb-2 bg-white" role="tablist">
-        <li class="nav-item w-25">
-            <a class="nav-link" href="{{route('admin.account.banking')}}">
-                <div class="d-flex align-items-center justify-content-center">
-                    <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i> </div>
-                    <div class="tab-title">Bank Accounts</div>
-                </div>
-            </a>
-        </li>
-        <li class="nav-item w-25">
-            <a class="nav-link active" href="{{route('admin.account.bank-transfer.index')}}">
-                <div class="d-flex align-items-center justify-content-center">
-                    <div class="tab-icon"><i class="bx bx-transfer font-18 me-1"></i> </div>
-                    <div class="tab-title">Bank Transfer</div>
-                </div>
-            </a>
-        </li>
-    </ul>
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div class="col-md-6">

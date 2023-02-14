@@ -140,7 +140,8 @@
                 <div class="menu-title">Accounting</div>
             </a>
             <ul>
-                <li><a href="{{Route('admin.account.banking')}}"><i class="bx bx-right-arrow-alt"></i>Banking</a></li>
+                <li><a href="{{route('admin.account.banking')}}"><i class="bx bx-right-arrow-alt"></i>Bank Accounts</a></li>
+                <li><a href="{{route('admin.account.bank-transfer.index')}}"><i class="bx bx-right-arrow-alt"></i>Bank Transfer</a></li>
             </ul>
         </li>
         @permission('read-reporters')
