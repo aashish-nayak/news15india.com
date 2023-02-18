@@ -142,6 +142,7 @@
             <ul>
                 <li><a href="{{route('admin.account.banking')}}"><i class="bx bx-right-arrow-alt"></i>Bank Accounts</a></li>
                 <li><a href="{{route('admin.account.bank-transfer.index')}}"><i class="bx bx-right-arrow-alt"></i>Bank Transfer</a></li>
+                <li><a href="{{route('admin.account.payments.index')}}"><i class="bx bx-right-arrow-alt"></i>Payments</a></li>
             </ul>
         </li>
         @permission('read-reporters')

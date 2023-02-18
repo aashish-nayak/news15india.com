@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertCategoryController;
 use App\Http\Controllers\AdvertController;
@@ -281,5 +282,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         });
         // ------------ [ Bank Transfer SubModule ] ------------
         Route::resource('/bank-transfer', BankTransferController::class);
+        // -------------- [ Payments ] ---------------
+        Route::get('/payments',[AccountController::class,'payments'])->name('payments.index');
+        Route::get('/payments/{id}',[AccountController::class,'payment_view'])->name('payments.view');
     });
 });
