@@ -15,6 +15,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MessageController;
@@ -285,5 +286,12 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         // -------------- [ Payments ] ---------------
         Route::get('/payments',[AccountController::class,'payments'])->name('payments.index');
         Route::get('/payments/{id}',[AccountController::class,'payment_view'])->name('payments.view');
+        // -------------- [ Expenses ] ---------------
+        Route::get('/expenses',[ExpenseController::class,'index'])->name('expenses.index');
+        Route::get('/expenses/create',[ExpenseController::class,'create'])->name('expenses.create');
+        Route::post('/expenses/store',[ExpenseController::class,'store'])->name('expenses.store');
+        Route::post('/category/store',[ExpenseController::class,'categoryStore'])->name('category.store');
+        Route::get('/expenses/{id}/edit',[ExpenseController::class,'edit'])->name('expenses.edit');
+        Route::get('/expenses/{id}/destroy',[ExpenseController::class,'destroy'])->name('expenses.destroy');
     });
 });
