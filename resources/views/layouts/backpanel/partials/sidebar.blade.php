@@ -142,8 +142,9 @@
             <ul>
                 <li><a href="{{route('admin.account.banking')}}"><i class="bx bx-right-arrow-alt"></i>Bank Accounts</a></li>
                 <li><a href="{{route('admin.account.bank-transfer.index')}}"><i class="bx bx-right-arrow-alt"></i>Bank Transfer</a></li>
-                <li><a href="{{route('admin.account.payments.index')}}"><i class="bx bx-right-arrow-alt"></i>Payments</a></li>
+                <li><a href="{{route('admin.account.payments.index')}}"><i class="bx bx-right-arrow-alt"></i>Revenue</a></li>
                 <li><a href="{{route('admin.account.expenses.index')}}"><i class="bx bx-right-arrow-alt"></i>Expenses</a></li>
+                <li><a href="{{route('admin.account.transactions.index')}}"><i class="bx bx-right-arrow-alt"></i>Transactions</a></li>
             </ul>
         </li>
         @permission('read-reporters')

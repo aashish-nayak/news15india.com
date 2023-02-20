@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TransactionEvent;
 use App\Models\BankAccount;
 use Illuminate\Http\Request;
 
@@ -30,12 +31,15 @@ class BankAccountController extends Controller
         $data = $request->except('_token');
         $data['created_by'] = auth('admin')->id();
         if($request->has('id')){
-            BankAccount::find($data['id'])->update($data);
+            $account = BankAccount::find($data['id']);
             $message = 'Bank Account Updated Successfully!';
         }else{
-            BankAccount::create($data);
+            $account = new BankAccount();
             $message = 'Bank Account Created Successfully!';
         }
+        $account->fill($data);
+        $account->save();
+        event (new TransactionEvent($account->id,get_class($account),'New Account Added',$account->id,now()->toDateString(),'credit',(float)$data['opening_balance'],1));
         $request->session()->flash('success',$message);
         return redirect()->route('admin.account.banking');
     }

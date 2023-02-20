@@ -284,8 +284,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         // ------------ [ Bank Transfer SubModule ] ------------
         Route::resource('/bank-transfer', BankTransferController::class);
         // -------------- [ Payments ] ---------------
-        Route::get('/payments',[AccountController::class,'payments'])->name('payments.index');
-        Route::get('/payments/{id}',[AccountController::class,'payment_view'])->name('payments.view');
+        Route::get('/revenue',[AccountController::class,'payments'])->name('payments.index');
+        Route::get('/revenue/{id}',[AccountController::class,'payment_view'])->name('payments.view');
         // -------------- [ Expenses ] ---------------
         Route::get('/expenses',[ExpenseController::class,'index'])->name('expenses.index');
         Route::get('/expenses/create',[ExpenseController::class,'create'])->name('expenses.create');
@@ -293,5 +293,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::post('/category/store',[ExpenseController::class,'categoryStore'])->name('category.store');
         Route::get('/expenses/{id}/edit',[ExpenseController::class,'edit'])->name('expenses.edit');
         Route::get('/expenses/{id}/destroy',[ExpenseController::class,'destroy'])->name('expenses.destroy');
+        // -------------- [ Transactions ] ---------------
+        Route::get('/transactions',[AccountController::class,'payments'])->name('transactions.index');
+        Route::get('/transactions/{id}',[AccountController::class,'payment_view'])->name('transactions.view');
     });
 });

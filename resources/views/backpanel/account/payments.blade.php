@@ -1,5 +1,5 @@
 @extends('layouts.backpanel.master')
-@section('title', 'Payments')
+@section('title', 'Revenue')
 @push('css')
 @endpush
 @section('sections')
@@ -8,8 +8,8 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <div class="col-md-6">
                 <h4 class="card-title m-0 d-flex align-items-center">
-                    <i class="bx bx-payment fs-3 mt-1 me-2"></i>
-                    <span>Payments</span>
+                    <i class="bx bx-money fs-3 mt-1 me-2"></i>
+                    <span>Revenue</span>
                 </h4>
             </div>
             <div class="col-md-6 col-12">
@@ -27,6 +27,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Payment From</th>
                         <th>Payment Method</th>
                         <th>Amount</th>
                         <th>Status</th>
@@ -41,6 +42,7 @@
                         <td>{{$payment->user->name}}</td>
                         <td>{{$payment->user->email}}</td>
                         <td>{{$payment->user->details->phone_number}}</td>
+                        <td>{{$payment->reference->getMorphClass()}}</td>
                         <td>{{$payment->payment_method}}</td>
                         <td>₹{{$payment->amount}}</td>
                         <td>

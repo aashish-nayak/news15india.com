@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TransactionEvent;
 use App\Models\BankAccount;
 use App\Models\BankTransfer;
 use Illuminate\Http\Request;
@@ -86,9 +87,11 @@ class BankTransferController extends Controller
             if ($type == 'credit') {
                 $oldBalance                   = (float)$bankAccount->opening_balance;
                 $bankAccount->opening_balance = $oldBalance + (float)$amount;
+                event (new TransactionEvent($bankAccount->id,get_class($bankAccount),'Bank Transfer',$bankAccount->id,now()->toDateString(),'credit',(float)$amount,1));
             } elseif ($type == 'debit') {
                 $oldBalance                   = (float)$bankAccount->opening_balance;
                 $bankAccount->opening_balance = $oldBalance - (float)$amount;
+                event (new TransactionEvent($bankAccount->id,get_class($bankAccount),'Bank Transfer',$bankAccount->id,now()->toDateString(),'debit',-(float)$amount ,1));
             }
             $bankAccount->save();
         }

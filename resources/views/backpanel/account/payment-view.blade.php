@@ -1,5 +1,5 @@
 @extends('layouts.backpanel.master')
-@section('title', 'Payment View')
+@section('title', 'Transaction View')
 
 @section('sections')
 <div class="col-10 mx-auto">
@@ -7,8 +7,8 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <div class="col-md-6">
                 <h4 class="card-title m-0 d-flex align-items-center">
-                    <i class="bx bx-show fs-3 mt-1 me-2"></i>
-                    <span>Payment View</span>
+                    <i class="bx bx-money fs-3 mt-1 me-2"></i>
+                    <span>Transaction View</span>
                 </h4>
             </div>
             <div class="col-md-6 col-12">
