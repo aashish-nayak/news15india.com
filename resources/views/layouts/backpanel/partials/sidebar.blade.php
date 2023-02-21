@@ -10,14 +10,14 @@
     </div>
     <ul class="metismenu" id="menu">
         {{-- <li class="menu-label">UI Elements</li> --}}
-        <li>
+        <li class="{{request()->routeIs('admin.dashboard') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.dashboard')}}">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
         @permission('read-category')
-        <li>
+        <li class="{{request()->routeIs('admin.category.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.category.index')}}">
                 <div class="parent-icon"><i class='bx bx-grid-alt'></i></div>
                 <div class="menu-title">Category</div>
@@ -25,7 +25,7 @@
         </li>
         @endpermission
         @permission('read-news')
-        <li>
+        <li class="{{request()->routeIs('admin.news.*') ? 'mm-active' : ''}}">
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-news"></i></div>
                 <div class="menu-title">News</div>
@@ -42,7 +42,7 @@
         </li>
         @endpermission
         @permission('read-comments')
-        <li>
+        <li class="{{request()->routeIs('admin.comment.*') ? 'mm-active' : ''}}">
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-comment-dots"></i></div>
                 <div class="menu-title">Comments</div>
@@ -59,7 +59,7 @@
         </li>
         @endpermission
         @permission('read-polls')
-        <li>
+        <li class="{{request()->routeIs('admin.poll.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.poll.index')}}">
                 <div class="parent-icon"><i class="bx bx-poll"></i></div>
                 <div class="menu-title">Surveys</div>
@@ -67,7 +67,7 @@
         </li>
         @endpermission
         @permission('read-media')
-        <li>
+        <li class="{{request()->routeIs('admin.media.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.media.index')}}">
                 <div class="parent-icon"><i class='bx bx-images'></i></div>
                 <div class="menu-title">Media</div>
@@ -75,15 +75,28 @@
         </li>
         @endpermission
         @permission('read-tags')
-        <li>
+        <li class="{{request()->routeIs('admin.tag.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.tag.index')}}">
                 <div class="parent-icon"><i class="bx bx-hash"></i></div>
                 <div class="menu-title">Tags</div>
             </a>
         </li>
         @endpermission
+        {{-- <li class="{{request()->routeIs('admin.chat.*') ? 'mm-active' : ''}}">
+            <a href="{{Route('admin.chat.index')}}">
+                <div class="parent-icon"><i class='bx bx-chat'></i></div>
+                <div class="menu-title">Messanger</div>
+                @if($new_messages_count > 0)<span class="badge rounded-pill bg-danger ms-auto">{{$new_messages_count}}</span>@endif
+            </a>
+        </li>
+        <li class="{{request()->routeIs('admin.emailbox.*') ? 'mm-active' : ''}}">
+            <a href="{{Route('admin.emailbox.index')}}">
+                <div class="parent-icon"><i class='bx bx-envelope'></i></div>
+                <div class="menu-title">MailBox</div>
+            </a>
+        </li> --}}
         @role('super-admin','admin')
-        <li>
+        <li class="{{request()->routeIs('admin.user.*') ? 'mm-active' : ''}}">
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-lock"></i></div>
                 <div class="menu-title">Authentication</div>
@@ -102,7 +115,7 @@
         </li>
         @endrole
         @permission('read-advertisement')
-        <li>
+        <li class="{{request()->routeIs('admin.advert.*') ? 'mm-active' : ''}}">
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-book-content"></i></div>
                 <div class="menu-title">Advertisements</div>
@@ -121,8 +134,21 @@
             </ul>
         </li>
         @endpermission
+        {{-- <li class="{{request()->routeIs('admin.account.*') ? 'mm-active' : ''}}">
+            <a href="javascript:void(0);" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-money"></i></div>
+                <div class="menu-title">Accounting</div>
+            </a>
+            <ul>
+                <li><a href="{{route('admin.account.banking')}}"><i class="bx bx-right-arrow-alt"></i>Bank Accounts</a></li>
+                <li><a href="{{route('admin.account.bank-transfer.index')}}"><i class="bx bx-right-arrow-alt"></i>Bank Transfer</a></li>
+                <li><a href="{{route('admin.account.payments.index')}}"><i class="bx bx-right-arrow-alt"></i>Revenue</a></li>
+                <li><a href="{{route('admin.account.expenses.index')}}"><i class="bx bx-right-arrow-alt"></i>Expenses</a></li>
+                <li><a href="{{route('admin.account.transactions.index')}}"><i class="bx bx-right-arrow-alt"></i>Transactions</a></li>
+            </ul>
+        </li> --}}
         @permission('read-reporters')
-        <li>
+        <li class="{{request()->routeIs('admin.reporter.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.reporter.index')}}">
                 <div class="parent-icon"><i class='bx bx-group'></i></div>
                 <div class="menu-title">Reporters</div>
@@ -130,27 +156,29 @@
         </li>
         @endpermission
         @permission('read-reporters')
-        <li>
+        <li class="{{request()->routeIs('admin.complaint.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.complaint.index')}}">
                 <div class="parent-icon"><i class='bx bx-box'></i></div>
                 <div class="menu-title">Complaints</div>
             </a>
         </li>
         @endpermission
-        <li>
+        @permission('read-page')
+        <li class="{{request()->routeIs('admin.page.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.page.index')}}">
                 <div class="parent-icon"><i class='bx bx-detail'></i></div>
                 <div class="menu-title">Pages</div>
             </a>
         </li>
+        @endpermission
         @role('super-admin')
-        <li>
+        <li class="{{request()->routeIs('admin.menu.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.menu.index',1)}}">
                 <div class="parent-icon"><i class='bx bx-menu-alt-right'></i></div>
                 <div class="menu-title">Menus</div>
             </a>
         </li>
-        <li>
+        <li class="{{request()->routeIs('admin.setting.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.setting.index')}}">
                 <div class="parent-icon"><i class='bx bx-cog'></i></div>
                 <div class="menu-title">Settings</div>
@@ -158,7 +186,7 @@
         </li>
         @endrole
         @permission('read-user')
-        <li>
+        <li class="{{request()->routeIs('admin.viewer.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.viewer.index')}}">
                 <div class="parent-icon"><i class='bx bx-user'></i></div>
                 <div class="menu-title">Users</div>

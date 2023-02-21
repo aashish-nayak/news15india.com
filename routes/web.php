@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertCategoryController;
 use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\AdvertPlacementController;
+use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\BankTransferController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MediaController;
@@ -11,8 +14,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
@@ -181,9 +187,10 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::prefix('/viewers')->name('viewer.')->group(function(){
         Route::get('/', [DashboardController::class, 'websiteViewers'])->middleware('permission:read-user')->name('index');
         Route::get('/blocked', [DashboardController::class, 'blockViewers'])->middleware('permission:block-user')->name('block');
-        Route::get('/edit/{id}', [DashboardController::class, 'viewerEdit'])->middleware('permission:update-user')->name('edit');
-        Route::get('/block/{id}', [DashboardController::class, 'viewerBlock'])->middleware('permission:delete-user')->name('delete');
+        Route::get('/details/{id}/{page?}', [DashboardController::class, 'details'])->middleware('permission:read-user')->name('view');
+        Route::get('/block/{id}', [DashboardController::class, 'viewerBlock'])->middleware('permission:update-user')->name('delete');
         Route::get('/restore/{id}', [DashboardController::class, 'viewerRestore'])->middleware('permission:restore-user')->name('restore');
+        Route::get('/destroy/{id}', [DashboardController::class, 'viewerDestroy'])->middleware('permission:delete-user')->name('destroy');
     });
     // ----------------[ Backpanel Panel Roles Module Routes ]------------------------
     Route::prefix('/role')->name('role.')->group(function(){
@@ -249,5 +256,45 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/index',[SettingController::class,'index'])->name('index');
         Route::post('/store',[SettingController::class,'store'])->name('store');
         Route::post('/page-setting-store',[SettingController::class,'pageSettingStore'])->name('page-setting-store');
+    });
+    // ----------------[ Backpanel Panel Chat Module Routes ]------------------------
+    Route::prefix('/chats')->name('chat.')->group(function(){
+        Route::get('/', [MessageController::class, 'index'])->name('index');
+        Route::get('/users', [MessageController::class, 'users'])->name('users');
+        Route::get('/messages', [MessageController::class, 'messages'])->name('messages');
+        Route::post('/messages', [MessageController::class, 'messageStore'])->name('message-store');
+        Route::get('/contact-messages/{id}', [MessageController::class, 'contactMessages'])->name('contact-messages');
+        Route::get('/read/{recevier}', [MessageController::class, 'read'])->name('read');
+        Route::get('/user/fetch-unread/{sender}', [MessageController::class, 'fetchUnread'])->name('fetch.unread');
+    });
+    // ----------------[ Backpanel Panel E-mail Module Routes ]------------------------
+    Route::prefix('/emailbox')->name('emailbox.')->group(function(){
+        Route::get('/', [EmailController::class, 'index'])->name('index');
+    });
+    // ----------------[ Backpanel Panel Accounts Module Routes ]------------------------
+    Route::prefix('/accounting')->name('account.')->group(function(){
+        // ------------ [ Bank Accounts SubModule ] ------------
+        Route::prefix('/bank-account')->controller(BankAccountController::class)->group(function(){
+            Route::get('/', 'index')->name('banking');
+            Route::get('/create','create')->name('banking.create');
+            Route::post('/save','store')->name('banking.save');
+            Route::get('/edit/{id}','edit')->name('banking.edit');
+            Route::get('/delete/{id}','destroy')->name('banking.delete');
+        });
+        // ------------ [ Bank Transfer SubModule ] ------------
+        Route::resource('/bank-transfer', BankTransferController::class);
+        // -------------- [ Payments ] ---------------
+        Route::get('/revenue',[AccountController::class,'payments'])->name('payments.index');
+        Route::get('/revenue/{id}',[AccountController::class,'payment_view'])->name('payments.view');
+        // -------------- [ Expenses ] ---------------
+        Route::get('/expenses',[ExpenseController::class,'index'])->name('expenses.index');
+        Route::get('/expenses/create',[ExpenseController::class,'create'])->name('expenses.create');
+        Route::post('/expenses/store',[ExpenseController::class,'store'])->name('expenses.store');
+        Route::post('/category/store',[ExpenseController::class,'categoryStore'])->name('category.store');
+        Route::get('/expenses/{id}/edit',[ExpenseController::class,'edit'])->name('expenses.edit');
+        Route::get('/expenses/{id}/destroy',[ExpenseController::class,'destroy'])->name('expenses.destroy');
+        // -------------- [ Transactions ] ---------------
+        Route::get('/transactions',[AccountController::class,'payments'])->name('transactions.index');
+        Route::get('/transactions/{id}',[AccountController::class,'payment_view'])->name('transactions.view');
     });
 });

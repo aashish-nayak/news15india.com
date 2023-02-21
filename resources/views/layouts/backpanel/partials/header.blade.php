@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/pace.min.css')}}"/>
-    @stack('plugin-css')
 	<script src="{{asset('assets/js/pace.min.js')}}"></script>
+    @stack('plugin-css')
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" />

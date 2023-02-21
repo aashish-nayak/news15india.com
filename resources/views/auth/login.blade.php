@@ -61,17 +61,17 @@
                     <div class="col-md-12 text-center px-0 px-md-3">
                         <div class="row justify-content-between m-0">
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <a href="javascript:void(0)" class="m-0 social-tab social-tab-f">
+                                <a href="{{url('login/facebook')}}" class="m-0 social-tab social-tab-f">
                                     <i class="fab fa-facebook-f mr-1"></i> Login with Facebook
                                 </a>
                             </div>
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <a href="javascript:void(0)" class="m-0 social-tab social-tab-t">
+                                <a href="{{url('login/twitter')}}" class="m-0 social-tab social-tab-t">
                                     <i class="fab fa-twitter mr-1"></i> Login with Twitter
                                 </a>
                             </div>
                             <div class="col-md-4 mb-3 mb-md-0">
-                                <a href="javascript:void(0)" class="m-0 social-tab social-tab-g">
+                                <a href="{{url('login/google')}}" class="m-0 social-tab social-tab-g">
                                     <i class="fab fa-google mr-1"></i> Login with Google
                                 </a>
                             </div>

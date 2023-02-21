@@ -48,10 +48,13 @@ class User extends Authenticatable
 
     public function getAvatar()
     {
+        // if(stripos($avatar, 'http') == 0 && !preg_match('/\s/',$avatar)){
+        //     $avatar = $avatar;
+        // }
         $avatar = $this->details->avatar;
         if (!empty($avatar) && Storage::exists('public/users-avatar/' . $avatar)) {
             $avatar = asset('storage/users-avatar/' . $avatar);
-        } else {
+        }else if($avatar == null){
             $avatar = 'https://eu.ui-avatars.com/api/?name=' . $this->name . '&size=250';
         }
         return $avatar;

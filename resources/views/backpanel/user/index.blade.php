@@ -52,9 +52,4 @@
     'deleteMessage' => "You Want to Block this Member!",
     'deleteConfirmMessage' => "Yes, Block it!",
 ])
-<script>
-    $(document).ready(function() {
-        $('#users').DataTable();
-    });
-</script>
 @endpush

@@ -2,36 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UserDataTable;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function websiteViewers()
+    public function websiteViewers(UserDataTable $datatable)
     {
-        $users = User::get();
-        return view('backpanel.viewer.index',compact('users'));
+        $users_blocked = false;
+        return $datatable->render('backpanel.viewer.index',compact('users_blocked'));
     }
     public function viewerBlock($id)
     {
         User::find($id)->delete();
-        return redirect()->back();
+        return redirect()->route('admin.viewer.index');
     }
-    public function viewerEdit($id)
+    public function viewerDestroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->back();
+        User::withTrashed()->find($id)->forceDelete();
+        return redirect()->route('admin.viewer.block');
+    }
+
+    public function details($id,$page = 'index')
+    {
+        $data = User::query();
+        if($page=='trash'){
+            $data->withTrashed();
+        }
+        $data = $data->with('details')->find($id);
+        return view('backpanel.viewer.details',compact('data','page'));
     }
 
     public function blockViewers()
     {
-        $users = User::onlyTrashed()->get();
+        $datatable = new UserDataTable('trash');
         $users_blocked = true;
-        return view('backpanel.viewer.index',compact('users','users_blocked'));
+        return $datatable->render('backpanel.viewer.index',compact('users_blocked'));
     }
 
     public function viewerRestore($id){
         User::withTrashed()->find($id)->restore();
-        return redirect()->back();
+        return redirect()->route('admin.viewer.index');
     }
 }

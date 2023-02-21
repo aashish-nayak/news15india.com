@@ -171,7 +171,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\PermissionServiceProvider::class,
@@ -183,6 +183,8 @@ return [
         Yajra\DataTables\EditorServiceProvider::class,
 
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
+        Berkayk\OneSignal\OneSignalServiceProvider::class,
     ],
 
     /*
@@ -247,6 +249,9 @@ return [
         'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'OneSignal' => Berkayk\OneSignal\OneSignalFacade::class,
     ],
 
 ];
