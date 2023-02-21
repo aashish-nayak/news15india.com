@@ -82,7 +82,7 @@
             </a>
         </li>
         @endpermission
-        <li class="{{request()->routeIs('admin.chat.*') ? 'mm-active' : ''}}">
+        {{-- <li class="{{request()->routeIs('admin.chat.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.chat.index')}}">
                 <div class="parent-icon"><i class='bx bx-chat'></i></div>
                 <div class="menu-title">Messanger</div>
@@ -94,7 +94,7 @@
                 <div class="parent-icon"><i class='bx bx-envelope'></i></div>
                 <div class="menu-title">MailBox</div>
             </a>
-        </li>
+        </li> --}}
         @role('super-admin','admin')
         <li class="{{request()->routeIs('admin.user.*') ? 'mm-active' : ''}}">
             <a href="javascript:void(0);" class="has-arrow">
@@ -134,7 +134,7 @@
             </ul>
         </li>
         @endpermission
-        <li class="{{request()->routeIs('admin.account.*') ? 'mm-active' : ''}}">
+        {{-- <li class="{{request()->routeIs('admin.account.*') ? 'mm-active' : ''}}">
             <a href="javascript:void(0);" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-money"></i></div>
                 <div class="menu-title">Accounting</div>
@@ -146,7 +146,7 @@
                 <li><a href="{{route('admin.account.expenses.index')}}"><i class="bx bx-right-arrow-alt"></i>Expenses</a></li>
                 <li><a href="{{route('admin.account.transactions.index')}}"><i class="bx bx-right-arrow-alt"></i>Transactions</a></li>
             </ul>
-        </li>
+        </li> --}}
         @permission('read-reporters')
         <li class="{{request()->routeIs('admin.reporter.*') ? 'mm-active' : ''}}">
             <a href="{{Route('admin.reporter.index')}}">
