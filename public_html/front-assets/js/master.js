@@ -59,7 +59,7 @@ var OneSignal = OneSignal || [];
 var buttonSelector = "#my-notification-button";
 OneSignal.push(function() {
     OneSignal.init({
-        appId: "cbefd7e8-4e65-4c64-b36b-f27f27641b63",
+        appId: "9dd3f3d5-5f35-472f-987e-be0a4262510e",
     });
     if (!OneSignal.isPushNotificationsSupported()) {
         return;
