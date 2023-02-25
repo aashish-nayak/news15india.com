@@ -127,7 +127,7 @@ class ReporterController extends Controller
                 'payment_method' => 'manual',
                 'amount' => 10000,
             ]);
-            event (new TransactionEvent($reporter->id,get_class($reporter),'Reporter Application Payment',setting('razorpay_account'),now()->toDateString(),'credit',10000,1));
+            event (new TransactionEvent($reporter->id,get_class($reporter),'Reporter Application Payment',setting('razorpay_account'),now()->toDateString(),'credit',10000,1,true));
             return redirect()->route('thank-you',$order->order_id);
         } catch (\Exception $e) {
             $request->session()->flash('error', 'Unable to process request.Error:'.json_encode($e->getMessage(), true));

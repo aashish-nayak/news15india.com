@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\BankAccount;
 use App\Models\Transaction;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -22,8 +23,11 @@ class TransactionEvent
      * @return void
      */
 
-    public function __construct($reference_id,$reference,$reason, $account, $date, $type = 'credit', $amount = 0.00, $status = 0)
+    public function __construct($reference_id,$reference,$reason, $account, $date, $type = 'credit', $amount = 0.00, $status = 0,$transfer = false)
     {
+        if($transfer == true){
+            $this->bankAccountBalance($account, $amount, $type);
+        }
         Transaction::create([
             'reference_id' => $reference_id,
             'reference_type' => $reference,
@@ -34,6 +38,23 @@ class TransactionEvent
             'amount' => $amount,
             'status' => $status
         ]);
+    }
+
+    
+    public function bankAccountBalance($id, $amount, $type)
+    {
+        $bankAccount = BankAccount::find($id);
+        if ($bankAccount) {
+            if ($type == 'credit') {
+                $oldBalance                   = (float)$bankAccount->opening_balance;
+                $bankAccount->opening_balance = $oldBalance + (float)$amount;
+            } elseif ($type == 'debit') {
+                $oldBalance                   = (float)$bankAccount->opening_balance;
+                $bankAccount->opening_balance = $oldBalance - (float)$amount;
+            }
+            $bankAccount->save();
+        }
+        return true;
     }
     /**
      * Get the channels the event should broadcast on.

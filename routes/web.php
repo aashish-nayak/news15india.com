@@ -294,7 +294,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/expenses/{id}/edit',[ExpenseController::class,'edit'])->name('expenses.edit');
         Route::get('/expenses/{id}/destroy',[ExpenseController::class,'destroy'])->name('expenses.destroy');
         // -------------- [ Transactions ] ---------------
-        Route::get('/transactions',[AccountController::class,'payments'])->name('transactions.index');
+        Route::get('/transactions',[AccountController::class,'transactions'])->name('transactions.index');
         Route::get('/transactions/{id}',[AccountController::class,'payment_view'])->name('transactions.view');
     });
 });

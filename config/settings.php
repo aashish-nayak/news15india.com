@@ -46,6 +46,7 @@ return [
         'whatsapp_group_url' => null,
         'play_store_app_link' => null,
         'apple_store_app_link' => null,
+        'razorpay_account' => 1,
         'special_coverage' => json_encode([
             'block_1' => [
                 'image' => null,

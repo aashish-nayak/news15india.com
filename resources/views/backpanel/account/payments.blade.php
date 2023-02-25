@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="payments" class="w-100 table table-responsive table-striped table-bordered align-middle border table-hover">
+            <table id="payments" class="w-100 table responsive table-striped table-bordered align-middle border table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -67,7 +67,9 @@
 @endsection
 @push('scripts')
 <script>
-    $('#payments').DataTable();
+    $('#payments').DataTable({
+        responsive :true
+    });
     $(document).on("click",".delete",function (e) {
         var url = $(this).attr("href");
         e.preventDefault();

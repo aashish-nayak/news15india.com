@@ -17,7 +17,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $expenses = Expense::get();
+        $expenses = Expense::latest()->get();
         return view('backpanel.account.expenses',compact('expenses'));
     }
 
