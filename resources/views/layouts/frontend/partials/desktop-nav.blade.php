@@ -12,7 +12,7 @@
                     </a>
                 </div>
                 <div class="d-md-none d-block col-6 justify-self-end text-right px-0">
-                    <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center" ><i class="fas fa-bell mt-3"></i></a>
+                    {{-- <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center" ><i class="fas fa-bell mt-3"></i></a> --}}
                     <a href="javascript:void(0)" style="font-size:25px" class="mr-3 p-1 text-center"><i class="far fa-tv-retro mt-3"></i></i></a>
                     @auth('web')
                     @php

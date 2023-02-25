@@ -1,72 +1,11 @@
-function onManageWebPushSubscriptionButtonClicked(event) {
-    getSubscriptionState().then(function(state) {
-        if (state.isPushEnabled) {
-            /* Subscribed, opt them out */
-            OneSignal.setSubscription(false);
-        } else {
-            if (state.isOptedOut) {
-                /* Opted out, opt them back in */
-                OneSignal.setSubscription(true);
-            } else {
-                /* Unsubscribed, subscribe them */
-                OneSignal.registerForPushNotifications();
-            }
-        }
-    });
-    event.preventDefault();
-}
-
-function updateMangeWebPushSubscriptionButton(buttonSelector) {
-    var hideWhenSubscribed = false;
-    var subscribeText = "<i class='fas fa-bell'></i> Notifications";
-    var unsubscribeText = "<i class='fas fa-bell'></i> Unsubscribe";
-
-    getSubscriptionState().then(function(state) {
-        var buttonText = !state.isPushEnabled || state.isOptedOut ? subscribeText : unsubscribeText;
-
-        var element = document.querySelector(buttonSelector);
-        if (element === null) {
-            return;
-        }
-
-        element.removeEventListener('click', onManageWebPushSubscriptionButtonClicked);
-        element.addEventListener('click', onManageWebPushSubscriptionButtonClicked);
-        element.innerHTML = buttonText;
-
-        if (hideWhenSubscribed && state.isPushEnabled) {
-            element.style.display = "none";
-        } else {
-            element.style.display = "";
-        }
-    });
-}
-
-function getSubscriptionState() {
-    return Promise.all([
-        OneSignal.isPushNotificationsEnabled(),
-        OneSignal.isOptedOut()
-    ]).then(function(result) {
-        var isPushEnabled = result[0];
-        var isOptedOut = result[1];
-
-        return {
-            isPushEnabled: isPushEnabled,
-            isOptedOut: isOptedOut
-        };
-    });
-}
-var OneSignal = OneSignal || [];
-var buttonSelector = "#my-notification-button";
-OneSignal.push(function() {
+window.OneSignal = window.OneSignal || [];
+OneSignal.push(function(){
     OneSignal.init({
-        appId: "9dd3f3d5-5f35-472f-987e-be0a4262510e",
-    });
-    if (!OneSignal.isPushNotificationsSupported()) {
-        return;
-    }
-    updateMangeWebPushSubscriptionButton(buttonSelector);
-    OneSignal.on("subscriptionChange", function(isSubscribed) {
-        updateMangeWebPushSubscriptionButton(buttonSelector);
+        appId : "9dd3f3d5-5f35-472f-987e-be0a4262510e",
+        safari_web_id : "web.onesignal.auto.017d7a1b-f1ef-4fce-a00c-21a546b5491d",
+        notifyButton : {
+            enable :true,
+        },
     });
 });
 
