@@ -22,7 +22,13 @@ class AccountController extends BaseAccountController
 
     public function transactions()
     {
-        $transactions = Transaction::latest()->get();
+        $transactions = Transaction::query();
+        if (request()->has('from_date') && request()->has('to_date') && request()->from_date != '' && request()->to_date != '') {
+            $transactions->whereDate('date', '>=', request()->from_date)->whereDate('date', '<=', request()->to_date);
+        }else{
+            $transactions->take(10);
+        }
+        $transactions = $transactions->latest()->get();
         return view('backpanel.account.transactions',compact('transactions'));
     }
 }

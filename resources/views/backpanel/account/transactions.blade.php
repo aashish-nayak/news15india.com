@@ -12,6 +12,27 @@
                     <span>Transactions</span>
                 </h4>
             </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-end align-items-center gap-2">
+                    <div class="form-group me-2 filters">
+                        <form action="" method="get">
+                            <div class="row justify-content-end align-items-center m-0">
+                                <div class="col px-1">
+                                    <div class="input-group input-daterange d-flex align-items-center">
+                                        &nbsp;<div class="input-group-addon">From</div>&nbsp;
+                                        <input type="date" name="from_date" id="filter_from" class="form-control form-control-sm" value="{{request()->from_date}}" />
+                                        &nbsp;<div class="input-group-addon">To</div>&nbsp;
+                                        <input type="date" name="to_date" id="filter_to" class="form-control form-control-sm" value="{{request()->to_date}}" />
+                                    </div>
+                                </div>
+                                <div class="col-md-1 px-1">
+                                    <button type="submit" id="filter" class="btn btn-info btn-sm">Filter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <table id="Transactions" class="w-100 table table-responsive table-striped table-bordered align-middle border table-hover">

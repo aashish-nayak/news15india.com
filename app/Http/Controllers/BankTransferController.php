@@ -12,7 +12,7 @@ class BankTransferController extends BaseAccountController
     public function index()
     {
         $transfers = BankTransfer::query();
-        if (request()->has('from_date') && request()->has('to_date')) {
+        if (request()->has('from_date') && request()->has('to_date') && request()->from_date != '' && request()->to_date != '') {
             $transfers->whereDate('date', '>=', request()->from_date)->whereDate('date', '<=', request()->to_date);
         }
         if (request()->has('f_account')) {
@@ -22,7 +22,8 @@ class BankTransferController extends BaseAccountController
             $transfers->where('to_account', request()->t_account);
         }
         $transfers = $transfers->latest()->get();
-        return view('backpanel.account.bank-transfer', compact('transfers'));
+        $bankAccounts = BankAccount::select('id', 'bank_name', 'account_number')->latest()->get();
+        return view('backpanel.account.bank-transfer', compact('transfers','bankAccounts'));
     }
 
     public function create()
