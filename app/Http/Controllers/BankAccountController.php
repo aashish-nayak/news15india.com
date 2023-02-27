@@ -6,7 +6,7 @@ use App\Events\TransactionEvent;
 use App\Models\BankAccount;
 use Illuminate\Http\Request;
 
-class BankAccountController extends Controller
+class BankAccountController extends BaseAccountController
 {
     public function index()
     {

@@ -8,7 +8,7 @@ use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ExpenseController extends Controller
+class ExpenseController extends BaseAccountController
 {
     /**
      * Display a listing of the resource.
@@ -43,13 +43,13 @@ class ExpenseController extends Controller
     {
         if($request->has('id')){
             $expense = Expense::findOrFail($request->id);
+            if($expense->bank_account_id != $request->bank_account){
+                $this->bankAccountBalance($expense->bank_account_id, (float) $expense->amount, 'credit', $expense->id, get_class($expense), 'Expense Account',false);
+            }
             $request->session()->flash('success', 'Expense Updated!');
-            $this->bankAccountBalance($expense->bank_account_id, $expense->amount, 'credit');
-            $this->bankAccountBalance($request->bank_account, $request->amount, 'debit');
         }else{
             $expense = new Expense();
             $request->session()->flash('success', 'Expense Added!');
-            $this->bankAccountBalance($request->bank_account, $request->amount, 'debit');
         }
         $expense->item_name = $request->item_name;
         $expense->bank_account_id = $request->bank_account;
@@ -69,23 +69,10 @@ class ExpenseController extends Controller
             $expense->receipt = $filename;
         }
         $expense->save();
+        $this->bankAccountBalance($expense->bank_account_id, (float) $expense->amount, 'debit', $expense->id, get_class($expense), 'Expense Account');
         return redirect()->route('admin.account.expenses.index');
     }
-    public function bankAccountBalance($id, $amount, $type)
-    {
-        $bankAccount = BankAccount::find($id);
-        if ($bankAccount) {
-            if ($type == 'credit') {
-                $oldBalance                   = (float)$bankAccount->opening_balance;
-                $bankAccount->opening_balance = $oldBalance + (float)$amount;
-            } elseif ($type == 'debit') {
-                $oldBalance                   = (float)$bankAccount->opening_balance;
-                $bankAccount->opening_balance = $oldBalance - (float)$amount;
-            }
-            $bankAccount->save();
-        }
-        return true;
-    }
+    
     public function categoryStore(Request $request)
     {
         $cat = AccountCategory::create($request->all());
@@ -137,7 +124,7 @@ class ExpenseController extends Controller
     public function destroy($id)
     {
         $expense = Expense::findOrFail($id);
-        $this->bankAccountBalance($expense->bank_account_id, $expense->amount, 'credit');
+        $this->bankAccountBalance($expense->bank_account_id, (float) $expense->amount, 'credit', $expense->id, get_class($expense), 'Expense Delete');
         $expense->delete();
         request()->session()->flash('success','Expense Deleted!');
         return redirect()->back();

@@ -6,7 +6,7 @@ use App\Models\Payment;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class AccountController extends Controller
+class AccountController extends BaseAccountController
 {
     public function payments()
     {

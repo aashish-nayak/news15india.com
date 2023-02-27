@@ -10,6 +10,8 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reference_id',
+        'reference_type',
         'reason',
         'date',
         'type',

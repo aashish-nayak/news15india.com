@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\TransactionEvent;
 use App\Models\BankAccount;
 use App\Models\BankTransfer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class BankTransferController extends Controller
+class BankTransferController extends BaseAccountController
 {
     public function index()
     {
@@ -40,12 +39,12 @@ class BankTransferController extends Controller
             'amount' => 'required|numeric',
             'date' => 'required',
         ]);
-        if($request->has('id')){
+        if ($request->has('id')) {
             $transfer             = BankTransfer::find($request->id);
-            $this->bankAccountBalance($transfer->from_account, $transfer->amount, 'credit');
-            $this->bankAccountBalance($transfer->to_account, $transfer->amount, 'debit');
+            $this->bankAccountBalance($transfer->from_account, (float) $transfer->amount, 'credit', $transfer->id, get_class($transfer), 'Bank Transfer',false);
+            $this->bankAccountBalance($transfer->to_account, (float) $transfer->amount, 'debit', $transfer->id, get_class($transfer), 'Bank Transfer',false);
             $request->session()->flash('success', 'Bank Transfer Updated!');
-        }else{
+        } else {
             $transfer             = new BankTransfer();
             $request->session()->flash('success', 'Bank Transfered Successfully!');
         }
@@ -58,8 +57,8 @@ class BankTransferController extends Controller
         $transfer->description    = $request->description;
         $transfer->created_by     = auth('admin')->id();
         $transfer->save();
-        $this->bankAccountBalance($request->from_account, $request->amount, 'debit');
-        $this->bankAccountBalance($request->to_account, $request->amount, 'credit');
+        $this->bankAccountBalance($request->from_account, (float) $request->amount, 'debit', $transfer->id, get_class($transfer), 'Bank Transfer');
+        $this->bankAccountBalance($request->to_account, (float) $request->amount, 'credit', $transfer->id, get_class($transfer), 'Bank Transfer');
         return redirect()->route('admin.account.bank-transfer.index');
     }
 
@@ -67,34 +66,16 @@ class BankTransferController extends Controller
     {
         $edit = BankTransfer::find($id);
         $bankAccounts = BankAccount::select('id', 'bank_name', 'account_number')->latest()->get();
-        return view('backpanel.account.create-transfer', compact('bankAccounts','edit'));
+        return view('backpanel.account.create-transfer', compact('bankAccounts', 'edit'));
     }
 
     public function destroy($id)
     {
         $transfer = BankTransfer::find($id);
         $transfer->delete();
-        $this->bankAccountBalance($transfer->from_account, $transfer->amount, 'credit');
-        $this->bankAccountBalance($transfer->to_account, $transfer->amount, 'debit');
-        request()->session()->flash('success','Transfer Deleted!');
+        $this->bankAccountBalance($transfer->from_account, (float) $transfer->amount, 'credit', $transfer->id, get_class($transfer), 'Bank Transfer Delete');
+        $this->bankAccountBalance($transfer->to_account, (float) $transfer->amount, 'debit', $transfer->id, get_class($transfer), 'Bank Transfer Delete');
+        request()->session()->flash('success', 'Transfer Deleted!');
         return redirect()->back();
-    }
-
-    public function bankAccountBalance($id, $amount, $type)
-    {
-        $bankAccount = BankAccount::find($id);
-        if ($bankAccount) {
-            if ($type == 'credit') {
-                $oldBalance                   = (float)$bankAccount->opening_balance;
-                $bankAccount->opening_balance = $oldBalance + (float)$amount;
-                event (new TransactionEvent($bankAccount->id,get_class($bankAccount),'Bank Transfer',$bankAccount->id,now()->toDateString(),'credit',(float)$amount,1));
-            } elseif ($type == 'debit') {
-                $oldBalance                   = (float)$bankAccount->opening_balance;
-                $bankAccount->opening_balance = $oldBalance - (float)$amount;
-                event (new TransactionEvent($bankAccount->id,get_class($bankAccount),'Bank Transfer',$bankAccount->id,now()->toDateString(),'debit',-(float)$amount ,1));
-            }
-            $bankAccount->save();
-        }
-        return true;
     }
 }

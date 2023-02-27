@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ReporterDataTable;
-use App\Events\TransactionEvent;
 use App\Http\Requests\ApplicationRequest;
 use App\Models\Admin;
 use App\Models\Payment;
@@ -30,7 +29,7 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 
 // OR
 use Artesaos\SEOTools\Facades\SEOTools;
-class ReporterController extends Controller
+class ReporterController extends BaseAccountController
 {
     public function application_form()
     {
@@ -127,7 +126,7 @@ class ReporterController extends Controller
                 'payment_method' => 'manual',
                 'amount' => 10000,
             ]);
-            event (new TransactionEvent($reporter->id,get_class($reporter),'Reporter Application Payment',setting('razorpay_account'),now()->toDateString(),'credit',10000,1,true));
+            $this->bankAccountBalance(setting('razorpay_account'), 10000.00, 'credit', $reporter->id, get_class($reporter), 'Reporter Application Payment');
             return redirect()->route('thank-you',$order->order_id);
         } catch (\Exception $e) {
             $request->session()->flash('error', 'Unable to process request.Error:'.json_encode($e->getMessage(), true));
