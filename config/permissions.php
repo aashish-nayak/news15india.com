@@ -77,4 +77,8 @@ return [
     'create-page',
     'update-page',
     'delete-page',
+    'read-accounts',
+    'create-accounts',
+    'update-accounts',
+    'delete-accounts',
 ];

@@ -92,7 +92,7 @@ Route::post('/complaint/reply/store',[ComplaintController::class,'store_reply'])
 //     return redirect()->route('admin.dashboard');
 // });
 Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(function(){
-    Route::view('/dashboard', 'backpanel.dashboard')->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::post('/item/bulk/delete', [AdminController::class,'bulkDelete'])->name('bulk.delete');
     Route::post('/item/bulk/destroy', [AdminController::class,'bulkDestroy'])->name('bulk.destroy');
     // ----------------[ Backpanel Panel Category Module Routes ]------------------------
@@ -272,14 +272,14 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/', [EmailController::class, 'index'])->name('index');
     });
     // ----------------[ Backpanel Panel Accounts Module Routes ]------------------------
-    Route::prefix('/accounting')->name('account.')->group(function(){
+    Route::prefix('/accounting')->name('account.')->middleware('permission:read-accounts')->group(function(){
         // ------------ [ Bank Accounts SubModule ] ------------
         Route::prefix('/bank-account')->controller(BankAccountController::class)->group(function(){
             Route::get('/', 'index')->name('banking');
-            Route::get('/create','create')->name('banking.create');
+            Route::get('/create','create')->middleware('permission:create-accounts')->name('banking.create');
             Route::post('/save','store')->name('banking.save');
-            Route::get('/edit/{id}','edit')->name('banking.edit');
-            Route::get('/delete/{id}','destroy')->name('banking.delete');
+            Route::get('/edit/{id}','edit')->middleware('permission:update-accounts')->name('banking.edit');
+            Route::get('/delete/{id}','destroy')->middleware('permission:delete-accounts')->name('banking.delete');
         });
         // ------------ [ Bank Transfer SubModule ] ------------
         Route::resource('/bank-transfer', BankTransferController::class);
@@ -288,11 +288,11 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/revenue/{id}',[AccountController::class,'payment_view'])->name('payments.view');
         // -------------- [ Expenses ] ---------------
         Route::get('/expenses',[ExpenseController::class,'index'])->name('expenses.index');
-        Route::get('/expenses/create',[ExpenseController::class,'create'])->name('expenses.create');
+        Route::get('/expenses/create',[ExpenseController::class,'create'])->middleware('permission:create-accounts')->name('expenses.create');
         Route::post('/expenses/store',[ExpenseController::class,'store'])->name('expenses.store');
         Route::post('/category/store',[ExpenseController::class,'categoryStore'])->name('category.store');
-        Route::get('/expenses/{id}/edit',[ExpenseController::class,'edit'])->name('expenses.edit');
-        Route::get('/expenses/{id}/destroy',[ExpenseController::class,'destroy'])->name('expenses.destroy');
+        Route::get('/expenses/{id}/edit',[ExpenseController::class,'edit'])->middleware('permission:update-accounts')->name('expenses.edit');
+        Route::get('/expenses/{id}/destroy',[ExpenseController::class,'destroy'])->middleware('permission:delete-accounts')->name('expenses.destroy');
         // -------------- [ Transactions ] ---------------
         Route::get('/transactions',[AccountController::class,'transactions'])->name('transactions.index');
     });
