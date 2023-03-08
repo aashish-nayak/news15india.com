@@ -169,4 +169,9 @@ class AdminController extends Controller
             ]);
         }
     }
+
+    public function profile()
+    {
+        return view('backpanel.profile');
+    }
 }

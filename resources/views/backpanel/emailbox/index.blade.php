@@ -50,6 +50,12 @@
 @endpush
 @section('sections')
 <!--start email wrapper-->
+@isset($error)
+<div class="alert border-0 border-start border-5 border-warning alert-dismissible fade show">
+    <div>{{ucwords($error)}}</div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endisset
 <div class="email-wrapper">
     <div class="email-sidebar">
         <div class="email-sidebar-header d-grid">
@@ -58,6 +64,7 @@
         <div class="email-sidebar-content">
             <div class="email-navigation border-0">
                 <div class="list-group list-group-flush">
+                    @if (!isset($error))
                     @php
                         $icons = [
                             'INBOX' => 'bxs-inbox',
@@ -91,6 +98,7 @@
                     @endforeach
                     @endif
                     @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -102,22 +110,12 @@
                 <input class="form-check-input" type="checkbox" />
             </div>
             <div class="">
-                <a href="{{request()->fullUrl()}}" class="btn btn-white ms-2">
+                <a href="{{request()->fullUrl()}}" class="btn btn-white ms-2" title="Refresh">
                     <i class="bx bx-refresh me-0"></i>
                 </a>
             </div>
             <div class="">
-                <button type="button" class="btn btn-white ms-2">
-                    <i class="bx bx-downvote me-0"></i>
-                </button>
-            </div>
-            <div class="d-none d-md-flex">
-                <button type="button" class="btn btn-white ms-2">
-                    <i class="bx bx-file me-0"></i>
-                </button>
-            </div>
-            <div class="">
-                <button type="button" class="btn btn-white ms-2">
+                <button type="button" class="btn btn-white ms-2" title="Trash">
                     <i class="bx bx-trash me-0"></i>
                 </button>
             </div>
@@ -139,6 +137,7 @@
         </div>
     </div>
     <div class="email-content">
+        @if (!isset($error))
         <div class="">
             @if($mode == 'list')
             <div class="email-list">
@@ -196,6 +195,7 @@
             </div>
             @endif
         </div>
+        @endif
     </div>
     <!--start compose mail-->
     <div class="compose-mail-popup">

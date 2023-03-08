@@ -95,6 +95,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::post('/item/bulk/delete', [AdminController::class,'bulkDelete'])->name('bulk.delete');
     Route::post('/item/bulk/destroy', [AdminController::class,'bulkDestroy'])->name('bulk.destroy');
+    Route::get('/profile',[AdminController::class,'profile'])->name('profile');
     // ----------------[ Backpanel Panel Category Module Routes ]------------------------
     Route::prefix('/category')->name('category.')->group(function(){
         Route::get('/', [CategoryController::class,'index'])->middleware('permission:read-category')->name('index');
@@ -269,6 +270,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     });
     // ----------------[ Backpanel Panel E-mail Module Routes ]------------------------
     Route::prefix('/emailbox')->name('emailbox.')->group(function(){
+        Route::get('/login', [EmailController::class, 'clientLogin'])->name('login');
+        Route::post('/login', [EmailController::class, 'login']);
         Route::get('/', [EmailController::class, 'index'])->name('index');
     });
     // ----------------[ Backpanel Panel Accounts Module Routes ]------------------------

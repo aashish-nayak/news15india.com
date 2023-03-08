@@ -50,6 +50,29 @@
                         <p class="designattion mb-0">{{auth('admin')->user()->roles()->first()->name}}</p>
                     </div>
                 </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="{{route('admin.profile')}}">
+                            <i class="bx bx-user"></i><span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{route('admin.dashboard')}}">
+                            <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider mb-0"></div>
+                    </li>
+                    <li>
+                        <form action="{{ route('admin.logout') }}" method="post" id="logout-form">
+                            @csrf
+                            <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault();$('#logout-form').submit();">
+                                <i class='bx bx-log-out-circle'></i><span>Logout</span>
+                            </a>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
