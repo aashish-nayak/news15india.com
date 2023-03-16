@@ -273,6 +273,8 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
         Route::get('/login', [EmailController::class, 'clientLogin'])->name('login');
         Route::post('/login', [EmailController::class, 'login']);
         Route::get('/', [EmailController::class, 'index'])->name('index');
+        Route::post('/trash', [EmailController::class, 'trash'])->name('trash');
+        Route::post('/compose', [EmailController::class, 'compose'])->name('compose');
     });
     // ----------------[ Backpanel Panel Accounts Module Routes ]------------------------
     Route::prefix('/accounting')->name('account.')->middleware('permission:read-accounts')->group(function(){

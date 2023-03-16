@@ -80,9 +80,9 @@
                     <a href="{{route('admin.emailbox.index',['mode'=>'list','mbox'=>$folder->path])}}"
                         class="list-group-item d-flex align-items-center {{($box == $folder->path) ? 'active' : ''}}">
                         <i class="bx {{$icons[$folder->path] ?? 'bxs-folder'}} me-3 font-20"></i><span>{{ucfirst($folder->name)}}</span>
-                        @if($folder->messages()->all()->count() > 0)
+                        @if($folder->messages()->unseen()->count() > 0)
                         <span
-                            class="badge bg-primary rounded-pill ms-auto">{{$folder->messages()->all()->count()}}</span>
+                            class="badge bg-primary rounded-pill ms-auto">{{$folder->messages()->unseen()->count()}}</span>
                         @endif
                     </a>
                     @if($folder->hasChildren())
@@ -90,9 +90,9 @@
                     <a href="{{route('admin.emailbox.index',['mode'=>'list','mbox'=>$subFolder->path])}}"
                         class="list-group-item d-flex align-items-center {{($box == $subFolder->path) ? 'active' : ''}}">
                         <i class="bx {{$icons[$subFolder->path] ?? 'bxs-folder'}} me-3 font-20"></i><span>{{ucwords($subFolder->name)}}</span>
-                        @if($subFolder->messages()->all()->count() > 0)
+                        @if($subFolder->messages()->unseen()->count() > 0)
                         <span
-                            class="badge bg-primary rounded-pill ms-auto">{{$subFolder->messages()->all()->count()}}</span>
+                            class="badge bg-primary rounded-pill ms-auto">{{$subFolder->messages()->unseen()->count()}}</span>
                         @endif
                     </a>
                     @endforeach
@@ -103,100 +103,11 @@
             </div>
         </div>
     </div>
-    <div class="email-header d-xl-flex align-items-center">
-        <div class="d-flex align-items-center">
-            <div class="email-toggle-btn"><i class="bx bx-menu"></i></div>
-            <div class="btn btn-white">
-                <input class="form-check-input" type="checkbox" />
-            </div>
-            <div class="">
-                <a href="{{request()->fullUrl()}}" class="btn btn-white ms-2" title="Refresh">
-                    <i class="bx bx-refresh me-0"></i>
-                </a>
-            </div>
-            <div class="">
-                <button type="button" class="btn btn-white ms-2" title="Trash">
-                    <i class="bx bx-trash me-0"></i>
-                </button>
-            </div>
-        </div>
-        {{-- <div class="flex-grow-1 mx-xl-2 my-2 my-xl-0">
-            <div class="input-group">
-                <span class="input-group-text bg-transparent"><i class="bx bx-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search mail" />
-            </div>
-        </div> --}}
-        <div class="ms-auto d-flex align-items-center">
-            <button class="btn btn-sm btn-light">1-10</button>
-            <button class="btn btn-white px-2 ms-2">
-                <i class="bx bx-chevron-left me-0"></i>
-            </button>
-            <button class="btn btn-white px-2 ms-2">
-                <i class="bx bx-chevron-right me-0"></i>
-            </button>
-        </div>
-    </div>
-    <div class="email-content">
-        @if (!isset($error))
-        <div class="">
-            @if($mode == 'list')
-            <div class="email-list">
-                @foreach ($messages as $message)
-                <a href="{{route('admin.emailbox.index',['mode'=>'read','mbox'=>$box,'message'=>$message->uid])}}">
-                    <div class="d-md-flex align-items-center email-message px-3 py-1">
-                        <div class="d-flex align-items-center email-actions w-auto">
-                            <input class="form-check-input me-3" type="checkbox" value="" />
-                            <p class="mb-0">{{$message->get('from')}} <br><b>{{$message->get('subject')}}</b></p>
-                        </div>
-                        <div class="ms-auto">
-                            <p class="mb-0 email-time">{{date('h:iA d-M-Y',strtotime($message->get('date')))}}</p>
-                        </div>
-                    </div>
-                </a>
-                @endforeach
-            </div>
-            @elseif($mode == 'read')
-            <div class="email-read-box p-3" style="overflow-y: auto;height: 430px;">
-                <h4>{{$readMessage->get('subject')}}</h4>
-                <hr>
-                <div class="d-flex align-items-center">
-                    <img src="{{asset('assets/images/avatars/avatar-1.png')}}" width="42" height="42" class="rounded-circle" alt="" />
-                    <div class="flex-grow-1 ms-2">
-                        <p class="mb-0 font-weight-bold">{{$readMessage->get('sender')}}</p>
-                        <div class="dropdown">
-                            <div>to me</div>
-                        </div>
-                    </div>
-                    <p class="mb-0 chat-time ps-5 ms-auto">{{date('M d,Y h:iA',strtotime($readMessage->get('date')))}}
-                        ({{\Carbon\Carbon::parse($readMessage->get('date'))->diffForHumans()}})</p>
-                </div>
-                <div class="email-read-content p-1 p-md-2">
-                    {!!$readMessage->getHTMLBody()!!}
-                </div>
-                @if($readMessage->hasAttachments())
-                @foreach ($readMessage->getAttachments() as $attach)
-                @if($attach->mask()->content_type != 'application/octet-stream')
-                <div class="p-4 image-attachment">
-                    @if($attach->mask()->content_type == 'image/png')
-                    <img src="{{$attach->mask()->getImageSrc()}}" style="width: 240px;" alt="attachment">
-                    @endif
-                    <span class="attach-details attach-filename">{{$attach->mask()->name}}</span>
-                    <span class="attach-details attach-filesize">{{formatBytes($attach->mask()->size)}}</span>
-                    <span class="attachment-links">
-                        <a href="{{$attach->mask()->getImageSrc()}}" class="mb-3" download="{{$attach->mask()->name}}">
-                            <i class="bx bx-download"></i>
-                            Download
-                        </a>
-                    </span>
-                </div>
-                @endif
-                @endforeach
-                @endif
-            </div>
-            @endif
-        </div>
-        @endif
-    </div>
+    @if($mode == 'list')
+        @include('backpanel.emailbox.includes.list-mode')
+    @elseif($mode == 'read')
+        @include('backpanel.emailbox.includes.read-mode')
+    @endif
     <!--start compose mail-->
     <div class="compose-mail-popup">
         <div class="card">
@@ -207,59 +118,39 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="email-form">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="To" />
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Subject" />
-                    </div>
-                    <div class="mb-3">
-                        <textarea class="form-control" placeholder="Message" rows="10" cols="10"></textarea>
-                    </div>
-                    <div class="mb-0">
-                        <div class="d-flex align-items-center">
-                            <div class="">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary">
-                                        Action
-                                    </button>
-                                    <button type="button"
-                                        class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                                        data-bs-toggle="dropdown">
-                                        <span class="visually-hidden">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:;">Action</a>
-                                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                                        <a class="dropdown-item" href="javascript:;">Something else here</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="javascript:;">Separated link</a>
+                <form action="{{route('admin.emailbox.compose')}}" method="post">
+                    @csrf
+                    <div class="email-form">
+                        <div class="mb-3">
+                            <input type="email" name="mailto" class="form-control" placeholder="To" required />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required />
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" name="message" placeholder="Message" required minlength="3" rows="10" cols="10"></textarea>
+                        </div>
+                        <div class="mb-0">
+                            <div class="d-flex align-items-center">
+                                <div class="">
+                                    <div class="btn-group">
+                                        <button type="submit" name="submit" value="send" class="btn btn-primary">
+                                            Send
+                                        </button>
+                                        <button type="button"
+                                            class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
+                                            data-bs-toggle="dropdown">
+                                            <span class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <button type="submit" name="submit" value="draft" class="dropdown-item">Draft</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ms-2">
-                                <button type="button" class="btn border-0 btn-sm btn-white">
-                                    <i class="lni lni-text-format"></i>
-                                </button>
-                                <button type="button" class="btn border-0 btn-sm btn-white">
-                                    <i class="bx bx-link-alt"></i>
-                                </button>
-                                <button type="button" class="btn border-0 btn-sm btn-white">
-                                    <i class="lni lni-emoji-tounge"></i>
-                                </button>
-                                <button type="button" class="btn border-0 btn-sm btn-white">
-                                    <i class="lni lni-google-drive"></i>
-                                </button>
-                            </div>
-                            <div class="ms-auto">
-                                <button type="button" class="btn border-0 btn-sm btn-white">
-                                    <i class="lni lni-trash"></i>
-                                </button>
-                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -273,8 +164,39 @@
 @push('scripts')
 <script>
     new PerfectScrollbar('.email-navigation');
-    if(document.querySelectorAll('.email-list').length > 0){
-        new PerfectScrollbar('.email-list');
-    }
+    $(document).ready(function () {
+        $('.multi-check-mail').click(function(){
+            let flag = $(this).is(':checked');
+            $('.email-list a input[type="checkbox"]').attr('checked',flag);
+        });
+        $('.email-list a input[type="checkbox"], .multi-check-mail').change(function(){
+            let flag = ($('.email-list a input[type="checkbox"]:checked').length > 0) ? false : true;
+            $("#trash").attr('disabled',flag);
+        });
+        $("#trash").click(function(){
+            var uidArray = [];
+            $.each($('input[name="email_uid[]"]:checked'), function (indexInArray, element) {
+                var id = $(element).val();
+                var index = $.inArray(id, uidArray);
+                if ( index === -1 ) {
+                    uidArray.push($(element).val());
+                }
+            });
+            $.ajax({
+                type: "post",
+                url: "{{route('admin.emailbox.trash')}}",
+                data: {
+                    "_token" : "{{csrf_token()}}",
+                    'email_uids' : uidArray,
+                    'folder' : "{{$box}}"
+                },
+                success: function (response) {
+                    if(response.status == 'success'){
+                        window.location.reload();
+                    }
+                }
+            });
+        });
+    });
 </script>
 @endpush
