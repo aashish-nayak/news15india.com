@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use PDO;
 use Webklex\IMAP\Facades\Client;
 
 class EmailController extends Controller
@@ -55,7 +56,8 @@ class EmailController extends Controller
             $client->password = $this->getCookie('CLIENT_PASSWORD');
             $client->connect();
             $currentFolder = $client->getFolderByPath($request->folder);
-            $messages = $currentFolder->query()->whereUidIn($request->email_uids)->get();
+            $ids = (is_array($request->email_uids)) ? $request->email_uids : [$request->email_uids];
+            $messages = $currentFolder->query()->whereUidIn($ids)->get();
             foreach ($messages as $key => $message) {
                 if($request->folder != "INBOX.Trash"){
                     $message->move('INBOX.Trash');
@@ -69,12 +71,15 @@ class EmailController extends Controller
             $status = "error";
             $message = $e->getMessage();
         }
+        if(!$request->ajax()){
+            $request->session()->flash($status,$message);
+            return redirect()->route('admin.emailbox.index');
+        }
         return response()->json(['status'=>$status,'message'=>$message]);
     }
 
     public function compose(Request $request)
     {
-        // dd($request->all());
         try {
             $config = array(
                 'driver'     => 'smtp',
@@ -97,7 +102,6 @@ class EmailController extends Controller
                 });
                 $request->session()->flash('success','E-Mail Sent!');
             }else{
-
                 $request->session()->flash('success','E-Mail Saved to Draft!');
             }
         } catch (\Exception $e) {
@@ -126,7 +130,7 @@ class EmailController extends Controller
             $folders = $client->getFolders();
             $currentFolder = $client->getFolderByPath($box);
             if($mode == 'list'){
-                $messages = $currentFolder->messages()->all()->paginate(10);
+                $messages = $currentFolder->messages()->all()->setFetchBody(false)->paginate(10);
             }else{
                 $readMessage = $currentFolder->query()->getMessageByUid(request()->message);
                 $readMessage->setFlag('Seen');

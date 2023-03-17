@@ -12,7 +12,7 @@
             </a>
         </div>
         <div class="">
-            <a href="{{route('admin.emailbox.trash',$readMessage->get('uid'))}}" class="btn btn-white ms-2"
+            <a href="{{route('admin.emailbox.trash',['folder'=>$box,'email_uids'=>$readMessage->get('uid')])}}" class="btn btn-white ms-2"
                 title="Trash">
                 <i class="bx bx-trash me-0"></i>
             </a>

@@ -24,7 +24,7 @@
     @if (!isset($error))
     <div class="">
         <div class="email-list py-1" style="overflow-y: auto;height: 430px;">
-            @foreach ($messages as $key => $message)
+            @foreach ($messages->reverse() as $key => $message)
             <a href="{{route('admin.emailbox.index',['mode'=>'read','mbox'=>$box,'message'=>$message->uid])}}">
                 <div class="d-md-flex align-items-center email-message px-3 py-1">
                     <div class="d-flex align-items-center email-actions w-auto">

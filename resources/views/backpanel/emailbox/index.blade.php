@@ -165,15 +165,15 @@
 <script>
     new PerfectScrollbar('.email-navigation');
     $(document).ready(function () {
-        $('.multi-check-mail').click(function(){
+        $(document).on('click','.multi-check-mail',function(){
             let flag = $(this).is(':checked');
-            $('.email-list a input[type="checkbox"]').attr('checked',flag);
+            $(document).find('.email-list a input[type="checkbox"]').attr('checked',flag);
         });
-        $('.email-list a input[type="checkbox"], .multi-check-mail').change(function(){
+        $(document).on('change','.email-list a input[type="checkbox"], .multi-check-mail',function(){
             let flag = ($('.email-list a input[type="checkbox"]:checked').length > 0) ? false : true;
             $("#trash").attr('disabled',flag);
         });
-        $("#trash").click(function(){
+        $(document).on('click',"#trash",function(){
             var uidArray = [];
             $.each($('input[name="email_uid[]"]:checked'), function (indexInArray, element) {
                 var id = $(element).val();
