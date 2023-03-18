@@ -72,6 +72,14 @@ class Admin extends Authenticatable
         return $this->attributes['avatar'] = $this->getAvatar();
     }
 
+    public function updateDetails($data)
+    {
+        $model = AdminDetail::where('admin_id',$this->id)->first();
+        $model->fill($data);
+        $model->save();
+        
+    }
+
     public function details()
     {
         $city = City::where('state_id',33)->inRandomOrder()->first()->id;

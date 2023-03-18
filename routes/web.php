@@ -96,6 +96,7 @@ Route::prefix('/backpanel')->name('admin.')->middleware(['admin'])->group(functi
     Route::post('/item/bulk/delete', [AdminController::class,'bulkDelete'])->name('bulk.delete');
     Route::post('/item/bulk/destroy', [AdminController::class,'bulkDestroy'])->name('bulk.destroy');
     Route::get('/profile',[AdminController::class,'profile'])->name('profile');
+    Route::post('/profile',[AdminController::class,'profileStore']);
     // ----------------[ Backpanel Panel Category Module Routes ]------------------------
     Route::prefix('/category')->name('category.')->group(function(){
         Route::get('/', [CategoryController::class,'index'])->middleware('permission:read-category')->name('index');

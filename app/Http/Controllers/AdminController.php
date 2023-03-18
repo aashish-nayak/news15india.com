@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Str;
 class AdminController extends Controller
@@ -34,14 +35,14 @@ class AdminController extends Controller
         if($request->has('id')){
             $admin = Admin::find($request->id);
             $checkEmail = '';
-            $request->session()->flash('success', 'Member Updated successfully!');
+            session()->flash('success', 'Member Updated successfully!');
             if($request->password != ''){
                 $admin->password = Hash::make($request->password);
             }
         }else{
             $admin = new Admin();
             $checkEmail = 'unique:admins';
-            $request->session()->flash('success', 'Member Added successfully!');
+            session()->flash('success', 'Member Added successfully!');
             $admin->password = ($request->password != '') ? Hash::make($request->password) : Hash::make($request->email);
         }
         
@@ -173,5 +174,47 @@ class AdminController extends Controller
     public function profile()
     {
         return view('backpanel.profile');
+    }
+
+    public function profileStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'phone' => 'required|numeric|min:12',
+            'address' => 'string|max:50',
+            'country_id' => 'required|integer',
+            'state_id' => 'required|integer',
+            'city_id' => 'required|integer',
+            'zip' => 'required',
+            'about' => 'string|max:250',
+            'facebook' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'youtube' => 'nullable|url',
+            'website' => 'nullable|url',
+            'avatar' => 'mimes:jpeg,jpg,png'
+        ]);
+        try {
+            $data = $request->except('_token','email');
+            $admin = Admin::findOrFail(auth('admin')->id());
+            if($request->hasFile('avatar')){
+                if(Storage::exists('public/reporter-application/'.$admin->email.'/'.$admin->details->avatar)){
+                    Storage::delete('public/reporter-application/'.$admin->email."/".$admin->details->avatar);
+                }
+                $file = $request->file('avatar');
+                $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $extension = $file->getClientOriginalExtension();
+                $filename =  'avatar' . '__' . $admin->email . '__' .  time() . '.' . $extension;
+                $file->storeAs('public/reporter-application/'.$admin->email, $filename);
+                $data['avatar'] = $filename;
+            }
+            $admin->fill($data);
+            $admin->updateDetails($data);
+            $admin->save();
+            session()->flash('success','Profile Updated!');
+        } catch (\Exception $e) {
+            session()->flash('error',$e->getMessage());
+        }
+        return redirect()->back();
     }
 }
