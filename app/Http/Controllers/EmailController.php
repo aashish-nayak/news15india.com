@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-use PDO;
+use Illuminate\Support\Facades\View;
 use Webklex\IMAP\Facades\Client;
-
 class EmailController extends Controller
 {
     public function setCookie($key,$value,$time = 120)
@@ -42,10 +41,19 @@ class EmailController extends Controller
 
     public function login(Request $request)
     {
-        $this->setCookie('CLIENT_USERNAME',$request->username);
-        $this->setCookie('CLIENT_PASSWORD',$request->password);
-        session()->flash('success','Email Client Loggedin');
-        return redirect()->route('admin.emailbox.index');
+        try {
+            $client = Client::account('default');
+            $client->username = $request->username;
+            $client->password = $request->password;
+            $client->connect();
+            $this->setCookie('CLIENT_USERNAME',$request->username);
+            $this->setCookie('CLIENT_PASSWORD',$request->password);
+            session()->flash('success','Email Client Loggedin');
+            return redirect()->route('admin.emailbox.index');
+        } catch (\Exception $e) {
+            session()->flash('error','Credentials does not match!');
+            return redirect()->back();
+        }
     }
     
     public function trash(Request $request)
@@ -90,18 +98,31 @@ class EmailController extends Controller
                 'username'   => $this->getCookie('CLIENT_USERNAME'),
                 'password'   => $this->getCookie('CLIENT_PASSWORD'),
             );
-            // $client = Client::account('default');
-            // $client->username = $this->getCookie('CLIENT_USERNAME');
-            // $client->password = $this->getCookie('CLIENT_PASSWORD');
-            // $client->connect();
             Config::set('mail', $config);
+            $client = Client::account('default');
+            $client->username = $this->getCookie('CLIENT_USERNAME');
+            $client->password = $this->getCookie('CLIENT_PASSWORD');
+            $client->connect();
+            $view = view('backpanel.emailbox.mail-template',['data'=>$request->all()])->render();
+            $date = date('D, d M Y H:i:s');
+            $message = "From: ".$this->getCookie('CLIENT_USERNAME')."\r\n"
+                    ."To: $request->mailto\r\n"
+                    ."Subject: $request->subject\r\n"
+                    ."Date: $date\r\n"
+                    ."Content-Type: text/html\r\n"
+                    . "\r\n"
+                    ."$view\r\n";
             if($request->submit == 'send'){
-                $mail = Mail::send('backpanel.emailbox.mail-template',['data'=>$request->all()], function($message) use($request) {
+                Mail::send('backpanel.emailbox.mail-template',['data'=>$request->all()], function($message) use($request) {
                     $message->to($request->mailto);
                     $message->subject($request->subject);
                 });
+                $folder = $client->getFolderByPath('INBOX.Sent');
+                $folder->appendMessage($message,['\\Seen']);
                 $request->session()->flash('success','E-Mail Sent!');
             }else{
+                $folder = $client->getFolderByPath('INBOX.Drafts');
+                $folder->appendMessage($message,['\\Seen']);
                 $request->session()->flash('success','E-Mail Saved to Draft!');
             }
         } catch (\Exception $e) {

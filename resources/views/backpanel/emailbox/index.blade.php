@@ -182,6 +182,7 @@
                     uidArray.push($(element).val());
                 }
             });
+            $(this).attr('disabled',true);
             $.ajax({
                 type: "post",
                 url: "{{route('admin.emailbox.trash')}}",

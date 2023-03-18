@@ -26,8 +26,7 @@
             <h4>{{$readMessage->get('subject')}}</h4>
             <hr>
             <div class="d-flex align-items-center">
-                <img src="{{asset('assets/images/avatars/avatar-1.png')}}" width="42" height="42" class="rounded-circle"
-                    alt="" />
+                <img src="https://eu.ui-avatars.com/api/?name={{strip_tags($readMessage->get('sender'))}}&size=250" width="42" height="42" class="rounded-circle" alt="" />
                 <div class="flex-grow-1 ms-2">
                     <p class="mb-0 font-weight-bold">{{$readMessage->get('sender')}}</p>
                     <div class="dropdown">

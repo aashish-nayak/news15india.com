@@ -83,7 +83,7 @@ class Admin extends Authenticatable
             'zip' => '000000',
             'address' => null,
             'avatar' => 'https://eu.ui-avatars.com/api/?name='.$this->name.'&size=250',
-            'phone' => null,
+            'phone' => "0000000000",
             'created_at' => now()->toDateTimeString(),
             'updated_at' => now()->toDateTimeString(),
         ]);
