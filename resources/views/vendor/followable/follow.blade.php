@@ -1,5 +1,5 @@
 @auth
-    <a href="javascript:void(0)" data-creator-follow="{{ $followable->id }}" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 follow">@if($followable->isFollowedBy(auth('web')->user())){{'Unfollow'}}@else{{'Follow'}}@endif</a>
+    <button type="button" data-creator-follow="{{ $followable->id }}" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 follow">@if($followable->isFollowedBy(auth('web')->user())){{'Unfollow'}}@else{{'Follow'}}@endif</button>
 @else
     <a href="{{ route('login',['redirect_to'=>url()->current()]) }}" style="font-size:1.2rem;" class="btn btn-primary font-weight-bold my-2 follow">Follow</a>
 @endauth
@@ -13,11 +13,13 @@
             _token: "{{ csrf_token() }}",
             creator_id : creator
         };
+        $(this).attr('disabled',true);
         $.ajax({
             url: url,
             type: "POST",
             data: obj,
             success: function(response) {
+                $('.follow[data-creator-follow]').attr('disabled',false);
                 if(response.status == 'success'){
                     $(".follow").text((response.is_follower==true)?'Unfollow':'Follow');
                 }else{

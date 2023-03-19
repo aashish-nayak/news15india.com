@@ -82,6 +82,7 @@ Route::get('/dashboard',function(){
 Route::get('/redirect/backpanel',[FrontController::class,'admin_login'])->middleware(['auth'])->name('redirect.dashboard');
 Route::get('/profile',[FrontController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::post('/follow',[FrontController::class,'follow'])->middleware(['auth'])->name('follow');
+Route::post('/like',[FrontController::class,'like'])->middleware(['auth'])->name('like');
 Route::post('/vote/polls/{poll}',[VoteController::class,'vote'])->name('poll.vote');
 Route::post('/profile/update',[FrontController::class,'profile'])->middleware(['auth'])->name('user.profile.update');
 Route::post('/complaint/store',[ComplaintController::class,'store'])->middleware(['auth'])->name('user.complaint.store');

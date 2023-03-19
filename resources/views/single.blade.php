@@ -57,11 +57,44 @@
                             </div>
                             <div class="col-12 col-md-3">
                                 @followable(['followable'=>$news->creator])
+                                <button type="button" style="font-size:1.2rem;" data-news="{{$news->id}}" id="likeBtn" title="Likes" class="btn @if($news->isLiked(true) == 1) btn-primary @else btn-secondary @endif btn-sm font-weight-bold my-2"><i class="fa fa-thumbs-up"></i> <span class="font-weight-normal ml-2">{{kmb($news->getLikes())}}</span></button>
+                                @push('js')
+                                    <script>
+                                        $(document).on('click','#likeBtn',function (e) {
+                                            let newsId = $(this).data('news'),
+                                            url = "{{ route('like') }}",
+                                            obj = {
+                                                _token: "{{ csrf_token() }}",
+                                                news_id : newsId
+                                            };
+                                            $(this).attr('disabled',true);
+                                            $.ajax({
+                                                url: url,
+                                                type: "POST",
+                                                data: obj,
+                                                success: function(response) {
+                                                    $('#likeBtn').attr('disabled',false);
+                                                    if(response.status == 'success'){
+                                                        let btn = (response.is_liked==1) ? 'btn-primary' : 'btn-secondary';
+                                                        let removebtn = (response.is_liked==1) ? 'btn-secondary' : 'btn-primary';
+                                                        $('#likeBtn').addClass(btn);
+                                                        $('#likeBtn').removeClass(removebtn);
+                                                        $('#likeBtn span').text(response.likes);
+                                                        $("#likesCount").text(response.likes);
+                                                    }else{
+                                                        alert(response.message);
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                @endpush
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
                         <p class="m-0" style="font-size: 16px" title="{{$news->frontViews()}} Views"><i class="fa fa-eye px-2"></i> <span>{{kmb($news->frontViews())}}</span> <span>Views</span></p>
+                        <p class="mb-1" style="font-size: 16px" title="{{$news->getLikes()}} Likes"><i class="fa fa-thumbs-up px-2"></i> <span id="likesCount">{{kmb($news->getLikes())}}</span> <span>Likes</span></p>
                         <p class="m-0" style="font-size: 16px" title="{{$news->approvedComments()->count()}} Comments"><i class="fa fa-comment-alt px-2"></i> <span>{{kmb($news->approvedComments()->count())}}</span> <span>Comments</span></p>
                     </div>
                     <div class="col-md-4 col-6 font-size-sm">

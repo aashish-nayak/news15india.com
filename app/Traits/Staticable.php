@@ -74,6 +74,11 @@ trait Staticable
         return $this->statistics->clicks;
     }
 
+    public function getLikes()
+    {
+        return $this->statistics->likes;
+    }
+
     public function getEditableClicks()
     {
         return $this->statistics->editable_clicks;
@@ -103,6 +108,34 @@ trait Staticable
             $this->visitorsRelation()->sync([$ipId]);
         }
         return $this;
+    }
+
+    public function likeUp($ipId, $counts = 1)
+    {
+        $this->updatedStats(['likes' => $this->statistics->likes + $counts]);
+        $this->visitorsRelation()->sync([$ipId => ['is_like'=>1]]);
+        return 1;
+    }
+
+    public function likeDown($ipId, $counts = 1)
+    {
+        $this->updatedStats(['likes' => $this->statistics->likes - $counts]);
+        $this->visitorsRelation()->sync([$ipId => ['is_like'=>0]]);
+        return 0;
+    }
+
+    public function isLiked($isCheck = false)
+    {
+        $ipId = $this->registerIp()->id;
+        $check = $this->visitorsRelation()->withPivot('is_like')->where('visitor_id',$ipId)->first()->pivot->is_like;
+        if($isCheck == true){
+            return $check;
+        }
+        if($check == 1){
+            return $this->likeDown($ipId);
+        }else{
+            return $this->likeUp($ipId);
+        }
     }
 
     public function clicksUp($counts = 1)

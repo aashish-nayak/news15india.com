@@ -584,6 +584,17 @@ class FrontController extends Controller
         }
     }
 
+    public function like(Request $request)
+    {
+        try {
+            $news = News::find($request->news_id);
+            $isLike = $news->isLiked();
+            return response()->json(['status'=>'success','is_liked'=>$isLike,'likes'=>kmb($news->getLikes())]);
+        } catch (\Exception $e) {
+            return response()->json(['status'=>'error','message'=>$e->getMessage()]);
+        }
+    }
+
     public function poll($poll_id = '')
     {
         SEOMeta::setTitle(setting('site_meta_title'));
