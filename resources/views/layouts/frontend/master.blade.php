@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('front-assets/css/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('front-assets/css/style.css') }}">
     @stack('css')
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1001186181529013" crossorigin="anonymous"></script>
 </head>
 
 <body onload="startTime()">
