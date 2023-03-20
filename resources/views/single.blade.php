@@ -147,6 +147,17 @@
                     @endphp
                 </div>
             </div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1001186181529013"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:block; text-align:center;"
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-1001186181529013"
+                data-ad-slot="7934064480"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
             <section class="container-fluid mx-auto mt-1 px-0 text-center">
                 {!!AdvertHTML('news-content-bottom-800x100')!!}
             </section>
