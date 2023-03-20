@@ -1,12 +1,8 @@
 window.OneSignal = window.OneSignal || [];
-OneSignal.push(function(){
-    OneSignal.init({
-        appId : "9dd3f3d5-5f35-472f-987e-be0a4262510e",
-        safari_web_id : "web.onesignal.auto.017d7a1b-f1ef-4fce-a00c-21a546b5491d",
-        notifyButton : {
-            enable :true,
-        },
-    });
+OneSignal.push(function() {
+  OneSignal.init({
+    appId: "9dd3f3d5-5f35-472f-987e-be0a4262510e",
+  });
 });
 
 function clipboardCopy(that) {
