@@ -28,7 +28,7 @@
                         <div class="holder">
                             <div class="box mt-1" style="height:250px;">
                                 <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                    <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="">
+                                    <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="{{$sidebar_news->newsImage->alt}}">
                                     <div class="content-overlay"></div>
                                 </a>
                                 <div class="img-title">
@@ -77,7 +77,7 @@
                                 <a href="{{route('single-news',$sidebar_news->slug)}}">
                                     <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                                 </a>
-                                <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="">
+                                <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="{{$sidebar_news->newsImage->alt}}">
                                 <div class="img-title">
                                     <a href="{{route('single-news',$sidebar_news->slug)}}">
                                         <h6 class="text-light m-0">
@@ -128,7 +128,7 @@
             <div class="container-fluid mx-auto px-0 mt-1">
                 <div class="d-flex flex-wrap justify-content-center">
                     <div class="col-md-3 col-12 bg-primary w-100 p-4 text-center">
-                        <img loading="lazy" src="{{$avatar}}" class="text-center img-fluid author-avatar" alt="">
+                        <img loading="lazy" src="{{$avatar}}" class="text-center img-fluid author-avatar" alt="{{$author->name}}">
                     </div>
                     <div class="col-md-9 col-12" style="background-color: #d8d8d8;">
                         <div class="col-12 px-1 text-center flag-author-border">
@@ -213,7 +213,7 @@
                     <div class="col mb-2 px-2">
                         <div class="card card-shadow">
                             <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                                <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top simple-card" alt="...">
+                                <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top simple-card" alt="{{$news->newsImage->alt}}">
                             </a>
                             <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                 <a href="{{route('single-news',$news->slug)}}" class="text-decoration-none">
@@ -233,7 +233,7 @@
                                         <h6 class="card-text">{{\Str::limit($news->title,50)}}</h6>
                                     </div>
                                     <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" alt="Card image cap">
+                                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" alt="{{$news->newsImage->alt}}">
                                     </div>
                                 </div>
                             </a>
@@ -269,7 +269,7 @@
                         <div class="card-horizontal card-horizontal-3 no-gutters" style="border:1px solid var(--primary)">
                             <div class="col-4 p-1 h-100" style="border-right:1px solid #b2bec3;">
                                 <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                                    <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid h-100" alt="...">
+                                    <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid h-100" alt="{{$news->newsImage->alt}}">
                                 </a>
                             </div>
                             <div class="col-8">

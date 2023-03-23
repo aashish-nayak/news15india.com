@@ -32,7 +32,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-1 col-3">
                         <div style="height: 80px;width:80px;">
-                            <img src="{{$news->creator->getAvatar()}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="" loading="lazy">
+                            <img src="{{$news->creator->getAvatar()}}" class="rounded-circle bg-primary h-100 w-100 " style="object-fit: cover;border:3px solid var(--primary)" alt="{{$news->creator->name}}" loading="lazy">
                         </div>
                     </div>
                     <div class="col-md-4 col-9 pl-md-3 px-md-1">
@@ -85,7 +85,7 @@
                                 @if($news->format != 'default' && $news->youtube_url != '')
                                 <iframe src="{{convertYoutube($news->youtube_url)}}?controls=1&autoplay=1&mute=1" class="img-fluid w-100 h-100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 @else
-                                <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid w-100 h-100" alt="" loading="lazy">
+                                <img src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid w-100 h-100" alt="{{$news->newsImage->alt}}" loading="lazy">
                                 @endif
                             </a>
                         </div>
@@ -187,10 +187,10 @@
                             <p class="my-3 my-md-1 font-weight-bold text-center" style="color: black;font-size:2rem">Download App</p>
                             <div class="row align-items-center m-0">
                                 <a class="col-6 text-center" href="{{setting('play_store_app_link')}}" target="_blank">
-                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
+                                    <img src="{{asset('front-assets/img/app-store.png')}}" class="img-fluid" alt="Download App From Play Store" style="max-height:80px" loading="lazy">
                                 </a>
                                 <a class="col-6 text-center" href="{{setting('apple_store_app_link')}}" target="_blank">
-                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="" style="max-height:80px" loading="lazy">
+                                    <img src="{{asset('front-assets/img/play-store.png')}}" class="img-fluid" alt="Download App From Apple Store" style="max-height:80px" loading="lazy">
                                 </a>
                             </div>
                         </div>
@@ -207,7 +207,7 @@
                         <div class="col mb-2 px-2">
                             <div class="card card-shadow">
                                 <a href="{{route('single-news',$otherNews->slug)}}" class="text-muted text-decoration-none">
-                                    <img src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" class="card-img-top simple-card" alt="..." loading="lazy">
+                                    <img src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" class="card-img-top simple-card" alt="{{$otherNews->newsImage->alt}}" loading="lazy">
                                 </a>
                                 <div class="card-body py-3 px-2" style="border-bottom:2px solid var(--primary);">
                                     <a href="{{route('single-news',$otherNews->slug)}}" class="text-decoration-none">
@@ -227,7 +227,7 @@
                                             <h6 class="card-text">{{\Str::limit($otherNews->title,40)}}</h6>
                                         </div>
                                         <div class="img-square-wrapper col-5 col-md-4 p-0">
-                                            <img class="img-fluid" src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" alt="Card image cap" loading="lazy">
+                                            <img class="img-fluid" src="{{asset('storage/media/'.$otherNews->newsImage->filename)}}" alt="{{$otherNews->newsImage->alt}}" loading="lazy">
                                         </div>
                                     </div>
                                 </a>
@@ -264,7 +264,7 @@
                     <div class="col px-2 px-md-2 my-1">
                         <a href="{{route('single-news',$bottom_news->slug)}}" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img src="{{asset('storage/media/'.$bottom_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
+                                <img src="{{asset('storage/media/'.$bottom_news->newsImage->filename)}}" class="img-fluid" alt="{{$bottom_news->newsImage->alt}}" loading="lazy">
                             </div>
                             <h6 class="col-7 single-para" title="{{$bottom_news->title}}">
                                 {{\Str::limit($bottom_news->title,30)}}
@@ -290,7 +290,7 @@
                         @if($key == 0)
                         @push('sidebar1_design1')
                         <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-decoration-none ">
-                            <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
+                            <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="{{$sidebar_news->newsImage->alt}}" loading="lazy">
                             <h6 class="mt-2">{{\Str::limit($sidebar_news->title,60)}}</h6>
                         </a>
                         <p class="text-muted">
@@ -351,7 +351,7 @@
                                 <a href="{{route('single-news',$sidebar_news->slug)}}">
                                     <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                                 </a>
-                                <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="" loading="lazy">
+                                <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="{{$sidebar_news->newsImage->alt}}" loading="lazy">
                                 <div class="img-title">
                                     <h6 class="text-light m-0">
                                         <a href="{{route('single-news',$sidebar_news->slug)}}" class="text-white">{{\Str::limit($sidebar_news->title,60)}}</a>
@@ -373,7 +373,7 @@
                         <div class="holder">
                             <div class="box mt-1" style="height:250px;">
                                 <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                    <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="" loading="lazy">
+                                    <img src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="{{$sidebar_news->newsImage->alt}}" loading="lazy">
                                     <div class="content-overlay"></div>
                                 </a>
                                 <div class="img-title">

@@ -84,88 +84,121 @@ class FrontController extends Controller
         $sideCatIdsLimit = $homeSections->sidebars_limit;
         
         // Main Section Popular News 
-        $popularNews = Category::with(['news'=>function($query){
-            $query->inRandomOrder()->limit(15)->with('newsImage');
-        }])->inRandomOrder()->first();
+        $popularNewsCat = Category::inRandomOrder()->select('id')->first()->id;
+
+        $popularNews = News::with('newsImage')->whereHas('categories',function($query)use($popularNewsCat){
+            $query->where('category_id',$popularNewsCat);
+        })->latest()->limit(15)->select('id','title','slug','image','admin_id','created_at')->get();
 
         // ............ Sections Queries ............ 
         $section1 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[0])->with('newsImage');
-        }])->find($catIds[0]);
+        }])->findOrFail($catIds[0]);
+        $section1->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[0]);
+        })->latest()->limit($catIdsLimit[0])->select('id','title','slug','image','created_at')->get();
+
         $section2 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[1])->with('newsImage');
-        }])->find($catIds[1]);
+        }])->findOrFail($catIds[1]);
+        $section2->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[1]);
+        })->latest()->limit($catIdsLimit[1])->select('id','title','slug','image','created_at')->get();
+
         $section3 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[2])->with('newsImage');
-        }])->find($catIds[2]);
+        }])->findOrFail($catIds[2]);
+        $section3->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[2]);
+        })->latest()->limit($catIdsLimit[2])->select('id','title','slug','image','created_at')->get();
+
         $section4 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[3])->with('newsImage');
-        }])->find($catIds[3]);
+        }])->findOrFail($catIds[3]);
+        $section4->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[3]);
+        })->latest()->limit($catIdsLimit[3])->select('id','title','slug','image','created_at')->get();
+
         $section5 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[4])->with('newsImage');
-        }])->find($catIds[4]);
+        }])->findOrFail($catIds[4]);
+        $section5->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[4]);
+        })->latest()->limit($catIdsLimit[4])->select('id','title','slug','image','created_at')->get();
+
         $section6 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[5])->with('newsImage');
-        }])->find($catIds[5]);
+        }])->findOrFail($catIds[5]);
+        $section6->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[5]);
+        })->latest()->limit($catIdsLimit[5])->select('id','title','slug','image','created_at')->get();
+
         $section7 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[6])->with('newsImage');
-        }])->find($catIds[6]);
+        }])->findOrFail($catIds[6]);
+        $section7->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[6]);
+        })->latest()->limit($catIdsLimit[6])->select('id','title','slug','image','created_at')->get();
+
         $section8 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[7])->with('newsImage');
-        }])->find($catIds[7]);
+        }])->findOrFail($catIds[7]);
+        $section8->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[7]);
+        })->latest()->limit($catIdsLimit[7])->select('id','title','slug','image','created_at')->get();
+
         $section9 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[8])->with('newsImage');
-        }])->find($catIds[8]);
+        }])->findOrFail($catIds[8]);
+        $section9->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[8]);
+        })->latest()->limit($catIdsLimit[8])->select('id','title','slug','short_description','image','created_at')->get();
+
         $section10 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[9])->with('newsImage');
-        }])->find($catIds[9]);
+        }])->findOrFail($catIds[9]);
+        $section10->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[9]);
+        })->latest()->limit($catIdsLimit[9])->select('id','title','slug','short_description','image','created_at')->get();
+
         $section10_part2 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[10])->with('newsImage');
-        }])->find($catIds[10]);
+        }])->findOrFail($catIds[10]);
+        $section10_part2->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[10]);
+        })->latest()->limit($catIdsLimit[10])->select('id','title','slug','short_description','image','created_at')->get();
+
         $section10_part3 = Category::with(['children'=>function($query){
             $query->limit(10);
-        },'news'=>function($query)use($catIdsLimit){
-            $query->latest()->limit($catIdsLimit[11])->with('newsImage');
-        }])->find($catIds[11]);
+        }])->findOrFail($catIds[11]);
+        $section10_part3->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[11]);
+        })->latest()->limit($catIdsLimit[11])->select('id','title','slug','short_description','image','created_at')->get();
         // .......... Sidebar Queries ............ 
-        $sidebar_1 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
-            $query->latest()->limit($sideCatIdsLimit[0]);
-        }])->find($sideCatIds[0]);
-        $sidebar_2 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
-            $query->latest()->limit($sideCatIdsLimit[1])->with('newsImage');
-        }])->find($sideCatIds[1]);
-        $sidebar_3 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
-            $query->latest()->limit($sideCatIdsLimit[2]);
-        }])->find($sideCatIds[2]);
-        $sidebar_4 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
-            $query->latest()->limit($sideCatIdsLimit[3])->with('newsImage');
-        }])->find($sideCatIds[3]);
-        $sidebar_5 = Category::with(['news'=>function($query)use($sideCatIdsLimit){
-            // ->where('format','video')
-            $query->latest()->limit($sideCatIdsLimit[4])->with('newsImage');
-        }])->find($sideCatIds[4]);
+        $sidebar_1 = Category::findOrFail($sideCatIds[0]);
+        $sidebar_1->news = News::with('newsImage')->whereHas('categories',function($query)use($sideCatIds){
+            $query->where('category_id',$sideCatIds[0]);
+        })->latest()->limit($sideCatIdsLimit[0])->select('id','title','slug','image','created_at')->get();
+
+        $sidebar_2 = Category::findOrFail($sideCatIds[1]);
+        $sidebar_2->news = News::with('newsImage')->whereHas('categories',function($query)use($sideCatIds){
+            $query->where('category_id',$sideCatIds[1]);
+        })->latest()->limit($sideCatIdsLimit[1])->select('id','title','slug','image','created_at')->get();
+
+        $sidebar_3 = Category::findOrFail($sideCatIds[2]);
+        $sidebar_3->news = News::with('newsImage')->whereHas('categories',function($query)use($sideCatIds){
+            $query->where('category_id',$sideCatIds[2]);
+        })->latest()->limit($sideCatIdsLimit[2])->select('id','title','slug','image','created_at')->get();
+
+        $sidebar_4 = Category::findOrFail($sideCatIds[3]);
+        $sidebar_4->news = News::with('newsImage')->whereHas('categories',function($query)use($sideCatIds){
+            $query->where('category_id',$sideCatIds[3]);
+        })->latest()->limit($sideCatIdsLimit[3])->select('id','title','slug','image','created_at')->get();
+
+        $sidebar_5 = Category::findOrFail($sideCatIds[4]);
+        $sidebar_5->news = News::with('newsImage')->whereHas('categories',function($query)use($sideCatIds){
+            $query->where('category_id',$sideCatIds[4]);
+        })->latest()->limit($sideCatIdsLimit[4])->select('id','title','slug','image','created_at')->get();
         return view('home',compact(
             'popularNews',
             'section1',
@@ -238,38 +271,43 @@ class FrontController extends Controller
         JsonLd::addImage(asset('storage/media/'.$news->newsImage->filename));
 
         $news->viewsUp();
-        $moreCategoryNews = Category::with(['news'=>function($query)use($newsUrl,$pageSetting){
-            $query->where('slug','!=',$newsUrl)->latest()->limit($pageSetting->category_news_limit)->with('newsImage');
-        },
-        'children'=>function($query){
+
+        $currentNewsCatId = $news->categories->first()->id;
+        $moreCategoryNews = Category::with(['children'=>function($query){
             $query->limit(10);
-        }
-        ])->find($news->categories->first()->id);
+        }])->findOrFail($currentNewsCatId);
+        $moreCategoryNews->news = News::with('newsImage')->whereHas('categories',function($query)use($currentNewsCatId){
+            $query->where('category_id',$currentNewsCatId);
+        })->where('slug','!=',$newsUrl)->latest()->limit($pageSetting->category_news_limit)->select('id','title','slug','image','created_at')->get();
 
         $related = News::where('id','!=',$news->id)
         ->whereHas('tags', function (Builder $query) use($news){
             $query->whereIn('tags.id',$news->tags->pluck('id')->toArray());
         })
         ->with('newsImage')
-        ->latest()->limit($pageSetting->related_news_limit)->get();
+        ->latest()->select('id','title','slug','image','created_at')->limit($pageSetting->related_news_limit)->get();
         // ....... Sidebar ..........
         $catIds = $pageSetting->sidebars;
 
-        $sidebar_1 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[0]);
-        }])->find($catIds[0]);
+        $sidebar_1 = Category::findOrFail($catIds[0]);
+        $sidebar_1->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[0]);
+        })->latest()->limit($pageSetting->sidebars_limit[0])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_2 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
-        }])->find($catIds[1]);
+        $sidebar_2 = Category::findOrFail($catIds[1]);
+        $sidebar_2->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[1]);
+        })->latest()->limit($pageSetting->sidebars_limit[1])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_3 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[2]);
-        }])->find($catIds[2]);
+        $sidebar_3 = Category::findOrFail($catIds[2]);
+        $sidebar_3->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[2]);
+        })->latest()->limit($pageSetting->sidebars_limit[2])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_4 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[3])->with('newsImage');
-        }])->find($catIds[3]);
+        $sidebar_4 = Category::findOrFail($catIds[3]);
+        $sidebar_4->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[3]);
+        })->latest()->limit($pageSetting->sidebars_limit[3])->select('id','title','slug','image','created_at')->get();
 
         $bottom_section = Category::with(['news'=>function($query)use($pageSetting){
             $query->latest()->limit($pageSetting->bottom_section_limit)->with('newsImage');
@@ -337,25 +375,29 @@ class FrontController extends Controller
             if(isset($query->name)){
                 return $query;
             }
-        })->with('newsImage','creator')->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate($pageSetting->news_per_page);
+        })->with('newsImage','creator')->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->select('id','title','slug','image','admin_id','created_at')->paginate($pageSetting->news_per_page);
 
         $catIds = $pageSetting->sidebars;
 
-        $sidebar_1 = Category::with(['news'=>function($query) use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[0]);
-        }])->find($catIds[0]);
+        $sidebar_1 = Category::findOrFail($catIds[0]);
+        $sidebar_1->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[0]);
+        })->latest()->limit($pageSetting->sidebars_limit[0])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_2 = Category::with(['news'=>function($query) use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
-        }])->find($catIds[1]);
+        $sidebar_2 = Category::findOrFail($catIds[1]);
+        $sidebar_2->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[1]);
+        })->latest()->limit($pageSetting->sidebars_limit[1])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_3 = Category::with(['news'=>function($query) use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[2]);
-        }])->find($catIds[2]);
-
-        $bottom_section = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->bottom_section_limit)->with('newsImage');
-        }])->find($pageSetting->bottom_section);
+        $sidebar_3 = Category::findOrFail($catIds[2]);
+        $sidebar_3->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[2]);
+        })->latest()->limit($pageSetting->sidebars_limit[2])->select('id','title','slug','image','created_at')->get();
+        
+        $bottom_section = Category::findOrFail($pageSetting->bottom_section);
+        $bottom_section->news = News::with('newsImage')->whereHas('categories',function($query)use($pageSetting){
+            $query->where('category_id',$pageSetting->bottom_section);
+        })->latest()->limit($pageSetting->bottom_section_limit)->select('id','title','slug','image','created_at')->get();
 
         $shareCurrent = Share::currentPage()
         ->facebook()
@@ -413,21 +455,25 @@ class FrontController extends Controller
         JsonLd::addImage(asset('storage/media/'.$currentTag->tagImage->filename));
 
         $catIds = $pageSetting->sidebars;
-        $sidebar_1 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[0]);
-        }])->find($catIds[0]);
+        $sidebar_1 = Category::findOrFail($catIds[0]);
+        $sidebar_1->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[0]);
+        })->latest()->limit($pageSetting->sidebars_limit[0])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_2 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
-        }])->find($catIds[1]);
+        $sidebar_2 = Category::findOrFail($catIds[1]);
+        $sidebar_2->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[1]);
+        })->latest()->limit($pageSetting->sidebars_limit[1])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_3 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[2]);
-        }])->find($catIds[2]);
-
-        $bottom_section = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->bottom_section_limit)->with('newsImage');
-        }])->find($pageSetting->bottom_section);
+        $sidebar_3 = Category::findOrFail($catIds[2]);
+        $sidebar_3->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[2]);
+        })->latest()->limit($pageSetting->sidebars_limit[2])->select('id','title','slug','image','created_at')->get();
+        
+        $bottom_section = Category::findOrFail($pageSetting->bottom_section);
+        $bottom_section->news = News::with('newsImage')->whereHas('categories',function($query)use($pageSetting){
+            $query->where('category_id',$pageSetting->bottom_section);
+        })->latest()->limit($pageSetting->bottom_section_limit)->select('id','title','slug','image','created_at')->get();
         $shareCurrent = Share::currentPage()
         ->facebook()
         ->twitter()
@@ -524,13 +570,15 @@ class FrontController extends Controller
         JsonLd::setType('Profile');
         JsonLd::addImage($author->getAvatar());
 
-        $creatorNews = News::where('admin_id',$author->id)->where('status',1)->where('is_published',1)->where('is_verified',1)->latest()->paginate($pageSetting->news_per_page);
+        $creatorNews = News::where('admin_id',$author->id)->where('status',1)->where('is_published',1)->where('is_verified',1)->select('id','title','slug','image','admin_id','created_at')->latest()->paginate($pageSetting->news_per_page);
 
         $popularCategoryId = $pageSetting->section;
-        $popularCategory = Category::with(['news'=>function($query)use($author,$pageSetting){
-            $query->where('admin_id',$author->id)->latest()->limit($pageSetting->section_limit);
-        }])->find($popularCategoryId);
         
+        $popularCategory = Category::findOrFail($popularCategoryId);
+        $popularCategory->news = News::with('newsImage')->whereHas('categories',function($query)use($popularCategory){
+            $query->where('category_id',$popularCategory->id);
+        })->latest()->limit($pageSetting->section_limit)->where('admin_id',$author->id)->select('id','title','slug','image','admin_id','created_at')->get();
+
         $shareCurrent = Share::currentPage()
         ->facebook()
         ->twitter()
@@ -539,21 +587,26 @@ class FrontController extends Controller
         ->getRawLinks();
 
         $catIds = $pageSetting->sidebars;
-        $sidebar_1 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[0]);
-        }])->find($catIds[0]);
 
-        $sidebar_2 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[1])->with('newsImage');
-        }])->find($catIds[1]);
+        $sidebar_1 = Category::findOrFail($catIds[0]);
+        $sidebar_1->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[0]);
+        })->latest()->limit($pageSetting->sidebars_limit[0])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_3 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[2]);
-        }])->find($catIds[2]);
+        $sidebar_2 = Category::findOrFail($catIds[1]);
+        $sidebar_2->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[1]);
+        })->latest()->limit($pageSetting->sidebars_limit[1])->select('id','title','slug','image','created_at')->get();
 
-        $sidebar_4 = Category::with(['news'=>function($query)use($pageSetting){
-            $query->latest()->limit($pageSetting->sidebars_limit[3])->with('newsImage');
-        }])->find($catIds[3]);
+        $sidebar_3 = Category::findOrFail($catIds[2]);
+        $sidebar_3->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[2]);
+        })->latest()->limit($pageSetting->sidebars_limit[2])->select('id','title','slug','image','created_at')->get();
+
+        $sidebar_4 = Category::findOrFail($catIds[3]);
+        $sidebar_4->news = News::with('newsImage')->whereHas('categories',function($query)use($catIds){
+            $query->where('category_id',$catIds[3]);
+        })->latest()->limit($pageSetting->sidebars_limit[3])->select('id','title','slug','image','created_at')->get();
 
         return view('author',compact(
             'creatorNews',
