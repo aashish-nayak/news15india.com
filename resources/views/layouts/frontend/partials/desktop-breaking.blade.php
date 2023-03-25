@@ -8,7 +8,7 @@
             </div>
             <div class="ml-3 text-left">
                 <a href="{{route('single-news',$breakingNews->slug)}}" class="text-decoration-none text-left">
-                    <h2 class="text-white font-weight-bold">{{$breakingNews->title}}</h2>
+                    <h2 class="text-white font-weight-bold">{{Str::limit($breakingNews->title,150,'...')}}</h2>
                 </a>
             </div>
             <div class="position-relative ml-auto mr-4">
