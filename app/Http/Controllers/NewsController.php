@@ -76,7 +76,7 @@ class NewsController extends Controller
         $news->save();
         $news->categories()->sync($request->categories);
         $news->tags()->sync($request->tags);
-        if(!isset($request->id) && $request->is_published == 1){
+        if($news->created_at >= now()->toDateTimeString() && $request->is_published == 1){
             OneSignal::sendNotificationToAll(
                 $request->title,
                 $url = route('single-news',$request->slug), 

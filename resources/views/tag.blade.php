@@ -12,7 +12,7 @@
             <div class="holder h-100">
                 <div class="box mt-1 slider-height h-100">
                     <a href="{{route('single-news',$news->slug)}}">
-                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="w-100 h-100" alt="">
+                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="w-100 h-100" alt="{{$news->newsImage->alt}}">
                         <div class="content-overlay"></div>
                     </a>
                     <div class="img-title p-3" style="background-color: #16161687 !important;">
@@ -29,7 +29,7 @@
             <div class="col mb-4 p-1">
                 <div class="card mx-1" style="border:1px solid var(--primary);">
                     <a href="{{route('single-news',$news->slug)}}" class="text-decoration-none">
-                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top simple-card" alt="...">
+                        <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="card-img-top simple-card" alt="{{$news->newsImage->alt}}">
                     </a>
                     <div class="card-body p-2">
                         <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
@@ -45,7 +45,7 @@
                 <div class="card-horizontal no-gutters card-horizontal-3" style="border:1px solid var(--primary)">
                     <div class="col-4 p-1 h-100" style="border-right:1px solid #b2bec3;">
                         <a href="{{route('single-news',$news->slug)}}" class="text-muted text-decoration-none">
-                            <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid h-100" alt="...">
+                            <img loading="lazy" src="{{asset('storage/media/'.$news->newsImage->filename)}}" class="img-fluid h-100" alt="{{$news->newsImage->alt}}">
                         </a>
                     </div>
                     <div class="col-8">
@@ -174,7 +174,7 @@
                         <div class="holder">
                             <div class="box mt-1" style="height:250px;">
                                 <a href="{{route('single-news',$sidebar_news->slug)}}">
-                                    <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="">
+                                    <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="w-100" alt="{{$sidebar_news->newsImage->alt}}">
                                     <div class="content-overlay"></div>
                                 </a>
                                 <div class="img-title">
@@ -200,7 +200,7 @@
                                 <a href="{{route('single-news',$sidebar_news->slug)}}">
                                     <i class="far fa-play-circle position-absolute" style="top:50%; left:50%;transform:translate(-50%,-50%);font-size:50px;color:var(--primary);"></i>
                                 </a>
-                                <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="">
+                                <img loading="lazy" src="{{asset('storage/media/'.$sidebar_news->newsImage->filename)}}" class="img-fluid" alt="{{$sidebar_news->newsImage->alt}}">
                                 <div class="img-title">
                                     <h6 class="m-0"><a class="text-light " href="{{route('single-news',$sidebar_news->slug)}}">{{\Str::limit($sidebar_news->title,60)}}</a></h6>
                                     <p class="text-white m-1">{{frontDateFormat($sidebar_news->created_at)}}</p>
@@ -222,7 +222,7 @@
                     <div class="col px-2 px-md-1 my-3">
                         <a href="{{route('single-news',$bottomNews->slug)}}" class="text-decoration-none card-horizontal p-0">
                             <div class="col-5 p-0" style="border: 3px solid #f2f2f2;">
-                                <img loading="lazy" src="{{asset('storage/media/'.$bottomNews->newsImage->filename)}}" class="img-fluid" alt="">
+                                <img loading="lazy" src="{{asset('storage/media/'.$bottomNews->newsImage->filename)}}" class="img-fluid" alt="{{$bottomNews->newsImage->alt}}">
                             </div>
                             <h6 class="col-7 single-para">
                                 {{\Str::limit($bottomNews->title,40)}}
