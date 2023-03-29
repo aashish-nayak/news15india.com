@@ -35,8 +35,13 @@ class DashboardController extends Controller
         $totalFiles = $totalFiles->count();
         $totalComments = $totalComments->count();
         $recentNews = $recentNews->where('status',1)->where('is_verified',1)->where('is_published',1)->latest()->take(10)->select('id','title','slug','image')->get();
-        $topCategories = $topCategories->withCount('news')->where('parent_id',NULL)->where('status',1)->orderBy('news_count','desc')->take(5)->get();
-        
+        $topCategories = $topCategories->where('parent_id',NULL)->where('status',1)->select('id', 'cat_name', 'slug')->get();
+        $collect = collect();
+        foreach ($topCategories as $key => $cat){
+            $cat->nestedNewsCount = $cat->countTotalPosts();
+            $collect->push($cat);
+        }
+        $topCategories = $collect->sortByDesc('nestedNewsCount')->take(5);
         return view('backpanel.dashboard',compact('totalUsers','totalNews','totalComments','totalFiles','recentNews','topCategories'));
     }
 

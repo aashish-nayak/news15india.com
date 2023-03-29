@@ -95,11 +95,15 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     @php
-                        $bgArr = ['bg-success','bg-danger','bg-warning','bg-info','bg-dark']
+                        $bgArr = ['bg-success','bg-danger','bg-warning','bg-info','bg-dark'];
+                        $newsCountArr = [];
                     @endphp
                     @foreach ($topCategories as $key => $cat)
                     <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                        {{$cat->cat_name}} <span class="badge {{$bgArr[rand(0,count($bgArr)-1)]}} rounded-pill">{{$cat->news_count}}</span>
+                        @php
+                            array_push($newsCountArr,$cat->nestedNewsCount)
+                        @endphp
+                        {{$cat->cat_name}} <span class="badge {{$bgArr[rand(0,count($bgArr)-1)]}} rounded-pill">{{$cat->nestedNewsCount}}</span>
                     </li>
                     @endforeach
                 </ul>
@@ -107,7 +111,7 @@
         </div>
     </div>
     <input type="hidden" name="" id="cats" value="{{implode(', ',$topCategories->pluck('cat_name')->toArray() ?? [])}}">
-    <input type="hidden" name="" id="cats-news-counts" value="{{implode(', ',$topCategories->pluck('news_count')->toArray() ?? [])}}">
+    <input type="hidden" name="" id="cats-news-counts" value="{{implode(', ', $newsCountArr)}}">
 @endsection
 
 @push('plugin-scripts')

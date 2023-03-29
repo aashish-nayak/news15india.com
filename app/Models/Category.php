@@ -66,4 +66,20 @@ class Category extends Model
             }
         })->where('is_published', 1)->where('is_verified', 1)->where('status', 1);
     }
+
+    public function countSubcategoryPosts()
+    {
+        $count = 0;
+        
+        foreach ($this->children()->get() as $subcategory) {
+            $count += $subcategory->news()->count() + $subcategory->countSubcategoryPosts();
+        }
+        
+        return $count;
+    }
+
+    public function countTotalPosts()
+    {
+        return $this->news()->count() + $this->countSubcategoryPosts();
+    }
 }
