@@ -26,6 +26,8 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
+        'imap_username',
+        'imap_password',
     ];
 
     protected $appends = [

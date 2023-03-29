@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
@@ -11,29 +12,10 @@ use Illuminate\Support\Facades\View;
 use Webklex\IMAP\Facades\Client;
 class EmailController extends Controller
 {
-    public function setCookie($key,$value,$time = 120)
-    {
-        Cookie::queue($key, $value, $time);
-  
-        return response()->json(['Cookie set successfully.']);
-    }
-
-    public function getCookie($key)
-    {
-        return Cookie::get($key);
-    }
-
-    public function deleteCookie(...$keys)
-    {
-        foreach ($keys as $key => $value) {
-            Cookie::forget($value);
-        }
-  
-    }
 
     public function clientLogin()
     {
-        if($this->getCookie('CLIENT_USERNAME') != null && $this->getCookie('CLIENT_PASSWORD') != null){
+        if(auth('admin')->user()->imap_username != null && auth('admin')->user()->imap_password != null){
             return redirect()->route('admin.emailbox.index');
         }
         return view('backpanel.emailbox.login');
@@ -46,8 +28,10 @@ class EmailController extends Controller
             $client->username = $request->username;
             $client->password = $request->password;
             $client->connect();
-            $this->setCookie('CLIENT_USERNAME',$request->username);
-            $this->setCookie('CLIENT_PASSWORD',$request->password);
+            Admin::findOrFail(auth('admin')->id())->update([
+                'imap_username' => $request->username,
+                'imap_password' => $request->password
+            ]);
             session()->flash('success','Email Client Loggedin');
             return redirect()->route('admin.emailbox.index');
         } catch (\Exception $e) {
@@ -60,8 +44,8 @@ class EmailController extends Controller
     {
         try {
             $client = Client::account('default');
-            $client->username = $this->getCookie('CLIENT_USERNAME');
-            $client->password = $this->getCookie('CLIENT_PASSWORD');
+            $client->username = auth('admin')->user()->imap_username;
+            $client->password = auth('admin')->user()->imap_password;
             $client->connect();
             $currentFolder = $client->getFolderByPath($request->folder);
             $ids = (is_array($request->email_uids)) ? $request->email_uids : [$request->email_uids];
@@ -93,19 +77,19 @@ class EmailController extends Controller
                 'driver'     => 'smtp',
                 'host'       => "smtp.hostinger.com",
                 'port'       => "587",
-                'from'       => array('address' => $this->getCookie('CLIENT_USERNAME'), 'name' => auth('admin')->user()->name),
+                'from'       => array('address' => auth('admin')->user()->imap_username, 'name' => auth('admin')->user()->name),
                 'encryption' => 'tls',
-                'username'   => $this->getCookie('CLIENT_USERNAME'),
-                'password'   => $this->getCookie('CLIENT_PASSWORD'),
+                'username'   => auth('admin')->user()->imap_username,
+                'password'   => auth('admin')->user()->imap_password,
             );
             Config::set('mail', $config);
             $client = Client::account('default');
-            $client->username = $this->getCookie('CLIENT_USERNAME');
-            $client->password = $this->getCookie('CLIENT_PASSWORD');
+            $client->username = auth('admin')->user()->imap_username;
+            $client->password = auth('admin')->user()->imap_password;
             $client->connect();
             $view = view('backpanel.emailbox.mail-template',['data'=>$request->all()])->render();
             $date = date('D, d M Y H:i:s');
-            $message = "From: ".$this->getCookie('CLIENT_USERNAME')."\r\n"
+            $message = "From: ".auth('admin')->user()->imap_username."\r\n"
                     ."To: $request->mailto\r\n"
                     ."Subject: $request->subject\r\n"
                     ."Date: $date\r\n"
@@ -134,7 +118,7 @@ class EmailController extends Controller
 
     public function index()
     {
-        if($this->getCookie('CLIENT_USERNAME') == null || $this->getCookie('CLIENT_PASSWORD') == null){
+        if(auth('admin')->user()->imap_username == null || auth('admin')->user()->imap_password == null){
             return redirect()->route('admin.emailbox.login');
         }
         try {
@@ -144,8 +128,8 @@ class EmailController extends Controller
             $messages = [];
             $readMessage = '';
             $client = Client::account('default');
-            $client->username = $this->getCookie('CLIENT_USERNAME');
-            $client->password = $this->getCookie('CLIENT_PASSWORD');
+            $client->username = auth('admin')->user()->imap_username;
+            $client->password = auth('admin')->user()->imap_password;
             $client->connect();
             $client->setDefaultAttachmentMask($attachment_mask);
             $folders = $client->getFolders();

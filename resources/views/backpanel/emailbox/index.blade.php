@@ -81,8 +81,7 @@
                         class="list-group-item d-flex align-items-center {{($box == $folder->path) ? 'active' : ''}}">
                         <i class="bx {{$icons[$folder->path] ?? 'bxs-folder'}} me-3 font-20"></i><span>{{ucfirst($folder->name)}}</span>
                         @if($folder->messages()->unseen()->count() > 0)
-                        <span
-                            class="badge bg-primary rounded-pill ms-auto">{{$folder->messages()->unseen()->count()}}</span>
+                        <span class="badge bg-primary rounded-pill ms-auto">{{$folder->messages()->unseen()->count()}}</span>
                         @endif
                     </a>
                     @if($folder->hasChildren())
@@ -91,8 +90,7 @@
                         class="list-group-item d-flex align-items-center {{($box == $subFolder->path) ? 'active' : ''}}">
                         <i class="bx {{$icons[$subFolder->path] ?? 'bxs-folder'}} me-3 font-20"></i><span>{{ucwords($subFolder->name)}}</span>
                         @if($subFolder->messages()->unseen()->count() > 0)
-                        <span
-                            class="badge bg-primary rounded-pill ms-auto">{{$subFolder->messages()->unseen()->count()}}</span>
+                        <span class="badge bg-primary rounded-pill ms-auto">{{$subFolder->messages()->unseen()->count()}}</span>
                         @endif
                     </a>
                     @endforeach
